@@ -1,0 +1,26 @@
+{
+  "kind": "odd_glc_consumed_substrate_provenance",
+  "schemaVersion": "1",
+  "consumerTenant": "build_tenants/odd_glc/typescript",
+  "substrate": {
+    "productId": "abiogenesis",
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "4.1.0-rc.12",
+    "releaseTag": "v4.1.0-rc.12",
+    "snapshotCommit": "b4d4d9803ded88aff125c6ef8881e97989959fdf",
+    "tarballSha256": "8212f394366337c373556f445068dd2728c2f9761e3f64d801b04124d40e7de5"
+  },
+  "publicSurfaces": {
+    "gtlRequirements": "./gtl/requirements",
+    "abgRequirements": "./abg/requirements"
+  },
+  "proofScope": {
+    "phase": "phase_4_route_one_interpretation",
+    "claim": "The tenant is proven against ABIogenesis rc.12 public query facades and route-1-shaped replay/runtime-event fixtures. It is not yet a Phase 5 proof over a serialized T-165 real-run replay artifact."
+  },
+  "sourceDocuments": [
+    ".ai-workspace/comments/codex/20260628T152507Z_ABG_RC12_install_reference.md",
+    ".ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md",
+    "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md"
+  ]
+}

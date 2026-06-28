@@ -71,6 +71,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 - `T-004`: activate the first TypeScript-compatible route-1 tenant and
   implement minimal odd_glc lifecycle read/query interpretation over ABG public
   query truth.
+- `T-005`: prove odd_glc consumes a real T-165 or successor ABIogenesis
+  requirements-route replay artifact; currently blocked on a serialized ABG
+  route replay/runtime-event artifact.
 
 ## Current Work-Wave Target
 
@@ -96,6 +99,8 @@ This wave closes when the project has:
 - ratified graph design under `build_tenants/common/design/`;
 - an explicit clean-start specialization seam for future `odd_sdlc`;
 - an active route-1 build tenant for read/query and policy interpretation;
+- explicit ABIogenesis substrate provenance for that tenant;
+- an open Phase 5 proof ticket for real T-165 route replay consumption;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond route-1 read/query interpretation.
 

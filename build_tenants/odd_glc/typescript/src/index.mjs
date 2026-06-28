@@ -1,3 +1,5 @@
+export { ABIOGENESIS_SUBSTRATE_PROVENANCE } from "./substrate_provenance.mjs";
+
 export const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS = Object.freeze([
   "projectLifecycleState"
 ]);

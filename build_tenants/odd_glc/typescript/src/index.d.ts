@@ -27,6 +27,29 @@ export interface AbgRequirementsQueryFacade {
   readonly classifyAttenuation?: unknown;
 }
 
+export interface AbiogenesisSubstrateProvenance {
+  readonly kind: "odd_glc_consumed_substrate_provenance";
+  readonly schemaVersion: "1";
+  readonly consumerTenant: "build_tenants/odd_glc/typescript";
+  readonly substrate: {
+    readonly productId: "abiogenesis";
+    readonly packageName: "@abiogenesis/typescript-tenant";
+    readonly packageVersion: string;
+    readonly releaseTag: string;
+    readonly snapshotCommit: string;
+    readonly tarballSha256: string;
+  };
+  readonly publicSurfaces: {
+    readonly gtlRequirements: "./gtl/requirements";
+    readonly abgRequirements: "./abg/requirements";
+  };
+  readonly proofScope: {
+    readonly phase: "phase_4_route_one_interpretation";
+    readonly claim: string;
+  };
+  readonly sourceDocuments: readonly string[];
+}
+
 export interface LifecycleSurfaceMap {
   readonly kind: "odd_glc_lifecycle_surface_map";
   readonly surfaces: Readonly<Record<string, string>>;
@@ -61,6 +84,7 @@ export interface OddGlcLifecycleStateView {
 export declare const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS: readonly string[];
 export declare const FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES: readonly string[];
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];
+export declare const ABIOGENESIS_SUBSTRATE_PROVENANCE: AbiogenesisSubstrateProvenance;
 
 export declare function validateAbgRequirementsFacade(
   facade: unknown

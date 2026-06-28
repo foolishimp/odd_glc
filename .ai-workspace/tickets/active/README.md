@@ -8,3 +8,4 @@ Current active tickets:
 - `T-002-discover-gtl-abg-substrate-gap-for-odd-glc-build.md`
 - `T-003-define-gtl-abg-gap-work-and-upstream-design.md`
 - `T-004-activate-route-one-typescript-tenant.md`
+- `T-005-prove-odd-glc-consumes-real-t165-route-replay.md`

@@ -31,6 +31,7 @@ source_documents:
   - specification/requirements/REQ-GLC-DOWNSTREAM-SPECIALIZATION.md
   - build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md
   - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
+  - build_tenants/odd_glc/typescript/substrate.provenance.json
 affected_boundary:
   build_tenant:
     - build_tenants/odd_glc/typescript/
@@ -66,6 +67,8 @@ evaluation_criteria:
     payloads.
   - Negative tests reject forbidden facade functions and unknown disposition
     refs.
+  - Consumed ABIogenesis substrate identity is declared as tenant provenance
+    and verified against the installed package.
 non_closure_conditions:
   - The tenant shells out, calls an F_P worker, or runs side effects.
   - The tenant constructs `AdmittedRef` values or calls ABG projection emitters.
@@ -80,9 +83,10 @@ required_work:
   - Implement F_P/F_H policy declaration helpers as data-only surfaces.
   - Implement lifecycle-state interpretation over ABG `projectLifecycleState`.
   - Add route-1 and negative-regression tests.
+  - Add explicit consumed-substrate provenance for ABIogenesis rc.12.
 proof_commands:
   - npm --prefix build_tenants/odd_glc/typescript test
-  - node --input-type=module -e 'const m = await import("./build_tenants/odd_glc/typescript/src/index.mjs"); for (const name of m.FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES) { if (Object.hasOwn(m, name)) throw new Error(`forbidden export ${name}`); }'
+  - node --input-type=module -e 'const m = await import("./build_tenants/odd_glc/typescript/src/index.mjs"); if (m.ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion !== "4.1.0-rc.12") throw new Error("bad substrate version"); for (const name of m.FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES) { if (Object.hasOwn(m, name)) throw new Error(`forbidden export ${name}`); }'
   - git diff --check
 ---
 
@@ -115,6 +119,8 @@ is local realization beneath that tenant.
       lifecycle vocabulary.
 - [x] Public API interprets accepted ABG requirement-route runtime events and
       ignores mismatched disposition payloads.
+- [x] Consumed ABIogenesis substrate identity is explicit tenant provenance
+      and verified against the installed package.
 - [x] F_P/F_H policy surfaces are data declarations only.
 - [x] Negative tests cover forbidden emitters, unknown disposition refs, and
       absence of local runtime authority exports.

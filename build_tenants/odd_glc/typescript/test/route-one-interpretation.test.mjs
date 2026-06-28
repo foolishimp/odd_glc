@@ -6,6 +6,7 @@ import { test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import {
+  ABIOGENESIS_SUBSTRATE_PROVENANCE,
   FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES,
   REQUIRED_ROUTE_ONE_SURFACES,
   defineLifecycleSurfaceMap,
@@ -20,7 +21,7 @@ const repoRoot = path.resolve(tenantRoot, "../../..");
 const appsRoot = path.resolve(repoRoot, "..");
 const defaultAbgRoot = path.join(
   appsRoot,
-  ".abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/lib/node_modules/@abiogenesis/typescript-tenant"
+  `.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}/lib/node_modules/@abiogenesis/typescript-tenant`
 );
 
 async function importAbgRequirementsFacade() {
@@ -28,6 +29,13 @@ async function importAbgRequirementsFacade() {
   const facadePath = path.join(packageRoot, "build/semantic/code/src/abg/requirements/index.js");
   assert.equal(existsSync(facadePath), true, `Missing installed ABIogenesis facade at ${facadePath}`);
   return import(pathToFileURL(facadePath).href);
+}
+
+async function readInstalledPackageJson() {
+  const packageRoot = process.env.ABG_TYPESCRIPT_TENANT_ROOT ?? defaultAbgRoot;
+  const packageJsonPath = path.join(packageRoot, "package.json");
+  assert.equal(existsSync(packageJsonPath), true, `Missing installed ABIogenesis package.json at ${packageJsonPath}`);
+  return JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile(packageJsonPath, "utf8")));
 }
 
 function surfaceMapFixture() {
@@ -128,6 +136,25 @@ test("validates the installed ABG requirements public query facade", async () =>
   for (const forbidden of FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES) {
     assert.equal(Object.hasOwn(abgRequirements, forbidden), false, `${forbidden} must not be public`);
   }
+});
+
+test("declares and verifies the consumed ABIogenesis substrate identity", async () => {
+  const packageJson = await readInstalledPackageJson();
+
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.kind, "odd_glc_consumed_substrate_provenance");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.consumerTenant, "build_tenants/odd_glc/typescript");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productId, "abiogenesis");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName, "@abiogenesis/typescript-tenant");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.1.0-rc.12");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.1.0-rc.12");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "b4d4d9803ded88aff125c6ef8881e97989959fdf");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "8212f394366337c373556f445068dd2728c2f9761e3f64d801b04124d40e7de5");
+  assert.equal(packageJson.name, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName);
+  assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
+  assert.equal(
+    ABIOGENESIS_SUBSTRATE_PROVENANCE.proofScope.phase,
+    "phase_4_route_one_interpretation"
+  );
 });
 
 test("interprets ABG lifecycle state as odd_glc release/readiness vocabulary", async () => {
