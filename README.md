@@ -6,6 +6,9 @@ It is a downstream ODD framework over GTL/ABG. It interprets admitted
 requirements algebra, traversal, projection, fold, residual, and replay truth
 as a general life-cycle construction framework.
 
+Downstream programs that use `odd_glc` must still use GTL/ABG as their graph,
+runtime, admission, evidence, fold, residual, and re-entry substrate.
+
 Start here:
 
 - [AGENTS.md](./AGENTS.md)

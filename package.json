@@ -1,0 +1,11 @@
+{
+  "name": "odd-glc-abg-rc12",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./bootstrap/index.mjs"
+  },
+  "dependencies": {
+    "@abiogenesis/typescript-tenant": "file:../.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/package-pack/pack-QsNOcy/abiogenesis-typescript-tenant-4.1.0-rc.12.tgz"
+  }
+}

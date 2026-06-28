@@ -37,9 +37,9 @@ Use the upstream shared methodology source at:
 - ABG owns traversal, runtime facts, frames, continuations, lineage,
   provenance, correction, event replay, and closure folds.
 - GTL owns the graph-native language and wrapper surfaces.
-- `odd_glc` owns general life-cycle vocabulary, graph-function meaning, policy
-  overlays, query projections, and domain proof interpretation over admitted
-  GTL/ABG truth.
+- `odd_glc` owns general life-cycle vocabulary, lifecycle meaning over
+  GTL/ABG system-function carriers, policy overlays, query projections, and
+  domain proof interpretation over admitted GTL/ABG truth.
 
 ## Boundary Rules
 

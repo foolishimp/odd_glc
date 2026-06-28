@@ -2,4 +2,8 @@
 
 Active durable work items live here.
 
-No active ticket is opened yet.
+Current active tickets:
+
+- `T-001-govern-minimal-odd-glc-requirements-and-graph-design.md`
+- `T-002-discover-gtl-abg-substrate-gap-for-odd-glc-build.md`
+- `T-003-define-gtl-abg-gap-work-and-upstream-design.md`

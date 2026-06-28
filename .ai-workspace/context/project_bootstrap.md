@@ -4,6 +4,8 @@
 **Date**: 2026-06-27
 **Project Slug**: `odd_glc`
 **Expansion**: ODD General Life Cycle
+**Source Strategy**:
+`/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`
 
 This document is the initial capture of the project context. It is the starting
 context for the source project, not a release cut and not an installed product.
@@ -11,7 +13,8 @@ When a claim here becomes durable product law, ratify it in `specification/`.
 
 ## Origin
 
-`odd_glc` is created from the ABIogenesis requirements-algebra strategy that
+`odd_glc` is created from the ABIogenesis requirements-algebra strategy
+`20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`, which
 identified a missing downstream framework layer between ABG/GTL core and
 domain-specific ODD products such as `odd_sdlc`.
 
@@ -204,38 +207,30 @@ Core lifecycle relations:
 - reprices;
 - re-enters.
 
-## Initial Graph-Function Catalog
+## System-Function Binding Correction
 
-Function names are provisional until ratified.
+The initial idea of a native `glc.*` graph-function catalog is superseded.
+Generic ODD construction belongs to GTL/ABG. `odd_glc` binds lifecycle meaning,
+policy, query interpretation, proof interpretation, and specialization
+constraints over GTL/ABG system functions and carriers.
 
-- `glc.observe_gap`
-- `glc.classify_gap`
-- `glc.frame_problem`
-- `glc.select_solution_space`
-- `glc.derive_intent_delta`
-- `glc.derive_product_delta`
-- `glc.project_requirement_environment`
-- `glc.decompose_what`
-- `glc.select_destination_topology`
-- `glc.construct_instruction_set`
-- `glc.plan_work_order`
-- `glc.bind_evidence_view`
-- `glc.fold_assurance_view`
-- `glc.project_residual_pressure`
-- `glc.route_reentry`
-- `glc.prepare_release_candidate`
-- `glc.ingest_operational_feedback`
+First system-function bindings to review:
 
-Each graph function must eventually publish:
+| Lifecycle slot | GTL/ABG system function or carrier |
+| --- | --- |
+| context observation and gap routing | `abg.requirements.ingest_context_fragments` / `abg.requirements.route_context_constraint` |
+| requirement environment projection | `abg.requirements.compile_edge_environment` |
+| requirement graph/refinement | `abg.requirements.derive_requirement_graph` / `abg.requirements.refine_goal` |
+| edge obligations and work pressure | `abg.requirements.project_edge_obligations` |
+| destination topology | ABG `DestinationTopology` |
+| evidence binding | `abg.requirements.bind_evidence` |
+| assurance fold and assurance case | `abg.requirements.fold_requirement_state` / `abg.requirements.project_assurance_case` |
+| residual and attenuation | residual output of `abg.requirements.fold_requirement_state` plus attenuation classification |
+| re-entry disposition | ABG continuation, correction, re-entry, release, or block facts |
 
-- source asset type;
-- target asset type;
-- required ABG/GTL carrier refs;
-- admissible evidence;
-- deterministic checks;
-- expected `F_P` or `F_H` boundary;
-- closure or residual projection;
-- lineage and provenance obligations.
+Any named lifecycle route in `odd_glc` must be a GTL composition declaration or
+binding map over those system functions. It must not republish generic
+functions under `glc.*`.
 
 ## Lifecycle Shape
 
@@ -262,9 +257,9 @@ observe current state
 -> ingest operational feedback
 ```
 
-This is not a hidden imperative loop. It is the target graph-native shape that
-must be expressed as typed assets, graph functions, GTL declarations, ABG
-runtime truth, projections, and proof surfaces.
+This is not a hidden imperative loop. It is a target lifecycle interpretation
+over a GTL composition and ABG runtime truth, projections, and proof surfaces.
+It is not a native odd_glc graph-function catalog.
 
 ## Requirements-Algebra Consumption
 
@@ -285,7 +280,7 @@ these lifecycle questions from admitted carriers and replay truth:
 
 If ABG/GTL cannot answer those questions, `odd_glc` must not compensate by
 creating a product-local peer ledger. It must mark the dependency as missing or
-defer the affected function.
+defer the affected lifecycle slot.
 
 ## F_D, F_P, And F_H Boundary
 

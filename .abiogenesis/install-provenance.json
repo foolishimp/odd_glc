@@ -1,0 +1,86 @@
+{
+  "kind": "abg_typescript_install_provenance",
+  "targetRoot": "/Users/jim/src/apps/odd_glc",
+  "targetMode": "imported",
+  "installMode": "fresh",
+  "cleanTargetPolicy": "no_scaffold",
+  "packageName": "@abiogenesis/typescript-tenant",
+  "packageVersion": "4.1.0-rc.12",
+  "packageRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/lib/node_modules/@abiogenesis/typescript-tenant",
+  "commandPaths": [
+    "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/bin/abiogenesis-ts",
+    "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/bin/genesis-ts"
+  ],
+  "runtimeIdentity": {
+    "workerId": "abiogenesis-typescript-installer",
+    "backendId": "node",
+    "buildId": "4.1.0-rc.12",
+    "resolvedRuntimeRef": "package:@abiogenesis/typescript-tenant@4.1.0-rc.12"
+  },
+  "installManifestPath": "/Users/jim/src/apps/odd_glc/.abiogenesis/install-manifest.json",
+  "installerManifestPath": "/Users/jim/src/apps/odd_glc/.abiogenesis/typescript-installer-manifest.json",
+  "runtimeBindingPath": "/Users/jim/src/apps/odd_glc/.abiogenesis/cli-runtime.mjs",
+  "toolchainBindingPath": "/Users/jim/src/apps/odd_glc/.abiogenesis/toolchain-binding.json",
+  "toolchainRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant",
+  "toolchainSelectionSource": "explicit",
+  "toolchainBinding": {
+    "kind": "abg_toolchain_workspace_binding",
+    "schemaVersion": "2",
+    "targetRoot": "/Users/jim/src/apps/odd_glc",
+    "toolchainRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant",
+    "selectionSource": "explicit",
+    "bindingPath": "/Users/jim/src/apps/odd_glc/.abiogenesis/toolchain-binding.json",
+    "products": [
+      {
+        "kind": "abg_toolchain_product_binding",
+        "productId": "abiogenesis",
+        "packageName": "@abiogenesis/typescript-tenant",
+        "packageVersion": "4.1.0-rc.12",
+        "productRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12",
+        "packageRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/lib/node_modules/@abiogenesis/typescript-tenant",
+        "binRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/bin",
+        "libRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/lib",
+        "docsRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/docs",
+        "standardsRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/docs/standards",
+        "manifestPath": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/product-toolchain-manifest.json",
+        "manifestDigest": "6b4381d3c17c87fd86d7fe6775ec74db627e0456b58e7184cce9f196798be9e9",
+        "commandPaths": [
+          "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/bin/abiogenesis-ts",
+          "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/bin/genesis-ts"
+        ]
+      }
+    ],
+    "mutableStateRoots": {
+      "observedWorkspaceRoot": "/Users/jim/src/apps/odd_glc",
+      "observerStateRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace",
+      "executorStateRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace",
+      "eventRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/events",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/events/events.jsonl",
+      "runtimeRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/runtime",
+      "projectionRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/projections",
+      "archiveRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/archives"
+    }
+  },
+  "abgConfigSourcePath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/config/abg.config.json",
+  "abgConfigPath": "/Users/jim/src/apps/odd_glc/.abiogenesis/config/abg.config.json",
+  "abgConfigSha256": "af25ec2b042c93b9d267fb6d7b3edfe88281e318579dfebb0b6b47eddec4f6fe",
+  "standardsInstallRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/docs/standards",
+  "standardsFileCount": 41,
+  "docsInstallRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/docs",
+  "docsFileCount": 3,
+  "eventsPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/events/events.jsonl",
+  "runtimeDirectory": "/Users/jim/src/apps/odd_glc/.ai-workspace/runtime",
+  "projectionDirectory": "/Users/jim/src/apps/odd_glc/.ai-workspace/projections",
+  "archiveDirectory": "/Users/jim/src/apps/odd_glc/.ai-workspace/archives",
+  "mutableStateRoots": {
+    "observedWorkspaceRoot": "/Users/jim/src/apps/odd_glc",
+    "observerStateRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace",
+    "executorStateRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace",
+    "eventRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/events",
+    "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/events/events.jsonl",
+    "runtimeRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/runtime",
+    "projectionRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/projections",
+    "archiveRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/archives"
+  },
+  "installResult": "installed"
+}

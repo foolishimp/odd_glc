@@ -8,7 +8,7 @@ The first tenant must not be selected until the requirements and ratified
 design define:
 
 - lifecycle typed assets;
-- graph-function catalog;
+- lifecycle binding contract over GTL/ABG system-function carriers;
 - GTL/ABG consumption boundary;
 - proof/query surface;
 - test or scenario closure target.

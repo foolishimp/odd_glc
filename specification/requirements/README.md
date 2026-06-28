@@ -21,11 +21,15 @@ Use these method surfaces as governing references:
 
 ## Initial Families To Author
 
-- lifecycle boundary and authority;
-- lifecycle typed assets and vocabulary;
-- lifecycle graph-function catalog;
-- requirements-algebra consumption contract;
+- lifecycle boundary and authority:
+  [REQ-GLC-BOUNDARY-AUTHORITY](REQ-GLC-BOUNDARY-AUTHORITY.md);
+- lifecycle typed assets and vocabulary:
+  [REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS](REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md);
+- requirements-algebra consumption and GTL/ABG system-function binding
+  contract:
+  [REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION](REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md);
 - lifecycle read models and query;
 - proof, fold interpretation, residual pressure, and re-entry;
-- downstream product specialization contract;
+- downstream product/program specialization contract:
+  [REQ-GLC-DOWNSTREAM-SPECIALIZATION](REQ-GLC-DOWNSTREAM-SPECIALIZATION.md);
 - release and operational-feedback interpretation.
