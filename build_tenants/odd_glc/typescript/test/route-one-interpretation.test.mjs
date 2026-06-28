@@ -101,6 +101,23 @@ function requirementRouteRuntimeEventFixture(payload = dispositionPayload) {
   });
 }
 
+function replayFactsForDisposition(disposition, ref = `disp:hello-world:${disposition}`) {
+  const payload = Object.freeze({
+    ...dispositionPayload,
+    dispositionRef: ref,
+    disposition,
+    reason: `route-1 disposition is ${disposition}`
+  });
+  return Object.freeze([
+    Object.freeze({
+      kind: "requirement_lifecycle_disposition",
+      ref,
+      sourceEventRef: `event:requirement-route:disposition:${disposition}`,
+      payload
+    })
+  ]);
+}
+
 test("validates the installed ABG requirements public query facade", async () => {
   const abgRequirements = await importAbgRequirementsFacade();
   const result = validateAbgRequirementsFacade(abgRequirements);
@@ -163,6 +180,62 @@ test("interprets disposition payloads from ABG requirement-route runtime events"
   assert.equal(result.value.lifecycleDisposition, "release_readiness_candidate");
   assert.deepEqual(result.value.sourceEventRefs, ["event:requirement-route:runtime:closed"]);
   assert.equal(result.value.interpretedDispositions[0].dispositionRef, "disp:hello-world:closed");
+});
+
+test("maps every ABG route-1 disposition into odd_glc lifecycle vocabulary", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const cases = Object.freeze([
+    ["closed", "release_readiness_candidate"],
+    ["continuation_available", "continuation_available"],
+    ["reentry_available", "reentry_available"],
+    ["blocked", "blocked"]
+  ]);
+
+  for (const [abgDisposition, oddGlcDisposition] of cases) {
+    const ref = `disp:hello-world:${abgDisposition}`;
+    const result = interpretLifecycleState({
+      abgRequirements,
+      query: queryFixture,
+      dispositionRefs: Object.freeze([ref]),
+      replayFacts: replayFactsForDisposition(abgDisposition, ref)
+    });
+
+    assert.equal(result.status, "accepted");
+    assert.equal(result.value.lifecycleDisposition, oddGlcDisposition);
+  }
+});
+
+test("uses conservative disposition priority when multiple ABG dispositions are present", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const dispositions = Object.freeze([
+    replayFactsForDisposition("closed", "disp:closed")[0],
+    replayFactsForDisposition("continuation_available", "disp:continuation")[0],
+    replayFactsForDisposition("reentry_available", "disp:reentry")[0],
+    replayFactsForDisposition("blocked", "disp:blocked")[0]
+  ]);
+  const result = interpretLifecycleState({
+    abgRequirements,
+    query: queryFixture,
+    dispositionRefs: Object.freeze(["disp:closed", "disp:continuation", "disp:reentry", "disp:blocked"]),
+    replayFacts: dispositions
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.lifecycleDisposition, "blocked");
+});
+
+test("reports no disposition when ABG accepts an empty disposition query", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const result = interpretLifecycleState({
+    abgRequirements,
+    query: queryFixture,
+    dispositionRefs: Object.freeze([]),
+    replayFacts: Object.freeze([])
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.lifecycleDisposition, "no_disposition");
+  assert.deepEqual(result.value.interpretedDispositions, []);
 });
 
 test("ignores mismatched runtime-event disposition payloads", async () => {

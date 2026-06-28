@@ -21,6 +21,7 @@ from the local toolchain path by default. Set `ABG_TYPESCRIPT_TENANT_ROOT` to
 override that package root.
 
 Current proof coverage includes public-facade validation, replay-fact
-interpretation, requirement-route runtime-event interpretation, fail-closed
-unknown disposition refs, data-only F_P/F_H policy overlays, and forbidden
+interpretation, requirement-route runtime-event interpretation, all route-1
+disposition labels, conservative disposition priority, fail-closed unknown
+disposition refs, data-only F_P/F_H policy overlays, and forbidden
 runtime-authority export checks.
