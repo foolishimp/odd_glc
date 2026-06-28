@@ -1,11 +1,14 @@
 # odd_glc Tenant Registry
 
-**Status**: Inactive - first tenant criteria recorded
+**Status**: Active - route-1 TypeScript tenant
 
-No active build tenant exists yet.
+The first active build tenant is:
 
-The first tenant must not be activated until requirements and ratified design
-define:
+| Tenant | Status | Scope |
+| --- | --- | --- |
+| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over ABIogenesis `4.1.0-rc.12` public GTL/ABG surfaces. |
+
+The tenant was activated after requirements and ratified design defined:
 
 - lifecycle typed assets;
 - lifecycle binding contract over GTL/ABG system-function carriers;
@@ -13,15 +16,14 @@ define:
 - proof/query surface;
 - test or scenario closure target.
 
-## Candidate Realization Line
+## Realization Line
 
-The first candidate tenant is a TypeScript read/query and policy
+The active tenant is a TypeScript-compatible read/query and policy
 interpretation library over ABIogenesis `4.1.0-rc.12`.
 
-The candidate is not active yet. Activation requires a follow-on tenant
-decision that descends from
+The tenant descends from
 [ADR-001 route-1 GTL/ABG lifecycle consumption](common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
-and names:
+and must preserve:
 
 - source package layout under `build_tenants/`;
 - consumed ABIogenesis package identity and import path policy;

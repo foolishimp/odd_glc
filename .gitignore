@@ -13,11 +13,11 @@ coverage/
 
 # Local ABIogenesis install/runtime state. Source should pin provenance in
 # comments/tickets/design, not commit mutable install payloads.
-.abiogenesis/
-.ai-workspace/events/
-.ai-workspace/runtime/
-.ai-workspace/projections/
-.ai-workspace/archives/
-bootstrap/
-package.json
-package-lock.json
+/.abiogenesis/
+/.ai-workspace/events/
+/.ai-workspace/runtime/
+/.ai-workspace/projections/
+/.ai-workspace/archives/
+/bootstrap/
+/package.json
+/package-lock.json

@@ -1,0 +1,16 @@
+{
+  "name": "@odd-glc/route-one-typescript",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "description": "Route-1 odd_glc read/query and policy interpretation over GTL/ABG.",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.mjs"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}

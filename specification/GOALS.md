@@ -68,6 +68,9 @@ Goals define the current bounded work-wave for `odd_glc`.
   upstream readiness.
 - `T-003`: define the GTL/ABG upstream gap work and design needed for
   downstream lifecycle readiness.
+- `T-004`: activate the first TypeScript-compatible route-1 tenant and
+  implement minimal odd_glc lifecycle read/query interpretation over ABG public
+  query truth.
 
 ## Current Work-Wave Target
 
@@ -92,8 +95,9 @@ This wave closes when the project has:
   reintroducing local SDLC ledgers, controllers, or retry/closure stores;
 - ratified graph design under `build_tenants/common/design/`;
 - an explicit clean-start specialization seam for future `odd_sdlc`;
-- an empty but declared build-tenant boundary;
-- no claimed runtime, release, install, or implementation closure.
+- an active route-1 build tenant for read/query and policy interpretation;
+- no claimed odd_glc runtime, release, install, or full lifecycle closure
+  beyond route-1 read/query interpretation.
 
 ## Boundary
 
