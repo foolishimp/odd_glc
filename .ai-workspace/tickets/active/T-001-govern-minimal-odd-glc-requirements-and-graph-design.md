@@ -3,7 +3,7 @@ id: T-001
 title: Govern odd_glc requirements, graph design, and generic lifecycle coverage plan
 type: design
 ticket_category: design_governance
-status: active
+status: completed
 goal: >-
   Author the first odd_glc requirements and graph-design surfaces that define a
   clean ODD General Life Cycle substrate for generic lifecycle work at any
@@ -26,6 +26,7 @@ owner: odd_glc
 priority: critical
 created_at: 2026-06-28
 updated_at: 2026-06-29
+closed_at: 2026-06-29
 governance_scope: STDO Method, ODD Method, GTL/ABG consumption, first steel-thread surface binding, clean downstream specialization
 source_strategy: /Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md
 source_documents:

@@ -41,6 +41,14 @@ export const REQUIRED_ROUTE_ONE_SURFACES = Object.freeze([
   "ReentryDecisionAsset"
 ]);
 
+export const REQUIRED_EVIDENCE_EVENT_KINDS = Object.freeze([
+  "actor_invocation_started",
+  "actor_result_artifact_observed",
+  "actor_invocation_closed",
+  "evidence_admitted",
+  "requirement_route_fact_projected"
+]);
+
 const TENANT_ID = "build_tenants/odd_glc/typescript";
 
 function accepted(value, sourceRefs = []) {
@@ -189,6 +197,131 @@ function runtimeDispositionFacts(runtimeEvents) {
   }));
 }
 
+function eventRefFor(event) {
+  if (!isRecord(event)) {
+    return null;
+  }
+  return event.eventId ?? event.routeEventRef ?? event.eventRef ?? null;
+}
+
+function stringOrNull(value) {
+  return typeof value === "string" && value.length > 0 ? value : null;
+}
+
+function uniqueStrings(values) {
+  return Object.freeze([...new Set(values.filter((value) => typeof value === "string" && value.length > 0))]);
+}
+
+function routeEvidenceBindings(runtimeEvents) {
+  return runtimeEvents.flatMap((event) => {
+    if (
+      !isRecord(event) ||
+      event.kind !== "requirement_route_fact_projected" ||
+      event.routePayloadKind !== "requirement_evidence_bound" ||
+      !isRecord(event.requirementPayload) ||
+      !isRecord(event.requirementPayload.binding)
+    ) {
+      return [];
+    }
+    const binding = event.requirementPayload.binding;
+    return [Object.freeze({
+      evidenceRef: binding.evidenceRef,
+      requirementId: binding.requirementId,
+      projectionRef: binding.projectionRef,
+      evidenceRole: binding.evidenceRole,
+      bindingStatus: binding.bindingStatus,
+      digest: binding.digest,
+      routePayloadRef: event.routePayloadRef,
+      sourceEventRef: event.routeEventRef
+    })];
+  });
+}
+
+function admittedEvidence(runtimeEvents) {
+  return runtimeEvents.flatMap((event) => {
+    if (!isRecord(event) || event.kind !== "evidence_admitted") {
+      return [];
+    }
+    return [Object.freeze({
+      evidenceRef: event.evidenceRef,
+      payloadRef: event.payloadRef,
+      authorityRef: event.authorityRef,
+      authorityDigest: event.authorityDigest,
+      inputDigest: event.inputDigest,
+      complete: event.complete === true,
+      deferred: event.deferred === true,
+      contradictsAuthority: event.contradictsAuthority === true,
+      providerRefs: Object.freeze(Array.isArray(event.providerRefs) ? [...event.providerRefs] : []),
+      policyRefs: Object.freeze(Array.isArray(event.policyRefs) ? [...event.policyRefs] : []),
+      sourceEventRef: eventRefFor(event)
+    })];
+  });
+}
+
+function actorInvocationViews(runtimeEvents) {
+  const byInvocation = new Map();
+  for (const event of runtimeEvents) {
+    if (!isRecord(event) || typeof event.actorInvocationId !== "string") {
+      continue;
+    }
+    if (
+      event.kind !== "actor_invocation_started" &&
+      event.kind !== "actor_result_artifact_observed" &&
+      event.kind !== "actor_invocation_closed"
+    ) {
+      continue;
+    }
+    const current = byInvocation.get(event.actorInvocationId) ?? {
+      actorInvocationId: event.actorInvocationId,
+      workerId: null,
+      backendId: null,
+      dispatchRef: null,
+      resultRef: null,
+      artifactRef: null,
+      closureStatus: null,
+      edge: null,
+      sourceEventRefs: []
+    };
+    current.workerId = current.workerId ?? stringOrNull(event.workerId);
+    current.backendId = current.backendId ?? stringOrNull(event.backendId);
+    current.dispatchRef = current.dispatchRef ?? stringOrNull(event.dispatchRef);
+    current.resultRef = current.resultRef ?? stringOrNull(event.resultRef);
+    current.artifactRef = current.artifactRef ?? stringOrNull(event.artifactRef);
+    current.closureStatus = current.closureStatus ?? stringOrNull(event.closureStatus);
+    current.edge = current.edge ?? stringOrNull(event.edge);
+    const sourceEventRef = eventRefFor(event);
+    if (sourceEventRef !== null) {
+      current.sourceEventRefs.push(sourceEventRef);
+    }
+    byInvocation.set(event.actorInvocationId, current);
+  }
+  return Object.freeze([...byInvocation.values()].map((entry) => Object.freeze({
+    ...entry,
+    sourceEventRefs: uniqueStrings(entry.sourceEventRefs)
+  })));
+}
+
+function evidenceDisposition(evidence, bindings, invocations) {
+  const completeEvidence = evidence.filter((item) =>
+    item.complete && !item.deferred && !item.contradictsAuthority
+  );
+  const admittedBindings = bindings.filter((item) => item.bindingStatus === "admitted");
+  const completedInvocations = invocations.filter((item) => item.closureStatus === "completed");
+  if (completeEvidence.length > 0 && admittedBindings.length > 0 && completedInvocations.length > 0) {
+    return "admitted_bound_and_executed";
+  }
+  if (completeEvidence.length > 0 && admittedBindings.length > 0) {
+    return "admitted_and_bound";
+  }
+  if (completeEvidence.length > 0) {
+    return "admitted_unbound";
+  }
+  if (admittedBindings.length > 0) {
+    return "bound_without_runtime_evidence";
+  }
+  return "no_evidence";
+}
+
 function dispositionPayloadsFor(readModel, replayFacts, runtimeEvents) {
   const facts = Object.freeze([
     ...(Array.isArray(replayFacts) ? replayFacts : []),
@@ -282,5 +415,45 @@ export function interpretLifecycleState(input) {
     ...requirementIds,
     ...(readModel.dispositionRefs ?? []),
     ...(readModel.sourceEventRefs ?? [])
+  ]);
+}
+
+export function interpretEvidenceState(input) {
+  if (!isRecord(input)) {
+    return rejected("malformed_input", ["Evidence interpretation requires an input object"]);
+  }
+  const runtimeEvents = Array.isArray(input.runtimeEvents)
+    ? Object.freeze([...input.runtimeEvents])
+    : Object.freeze([]);
+  const bindings = routeEvidenceBindings(runtimeEvents);
+  const evidence = admittedEvidence(runtimeEvents);
+  const invocations = actorInvocationViews(runtimeEvents);
+  const sourceEventRefs = uniqueStrings([
+    ...bindings.map((item) => item.sourceEventRef),
+    ...evidence.map((item) => item.sourceEventRef),
+    ...invocations.flatMap((item) => item.sourceEventRefs)
+  ]);
+  const targetArtifactRefs = uniqueStrings(invocations.map((item) => item.artifactRef));
+  const capabilityRefs = uniqueStrings(invocations.flatMap((item) => [
+    item.workerId,
+    item.backendId,
+    item.dispatchRef
+  ]));
+
+  return accepted({
+    kind: "odd_glc_evidence_state_view",
+    tenant: TENANT_ID,
+    evidenceDisposition: evidenceDisposition(evidence, bindings, invocations),
+    targetArtifactRefs,
+    capabilityRefs,
+    actorInvocations: invocations,
+    admittedEvidence: Object.freeze(evidence),
+    requirementEvidenceBindings: Object.freeze(bindings),
+    sourceEventRefs,
+    runtimeEventCount: runtimeEvents.length
+  }, [
+    ...targetArtifactRefs,
+    ...capabilityRefs,
+    ...sourceEventRefs
   ]);
 }

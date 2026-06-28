@@ -44,7 +44,7 @@ export interface AbiogenesisSubstrateProvenance {
     readonly abgRequirements: "./abg/requirements";
   };
   readonly proofScope: {
-    readonly phase: "phase_4_route_one_interpretation";
+    readonly phase: "phase_5_real_route_replay_consumption";
     readonly claim: string;
   };
   readonly sourceDocuments: readonly string[];
@@ -81,9 +81,28 @@ export interface OddGlcLifecycleStateView {
   readonly abgReadModel: unknown;
 }
 
+export interface OddGlcEvidenceStateView {
+  readonly kind: "odd_glc_evidence_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly evidenceDisposition:
+    | "no_evidence"
+    | "bound_without_runtime_evidence"
+    | "admitted_unbound"
+    | "admitted_and_bound"
+    | "admitted_bound_and_executed";
+  readonly targetArtifactRefs: readonly string[];
+  readonly capabilityRefs: readonly string[];
+  readonly actorInvocations: readonly unknown[];
+  readonly admittedEvidence: readonly unknown[];
+  readonly requirementEvidenceBindings: readonly unknown[];
+  readonly sourceEventRefs: readonly string[];
+  readonly runtimeEventCount: number;
+}
+
 export declare const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS: readonly string[];
 export declare const FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES: readonly string[];
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];
+export declare const REQUIRED_EVIDENCE_EVENT_KINDS: readonly string[];
 export declare const ABIOGENESIS_SUBSTRATE_PROVENANCE: AbiogenesisSubstrateProvenance;
 
 export declare function validateAbgRequirementsFacade(
@@ -112,3 +131,7 @@ export declare function interpretLifecycleState(input: {
   readonly surfaceMap?: LifecycleSurfaceMap;
   readonly policyOverlay?: PolicyOverlay;
 }): OddGlcResult<OddGlcLifecycleStateView>;
+
+export declare function interpretEvidenceState(input: {
+  readonly runtimeEvents?: readonly unknown[];
+}): OddGlcResult<OddGlcEvidenceStateView>;

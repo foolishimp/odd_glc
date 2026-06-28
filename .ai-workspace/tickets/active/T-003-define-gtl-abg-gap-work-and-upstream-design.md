@@ -3,7 +3,7 @@ id: T-003
 title: Define GTL/ABG gap work and upstream design for odd_glc lifecycle readiness
 type: design
 ticket_category: upstream_gap_design
-status: active
+status: completed
 goal: >-
   Produce an exhaustive GTL/ABG work backlog and a disambiguated upstream
   design for the requirements-algebra substrate odd_glc needs before it can
@@ -16,7 +16,8 @@ downstream_reentry_sequence:
 owner: odd_glc
 priority: critical
 created_at: 2026-06-28
-updated_at: 2026-06-28
+updated_at: 2026-06-29
+closed_at: 2026-06-29
 governance_scope: STDO Method, ODD Method, GTL/ABG upstream substrate, requirements-algebra lifecycle route, odd_glc non-closure gate
 source_documents:
   - specification/PRODUCT.md

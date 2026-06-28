@@ -3,7 +3,7 @@ id: T-002
 title: Discover GTL/ABG substrate gap for odd_glc lifecycle build readiness
 type: discovery
 ticket_category: upstream_gap_analysis
-status: active
+status: completed
 goal: >-
   Discover the gap between the GTL/ABG functionality required by odd_glc and
   the current ABIogenesis build. The result shall classify every required
@@ -17,6 +17,7 @@ owner: odd_glc
 priority: critical
 created_at: 2026-06-28
 updated_at: 2026-06-29
+closed_at: 2026-06-29
 governance_scope: STDO Method, ODD Method, GTL/ABG consumption, ABIogenesis build readiness, odd_glc non-closure gate
 source_documents:
   - specification/PRODUCT.md

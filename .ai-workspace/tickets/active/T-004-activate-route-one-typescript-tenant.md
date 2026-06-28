@@ -3,7 +3,7 @@ id: T-004
 title: Activate route-1 TypeScript tenant and implement lifecycle interpretation
 type: implementation
 ticket_category: realization_refactor
-status: active
+status: completed
 goal: >-
   Activate the first odd_glc realization tenant as a TypeScript-compatible
   read/query and policy-interpretation library over ABIogenesis 4.1.0-rc.12
@@ -20,6 +20,7 @@ owner: odd_glc
 priority: critical
 created_at: 2026-06-29
 updated_at: 2026-06-29
+closed_at: 2026-06-29
 governance_scope: STDO Method, ODD Method, Design Module Method, route-1 tenant activation, GTL/ABG consumption
 source_documents:
   - specification/GOALS.md

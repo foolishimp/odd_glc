@@ -12,6 +12,7 @@ import {
   REQUIRED_ROUTE_ONE_SURFACES,
   defineLifecycleSurfaceMap,
   definePolicyOverlay,
+  interpretEvidenceState,
   interpretLifecycleState,
   validateAbgRequirementsFacade
 } from "../src/index.mjs";
@@ -281,6 +282,69 @@ test("consumes real ABIogenesis T-166 route replay artifact", async () => {
   assert.deepEqual(result.value.dispositionRefs, artifact.lifecycleState.dispositionRefs);
   assert.equal(result.value.interpretedDispositions[0].disposition, "closed");
   assert.equal(result.value.requirementIds.includes(T165_REQUIREMENT_ID), true);
+});
+
+test("interprets evidence and target artifact state from real ABIogenesis replay events", async () => {
+  const { artifact } = await readT166RouteReplayArtifact();
+  const result = interpretEvidenceState({
+    runtimeEvents: artifact.replayEvents
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.kind, "odd_glc_evidence_state_view");
+  assert.equal(result.value.evidenceDisposition, "admitted_bound_and_executed");
+  assert.equal(result.value.runtimeEventCount, artifact.replayEvents.length);
+  assert.equal(result.value.targetArtifactRefs.length, 1);
+  assert.equal(
+    result.value.targetArtifactRefs[0],
+    "result://t165/hello-world-live/input_set%E2%86%92requirements"
+  );
+  assert.equal(result.value.capabilityRefs.includes("worker://m03-iteration"), true);
+  assert.equal(result.value.capabilityRefs.includes("backend://node"), true);
+  assert.equal(result.value.capabilityRefs.includes("dispatch://t165/hello-world-live"), true);
+  assert.equal(result.value.admittedEvidence.length, 5);
+  assert.equal(
+    result.value.admittedEvidence.every((evidence) =>
+      evidence.complete === true &&
+      evidence.deferred === false &&
+      evidence.contradictsAuthority === false
+    ),
+    true
+  );
+  assert.equal(
+    result.value.requirementEvidenceBindings.some((binding) =>
+      binding.requirementId === T165_REQUIREMENT_ID &&
+      binding.bindingStatus === "admitted"
+    ),
+    true
+  );
+});
+
+test("evidence interpretation does not treat route bindings alone as executed proof", () => {
+  const result = interpretEvidenceState({
+    runtimeEvents: Object.freeze([
+      Object.freeze({
+        kind: "requirement_route_fact_projected",
+        routePayloadKind: "requirement_evidence_bound",
+        routePayloadRef: "binding:fixture",
+        routeEventRef: "event:route:binding",
+        requirementPayload: Object.freeze({
+          binding: Object.freeze({
+            evidenceRef: "evidence:fixture",
+            requirementId: "REQ-FIXTURE",
+            projectionRef: "projection:fixture",
+            evidenceRole: "asset",
+            bindingStatus: "admitted",
+            digest: "sha256:fixture"
+          })
+        })
+      })
+    ])
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.evidenceDisposition, "bound_without_runtime_evidence");
+  assert.deepEqual(result.value.targetArtifactRefs, []);
 });
 
 test("interprets disposition payloads from ABG requirement-route runtime events", async () => {

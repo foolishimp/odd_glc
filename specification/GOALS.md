@@ -62,18 +62,21 @@ Goals define the current bounded work-wave for `odd_glc`.
 - `T-001`: govern the first `odd_glc` requirements and graph-design surfaces
   for a generic lifecycle substrate whose first steel thread is Hello World and
   whose long target is generic lifecycle coverage, using `odd_sdlc` workflows
-  as a downstream witness without inheriting current `odd_sdlc` technical debt.
+  as a downstream witness without inheriting current `odd_sdlc` technical debt;
+  completed.
 - `T-002`: discover the gap between `odd_glc` GTL/ABG consumption requirements
   and the current ABIogenesis build before ratified graph design claims
-  upstream readiness.
+  upstream readiness; completed.
 - `T-003`: define the GTL/ABG upstream gap work and design needed for
-  downstream lifecycle readiness.
+  downstream lifecycle readiness; completed.
 - `T-004`: activate the first TypeScript-compatible route-1 tenant and
   implement minimal odd_glc lifecycle read/query interpretation over ABG public
-  query truth.
+  query truth; completed.
 - `T-005`: prove odd_glc consumes a real T-165 or successor ABIogenesis
   requirements-route replay artifact; completed against ABIogenesis T-166 live
   route replay artifact.
+- `T-006`: interpret target artifact, capability, admitted evidence, and
+  requirement evidence-binding state from ABG route replay truth; completed.
 
 ## Current Work-Wave Target
 
@@ -102,8 +105,11 @@ This wave closes when the project has:
 - explicit ABIogenesis substrate provenance for that tenant;
 - a completed Phase 5 proof that odd_glc consumes real ABIogenesis route replay
   truth from a T-166 artifact;
+- a completed Phase 6 route-1 artifact/evidence interpretation proof over ABG
+  replay truth;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
-  beyond route-1 read/query interpretation and real route replay consumption.
+  beyond route-1 read/query, real route replay consumption, and read-only
+  artifact/evidence interpretation.
 
 ## Boundary
 
