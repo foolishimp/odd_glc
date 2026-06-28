@@ -99,6 +99,29 @@ export interface OddGlcEvidenceStateView {
   readonly runtimeEventCount: number;
 }
 
+export interface OddGlcAssuranceStateView {
+  readonly kind: "odd_glc_assurance_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly assuranceDisposition:
+    | "no_assurance"
+    | "assurance_satisfied"
+    | "assurance_partial"
+    | "assurance_failed"
+    | "assurance_blocked"
+    | "residual_pressure";
+  readonly foldRefs: readonly string[];
+  readonly foldStates: readonly string[];
+  readonly residualRefs: readonly string[];
+  readonly dispositionRefs: readonly string[];
+  readonly evidenceRefs: readonly string[];
+  readonly sourceAbgTruthRefs: readonly string[];
+  readonly folds: readonly unknown[];
+  readonly residuals: readonly unknown[];
+  readonly dispositions: readonly unknown[];
+  readonly sourceEventRefs: readonly string[];
+  readonly runtimeEventCount: number;
+}
+
 export declare const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS: readonly string[];
 export declare const FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES: readonly string[];
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];
@@ -135,3 +158,7 @@ export declare function interpretLifecycleState(input: {
 export declare function interpretEvidenceState(input: {
   readonly runtimeEvents?: readonly unknown[];
 }): OddGlcResult<OddGlcEvidenceStateView>;
+
+export declare function interpretAssuranceState(input: {
+  readonly runtimeEvents?: readonly unknown[];
+}): OddGlcResult<OddGlcAssuranceStateView>;

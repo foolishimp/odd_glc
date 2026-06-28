@@ -77,6 +77,9 @@ Goals define the current bounded work-wave for `odd_glc`.
   route replay artifact.
 - `T-006`: interpret target artifact, capability, admitted evidence, and
   requirement evidence-binding state from ABG route replay truth; completed.
+- `T-007`: interpret assurance fold and residual pressure from ABG route replay
+  truth; completed for closed-path fold and residual classification, while
+  full cyclic re-entry proof remains future work.
 
 ## Current Work-Wave Target
 
@@ -107,9 +110,12 @@ This wave closes when the project has:
   truth from a T-166 artifact;
 - a completed Phase 6 route-1 artifact/evidence interpretation proof over ABG
   replay truth;
+- completed read-only assurance fold and residual-pressure interpretation over
+  ABG route replay truth;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
-  beyond route-1 read/query, real route replay consumption, and read-only
-  artifact/evidence interpretation.
+  beyond route-1 read/query, real route replay consumption, read-only
+  artifact/evidence interpretation, and read-only assurance/residual
+  interpretation.
 
 ## Boundary
 

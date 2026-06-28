@@ -237,6 +237,82 @@ function routeEvidenceBindings(runtimeEvents) {
   });
 }
 
+function routeFoldEvents(runtimeEvents) {
+  return runtimeEvents.flatMap((event) => {
+    if (
+      !isRecord(event) ||
+      event.kind !== "requirement_route_fact_projected" ||
+      event.routePayloadKind !== "requirement_fold_projected" ||
+      !isRecord(event.requirementPayload) ||
+      !isRecord(event.requirementPayload.fold)
+    ) {
+      return [];
+    }
+    const fold = event.requirementPayload.fold;
+    return [Object.freeze({
+      foldRef: fold.foldRef,
+      requirementId: fold.requirementId,
+      requirementProjectionRef: fold.requirementProjectionRef,
+      state: fold.state,
+      evidenceRefs: Object.freeze(Array.isArray(fold.evidenceRefs) ? [...fold.evidenceRefs] : []),
+      evidenceBindingRefs: Object.freeze(Array.isArray(fold.evidenceBindingRefs) ? [...fold.evidenceBindingRefs] : []),
+      sourceAbgTruthRefs: Object.freeze(Array.isArray(fold.sourceAbgTruthRefs) ? [...fold.sourceAbgTruthRefs] : []),
+      routePayloadRef: event.routePayloadRef,
+      sourceEventRef: event.routeEventRef
+    })];
+  });
+}
+
+function routeResidualEvents(runtimeEvents) {
+  return runtimeEvents.flatMap((event) => {
+    if (
+      !isRecord(event) ||
+      event.kind !== "requirement_route_fact_projected" ||
+      event.routePayloadKind !== "requirement_residual_projected" ||
+      !isRecord(event.requirementPayload) ||
+      !isRecord(event.requirementPayload.residual)
+    ) {
+      return [];
+    }
+    const residual = event.requirementPayload.residual;
+    return [Object.freeze({
+      residualRef: residual.residualRef,
+      requirementId: residual.requirementId,
+      requirementProjectionRef: residual.requirementProjectionRef,
+      foldRef: residual.foldRef,
+      pressureClass: residual.pressureClass,
+      ownerSurface: residual.ownerSurface,
+      evidenceRefs: Object.freeze(Array.isArray(residual.evidenceRefs) ? [...residual.evidenceRefs] : []),
+      sourceFoldRefs: Object.freeze(Array.isArray(residual.sourceFoldRefs) ? [...residual.sourceFoldRefs] : []),
+      routePayloadRef: event.routePayloadRef,
+      sourceEventRef: event.routeEventRef,
+      residual
+    })];
+  });
+}
+
+function routeDispositionEvents(runtimeEvents) {
+  return runtimeEvents.flatMap((event) => {
+    if (
+      !isRecord(event) ||
+      event.kind !== "requirement_route_fact_projected" ||
+      event.routePayloadKind !== "requirement_lifecycle_disposition" ||
+      !isRecord(event.requirementPayload)
+    ) {
+      return [];
+    }
+    return [Object.freeze({
+      dispositionRef: event.requirementPayload.dispositionRef,
+      disposition: event.requirementPayload.disposition,
+      residualRefs: Object.freeze(Array.isArray(event.requirementPayload.residualRefs) ? [...event.requirementPayload.residualRefs] : []),
+      continuationRefs: Object.freeze(Array.isArray(event.requirementPayload.continuationRefs) ? [...event.requirementPayload.continuationRefs] : []),
+      reentryRefs: Object.freeze(Array.isArray(event.requirementPayload.reentryRefs) ? [...event.requirementPayload.reentryRefs] : []),
+      routePayloadRef: event.routePayloadRef,
+      sourceEventRef: event.routeEventRef
+    })];
+  });
+}
+
 function admittedEvidence(runtimeEvents) {
   return runtimeEvents.flatMap((event) => {
     if (!isRecord(event) || event.kind !== "evidence_admitted") {
@@ -320,6 +396,29 @@ function evidenceDisposition(evidence, bindings, invocations) {
     return "bound_without_runtime_evidence";
   }
   return "no_evidence";
+}
+
+function assuranceDisposition(folds, residuals, dispositions) {
+  if (residuals.length > 0) {
+    return "residual_pressure";
+  }
+  const foldStates = folds.map((fold) => fold.state);
+  if (foldStates.includes("failed")) {
+    return "assurance_failed";
+  }
+  if (foldStates.includes("blocked")) {
+    return "assurance_blocked";
+  }
+  if (foldStates.includes("partial")) {
+    return "assurance_partial";
+  }
+  if (foldStates.includes("satisfied")) {
+    return "assurance_satisfied";
+  }
+  if (dispositions.some((disposition) => disposition.disposition === "blocked")) {
+    return "assurance_blocked";
+  }
+  return "no_assurance";
 }
 
 function dispositionPayloadsFor(readModel, replayFacts, runtimeEvents) {
@@ -455,5 +554,44 @@ export function interpretEvidenceState(input) {
     ...targetArtifactRefs,
     ...capabilityRefs,
     ...sourceEventRefs
+  ]);
+}
+
+export function interpretAssuranceState(input) {
+  if (!isRecord(input)) {
+    return rejected("malformed_input", ["Assurance interpretation requires an input object"]);
+  }
+  const runtimeEvents = Array.isArray(input.runtimeEvents)
+    ? Object.freeze([...input.runtimeEvents])
+    : Object.freeze([]);
+  const folds = routeFoldEvents(runtimeEvents);
+  const residuals = routeResidualEvents(runtimeEvents);
+  const dispositions = routeDispositionEvents(runtimeEvents);
+  const evidenceRefs = uniqueStrings(folds.flatMap((fold) => fold.evidenceRefs));
+  const sourceAbgTruthRefs = uniqueStrings(folds.flatMap((fold) => fold.sourceAbgTruthRefs));
+  const sourceEventRefs = uniqueStrings([
+    ...folds.map((fold) => fold.sourceEventRef),
+    ...residuals.map((residual) => residual.sourceEventRef),
+    ...dispositions.map((disposition) => disposition.sourceEventRef)
+  ]);
+
+  return accepted({
+    kind: "odd_glc_assurance_state_view",
+    tenant: TENANT_ID,
+    assuranceDisposition: assuranceDisposition(folds, residuals, dispositions),
+    foldRefs: uniqueStrings(folds.map((fold) => fold.foldRef)),
+    foldStates: uniqueStrings(folds.map((fold) => fold.state)),
+    residualRefs: uniqueStrings(residuals.map((residual) => residual.residualRef)),
+    dispositionRefs: uniqueStrings(dispositions.map((disposition) => disposition.dispositionRef)),
+    evidenceRefs,
+    sourceAbgTruthRefs,
+    folds: Object.freeze(folds),
+    residuals: Object.freeze(residuals),
+    dispositions: Object.freeze(dispositions),
+    sourceEventRefs,
+    runtimeEventCount: runtimeEvents.length
+  }, [
+    ...sourceEventRefs,
+    ...sourceAbgTruthRefs
   ]);
 }

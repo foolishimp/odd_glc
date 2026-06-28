@@ -12,6 +12,7 @@ import {
   REQUIRED_ROUTE_ONE_SURFACES,
   defineLifecycleSurfaceMap,
   definePolicyOverlay,
+  interpretAssuranceState,
   interpretEvidenceState,
   interpretLifecycleState,
   validateAbgRequirementsFacade
@@ -345,6 +346,73 @@ test("evidence interpretation does not treat route bindings alone as executed pr
   assert.equal(result.status, "accepted");
   assert.equal(result.value.evidenceDisposition, "bound_without_runtime_evidence");
   assert.deepEqual(result.value.targetArtifactRefs, []);
+});
+
+test("interprets assurance fold state from real ABIogenesis replay events", async () => {
+  const { artifact } = await readT166RouteReplayArtifact();
+  const result = interpretAssuranceState({
+    runtimeEvents: artifact.replayEvents
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.kind, "odd_glc_assurance_state_view");
+  assert.equal(result.value.assuranceDisposition, "assurance_satisfied");
+  assert.deepEqual(result.value.foldStates, ["satisfied"]);
+  assert.equal(result.value.foldRefs.length, 1);
+  assert.equal(result.value.residualRefs.length, 0);
+  assert.equal(result.value.dispositionRefs.length, 1);
+  assert.equal(result.value.evidenceRefs.length >= 1, true);
+  assert.equal(result.value.sourceAbgTruthRefs.length, 1);
+  assert.equal(result.value.runtimeEventCount, artifact.replayEvents.length);
+});
+
+test("interprets residual pressure from replay-shaped ABG route events", () => {
+  const residualRef = "requirement-residual://fixture/needs-repair";
+  const result = interpretAssuranceState({
+    runtimeEvents: Object.freeze([
+      Object.freeze({
+        kind: "requirement_route_fact_projected",
+        routePayloadKind: "requirement_fold_projected",
+        routePayloadRef: "requirement-fold://fixture/partial",
+        routeEventRef: "event:route:fold:partial",
+        requirementPayload: Object.freeze({
+          fold: Object.freeze({
+            foldRef: "requirement-fold://fixture/partial",
+            requirementId: "REQ-FIXTURE",
+            requirementProjectionRef: "projection://fixture",
+            state: "partial",
+            evidenceRefs: Object.freeze(["evidence://fixture"]),
+            evidenceBindingRefs: Object.freeze(["binding://fixture"]),
+            sourceAbgTruthRefs: Object.freeze(["assurance://fixture"])
+          })
+        })
+      }),
+      Object.freeze({
+        kind: "requirement_route_fact_projected",
+        routePayloadKind: "requirement_residual_projected",
+        routePayloadRef: residualRef,
+        routeEventRef: "event:route:residual",
+        requirementPayload: Object.freeze({
+          residual: Object.freeze({
+            residualRef,
+            requirementId: "REQ-FIXTURE",
+            requirementProjectionRef: "projection://fixture",
+            foldRef: "requirement-fold://fixture/partial",
+            pressureClass: "repair",
+            ownerSurface: "F_P",
+            evidenceRefs: Object.freeze(["evidence://fixture"]),
+            sourceFoldRefs: Object.freeze(["requirement-fold://fixture/partial"])
+          })
+        })
+      })
+    ])
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.assuranceDisposition, "residual_pressure");
+  assert.deepEqual(result.value.foldStates, ["partial"]);
+  assert.deepEqual(result.value.residualRefs, [residualRef]);
+  assert.equal(result.value.residuals[0].pressureClass, "repair");
 });
 
 test("interprets disposition payloads from ABG requirement-route runtime events", async () => {
