@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -19,9 +20,14 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 const tenantRoot = path.resolve(dirname, "..");
 const repoRoot = path.resolve(tenantRoot, "../../..");
 const appsRoot = path.resolve(repoRoot, "..");
+const T165_REQUIREMENT_ID = "REQ-T165-HELLO-WORLD-LIVE";
 const defaultAbgRoot = path.join(
   appsRoot,
   `.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}/lib/node_modules/@abiogenesis/typescript-tenant`
+);
+const defaultT166RunRoot = path.join(
+  appsRoot,
+  "abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live"
 );
 
 async function importAbgRequirementsFacade() {
@@ -36,6 +42,57 @@ async function readInstalledPackageJson() {
   const packageJsonPath = path.join(packageRoot, "package.json");
   assert.equal(existsSync(packageJsonPath), true, `Missing installed ABIogenesis package.json at ${packageJsonPath}`);
   return JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile(packageJsonPath, "utf8")));
+}
+
+async function latestT166RouteReplayArtifactPath() {
+  if (process.env.ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT !== undefined) {
+    return process.env.ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT;
+  }
+  assert.equal(
+    existsSync(defaultT166RunRoot),
+    true,
+    `Missing ABIogenesis T-166 run root at ${defaultT166RunRoot}; run npm --prefix ../abiogenesis/build_tenants/abiogenesis/typescript run test:t166:live`
+  );
+  const runDirs = (await readdir(defaultT166RunRoot, { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort()
+    .reverse();
+  for (const runDir of runDirs) {
+    const artifactPath = path.join(
+      defaultT166RunRoot,
+      runDir,
+      "requirements-route-replay-artifact.json"
+    );
+    if (existsSync(artifactPath)) {
+      return artifactPath;
+    }
+  }
+  assert.fail(
+    `No ABIogenesis T-166 requirements-route replay artifact found under ${defaultT166RunRoot}; run npm --prefix ../abiogenesis/build_tenants/abiogenesis/typescript run test:t166:live`
+  );
+}
+
+async function readT166RouteReplayArtifact() {
+  const artifactPath = await latestT166RouteReplayArtifactPath();
+  const manifestPath = path.join(
+    path.dirname(artifactPath),
+    "requirements-route-replay-manifest.json"
+  );
+  assert.equal(existsSync(manifestPath), true, `Missing ABIogenesis T-166 manifest at ${manifestPath}`);
+  const rawArtifact = await readFile(artifactPath, "utf8");
+  const artifact = JSON.parse(rawArtifact);
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  assert.equal(
+    manifest.artifact.sha256,
+    `sha256:${createHash("sha256").update(rawArtifact, "utf8").digest("hex")}`
+  );
+  return Object.freeze({
+    artifactPath,
+    manifestPath,
+    artifact,
+    manifest
+  });
 }
 
 function surfaceMapFixture() {
@@ -153,7 +210,7 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(
     ABIOGENESIS_SUBSTRATE_PROVENANCE.proofScope.phase,
-    "phase_4_route_one_interpretation"
+    "phase_5_real_route_replay_consumption"
   );
 });
 
@@ -190,6 +247,40 @@ test("interprets ABG lifecycle state as odd_glc release/readiness vocabulary", a
   assert.deepEqual(result.value.sourceEventRefs, ["event:requirement-route:disposition:closed"]);
   assert.equal(result.value.policyOverlayId, "policy:hello-world");
   assert.equal(result.value.interpretedDispositions[0].disposition, "closed");
+});
+
+test("consumes real ABIogenesis T-166 route replay artifact", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const { artifact, artifactPath, manifest } = await readT166RouteReplayArtifact();
+
+  assert.equal(artifact.kind, "abg_requirements_route_replay_artifact");
+  assert.equal(manifest.kind, "abg_requirements_route_replay_artifact_manifest");
+  assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true);
+  assert.equal(
+    artifact.routeEvents.some((event) =>
+      event.routePayloadKind === "requirement_fold_projected"
+    ),
+    true
+  );
+  assert.equal(
+    artifact.routeEvents.some((event) =>
+      event.routePayloadKind === "requirement_lifecycle_disposition"
+    ),
+    true
+  );
+
+  const result = interpretLifecycleState({
+    abgRequirements,
+    query: artifact.lifecycleState.requirementQuery,
+    dispositionRefs: artifact.lifecycleState.dispositionRefs,
+    runtimeEvents: artifact.replayEvents
+  });
+
+  assert.equal(result.status, "accepted", artifactPath);
+  assert.equal(result.value.lifecycleDisposition, "release_readiness_candidate");
+  assert.deepEqual(result.value.dispositionRefs, artifact.lifecycleState.dispositionRefs);
+  assert.equal(result.value.interpretedDispositions[0].disposition, "closed");
+  assert.equal(result.value.requirementIds.includes(T165_REQUIREMENT_ID), true);
 });
 
 test("interprets disposition payloads from ABG requirement-route runtime events", async () => {

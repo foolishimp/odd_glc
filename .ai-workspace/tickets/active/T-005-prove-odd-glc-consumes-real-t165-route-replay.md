@@ -3,7 +3,7 @@ id: T-005
 title: Prove odd_glc consumes a real T-165 requirements-route replay
 type: proof
 ticket_category: route_consumption_proof
-status: active
+status: completed
 goal: >-
   Prove Phase 5 by feeding odd_glc route-1 interpretation with a real
   ABIogenesis T-165 Hello World requirements-route replay or runtime-event
@@ -19,6 +19,7 @@ owner: odd_glc
 priority: high
 created_at: 2026-06-29
 updated_at: 2026-06-29
+closed_at: 2026-06-29
 governance_scope: STDO Method, ODD Method, route-1 real-run consumption proof, ABIogenesis T-165 replay artifact
 source_documents:
   - build_tenants/odd_glc/typescript/substrate.provenance.json
@@ -26,6 +27,7 @@ source_documents:
   - build_tenants/odd_glc/typescript/test/route-one-interpretation.test.mjs
   - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
   - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.12/release-note.md
+  - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-166-publish-requirements-route-replay-proof-artifact.md
 affected_boundary:
   proof:
     - build_tenants/odd_glc/typescript/test/
@@ -63,18 +65,12 @@ non_closure_conditions:
   - Existing T-165 run directories do not contain serialized route replay facts
     or `requirement_route_fact_projected` runtime events.
 current_blocker: >-
-  Inspection of the existing T-165 Hello World live run directories found
-  prompt, output, and transport artifacts, but no serialized
-  `requirement_route_fact_projected`, `requirement_lifecycle_disposition`,
-  `requirement_fold_projected`, or `evidence_admitted` route replay artifacts.
-  That means Phase 5 needs a new ABIogenesis proof artifact or a rerun that
-  writes the replay/runtime event stream.
+  Resolved by ABIogenesis T-166. The latest local T-166 live proof artifact
+  contains serialized `requirement_route_fact_projected` events and
+  replay-derived lifecycle state.
 required_work:
-  - Confirm whether ABIogenesis can emit a serialized T-165 route replay
-    artifact without adding odd_glc runtime authority.
-  - If missing, open or update upstream ABIogenesis work to publish the
-    route replay proof artifact.
-  - Add an odd_glc fixture-loader test only after the real artifact exists.
+  - Consume the ABIogenesis T-166 artifact through `interpretLifecycleState`.
+  - Keep the test as read-only consumption of artifact replay truth.
 proof_commands:
   - rg -n "requirement_route_fact_projected|requirement_lifecycle_disposition|requirement_fold_projected|evidence_admitted" /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live
   - npm --prefix build_tenants/odd_glc/typescript test
@@ -103,9 +99,39 @@ must come from ABIogenesis runtime/proof output.
 
 ## Acceptance Checklist
 
-- [ ] A real T-165 or successor ABG route replay/runtime-event artifact exists.
-- [ ] Artifact identity is pinned to ABIogenesis substrate identity.
-- [ ] odd_glc test consumes the artifact through `interpretLifecycleState`.
-- [ ] Test proves lifecycle interpretation from real ABG route truth.
-- [ ] No local odd_glc runtime authority is introduced.
-- [ ] Proof commands pass.
+- [x] A real T-165 or successor ABG route replay/runtime-event artifact exists.
+- [x] Artifact identity is pinned to ABIogenesis substrate identity.
+- [x] odd_glc test consumes the artifact through `interpretLifecycleState`.
+- [x] Test proves lifecycle interpretation from real ABG route truth.
+- [x] No local odd_glc runtime authority is introduced.
+- [x] Proof commands pass.
+
+## Closure Evidence
+
+Closed on 2026-06-29.
+
+Consumed ABIogenesis artifact:
+
+- artifact:
+  `/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json`
+- manifest:
+  `/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852/requirements-route-replay-manifest.json`
+- artifact digest:
+  `sha256:4ba42598bbf309b4568d5d167dc395f31799d32bd5b8fd7b78f76131494fd10e`
+- ABIogenesis upstream ticket:
+  `/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-166-publish-requirements-route-replay-proof-artifact.md`
+
+odd_glc proof:
+
+```bash
+npm --prefix build_tenants/odd_glc/typescript test
+git diff --check
+```
+
+The route-one tenant test now locates the latest local ABIogenesis T-166
+artifact unless `ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT` supplies an explicit path.
+It verifies the manifest digest, passes the artifact's replay events and
+lifecycle query into `interpretLifecycleState`, and observes
+`release_readiness_candidate` from the real ABI `closed` disposition. odd_glc
+does not call ABG internal emitters, admitted-ref minting, evidence admission,
+fold, residual, or disposition-resolution APIs.
