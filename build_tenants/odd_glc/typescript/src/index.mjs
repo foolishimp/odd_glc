@@ -163,8 +163,35 @@ export function definePolicyOverlay(input) {
   }, [input.id]);
 }
 
-function dispositionPayloadsFor(readModel, replayFacts) {
-  const facts = Array.isArray(replayFacts) ? replayFacts : [];
+function runtimeDispositionFacts(runtimeEvents) {
+  if (!Array.isArray(runtimeEvents)) {
+    return Object.freeze([]);
+  }
+  return Object.freeze(runtimeEvents.flatMap((event) => {
+    if (
+      !isRecord(event) ||
+      event.kind !== "requirement_route_fact_projected" ||
+      event.routePayloadKind !== "requirement_lifecycle_disposition" ||
+      !isRecord(event.requirementPayload) ||
+      event.requirementPayload.kind !== "requirement_lifecycle_disposition" ||
+      event.requirementPayload.dispositionRef !== event.routePayloadRef
+    ) {
+      return [];
+    }
+    return [Object.freeze({
+      kind: "requirement_lifecycle_disposition",
+      ref: event.routePayloadRef,
+      sourceEventRef: event.routeEventRef,
+      payload: event.requirementPayload
+    })];
+  }));
+}
+
+function dispositionPayloadsFor(readModel, replayFacts, runtimeEvents) {
+  const facts = Object.freeze([
+    ...(Array.isArray(replayFacts) ? replayFacts : []),
+    ...runtimeDispositionFacts(runtimeEvents)
+  ]);
   return readModel.dispositionRefs.map((ref) => {
     const fact = facts.find((candidate) => (
       isRecord(candidate) &&
@@ -228,7 +255,11 @@ export function interpretLifecycleState(input) {
     return rejected("abg_query_rejected", ["ABG lifecycle state query returned an unexpected read model"]);
   }
 
-  const interpretedDispositions = dispositionPayloadsFor(readModel, queryInput.replayFacts);
+  const interpretedDispositions = dispositionPayloadsFor(
+    readModel,
+    queryInput.replayFacts,
+    queryInput.runtimeEvents
+  );
   const requirementIds = isRecord(readModel.requirementQuery) && Array.isArray(readModel.requirementQuery.requirementIds)
     ? readModel.requirementQuery.requirementIds
     : [];

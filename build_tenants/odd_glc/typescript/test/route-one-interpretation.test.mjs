@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { test } from "node:test";
@@ -60,6 +61,46 @@ const replayFactsFixture = Object.freeze([
   })
 ]);
 
+function stableJson(input) {
+  if (input === null || typeof input !== "object") {
+    return JSON.stringify(input);
+  }
+  if (Array.isArray(input)) {
+    return `[${input.map((entry) => stableJson(entry)).join(",")}]`;
+  }
+  return `{${Object.entries(input)
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([key, value]) => `${JSON.stringify(key)}:${stableJson(value)}`)
+    .join(",")}}`;
+}
+
+function stableSha256Digest(input) {
+  return `sha256:${createHash("sha256").update(stableJson(input)).digest("hex")}`;
+}
+
+function requirementRouteRuntimeEventFixture(payload = dispositionPayload) {
+  return Object.freeze({
+    kind: "requirement_route_fact_projected",
+    basisId: "basis:hello-world",
+    graphFunctionId: "graph-function:hello-world",
+    runId: "basis:hello-world",
+    workKey: null,
+    graphCallId: "graph-call:hello-world",
+    frameId: "frame:hello-world",
+    vectorIndex: 0,
+    edge: "edge:hello-world",
+    routeEventRef: "event:requirement-route:runtime:closed",
+    routePayloadKind: payload.kind,
+    routePayloadRef: payload.dispositionRef,
+    routePayloadDigest: stableSha256Digest(payload),
+    requirementPayload: payload,
+    sourceEventRefs: Object.freeze(["event:assurance-close:hello-world"]),
+    sourceProjectionRefs: Object.freeze([payload.dispositionRef]),
+    causationEventRefs: Object.freeze(["event:evidence-admitted:hello-world"]),
+    correlationId: "correlation://requirement-route/basis%3Ahello-world/0/test"
+  });
+}
+
 test("validates the installed ABG requirements public query facade", async () => {
   const abgRequirements = await importAbgRequirementsFacade();
   const result = validateAbgRequirementsFacade(abgRequirements);
@@ -105,6 +146,45 @@ test("interprets ABG lifecycle state as odd_glc release/readiness vocabulary", a
   assert.deepEqual(result.value.sourceEventRefs, ["event:requirement-route:disposition:closed"]);
   assert.equal(result.value.policyOverlayId, "policy:hello-world");
   assert.equal(result.value.interpretedDispositions[0].disposition, "closed");
+});
+
+test("interprets disposition payloads from ABG requirement-route runtime events", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const result = interpretLifecycleState({
+    abgRequirements,
+    query: queryFixture,
+    dispositionRefs: Object.freeze(["disp:hello-world:closed"]),
+    runtimeEvents: Object.freeze([
+      requirementRouteRuntimeEventFixture()
+    ])
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.lifecycleDisposition, "release_readiness_candidate");
+  assert.deepEqual(result.value.sourceEventRefs, ["event:requirement-route:runtime:closed"]);
+  assert.equal(result.value.interpretedDispositions[0].dispositionRef, "disp:hello-world:closed");
+});
+
+test("ignores mismatched runtime-event disposition payloads", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const mismatchedPayload = Object.freeze({
+    ...dispositionPayload,
+    dispositionRef: "disp:mismatch"
+  });
+  const event = Object.freeze({
+    ...requirementRouteRuntimeEventFixture(mismatchedPayload),
+    routePayloadRef: "disp:hello-world:closed"
+  });
+  const result = interpretLifecycleState({
+    abgRequirements,
+    query: queryFixture,
+    dispositionRefs: Object.freeze(["disp:hello-world:closed"]),
+    runtimeEvents: Object.freeze([event])
+  });
+
+  assert.equal(result.status, "accepted");
+  assert.equal(result.value.lifecycleDisposition, "no_disposition");
+  assert.deepEqual(result.value.interpretedDispositions, []);
 });
 
 test("fails closed when ABG cannot resolve a disposition ref", async () => {

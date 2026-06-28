@@ -61,6 +61,9 @@ evaluation_criteria:
   - F_P/F_H surfaces are declarations, not worker or controller invocations.
   - Lifecycle interpretation is derived from ABG public query/read-model
     output and replay facts.
+  - Lifecycle interpretation can consume ABG requirement-route runtime events
+    through the public query path and shall ignore mismatched disposition
+    payloads.
   - Negative tests reject forbidden facade functions and unknown disposition
     refs.
 non_closure_conditions:
@@ -110,6 +113,8 @@ is local realization beneath that tenant.
       emitters.
 - [x] Public API interprets ABG lifecycle-state read models into odd_glc
       lifecycle vocabulary.
+- [x] Public API interprets accepted ABG requirement-route runtime events and
+      ignores mismatched disposition payloads.
 - [x] F_P/F_H policy surfaces are data declarations only.
 - [x] Negative tests cover forbidden emitters, unknown disposition refs, and
       absence of local runtime authority exports.
