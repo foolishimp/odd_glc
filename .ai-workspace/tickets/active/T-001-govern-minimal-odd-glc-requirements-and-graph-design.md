@@ -1,17 +1,21 @@
 ---
 id: T-001
-title: Govern odd_glc requirements, graph design, and clean odd_sdlc parity path
+title: Govern odd_glc requirements, graph design, and generic lifecycle coverage plan
 type: design
 ticket_category: design_governance
 status: active
 goal: >-
   Author the first odd_glc requirements and graph-design surfaces that define a
-  clean ODD General Life Cycle substrate. The end target is functional parity
-  with odd_sdlc user-visible workflows, achieved through GTL/ABG substrate
-  truth plus odd_glc lifecycle interpretation, not by porting odd_sdlc's local
-  ledgers, runtime loops, retry behavior, closure stores, or software-domain
-  phase controller. The first concrete steel thread is the asset set required
-  to govern construction and proof of one Hello World program over GTL/ABG.
+  clean ODD General Life Cycle substrate for generic lifecycle work at any
+  scale. The long target is user-visible workflow coverage equivalent to the
+  current odd_sdlc product, but odd_sdlc is only a coverage witness and
+  deletion-target map for later software-delivery specialization. It is not
+  the source authority for odd_glc structure. Coverage shall be achieved
+  through GTL/ABG substrate truth plus odd_glc lifecycle interpretation, not by
+  porting odd_sdlc's local ledgers, runtime loops, retry behavior, closure
+  stores, or software-domain phase controller. The first concrete steel thread
+  is the asset set required to govern construction and proof of one Hello World
+  program over GTL/ABG.
 change_class: goal_reprice
 re_entry_point: goals
 downstream_reentry_sequence:
@@ -57,9 +61,9 @@ target_truth: >-
   to construct and prove a Hello World program. ABG/GTL remains the source of
   traversal, event, projection, fold, residual, continuation, replay, and
   carrier truth.
-  odd_sdlc parity is the downstream capability target, but odd_sdlc becomes a
-  specialization consumer, not the source authority for odd_glc product shape
-  or implementation mechanics.
+  Current odd_sdlc behavior is a downstream coverage witness and local-debt
+  deletion map. It is not the source authority for odd_glc product shape,
+  generic lifecycle capability identity, or implementation mechanics.
 superseded_truth: >-
   Clean odd_sdlc work starts by copying or repairing odd_sdlc's existing phase
   flow, local obligation/materialization/evidence/closure ledgers, local retry
@@ -78,10 +82,12 @@ closure_law: >-
   that names lifecycle bindings to GTL/ABG-published graph functions, typed
   lifecycle assets, GTL/ABG carrier dependencies, upstream readiness gates,
   F_D/F_P/F_H boundaries, query/proof surfaces, and the odd_sdlc clean-start
-  specialization seam. Closure also requires a functional-parity matrix that
-  maps odd_sdlc user-visible capabilities to their old local mechanisms,
-  GTL/ABG replacements, odd_glc generic lifecycle surfaces, downstream
-  specialization surfaces, and proof gates. No runtime
+  specialization seam. Closure also requires a generic lifecycle coverage
+  matrix whose row identity is the lifecycle capability, with odd_sdlc recorded
+  only as a coverage witness and old-mechanism deletion target. The matrix
+  shall map each capability to its GTL/ABG replacement, odd_glc interpretation,
+  downstream specialization surface, upstream-readiness state, and proof gate.
+  No runtime
   implementation, build tenant activation, UI, odd_sdlc migration, or ABG core
   change can count as closure for this ticket.
 evaluation_criteria:
@@ -92,11 +98,12 @@ evaluation_criteria:
     interpretation and downstream domain specialization.
   - Requirements define the minimum clean specialization contract that a future
     odd_sdlc rebuild can consume without inheriting odd_sdlc local debt.
-  - The parity target is measured by odd_sdlc user-visible workflow capability,
-    not by preserving odd_sdlc implementation structure.
-  - Every parity row names the old tech-debt mechanism and its GTL/ABG
-    replacement before any odd_glc or downstream specialization work can claim
-    closure.
+  - Generic lifecycle capability identity is derivable without odd_sdlc.
+    odd_sdlc appears only as a workflow coverage witness and a list of local
+    mechanisms to retire.
+  - Every coverage row names the old odd_sdlc tech-debt mechanism, where one
+    exists, and its GTL/ABG replacement before any odd_glc or downstream
+    specialization work can claim closure.
   - Requirements state that downstream programs using odd_glc must use GTL/ABG
     carriers and ABG runtime truth.
   - Requirements define the generic lifecycle surface model and first
@@ -117,10 +124,12 @@ evaluation_criteria:
     and exclusion boundaries before ratified graph design is authored.
   - Design names F_D finite checks, F_P semantic lifecycle judgment, and F_H
     owner/risk/reprice decisions.
-  - Implementation sequencing starts with the Hello World steel thread and then
-    advances through software artifact construction, execution/evidence proof,
-    requirement fold/residual/re-entry, ticket/gap/reprice, release/proof, and
-    full odd_sdlc specialization parity.
+  - Implementation sequencing starts with readiness verification, the Hello
+    World steel thread, and tenant ratification, then advances through
+    odd_glc consumption of ABIogenesis route truth, software artifact
+    construction, execution/evidence proof, requirement fold/residual/re-entry,
+    ticket/gap/reprice, release/proof, and future odd_sdlc specialization
+    coverage.
   - Tenant registry remains inactive unless a later ticket explicitly prices
     the first realization tenant after requirements and design pass review.
 non_closure_conditions:
@@ -129,8 +138,16 @@ non_closure_conditions:
   - Graph design is written before the relevant requirement families exist.
   - odd_sdlc current code, phase names, local ledgers, retry loops, or closure
     rules become generic odd_glc law.
+  - An odd_sdlc feature shape becomes the row definition for generic odd_glc
+    capability rather than a coverage witness.
   - odd_glc defines a product-local requirement compiler, runtime loop,
     replay authority, closure ledger, or continuation controller.
+  - odd_glc emits a native event stream, maintains replay authority, mints
+    admitted refs, or admits requirement/evidence/fold/residual/disposition
+    truth outside ABG.
+  - odd_glc invokes an F_P evaluator or side-effecting worker directly instead
+    of supplying F_P prompt templates and F_H decision/policy declarations for
+    ABG to consume.
   - ABG/GTL carrier, fold, residual, event, replay, or traversal truth is
     duplicated in odd_glc.
   - Downstream programs use `odd_glc` as a replacement graph catalog, runtime,
@@ -165,11 +182,13 @@ required_work:
   - Author `REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK`.
   - Add at least one minimal Hello World lifecycle scenario that does not use
     odd_sdlc as the domain.
-  - Add an odd_sdlc functional-parity matrix with columns for odd_sdlc feature,
-    old tech-debt mechanism, GTL/ABG replacement, odd_glc generic lifecycle
-    surface, downstream odd_sdlc specialization surface, and proof required.
-  - Record the implementation wave plan from Hello World steel thread through
-    full odd_sdlc workflow parity.
+  - Add a generic lifecycle coverage matrix with columns for lifecycle
+    capability, odd_sdlc coverage witness, old tech-debt mechanism to retire,
+    genericity test, GTL/ABG replacement, odd_glc interpretation, downstream
+    specialization surface, upstream-readiness state, and proof required.
+  - Record the implementation wave plan from readiness verification through
+    tenant ratification, Hello World steel thread, and full odd_sdlc workflow
+    coverage as a downstream specialization witness.
   - Add ratified graph design under `build_tenants/common/design/`.
   - Update `build_tenants/TENANT_REGISTRY.md` only to preserve inactive status
     or name deferred tenant-selection criteria.
@@ -179,12 +198,12 @@ proof_commands:
   - rg -n "downstream programs.*GTL/ABG|REQ-GLC-DOWNSTREAM-SPECIALIZATION|graph-function catalog.*GTL/ABG" specification .ai-workspace/tickets/active
   - rg -n "placeholder|test_only|unwired|unpinned|readiness|ABG-owned actor/operator" specification/requirements .ai-workspace/tickets/active
   - rg -n "Hello World|TargetArtifactAsset|CapabilityAsset|EvidenceBindingAsset" specification .ai-workspace/tickets/active
-  - rg -n "functional parity|old tech-debt mechanism|GTL/ABG replacement|full odd_sdlc" specification .ai-workspace/tickets/active
+  - rg -n "generic lifecycle coverage|coverage witness|old tech-debt mechanism|GTL/ABG replacement|full odd_sdlc" specification .ai-workspace/tickets/active
   - rg -n "abg\\.requirements|GTL composition|LifeCycle|RequirementEnvironmentView|ResidualPressureView|DomainSpecialization" build_tenants specification
   - git diff --check
 ---
 
-# T-001: Govern odd_glc Requirements, Graph Design, And Clean odd_sdlc Parity
+# T-001: Govern odd_glc Requirements, Graph Design, And Generic Lifecycle Coverage
 
 ## STDO Triage
 
@@ -224,10 +243,15 @@ ABG/GTL requirements algebra
   -> future odd_sdlc specialization
 ```
 
-## Functional Parity Target
+## Generic Lifecycle Coverage Target
 
-The end goal is functional parity with `odd_sdlc` at the workflow level without
-preserving `odd_sdlc` architecture. Parity means an operator can recover the
+The product goal is generic lifecycle construction and proof at any scale.
+`odd_sdlc` is a witness that the generic model covers a real software-delivery
+workflow, and it is a deletion map for local SDLC debt. It is not the driver of
+odd_glc structure.
+
+The downstream target is workflow coverage equivalent to `odd_sdlc` without
+preserving `odd_sdlc` architecture. Coverage means an operator can recover the
 same user-visible lifecycle capabilities through a cleaner dependency chain:
 
 ```text
@@ -236,41 +260,65 @@ GTL/ABG substrate
   -> downstream odd_sdlc specialization
 ```
 
-Parity shall not be measured by whether an `Sdlc*` carrier, local ledger,
+Coverage shall not be measured by whether an `Sdlc*` carrier, local ledger,
 phase-flow controller, retry loop, or closure register has been ported. Those
 mechanisms are the debt to retire.
 
-The controlling parity matrix shall use this shape:
+The controlling coverage matrix shall use this shape:
 
-| odd_sdlc feature | Old tech-debt mechanism | GTL/ABG replacement | odd_glc generic lifecycle surface | downstream odd_sdlc specialization surface | Proof required |
-| --- | --- | --- | --- | --- | --- |
-| Project/work intake | Product-local intake and phase-flow assumptions. | GTL declarations plus ABG context/routing truth. | Lifecycle worksite, context, and intent labels. | Software-delivery intake policy. | Admitted context and lifecycle query show the active worksite. |
-| Requirement declaration and decomposition | Local SDLC requirement structures or compiler-like translation. | GTL requirement declarations and ABG requirement admission/projection. | Requirement-set binding and requirement-environment view. | Software requirement policy and terminology. | Active requirement pressure is replay/query-visible. |
-| Graph/work planning | Product-local planning ledger or work queue. | GTL graph/module/job declarations and ABG obligation/materialization projections. | Instruction-set and destination-topology interpretation. | Software artifact planning policy. | Planned work derives from admitted GTL/ABG truth. |
-| Artifact construction | SDLC worker orchestration treated as product-local control. | ABG traversal and actor/operator invocation. | Target-artifact lifecycle label and F_P policy context. | Software source/test artifact expectations. | Constructed artifact is admitted as ABG payload/evidence. |
-| Execution/evidence capture | Local evidence admission and execution records. | ABG payload admission, evidence events, and requirement evidence binding. | Evidence-binding view and proof interpretation. | Software execution-evidence policy. | Command, stdout/stderr, digest, and refs are admitted and replayed. |
-| Assurance close/fail/block | `SdlcRequirementClosureRegister` and local close decisions. | ABG assurance fold and assurance-case projection. | Assurance-fold view and lifecycle closure interpretation. | Software closure policy. | Fold truth is non-forgeable and replay-derived. |
-| Residual pressure and next action | `SdlcEdgeResidualPressure`, `SdlcNextActionProjection`, and local retry choice. | ABG residual projection, attenuation, continuation, and re-entry truth. | Residual-pressure and re-entry-decision views. | Software repair/reprice/retry policy. | Residual/disposition is emitted by ABG and read by query. |
-| Ticket/gap/reprice flow | Product-local ticket controller or checklist-driven repricing. | ABG continuation/re-entry plus STDO ticket/goals surfaces. | Lifecycle reprice interpretation and F_H decision surface. | Software-delivery ticket policy. | Reprice is a lawful STDO re-entry, not a hidden controller jump. |
-| Release/proof surface | SDLC-local release ledger or proof checklist. | ABG replay/projection truth plus release/proof requirements. | Lifecycle release/readiness interpretation. | Software release policy and packaging. | Release proof cites admitted lifecycle and evidence truth. |
-| Downstream specialization hooks | Implicit SDLC phase hooks. | GTL interfaces/composition refs and ABG public query surfaces. | Specialization contract. | odd_sdlc domain assets, policies, and vocabulary. | Specialization imports no local ABG-shadowing substrate. |
+| Generic lifecycle capability | odd_sdlc workflow witness | Old mechanism to retire | Genericity test | GTL/ABG substrate | odd_glc interpretation | Downstream specialization policy | Proof gate | Upstream state |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Governed worksite intake | Project/work intake. | Product-local intake and phase-flow assumptions. | Needed by any governed domain. | GTL declarations plus ABG context/routing truth. | Lifecycle worksite, context, and intent labels. | Software-delivery intake policy. | Admitted context and lifecycle query show the active worksite. | T-002 refresh. |
+| Requirement pressure and environment | Requirement declaration and decomposition. | Local SDLC requirement structures or compiler-like translation. | Needed by any governed domain. | GTL requirement declarations and ABG requirement admission/projection. | Requirement-set binding and requirement-environment view. | Software requirement policy and terminology. | Active requirement pressure is replay/query-visible. | Route-1 ready; decomposition/refinement deferred upstream. |
+| Planned work projection | Graph/work planning. | Product-local planning ledger or work queue. | Needed by any governed domain. | GTL graph/module/job declarations and ABG obligation/materialization projections. | Instruction-set and destination-topology interpretation. | Software artifact planning policy. | Planned work derives from admitted GTL/ABG truth. | T-002 refresh. |
+| Artifact construction lifecycle | Artifact construction. | SDLC worker orchestration treated as product-local control. | Generic as lifecycle meaning, specialized by artifact domain. | ABG traversal and actor/operator invocation. | Target-artifact lifecycle label and F_P policy context. | Software source/test artifact expectations. | Constructed artifact is admitted as ABG payload/evidence. | T-002 refresh. |
+| Evidence interpretation | Execution/evidence capture. | Local evidence admission and execution records. | Needed by any proof-bearing lifecycle. | ABG payload admission, evidence events, and requirement evidence binding. | Evidence-binding view and proof interpretation. | Software execution-evidence policy. | Command, stdout/stderr, digest, and refs are admitted and replayed. | Route-1 ready. |
+| Assurance state interpretation | Assurance close/fail/block. | `SdlcRequirementClosureRegister` and local close decisions. | Needed by any governed closure. | ABG assurance fold and assurance-case projection. | Assurance-fold view and lifecycle closure interpretation. | Software closure policy. | Fold truth is non-forgeable and replay-derived. | Route-1 ready. |
+| Residual and disposition interpretation | Residual pressure and next action. | `SdlcEdgeResidualPressure`, `SdlcNextActionProjection`, and local retry choice. | Needed by any incomplete lifecycle. | ABG residual projection, attenuation, continuation, and re-entry truth. | Residual-pressure and re-entry-decision views. | Software repair/reprice/retry policy. | Residual/disposition is emitted by ABG and read by query. | Route-1 ready; multi-cycle scale pending design. |
+| Lawful reprice interpretation | Ticket/gap/reprice flow. | Product-local ticket controller or checklist-driven repricing. | Needed by governed change. | ABG continuation/re-entry plus STDO ticket/goals surfaces. | Lifecycle reprice interpretation and F_H decision surface. | Software-delivery ticket policy. | Reprice is a lawful STDO re-entry, not a hidden controller jump. | odd_glc design pending. |
+| Release and proof interpretation | Release/proof surface. | SDLC-local release ledger or proof checklist. | Needed by release-bearing lifecycles. | ABG replay/projection truth plus release/proof requirements. | Lifecycle release/readiness interpretation. | Software release policy and packaging. | Release proof cites admitted lifecycle and evidence truth. | odd_glc design pending. |
+| Specialization contract | Downstream specialization hooks. | Implicit SDLC phase hooks. | Generic seam needed by every domain specialization. | GTL interfaces/composition refs and ABG public query surfaces. | Specialization contract. | odd_sdlc domain assets, policies, and vocabulary. | Specialization imports no local ABG-shadowing substrate. | odd_glc design pending. |
 
 ## Implementation Wave Plan
 
-Implementation shall advance by waves. Each wave replaces old `odd_sdlc`
-mechanics with GTL/ABG substrate plus `odd_glc` interpretation before a later
-downstream specialization adds software-domain policy.
+Implementation shall advance by waves. Each wave is owned by a repository and a
+smallest lawful re-entry point. Each wave replaces old `odd_sdlc` mechanics
+only as a witness/deletion target, not as the row definition.
 
-1. Refresh the readiness map against the installed ABIogenesis `4.1.0-rc.12`
-   substrate.
-2. Prove the Hello World steel thread.
-3. Add software artifact construction lifecycle coverage.
-4. Add execution and evidence proof lifecycle coverage.
-5. Add requirement fold, residual, and re-entry lifecycle coverage.
-6. Add ticket, gap, and reprice lifecycle coverage.
-7. Add release and proof lifecycle coverage.
-8. Prove full odd_sdlc-equivalent specialization coverage without porting
-   odd_sdlc local ledgers, controllers, or closure stores.
+| Wave | Owner | Re-entry | Work | Closure signal |
+| --- | --- | --- | --- | --- |
+| 0. Source checkpoint and hygiene | odd_glc | goal_reprice | Keep source commits to specification, tickets, ratified design, README/AGENTS, and provenance references. Treat `.abiogenesis/`, package bootstrap scaffolding, and runtime event logs as local installed-dev state unless a later tenant ratifies them. | Source truth does not depend on mutable install payloads. |
+| 1. Installed substrate readiness refresh | odd_glc analysis over ABIogenesis install | requirement_reprice | Verify `4.1.0-rc.12` contains the T-164 route and T-165 proof surfaces; classify readiness at coverage-wave granularity. | T-002 records route-1 ready rows and upstream-blocked rows. |
+| 2. Generic coverage matrix | odd_glc | requirement_reprice | Ratify the lifecycle-capability coverage matrix with odd_sdlc as witness/deletion target. | Matrix row identity is generic lifecycle capability. |
+| 3. Route-1 graph/composition design | odd_glc | design_reframe | Design the Hello World steel-thread consumption of GTL/ABG route truth. | Ratified design consumes public GTL/ABG surfaces and does not mint local emitters. |
+| 3.5. First build-tenant ratification | odd_glc | design_reframe | Select and ratify the first realization tenant before code. | Tenant registry names the lawful realization line and proof target. |
+| 4. Minimal odd_glc core | odd_glc | realization_refactor | Implement lifecycle vocabulary, policy declarations, and read/query interpretation over ABIogenesis route truth. | No local ABG-shadowing runtime, event stream, AdmittedRef minting, evidence admission, fold, residual, or re-entry controller exists. |
+| 5. odd_glc route consumption proof | odd_glc over ABIogenesis route | realization_refactor | Prove odd_glc interprets T-165 route truth. Do not re-prove ABG route emission. | Query/read model consumes replay-derived ABG route facts. |
+| 6. Artifact/evidence coverage | odd_glc plus ABIogenesis tickets when blocked | requirement_reprice/design_reframe | Add artifact construction and evidence interpretation coverage. Spawn upstream ABIogenesis work for missing generic substrate. | Coverage rows either prove through GTL/ABG or are explicitly upstream-blocked. |
+| 7. Fold/residual/re-entry coverage | odd_glc plus ABIogenesis tickets when blocked | requirement_reprice/design_reframe | Add multi-state closure, residual, disposition, and cyclic re-entry interpretation. | Event-sourced/replay-derived truth remains ABG-owned. |
+| 8. Ticket/gap/reprice coverage | odd_glc | requirement_reprice/design_reframe | Map lifecycle disposition to lawful STDO ticket/goals re-entry surfaces. | No hidden controller jump replaces STDO re-entry. |
+| 9. Release/proof coverage | odd_glc | requirement_reprice/design_reframe | Define lifecycle release/readiness interpretation over admitted proof truth. | Release proof cites admitted ABG/GTL lifecycle and evidence truth. |
+| 10. Future odd_sdlc specialization coverage | future odd_sdlc plus odd_glc contracts | product_reprice/requirement_reprice | Build the clean software-delivery specialization using odd_glc contracts. | Equivalent user-visible SDLC workflow without local SDLC ledgers, controllers, or closure stores. |
+
+## Standing Proof Bar
+
+Every wave that claims proof shall satisfy the proof bar carried from the
+T-164/T-165 close:
+
+- execution-grounded: the proof depends on a real actor/operator or admitted
+  runtime event, not self-assessment;
+- event-sourced and replay-derived: lifecycle truth is read from ABG
+  `replayEvents` or public query projections, not side arrays or query-lazy
+  invention;
+- non-tautological: prompts, declarations, or expected outputs shall not carry
+  the answer being proved;
+- negative-regression guarded: proof rejects shadow carriers, local emitters,
+  local admitted-ref minting, boolean evidence, local fold/residual stores, and
+  downstream-public projection emitters;
+- F_D/F_P/F_H separated: odd_glc may provide F_P prompt templates and F_H
+  decision/policy declarations for ABG to consume. It shall not invoke an F_P
+  evaluator, shell a process, or make owner/risk/reprice decisions as runtime
+  authority.
 
 ## Review Feedback Incorporated
 
@@ -497,6 +545,13 @@ The contract must say:
 - [x] Ticket itemizes candidate graph design for review before ratified design.
 - [x] Proposed native `glc.*` graph-function catalog is demoted to GTL/ABG
       system-function bindings and a possible GTL composition declaration.
+- [x] Generic lifecycle coverage matrix records odd_sdlc only as a workflow
+      witness and local-mechanism deletion target.
+- [x] Implementation wave plan includes rc.12 readiness verification,
+      source-state hygiene, build-tenant ratification before code, and the
+      standing T-164/T-165 proof bar.
+- [x] T-002 post-rc.12 refresh classifies route-1 substrate readiness
+      separately from broader upstream-blocked coverage waves.
 - [ ] Requirement families exist under `specification/requirements/` with
       `REQ-GLC-*` ids.
 - [x] Requirement families define the ABG/GTL consumption boundary and forbid

@@ -16,7 +16,7 @@ downstream_reentry_sequence:
 owner: odd_glc
 priority: critical
 created_at: 2026-06-28
-updated_at: 2026-06-28
+updated_at: 2026-06-29
 governance_scope: STDO Method, ODD Method, GTL/ABG consumption, ABIogenesis build readiness, odd_glc non-closure gate
 source_documents:
   - specification/PRODUCT.md
@@ -45,6 +45,7 @@ affected_boundary:
 output_artifacts:
   - .ai-workspace/comments/codex/T-002_gtl_abg_substrate_gap_report.md
   - .ai-workspace/comments/codex/T-002_odd_sdlc_feature_readiness_comparison.md
+  - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
   - optional upstream-ticket recommendations for ABIogenesis when a missing or
     unwired capability is confirmed
 target_truth: >-
@@ -133,6 +134,7 @@ proof_commands:
   - rg -n "process_actor|actor/operator|payload admission|RequirementEvidenceBinding|DestinationTopology|continuation|re-entry|reentry|release|block" /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/code/src/abg/m03
   - rg -n "ready|missing|placeholder|test_only|unwired|unpinned" specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md .ai-workspace/tickets/active/T-002-discover-gtl-abg-substrate-gap-for-odd-glc-build.md
   - test -f .ai-workspace/comments/codex/T-002_gtl_abg_substrate_gap_report.md
+  - test -f .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
   - git diff --check
 ---
 
@@ -206,17 +208,28 @@ Installed substrate reference:
 This pins the local ABIogenesis `4.1.0-rc.12` install used by later
 requirements-route design and proof review.
 
-Current finding: no odd_glc-consuming lifecycle slot was classified `ready`.
+Initial finding: no odd_glc-consuming lifecycle slot was classified `ready`.
 The ABIogenesis build contains useful GTL/ABG carriers, exported pure
 functions, synthetic tests, and a skipped live harness, but the inspected
 requirements-algebra path is not yet public, pinned, runtime/query-wired, and
 non-forgeable enough for odd_glc to close T-001 proof or ratify a lifecycle
 composition design.
 
-Post-`4.1.0-rc.12` note: the current finding reflects the pre-T-164/T-165
-ABIogenesis build inspected by this ticket. Any graph design authored after
-the `4.1.0-rc.12` install shall refresh the readiness rows against the
-installed substrate rather than relying on the earlier no-ready-slot result.
+Post-`4.1.0-rc.12` refresh:
+`.ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md`.
+The installed rc.12 package carries the T-164 requirements route and T-165
+Hello World live-proof surfaces. Route-1 GTL/ABG declaration, event-sourced
+requirements route emission, evidence binding, assurance fold, residual,
+disposition, and public lifecycle-state query are now classified ready for
+odd_glc route-1 design consumption.
+
+The refresh does not close every coverage wave. Requirement graph derivation,
+goal refinement, multi-requirement decomposition, recursive any-scale lifecycle
+composition, release interpretation, and future odd_sdlc specialization remain
+deferred, unwired, or design-pending as recorded in the refresh. odd_glc shall
+not fill those gaps with local requirement compilers, event streams, admitted
+ref minting, evidence admission, folds, residual ledgers, re-entry controllers,
+or odd_sdlc compatibility ledgers.
 
 ## Acceptance Checklist
 
@@ -231,4 +244,7 @@ installed substrate rather than relying on the earlier no-ready-slot result.
 - [x] Report names the odd_glc lifecycle slots blocked or deferred by each gap.
 - [x] Report recommends upstream ABIogenesis tickets or odd_glc deferrals
       without creating local substitutes.
+- [x] Post-rc.12 refresh verifies the installed ABIogenesis route and
+      classifies route-1 readiness separately from upstream-blocked broader
+      coverage waves.
 - [x] `git diff --check` passes.

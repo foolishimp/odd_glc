@@ -1,1 +1,0 @@
-export * from "file:///Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.1.0-rc.12/lib/node_modules/@abiogenesis/typescript-tenant/build/semantic/code/src/app/m04/index.js";

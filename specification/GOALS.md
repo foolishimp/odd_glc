@@ -19,11 +19,12 @@ Goals define the current bounded work-wave for `odd_glc`.
   functionality and the current ABIogenesis build;
 - define the generic lifecycle surface model and first steel-thread binding
   required to construct and prove one Hello World program over GTL/ABG;
-- define functional parity with current `odd_sdlc` as the long target,
-  measured by user-visible lifecycle capability rather than by porting
-  `odd_sdlc` internals;
-- require every parity row to replace old `odd_sdlc` local mechanisms with a
-  clean dependency on GTL declarations, ABG runtime/replay truth, `odd_glc`
+- define generic lifecycle capability coverage as the long target, using
+  current `odd_sdlc` user-visible workflows only as a coverage witness and
+  deletion-target map for future software-delivery specialization;
+- require every coverage row to start from a generic lifecycle capability, then
+  name any old `odd_sdlc` local mechanism that must be retired through a clean
+  dependency on GTL declarations, ABG runtime/replay truth, `odd_glc`
   lifecycle interpretation, and downstream software-delivery specialization;
 - keep the project boundary explicit: `odd_glc` consumes GTL/ABG algebra and
   does not implement ABG core;
@@ -38,25 +39,30 @@ Goals define the current bounded work-wave for `odd_glc`.
 - require a sourced GTL/ABG substrate readiness map before accepting graph
   design that depends on upstream requirements-algebra, evidence, fold,
   residual, continuation, or re-entry truth;
-- require a parity matrix before implementation begins, with rows for
-  `odd_sdlc` feature, old tech-debt mechanism, GTL/ABG replacement, `odd_glc`
-  generic lifecycle surface, downstream `odd_sdlc` specialization surface, and
-  proof required;
-- sequence implementation through steel-thread and parity waves: Hello World,
-  software artifact construction, execution/evidence proof, requirement fold
-  and residual, continuation/re-entry, ticket/gap/reprice, release/proof, and
-  full `odd_sdlc` specialization parity;
+- require a generic lifecycle coverage matrix before implementation begins,
+  with rows for lifecycle capability, `odd_sdlc` workflow witness, old
+  tech-debt mechanism to retire, genericity test, GTL/ABG replacement,
+  `odd_glc` interpretation, downstream specialization surface, upstream
+  readiness state, and proof required;
+- sequence implementation through readiness verification, route-1 design,
+  build-tenant ratification, Hello World steel-thread consumption, software
+  artifact construction, execution/evidence proof, requirement fold and
+  residual, continuation/re-entry, ticket/gap/reprice, release/proof, and full
+  `odd_sdlc` specialization coverage;
 - defer build-tenant implementation until requirements and design identify the
   first lawful realization line;
 - avoid importing `odd_sdlc` software-domain policy, phase-flow assumptions,
   local ledgers, retry loops, or closure controllers as generic lifecycle law.
+- preserve GTL/ABG runtime authority: `odd_glc` shall not emit a native event
+  stream, maintain replay authority, mint admitted refs, admit evidence, fold
+  requirements, project residuals, or invoke F_P workers directly.
 
 ## Active Tickets
 
 - `T-001`: govern the first `odd_glc` requirements and graph-design surfaces
   for a generic lifecycle substrate whose first steel thread is Hello World and
-  whose long target is functional parity with `odd_sdlc` workflows without
-  inheriting current `odd_sdlc` technical debt.
+  whose long target is generic lifecycle coverage, using `odd_sdlc` workflows
+  as a downstream witness without inheriting current `odd_sdlc` technical debt.
 - `T-002`: discover the gap between `odd_glc` GTL/ABG consumption requirements
   and the current ABIogenesis build before ratified graph design claims
   upstream readiness.
@@ -78,12 +84,12 @@ This wave closes when the project has:
   use `odd_sdlc` as the domain;
 - a sourced GTL/ABG substrate readiness gap report for the current ABIogenesis
   build;
-- a functional-parity matrix that maps `odd_sdlc` user-visible capabilities to
-  GTL/ABG substrate replacements, `odd_glc` generic interpretation, downstream
-  specialization policy, and proof gates;
-- an implementation wave plan that starts with the Hello World steel thread and
-  ends at full `odd_sdlc` workflow parity without reintroducing local SDLC
-  ledgers, controllers, or retry/closure stores;
+- a generic lifecycle coverage matrix that uses `odd_sdlc` only as a
+  workflow-coverage witness and local-mechanism deletion target;
+- an implementation wave plan that starts with installed-substrate readiness,
+  ratifies the first build tenant before code, consumes the Hello World
+  steel-thread route, and ends at full `odd_sdlc` workflow coverage without
+  reintroducing local SDLC ledgers, controllers, or retry/closure stores;
 - ratified graph design under `build_tenants/common/design/`;
 - an explicit clean-start specialization seam for future `odd_sdlc`;
 - an empty but declared build-tenant boundary;
