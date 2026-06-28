@@ -28,8 +28,10 @@ Use these method surfaces as governing references:
 - requirements-algebra consumption and GTL/ABG system-function binding
   contract:
   [REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION](REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md);
-- lifecycle read models and query;
-- proof, fold interpretation, residual pressure, and re-entry;
+- lifecycle read models, query, proof, fold interpretation, residual pressure,
+  and re-entry:
+  [REQ-GLC-READ-QUERY-PROOF](REQ-GLC-READ-QUERY-PROOF.md);
 - downstream product/program specialization contract:
   [REQ-GLC-DOWNSTREAM-SPECIALIZATION](REQ-GLC-DOWNSTREAM-SPECIALIZATION.md);
-- release and operational-feedback interpretation.
+- release and operational-feedback interpretation:
+  [REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK](REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK.md).

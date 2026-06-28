@@ -552,23 +552,23 @@ The contract must say:
       standing T-164/T-165 proof bar.
 - [x] T-002 post-rc.12 refresh classifies route-1 substrate readiness
       separately from broader upstream-blocked coverage waves.
-- [ ] Requirement families exist under `specification/requirements/` with
+- [x] Requirement families exist under `specification/requirements/` with
       `REQ-GLC-*` ids.
 - [x] Requirement families define the ABG/GTL consumption boundary and forbid
       local runtime/ledger duplication.
-- [ ] Requirement families define lifecycle vocabulary, assets, lifecycle
+- [x] Requirement families define lifecycle vocabulary, assets, lifecycle
       bindings over GTL/ABG system-function carriers, read/query surfaces,
       proof/fold/residual/re-entry semantics, release/feedback interpretation,
       and downstream specialization.
 - [x] Requirement families state that downstream programs must use GTL/ABG
       carriers and ABG runtime truth.
 - [x] A generic lifecycle scenario exists without using odd_sdlc as the domain.
-- [ ] Graph design exists under `build_tenants/common/design/`.
-- [ ] Graph design derives every lifecycle binding from requirement authority
+- [x] Graph design exists under `build_tenants/common/design/`.
+- [x] Graph design derives every lifecycle binding from requirement authority
       and identifies its GTL/ABG system-function carrier.
-- [ ] Graph design names F_D/F_P/F_H boundaries and proof/read-model surfaces.
-- [ ] Graph design includes the minimal odd_sdlc clean-start specialization
+- [x] Graph design names F_D/F_P/F_H boundaries and proof/read-model surfaces.
+- [x] Graph design includes the minimal odd_sdlc clean-start specialization
       seam without importing odd_sdlc debt.
-- [ ] Tenant registry remains inactive or records only deferred selection
+- [x] Tenant registry remains inactive or records only deferred selection
       criteria.
-- [ ] Proof commands pass.
+- [x] Proof commands pass.
