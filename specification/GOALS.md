@@ -73,8 +73,8 @@ Goals define the current bounded work-wave for `odd_glc`.
   implement minimal odd_glc lifecycle read/query interpretation over ABG public
   query truth; completed.
 - `T-005`: prove odd_glc consumes a real T-165 or successor ABIogenesis
-  requirements-route replay artifact; completed against ABIogenesis T-166 live
-  route replay artifact.
+  requirements-route replay artifact; completed against a committed
+  ABIogenesis T-166 live route replay fixture.
 - `T-006`: interpret target artifact, capability, admitted evidence, and
   requirement evidence-binding state from ABG route replay truth; completed.
 - `T-007`: interpret assurance fold and residual pressure from ABG route replay
@@ -107,7 +107,7 @@ This wave closes when the project has:
 - an active route-1 build tenant for read/query and policy interpretation;
 - explicit ABIogenesis substrate provenance for that tenant;
 - a completed Phase 5 proof that odd_glc consumes real ABIogenesis route replay
-  truth from a T-166 artifact;
+  truth from a committed digest-pinned T-166 fixture;
 - a completed Phase 6 route-1 artifact/evidence interpretation proof over ABG
   replay truth;
 - completed read-only assurance fold and residual-pressure interpretation over

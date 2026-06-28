@@ -116,3 +116,9 @@ closed-path `assurance_satisfied` interpretation. A bounded event-shaped
 residual unit proves `residual_pressure` classification. This ticket does not
 claim full cyclic re-entry proof; that remains dependent on a future ABG replay
 artifact with residual/re-entry pressure.
+
+Committed proof fixture:
+
+- `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json`
+- digest:
+  `sha256:4ba42598bbf309b4568d5d167dc395f31799d32bd5b8fd7b78f76131494fd10e`

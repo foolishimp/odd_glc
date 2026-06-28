@@ -1,0 +1,50 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 11,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted",
+      "traversal_span_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft165%2Flive-requirement-carry:sha256:d9b121f9ee246572f3730b2a645755a23ea6d3907f00a62cf424fb1a8a21f523",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft165_hello_world_requirements_route_live%2F20260628T175945864Z_pid34852%2Fhello-world-requirement.txt%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation:sha256:6ba765c1faa25de62ea6bb2d5d54cb9c03f8a9d888961ec98a9e55a6164ec120",
+      "requirement-event:requirement_evidence_bound:fragment%3A%2F%2Ft165%2Flive-requirement-carry%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation:sha256:ca33ccb9305fc03694a8730e19d0fb279ec74db27f15308ee1b14db18e31b6d0",
+      "requirement-event:requirement_evidence_bound:runtime_projection%3Aexecution_basis%3A%7B%22moduleName%22%3A%22m03_iteration_module%22%2C%22startIntent%22%3A%7B%22scope%22%3A%7B%22kind%22%3A%22workspace%22%2C%22workspaceRoot%22%3A%22%2Fworkspace%2Fm03-iteration%22%2C%22moduleName%22%3A%22m03_iteration_module%22%7D%2C%22target%22%3A%7B%22kind%22%3A%22graph_function%22%2C%22handle%22%3A%22capture_requirements%3Bsynthesize_design%3Bimplement_code%22%7D%2C%22until%22%3A%22converged%22%7D%2C%22runtimeIdentity%22%3A%7B%22workerId%22%3A%22worker%3A%2F%2Fm03-iteration%22%2C%22backendId%22%3A%22backend%3A%2F%2Fnode%22%2C%22buildId%22%3A%22build%3A%2F%2Ftypescript%22%2C%22resolvedRuntimeRef%22%3A%22runtime%3A%2F%2Ftypescript%2Fnode%22%7D%2C%22resolvedPolicy%22%3A%7B%22resolvedPolicyBundleRef%22%3A%22policy%3A%2F%2Fm03-iteration%22%2C%22defaultRegime%22%3A%22F_P%22%2C%22dispatchRef%22%3A%22dispatch%3A%2F%2Ft165%2Fhello-world-live%22%2C%22approvalSubjectRef%22%3Anull%7D%2C%22runId%22%3A%22run%3A%2F%2Ft165%2Fhello-world-live%22%2C%22workKey%22%3A%22wk%3A%2F%2Fm03-iteration%22%2C%22frameId%22%3Anull%2C%22frameLineageId%22%3Anull%7D%3Aclosed%3D%3Aretry%3D0%3Aleaf%3D0%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation:sha256:812465d91588a2c577fd4e5c04b7dc33ebe30d4eb180583d54ebfffd98ee142a",
+      "requirement-event:requirement_evidence_bound:runtime_projection%3Aexecution_basis%3A%7B%22moduleName%22%3A%22m03_iteration_module%22%2C%22startIntent%22%3A%7B%22scope%22%3A%7B%22kind%22%3A%22workspace%22%2C%22workspaceRoot%22%3A%22%2Fworkspace%2Fm03-iteration%22%2C%22moduleName%22%3A%22m03_iteration_module%22%7D%2C%22target%22%3A%7B%22kind%22%3A%22graph_function%22%2C%22handle%22%3A%22capture_requirements%3Bsynthesize_design%3Bimplement_code%22%7D%2C%22until%22%3A%22converged%22%7D%2C%22runtimeIdentity%22%3A%7B%22workerId%22%3A%22worker%3A%2F%2Fm03-iteration%22%2C%22backendId%22%3A%22backend%3A%2F%2Fnode%22%2C%22buildId%22%3A%22build%3A%2F%2Ftypescript%22%2C%22resolvedRuntimeRef%22%3A%22runtime%3A%2F%2Ftypescript%2Fnode%22%7D%2C%22resolvedPolicy%22%3A%7B%22resolvedPolicyBundleRef%22%3A%22policy%3A%2F%2Fm03-iteration%22%2C%22defaultRegime%22%3A%22F_P%22%2C%22dispatchRef%22%3A%22dispatch%3A%2F%2Ft165%2Fhello-world-live%22%2C%22approvalSubjectRef%22%3Anull%7D%2C%22runId%22%3A%22run%3A%2F%2Ft165%2Fhello-world-live%22%2C%22workKey%22%3A%22wk%3A%2F%2Fm03-iteration%22%2C%22frameId%22%3Anull%2C%22frameLineageId%22%3Anull%7D%3Aclosed%3D%3Aretry%3D0%3Aleaf%3D0%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation:sha256:812465d91588a2c577fd4e5c04b7dc33ebe30d4eb180583d54ebfffd98ee142a",
+      "requirement-event:requirement_evidence_bound:sha256%3Abd625fab9ccaf6ab5b7e856acfced92a0c58c0a2905fec55d80508955f705b2d%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation:sha256:0f0f3e0f6db0d33da6068fc513771c0ff09bb6b38f1fd3703dee3d3de2ddc7e9",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T165-HELLO-WORLD-LIVE%3Asatisfied%3Afile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft165_hello_world_requirements_route_live%2F20260628T175945864Z_pid34852%2Fhello-world-requirement.txt%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation%2Csha256%3Abd625fab9ccaf6ab5b7e856acfced92a0c58c0a2905fec55d80508955f705b2d%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation%2Cfragment%3A%2F%2Ft165%2Flive-requirement-carry%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation%2Cruntime_projection%3Aexecution_basis%3A%7B%22moduleName%22%3A%22m03_iteration_module%22%2C%22startIntent%22%3A%7B%22scope%22%3A%7B%22kind%22%3A%22workspace%22%2C%22workspaceRoot%22%3A%22%2Fworkspace%2Fm03-iteration%22%2C%22moduleName%22%3A%22m03_iteration_module%22%7D%2C%22target%22%3A%7B%22kind%22%3A%22graph_function%22%2C%22handle%22%3A%22capture_requirements%3Bsynthesize_design%3Bimplement_code%22%7D%2C%22until%22%3A%22converged%22%7D%2C%22runtimeIdentity%22%3A%7B%22workerId%22%3A%22worker%3A%2F%2Fm03-iteration%22%2C%22backendId%22%3A%22backend%3A%2F%2Fnode%22%2C%22buildId%22%3A%22build%3A%2F%2Ftypescript%22%2C%22resolvedRuntimeRef%22%3A%22runtime%3A%2F%2Ftypescript%2Fnode%22%7D%2C%22resolvedPolicy%22%3A%7B%22resolvedPolicyBundleRef%22%3A%22policy%3A%2F%2Fm03-iteration%22%2C%22defaultRegime%22%3A%22F_P%22%2C%22dispatchRef%22%3A%22dispatch%3A%2F%2Ft165%2Fhello-world-live%22%2C%22approvalSubjectRef%22%3Anull%7D%2C%22runId%22%3A%22run%3A%2F%2Ft165%2Fhello-world-live%22%2C%22workKey%22%3A%22wk%3A%2F%2Fm03-iteration%22%2C%22frameId%22%3Anull%2C%22frameLineageId%22%3Anull%7D%3Aclosed%3D%3Aretry%3D0%3Aleaf%3D0%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation%2Cruntime_projection%3Aexecution_basis%3A%7B%22moduleName%22%3A%22m03_iteration_module%22%2C%22startIntent%22%3A%7B%22scope%22%3A%7B%22kind%22%3A%22workspace%22%2C%22workspaceRoot%22%3A%22%2Fworkspace%2Fm03-iteration%22%2C%22moduleName%22%3A%22m03_iteration_module%22%7D%2C%22target%22%3A%7B%22kind%22%3A%22graph_function%22%2C%22handle%22%3A%22capture_requirements%3Bsynthesize_design%3Bimplement_code%22%7D%2C%22until%22%3A%22converged%22%7D%2C%22runtimeIdentity%22%3A%7B%22workerId%22%3A%22worker%3A%2F%2Fm03-iteration%22%2C%22backendId%22%3A%22backend%3A%2F%2Fnode%22%2C%22buildId%22%3A%22build%3A%2F%2Ftypescript%22%2C%22resolvedRuntimeRef%22%3A%22runtime%3A%2F%2Ftypescript%2Fnode%22%7D%2C%22resolvedPolicy%22%3A%7B%22resolvedPolicyBundleRef%22%3A%22policy%3A%2F%2Fm03-iteration%22%2C%22defaultRegime%22%3A%22F_P%22%2C%22dispatchRef%22%3A%22dispatch%3A%2F%2Ft165%2Fhello-world-live%22%2C%22approvalSubjectRef%22%3Anull%7D%2C%22runId%22%3A%22run%3A%2F%2Ft165%2Fhello-world-live%22%2C%22workKey%22%3A%22wk%3A%2F%2Fm03-iteration%22%2C%22frameId%22%3Anull%2C%22frameLineageId%22%3Anull%7D%3Aclosed%3D%3Aretry%3D0%3Aleaf%3D0%23requirement-projection%3Dprojection%253AREQ-T165-HELLO-WORLD-LIVE%253Aobligation:sha256:f13d1c3bc7e7f574a1f6ec1425381ab0d389a86439d2b9d1abf4172574b67a2b",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T165-HELLO-WORLD-LIVE%3Aobligation:sha256:8a7601e4d05d65551a4fac3cb74168017f4b508b1c771e8d824a4a172b43923f",
+      "requirement-event:requirement_term_admitted:REQ-T165-HELLO-WORLD-LIVE:sha256:7977865f65e8bcb54a2a7f8df2bd0ec4b6b557eb524cf583f232797c0ac6ef5b",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft165%2Fgraph-capture_requirements:sha256:4f8045b0cf797359b05a2465e2aad838d90e75af5ff9e8cd5b2d0c077ec1f8c3",
+      "requirement-lifecycle-disposition:sha256:de7cd5e9745e01a8a8a157a724681ccab332ad90fd85055fe33d7ced7af4e875"
+    ],
+    "sha256": "sha256:4ba42598bbf309b4568d5d167dc395f31799d32bd5b8fd7b78f76131494fd10e"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "liveAgent": "claude",
+    "proofCommand": "npm run test:t165:hello-world-live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852",
+    "proofTicket": "T-165",
+    "publicationTicket": "T-166",
+    "requirementSourceDigest": "sha256:bd625fab9ccaf6ab5b7e856acfced92a0c58c0a2905fec55d80508955f705b2d",
+    "requirementSourceRef": "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852/hello-world-requirement.txt",
+    "sourceRunKind": "live_fp_hello_world_requirements_route"
+  },
+  "ticket": "T-166"
+}

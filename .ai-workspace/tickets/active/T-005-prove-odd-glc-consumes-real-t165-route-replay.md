@@ -66,7 +66,8 @@ non_closure_conditions:
     or `requirement_route_fact_projected` runtime events.
 current_blocker: >-
   Resolved by ABIogenesis T-166. The latest local T-166 live proof artifact
-  contains serialized `requirement_route_fact_projected` events and
+  was copied into odd_glc as a committed digest-pinned fixture-of-record
+  containing serialized `requirement_route_fact_projected` events and
   replay-derived lifecycle state.
 required_work:
   - Consume the ABIogenesis T-166 artifact through `interpretLifecycleState`.
@@ -112,9 +113,13 @@ Closed on 2026-06-29.
 
 Consumed ABIogenesis artifact:
 
-- artifact:
+- committed fixture:
+  `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json`
+- committed fixture manifest:
+  `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-manifest.json`
+- original ABI artifact:
   `/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json`
-- manifest:
+- original ABI manifest:
   `/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live/20260628T175945864Z_pid34852/requirements-route-replay-manifest.json`
 - artifact digest:
   `sha256:4ba42598bbf309b4568d5d167dc395f31799d32bd5b8fd7b78f76131494fd10e`
@@ -128,10 +133,10 @@ npm --prefix build_tenants/odd_glc/typescript test
 git diff --check
 ```
 
-The route-one tenant test now locates the latest local ABIogenesis T-166
-artifact unless `ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT` supplies an explicit path.
-It verifies the manifest digest, passes the artifact's replay events and
-lifecycle query into `interpretLifecycleState`, and observes
+The route-one tenant test now consumes the committed fixture unless
+`ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT` supplies an explicit fresh artifact path.
+It verifies the manifest digest against tenant provenance, passes the artifact's
+replay events and lifecycle query into `interpretLifecycleState`, and observes
 `release_readiness_candidate` from the real ABI `closed` disposition. odd_glc
 does not call ABG internal emitters, admitted-ref minting, evidence admission,
 fold, residual, or disposition-resolution APIs.

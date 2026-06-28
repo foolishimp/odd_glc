@@ -43,6 +43,18 @@ export interface AbiogenesisSubstrateProvenance {
     readonly gtlRequirements: "./gtl/requirements";
     readonly abgRequirements: "./abg/requirements";
   };
+  readonly proofArtifacts: {
+    readonly t166RouteReplay: {
+      readonly sourceProduct: "abiogenesis";
+      readonly sourceTicket: "T-166";
+      readonly sourceRunId: string;
+      readonly fixturePath: string;
+      readonly fixtureManifestPath: string;
+      readonly artifactSha256: string;
+      readonly routeEventCount: number;
+      readonly replayEventCount: number;
+    };
+  };
   readonly proofScope: {
     readonly phase: "phase_5_real_route_replay_consumption";
     readonly claim: string;

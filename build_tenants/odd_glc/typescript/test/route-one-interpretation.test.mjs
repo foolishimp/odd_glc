@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { existsSync } from "node:fs";
-import { readdir, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -27,9 +27,9 @@ const defaultAbgRoot = path.join(
   appsRoot,
   `.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}/lib/node_modules/@abiogenesis/typescript-tenant`
 );
-const defaultT166RunRoot = path.join(
-  appsRoot,
-  "abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t165_hello_world_requirements_route_live"
+const defaultT166ArtifactPath = path.join(
+  tenantRoot,
+  "test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json"
 );
 
 async function importAbgRequirementsFacade() {
@@ -46,37 +46,20 @@ async function readInstalledPackageJson() {
   return JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile(packageJsonPath, "utf8")));
 }
 
-async function latestT166RouteReplayArtifactPath() {
+function t166RouteReplayArtifactPath() {
   if (process.env.ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT !== undefined) {
     return process.env.ODD_GLC_T166_ROUTE_REPLAY_ARTIFACT;
   }
   assert.equal(
-    existsSync(defaultT166RunRoot),
+    existsSync(defaultT166ArtifactPath),
     true,
-    `Missing ABIogenesis T-166 run root at ${defaultT166RunRoot}; run npm --prefix ../abiogenesis/build_tenants/abiogenesis/typescript run test:t166:live`
+    `Missing committed ABIogenesis T-166 route replay fixture at ${defaultT166ArtifactPath}`
   );
-  const runDirs = (await readdir(defaultT166RunRoot, { withFileTypes: true }))
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort()
-    .reverse();
-  for (const runDir of runDirs) {
-    const artifactPath = path.join(
-      defaultT166RunRoot,
-      runDir,
-      "requirements-route-replay-artifact.json"
-    );
-    if (existsSync(artifactPath)) {
-      return artifactPath;
-    }
-  }
-  assert.fail(
-    `No ABIogenesis T-166 requirements-route replay artifact found under ${defaultT166RunRoot}; run npm --prefix ../abiogenesis/build_tenants/abiogenesis/typescript run test:t166:live`
-  );
+  return defaultT166ArtifactPath;
 }
 
 async function readT166RouteReplayArtifact() {
-  const artifactPath = await latestT166RouteReplayArtifactPath();
+  const artifactPath = t166RouteReplayArtifactPath();
   const manifestPath = path.join(
     path.dirname(artifactPath),
     "requirements-route-replay-manifest.json"
@@ -88,6 +71,10 @@ async function readT166RouteReplayArtifact() {
   assert.equal(
     manifest.artifact.sha256,
     `sha256:${createHash("sha256").update(rawArtifact, "utf8").digest("hex")}`
+  );
+  assert.equal(
+    manifest.artifact.sha256,
+    ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t166RouteReplay.artifactSha256
   );
   return Object.freeze({
     artifactPath,

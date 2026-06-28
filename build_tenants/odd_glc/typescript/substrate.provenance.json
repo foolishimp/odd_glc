@@ -14,9 +14,21 @@
     "gtlRequirements": "./gtl/requirements",
     "abgRequirements": "./abg/requirements"
   },
+  "proofArtifacts": {
+    "t166RouteReplay": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-166",
+      "sourceRunId": "20260628T175945864Z_pid34852",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-manifest.json",
+      "artifactSha256": "sha256:4ba42598bbf309b4568d5d167dc395f31799d32bd5b8fd7b78f76131494fd10e",
+      "routeEventCount": 11,
+      "replayEventCount": 47
+    }
+  },
   "proofScope": {
     "phase": "phase_5_real_route_replay_consumption",
-    "claim": "The tenant is proven against ABIogenesis rc.12 public query facades and a serialized T-166 requirements-route replay artifact produced by the T-165 Hello World live proof. odd_glc consumes the artifact as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, or resolve disposition authority locally."
+    "claim": "The tenant is proven against ABIogenesis rc.12 public query facades and a committed digest-pinned T-166 requirements-route replay fixture produced by the T-165 Hello World live proof. odd_glc consumes the artifact as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, or resolve disposition authority locally."
   },
   "sourceDocuments": [
     ".ai-workspace/comments/codex/20260628T152507Z_ABG_RC12_install_reference.md",
