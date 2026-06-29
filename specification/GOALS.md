@@ -47,9 +47,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 - require the Hello World scenario ladder to be sequenced by proven GTL/ABG
   substrate readiness; ABI rc17 has published the generic proof-evidence,
   non-default command execution, and process/request execution mechanics for
-  the JavaScript test, Rust CLI, and Rust service/client rungs, while the
-  parallel branch/fan-in rung remains blocked on a dedicated ABI replay
-  artifact;
+  the JavaScript test, Rust CLI, and Rust service/client rungs, and ABI T-174
+  has published the parallel branch/fan-in replay artifact consumed by
+  odd_glc;
 - sequence implementation through readiness verification, route-1 design,
   build-tenant ratification, Hello World steel-thread consumption, software
   artifact construction, execution/evidence proof, requirement fold and
@@ -103,9 +103,10 @@ Goals define the current bounded work-wave for `odd_glc`.
   digest-pinned ABI rc17 T-172 generic process/request execution replay fixture
   without hand-built route events, odd_glc process supervision, client-request
   authority, or odd_glc-owned protocol policy; completed.
-- `T-013`: track the parallel JavaScript Hello World ladder rung and keep it
-  blocked until ABI publishes a digest-pinned parallel Hello World
-  branch/frontier/fan-in replay artifact; active.
+- `T-013`: prove the parallel JavaScript Hello World ladder rung over the
+  digest-pinned ABI T-174 branch/frontier/fan-in replay artifact without
+  hand-built route events, odd_glc scheduler authority, or odd_glc-owned
+  fan-in policy; completed.
 
 ## Current Work-Wave Target
 
@@ -156,9 +157,8 @@ This wave closes when the project has:
   committed digest-pinned ABI rc17 T-172 process/request execution fixture of
   record, without turning service readiness, HTTP/request semantics, or cleanup
   proof bindings into odd_glc policy;
-- an explicit active block for the parallel JavaScript Hello World rung, since
-  ABI rc17 has saga/frontier/span substrate but no parallel Hello World
-  execution-evidence replay artifact for odd_glc to consume;
+- a completed parallel JavaScript Hello World rung over the committed
+  digest-pinned ABI T-174 parallel branch/fan-in fixture of record;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond route-1 read/query, real route replay consumption, read-only
   artifact/evidence interpretation, and read-only assurance/residual

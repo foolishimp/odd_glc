@@ -57,11 +57,23 @@
       "artifactSha256": "sha256:4c825ba13dd250d114f33f1d417d2d7470a5d62b3c3e917478e55c7e79d43206",
       "routeEventCount": 19,
       "replayEventCount": 86
+    },
+    "t174ParallelHelloWorld": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-174",
+      "sourceCommit": "abab4c3bc9a78247908c85e77f1f65d1ecdbb336",
+      "sourcePackageVersion": "4.1.0-rc.17",
+      "sourceRunId": "20260629T174248134Z_pid74140",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t174-parallel-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t174-parallel-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-manifest.json",
+      "artifactSha256": "sha256:9b6f28d095bc698c579bd1a22ac1990524369a8197fae7e0bc3eafbb36ef175c",
+      "routeEventCount": 55,
+      "replayEventCount": 199
     }
   },
   "proofScope": {
-    "phase": "phase_7_hello_world_ladder_rc17_consumption",
-    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures. odd_glc consumes those artifacts as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, or resolve disposition authority locally. RC17 keeps the rc16 recursive requirements substrate and adds the generic proof-evidence, non-default command execution, and process/request execution mechanics needed by later Hello World ladder rungs."
+    "phase": "phase_8_hello_world_ladder_parallel_consumption",
+    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures, plus the ABI T-174 parallel Hello World proof artifact produced over rc17-compatible frontier and requirements-route surfaces. odd_glc consumes those artifacts as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, or resolve disposition authority locally. RC17 keeps the rc16 recursive requirements substrate and adds the generic proof-evidence, non-default command execution, and process/request execution mechanics needed by the earlier Hello World ladder rungs; T-174 supplies the parallel branch/fan-in fixture of record."
   },
   "sourceDocuments": [
     "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json",
@@ -69,6 +81,7 @@
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-171-prove-generic-non-default-command-execution-capability.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-172-prove-generic-process-request-execution-capability.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-173-publish-generic-proof-evidence-replay-proof.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-174-publish-parallel-hello-world-replay-proof.md",
     ".ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",
     ".ai-workspace/tickets/active/T-005-prove-odd-glc-consumes-real-t165-route-replay.md",

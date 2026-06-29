@@ -15,6 +15,7 @@ import {
   interpretAssuranceState,
   interpretEvidenceState,
   interpretLifecycleState,
+  interpretParallelFrontierState,
   validateAbgRequirementsFacade
 } from "../src/index.mjs";
 
@@ -26,10 +27,17 @@ const BASIC_CLI_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-CLI-BASIC";
 const RUST_CLI_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-RUST-CLI";
 const RUST_SERVICE_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-RUST-SERVICE";
 const JS_TENANT_TEST_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST";
+const PARALLEL_JS_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-PARALLEL-JS";
 const T165_REQUIREMENT_ID = "REQ-T165-HELLO-WORLD-LIVE";
 const T171_REQUIREMENT_ID = "REQ-T171-RUST-CLI-LIVE";
 const T172_REQUIREMENT_ID = "REQ-T172-SERVICE-REQUEST-LIVE";
 const T173_REQUIREMENT_ID = "REQ-T173-GENERIC-PROOF-EVIDENCE-LIVE";
+const T174_PARENT_REQUIREMENT_ID = "REQ-T174-PARALLEL-HELLO-WORLD-LIVE";
+const T174_CHILD_REQUIREMENT_IDS = Object.freeze([
+  "REQ-T174-HELLO-BRANCH-LIVE",
+  "REQ-T174-WORLD-BRANCH-LIVE",
+  "REQ-T174-FAN-IN-LIVE"
+]);
 const defaultAbgRoot = path.join(
   appsRoot,
   `.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}/lib/node_modules/@abiogenesis/typescript-tenant`
@@ -49,6 +57,10 @@ const defaultT172ArtifactPath = path.join(
 const defaultT173ArtifactPath = path.join(
   tenantRoot,
   "test/fixtures/abiogenesis-t173-generic-proof-evidence/20260629T131855445Z_pid76289/generic-proof-evidence-replay-artifact.json"
+);
+const defaultT174ArtifactPath = path.join(
+  tenantRoot,
+  "test/fixtures/abiogenesis-t174-parallel-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-artifact.json"
 );
 
 async function importAbgRequirementsFacade() {
@@ -217,6 +229,44 @@ async function readT173RouteReplayArtifact() {
   });
 }
 
+function t174RouteReplayArtifactPath() {
+  if (process.env.ODD_GLC_T174_ROUTE_REPLAY_ARTIFACT !== undefined) {
+    return process.env.ODD_GLC_T174_ROUTE_REPLAY_ARTIFACT;
+  }
+  assert.equal(
+    existsSync(defaultT174ArtifactPath),
+    true,
+    `Missing committed ABIogenesis T-174 route replay fixture at ${defaultT174ArtifactPath}`
+  );
+  return defaultT174ArtifactPath;
+}
+
+async function readT174RouteReplayArtifact() {
+  const artifactPath = t174RouteReplayArtifactPath();
+  const manifestPath = path.join(
+    path.dirname(artifactPath),
+    "parallel-hello-world-replay-manifest.json"
+  );
+  assert.equal(existsSync(manifestPath), true, `Missing ABIogenesis T-174 manifest at ${manifestPath}`);
+  const rawArtifact = await readFile(artifactPath, "utf8");
+  const artifact = JSON.parse(rawArtifact);
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  assert.equal(
+    manifest.artifact.sha256,
+    `sha256:${createHash("sha256").update(rawArtifact, "utf8").digest("hex")}`
+  );
+  assert.equal(
+    manifest.artifact.sha256,
+    ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t174ParallelHelloWorld.artifactSha256
+  );
+  return Object.freeze({
+    artifactPath,
+    manifestPath,
+    artifact,
+    manifest
+  });
+}
+
 function surfaceMapFixture() {
   return Object.fromEntries(
     REQUIRED_ROUTE_ONE_SURFACES.map((surface) => [surface, `glc.route1.${surface}`])
@@ -343,7 +393,7 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(
     ABIOGENESIS_SUBSTRATE_PROVENANCE.proofScope.phase,
-    "phase_7_hello_world_ladder_rc17_consumption"
+    "phase_8_hello_world_ladder_parallel_consumption"
   );
 });
 
@@ -812,6 +862,178 @@ test("proves SCN-GLC-HELLO-WORLD-JS-TENANT-TEST over the committed ABI T-173 rep
   assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
   assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
   assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
+});
+
+test("proves SCN-GLC-HELLO-WORLD-PARALLEL-JS over the committed ABI T-174 replay artifact", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const { artifact, manifest } = await readT174RouteReplayArtifact();
+
+  assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true, PARALLEL_JS_SCENARIO_ID);
+  assert.equal(manifest.artifact.routeEventCount, 55, PARALLEL_JS_SCENARIO_ID);
+  assert.equal(artifact.replay.runtimeEventCount, 199, PARALLEL_JS_SCENARIO_ID);
+  assert.equal(artifact.source.proofTicket, "T-174", PARALLEL_JS_SCENARIO_ID);
+  assert.equal(artifact.source.branchRecords.hello.executionStdout, "Hello");
+  assert.equal(artifact.source.branchRecords.world.executionStdout, "world");
+  assert.equal(artifact.source.branchRecords["fan-in"].executionStdout, "Hello, world!\n");
+
+  assert.equal(
+    artifact.lifecycleState.requirementQuery.requirementIds.includes(T174_PARENT_REQUIREMENT_ID),
+    true,
+    PARALLEL_JS_SCENARIO_ID
+  );
+  for (const requirementId of T174_CHILD_REQUIREMENT_IDS) {
+    assert.equal(
+      artifact.lifecycleState.requirementQuery.requirementIds.includes(requirementId),
+      true,
+      `${PARALLEL_JS_SCENARIO_ID} missing ${requirementId}`
+    );
+  }
+
+  const routeBindings = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_evidence_bound"
+  );
+  const routeFolds = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_fold_projected"
+  );
+  const routeDispositions = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_lifecycle_disposition"
+  );
+  const routeResiduals = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_residual_projected"
+  );
+  const branchPayloadEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "branch_payload_admitted"
+  );
+  const fanInEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "branch_fan_in_projected"
+  );
+  const branchLeaseEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "branch_lease_acquired" || event.kind === "branch_lease_released"
+  );
+  const admittedEvidenceEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "evidence_admitted"
+  );
+
+  assert.equal(routeBindings.length, 24, `${PARALLEL_JS_SCENARIO_ID} requires ABI evidence bindings`);
+  assert.equal(routeFolds.length, 3, `${PARALLEL_JS_SCENARIO_ID} requires one fold per child requirement`);
+  assert.equal(routeDispositions.length, 1, `${PARALLEL_JS_SCENARIO_ID} requires one ABI disposition`);
+  assert.equal(routeResiduals.length, 0, `${PARALLEL_JS_SCENARIO_ID} is a closed proof with no residual events`);
+  assert.equal(branchPayloadEvents.length, 3, `${PARALLEL_JS_SCENARIO_ID} requires three branch payload admissions`);
+  assert.equal(fanInEvents.length, 2, `${PARALLEL_JS_SCENARIO_ID} requires branch fan-in and final fan-in projection`);
+  assert.equal(branchLeaseEvents.length, 6, `${PARALLEL_JS_SCENARIO_ID} requires acquired/released branch leases`);
+
+  const roleProjectionRefs = Object.freeze({
+    asset: Object.freeze([
+      "projection://t174/live/hello-branch-artifact",
+      "projection://t174/live/world-branch-artifact",
+      "projection://t174/live/fan-in-artifact"
+    ]),
+    test_source: Object.freeze([
+      "projection://t174/live/hello-branch-verifier-artifact",
+      "projection://t174/live/world-branch-verifier-artifact",
+      "projection://t174/live/fan-in-verifier-artifact"
+    ]),
+    test_execution: Object.freeze([
+      "projection://t174/live/hello-branch-execution",
+      "projection://t174/live/world-branch-execution",
+      "projection://t174/live/fan-in-execution"
+    ]),
+    semantic_interpretation: Object.freeze([
+      "projection://t174/live/hello-branch-interpretation",
+      "projection://t174/live/world-branch-interpretation",
+      "projection://t174/live/fan-in-interpretation"
+    ])
+  });
+  for (const [role, projectionRefs] of Object.entries(roleProjectionRefs)) {
+    const roleBindings = routeBindings.filter((event) =>
+      event.requirementPayload.binding.evidenceRole === role
+    );
+    assert.equal(roleBindings.length, 6, `${role} binding count must match ABI replay truth`);
+    assertSameMembers(
+      roleBindings.map((event) => event.requirementPayload.binding.projectionRef),
+      projectionRefs,
+      `${role} bindings must preserve admitted ABI projection refs`
+    );
+    assert.equal(
+      roleBindings.every((event) =>
+        event.requirementPayload.binding.bindingStatus === "admitted"
+      ),
+      true,
+      `${role} bindings must be admitted ABI bindings`
+    );
+  }
+
+  assertSameMembers(
+    routeFolds.map((event) => event.requirementPayload.fold.requirementId),
+    T174_CHILD_REQUIREMENT_IDS,
+    "ABI child fold requirement ids must be preserved"
+  );
+  assert.equal(
+    routeFolds.every((event) => event.requirementPayload.fold.state === "satisfied"),
+    true,
+    `${PARALLEL_JS_SCENARIO_ID} child folds must be satisfied`
+  );
+  assert.equal(artifact.lifecycleState.aggregateStates.length, 1);
+  assert.equal(artifact.lifecycleState.aggregateStates[0].requirementId, T174_PARENT_REQUIREMENT_ID);
+  assert.equal(artifact.lifecycleState.aggregateStates[0].state, "satisfied");
+  assert.equal(artifact.lifecycleState.requirementGraph.parentChildPairs.length, 3);
+
+  const expectedBindingRefs = routeBindings.map((event) => event.routePayloadRef);
+  const expectedFoldRefs = routeFolds.map((event) => event.requirementPayload.fold.foldRef);
+  const expectedDispositionRefs = routeDispositions.map((event) => event.requirementPayload.dispositionRef);
+  const expectedEvidenceRefs = admittedEvidenceEvents.map((event) => event.evidenceRef);
+
+  const lifecycle = interpretLifecycleState({
+    abgRequirements,
+    query: artifact.lifecycleState.requirementQuery,
+    dispositionRefs: artifact.lifecycleState.dispositionRefs,
+    runtimeEvents: artifact.replayEvents
+  });
+  const evidence = interpretEvidenceState({
+    runtimeEvents: artifact.replayEvents
+  });
+  const assurance = interpretAssuranceState({
+    runtimeEvents: artifact.replayEvents
+  });
+  const frontier = interpretParallelFrontierState({
+    runtimeEvents: artifact.replayEvents,
+    lifecycleState: artifact.lifecycleState
+  });
+
+  assert.equal(lifecycle.status, "accepted", PARALLEL_JS_SCENARIO_ID);
+  assert.equal(evidence.status, "accepted", PARALLEL_JS_SCENARIO_ID);
+  assert.equal(assurance.status, "accepted", PARALLEL_JS_SCENARIO_ID);
+  assert.equal(frontier.status, "accepted", PARALLEL_JS_SCENARIO_ID);
+
+  assert.equal(lifecycle.value.lifecycleDisposition, "release_readiness_candidate");
+  assert.equal(lifecycle.value.requirementIds.includes(T174_PARENT_REQUIREMENT_ID), true);
+  assertSameMembers(lifecycle.value.dispositionRefs, expectedDispositionRefs, "ABI disposition refs must be preserved");
+  assertSameMembers(
+    evidence.value.requirementEvidenceBindings.map((item) => item.routePayloadRef),
+    expectedBindingRefs,
+    "ABI evidence binding route refs must be preserved"
+  );
+  assertSameMembers(
+    evidence.value.admittedEvidence.map((item) => item.evidenceRef),
+    expectedEvidenceRefs,
+    "ABI admitted evidence refs must be preserved"
+  );
+  assertSameMembers(assurance.value.foldRefs, expectedFoldRefs, "ABI assurance fold refs must be preserved");
+  assert.deepEqual(assurance.value.residualRefs, []);
+  assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
+  assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
+  assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
+
+  assert.equal(frontier.value.readiness, "fan_in_ready");
+  assert.equal(frontier.value.branchPayloads.length, 3);
+  assert.equal(frontier.value.fanIns.length, 2);
+  assert.equal(frontier.value.aggregateStates[0].state, "satisfied");
+  assert.equal(frontier.value.requirementGraph.parentChildPairs.length, 3);
+  assert.equal(
+    frontier.value.evidenceRefs.some((ref) => ref.includes("fan-in-execution.trace/result.json")),
+    true,
+    "fan-in evidence ref must remain visible"
+  );
 });
 
 test("interprets evidence and target artifact state from real ABIogenesis replay events", async () => {

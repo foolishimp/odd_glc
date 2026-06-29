@@ -1,10 +1,10 @@
 ---
 id: T-013
 title: Track parallel JavaScript Hello World ladder rung readiness
-status: active
+status: completed
 owner: codex
 created_at: 2026-06-29
-updated_at: 2026-06-29
+updated_at: 2026-06-30
 priority: high
 ticket_type: implementation
 change_class: realization_refactor
@@ -17,6 +17,7 @@ source_documents:
   - specification/scenarios/SCN-GLC-HELLO-WORLD-PARALLEL-JS.md
   - build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-141-declare-event-sourced-saga-frontier-and-runtime-realization-transparency.md
+  - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-174-publish-parallel-hello-world-replay-proof.md
   - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json
 target_truth: >-
   The parallel JavaScript Hello World ladder rung shall close only after ABI
@@ -28,23 +29,24 @@ superseded_truth: >-
   ABI rc17 frontier/span substrate or odd_sdlc T-174 fixtures are enough for
   odd_glc to close the parallel ladder rung.
 current_state: >-
-  Blocked for odd_glc implementation. ABI rc17 includes saga/frontier and span
-  substrate, but no ABI T-174 or equivalent parallel Hello World
-  execution-evidence replay artifact exists in the release snapshot or local
-  ABI test run tree.
+  Completed. ABI T-174 publishes a digest-pinned parallel Hello World replay
+  artifact with dependency-frontier branch/fan-in events, requirement
+  graph/refinement truth, branch and fan-in evidence bindings, aggregate fold,
+  disposition, and replay/query state. odd_glc consumes the committed fixture
+  read-only.
 acceptance_criteria:
-  - [ ] An ABI ticket or completed ABI artifact exists for a parallel Hello
+  - [x] An ABI ticket or completed ABI artifact exists for a parallel Hello
         World proof with emitted frontier, branch, execution-evidence, fan-in,
         fold, residual/disposition, and replay/query truth.
-  - [ ] The ABI artifact is committed or otherwise digest-pinned as a fixture
+  - [x] The ABI artifact is committed or otherwise digest-pinned as a fixture
         of record suitable for downstream consumption.
-  - [ ] odd_glc substrate provenance records the ABI source ticket, run id,
+  - [x] odd_glc substrate provenance records the ABI source ticket, run id,
         fixture paths, artifact digest, route event count, and replay event
         count.
-  - [ ] odd_glc proof verifies the ABI artifact digest before interpretation.
-  - [ ] odd_glc interprets branch lifecycle state, fan-in readiness, residual
+  - [x] odd_glc proof verifies the ABI artifact digest before interpretation.
+  - [x] odd_glc interprets branch lifecycle state, fan-in readiness, residual
         pressure, and final lifecycle disposition while preserving ABG refs.
-  - [ ] No odd_glc code owns ready-frontier selection, parallel scheduling,
+  - [x] No odd_glc code owns ready-frontier selection, parallel scheduling,
         branch leases, fan-in projection, aggregate fold, retry, continuation,
         or re-entry.
 non_closure_conditions:
@@ -78,3 +80,26 @@ and replay/query truth.
 
 odd_glc must not fill the missing proof by porting odd_sdlc T-174 fixtures or
 creating a local parallel controller.
+
+## Closure Evidence
+
+Completed 2026-06-30.
+
+- ABI source ticket:
+  `/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-174-publish-parallel-hello-world-replay-proof.md`.
+- ABI source commit: `abab4c3bc9a78247908c85e77f1f65d1ecdbb336`.
+- Committed ABI T-174 fixture:
+  `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t174-parallel-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-artifact.json`.
+- Committed ABI T-174 manifest:
+  `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t174-parallel-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-manifest.json`.
+- Artifact digest:
+  `sha256:9b6f28d095bc698c579bd1a22ac1990524369a8197fae7e0bc3eafbb36ef175c`.
+- Route event count: 55.
+- Replay event count: 199.
+- odd_glc proof:
+  `proves SCN-GLC-HELLO-WORLD-PARALLEL-JS over the committed ABI T-174 replay artifact`.
+
+The proof verifies the manifest digest, reads ABI replay events, interprets
+parallel frontier/fan-in state as a lifecycle view, preserves ABG refs, and
+does not emit, mint, admit, execute, schedule branches, hold leases, project
+fan-in, fold requirements, residualize, or route continuation locally.

@@ -334,6 +334,45 @@ function admittedEvidence(runtimeEvents) {
   });
 }
 
+function branchFrontierEvents(runtimeEvents) {
+  return runtimeEvents.flatMap((event) => {
+    if (!isRecord(event)) {
+      return [];
+    }
+    if (
+      event.kind !== "branch_lease_acquired" &&
+      event.kind !== "branch_payload_admitted" &&
+      event.kind !== "branch_lease_released" &&
+      event.kind !== "branch_fan_in_projected"
+    ) {
+      return [];
+    }
+    return [event];
+  });
+}
+
+function branchPayloadRows(events) {
+  return Object.freeze(events
+    .filter((event) => event.kind === "branch_payload_admitted")
+    .map((event) => Object.freeze({
+      branchRef: event.branchRef,
+      payloadDigest: event.payloadDigest,
+      evidenceRefs: Object.freeze(Array.isArray(event.evidenceRefs) ? [...event.evidenceRefs] : []),
+      sourceEventRef: eventRefFor(event)
+    })));
+}
+
+function fanInRows(events) {
+  return Object.freeze(events
+    .filter((event) => event.kind === "branch_fan_in_projected")
+    .map((event) => Object.freeze({
+      fanInRef: event.fanInRef,
+      orderedBranchRefs: Object.freeze(Array.isArray(event.orderedBranchRefs) ? [...event.orderedBranchRefs] : []),
+      evidenceRefs: Object.freeze(Array.isArray(event.evidenceRefs) ? [...event.evidenceRefs] : []),
+      sourceEventRef: eventRefFor(event)
+    })));
+}
+
 function actorInvocationViews(runtimeEvents) {
   const byInvocation = new Map();
   for (const event of runtimeEvents) {
@@ -554,6 +593,70 @@ export function interpretEvidenceState(input) {
     ...targetArtifactRefs,
     ...capabilityRefs,
     ...sourceEventRefs
+  ]);
+}
+
+export function interpretParallelFrontierState(input) {
+  if (!isRecord(input)) {
+    return rejected("malformed_input", ["Parallel frontier interpretation requires an input object"]);
+  }
+  const runtimeEvents = Array.isArray(input.runtimeEvents)
+    ? Object.freeze([...input.runtimeEvents])
+    : Object.freeze([]);
+  const lifecycleState = isRecord(input.lifecycleState) ? input.lifecycleState : Object.freeze({});
+  const events = branchFrontierEvents(runtimeEvents);
+  const branchPayloads = branchPayloadRows(events);
+  const fanIns = fanInRows(events);
+  const acquiredBranchRefs = uniqueStrings(events
+    .filter((event) => event.kind === "branch_lease_acquired")
+    .map((event) => event.branchRef));
+  const releasedBranchRefs = uniqueStrings(events
+    .filter((event) => event.kind === "branch_lease_released")
+    .map((event) => event.branchRef));
+  const aggregateStates = Object.freeze(
+    Array.isArray(lifecycleState.aggregateStates)
+      ? lifecycleState.aggregateStates.map((state) => deepFreeze({ ...state }))
+      : []
+  );
+  const requirementGraph = isRecord(lifecycleState.requirementGraph)
+    ? lifecycleState.requirementGraph
+    : null;
+  const readiness =
+    fanIns.length > 0 && branchPayloads.length > 0
+      ? "fan_in_ready"
+      : branchPayloads.length > 0
+        ? "branch_payloads_admitted"
+        : acquiredBranchRefs.length > 0
+          ? "frontier_started"
+          : "no_frontier_truth";
+
+  return accepted({
+    kind: "odd_glc_parallel_frontier_state_view",
+    tenant: TENANT_ID,
+    readiness,
+    branchRefs: uniqueStrings([
+      ...acquiredBranchRefs,
+      ...releasedBranchRefs,
+      ...branchPayloads.map((row) => row.branchRef),
+      ...fanIns.flatMap((row) => row.orderedBranchRefs)
+    ]),
+    acquiredBranchRefs,
+    releasedBranchRefs,
+    branchPayloads,
+    fanIns,
+    fanInRefs: uniqueStrings(fanIns.map((row) => row.fanInRef)),
+    payloadDigests: uniqueStrings(branchPayloads.map((row) => row.payloadDigest)),
+    evidenceRefs: uniqueStrings([
+      ...branchPayloads.flatMap((row) => row.evidenceRefs),
+      ...fanIns.flatMap((row) => row.evidenceRefs)
+    ]),
+    aggregateStates,
+    requirementGraph,
+    sourceEventRefs: uniqueStrings(events.map((event) => eventRefFor(event)))
+  }, [
+    ...events.map((event) => eventRefFor(event)),
+    ...branchPayloads.map((row) => row.payloadDigest),
+    ...fanIns.map((row) => row.fanInRef)
   ]);
 }
 
