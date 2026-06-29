@@ -5,12 +5,12 @@
   "substrate": {
     "productId": "abiogenesis",
     "packageName": "@abiogenesis/typescript-tenant",
-    "packageVersion": "4.1.0-rc.14",
-    "releaseTag": "v4.1.0-rc.14",
-    "sourceCommit": "a0f1f7ca7edf2cd6d4d672c4f008792f8d7ea79c",
-    "snapshotCommit": "4c0c20e",
-    "tarballSha256": "e1d22bb4f2429bd4a035b424ca5283f7325c1b5e88e65019a206da05ccae8892",
-    "productToolchainManifestDigest": "511b73ac883a6aa2caba0eeefe8e59335411bac1258bcaedade0891496496c3a"
+    "packageVersion": "4.1.0-rc.15",
+    "releaseTag": "v4.1.0-rc.15",
+    "sourceCommit": "1af67e4dfe52297d4ba9513ddd6b54829debb2f6",
+    "snapshotCommit": "6c8a799",
+    "tarballSha256": "8313b6a82fb6852ebb52bce70ac84a74df8dce57f866aa236b25602a6cff6242",
+    "productToolchainManifestDigest": "6af75b098d7d1a0996f8558b3a8c1c0952dfdd2254f183976c739d6af9fcc720"
   },
   "publicSurfaces": {
     "gtlRequirements": "./gtl/requirements",
@@ -31,10 +31,10 @@
   },
   "proofScope": {
     "phase": "phase_5_real_route_replay_consumption",
-    "claim": "The tenant is proven against ABIogenesis rc.14 public query facades and a committed digest-pinned T-166 requirements-route replay fixture produced by the T-165 Hello World live proof. odd_glc consumes the artifact as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, or resolve disposition authority locally. RC14 supplies the corrected upstream non-closed replay, multi-requirement graph/refinement, recursive span identity, and executive-observer substrate needed by later odd_glc parity waves."
+    "claim": "The tenant is proven against ABIogenesis rc.15 public query facades and a committed digest-pinned T-166 requirements-route replay fixture produced by the T-165 Hello World live proof. odd_glc consumes the artifact as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, or resolve disposition authority locally. RC15 supplies the corrected upstream non-closed replay, multi-requirement graph/refinement, recursive span identity, and executive-observer substrate needed by later odd_glc parity waves."
   },
   "sourceDocuments": [
-    "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.14/release-snapshot-manifest.json",
+    "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.15/release-snapshot-manifest.json",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/active/T-170-earn-full-odd-glc-abi-substrate-closure.md",
     ".ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",

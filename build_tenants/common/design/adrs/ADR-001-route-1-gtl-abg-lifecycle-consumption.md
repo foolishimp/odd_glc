@@ -20,7 +20,7 @@ Derives from:
   - specification/GOALS.md
   - specification/PRODUCT.md
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
-  - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.14/release-snapshot-manifest.json
+  - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.15/release-snapshot-manifest.json
   - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
 Supersedes: none
 Superseded by: none
@@ -32,7 +32,7 @@ Retained special case: none
 ## Decision
 
 `odd_glc` route-1 shall be a lifecycle binding and read-model design over
-ABIogenesis `4.1.0-rc.14` public GTL/ABG surfaces.
+ABIogenesis `4.1.0-rc.15` public GTL/ABG surfaces.
 
 It shall not create a fixed odd_glc graph, a native `glc.*` graph-function
 catalog, a local runtime, an event stream, admitted-ref minting, evidence
@@ -46,12 +46,12 @@ and read/query interpretation over ABG replay/query truth.
 
 | Substrate | Identity |
 | --- | --- |
-| Product | `@abiogenesis/typescript-tenant@4.1.0-rc.14` |
-| Tag | `v4.1.0-rc.14` |
-| Source commit | `a0f1f7ca7edf2cd6d4d672c4f008792f8d7ea79c` |
-| Snapshot commit | `4c0c20e` |
-| Tarball SHA256 | `e1d22bb4f2429bd4a035b424ca5283f7325c1b5e88e65019a206da05ccae8892` |
-| Install source | `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.14/release-snapshot-manifest.json` |
+| Product | `@abiogenesis/typescript-tenant@4.1.0-rc.15` |
+| Tag | `v4.1.0-rc.15` |
+| Source commit | `1af67e4dfe52297d4ba9513ddd6b54829debb2f6` |
+| Snapshot commit | `6c8a799` |
+| Tarball SHA256 | `8313b6a82fb6852ebb52bce70ac84a74df8dce57f866aa236b25602a6cff6242` |
+| Install source | `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.15/release-snapshot-manifest.json` |
 
 ## No Fixed Graph Rule
 
@@ -180,7 +180,7 @@ when the missing function is generic GTL/ABG substrate.
 ## Consequences
 
 The first build tenant can be priced as a read/query and policy-interpretation
-library over ABIogenesis `4.1.0-rc.14`. It cannot contain runtime authority or
+library over ABIogenesis `4.1.0-rc.15`. It cannot contain runtime authority or
 compatibility ledgers.
 
 Tenant activation is still a separate registry decision. Until that decision,
