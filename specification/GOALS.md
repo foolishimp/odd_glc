@@ -80,6 +80,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 - `T-007`: interpret assurance fold and residual pressure from ABG route replay
   truth; completed for closed-path fold and residual classification, while
   full cyclic re-entry proof remains future work.
+- `T-008`: govern the Hello World scenario ladder across basic CLI,
+  JavaScript tenant/test, Rust CLI, Rust client/server, and parallel
+  JavaScript witnesses; completed.
 
 ## Current Work-Wave Target
 
@@ -94,6 +97,8 @@ This wave closes when the project has:
   release, and operational feedback;
 - a generic lifecycle surface model and first steel-thread scenario that do not
   use `odd_sdlc` as the domain;
+- a Hello World scenario ladder that uses `odd_sdlc` examples only as
+  coverage witnesses for generic lifecycle capabilities;
 - a sourced GTL/ABG substrate readiness gap report for the current ABIogenesis
   build;
 - a generic lifecycle coverage matrix that uses `odd_sdlc` only as a
