@@ -1,0 +1,86 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-process-request-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 26,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted",
+      "requirement_test_relation_admitted",
+      "traversal_span_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft172%2Flive%2Fservice-request-context:sha256:d3ad796f7caa17adb3b39b399521ce131d3f0fe24424672d503682e01c6de1a0",
+      "requirement-event:requirement_evidence_bound:client-exit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:704e87ae6a19be8d3feec8fb810cac69b97b1684075914260e12d772e7830dd6",
+      "requirement-event:requirement_evidence_bound:exit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:597035ead578269dd0d83b7bee0d49bcdd6a2c3fbf0a3cf83a6a595691958ca7",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-client-request.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:c276aee54b0001af8b0a35d64c5f100a7f256299a1a9e1a624cb4da670b2aba1",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-process-request-manifest.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fprocess-request-manifest:sha256:764dffa84fdce64379a166ba4a2ca290b6f7b4433875445aaac5a91cff85d3bd",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fclient-response.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-response-interpretation:sha256:4f759c054324e39698b88a332558c1725a964872786eca9c1f710940fba215b7",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-process-events.jsonl%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:106169e543c141274d3b2db75fb98f9c380a08810d2c4b3d8c309f4935ea1d2a",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-process-started.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:418feff11144c87eb10bafed89ce6c0d2db9ec953d31cf82224d8a80491a9aea",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-stderr.log%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:1ece678239bc9c659af636b431b534fd668cc8740f6c08f2c1755454a80286d9",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-stdout.log%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:873718f564bbcd25500824ca5d8aa162e4975662029332f843602d38d3495779",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fsrc%2Ft172_service_request_live.rs%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-source:sha256:c374dbf6608aedd307b4ed5af77a5a80b2563c5836b3e7ab8f9317632a59222a",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-rustc-compile.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution:sha256:3cd8376239523d87e154787fee86dfd61259b65f01bf767cb7db8948ba1ed91e",
+      "requirement-event:requirement_evidence_bound:interpretation%3A%2F%2Ft172%2Flive%2Fservice-response-accepted%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-response-interpretation:sha256:c21ef33475d8b1e3d93a6e5969dd643a85d61501aea9a4cef87e55858f9e5be9",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2F08303574da91f7f707fc1758711032719d06dd596b97207c3efd7d1c9ee2e89a%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-source:sha256:328099e608663a3bcc96bcb245959c7a14589af61588e08751cbf3258515cfef",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2F6f800176435b4cb05691de9a167806cde6bfef902b2972732718731b905e0668%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-response-interpretation:sha256:4953cb7c86e4c1de61236df4cd7660a2c02ca1fac4bb08518fac63e21fc12ea2",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2Ff38969f54dd40002bde1616d5655cf1e05a1ef6b243b693db6b4dd7d544d95bc%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fprocess-request-manifest:sha256:599f243d451cccfb47e0f55505dea7b37b8dbf3112c6ef21e876fc899388731c",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T172-SERVICE-REQUEST-LIVE%3Asatisfied%3Afile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fsrc%2Ft172_service_request_live.rs%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-source%2Csha256%3A%2F%2F08303574da91f7f707fc1758711032719d06dd596b97207c3efd7d1c9ee2e89a%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-source%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-process-request-manifest.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fprocess-request-manifest%2Csha256%3A%2F%2Ff38969f54dd40002bde1616d5655cf1e05a1ef6b243b693db6b4dd7d544d95bc%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fprocess-request-manifest%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-rustc-compile.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-stdout.log%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-stderr.log%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-process-started.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fservice-process-events.jsonl%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-client-request.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cexit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cclient-exit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-request-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft172_service_process_request_live%2F20260629T140453156Z_pid14978%2Fservice-request-proof%2Fclient-response.json%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-response-interpretation%2Csha256%3A%2F%2F6f800176435b4cb05691de9a167806cde6bfef902b2972732718731b905e0668%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-response-interpretation%2Cinterpretation%3A%2F%2Ft172%2Flive%2Fservice-response-accepted%23requirement-projection%3Dprojection%253A%252F%252Ft172%252Flive%252Fservice-response-interpretation:sha256:99cbe5aead6a171392e0d99a62de8864868e91318418d86d6a7cdb7b8143ff4e",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft172%2Flive%2Fprocess-request-manifest:sha256:7eef33cbec714d4c7e503d845db410ff641b98e15e871368edeed5b0b5c6ce50",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft172%2Flive%2Fservice-request-execution:sha256:2a810df9cba6b0abdf0a9602d2fa49ca23174719ecfaac2a38b9a03d642147f2",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft172%2Flive%2Fservice-response-interpretation:sha256:6a39deb7192c2d04975fd679f3b25bf5bfc226da164f81ea1db2ff0472cc3625",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft172%2Flive%2Fservice-source:sha256:bfd39193e087c981bae50788b32a52507b9062c69404423eff796f07d9b1cf3f",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T172-SERVICE-REQUEST-LIVE%3Aobligation:sha256:d10468bcfa6231c4ade240949e2692b48335b24e08a29a70b5779507568cf181",
+      "requirement-event:requirement_term_admitted:REQ-T172-SERVICE-REQUEST-LIVE:sha256:224ad6ce3f992fc7448f16ec3651233866a782fa6b4557df4b0008a3a9eda18c",
+      "requirement-event:requirement_test_relation_admitted:proof-relation%3A%2F%2Ft172%2Flive%2Fservice-request:sha256:460e331a60f0fb85134a6f339ae18eb32af88e992d77a0b8db28c2605a5054a3",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft172-live%2Fgraph-capture_requirements:sha256:9d449ec66dfea9989f633781e53cf5e036bed3560ac4c6bf861bcfc815b8d667",
+      "requirement-lifecycle-disposition:sha256:7b9abfd13a0519a28b86bd1461481d257d109766a938c35e949ac421b14d3f6d"
+    ],
+    "sha256": "sha256:0f817cd642667bf042fcb408884fbac5130eb83650ec4a5da9a166b105369c87"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "closedRouteResidualPolicy": "closed proof has no requirement_residual_projected event; disposition residualRefs is empty",
+    "genericProofEvidenceRoleMap": {
+      "asset": "service_source_artifact",
+      "semantic_interpretation": "service_response_interpretation",
+      "test_execution": "service_process_and_client_request_execution",
+      "test_source": "process_request_manifest"
+    },
+    "interpretationProjectionRef": "projection://t172/live/service-response-interpretation",
+    "liveAgent": "claude",
+    "processTruthRefs": {
+      "actorEventCount": 30,
+      "clientTraceResultPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-client-request.trace/result.json",
+      "processEventCount": 30,
+      "responsePath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-request-proof/client-response.json",
+      "serviceStderrPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-request-proof/service-stderr.log",
+      "serviceStdoutPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-request-proof/service-stdout.log"
+    },
+    "proofCommand": "npm run test:t172:live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978",
+    "proofTicket": "T-172",
+    "requirementSourceDigest": "sha256:43b59d6d79235c5e7b73a48b12b3c7dd82bbc8a482c601d62ad0599f2c372a5d",
+    "requirementSourceRef": "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-request-requirement.txt",
+    "rustcPath": "/Users/jim/.cargo/bin/rustc",
+    "rustcVersion": "rustc 1.82.0 (f6e511eec 2024-10-15)",
+    "serviceExecutionProjectionRef": "projection://t172/live/service-request-execution",
+    "serviceManifestProjectionRef": "projection://t172/live/process-request-manifest",
+    "sourceRunKind": "live_fp_service_process_request_route",
+    "subjectProjectionRef": "projection://t172/live/service-source"
+  },
+  "ticket": "T-172"
+}

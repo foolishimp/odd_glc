@@ -38,6 +38,16 @@
       "routeEventCount": 20,
       "replayEventCount": 82
     },
+    "t172ServiceProcessRequest": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-172",
+      "sourceRunId": "20260629T140453156Z_pid14978",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t172-service-process-request/20260629T140453156Z_pid14978/service-process-request-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t172-service-process-request/20260629T140453156Z_pid14978/service-process-request-replay-manifest.json",
+      "artifactSha256": "sha256:0f817cd642667bf042fcb408884fbac5130eb83650ec4a5da9a166b105369c87",
+      "routeEventCount": 26,
+      "replayEventCount": 97
+    },
     "t173GenericProofEvidence": {
       "sourceProduct": "abiogenesis",
       "sourceTicket": "T-173",
@@ -57,6 +67,7 @@
     "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-170-earn-full-odd-glc-abi-substrate-closure.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-171-prove-generic-non-default-command-execution-capability.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-172-prove-generic-process-request-execution-capability.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-173-publish-generic-proof-evidence-replay-proof.md",
     ".ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",
