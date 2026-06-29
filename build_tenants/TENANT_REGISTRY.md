@@ -6,7 +6,7 @@ The first active build tenant is:
 
 | Tenant | Status | Scope |
 | --- | --- | --- |
-| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over ABIogenesis `4.1.0-rc.15` public GTL/ABG surfaces. |
+| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over ABIogenesis `4.1.0-rc.16` public GTL/ABG surfaces. |
 
 The tenant was activated after requirements and ratified design defined:
 
@@ -19,7 +19,7 @@ The tenant was activated after requirements and ratified design defined:
 ## Realization Line
 
 The active tenant is a TypeScript-compatible read/query and policy
-interpretation library over ABIogenesis `4.1.0-rc.15`.
+interpretation library over ABIogenesis `4.1.0-rc.16`.
 
 The tenant descends from
 [ADR-001 route-1 GTL/ABG lifecycle consumption](common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
