@@ -20,6 +20,7 @@ Derives from:
   - specification/GOALS.md
   - specification/PRODUCT.md
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
+  - .ai-workspace/comments/codex/20260629T030909Z_ABG_RC13_install_reference.md
   - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
 Supersedes: none
 Superseded by: none
@@ -31,7 +32,7 @@ Retained special case: none
 ## Decision
 
 `odd_glc` route-1 shall be a lifecycle binding and read-model design over
-ABIogenesis `4.1.0-rc.12` public GTL/ABG surfaces.
+ABIogenesis `4.1.0-rc.13` public GTL/ABG surfaces.
 
 It shall not create a fixed odd_glc graph, a native `glc.*` graph-function
 catalog, a local runtime, an event stream, admitted-ref minting, evidence
@@ -45,11 +46,12 @@ and read/query interpretation over ABG replay/query truth.
 
 | Substrate | Identity |
 | --- | --- |
-| Product | `@abiogenesis/typescript-tenant@4.1.0-rc.12` |
-| Tag | `v4.1.0-rc.12` |
-| Snapshot commit | `b4d4d9803ded88aff125c6ef8881e97989959fdf` |
-| Tarball SHA256 | `8212f394366337c373556f445068dd2728c2f9761e3f64d801b04124d40e7de5` |
-| Readiness source | `.ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md` |
+| Product | `@abiogenesis/typescript-tenant@4.1.0-rc.13` |
+| Tag | `v4.1.0-rc.13` |
+| Source commit | `cc34cf53ceee8d22fba723f47946523eb4d405f8` |
+| Snapshot commit | `d7e044f` |
+| Tarball SHA256 | `3794567f58ee690e78f4538379198e4c0957f7e69e4f2b95a91885462f2a697a` |
+| Install source | `.ai-workspace/comments/codex/20260629T030909Z_ABG_RC13_install_reference.md` |
 
 ## No Fixed Graph Rule
 
@@ -178,7 +180,7 @@ when the missing function is generic GTL/ABG substrate.
 ## Consequences
 
 The first build tenant can be priced as a read/query and policy-interpretation
-library over ABIogenesis `4.1.0-rc.12`. It cannot contain runtime authority or
+library over ABIogenesis `4.1.0-rc.13`. It cannot contain runtime authority or
 compatibility ledgers.
 
 Tenant activation is still a separate registry decision. Until that decision,

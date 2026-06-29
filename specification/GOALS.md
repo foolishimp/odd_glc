@@ -4,7 +4,7 @@
 **Date**: 2026-06-29
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`,
-`.ai-workspace/comments/codex/20260628T152507Z_ABG_RC12_install_reference.md`
+`.ai-workspace/comments/codex/20260629T030909Z_ABG_RC13_install_reference.md`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
