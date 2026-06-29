@@ -25,7 +25,7 @@ a deletion map for local mechanisms that odd_glc shall not recreate.
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Single artifact execution proof | [SCN-GLC-HELLO-WORLD-CLI-BASIC](SCN-GLC-HELLO-WORLD-CLI-BASIC.md) | T-160 JavaScript lite / T-165 ABI route proof | Local script execution and local evidence admission. | Any lifecycle may need one produced artifact proven by one command. | GTL requirement declarations; ABG actor/operator execution, payload admission, evidence binding, fold, residual, disposition. | TargetArtifactAsset, CapabilityAsset, EvidenceBindingAsset, AssuranceFoldViewAsset. | Software CLI command policy. | Replay/query shows admitted command evidence and closed requirement fold. | Ready in ABI rc16; odd_glc-only proof ticket T-009. |
 | Artifact plus test evidence | [SCN-GLC-HELLO-WORLD-JS-TENANT-TEST](SCN-GLC-HELLO-WORLD-JS-TENANT-TEST.md) | T-132 JavaScript single tenant | SDLC-local tenant materialization ledger and test proof record. | Any lifecycle may need product artifact plus independent proof artifact. | GTL asset/test declarations; ABG materialization, execution, evidence admission, requirement evidence binding. | InstructionSetAsset and EvidenceBindingAsset distinguish product evidence from proof evidence. | Software test-file policy. | Replay/query binds both source artifact and test execution evidence to active requirements. | Ready in ABI rc17 through T-173 generic proof-evidence artifact; odd_glc proof ticket T-010. |
-| Non-JS toolchain execution proof | [SCN-GLC-HELLO-WORLD-RUST-CLI](SCN-GLC-HELLO-WORLD-RUST-CLI.md) | T-133 Rust minimum / T-160 Rust lite | Product-local runtime/toolchain assumptions and command proof logs. | Any lifecycle may need a domain-specific capability with cwd/env/toolchain contract. | GTL capability declaration; ABG actor/operator command invocation and evidence admission. | CapabilityAsset labels the command contract; EvidenceBindingAsset interprets admitted execution proof. | Rust/Cargo software policy. | Toolchain execution evidence is admitted and folded without odd_glc shelling out. | Ready in ABI rc17 through T-171 non-default command execution artifact; odd_glc proof ticket pending. |
+| Non-JS toolchain execution proof | [SCN-GLC-HELLO-WORLD-RUST-CLI](SCN-GLC-HELLO-WORLD-RUST-CLI.md) | T-133 Rust minimum / T-160 Rust lite | Product-local runtime/toolchain assumptions and command proof logs. | Any lifecycle may need a domain-specific capability with cwd/env/toolchain contract. | GTL capability declaration; ABG actor/operator command invocation and evidence admission. | CapabilityAsset labels the command contract; EvidenceBindingAsset interprets admitted execution proof. | Rust/Cargo software policy. | Toolchain execution evidence is admitted and folded without odd_glc shelling out. | Ready in ABI rc17 through T-171 non-default command execution artifact; odd_glc proof ticket T-011. |
 | Client/server process proof | [SCN-GLC-HELLO-WORLD-RUST-SERVICE](SCN-GLC-HELLO-WORLD-RUST-SERVICE.md) | T-164 Rust hello service lite | Local service supervisor, port lifecycle, and HTTP proof admission. | Any lifecycle may need long-running capability proof plus client observation. | GTL service capability declaration; ABG actor/operator process start, env binding, client request, evidence admission, continuation/block truth. | CapabilityAsset labels process and client contracts; ResidualPressureViewAsset interprets start/probe failures. | Service runtime policy. | Replay/query shows server start, client request, response evidence, and disposition. | Ready in ABI rc17 through T-172 process/request execution artifact; odd_glc proof ticket pending. |
 | Parallel branch/fan-in proof | [SCN-GLC-HELLO-WORLD-PARALLEL-JS](SCN-GLC-HELLO-WORLD-PARALLEL-JS.md) | T-174 parallel JavaScript Hello World | SDLC-local parallel materialization frontier, branch leases, and fan-in controller. | Any lifecycle at scale may decompose work into independent branches and fan-in. | GTL requirement graph/refinement declarations; ABG saga/frontier, branch execution policy, runtime events, fold/residual, span identity. | Lifecycle views interpret branch readiness, fan-in, proof, and residual without owning parallel control. | Software module/test branch policy. | Replay/query proves independent branch evidence, fan-in, and final composed behavior. | Partially ready in ABI rc16; frontier/span substrate exists, but a parallel Hello World execution-evidence artifact is still required. |
 
@@ -45,17 +45,17 @@ Current execution order:
    through T-010 over the digest-pinned ABI rc17 T-173 proof artifact carrying
    product evidence, independent test-source evidence, and test-execution
    evidence.
-3. Prove
-   [SCN-GLC-HELLO-WORLD-PARALLEL-JS](SCN-GLC-HELLO-WORLD-PARALLEL-JS.md)
-   after ABI publishes a real parallel Hello World replay artifact with emitted
-   frontier, branch, execution-evidence, and fan-in truth.
-4. Prove [SCN-GLC-HELLO-WORLD-RUST-CLI](SCN-GLC-HELLO-WORLD-RUST-CLI.md)
+3. Prove [SCN-GLC-HELLO-WORLD-RUST-CLI](SCN-GLC-HELLO-WORLD-RUST-CLI.md)
    after the JavaScript tenant/test rung, over the digest-pinned ABI rc17 T-171
    proof artifact.
-5. Defer
+4. Defer
    [SCN-GLC-HELLO-WORLD-RUST-SERVICE](SCN-GLC-HELLO-WORLD-RUST-SERVICE.md)
    until after the Rust CLI rung, then prove it over the digest-pinned ABI rc17
    T-172 proof artifact.
+5. Prove
+   [SCN-GLC-HELLO-WORLD-PARALLEL-JS](SCN-GLC-HELLO-WORLD-PARALLEL-JS.md)
+   after ABI publishes a real parallel Hello World replay artifact with emitted
+   frontier, branch, execution-evidence, and fan-in truth.
 
 ## Standing Boundary
 

@@ -1,0 +1,74 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t171_non_js_toolchain_execution_live/20260629T134455708Z_pid97032/non-js-toolchain-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 20,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted",
+      "requirement_test_relation_admitted",
+      "traversal_span_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft171%2Flive%2Fnon-js-toolchain-context:sha256:d99526c67e39e8236d5ddd81df21e153ca80ef405c2b33f1ef3a4ef1b3636ad6",
+      "requirement-event:requirement_evidence_bound:exit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-execution:sha256:f705067236a5237084ebd382c5006d7efae4534b55fa73aa8eb92cc623d7cc15",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-cli-proof%2Fsrc%2Fmain.rs%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-source:sha256:9d1655ce94076e37f2b60c8c7690e3d70ff155b763e479553d279a695e3859b4",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-cli-run.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-interpretation:sha256:799894fcae65776d12a87034e3604ac7686aca4e63b5194a9c2dd9f7a0de9ca8",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-cli-run.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-execution:sha256:86b756477b8a4a15e8bf4924abf05e00572f2a49457df6ca8f10b733737d210d",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-toolchain-command-manifest.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-command-manifest:sha256:2fc331d582a4fff10695e2c12f24f22d4d7331fc7eaa37775b94c21167dc3e83",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frustc-compile.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-execution:sha256:3a163f3244c8304c30f11152b182e14ce71ec6cd8b86beb1abe6c7c2e9b65131",
+      "requirement-event:requirement_evidence_bound:interpretation%3A%2F%2Ft171%2Flive%2Frust-cli-exit-zero%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-interpretation:sha256:bd7a4d2f63bf9dbb9f39f223d0efed7d60865cbad8d9baea1681f4439df76ad4",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2Fc8e0583694bb1e0188dbe28fe0d65ac1130723c55f968b6262b906c147f72549%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-source:sha256:e8f706c4e0ca41fbb81217981c4191d35274a521499a00281f9f1b7e17f18a9e",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2Ffcff43d598f0ff423bd5145b131dadde826a36a49b86213b1c9b30aa5c767fcc%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-command-manifest:sha256:a3cc158e70dc4c8a86f1a67e8e2ff137166d910e8891157628a26f96c27cf559",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T171-RUST-CLI-LIVE%3Asatisfied%3Afile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-cli-proof%2Fsrc%2Fmain.rs%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-source%2Csha256%3A%2F%2Fc8e0583694bb1e0188dbe28fe0d65ac1130723c55f968b6262b906c147f72549%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-source%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-toolchain-command-manifest.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-command-manifest%2Csha256%3A%2F%2Ffcff43d598f0ff423bd5145b131dadde826a36a49b86213b1c9b30aa5c767fcc%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-command-manifest%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frustc-compile.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-cli-run.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-execution%2Cexit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Ftoolchain-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft171_non_js_toolchain_execution_live%2F20260629T134455708Z_pid97032%2Frust-cli-run.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-interpretation%2Cinterpretation%3A%2F%2Ft171%2Flive%2Frust-cli-exit-zero%23requirement-projection%3Dprojection%253A%252F%252Ft171%252Flive%252Frust-cli-interpretation:sha256:a5bcaba90dd4b1d0eb91724da6362ebbcdab2ec6244e917ef88dd6b0a4bcec1d",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft171%2Flive%2Frust-cli-interpretation:sha256:ad5b26a9d941fadb572f9aee579c907c7e395197ec09341b19ccfd6fe5a1b2fe",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft171%2Flive%2Frust-cli-source:sha256:7d68cdf8c8efc6b1d643cbae69b1a3465bdb138af3a0c0156a97eefe0ab2145d",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft171%2Flive%2Ftoolchain-command-manifest:sha256:6eb6febfb089fc9bd400af5e813bca6188756072e9575d6fd0614af49a0c9e31",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft171%2Flive%2Ftoolchain-execution:sha256:cc691df8047398429a48915556a890f1b0ea9cf1a974167d845c2234f558cb54",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T171-RUST-CLI-LIVE%3Aobligation:sha256:0bec043bbd1059aee4695fe7c9cfa72041b1ba1e4bfa25a754b1e6edeae20b17",
+      "requirement-event:requirement_term_admitted:REQ-T171-RUST-CLI-LIVE:sha256:9ce0b2bd444f1223c1142fa2180a87922a8cac356bd39b3b45f58fbb5138f7cc",
+      "requirement-event:requirement_test_relation_admitted:proof-relation%3A%2F%2Ft171%2Flive%2Fnon-js-toolchain:sha256:7f0de59bc91242a8ea455a820500f57acf6e216babd155117ee596b4702c0724",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft171-live%2Fgraph-capture_requirements:sha256:d86116583d3b3fe7f1f851e901911a7d2c44367a2eecf68223182e8f964173bf",
+      "requirement-lifecycle-disposition:sha256:263490fd9d43d71b42fc93ae49d08264e2000b003c4eed7ba9eda5111dadf65a"
+    ],
+    "sha256": "sha256:30ffdeda4968bcf49ffacad785ac70ab78474420b07ab4ca5b2779f3d9315235"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "cargoPath": "/Users/jim/.cargo/bin/cargo",
+    "cargoVersion": "cargo 1.82.0 (8f40fc59f 2024-08-21)",
+    "closedRouteResidualPolicy": "closed proof has no requirement_residual_projected event; disposition residualRefs is empty",
+    "commandManifestProjectionRef": "projection://t171/live/toolchain-command-manifest",
+    "genericProofEvidenceRoleMap": {
+      "asset": "rust_cli_source_artifact",
+      "semantic_interpretation": "rust_cli_execution_interpretation",
+      "test_execution": "rustc_compile_and_cli_run_execution",
+      "test_source": "toolchain_command_manifest"
+    },
+    "interpretationProjectionRef": "projection://t171/live/rust-cli-interpretation",
+    "liveAgent": "claude",
+    "proofCommand": "npm run test:t171:live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t171_non_js_toolchain_execution_live/20260629T134455708Z_pid97032",
+    "proofTicket": "T-171",
+    "requirementSourceDigest": "sha256:2d50d6b7781559ced44e53285e171b7fbce0a0251c40b005ab6c264fa26282ef",
+    "requirementSourceRef": "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t171_non_js_toolchain_execution_live/20260629T134455708Z_pid97032/rust-cli-requirement.txt",
+    "rustcPath": "/Users/jim/.cargo/bin/rustc",
+    "rustcVersion": "rustc 1.82.0 (f6e511eec 2024-10-15)",
+    "sourceRunKind": "live_fp_non_js_toolchain_route",
+    "subjectProjectionRef": "projection://t171/live/rust-cli-source",
+    "toolchainExecutionProjectionRef": "projection://t171/live/toolchain-execution"
+  },
+  "ticket": "T-171"
+}

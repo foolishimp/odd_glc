@@ -93,6 +93,10 @@ Goals define the current bounded work-wave for `odd_glc`.
 - `T-010`: prove the JavaScript tenant/test Hello World ladder rung over the
   digest-pinned ABI rc17 T-173 generic proof-evidence replay fixture without
   hand-built route events or odd_glc runtime authority; completed.
+- `T-011`: prove the Rust CLI Hello World ladder rung over the digest-pinned
+  ABI rc17 T-171 generic non-default command execution replay fixture without
+  hand-built route events, odd_glc runtime authority, or odd_glc-owned Rust
+  toolchain policy; completed.
 
 ## Current Work-Wave Target
 
@@ -136,6 +140,9 @@ This wave closes when the project has:
 - a completed JavaScript tenant/test Hello World ladder-rung proof over the
   committed digest-pinned ABI rc17 T-173 generic proof-evidence fixture of
   record;
+- a completed Rust CLI Hello World ladder-rung proof over the committed
+  digest-pinned ABI rc17 T-171 non-default command execution fixture of
+  record, without turning Rust/rustc proof bindings into odd_glc policy;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond route-1 read/query, real route replay consumption, read-only
   artifact/evidence interpretation, and read-only assurance/residual

@@ -23,8 +23,10 @@ const tenantRoot = path.resolve(dirname, "..");
 const repoRoot = path.resolve(tenantRoot, "../../..");
 const appsRoot = path.resolve(repoRoot, "..");
 const BASIC_CLI_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-CLI-BASIC";
+const RUST_CLI_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-RUST-CLI";
 const JS_TENANT_TEST_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST";
 const T165_REQUIREMENT_ID = "REQ-T165-HELLO-WORLD-LIVE";
+const T171_REQUIREMENT_ID = "REQ-T171-RUST-CLI-LIVE";
 const T173_REQUIREMENT_ID = "REQ-T173-GENERIC-PROOF-EVIDENCE-LIVE";
 const defaultAbgRoot = path.join(
   appsRoot,
@@ -33,6 +35,10 @@ const defaultAbgRoot = path.join(
 const defaultT166ArtifactPath = path.join(
   tenantRoot,
   "test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json"
+);
+const defaultT171ArtifactPath = path.join(
+  tenantRoot,
+  "test/fixtures/abiogenesis-t171-non-js-toolchain-execution/20260629T134455708Z_pid97032/non-js-toolchain-replay-artifact.json"
 );
 const defaultT173ArtifactPath = path.join(
   tenantRoot,
@@ -82,6 +88,44 @@ async function readT166RouteReplayArtifact() {
   assert.equal(
     manifest.artifact.sha256,
     ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t166RouteReplay.artifactSha256
+  );
+  return Object.freeze({
+    artifactPath,
+    manifestPath,
+    artifact,
+    manifest
+  });
+}
+
+function t171RouteReplayArtifactPath() {
+  if (process.env.ODD_GLC_T171_ROUTE_REPLAY_ARTIFACT !== undefined) {
+    return process.env.ODD_GLC_T171_ROUTE_REPLAY_ARTIFACT;
+  }
+  assert.equal(
+    existsSync(defaultT171ArtifactPath),
+    true,
+    `Missing committed ABIogenesis T-171 route replay fixture at ${defaultT171ArtifactPath}`
+  );
+  return defaultT171ArtifactPath;
+}
+
+async function readT171RouteReplayArtifact() {
+  const artifactPath = t171RouteReplayArtifactPath();
+  const manifestPath = path.join(
+    path.dirname(artifactPath),
+    "non-js-toolchain-replay-manifest.json"
+  );
+  assert.equal(existsSync(manifestPath), true, `Missing ABIogenesis T-171 manifest at ${manifestPath}`);
+  const rawArtifact = await readFile(artifactPath, "utf8");
+  const artifact = JSON.parse(rawArtifact);
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  assert.equal(
+    manifest.artifact.sha256,
+    `sha256:${createHash("sha256").update(rawArtifact, "utf8").digest("hex")}`
+  );
+  assert.equal(
+    manifest.artifact.sha256,
+    ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t171NonJsToolchainExecution.artifactSha256
   );
   return Object.freeze({
     artifactPath,
@@ -403,6 +447,114 @@ test("proves SCN-GLC-HELLO-WORLD-CLI-BASIC over the committed ABI replay artifac
   assertSameMembers(assurance.value.residualRefs, expectedResidualRefs, "ABI residual refs must be preserved");
   assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
 
+  assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
+  assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
+});
+
+test("proves SCN-GLC-HELLO-WORLD-RUST-CLI over the committed ABI T-171 replay artifact", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const { artifact, manifest } = await readT171RouteReplayArtifact();
+
+  assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true, RUST_CLI_SCENARIO_ID);
+  assert.equal(manifest.artifact.routeEventCount, 20, RUST_CLI_SCENARIO_ID);
+  assert.equal(
+    artifact.lifecycleState.requirementQuery.requirementIds.includes(T171_REQUIREMENT_ID),
+    true,
+    RUST_CLI_SCENARIO_ID
+  );
+
+  const routeBindings = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_evidence_bound"
+  );
+  const routeFolds = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_fold_projected"
+  );
+  const routeDispositions = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_lifecycle_disposition"
+  );
+  const admittedEvidenceEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "evidence_admitted"
+  );
+
+  const roleProjectionRefs = Object.freeze({
+    asset: {
+      projectionRef: "projection://t171/live/rust-cli-source",
+      count: 2
+    },
+    test_source: {
+      projectionRef: "projection://t171/live/toolchain-command-manifest",
+      count: 2
+    },
+    test_execution: {
+      projectionRef: "projection://t171/live/toolchain-execution",
+      count: 3
+    },
+    semantic_interpretation: {
+      projectionRef: "projection://t171/live/rust-cli-interpretation",
+      count: 2
+    }
+  });
+
+  assert.equal(routeBindings.length, 9, `${RUST_CLI_SCENARIO_ID} requires ABI evidence bindings`);
+  for (const [role, expected] of Object.entries(roleProjectionRefs)) {
+    const roleBindings = routeBindings.filter((event) =>
+      event.requirementPayload.binding.evidenceRole === role
+    );
+    assert.equal(roleBindings.length, expected.count, `${role} binding count must match ABI replay truth`);
+    assert.equal(
+      roleBindings.every((event) =>
+        event.requirementPayload.binding.projectionRef === expected.projectionRef &&
+        event.requirementPayload.binding.bindingStatus === "admitted"
+      ),
+      true,
+      `${role} bindings must preserve admitted ABI projection refs`
+    );
+  }
+  assert.equal(
+    routeBindings.some((event) => event.requirementPayload.binding.evidenceRef.startsWith("exit-status://0")),
+    true,
+    `${RUST_CLI_SCENARIO_ID} must preserve admitted command outcome evidence`
+  );
+  assert.equal(routeFolds.length, 1, `${RUST_CLI_SCENARIO_ID} requires one ABI fold projection`);
+  assert.equal(routeDispositions.length, 1, `${RUST_CLI_SCENARIO_ID} requires one ABI disposition`);
+
+  const expectedBindingRefs = routeBindings.map((event) => event.routePayloadRef);
+  const expectedFoldRefs = routeFolds.map((event) => event.requirementPayload.fold.foldRef);
+  const expectedDispositionRefs = routeDispositions.map((event) => event.requirementPayload.dispositionRef);
+  const expectedEvidenceRefs = admittedEvidenceEvents.map((event) => event.evidenceRef);
+
+  const lifecycle = interpretLifecycleState({
+    abgRequirements,
+    query: artifact.lifecycleState.requirementQuery,
+    dispositionRefs: artifact.lifecycleState.dispositionRefs,
+    runtimeEvents: artifact.replayEvents
+  });
+  const evidence = interpretEvidenceState({
+    runtimeEvents: artifact.replayEvents
+  });
+  const assurance = interpretAssuranceState({
+    runtimeEvents: artifact.replayEvents
+  });
+
+  assert.equal(lifecycle.status, "accepted", RUST_CLI_SCENARIO_ID);
+  assert.equal(evidence.status, "accepted", RUST_CLI_SCENARIO_ID);
+  assert.equal(assurance.status, "accepted", RUST_CLI_SCENARIO_ID);
+
+  assert.equal(lifecycle.value.lifecycleDisposition, "release_readiness_candidate");
+  assert.equal(lifecycle.value.requirementIds.includes(T171_REQUIREMENT_ID), true);
+  assertSameMembers(lifecycle.value.dispositionRefs, expectedDispositionRefs, "ABI disposition refs must be preserved");
+  assertSameMembers(
+    evidence.value.requirementEvidenceBindings.map((item) => item.routePayloadRef),
+    expectedBindingRefs,
+    "ABI evidence binding route refs must be preserved"
+  );
+  assertSameMembers(
+    evidence.value.admittedEvidence.map((item) => item.evidenceRef),
+    expectedEvidenceRefs,
+    "ABI admitted evidence refs must be preserved"
+  );
+  assertSameMembers(assurance.value.foldRefs, expectedFoldRefs, "ABI assurance fold refs must be preserved");
+  assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
   assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
   assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
 });
