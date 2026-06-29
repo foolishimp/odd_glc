@@ -5,7 +5,7 @@
 **Date**: 2026-06-28
 **Derives from**: [GOALS.md](../GOALS.md), [INTENT.md](../INTENT.md),
 [PRODUCT.md](../PRODUCT.md),
-[T-001](../../.ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
+[T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
 [REQ-GLC-BOUNDARY-AUTHORITY](REQ-GLC-BOUNDARY-AUTHORITY.md),
 `/Users/jim/src/apps/abiogenesis/specification/requirements/abg/REQ-R-ABG3-REQUIREMENTS-ALGEBRA.md`,
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`

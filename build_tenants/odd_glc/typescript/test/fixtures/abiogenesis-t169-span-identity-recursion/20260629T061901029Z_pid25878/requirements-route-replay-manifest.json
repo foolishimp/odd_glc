@@ -1,0 +1,66 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t169_requirement_span_identity_recursion_live/20260629T061901029Z_pid25878/requirements-route-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "traversal_span_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_residual_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 22,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "traversal_span_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_residual_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft169%2Flive-span-lineage:sha256:8d1fff5acf9c8ea88928bcad7cbc81ba5c570dc2eec2aa90e776c141464603e9",
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft169%2Flive-span-lineage:sha256:8d1fff5acf9c8ea88928bcad7cbc81ba5c570dc2eec2aa90e776c141464603e9",
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft169%2Flive-span-lineage:sha256:8d1fff5acf9c8ea88928bcad7cbc81ba5c570dc2eec2aa90e776c141464603e9",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fchild-frame-fulfilled%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:2720e5bde82ce712d0485d2096dcd6e66e64b79e57163b7b2700a510aac623ee",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fchild-frame-fulfilled%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:2720e5bde82ce712d0485d2096dcd6e66e64b79e57163b7b2700a510aac623ee",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fchild-frame-fulfilled%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:2720e5bde82ce712d0485d2096dcd6e66e64b79e57163b7b2700a510aac623ee",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fchild-terminal-fulfilled%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:4e6f0b9c3a9f6fe1c0f69b97b9d543cd956729b5c4e58b4c552767892bcbb6a1",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fchild-terminal-fulfilled%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:4e6f0b9c3a9f6fe1c0f69b97b9d543cd956729b5c4e58b4c552767892bcbb6a1",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fchild-terminal-fulfilled%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:4e6f0b9c3a9f6fe1c0f69b97b9d543cd956729b5c4e58b4c552767892bcbb6a1",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fparent-requirement-reentry%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:a05db382a1b3273e78c3801302346220bd4d8ee844c39185e953161c6093b8c5",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fparent-requirement-reentry%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:a05db382a1b3273e78c3801302346220bd4d8ee844c39185e953161c6093b8c5",
+      "requirement-event:requirement_evidence_bound:assessment%3A%2F%2Ft169%2Flive%2Fparent-requirement-reentry%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:a05db382a1b3273e78c3801302346220bd4d8ee844c39185e953161c6093b8c5",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft169%2Flive%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:a86e42487e5ab5725bad5b44be87d0be2606dd915edd388f3ff3c9096b9cd629",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft169%2Flive%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:a86e42487e5ab5725bad5b44be87d0be2606dd915edd388f3ff3c9096b9cd629",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft169%2Flive%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:a86e42487e5ab5725bad5b44be87d0be2606dd915edd388f3ff3c9096b9cd629",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft169%2Flive%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:bc9a2343b84946826f778f7cd15d7e154d3835268e83933a9e9de4e27b6e59a0",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T169-LIVE-SPAN-LINEAGE%3Apartial%3Aproof%3A%2F%2Ft169%2Flive%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T169-LIVE-SPAN-LINEAGE%253Aobligation:sha256:9aaed6531e031c17e1a8cf6d802faa627196013a81d187344fe36b1c1ac8017c",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T169-LIVE-SPAN-LINEAGE%3Aobligation:sha256:1978924e5f4c45f2b604f83cabd2f9a5b5a7f78e4e57063cb338372d77e7617e",
+      "requirement-event:requirement_residual_projected:requirement-residual%3AREQ-T169-LIVE-SPAN-LINEAGE%3Apartial:sha256:002e73faf05a898e3d8952dd32bcd41f389a649075690a1ae1704fb54759d65b",
+      "requirement-event:requirement_term_admitted:REQ-T169-LIVE-SPAN-LINEAGE:sha256:49c1c1a19f88cd439b3ad1d0477e5eba32c9c148669c46b003d125ffce286be5",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft169%2Flive%2Fparent-child-foldback:sha256:c9855e24c05abd881594240dd674eb2b135ebc80e17c4acd33f31c87552095a2",
+      "requirement-lifecycle-disposition:sha256:f12c123eced708cfa8495e329dd1754afd3133b68145bed4570297f0a7c2cf46"
+    ],
+    "sha256": "sha256:666d9414e6a717ff3f4cb4fe8917a6a0bcdd43af6fb2dcb3c6074e2d26cc030f"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "graphSpanFoldbackRef": "graph-span-foldback:{\"basisId\":\"execution_basis:{\\\"moduleName\\\":\\\"m03_iteration_module\\\",\\\"startIntent\\\":{\\\"scope\\\":{\\\"kind\\\":\\\"workspace\\\",\\\"workspaceRoot\\\":\\\"/workspace/m03-iteration\\\",\\\"moduleName\\\":\\\"m03_iteration_module\\\"},\\\"target\\\":{\\\"kind\\\":\\\"graph_function\\\",\\\"handle\\\":\\\"capture_requirements;synthesize_design;implement_code\\\"},\\\"until\\\":\\\"converged\\\"},\\\"runtimeIdentity\\\":{\\\"workerId\\\":\\\"worker://m03-iteration\\\",\\\"backendId\\\":\\\"backend://node\\\",\\\"buildId\\\":\\\"build://typescript\\\",\\\"resolvedRuntimeRef\\\":\\\"runtime://typescript/node\\\"},\\\"resolvedPolicy\\\":{\\\"resolvedPolicyBundleRef\\\":\\\"policy://m03-iteration\\\",\\\"defaultRegime\\\":\\\"F_P\\\",\\\"dispatchRef\\\":\\\"dispatch://t169/live-span-lineage\\\",\\\"approvalSubjectRef\\\":null},\\\"runId\\\":\\\"run://t169/live-span-lineage\\\",\\\"workKey\\\":\\\"wk://m03-iteration\\\",\\\"frameId\\\":null,\\\"frameLineageId\\\":null}\",\"terminalVectorIndex\":2,\"generation\":0,\"assessmentRefs\":[\"assessment://t169/live/child-frame-fulfilled\",\"assessment://t169/live/child-terminal-fulfilled\",\"assessment://t169/live/parent-requirement-reentry\"],\"edgeFoldbackRefs\":[],\"causingEdgeFoldbackRefs\":[]}",
+    "graphSpanReEntryPoint": "requirements",
+    "liveAgent": "claude",
+    "proofCommand": "npm run test:t169:live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t169_requirement_span_identity_recursion_live/20260629T061901029Z_pid25878",
+    "proofTicket": "T-169",
+    "requirementId": "REQ-T169-LIVE-SPAN-LINEAGE",
+    "requirementSourceDigest": "sha256:09e192d3dc081dd5ec14b24b0956b9d82464c7d4ab2e42eaed1227a411e79acc",
+    "requirementSourceRef": "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t169_requirement_span_identity_recursion_live/20260629T061901029Z_pid25878/span-lineage-requirement.txt",
+    "sourceRunKind": "live_fp_requirement_span_lineage_recursion"
+  },
+  "ticket": "T-169"
+}

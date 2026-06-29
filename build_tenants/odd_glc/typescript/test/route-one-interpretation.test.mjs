@@ -393,7 +393,7 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(
     ABIOGENESIS_SUBSTRATE_PROVENANCE.proofScope.phase,
-    "phase_8_hello_world_ladder_parallel_consumption"
+    "phase_12_generic_lifecycle_interpretation"
   );
 });
 

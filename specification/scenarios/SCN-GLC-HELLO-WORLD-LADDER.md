@@ -3,7 +3,7 @@
 **Status**: Active
 **Date**: 2026-06-29
 **Derives from**: [GOALS.md](../GOALS.md), [PRODUCT.md](../PRODUCT.md),
-[T-008](../../.ai-workspace/tickets/active/T-008-govern-hello-world-scenario-ladder.md)
+[T-008](../../.ai-workspace/tickets/completed/T-008-govern-hello-world-scenario-ladder.md)
 
 ---
 

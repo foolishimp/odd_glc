@@ -5,7 +5,7 @@
 **Date**: 2026-06-28
 **Derives from**: [GOALS.md](../GOALS.md), [INTENT.md](../INTENT.md),
 [PRODUCT.md](../PRODUCT.md),
-[T-001](../../.ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
+[T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
 [REQ-GLC-BOUNDARY-AUTHORITY](REQ-GLC-BOUNDARY-AUTHORITY.md),
 [REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION](REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md),
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`
@@ -27,7 +27,7 @@ store, fold, residual system, continuation controller, or re-entry substrate.
 This requirement applies to:
 
 - the first Hello World program slice;
-- future `odd_sdlc` clean-start work;
+- future downstream specialization work;
 - any domain program that claims to specialize `odd_glc`.
 
 Downstream programs may add domain-specific assets, policies, proof
@@ -51,7 +51,7 @@ specialization. They do not move GTL/ABG system assets or runtime truth into
 
 **REQ-GLC-DOWNSTREAM-SPECIALIZATION-007**: When required GTL/ABG capability is missing, placeholder, test-only, unwired, unpinned, forgeable, or disconnected from the required runtime/query path, the downstream program shall block, defer, or reprice. It shall not claim lifecycle closure through `odd_glc`.
 
-**REQ-GLC-DOWNSTREAM-SPECIALIZATION-008**: Future `odd_sdlc` clean-start work shall specialize `odd_glc` through GTL/ABG carriers and admitted ABG runtime truth. Existing odd_sdlc phase names, local ledgers, retry loops, closure rules, and software-domain policies shall not become generic `odd_glc` law.
+**REQ-GLC-DOWNSTREAM-SPECIALIZATION-008**: Future downstream specialization work shall specialize `odd_glc` through GTL/ABG carriers and admitted ABG runtime truth. `odd_glc` defines extension points, data-only `F_P`/`F_H` policy slots, and forbidden-mechanism law; downstream products or plugins supply domain semantics. Existing odd_sdlc source code, `Sdlc*` carriers, phase names, local ledgers, retry loops, closure rules, and software-domain policies shall not become generic `odd_glc` law or required downstream implementation shape.
 
 **REQ-GLC-DOWNSTREAM-SPECIALIZATION-009**: The Hello World slice shall demonstrate the downstream-program rule by treating the program artifact as a downstream binding over `TargetArtifactAsset`, while graph structure, execution, admission, evidence, fold, residual, and re-entry remain GTL/ABG-owned substrate concerns.
 

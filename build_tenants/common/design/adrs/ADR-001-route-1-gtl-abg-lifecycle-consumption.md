@@ -22,6 +22,11 @@ Derives from:
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
   - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json
   - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
+  - .ai-workspace/tickets/completed/T-014-prove-non-closed-lifecycle-interpretation.md
+  - .ai-workspace/tickets/completed/T-015-prove-requirement-graph-and-recursive-span-interpretation.md
+  - .ai-workspace/tickets/completed/T-016-prove-executive-pressure-reprice-interpretation.md
+  - .ai-workspace/tickets/completed/T-017-define-release-readiness-interpretation.md
+  - .ai-workspace/tickets/completed/T-018-define-generic-specialization-seam.md
 Supersedes: none
 Superseded by: none
 Retained special case: none
@@ -135,18 +140,59 @@ activation. The interface shall stay within these families:
 
 ## Downstream Specialization Seam
 
-Future odd_sdlc work may specialize this design by adding software-delivery
-assets, policies, and proof expectations at the downstream layer.
+A future software-delivery product may specialize this design by adding
+domain-specific assets, policies, and proof expectations at the downstream
+layer. Current `odd_sdlc` workflows may witness coverage, but they do not
+authorize copying or reproducing `odd_sdlc` code, carriers, ledgers,
+controllers, phase flow, or policy.
 
-| Seam | odd_glc contract | Future odd_sdlc specialization may add | Must not add |
+| Seam | odd_glc contract | Future software-delivery specialization may add | Must not add |
 | --- | --- | --- | --- |
 | lifecycle assets | Generic lifecycle surface labels and read/query interpretation. | Software requirement, design, source, test, release, deployment, and runtime-return asset roles. | Replacement lifecycle carriers that shadow GTL/ABG carriers. |
 | policy declarations | F_P prompt/rubric surfaces and F_H owner/risk/reprice policies. | Software-delivery acceptance policy and release risk policy. | Direct evaluator invocation or hidden owner-decision controller. |
 | proof interpretation | ABG replay/query truth interpreted as lifecycle closure, residual, or disposition. | Software-specific evidence expectations and query overlays. | SDLC-local evidence admission, closure ledger, residual ledger, retry loop, or release checklist as authority. |
 | graph and runtime substrate | GTL declarations plus ABG traversal, actor/operator, admission, fold, residual, continuation, and re-entry truth. | Domain graph declarations and artifact-specific capabilities. | Native graph-function catalog or local runtime substrate. |
 
-This seam is intentionally thin. It proves that future odd_sdlc parity is a
-downstream specialization target, not the generic odd_glc product model.
+This seam is intentionally thin. It proves that software-delivery workflow
+coverage is downstream specialization work, not the generic odd_glc product
+model and not an odd_sdlc reproduction plan.
+
+## Generic Lifecycle Read Models
+
+The rc17 substrate adds replay artifacts for the generic lifecycle surfaces
+needed beyond the original closed Hello World thread:
+
+| ABI proof artifact | odd_glc interpretation | Non-authority rule |
+| --- | --- | --- |
+| T-167 non-closed route replay | residual pressure, `continuation_available`, and non-closed lifecycle readiness. | odd_glc does not retry, route re-entry, or select a disposition. |
+| T-168 requirement graph/refinement replay | parent/child requirement graph and aggregate residual labels. | odd_glc does not derive requirement graphs or infer parent closure. |
+| T-169 span identity/recursion replay | recursive frame, zoom, foldback, and re-entry lifecycle labels. | odd_glc does not open frames, mint span identity, or fold back spans. |
+| T-160 executive observer replay | executive pressure and lawful STDO reprice signal labels. | odd_glc does not invoke F_P, mutate STDO surfaces, or route continuation. |
+| T-174 parallel Hello World replay | dependency frontier, branch evidence, and fan-in readiness labels. | odd_glc does not schedule branches or project fan-in. |
+
+These read models are not a fixed graph. They are generic lifecycle views over
+ABI replay/query truth. A downstream product may bind different GTL graphs,
+assets, and domain policies to the same interpretation slots.
+
+## Release/Readiness Interpretation
+
+`odd_glc` may expose release/readiness as a lifecycle label only when it is
+derived from admitted ABI lifecycle disposition, evidence, fold, residual, and
+query truth.
+
+The first release/readiness view is intentionally conservative:
+
+- `ready_candidate` means ABI truth shows a closed lifecycle disposition,
+  satisfied assurance, and admitted/bound/executed evidence;
+- `not_ready_residual` means ABI truth carries continuation, re-entry,
+  partial assurance, or residual pressure;
+- `blocked` means ABI truth carries blocked lifecycle or assurance state;
+- `not_ready` is the fallback for incomplete or absent proof truth.
+
+The view always reports `releaseAuthority: not_claimed`. It does not create a
+release cut, install, deployment, runtime return, operational incident loop, or
+domain release checklist. Those surfaces require later requirement/design work
+or downstream specialization.
 
 ## Proof Obligations
 
@@ -167,12 +213,12 @@ Route-1 tenant implementation shall prove:
 
 This ADR does not close:
 
-- requirement graph derivation;
+- requirement graph derivation owned by GTL/ABG;
 - goal refinement;
-- multi-requirement decomposition;
-- recursive any-scale lifecycle nesting;
+- product-local graph derivation, span identity, frame opening, foldback, or
+  recursive runtime control;
 - full release cut, deployment, install, or operational-return loops;
-- future odd_sdlc specialization.
+- future software-delivery specialization contracts.
 
 Those require later requirement/design work or upstream ABIogenesis tickets
 when the missing function is generic GTL/ABG substrate.

@@ -1,0 +1,11 @@
+{
+  "artifact": {
+    "disposition": "nonlocal_reentry",
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t160_recursive_executive_observer_live/20260629T061901030Z_pid25879/executive-observer-artifact.json",
+    "pressureEventCount": 1,
+    "sha256": "sha256:b0afcb13fa12db98d59347b3532346f810da4f7d96b1eea9ebcb74375cfbce4f"
+  },
+  "artifactVersion": 2,
+  "kind": "abg_executive_observer_live_artifact_manifest",
+  "ticket": "T-160"
+}

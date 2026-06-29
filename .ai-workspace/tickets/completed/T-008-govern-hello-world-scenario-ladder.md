@@ -6,8 +6,9 @@ ticket_category: scenario_ladder_governance
 status: completed
 goal: >-
   Define the odd_glc Hello World scenario ladder as a set of steel-thread
-  witnesses for generic lifecycle capabilities. The ladder shall port scenario
-  contracts from odd_sdlc only as witness evidence and deletion targets. It
+  witnesses for generic lifecycle capabilities. The ladder shall derive
+  scenario coverage from odd_sdlc only as witness evidence and deletion
+  targets. It
   shall not import odd_sdlc phase flow, local ledgers, local runners, local
   evidence admission, local retry control, or software-domain policy as
   generic odd_glc law.
@@ -73,7 +74,7 @@ required_work:
 proof_commands:
   - rg -n "SCN-GLC-HELLO-WORLD" specification/scenarios
   - rg -n "odd_sdlc witness|Old mechanism to retire|GTL/ABG substrate|odd_glc interpretation" specification/scenarios
-  - rg -n "shall not.*local|ABG-owned|GTL/ABG-owned|does not authorize" specification/scenarios .ai-workspace/tickets/active/T-008-govern-hello-world-scenario-ladder.md
+  - rg -n "shall not.*local|ABG-owned|GTL/ABG-owned|does not authorize" specification/scenarios .ai-workspace/tickets/completed/T-008-govern-hello-world-scenario-ladder.md
   - git diff --check
 ---
 
@@ -131,7 +132,7 @@ Proof:
 ```bash
 rg -n "SCN-GLC-HELLO-WORLD" specification/scenarios
 rg -n "odd_sdlc witness|Old mechanism to retire|GTL/ABG substrate|odd_glc interpretation" specification/scenarios
-rg -n "shall not.*local|ABG-owned|GTL/ABG-owned|does not authorize" specification/scenarios .ai-workspace/tickets/active/T-008-govern-hello-world-scenario-ladder.md
+rg -n "shall not.*local|ABG-owned|GTL/ABG-owned|does not authorize" specification/scenarios .ai-workspace/tickets/completed/T-008-govern-hello-world-scenario-ladder.md
 git diff --check
 ```
 

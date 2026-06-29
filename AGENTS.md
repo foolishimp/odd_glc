@@ -46,8 +46,10 @@ Use the upstream shared methodology source at:
 - Do not implement a product-local requirement compiler.
 - Do not implement a second traversal runtime, retry loop, closure ledger, or
   continuation controller.
-- Do not move `odd_sdlc` software-domain policy into `odd_glc` unless it is
-  generalized and ratified as life-cycle framework law.
+- Do not copy, port, or reproduce `odd_sdlc` code, carriers, phase flow, local
+  ledgers, retry behavior, closure rules, or software-domain policy into
+  `odd_glc`. Current `odd_sdlc` may be used only as workflow-witness and
+  deletion-target evidence.
 - Do not move `odd_glc` policy into ABG core.
 - Do not claim implementation closure before the relevant requirement and
   design surfaces exist.

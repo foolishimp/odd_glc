@@ -25,7 +25,7 @@ source_documents:
   - specification/requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md
   - specification/requirements/REQ-GLC-READ-QUERY-PROOF.md
   - build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md
-  - .ai-workspace/tickets/active/T-005-prove-odd-glc-consumes-real-t165-route-replay.md
+  - .ai-workspace/tickets/completed/T-005-prove-odd-glc-consumes-real-t165-route-replay.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-166-publish-requirements-route-replay-proof-artifact.md
 affected_boundary:
   realization:

@@ -29,7 +29,9 @@ The project must deliver:
 - explicit `F_H` decision surfaces for human-governed lifecycle choices;
 - proof surfaces for lifecycle closure, residual pressure, release readiness,
   and re-entry;
-- downstream specialization contracts for products such as `odd_sdlc`;
+- downstream specialization contracts for domain products; current `odd_sdlc`
+  workflows may serve only as witness evidence for software-delivery
+  specialization;
 - a build-tenant realization only after the GTL/ABG binding and proof shape is
   ratified.
 

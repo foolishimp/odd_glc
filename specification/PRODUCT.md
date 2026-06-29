@@ -136,10 +136,11 @@ The downstream program must still use GTL/ABG for graph structure, graph-vector
 traversal, graph functions, execution, admission, evidence, fold, residual,
 continuation, replay, and re-entry truth.
 
-Future `odd_sdlc` work is one downstream specialization. It may add
-software-domain assets and policy. It shall not push current `odd_sdlc` local
-ledgers, retry loops, phase flow, closure rules, or software-domain policy back
-into generic `odd_glc` law.
+A future software-delivery downstream product may use current `odd_sdlc`
+workflows only as coverage-witness and deletion-target evidence. It shall not
+copy or reproduce `odd_sdlc` source code, `Sdlc*` carriers, local ledgers,
+phase flow, closure rules, retry behavior, or software-domain policy as
+`odd_glc` law or as a required downstream implementation shape.
 
 ## Current Non-Closure
 

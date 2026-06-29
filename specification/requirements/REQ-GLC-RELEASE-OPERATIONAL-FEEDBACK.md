@@ -7,7 +7,7 @@
 [REQ-GLC-BOUNDARY-AUTHORITY](REQ-GLC-BOUNDARY-AUTHORITY.md),
 [REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS](REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md),
 [REQ-GLC-READ-QUERY-PROOF](REQ-GLC-READ-QUERY-PROOF.md),
-[T-001](../../.ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md)
+[T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md)
 **Related families**:
 [REQ-GLC-DOWNSTREAM-SPECIALIZATION](REQ-GLC-DOWNSTREAM-SPECIALIZATION.md)
 
@@ -51,7 +51,7 @@ operational loop.
 
 **REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK-007**: Downstream programs may specialize release, packaging, deployment, runtime return, operations, and incident policy. Those policies shall remain downstream surfaces bound to GTL/ABG truth and shall not become generic odd_glc lifecycle law.
 
-**REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK-008**: Future odd_sdlc specialization may add software release assets, deployment evidence, runtime-return evidence, and maintenance loops, but it shall not restore SDLC-local release ledgers, retry controllers, closure stores, or evidence admission as substitutes for GTL/ABG.
+**REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK-008**: Future downstream specialization may add domain-specific release assets, deployment evidence, runtime-return evidence, and maintenance loops, but those semantics are downstream policy. `odd_glc` shall not author software release semantics or restore SDLC-local release ledgers, retry controllers, closure stores, or evidence admission as substitutes for GTL/ABG.
 
 **REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK-009**: Ratified design shall classify release/readiness and feedback slots by upstream readiness. A slot that depends on missing, placeholder, test-only, unwired, or unpinned GTL/ABG substrate shall be deferred or blocked.
 

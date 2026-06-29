@@ -5,7 +5,7 @@
 **Date**: 2026-06-28
 **Derives from**: [GOALS.md](../GOALS.md), [INTENT.md](../INTENT.md),
 [PRODUCT.md](../PRODUCT.md),
-[T-001](../../.ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
+[T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`
 **Boundary reference**:
 `/Users/jim/src/apps/odd_sdlc/specification/PRODUCT.md`
@@ -109,6 +109,6 @@ assets by specialization when the lifecycle scope requires them.
 
 **REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-015**: A steel-thread trace shall be closeable only when ABG-admitted evidence proves the declared target behavior for the admitted target artifact under the active requirement projection and capability contract.
 
-**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-016**: Future `odd_sdlc` specialization may add software-domain assets such as requirements, design, code, tests, release evidence, deployment evidence, and runtime return, but those additions shall not replace or duplicate the minimum `odd_glc` lifecycle asset truth.
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-016**: Future downstream specialization may add domain-specific asset roles, evidence expectations, and policy bindings, but those additions shall not replace or duplicate the minimum `odd_glc` lifecycle asset truth. `odd_glc` shall not author software-domain requirement, design, source, test, build, release, deployment, or runtime-return semantics as generic lifecycle law.
 
 **REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-017**: `odd_glc` shall not mint a native carrier when the same role is already carried by GTL/ABG. A proposed native carrier requires requirement evidence that no GTL/ABG carrier exists and that the surface is not a generic ODD system asset.

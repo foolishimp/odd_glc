@@ -4,7 +4,7 @@
 **Date**: 2026-06-28
 **Derives from**: [GOALS.md](../GOALS.md), [PRODUCT.md](../PRODUCT.md),
 [REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS](../requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md),
-[T-001](../../.ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md)
+[T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md)
 
 ---
 

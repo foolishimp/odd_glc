@@ -42,21 +42,21 @@ export interface AbiogenesisSubstrateProvenance {
   readonly publicSurfaces: {
     readonly gtlRequirements: "./gtl/requirements";
     readonly abgRequirements: "./abg/requirements";
+    readonly abgExecutive?: string;
   };
-  readonly proofArtifacts: {
-    readonly t166RouteReplay: {
-      readonly sourceProduct: "abiogenesis";
-      readonly sourceTicket: "T-166";
-      readonly sourceRunId: string;
-      readonly fixturePath: string;
-      readonly fixtureManifestPath: string;
-      readonly artifactSha256: string;
-      readonly routeEventCount: number;
-      readonly replayEventCount: number;
-    };
-  };
+  readonly proofArtifacts: Readonly<Record<string, {
+    readonly sourceProduct: "abiogenesis";
+    readonly sourceTicket: string;
+    readonly sourceRunId: string;
+    readonly fixturePath: string;
+    readonly fixtureManifestPath: string;
+    readonly artifactSha256: string;
+    readonly routeEventCount?: number;
+    readonly pressureEventCount?: number;
+    readonly replayEventCount: number;
+  }>>;
   readonly proofScope: {
-    readonly phase: "phase_5_real_route_replay_consumption";
+    readonly phase: string;
     readonly claim: string;
   };
   readonly sourceDocuments: readonly string[];
@@ -134,6 +134,116 @@ export interface OddGlcAssuranceStateView {
   readonly runtimeEventCount: number;
 }
 
+export interface OddGlcParallelFrontierStateView {
+  readonly kind: "odd_glc_parallel_frontier_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly readiness:
+    | "no_frontier_truth"
+    | "frontier_started"
+    | "branch_payloads_admitted"
+    | "fan_in_ready";
+  readonly branchRefs: readonly string[];
+  readonly acquiredBranchRefs: readonly string[];
+  readonly releasedBranchRefs: readonly string[];
+  readonly branchPayloads: readonly unknown[];
+  readonly fanIns: readonly unknown[];
+  readonly fanInRefs: readonly string[];
+  readonly payloadDigests: readonly string[];
+  readonly evidenceRefs: readonly string[];
+  readonly aggregateStates: readonly unknown[];
+  readonly requirementGraph: unknown;
+  readonly sourceEventRefs: readonly string[];
+}
+
+export interface OddGlcRequirementGraphStateView {
+  readonly kind: "odd_glc_requirement_graph_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly graphDisposition:
+    | "no_requirement_graph"
+    | "requirement_graph_projected"
+    | "aggregate_residual_pressure"
+    | "aggregate_satisfied";
+  readonly graphRef: string | null;
+  readonly requirementIds: readonly string[];
+  readonly rootRequirementIds: readonly string[];
+  readonly leafRequirementIds: readonly string[];
+  readonly relationRefs: readonly string[];
+  readonly parentChildPairs: readonly unknown[];
+  readonly aggregateStates: readonly unknown[];
+  readonly residualRefs: readonly string[];
+  readonly terms: readonly unknown[];
+  readonly relations: readonly unknown[];
+  readonly sourceRefs: readonly string[];
+  readonly sourceEventRefs: readonly string[];
+  readonly abgRequirementGraph: unknown;
+}
+
+export interface OddGlcRecursiveSpanStateView {
+  readonly kind: "odd_glc_recursive_span_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly readiness:
+    | "no_span_lineage_truth"
+    | "single_frame_span_projected"
+    | "span_lineage_projected"
+    | "recursive_span_ready";
+  readonly spanLineageRefs: readonly string[];
+  readonly spanIds: readonly string[];
+  readonly frameRefs: readonly string[];
+  readonly zoomRefs: readonly string[];
+  readonly foldbackRefs: readonly string[];
+  readonly aliasRefs: readonly string[];
+  readonly graphVectorRefs: readonly string[];
+  readonly graphSpanEventKinds: readonly string[];
+  readonly runtimeSpanEventKinds: readonly string[];
+  readonly lineage: readonly unknown[];
+  readonly graphSpanReplay: readonly unknown[];
+  readonly runtimeSpanEvents: readonly unknown[];
+  readonly sourceEventRefs: readonly string[];
+}
+
+export interface OddGlcExecutivePressureStateView {
+  readonly kind: "odd_glc_executive_pressure_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly pressureDisposition:
+    | "no_pressure"
+    | "pressure_observed"
+    | "local_repair_available"
+    | "reprice_required"
+    | "blocked"
+    | "close_candidate";
+  readonly pressureFactRefs: readonly string[];
+  readonly observationRefs: readonly string[];
+  readonly requirementIds: readonly string[];
+  readonly residualPressureRefs: readonly string[];
+  readonly continuationRefs: readonly string[];
+  readonly evidenceRefs: readonly string[];
+  readonly diagnosticRefs: readonly string[];
+  readonly spanRefs: readonly string[];
+  readonly dispositions: readonly string[];
+  readonly closeDispositions: readonly string[];
+  readonly attenuation: readonly string[];
+  readonly pressureFacts: readonly unknown[];
+  readonly sourceEventRefs: readonly string[];
+}
+
+export interface OddGlcReleaseReadinessStateView {
+  readonly kind: "odd_glc_release_readiness_state_view";
+  readonly tenant: "build_tenants/odd_glc/typescript";
+  readonly readiness:
+    | "ready_candidate"
+    | "not_ready_residual"
+    | "blocked"
+    | "not_ready";
+  readonly lifecycleDisposition: string;
+  readonly assuranceDisposition: string;
+  readonly evidenceDisposition: string;
+  readonly residualRefs: readonly string[];
+  readonly dispositionRefs: readonly string[];
+  readonly evidenceRefs: readonly string[];
+  readonly releaseAuthority: "not_claimed";
+  readonly sourceEventRefs: readonly string[];
+}
+
 export declare const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS: readonly string[];
 export declare const FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES: readonly string[];
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];
@@ -170,6 +280,32 @@ export declare function interpretLifecycleState(input: {
 export declare function interpretEvidenceState(input: {
   readonly runtimeEvents?: readonly unknown[];
 }): OddGlcResult<OddGlcEvidenceStateView>;
+
+export declare function interpretParallelFrontierState(input: {
+  readonly runtimeEvents?: readonly unknown[];
+  readonly lifecycleState?: unknown;
+}): OddGlcResult<OddGlcParallelFrontierStateView>;
+
+export declare function interpretRequirementGraphState(input: {
+  readonly lifecycleState?: unknown;
+  readonly runtimeEvents?: readonly unknown[];
+}): OddGlcResult<OddGlcRequirementGraphStateView>;
+
+export declare function interpretRecursiveSpanState(input: {
+  readonly lifecycleState?: unknown;
+  readonly runtimeEvents?: readonly unknown[];
+}): OddGlcResult<OddGlcRecursiveSpanStateView>;
+
+export declare function interpretExecutivePressureState(input: {
+  readonly runtimeEvents?: readonly unknown[];
+  readonly pressureEvents?: readonly unknown[];
+}): OddGlcResult<OddGlcExecutivePressureStateView>;
+
+export declare function interpretReleaseReadinessState(input: {
+  readonly lifecycleStateView?: unknown;
+  readonly assuranceStateView?: unknown;
+  readonly evidenceStateView?: unknown;
+}): OddGlcResult<OddGlcReleaseReadinessStateView>;
 
 export declare function interpretAssuranceState(input: {
   readonly runtimeEvents?: readonly unknown[];

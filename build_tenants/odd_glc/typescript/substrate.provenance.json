@@ -69,11 +69,51 @@
       "artifactSha256": "sha256:9b6f28d095bc698c579bd1a22ac1990524369a8197fae7e0bc3eafbb36ef175c",
       "routeEventCount": 55,
       "replayEventCount": 199
+    },
+    "t167NonClosedRoute": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-167",
+      "sourceRunId": "20260628T192010906Z_pid82713",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t167-non-closed-route/20260628T192010906Z_pid82713/requirements-route-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t167-non-closed-route/20260628T192010906Z_pid82713/requirements-route-replay-manifest.json",
+      "artifactSha256": "sha256:de29305cf46ed0fca3d8d2661b62d24cb8a0f88b4af32c5252b82d8ee62f5df5",
+      "routeEventCount": 46,
+      "replayEventCount": 163
+    },
+    "t168RequirementGraphRefinement": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-168",
+      "sourceRunId": "20260629T062234082Z_pid35410",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t168-requirement-graph-refinement/20260629T062234082Z_pid35410/requirements-route-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t168-requirement-graph-refinement/20260629T062234082Z_pid35410/requirements-route-replay-manifest.json",
+      "artifactSha256": "sha256:f4d548c81af75b084555c669c739dba1c89a7e68aefca64642670851b37644c1",
+      "routeEventCount": 16,
+      "replayEventCount": 48
+    },
+    "t169SpanIdentityRecursion": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-169",
+      "sourceRunId": "20260629T061901029Z_pid25878",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t169-span-identity-recursion/20260629T061901029Z_pid25878/requirements-route-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t169-span-identity-recursion/20260629T061901029Z_pid25878/requirements-route-replay-manifest.json",
+      "artifactSha256": "sha256:666d9414e6a717ff3f4cb4fe8917a6a0bcdd43af6fb2dcb3c6074e2d26cc030f",
+      "routeEventCount": 22,
+      "replayEventCount": 69
+    },
+    "t160ExecutiveObserver": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-160",
+      "sourceRunId": "20260629T061901030Z_pid25879",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t160-executive-observer/20260629T061901030Z_pid25879/executive-observer-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t160-executive-observer/20260629T061901030Z_pid25879/executive-observer-manifest.json",
+      "artifactSha256": "sha256:b0afcb13fa12db98d59347b3532346f810da4f7d96b1eea9ebcb74375cfbce4f",
+      "pressureEventCount": 1,
+      "replayEventCount": 30
     }
   },
   "proofScope": {
-    "phase": "phase_8_hello_world_ladder_parallel_consumption",
-    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures, plus the ABI T-174 parallel Hello World proof artifact produced over rc17-compatible frontier and requirements-route surfaces. odd_glc consumes those artifacts as read-only ABG truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, or resolve disposition authority locally. RC17 keeps the rc16 recursive requirements substrate and adds the generic proof-evidence, non-default command execution, and process/request execution mechanics needed by the earlier Hello World ladder rungs; T-174 supplies the parallel branch/fan-in fixture of record."
+    "phase": "phase_12_generic_lifecycle_interpretation",
+    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures, including T-167 non-closed route truth, T-168 requirement graph projection, T-169 span-lineage recursion truth, T-160 executive pressure facts, and the T-166/T-171/T-172/T-173/T-174 Hello World ladder artifacts. odd_glc consumes those artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
   },
   "sourceDocuments": [
     "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json",
@@ -82,9 +122,13 @@
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-172-prove-generic-process-request-execution-capability.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-173-publish-generic-proof-evidence-replay-proof.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-174-publish-parallel-hello-world-replay-proof.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-167-publish-non-closed-requirements-route-replay-artifact.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-168-ratify-gtl-requirement-graph-and-abg-refinement-route.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-169-ratify-requirement-span-identity-across-recursion.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-160-declare-abg-recursive-executive-observer-graph-for-obligation-pressure.md",
     ".ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",
-    ".ai-workspace/tickets/active/T-005-prove-odd-glc-consumes-real-t165-route-replay.md",
+    ".ai-workspace/tickets/completed/T-005-prove-odd-glc-consumes-real-t165-route-replay.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-166-publish-requirements-route-replay-proof-artifact.md"
   ]
 }

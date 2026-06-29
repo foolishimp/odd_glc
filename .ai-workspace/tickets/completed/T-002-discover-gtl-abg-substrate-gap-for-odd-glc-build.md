@@ -25,7 +25,7 @@ source_documents:
   - specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md
   - specification/requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
-  - .ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md
+  - .ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md
   - /Users/jim/src/apps/abiogenesis/specification/requirements/gtl/REQ-L-GTL3-REQUIREMENTS-ALGEBRA.md
   - /Users/jim/src/apps/abiogenesis/specification/requirements/abg/REQ-R-ABG3-REQUIREMENTS-ALGEBRA.md
   - /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/code/src/gtl/m01/contracts/requirements_algebra.ts
@@ -133,7 +133,7 @@ proof_commands:
   - rg -n "routeContextConstraint|buildEdgeRequirementEnvironment|projectRequirements|projectMaterializationTargets|projectExecutionSchedules|bindRequirementEvidence|foldRequirementEvidence|residualizeRequirementFolds|classifyRequirementAttenuation|projectAssuranceCase|constructDestinationTopology" /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript
   - rg -n "foldRequirementEvidence\\(|bindRequirementEvidence\\(|residualizeRequirementFolds\\(|classifyRequirementAttenuation\\(" /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/code/src /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env
   - rg -n "process_actor|actor/operator|payload admission|RequirementEvidenceBinding|DestinationTopology|continuation|re-entry|reentry|release|block" /Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/code/src/abg/m03
-  - rg -n "ready|missing|placeholder|test_only|unwired|unpinned" specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md .ai-workspace/tickets/active/T-002-discover-gtl-abg-substrate-gap-for-odd-glc-build.md
+  - rg -n "ready|missing|placeholder|test_only|unwired|unpinned" specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md .ai-workspace/tickets/completed/T-002-discover-gtl-abg-substrate-gap-for-odd-glc-build.md
   - test -f .ai-workspace/comments/codex/T-002_gtl_abg_substrate_gap_report.md
   - test -f .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
   - git diff --check
@@ -226,11 +226,12 @@ odd_glc route-1 design consumption.
 
 The refresh does not close every coverage wave. Requirement graph derivation,
 goal refinement, multi-requirement decomposition, recursive any-scale lifecycle
-composition, release interpretation, and future odd_sdlc specialization remain
-deferred, unwired, or design-pending as recorded in the refresh. odd_glc shall
-not fill those gaps with local requirement compilers, event streams, admitted
-ref minting, evidence admission, folds, residual ledgers, re-entry controllers,
-or odd_sdlc compatibility ledgers.
+composition, release interpretation, and future downstream specialization
+remain deferred, unwired, or design-pending as recorded in the refresh.
+odd_glc shall not fill those gaps with local requirement compilers, event
+streams, admitted ref minting, evidence admission, folds, residual ledgers,
+re-entry controllers, odd_sdlc compatibility ledgers, or software-domain
+semantics.
 
 ## Acceptance Checklist
 

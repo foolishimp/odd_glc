@@ -1,0 +1,62 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t168_requirement_graph_refinement_live/20260629T062234082Z_pid35410/requirements-route-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_relation_admitted",
+      "traversal_span_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_residual_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 16,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_relation_admitted",
+      "traversal_span_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_residual_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft168%2Flive-refinement:sha256:f9720503a74e25811dbebb6d3bb5ae7e37637b9df37c28d839d0d3ea9a76ce1f",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft168%2Flive%2Frequirements_ready%2FREQ-T168-LIVE-CHILD-PROGRAM%23requirement-projection%3Dprojection%253AREQ-T168-LIVE-CHILD-PROGRAM%253Aobligation:sha256:af6ab489f2c9ed57711a045501111d48617ddef3434225efa12d109c93d7b5cd",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft168%2Flive%2Frequirements_ready%2FREQ-T168-LIVE-CHILD-PROOF%23requirement-projection%3Dprojection%253AREQ-T168-LIVE-CHILD-PROOF%253Aobligation:sha256:dc49d001b02c813a0bf7956935a1ae5459c2d970c6555ee0f2e0ac959cf0f243",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T168-LIVE-CHILD-PROGRAM%3Apartial%3A:sha256:b1e74c0c84bede44b5f093f078b8bba32d3f8cd632df1c64ca6f2e70b3f7bf5c",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T168-LIVE-CHILD-PROOF%3Apartial%3A:sha256:80f41d06beea471475797ab73512c2fbccf63cda7217e97792dab498f4533116",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T168-LIVE-CHILD-PROGRAM%3Aobligation:sha256:0593f9029a4ef61b123548f2f84a968a4f8ff66e62382d3208629b04c6369c9d",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T168-LIVE-CHILD-PROOF%3Aobligation:sha256:4ab68dcf27b6907a6305fa9af47bf5f8d0551fd21eebf679e27c81ec7ff553f5",
+      "requirement-event:requirement_relation_admitted:relation%3A%2F%2Ft168%2Flive-parent-to-program:sha256:0f4c6d0f35bed7d212999b99e1748dca4e49a42538ae44976f867b2e41a00fbd",
+      "requirement-event:requirement_relation_admitted:relation%3A%2F%2Ft168%2Flive-parent-to-proof:sha256:5ad0c5353540baaf6aa17f417a879a9333c4f355ee5bebb24480982087fe6e31",
+      "requirement-event:requirement_residual_projected:requirement-residual%3AREQ-T168-LIVE-CHILD-PROGRAM%3Apartial:sha256:fb186635e66761265ae7fbdfd9233064f1cdc1589f7dde8c258297788a524776",
+      "requirement-event:requirement_residual_projected:requirement-residual%3AREQ-T168-LIVE-CHILD-PROOF%3Apartial:sha256:28490aa51d6a3d8f27cb67232105eccb97369de76b25a68b953f43aae02b32dc",
+      "requirement-event:requirement_term_admitted:REQ-T168-LIVE-CHILD-PROGRAM:sha256:80b644c7deda0aa8af7c0144b96a6869dcd46f8db8dd7f91adb3bca40d304688",
+      "requirement-event:requirement_term_admitted:REQ-T168-LIVE-CHILD-PROOF:sha256:7ab986ec51154c00fe267a53b8ee3dd9025c9e97cb19efce5a496c19aa3eefa8",
+      "requirement-event:requirement_term_admitted:REQ-T168-LIVE-PARENT:sha256:50d7434a33d20ba15e7de98ece44521cfd0c41817275a40c897b5cf5b2d7107d",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft168-live%2Fgraph-capture_requirements:sha256:69ba89f2958bd366164a0d6276e01529d0f45e5190144fa77b3d625d088edb68",
+      "requirement-lifecycle-disposition:sha256:e0b8679ef582f8b35edbc61ba98a6815e54808399a1c2b175804056939a24fce"
+    ],
+    "sha256": "sha256:f4d548c81af75b084555c669c739dba1c89a7e68aefca64642670851b37644c1"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "childRequirementIds": [
+      "REQ-T168-LIVE-CHILD-PROGRAM",
+      "REQ-T168-LIVE-CHILD-PROOF"
+    ],
+    "liveAgent": "claude",
+    "parentRequirementId": "REQ-T168-LIVE-PARENT",
+    "proofCommand": "npm run test:t168:live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t168_requirement_graph_refinement_live/20260629T062234082Z_pid35410",
+    "proofTicket": "T-168",
+    "sourceRunKind": "live_fp_requirement_graph_refinement"
+  },
+  "ticket": "T-168"
+}

@@ -53,8 +53,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 - sequence implementation through readiness verification, route-1 design,
   build-tenant ratification, Hello World steel-thread consumption, software
   artifact construction, execution/evidence proof, requirement fold and
-  residual, continuation/re-entry, ticket/gap/reprice, release/proof, and full
-  `odd_sdlc` specialization coverage;
+  residual, continuation/re-entry, ticket/gap/reprice, release/proof, and
+  generic software-delivery coverage witnessed by `odd_sdlc` workflows only as
+  evidence and deletion targets;
 - defer build-tenant implementation until requirements and design identify the
   first lawful realization line;
 - avoid importing `odd_sdlc` software-domain policy, phase-flow assumptions,
@@ -63,7 +64,13 @@ Goals define the current bounded work-wave for `odd_glc`.
   stream, maintain replay authority, mint admitted refs, admit evidence, fold
   requirements, project residuals, or invoke F_P workers directly.
 
-## Active Tickets
+## Ticket Status
+
+Active tickets:
+
+None.
+
+Completed tickets:
 
 - `T-001`: govern the first `odd_glc` requirements and graph-design surfaces
   for a generic lifecycle substrate whose first steel thread is Hello World and
@@ -107,6 +114,52 @@ Goals define the current bounded work-wave for `odd_glc`.
   digest-pinned ABI T-174 branch/frontier/fan-in replay artifact without
   hand-built route events, odd_glc scheduler authority, or odd_glc-owned
   fan-in policy; completed.
+- `T-014`: prove non-closed lifecycle interpretation over ABI T-167
+  residual/continuation replay truth without odd_glc retry, residual, fold, or
+  re-entry authority; completed.
+- `T-015`: prove requirement graph and recursive span interpretation over ABI
+  T-168/T-169 replay truth without odd_glc graph derivation, span identity, or
+  recursive runtime authority; completed.
+- `T-016`: prove executive pressure and lawful reprice interpretation over ABI
+  T-160 replay truth without odd_glc F_P invocation, STDO mutation, or
+  continuation routing; completed.
+- `T-017`: define release/readiness interpretation beyond Hello World without
+  claiming release cut, install, deployment, or operational return authority;
+  completed.
+- `T-018`: define the generic downstream specialization seam without authoring
+  software/test/build/release semantics or reproducing odd_sdlc; completed.
+
+## Completed Generic Lifecycle Interpretation Wave
+
+This wave kept the row identity as generic lifecycle capability. Current
+`odd_sdlc` workflows may appear only as witness evidence and deletion-target
+evidence. They do not define the row, and no odd_sdlc code, `Sdlc*` carrier,
+phase flow, local ledger, retry behavior, closure rule, or software-domain
+policy may be copied or reproduced in `odd_glc`.
+
+The wave executed in this order:
+
+1. Non-closed lifecycle interpretation: consume ABI T-167 replay truth for
+   residual pressure, `continuation_available`, `reentry_available`, and
+   `blocked` where published by ABI. `odd_glc` reads and labels only.
+2. Recursive and any-scale interpretation: consume ABI T-168 requirement graph
+   projection and T-169 span-lineage/foldback/re-entry truth. `odd_glc` gives
+   lifecycle meaning to frame/span/foldback refs but does not own recursion.
+3. Gap/reprice interpretation: consume ABI T-160 executive pressure facts and
+   continuation input. `odd_glc` interprets lawful STDO re-entry pressure; it
+   does not invoke F_P, select next action, or route continuation.
+4. Release/readiness interpretation: define release-readiness views over
+   admitted ABI lifecycle, evidence, fold, residual, and disposition truth. No
+   release cut, install, deployment, or operational return is claimed unless a
+   later release/proof requirement prices it.
+5. Generic specialization seam: define extension points, data-only `F_P`/`F_H`
+   policy slots, and forbidden-mechanism law. Downstream products or plugins
+   supply domain semantics; `odd_glc` shall not author software/test/build/
+   release semantics.
+
+Final proof for this wave included the normal odd_glc tenant test suite and the
+live ABI Hello World proofs for the ladder rungs that have live scripts:
+T-165, T-171, T-172, T-173, and T-174.
 
 ## Current Work-Wave Target
 
@@ -133,10 +186,13 @@ This wave closes when the project has:
   workflow-coverage witness and local-mechanism deletion target;
 - an implementation wave plan that starts with installed-substrate readiness,
   ratifies the first build tenant before code, consumes the Hello World
-  steel-thread route, and ends at full `odd_sdlc` workflow coverage without
-  reintroducing local SDLC ledgers, controllers, or retry/closure stores;
+  steel-thread route, and expands to generic software-delivery workflow
+  coverage witnessed by `odd_sdlc` without reproducing `odd_sdlc` code,
+  internals, local SDLC ledgers, controllers, or retry/closure stores;
 - ratified graph design under `build_tenants/common/design/`;
-- an explicit clean-start specialization seam for future `odd_sdlc`;
+- an explicit clean-start specialization seam for future software-delivery
+  products, with `odd_sdlc` used only as workflow-witness and deletion-target
+  evidence;
 - an active route-1 build tenant for read/query and policy interpretation;
 - explicit ABIogenesis substrate provenance for that tenant;
 - a completed Phase 5 proof that odd_glc consumes real ABIogenesis route replay
@@ -159,10 +215,20 @@ This wave closes when the project has:
   proof bindings into odd_glc policy;
 - a completed parallel JavaScript Hello World rung over the committed
   digest-pinned ABI T-174 parallel branch/fan-in fixture of record;
+- completed read-only non-closed lifecycle interpretation over ABI T-167
+  residual and continuation truth;
+- completed read-only requirement graph and recursive span interpretation over
+  ABI T-168 and T-169 graph, lineage, foldback, and re-entry truth;
+- completed read-only executive pressure/reprice interpretation over ABI T-160
+  pressure facts;
+- completed release/readiness interpretation that reports
+  `releaseAuthority: not_claimed`;
+- completed generic downstream specialization seam law that excludes copied
+  odd_sdlc code, `Sdlc*` carriers, phase flow, local ledgers, retry behavior,
+  closure rules, and software-domain policy from generic odd_glc scope;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
-  beyond route-1 read/query, real route replay consumption, read-only
-  artifact/evidence interpretation, and read-only assurance/residual
-  interpretation.
+  beyond read/query, real route replay consumption, and read-only lifecycle
+  interpretation over admitted ABI truth.
 
 ## Boundary
 

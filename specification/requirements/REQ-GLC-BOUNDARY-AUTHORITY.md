@@ -5,7 +5,7 @@
 **Date**: 2026-06-28
 **Derives from**: [GOALS.md](../GOALS.md), [INTENT.md](../INTENT.md),
 [PRODUCT.md](../PRODUCT.md),
-[T-001](../../.ai-workspace/tickets/active/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
+[T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`
 **Related families**:
 [REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS](REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md),
@@ -69,7 +69,7 @@ downstream specialization.
 
 **REQ-GLC-BOUNDARY-AUTHORITY-011**: `AssuranceFoldViewAsset`, `ResidualPressureViewAsset`, and `ReentryDecisionAsset` shall interpret ABG-owned fold, residual, continuation, and re-entry facts. They shall not define product-local closure states, residual ledgers, retry routes, or continuation transitions.
 
-**REQ-GLC-BOUNDARY-AUTHORITY-012**: Future `odd_sdlc` specialization shall consume `odd_glc` lifecycle contracts and may add software-domain assets or policy. It shall not push existing odd_sdlc phase names, local ledgers, retry loops, closure rules, or software policy back into generic `odd_glc` law.
+**REQ-GLC-BOUNDARY-AUTHORITY-012**: Future downstream specialization shall consume `odd_glc` lifecycle contracts and may add domain-specific assets or policy. `odd_glc` shall define the generic extension seam, policy slots, and forbidden-mechanism law; it shall not author software/test/build/release semantics or copy existing odd_sdlc phase names, local ledgers, retry loops, closure rules, source code, carriers, or software policy into generic `odd_glc` law.
 
 **REQ-GLC-BOUNDARY-AUTHORITY-013**: Downstream programs that specialize `odd_glc` shall use GTL/ABG carriers and ABG runtime truth for graph structure, graph functions, execution, admission, evidence, fold, residual, continuation, replay, and re-entry. `odd_glc` shall not become a replacement graph catalog or runtime substrate.
 
