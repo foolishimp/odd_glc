@@ -1,0 +1,69 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t173_generic_proof_evidence_live/20260629T131855445Z_pid76289/generic-proof-evidence-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 19,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted",
+      "requirement_test_relation_admitted",
+      "traversal_span_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft173%2Flive%2Fgeneric-proof-context:sha256:b3bfdf9b2ddba852d1cd45027b5ebfcd93f09aff635ea3c58a8c125ea8a96513",
+      "requirement-event:requirement_evidence_bound:exit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-execution:sha256:5c27b3e715feac1c83967b4a405d9fe51d12ed03afbc880444073236db2ae31d",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fgeneric-proof-evidence%2Fsubject.js%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fsubject-artifact:sha256:b52ebd22cc9bd1f5ea17d3eff4d3459e944c38075c5ccaf4aaa1c21aa0b85a8f",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fgeneric-proof-evidence%2Fverifier.js%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-artifact:sha256:138f212156532b495e13639524b8bb543f42245eeaf0605c6c9d067bf1ad286b",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fverifier-execution.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Finterpretation:sha256:147be8e43b50dbec70dfc8cb630895e2838fe52b06e9890d6b450c4810e141c8",
+      "requirement-event:requirement_evidence_bound:file%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fverifier-execution.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-execution:sha256:154e19d64263b86c934f3cfc2ff0c7f1981305de7a7481711cfadc097e5b06ef",
+      "requirement-event:requirement_evidence_bound:interpretation%3A%2F%2Ft173%2Flive%2Fverifier-exit-zero%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Finterpretation:sha256:5ae627565b5fbdb4c68a4f43f9b23f431e746817b81d48be659c58b98cc51bbe",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2F05a58c806b03d293df907c4ad5a568a26b3edc0112d1169f0cd06c80110fc0c6%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-artifact:sha256:b013c993e7ffc70735616d44e816a650e1a802ba1ac4c4ea095f681e223dd837",
+      "requirement-event:requirement_evidence_bound:sha256%3A%2F%2F28f2a389bcd8996da86d6ca79e0df4d2c17a003a78df09a440fb3aa4ff09f261%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fsubject-artifact:sha256:c2aa62b625c1859df8417a331e23cfcac95ef8da63f1952fbcc39a2011f95075",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T173-GENERIC-PROOF-EVIDENCE-LIVE%3Asatisfied%3Afile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fgeneric-proof-evidence%2Fsubject.js%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fsubject-artifact%2Csha256%3A%2F%2F28f2a389bcd8996da86d6ca79e0df4d2c17a003a78df09a440fb3aa4ff09f261%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fsubject-artifact%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fgeneric-proof-evidence%2Fverifier.js%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-artifact%2Csha256%3A%2F%2F05a58c806b03d293df907c4ad5a568a26b3edc0112d1169f0cd06c80110fc0c6%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-artifact%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fverifier-execution.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-execution%2Cexit-status%3A%2F%2F0%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Fverifier-execution%2Cfile%3A%2F%2F%2FUsers%2Fjim%2Fsrc%2Fapps%2Fabiogenesis%2Fbuild_tenants%2Fabiogenesis%2Ftypescript%2Ftest_env%2Ftest_runs%2Ft173_generic_proof_evidence_live%2F20260629T131855445Z_pid76289%2Fverifier-execution.trace%2Fresult.json%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Finterpretation%2Cinterpretation%3A%2F%2Ft173%2Flive%2Fverifier-exit-zero%23requirement-projection%3Dprojection%253A%252F%252Ft173%252Flive%252Finterpretation:sha256:1f5393be7165ed5c4f2ceaa4ba9ddac4d86887014e94e99b8bdc4a2e977f5984",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft173%2Flive%2Finterpretation:sha256:0da2e8be80ad0e9ed0684f962c7f5b536ff826875230766474c5eb7bf9dd417b",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft173%2Flive%2Fsubject-artifact:sha256:b1c408b2f61776b7d3c1b042aff0fd1d9b39079d2fe0ba186283a45b16c47058",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft173%2Flive%2Fverifier-artifact:sha256:f1d6f1d429d6cc0ffb780f3ab456449540bd8e9fa0f747ae0e37e4cc47ee2b94",
+      "requirement-event:requirement_projection_admitted:projection%3A%2F%2Ft173%2Flive%2Fverifier-execution:sha256:d7a75e8c737cd9fbb5abf2e29cfe812afae73a71e76446d88b663fe5b6418d37",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T173-GENERIC-PROOF-EVIDENCE-LIVE%3Aobligation:sha256:39226f2ada50a779561e4764d5e368f3e3947669d6b9562990089b913fb18cda",
+      "requirement-event:requirement_term_admitted:REQ-T173-GENERIC-PROOF-EVIDENCE-LIVE:sha256:3485209622ef8dfc259b62e7506080ebc50a97d97a90244bc954983599c80295",
+      "requirement-event:requirement_test_relation_admitted:proof-relation%3A%2F%2Ft173%2Flive%2Fgeneric-proof-evidence:sha256:486eedfffb7d3e03621f686230964398c352247f650bf09df2d8b002029f454d",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft173-live%2Fgraph-capture_requirements:sha256:4ff5c7a4eece82280f35fd65434ea66bc4b20ada9fae7070635c0923550c59de",
+      "requirement-lifecycle-disposition:sha256:aa5adc09121d71992b1679fb6a8e97703c1426d0680d44c54aa681e9728fce5c"
+    ],
+    "sha256": "sha256:4c825ba13dd250d114f33f1d417d2d7470a5d62b3c3e917478e55c7e79d43206"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "closedRouteResidualPolicy": "closed proof has no requirement_residual_projected event; disposition residualRefs is empty",
+    "genericProofEvidenceRoleMap": {
+      "asset": "subject_artifact",
+      "semantic_interpretation": "semantic_interpretation",
+      "test_execution": "verifier_execution",
+      "test_source": "verifier_artifact"
+    },
+    "interpretationProjectionRef": "projection://t173/live/interpretation",
+    "liveAgent": "claude",
+    "proofCommand": "npm run test:t173:live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t173_generic_proof_evidence_live/20260629T131855445Z_pid76289",
+    "proofTicket": "T-173",
+    "requirementSourceDigest": "sha256:797951c62039cad4373966c21d90b5a008c8195aca5e0cd02e0b08bb4b3a2349",
+    "requirementSourceRef": "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t173_generic_proof_evidence_live/20260629T131855445Z_pid76289/generic-proof-evidence-requirement.txt",
+    "sourceRunKind": "live_fp_generic_proof_evidence_route",
+    "subjectProjectionRef": "projection://t173/live/subject-artifact",
+    "verifierExecutionProjectionRef": "projection://t173/live/verifier-execution",
+    "verifierSourceProjectionRef": "projection://t173/live/verifier-artifact"
+  },
+  "ticket": "T-173"
+}

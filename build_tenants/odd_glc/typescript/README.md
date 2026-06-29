@@ -3,7 +3,7 @@
 **Status**: Active route-1 tenant
 
 This tenant implements the first `odd_glc` realization line:
-read/query and policy interpretation over ABIogenesis `4.1.0-rc.16` public
+read/query and policy interpretation over ABIogenesis `4.1.0-rc.17` public
 GTL/ABG surfaces.
 
 The consumed substrate identity is declared in

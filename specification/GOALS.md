@@ -4,7 +4,7 @@
 **Date**: 2026-06-29
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.16/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
@@ -45,9 +45,9 @@ Goals define the current bounded work-wave for `odd_glc`.
   `odd_glc` interpretation, downstream specialization surface, upstream
   readiness state, and proof required;
 - require the Hello World scenario ladder to be sequenced by proven GTL/ABG
-  substrate readiness, so rungs for Rust toolchain execution and service
-  process/client proof remain upstream-blocked until ABI proves and publishes
-  those runtime capabilities;
+  substrate readiness; ABI rc17 has published the generic proof-evidence,
+  non-default command execution, and process/request execution mechanics for
+  the JavaScript test, Rust CLI, and Rust service/client rungs;
 - sequence implementation through readiness verification, route-1 design,
   build-tenant ratification, Hello World steel-thread consumption, software
   artifact construction, execution/evidence proof, requirement fold and
@@ -90,6 +90,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 - `T-009`: prove the basic CLI Hello World ladder rung over the digest-pinned
   ABI rc16 route replay fixture without hand-built route events or odd_glc
   runtime authority; completed.
+- `T-010`: prove the JavaScript tenant/test Hello World ladder rung over the
+  digest-pinned ABI rc17 T-173 generic proof-evidence replay fixture without
+  hand-built route events or odd_glc runtime authority; completed.
 
 ## Current Work-Wave Target
 
@@ -106,9 +109,10 @@ This wave closes when the project has:
   use `odd_sdlc` as the domain;
 - a Hello World scenario ladder that uses `odd_sdlc` examples only as
   coverage witnesses for generic lifecycle capabilities;
-- a ladder execution order that starts only with ABI-proven rungs and marks
-  Rust CLI and Rust service/client proof as upstream-blocked until ABI
-  publishes the needed runtime proof artifacts;
+- a ladder execution order that starts only with ABI-proven rungs and consumes
+  ABI rc17 proof artifacts for the JavaScript test, Rust CLI, and Rust
+  service/client rungs without importing their proof-scenario policy into
+  odd_glc;
 - a sourced GTL/ABG substrate readiness gap report for the current ABIogenesis
   build;
 - a generic lifecycle coverage matrix that uses `odd_sdlc` only as a
@@ -129,6 +133,9 @@ This wave closes when the project has:
   ABG route replay truth;
 - a completed Basic CLI Hello World ladder-rung proof over the committed
   digest-pinned ABI route replay fixture of record;
+- a completed JavaScript tenant/test Hello World ladder-rung proof over the
+  committed digest-pinned ABI rc17 T-173 generic proof-evidence fixture of
+  record;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond route-1 read/query, real route replay consumption, read-only
   artifact/evidence interpretation, and read-only assurance/residual

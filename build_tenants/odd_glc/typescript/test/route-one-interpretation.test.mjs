@@ -23,7 +23,9 @@ const tenantRoot = path.resolve(dirname, "..");
 const repoRoot = path.resolve(tenantRoot, "../../..");
 const appsRoot = path.resolve(repoRoot, "..");
 const BASIC_CLI_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-CLI-BASIC";
+const JS_TENANT_TEST_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST";
 const T165_REQUIREMENT_ID = "REQ-T165-HELLO-WORLD-LIVE";
+const T173_REQUIREMENT_ID = "REQ-T173-GENERIC-PROOF-EVIDENCE-LIVE";
 const defaultAbgRoot = path.join(
   appsRoot,
   `.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}/lib/node_modules/@abiogenesis/typescript-tenant`
@@ -31,6 +33,10 @@ const defaultAbgRoot = path.join(
 const defaultT166ArtifactPath = path.join(
   tenantRoot,
   "test/fixtures/abiogenesis-t166-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json"
+);
+const defaultT173ArtifactPath = path.join(
+  tenantRoot,
+  "test/fixtures/abiogenesis-t173-generic-proof-evidence/20260629T131855445Z_pid76289/generic-proof-evidence-replay-artifact.json"
 );
 
 async function importAbgRequirementsFacade() {
@@ -76,6 +82,44 @@ async function readT166RouteReplayArtifact() {
   assert.equal(
     manifest.artifact.sha256,
     ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t166RouteReplay.artifactSha256
+  );
+  return Object.freeze({
+    artifactPath,
+    manifestPath,
+    artifact,
+    manifest
+  });
+}
+
+function t173RouteReplayArtifactPath() {
+  if (process.env.ODD_GLC_T173_ROUTE_REPLAY_ARTIFACT !== undefined) {
+    return process.env.ODD_GLC_T173_ROUTE_REPLAY_ARTIFACT;
+  }
+  assert.equal(
+    existsSync(defaultT173ArtifactPath),
+    true,
+    `Missing committed ABIogenesis T-173 route replay fixture at ${defaultT173ArtifactPath}`
+  );
+  return defaultT173ArtifactPath;
+}
+
+async function readT173RouteReplayArtifact() {
+  const artifactPath = t173RouteReplayArtifactPath();
+  const manifestPath = path.join(
+    path.dirname(artifactPath),
+    "generic-proof-evidence-replay-manifest.json"
+  );
+  assert.equal(existsSync(manifestPath), true, `Missing ABIogenesis T-173 manifest at ${manifestPath}`);
+  const rawArtifact = await readFile(artifactPath, "utf8");
+  const artifact = JSON.parse(rawArtifact);
+  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  assert.equal(
+    manifest.artifact.sha256,
+    `sha256:${createHash("sha256").update(rawArtifact, "utf8").digest("hex")}`
+  );
+  assert.equal(
+    manifest.artifact.sha256,
+    ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t173GenericProofEvidence.artifactSha256
   );
   return Object.freeze({
     artifactPath,
@@ -201,17 +245,17 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.consumerTenant, "build_tenants/odd_glc/typescript");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productId, "abiogenesis");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName, "@abiogenesis/typescript-tenant");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.1.0-rc.16");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.1.0-rc.16");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "eec4090f64f5c95562732d6a67c7a52659feb3d4");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "534dd3a5488b1603c45e1461d73ced7e0aea5653");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "2e692cece027fcd43eae82042d4a12729dbd5a92c3077efb92c32cc0ccc8c1bc");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "6ebe7314243388f3553d256c2df1306a95e0d18cf59c6ab47c125cdb0dccd3de");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.1.0-rc.17");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.1.0-rc.17");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "682d0de2f154740e358a95be7e39cce4c40f5239");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "59f15b33de417c0f7cf161d689d7ada6a68a4b0f");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "d07e8d6fa6d27de4ca959f5cf10af1ab922216df94d212521e0e144ce89283d9");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "54804d7046788f393b9b62a49ed501b8998a22f199b5b469bf4a49bd8e84f262");
   assert.equal(packageJson.name, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName);
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(
     ABIOGENESIS_SUBSTRATE_PROVENANCE.proofScope.phase,
-    "phase_5_real_route_replay_consumption"
+    "phase_7_hello_world_ladder_rc17_consumption"
   );
 });
 
@@ -359,6 +403,104 @@ test("proves SCN-GLC-HELLO-WORLD-CLI-BASIC over the committed ABI replay artifac
   assertSameMembers(assurance.value.residualRefs, expectedResidualRefs, "ABI residual refs must be preserved");
   assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
 
+  assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
+  assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
+});
+
+test("proves SCN-GLC-HELLO-WORLD-JS-TENANT-TEST over the committed ABI T-173 replay artifact", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const { artifact, manifest } = await readT173RouteReplayArtifact();
+
+  assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true, JS_TENANT_TEST_SCENARIO_ID);
+  assert.equal(manifest.artifact.routeEventCount, 19, JS_TENANT_TEST_SCENARIO_ID);
+  assert.equal(
+    artifact.lifecycleState.requirementQuery.requirementIds.includes(T173_REQUIREMENT_ID),
+    true,
+    JS_TENANT_TEST_SCENARIO_ID
+  );
+
+  const routeBindings = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_evidence_bound"
+  );
+  const routeFolds = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_fold_projected"
+  );
+  const routeDispositions = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_lifecycle_disposition"
+  );
+  const admittedEvidenceEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "evidence_admitted"
+  );
+
+  const roleProjectionRefs = Object.freeze({
+    asset: "projection://t173/live/subject-artifact",
+    test_source: "projection://t173/live/verifier-artifact",
+    test_execution: "projection://t173/live/verifier-execution",
+    semantic_interpretation: "projection://t173/live/interpretation"
+  });
+
+  assert.equal(routeBindings.length, 8, `${JS_TENANT_TEST_SCENARIO_ID} requires ABI evidence bindings`);
+  for (const [role, projectionRef] of Object.entries(roleProjectionRefs)) {
+    const roleBindings = routeBindings.filter((event) =>
+      event.requirementPayload.binding.evidenceRole === role
+    );
+    assert.equal(roleBindings.length, 2, `${role} must have file/ref and digest/interpretation evidence`);
+    assert.equal(
+      roleBindings.every((event) =>
+        event.requirementPayload.binding.projectionRef === projectionRef &&
+        event.requirementPayload.binding.bindingStatus === "admitted"
+      ),
+      true,
+      `${role} bindings must preserve admitted ABI projection refs`
+    );
+  }
+  assert.equal(routeFolds.length, 1, `${JS_TENANT_TEST_SCENARIO_ID} requires one ABI fold projection`);
+  assert.equal(routeDispositions.length, 1, `${JS_TENANT_TEST_SCENARIO_ID} requires one ABI disposition`);
+
+  const expectedBindingRefs = routeBindings.map((event) => event.routePayloadRef);
+  const expectedFoldRefs = routeFolds.map((event) => event.requirementPayload.fold.foldRef);
+  const expectedDispositionRefs = routeDispositions.map((event) => event.requirementPayload.dispositionRef);
+  const expectedEvidenceRefs = admittedEvidenceEvents.map((event) => event.evidenceRef);
+
+  const lifecycle = interpretLifecycleState({
+    abgRequirements,
+    query: artifact.lifecycleState.requirementQuery,
+    dispositionRefs: artifact.lifecycleState.dispositionRefs,
+    runtimeEvents: artifact.replayEvents
+  });
+  const evidence = interpretEvidenceState({
+    runtimeEvents: artifact.replayEvents
+  });
+  const assurance = interpretAssuranceState({
+    runtimeEvents: artifact.replayEvents
+  });
+
+  assert.equal(lifecycle.status, "accepted", JS_TENANT_TEST_SCENARIO_ID);
+  assert.equal(evidence.status, "accepted", JS_TENANT_TEST_SCENARIO_ID);
+  assert.equal(assurance.status, "accepted", JS_TENANT_TEST_SCENARIO_ID);
+
+  assert.equal(lifecycle.value.lifecycleDisposition, "release_readiness_candidate");
+  assert.equal(lifecycle.value.requirementIds.includes(T173_REQUIREMENT_ID), true);
+  assertSameMembers(lifecycle.value.dispositionRefs, expectedDispositionRefs, "ABI disposition refs must be preserved");
+  assertSameMembers(
+    evidence.value.requirementEvidenceBindings.map((item) => item.routePayloadRef),
+    expectedBindingRefs,
+    "ABI evidence binding route refs must be preserved"
+  );
+  assertSameMembers(
+    evidence.value.admittedEvidence.map((item) => item.evidenceRef),
+    expectedEvidenceRefs,
+    "ABI admitted evidence refs must be preserved"
+  );
+  for (const projectionRef of Object.values(roleProjectionRefs)) {
+    assert.equal(
+      evidence.value.admittedEvidence.some((item) => item.evidenceRef === projectionRef),
+      true,
+      `${projectionRef} must remain visible as admitted ABI evidence`
+    );
+  }
+  assertSameMembers(assurance.value.foldRefs, expectedFoldRefs, "ABI assurance fold refs must be preserved");
+  assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
   assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
   assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
 });
