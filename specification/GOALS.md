@@ -44,6 +44,10 @@ Goals define the current bounded work-wave for `odd_glc`.
   tech-debt mechanism to retire, genericity test, GTL/ABG replacement,
   `odd_glc` interpretation, downstream specialization surface, upstream
   readiness state, and proof required;
+- require the Hello World scenario ladder to be sequenced by proven GTL/ABG
+  substrate readiness, so rungs for Rust toolchain execution and service
+  process/client proof remain upstream-blocked until ABI proves and publishes
+  those runtime capabilities;
 - sequence implementation through readiness verification, route-1 design,
   build-tenant ratification, Hello World steel-thread consumption, software
   artifact construction, execution/evidence proof, requirement fold and
@@ -83,6 +87,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 - `T-008`: govern the Hello World scenario ladder across basic CLI,
   JavaScript tenant/test, Rust CLI, Rust client/server, and parallel
   JavaScript witnesses; completed.
+- `T-009`: prove the basic CLI Hello World ladder rung over the digest-pinned
+  ABI rc16 route replay fixture without hand-built route events or odd_glc
+  runtime authority; completed.
 
 ## Current Work-Wave Target
 
@@ -99,6 +106,9 @@ This wave closes when the project has:
   use `odd_sdlc` as the domain;
 - a Hello World scenario ladder that uses `odd_sdlc` examples only as
   coverage witnesses for generic lifecycle capabilities;
+- a ladder execution order that starts only with ABI-proven rungs and marks
+  Rust CLI and Rust service/client proof as upstream-blocked until ABI
+  publishes the needed runtime proof artifacts;
 - a sourced GTL/ABG substrate readiness gap report for the current ABIogenesis
   build;
 - a generic lifecycle coverage matrix that uses `odd_sdlc` only as a
@@ -117,6 +127,8 @@ This wave closes when the project has:
   replay truth;
 - completed read-only assurance fold and residual-pressure interpretation over
   ABG route replay truth;
+- a completed Basic CLI Hello World ladder-rung proof over the committed
+  digest-pinned ABI route replay fixture of record;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond route-1 read/query, real route replay consumption, read-only
   artifact/evidence interpretation, and read-only assurance/residual

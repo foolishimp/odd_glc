@@ -22,6 +22,7 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 const tenantRoot = path.resolve(dirname, "..");
 const repoRoot = path.resolve(tenantRoot, "../../..");
 const appsRoot = path.resolve(repoRoot, "..");
+const BASIC_CLI_SCENARIO_ID = "SCN-GLC-HELLO-WORLD-CLI-BASIC";
 const T165_REQUIREMENT_ID = "REQ-T165-HELLO-WORLD-LIVE";
 const defaultAbgRoot = path.join(
   appsRoot,
@@ -130,6 +131,15 @@ function stableJson(input) {
 
 function stableSha256Digest(input) {
   return `sha256:${createHash("sha256").update(stableJson(input)).digest("hex")}`;
+}
+
+function sortedUniqueStrings(values) {
+  return [...new Set(values.filter((value) => typeof value === "string" && value.length > 0))]
+    .sort((left, right) => (left < right ? -1 : left > right ? 1 : 0));
+}
+
+function assertSameMembers(actual, expected, message) {
+  assert.deepEqual(sortedUniqueStrings(actual), sortedUniqueStrings(expected), message);
 }
 
 function requirementRouteRuntimeEventFixture(payload = dispositionPayload) {
@@ -272,6 +282,85 @@ test("consumes real ABIogenesis T-166 route replay artifact", async () => {
   assert.deepEqual(result.value.dispositionRefs, artifact.lifecycleState.dispositionRefs);
   assert.equal(result.value.interpretedDispositions[0].disposition, "closed");
   assert.equal(result.value.requirementIds.includes(T165_REQUIREMENT_ID), true);
+});
+
+test("proves SCN-GLC-HELLO-WORLD-CLI-BASIC over the committed ABI replay artifact", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const { artifact, manifest } = await readT166RouteReplayArtifact();
+
+  assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true, BASIC_CLI_SCENARIO_ID);
+  assert.equal(
+    artifact.lifecycleState.requirementQuery.requirementIds.includes(T165_REQUIREMENT_ID),
+    true,
+    BASIC_CLI_SCENARIO_ID
+  );
+
+  const routeBindings = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_evidence_bound"
+  );
+  const routeFolds = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_fold_projected"
+  );
+  const routeDispositions = artifact.routeEvents.filter((event) =>
+    event.routePayloadKind === "requirement_lifecycle_disposition"
+  );
+  const admittedEvidenceEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "evidence_admitted"
+  );
+  const artifactObservationEvents = artifact.replayEvents.filter((event) =>
+    event.kind === "actor_result_artifact_observed"
+  );
+
+  assert.equal(routeBindings.length > 0, true, `${BASIC_CLI_SCENARIO_ID} requires ABI evidence bindings`);
+  assert.equal(routeFolds.length, 1, `${BASIC_CLI_SCENARIO_ID} requires one ABI fold projection`);
+  assert.equal(routeDispositions.length, 1, `${BASIC_CLI_SCENARIO_ID} requires one ABI disposition`);
+  assert.equal(admittedEvidenceEvents.length > 0, true, `${BASIC_CLI_SCENARIO_ID} requires admitted ABI evidence`);
+  assert.equal(artifactObservationEvents.length, 1, `${BASIC_CLI_SCENARIO_ID} requires one target artifact observation`);
+
+  const expectedTargetArtifactRefs = artifactObservationEvents.map((event) => event.artifactRef);
+  const expectedAdmittedEvidenceRefs = admittedEvidenceEvents.map((event) => event.evidenceRef);
+  const expectedBindingRefs = routeBindings.map((event) => event.routePayloadRef);
+  const expectedFoldRefs = routeFolds.map((event) => event.requirementPayload.fold.foldRef);
+  const expectedDispositionRefs = routeDispositions.map((event) => event.requirementPayload.dispositionRef);
+  const expectedResidualRefs = artifact.lifecycleState.requirementQuery.residualRefs ?? [];
+
+  const lifecycle = interpretLifecycleState({
+    abgRequirements,
+    query: artifact.lifecycleState.requirementQuery,
+    dispositionRefs: artifact.lifecycleState.dispositionRefs,
+    runtimeEvents: artifact.replayEvents
+  });
+  const evidence = interpretEvidenceState({
+    runtimeEvents: artifact.replayEvents
+  });
+  const assurance = interpretAssuranceState({
+    runtimeEvents: artifact.replayEvents
+  });
+
+  assert.equal(lifecycle.status, "accepted", BASIC_CLI_SCENARIO_ID);
+  assert.equal(evidence.status, "accepted", BASIC_CLI_SCENARIO_ID);
+  assert.equal(assurance.status, "accepted", BASIC_CLI_SCENARIO_ID);
+
+  assert.equal(lifecycle.value.lifecycleDisposition, "release_readiness_candidate");
+  assert.deepEqual(lifecycle.value.dispositionRefs, artifact.lifecycleState.dispositionRefs);
+  assertSameMembers(lifecycle.value.dispositionRefs, expectedDispositionRefs, "ABI disposition refs must be preserved");
+  assertSameMembers(evidence.value.targetArtifactRefs, expectedTargetArtifactRefs, "ABI target artifact refs must be preserved");
+  assertSameMembers(
+    evidence.value.admittedEvidence.map((item) => item.evidenceRef),
+    expectedAdmittedEvidenceRefs,
+    "ABI admitted evidence refs must be preserved"
+  );
+  assertSameMembers(
+    evidence.value.requirementEvidenceBindings.map((item) => item.routePayloadRef),
+    expectedBindingRefs,
+    "ABI evidence binding route refs must be preserved"
+  );
+  assertSameMembers(assurance.value.foldRefs, expectedFoldRefs, "ABI assurance fold refs must be preserved");
+  assertSameMembers(assurance.value.residualRefs, expectedResidualRefs, "ABI residual refs must be preserved");
+  assertSameMembers(assurance.value.dispositionRefs, expectedDispositionRefs, "ABI assurance disposition refs must be preserved");
+
+  assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
+  assert.equal(assurance.value.assuranceDisposition, "assurance_satisfied");
 });
 
 test("interprets evidence and target artifact state from real ABIogenesis replay events", async () => {
