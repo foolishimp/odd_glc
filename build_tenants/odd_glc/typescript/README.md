@@ -15,6 +15,11 @@ It does not implement graph functions, runtime execution, event replay,
 admission, evidence binding, assurance fold, residual projection,
 continuation, or re-entry authority.
 
+It exports a frozen `ODD_GLC_OVERLAY_CATALOG` as a data-only library interface
+for lifecycle surface, policy overlay, read-model, proof-binding, and
+specialization-seam discovery. That catalog is not a graph-function catalog and
+does not grant runtime authority.
+
 ## Commands
 
 ```sh

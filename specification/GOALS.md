@@ -4,7 +4,8 @@
 **Date**: 2026-06-30
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json`,
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
@@ -45,11 +46,15 @@ Goals define the current bounded work-wave for `odd_glc`.
   `odd_glc` interpretation, downstream specialization surface, upstream
   readiness state, and proof required;
 - require the Hello World scenario ladder to be sequenced by proven GTL/ABG
-  substrate readiness; ABI rc17 has published the generic proof-evidence,
+  substrate readiness; ABI rc17 published the generic proof-evidence,
   non-default command execution, and process/request execution mechanics for
   the JavaScript test, Rust CLI, and Rust service/client rungs, and ABI T-174
   has published the parallel branch/fan-in replay artifact consumed by
   odd_glc;
+- upgrade the installed odd_glc route-1 tenant substrate to ABIogenesis
+  `4.2.0-rc.1` through `T-020` without rewriting older rc17 proof artifacts or
+  claiming new odd_glc node-type, registry, startup, graph-call, execution, or
+  selection authority;
 - sequence implementation through readiness verification, route-1 design,
   build-tenant ratification, Hello World steel-thread consumption, software
   artifact construction, execution/evidence proof, requirement fold and
@@ -132,6 +137,9 @@ Completed tickets:
 - `T-019`: record the completed generic lifecycle interpretation wave as a
   source checkpoint, not a release cut, install, deployment, operational
   return, or downstream odd_sdlc rebuild; completed.
+- `T-020`: upgrade the installed ABIogenesis TypeScript substrate to
+  `4.2.0-rc.1` and prove the existing route-1 tenant still consumes only
+  public/read-only GTL/ABG surfaces; completed.
 
 ## Generic Lifecycle Interpretation Wave Status
 

@@ -21,6 +21,7 @@ Derives from:
   - specification/PRODUCT.md
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
   - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json
+  - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json
   - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
   - .ai-workspace/tickets/completed/T-014-prove-non-closed-lifecycle-interpretation.md
   - .ai-workspace/tickets/completed/T-015-prove-requirement-graph-and-recursive-span-interpretation.md
@@ -37,7 +38,7 @@ Retained special case: none
 ## Decision
 
 `odd_glc` route-1 shall be a lifecycle binding and read-model design over
-ABIogenesis `4.1.0-rc.17` public GTL/ABG surfaces.
+installed ABIogenesis `4.2.0-rc.1` public GTL/ABG surfaces.
 
 It shall not create a fixed odd_glc graph, a native `glc.*` graph-function
 catalog, a local runtime, an event stream, admitted-ref minting, evidence
@@ -51,12 +52,14 @@ and read/query interpretation over ABG replay/query truth.
 
 | Substrate | Identity |
 | --- | --- |
-| Product | `@abiogenesis/typescript-tenant@4.1.0-rc.17` |
-| Tag | `v4.1.0-rc.17` |
-| Source commit | `682d0de2f154740e358a95be7e39cce4c40f5239` |
-| Snapshot commit | `59f15b33de417c0f7cf161d689d7ada6a68a4b0f` |
-| Tarball SHA256 | `d07e8d6fa6d27de4ca959f5cf10af1ab922216df94d212521e0e144ce89283d9` |
-| Install source | `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json` |
+| Product | `@abiogenesis/typescript-tenant@4.2.0-rc.1` |
+| Tag | `v4.2.0-rc.1` |
+| Source commit | `54c21ce1f984f0be922199232fd8cb981f000ce4` |
+| Snapshot commit | `9653252077a6b52ff343832101748d41a3483b0f` |
+| Tarball SHA256 | `a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4` |
+| Product-toolchain manifest SHA256 | `ad5cfca0a3411bf6be3b5771965f1bfe78edfed4f2f38225794f2adb60cf87a7` |
+| Release manifest SHA256 | `50632ae83fa3c0dd987608f4bbe9755d645978dd99525a3d37a8ec48ed5969fa` |
+| Install source | `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json` |
 
 ## No Fixed Graph Rule
 
@@ -159,8 +162,10 @@ model and not an odd_sdlc reproduction plan.
 
 ## Generic Lifecycle Read Models
 
-The rc17 substrate adds replay artifacts for the generic lifecycle surfaces
-needed beyond the original closed Hello World thread:
+ABI 4.2 is the installed substrate. The fixture-of-record replay artifacts
+listed below remain pinned to the ABI release and source ticket that produced
+them. Several were produced by rc17 and are intentionally not relabeled as
+4.2 artifacts.
 
 | ABI proof artifact | odd_glc interpretation | Non-authority rule |
 | --- | --- | --- |
@@ -226,8 +231,8 @@ when the missing function is generic GTL/ABG substrate.
 ## Consequences
 
 The first build tenant can be priced as a read/query and policy-interpretation
-library over ABIogenesis `4.1.0-rc.17`. It cannot contain runtime authority or
-compatibility ledgers.
+library over installed ABIogenesis `4.2.0-rc.1`. It cannot contain runtime
+authority or compatibility ledgers.
 
 Tenant activation is still a separate registry decision. Until that decision,
 this ADR is design authority only.

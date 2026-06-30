@@ -9,3 +9,4 @@ tenant after the tenant registry activates it.
 ## Active Decisions
 
 - [ADR-001 route-1 GTL/ABG lifecycle consumption](adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
+- [odd_glc overlay catalog](ODD_GLC_OVERLAY_CATALOG.md)

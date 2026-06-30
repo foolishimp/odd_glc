@@ -41,6 +41,294 @@ export const REQUIRED_ROUTE_ONE_SURFACES = Object.freeze([
   "ReentryDecisionAsset"
 ]);
 
+export const ODD_GLC_OVERLAY_CATALOG = deepFreeze({
+  kind: "odd_glc_overlay_catalog",
+  schemaVersion: "1",
+  catalogId: "odd_glc.overlay_catalog.route_1",
+  authority: {
+    owner: "odd_glc",
+    substrate: "gtl_abg",
+    rule: "data_only_overlay_over_admitted_gtl_abg_truth"
+  },
+  families: [
+    "lifecycle_surface",
+    "policy_overlay",
+    "read_model",
+    "proof_binding",
+    "specialization_seam"
+  ],
+  familyRules: {
+    lifecycle_surface: {
+      owner: "odd_glc",
+      allowedUse: "map lifecycle labels to admitted GTL/ABG refs and readiness states",
+      forbiddenAuthority: [
+        "native_carrier_shadowing",
+        "gtl_graph_construction",
+        "abg_runtime_truth_construction"
+      ],
+      extensionRule: "downstream may add domain asset roles only when bound to GTL/ABG refs"
+    },
+    policy_overlay: {
+      owner: "odd_glc_or_downstream",
+      allowedUse: "declare F_P/F_H prompts, rubrics, evidence expectations, owner, risk, reprice, block, and escalation policy as data",
+      forbiddenAuthority: [
+        "fp_worker_invocation",
+        "owner_decision_controller",
+        "evidence_admission",
+        "closure_decision"
+      ],
+      extensionRule: "downstream or plugins may supply domain policy data without executable authority"
+    },
+    read_model: {
+      owner: "odd_glc",
+      allowedUse: "interpret ABG public query output and replay facts as lifecycle vocabulary",
+      forbiddenAuthority: [
+        "event_emission",
+        "evidence_admission",
+        "admitted_ref_minting",
+        "fold_or_residual_projection",
+        "continuation_or_reentry_routing"
+      ],
+      extensionRule: "downstream may add query overlays that preserve ABG refs and source truth"
+    },
+    proof_binding: {
+      owner: "odd_glc",
+      allowedUse: "record digest-pinned ABI proof inputs and negative boundary checks",
+      forbiddenAuthority: [
+        "proof_truth_creation",
+        "runtime_execution",
+        "artifact_admission"
+      ],
+      extensionRule: "downstream may add proof references only when ABI or another governed substrate owns the proof truth"
+    },
+    specialization_seam: {
+      owner: "odd_glc_and_downstream",
+      allowedUse: "name extension slots for domain assets, data policy, proof expectations, and plugin binding refs",
+      forbiddenAuthority: [
+        "product_local_runtime",
+        "graph_function_catalog",
+        "retry_loop",
+        "closure_ledger",
+        "odd_sdlc_reproduction"
+      ],
+      extensionRule: "plugins fill the slot with GTL/ABG-bound data and shall not supply local runtime authority"
+    }
+  },
+  entries: [
+    {
+      entryId: "surface.lifecycle_worksite",
+      family: "lifecycle_surface",
+      surface: "LifeCycleWorksiteAsset",
+      gtlAbgTruth: "ABG run/worksite refs and GTL module/job refs where present",
+      overlayMeaning: "lifecycle scope label"
+    },
+    {
+      entryId: "surface.lifecycle_context",
+      family: "lifecycle_surface",
+      surface: "LifecycleContextAsset",
+      gtlAbgTruth: "ABG AuthorityContextFragment and context routing truth",
+      overlayMeaning: "lifecycle context label"
+    },
+    {
+      entryId: "surface.intent",
+      family: "lifecycle_surface",
+      surface: "IntentAsset",
+      gtlAbgTruth: "GTL/ABG refs used by requirement declarations and staged context",
+      overlayMeaning: "product intent meaning"
+    },
+    {
+      entryId: "surface.product_definition",
+      family: "lifecycle_surface",
+      surface: "ProductDefinitionAsset",
+      gtlAbgTruth: "GTL/ABG refs used by requirement declarations and proof policy",
+      overlayMeaning: "product-definition meaning"
+    },
+    {
+      entryId: "surface.requirement_set",
+      family: "lifecycle_surface",
+      surface: "RequirementSetAsset",
+      gtlAbgTruth: "GTL requirement declarations, bundles, and traversal spans",
+      overlayMeaning: "lifecycle requirement pressure binding"
+    },
+    {
+      entryId: "surface.requirement_environment_view",
+      family: "lifecycle_surface",
+      surface: "RequirementEnvironmentViewAsset",
+      gtlAbgTruth: "ABG requirement environment projection",
+      overlayMeaning: "active requirement environment view"
+    },
+    {
+      entryId: "surface.destination_topology",
+      family: "lifecycle_surface",
+      surface: "DestinationTopologyAsset",
+      gtlAbgTruth: "ABG destination topology and GTL topology declarations",
+      overlayMeaning: "lifecycle destination label"
+    },
+    {
+      entryId: "surface.instruction_set",
+      family: "lifecycle_surface",
+      surface: "InstructionSetAsset",
+      gtlAbgTruth: "ABG obligation, target, and schedule projections",
+      overlayMeaning: "bounded construction handoff label"
+    },
+    {
+      entryId: "surface.target_artifact",
+      family: "lifecycle_surface",
+      surface: "TargetArtifactAsset",
+      gtlAbgTruth: "GTL asset surfaces and ABG admitted artifact refs",
+      overlayMeaning: "lifecycle target artifact label"
+    },
+    {
+      entryId: "surface.capability",
+      family: "lifecycle_surface",
+      surface: "CapabilityAsset",
+      gtlAbgTruth: "GTL/ABG capability carriers and ABG actor/operator invocation truth",
+      overlayMeaning: "lifecycle capability label"
+    },
+    {
+      entryId: "surface.evidence_binding",
+      family: "lifecycle_surface",
+      surface: "EvidenceBindingAsset",
+      gtlAbgTruth: "ABG admitted evidence and requirement evidence binding",
+      overlayMeaning: "evidence-binding view"
+    },
+    {
+      entryId: "surface.assurance_fold_view",
+      family: "lifecycle_surface",
+      surface: "AssuranceFoldViewAsset",
+      gtlAbgTruth: "ABG assurance fold and assurance-case projections",
+      overlayMeaning: "assurance state view"
+    },
+    {
+      entryId: "surface.residual_pressure_view",
+      family: "lifecycle_surface",
+      surface: "ResidualPressureViewAsset",
+      gtlAbgTruth: "ABG residual projection and attenuation classification",
+      overlayMeaning: "residual pressure view"
+    },
+    {
+      entryId: "surface.reentry_decision",
+      family: "lifecycle_surface",
+      surface: "ReentryDecisionAsset",
+      gtlAbgTruth: "ABG continuation, correction, re-entry, release, or block facts",
+      overlayMeaning: "lifecycle disposition label"
+    },
+    {
+      entryId: "policy.fp_semantic_judgment",
+      family: "policy_overlay",
+      gtlAbgTruth: "data declaration consumed by GTL/ABG or interpreted after replay",
+      overlayMeaning: "F_P prompts, rubrics, evidence expectations, and semantic judgment criteria"
+    },
+    {
+      entryId: "policy.fh_human_decision",
+      family: "policy_overlay",
+      gtlAbgTruth: "data declaration consumed by GTL/ABG or interpreted after replay",
+      overlayMeaning: "F_H owner, risk, reprice, block, escalation, and release-readiness policy"
+    },
+    {
+      entryId: "view.lifecycle_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG projectLifecycleState read model and replayed disposition facts",
+      overlayMeaning: "lifecycle disposition vocabulary"
+    },
+    {
+      entryId: "view.evidence_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG admitted evidence and requirement evidence-binding facts",
+      overlayMeaning: "evidence readiness vocabulary"
+    },
+    {
+      entryId: "view.assurance_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG fold, residual, and lifecycle disposition facts",
+      overlayMeaning: "assurance and residual vocabulary"
+    },
+    {
+      entryId: "view.requirement_graph_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG requirement graph/refinement projections",
+      overlayMeaning: "requirement graph lifecycle view"
+    },
+    {
+      entryId: "view.recursive_span_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG frame, zoom, span, foldback, and re-entry facts",
+      overlayMeaning: "recursive lifecycle readiness view"
+    },
+    {
+      entryId: "view.executive_pressure_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG executive pressure facts and continuation refs",
+      overlayMeaning: "reprice, block, and pressure-preservation view"
+    },
+    {
+      entryId: "view.release_readiness_state",
+      family: "read_model",
+      gtlAbgTruth: "lifecycle, assurance, and evidence views",
+      overlayMeaning: "release-readiness interpretation without release authority"
+    },
+    {
+      entryId: "view.parallel_frontier_state",
+      family: "read_model",
+      gtlAbgTruth: "ABG saga/frontier, branch, fan-in, fold, and disposition facts",
+      overlayMeaning: "parallel branch/fan-in lifecycle view"
+    },
+    {
+      entryId: "proof.fixture_of_record",
+      family: "proof_binding",
+      gtlAbgTruth: "digest-pinned ABI artifact and manifest",
+      overlayMeaning: "read-only proof input"
+    },
+    {
+      entryId: "proof.live_run_reference",
+      family: "proof_binding",
+      gtlAbgTruth: "ABI live proof run metadata",
+      overlayMeaning: "live proof provenance pointer"
+    },
+    {
+      entryId: "proof.negative_boundary",
+      family: "proof_binding",
+      gtlAbgTruth: "import/export and fixture checks",
+      overlayMeaning: "negative proof that forbidden local authority is absent"
+    },
+    {
+      entryId: "seam.domain_asset_roles",
+      family: "specialization_seam",
+      gtlAbgTruth: "domain asset role names bound to GTL/ABG refs",
+      overlayMeaning: "downstream asset-role extension slot"
+    },
+    {
+      entryId: "seam.domain_policy_slots",
+      family: "specialization_seam",
+      gtlAbgTruth: "domain-specific F_P/F_H data policy",
+      overlayMeaning: "downstream policy extension slot"
+    },
+    {
+      entryId: "seam.domain_proof_expectations",
+      family: "specialization_seam",
+      gtlAbgTruth: "domain evidence expectations over ABG admitted evidence",
+      overlayMeaning: "downstream proof interpretation extension slot"
+    },
+    {
+      entryId: "seam.plugin_binding_refs",
+      family: "specialization_seam",
+      gtlAbgTruth: "plugin refs that supply data declarations or downstream interpretation",
+      overlayMeaning: "downstream plugin binding slot"
+    }
+  ],
+  forbiddenAuthority: [
+    "gtl_graph_function_catalog",
+    "abg_runtime_emitter",
+    "admitted_ref_minting",
+    "evidence_admission",
+    "assurance_fold_projection",
+    "residual_projection",
+    "continuation_or_reentry_routing",
+    "fp_worker_invocation",
+    "odd_sdlc_phase_or_ledger_reproduction"
+  ]
+});
+
 export const REQUIRED_EVIDENCE_EVENT_KINDS = Object.freeze([
   "actor_invocation_started",
   "actor_result_artifact_observed",

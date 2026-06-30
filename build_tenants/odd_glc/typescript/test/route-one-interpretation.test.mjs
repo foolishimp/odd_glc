@@ -9,6 +9,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import {
   ABIOGENESIS_SUBSTRATE_PROVENANCE,
   FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES,
+  ODD_GLC_OVERLAY_CATALOG,
   REQUIRED_ROUTE_ONE_SURFACES,
   defineLifecycleSurfaceMap,
   definePolicyOverlay,
@@ -62,6 +63,19 @@ const defaultT174ArtifactPath = path.join(
   tenantRoot,
   "test/fixtures/abiogenesis-t174-parallel-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-artifact.json"
 );
+
+function containsFunction(value) {
+  if (typeof value === "function") {
+    return true;
+  }
+  if (Array.isArray(value)) {
+    return value.some(containsFunction);
+  }
+  if (value === null || typeof value !== "object") {
+    return false;
+  }
+  return Object.values(value).some(containsFunction);
+}
 
 async function importAbgRequirementsFacade() {
   const packageRoot = process.env.ABG_TYPESCRIPT_TENANT_ROOT ?? defaultAbgRoot;
@@ -383,12 +397,13 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.consumerTenant, "build_tenants/odd_glc/typescript");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productId, "abiogenesis");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName, "@abiogenesis/typescript-tenant");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.1.0-rc.17");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.1.0-rc.17");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "682d0de2f154740e358a95be7e39cce4c40f5239");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "59f15b33de417c0f7cf161d689d7ada6a68a4b0f");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "d07e8d6fa6d27de4ca959f5cf10af1ab922216df94d212521e0e144ce89283d9");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "54804d7046788f393b9b62a49ed501b8998a22f199b5b469bf4a49bd8e84f262");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.2.0-rc.1");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.2.0-rc.1");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "54c21ce1f984f0be922199232fd8cb981f000ce4");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "9653252077a6b52ff343832101748d41a3483b0f");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "ad5cfca0a3411bf6be3b5771965f1bfe78edfed4f2f38225794f2adb60cf87a7");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "50632ae83fa3c0dd987608f4bbe9755d645978dd99525a3d37a8ec48ed5969fa");
   assert.equal(packageJson.name, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName);
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(
@@ -1306,6 +1321,39 @@ test("keeps F_P and F_H policy surfaces as data declarations", () => {
   });
   assert.equal(rejectedPolicy.status, "rejected");
   assert.equal(rejectedPolicy.reason, "forbidden_authority");
+});
+
+test("defines the odd_glc overlay catalog as data-only lifecycle slots", () => {
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.kind, "odd_glc_overlay_catalog");
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.authority.rule, "data_only_overlay_over_admitted_gtl_abg_truth");
+  assert.equal(containsFunction(ODD_GLC_OVERLAY_CATALOG), false);
+  assert.deepEqual(ODD_GLC_OVERLAY_CATALOG.families, [
+    "lifecycle_surface",
+    "policy_overlay",
+    "read_model",
+    "proof_binding",
+    "specialization_seam"
+  ]);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.lifecycle_surface.owner, "odd_glc");
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.policy_overlay.allowedUse.includes("as data"), true);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.read_model.forbiddenAuthority.includes("event_emission"), true);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.specialization_seam.forbiddenAuthority.includes("odd_sdlc_reproduction"), true);
+
+  const surfaceEntries = ODD_GLC_OVERLAY_CATALOG.entries
+    .filter((entry) => entry.family === "lifecycle_surface")
+    .map((entry) => entry.surface);
+  assert.deepEqual(surfaceEntries, REQUIRED_ROUTE_ONE_SURFACES);
+
+  const entryIds = new Set(ODD_GLC_OVERLAY_CATALOG.entries.map((entry) => entry.entryId));
+  assert.equal(entryIds.has("policy.fp_semantic_judgment"), true);
+  assert.equal(entryIds.has("policy.fh_human_decision"), true);
+  assert.equal(entryIds.has("view.lifecycle_state"), true);
+  assert.equal(entryIds.has("proof.fixture_of_record"), true);
+  assert.equal(entryIds.has("seam.plugin_binding_refs"), true);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("gtl_graph_function_catalog"), true);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("abg_runtime_emitter"), true);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("fp_worker_invocation"), true);
+  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("odd_sdlc_phase_or_ledger_reproduction"), true);
 });
 
 test("does not export local runtime authority", async () => {

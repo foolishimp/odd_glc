@@ -36,8 +36,11 @@ export interface AbiogenesisSubstrateProvenance {
     readonly packageName: "@abiogenesis/typescript-tenant";
     readonly packageVersion: string;
     readonly releaseTag: string;
+    readonly sourceCommit: string;
     readonly snapshotCommit: string;
     readonly tarballSha256: string;
+    readonly productToolchainManifestDigest: string;
+    readonly releaseSnapshotManifestSha256?: string;
   };
   readonly publicSurfaces: {
     readonly gtlRequirements: "./gtl/requirements";
@@ -76,6 +79,43 @@ export interface PolicyOverlay {
   readonly id: string;
   readonly fp: Readonly<Record<string, unknown>>;
   readonly fh: Readonly<Record<string, unknown>>;
+}
+
+export type OverlayCatalogFamily =
+  | "lifecycle_surface"
+  | "policy_overlay"
+  | "read_model"
+  | "proof_binding"
+  | "specialization_seam";
+
+export interface OverlayCatalogEntry {
+  readonly entryId: string;
+  readonly family: OverlayCatalogFamily;
+  readonly surface?: string;
+  readonly gtlAbgTruth: string;
+  readonly overlayMeaning: string;
+}
+
+export interface OverlayCatalogFamilyRule {
+  readonly owner: string;
+  readonly allowedUse: string;
+  readonly forbiddenAuthority: readonly string[];
+  readonly extensionRule: string;
+}
+
+export interface OddGlcOverlayCatalog {
+  readonly kind: "odd_glc_overlay_catalog";
+  readonly schemaVersion: "1";
+  readonly catalogId: string;
+  readonly authority: {
+    readonly owner: "odd_glc";
+    readonly substrate: "gtl_abg";
+    readonly rule: "data_only_overlay_over_admitted_gtl_abg_truth";
+  };
+  readonly families: readonly OverlayCatalogFamily[];
+  readonly familyRules: Readonly<Record<OverlayCatalogFamily, OverlayCatalogFamilyRule>>;
+  readonly entries: readonly OverlayCatalogEntry[];
+  readonly forbiddenAuthority: readonly string[];
 }
 
 export interface OddGlcLifecycleStateView {
@@ -251,6 +291,7 @@ export interface OddGlcReleaseReadinessStateView {
 export declare const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS: readonly string[];
 export declare const FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES: readonly string[];
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];
+export declare const ODD_GLC_OVERLAY_CATALOG: OddGlcOverlayCatalog;
 export declare const REQUIRED_EVIDENCE_EVENT_KINDS: readonly string[];
 export declare const ABIOGENESIS_SUBSTRATE_PROVENANCE: AbiogenesisSubstrateProvenance;
 
