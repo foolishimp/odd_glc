@@ -55,10 +55,13 @@ async function readPinnedArtifact(provenanceKey) {
   });
 }
 
-test("interprets T-167 non-closed lifecycle truth without claiming release", async () => {
+test("interprets T-167 synthetic non-closed route mechanics without claiming closure", async () => {
   const abgRequirements = await importAbgRequirementsFacade();
   const { artifact, manifest, proof } = await readPinnedArtifact("t167NonClosedRoute");
 
+  assert.equal(proof.proofClass, "synthetic_engine_mechanics");
+  assert.equal(proof.closureReadiness, "blocked_live_proof_missing");
+  assert.equal(manifest.source.sourceRunKind, "installed_non_closed_requirements_route");
   assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true);
   assert.equal(artifact.routeEvents.length, proof.routeEventCount);
   assert.equal(artifact.replayEvents.length, proof.replayEventCount);
@@ -135,14 +138,27 @@ test("interprets T-169 recursive span lineage and foldback truth", async () => {
   assert.equal(span.status, "accepted");
   assert.equal(span.value.kind, "odd_glc_recursive_span_state_view");
   assert.equal(span.value.readiness, "recursive_span_ready");
-  assert.equal(span.value.frameRefs.length >= 2, true);
-  assert.equal(span.value.zoomRefs.length >= 1, true);
-  assert.equal(span.value.foldbackRefs.length >= 1, true);
-  assert.ok(span.value.runtimeSpanEventKinds.includes("frame_opened"));
-  assert.ok(span.value.runtimeSpanEventKinds.includes("zoom_frame_opened"));
-  assert.ok(span.value.runtimeSpanEventKinds.includes("graph_span_foldback_evaluated"));
-  assert.ok(span.value.runtimeSpanEventKinds.includes("graph_reentry_planned"));
-  assert.ok(span.value.runtimeSpanEventKinds.includes("graph_reentry_applied"));
+  assert.equal(span.value.frameRefs.length, 2);
+  assert.equal(span.value.zoomRefs.length, 1);
+  assert.equal(span.value.foldbackRefs.length, 1);
+  assert.deepEqual(span.value.runtimeSpanEventKinds, [
+    "frame_opened",
+    "zoom_frame_opened",
+    "graph_span_foldback_evaluated",
+    "graph_reentry_planned",
+    "graph_reentry_applied"
+  ]);
+  assert.deepEqual(span.value.graphSpanEventKinds, [
+    "graph_span_evaluation_scheduled",
+    "graph_span_assessed",
+    "graph_span_foldback_evaluated"
+  ]);
+  assert.deepEqual(span.value.graphVectorRefs, [
+    "graph-capture_requirements",
+    "graph-synthesize_design",
+    "graph-implement_code"
+  ]);
+  assert.deepEqual(span.value.spanIds, ["span://t169/live/parent-child-foldback"]);
 });
 
 test("interprets T-160 executive pressure as lawful reprice pressure", async () => {

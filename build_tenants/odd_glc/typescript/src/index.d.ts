@@ -50,8 +50,12 @@ export interface AbiogenesisSubstrateProvenance {
     readonly sourceRunId: string;
     readonly fixturePath: string;
     readonly fixtureManifestPath: string;
-    readonly artifactSha256: string;
-    readonly routeEventCount?: number;
+	    readonly artifactSha256: string;
+	    readonly sourceRunKind?: string;
+	    readonly proofClass?: string;
+	    readonly closureReadiness?: string;
+	    readonly replacedByTicket?: string;
+	    readonly routeEventCount?: number;
     readonly pressureEventCount?: number;
     readonly replayEventCount: number;
   }>>;

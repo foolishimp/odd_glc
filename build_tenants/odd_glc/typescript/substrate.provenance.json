@@ -74,6 +74,10 @@
       "sourceProduct": "abiogenesis",
       "sourceTicket": "T-167",
       "sourceRunId": "20260628T192010906Z_pid82713",
+      "sourceRunKind": "installed_non_closed_requirements_route",
+      "proofClass": "synthetic_engine_mechanics",
+      "closureReadiness": "blocked_live_proof_missing",
+      "replacedByTicket": "T-014",
       "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t167-non-closed-route/20260628T192010906Z_pid82713/requirements-route-replay-artifact.json",
       "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t167-non-closed-route/20260628T192010906Z_pid82713/requirements-route-replay-manifest.json",
       "artifactSha256": "sha256:de29305cf46ed0fca3d8d2661b62d24cb8a0f88b4af32c5252b82d8ee62f5df5",
@@ -113,7 +117,7 @@
   },
   "proofScope": {
     "phase": "phase_12_generic_lifecycle_interpretation",
-    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures, including T-167 non-closed route truth, T-168 requirement graph projection, T-169 span-lineage recursion truth, T-160 executive pressure facts, and the T-166/T-171/T-172/T-173/T-174 Hello World ladder artifacts. odd_glc consumes those artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
+    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures for the closed route, Hello World ladder, T-168 requirement graph projection, T-169 span-lineage recursion truth, and T-160 executive pressure facts. The T-167 non-closed route artifact is retained only as synthetic engine-mechanics input until ABI publishes a live execution-grounded successor. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
   },
   "sourceDocuments": [
     "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json",

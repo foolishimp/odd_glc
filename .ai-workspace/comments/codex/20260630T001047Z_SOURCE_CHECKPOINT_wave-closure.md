@@ -3,20 +3,34 @@
 **Project**: odd_glc
 **Checkpoint commit**: `1bdae8dc64e47b141ae8d81b672a79b403ba68d6`
 **Substrate**: ABIogenesis `4.1.0-rc.17`
-**Status**: source checkpoint ready for review
+**Status**: qualified; T-014 reopened on 2026-06-30
+
+## 2026-06-30 Correction
+
+This checkpoint overclaimed non-closed lifecycle parity. The ABI T-167 artifact
+consumed by odd_glc is an installed engine-mechanics artifact, not a live
+execution-grounded proof. Its producer uses an in-test evaluator stub that
+defaults `closeDisposition` to `no_close`, and its requirement source carries
+the non-closure answer. The artifact remains useful as a mechanics regression,
+but it is not a fixture-of-record for downstream non-closed lifecycle closure.
+
+T-014 is reopened. The earned parts of this checkpoint remain the closed
+route-1, Hello World ladder, requirement graph, recursive span, executive
+pressure, release/readiness, and specialization-seam interpretation surfaces.
 
 ## Claim
 
-The generic lifecycle interpretation wave is complete as source work. The
-project has read-only odd_glc interpretation over digest-pinned ABI replay
-truth for:
+The generic lifecycle interpretation wave is complete as source work except for
+the non-closed lifecycle proof. The project has read-only odd_glc
+interpretation over digest-pinned ABI replay truth for:
 
 - closed route-1 lifecycle state;
 - artifact/evidence state;
 - assurance fold and residual pressure;
 - basic CLI, JavaScript tenant/test, Rust CLI, Rust service/client, and
   parallel Hello World ladder witnesses;
-- non-closed lifecycle residual/continuation truth;
+- non-closed lifecycle residual/continuation mechanics, pending replacement by
+  a live ABI artifact before closure;
 - requirement graph and aggregate residual truth;
 - recursive span, zoom, foldback, and re-entry truth;
 - executive pressure and lawful reprice interpretation;
@@ -50,6 +64,9 @@ Executed proof commands:
   - `npm run test:t172:live` -> passed.
   - `npm run test:t173:live` -> passed.
   - `npm run test:t174:live` -> passed.
+
+The ABI T-167 non-closed artifact was not live-proven and is not accepted as
+closure evidence for T-014.
 
 ## Next Lawful Work
 

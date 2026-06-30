@@ -17,7 +17,6 @@ Completed tickets:
 - `T-011-prove-rust-cli-hello-world-ladder-rung.md`
 - `T-012-prove-rust-service-hello-world-ladder-rung.md`
 - `T-013-track-parallel-js-hello-world-ladder-rung.md`
-- `T-014-prove-non-closed-lifecycle-interpretation.md`
 - `T-015-prove-requirement-graph-and-recursive-span-interpretation.md`
 - `T-016-prove-executive-pressure-reprice-interpretation.md`
 - `T-017-define-release-readiness-interpretation.md`
