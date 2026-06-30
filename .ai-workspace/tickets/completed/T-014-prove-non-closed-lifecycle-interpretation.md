@@ -3,7 +3,7 @@ id: T-014
 title: Prove non-closed lifecycle interpretation
 type: implementation
 ticket_category: realization_refactor
-status: active
+status: completed
 goal: >-
   Prove that odd_glc interprets execution-grounded ABI non-closed
   requirements-route replay truth as lifecycle residual, continuation,
@@ -15,6 +15,7 @@ owner: odd_glc
 priority: critical
 created_at: 2026-06-30
 reopened_at: 2026-06-30
+completed_at: 2026-06-30
 reopen_reason: >-
   The consumed ABI T-167 fixture is an installed engine-mechanics artifact, not
   a live execution-grounded proof. Its producer uses an in-test evaluator stub
@@ -28,6 +29,7 @@ source_documents:
   - specification/requirements/REQ-GLC-READ-QUERY-PROOF.md
   - specification/requirements/REQ-GLC-BOUNDARY-AUTHORITY.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-167-publish-non-closed-requirements-route-replay-artifact.md
+  - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-175-prove-live-non-closed-requirements-route-artifact.md
 closure_law: >-
   Close only when odd_glc consumes a digest-pinned ABI live non-closed replay
   artifact and proves non-closed lifecycle interpretation from ABG replay/query
@@ -77,3 +79,46 @@ runtime truth; it did not. The defect is that the upstream artifact being
 interpreted was authored by a test stub rather than discovered through a live
 F_P or executable subject. odd_glc must wait for ABI to publish a live
 non-closed replay artifact, then consume that artifact read-only.
+
+## Closure Evidence
+
+Closed on 2026-06-30 against ABI T-175.
+
+T-175 published a live, digest-pinned non-closed requirements-route replay
+artifact. The live control branch returned `close`; the live missing-
+verification branch returned `no_close`, emitted a partial requirement fold,
+emitted residual pressure, and joined lifecycle disposition as
+`continuation_available`.
+
+Consumed fixture:
+
+- artifact:
+  `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t175-live-non-closed-route/missing_verification_20260630T010854879Z_pid31652/requirements-route-replay-artifact.json`
+- manifest:
+  `build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t175-live-non-closed-route/missing_verification_20260630T010854879Z_pid31652/requirements-route-replay-manifest.json`
+- artifact digest:
+  `sha256:fd4596f6c481ae957461cb7bc0222d6242052336d3d9bac2841ca10e2b0e501e`
+- source run kind: `live_fp_non_closed_requirements_route`
+- ABI proof commit:
+  `ec360c8b7c23ca3423dd7f08553428ebec0b3182`
+- route event count: `9`
+- replay event count: `36`
+
+odd_glc proof:
+
+- `interpretLifecycleState` reads the ABI public query facade and replay truth.
+- `interpretAssuranceState` reads replayed fold, residual, and disposition
+  events.
+- `interpretEvidenceState` reads admitted and bound execution evidence.
+- `interpretReleaseReadinessState` reports `not_ready_residual` and
+  `releaseAuthority: not_claimed`.
+
+Proof commands:
+
+```bash
+cd build_tenants/odd_glc/typescript && npm test
+git diff --check
+```
+
+The T-167 fixture remains an engine-mechanics regression only. It is not the
+closure fixture-of-record for this ticket.

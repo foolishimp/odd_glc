@@ -1,0 +1,51 @@
+{
+  "artifact": {
+    "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t175_live_non_closed_requirements_route/missing_verification_20260630T010854879Z_pid31652/requirements-route-replay-artifact.json",
+    "requiredPayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_residual_projected",
+      "requirement_lifecycle_disposition"
+    ],
+    "requiredPayloadKindsSatisfied": true,
+    "routeEventCount": 9,
+    "routePayloadKinds": [
+      "requirement_term_admitted",
+      "requirement_projection_admitted",
+      "requirement_evidence_bound",
+      "requirement_fold_projected",
+      "requirement_residual_projected",
+      "requirement_lifecycle_disposition",
+      "authority_context_fragment_admitted",
+      "traversal_span_admitted"
+    ],
+    "routePayloadRefs": [
+      "requirement-event:authority_context_fragment_admitted:fragment%3A%2F%2Ft175%2Flive-readiness-packet:sha256:d83bc21d185f792207b06c2558871f5bba51f108a551f48a52f9445a3e675290",
+      "requirement-event:requirement_evidence_bound:artifact%3A%2F%2Ft175%2Fmissing_verification%2Fimplementation%23requirement-projection%3Dprojection%253AREQ-T175-LIVE-NON-CLOSED-ROUTE%253Aobligation:sha256:a394a307b33fd5498528af33389d359521d78969723474deba4949e0a3d52793",
+      "requirement-event:requirement_evidence_bound:proof%3A%2F%2Ft175%2Fmissing_verification%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T175-LIVE-NON-CLOSED-ROUTE%253Aobligation:sha256:c4db54b0a9e17bb3e09bcdba5fb87f1c3258d3607d275902091eb16077b074e8",
+      "requirement-event:requirement_fold_projected:requirement-fold%3AREQ-T175-LIVE-NON-CLOSED-ROUTE%3Apartial%3Aproof%3A%2F%2Ft175%2Fmissing_verification%2Frequirements_ready%23requirement-projection%3Dprojection%253AREQ-T175-LIVE-NON-CLOSED-ROUTE%253Aobligation:sha256:e1312d45dc6c41f32b71dfbaf4802761e148947068c7cb12877f7c67b43b2485",
+      "requirement-event:requirement_projection_admitted:projection%3AREQ-T175-LIVE-NON-CLOSED-ROUTE%3Aobligation:sha256:97c502090bbb8bc2bc93676b75cdd7d50a58f24dd7d2b1870c67c568114fc3d3",
+      "requirement-event:requirement_residual_projected:requirement-residual%3AREQ-T175-LIVE-NON-CLOSED-ROUTE%3Apartial:sha256:b6ee43dbeca44ac41f515b8c5334c189455b26d421bdbc4bf9acd27c93043bf1",
+      "requirement-event:requirement_term_admitted:REQ-T175-LIVE-NON-CLOSED-ROUTE:sha256:7a02a83cf4a192ca90eea51cb70cb5376f966fa91d0527c487251e7b32c5472c",
+      "requirement-event:traversal_span_admitted:span%3A%2F%2Ft175%2Fgraph-capture_requirements:sha256:66bcb5b4e29eb208f93a58c7fbd7aa7f6bb16344ff03e887a79fb5535a810ba3",
+      "requirement-lifecycle-disposition:sha256:f4921a05d12d25db75d6110cdeb8e2fca720773db51c5b90750bbedc40463320"
+    ],
+    "sha256": "sha256:fd4596f6c481ae957461cb7bc0222d6242052336d3d9bac2841ca10e2b0e501e"
+  },
+  "artifactVersion": 1,
+  "kind": "abg_requirements_route_replay_artifact_manifest",
+  "source": {
+    "controlCloseDisposition": "close",
+    "liveAgent": "claude",
+    "nonClosedDisposition": "continuation_available",
+    "proofCommand": "npm run test:t175:live",
+    "proofRunRoot": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t175_live_non_closed_requirements_route/missing_verification_20260630T010854879Z_pid31652",
+    "proofTicket": "T-175",
+    "requirementId": "REQ-T175-LIVE-NON-CLOSED-ROUTE",
+    "sourceRunKind": "live_fp_non_closed_requirements_route",
+    "supersedesProofTicket": "T-167"
+  },
+  "ticket": "T-175"
+}

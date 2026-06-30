@@ -84,6 +84,22 @@
       "routeEventCount": 46,
       "replayEventCount": 163
     },
+    "t175LiveNonClosedRoute": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-175",
+      "sourceProofCommit": "ec360c8b7c23ca3423dd7f08553428ebec0b3182",
+      "sourceRunId": "missing_verification_20260630T010854879Z_pid31652",
+      "sourceRunKind": "live_fp_non_closed_requirements_route",
+      "proofClass": "live_execution_grounded",
+      "supersedesProofTicket": "T-167",
+      "controlCloseDisposition": "close",
+      "nonClosedDisposition": "continuation_available",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t175-live-non-closed-route/missing_verification_20260630T010854879Z_pid31652/requirements-route-replay-artifact.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t175-live-non-closed-route/missing_verification_20260630T010854879Z_pid31652/requirements-route-replay-manifest.json",
+      "artifactSha256": "sha256:fd4596f6c481ae957461cb7bc0222d6242052336d3d9bac2841ca10e2b0e501e",
+      "routeEventCount": 9,
+      "replayEventCount": 36
+    },
     "t168RequirementGraphRefinement": {
       "sourceProduct": "abiogenesis",
       "sourceTicket": "T-168",
@@ -117,7 +133,7 @@
   },
   "proofScope": {
     "phase": "phase_12_generic_lifecycle_interpretation",
-    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures for the closed route, Hello World ladder, T-168 requirement graph projection, T-169 span-lineage recursion truth, and T-160 executive pressure facts. The T-167 non-closed route artifact is retained only as synthetic engine-mechanics input until ABI publishes a live execution-grounded successor. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
+    "claim": "The tenant is proven against ABIogenesis rc17 public query facades and committed digest-pinned ABI requirements-route replay fixtures for the closed route, Hello World ladder, T-175 live non-closed route, T-168 requirement graph projection, T-169 span-lineage recursion truth, and T-160 executive pressure facts. The T-167 non-closed route artifact is retained only as synthetic engine-mechanics regression input; T-175 is the live proof-of-record for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
   },
   "sourceDocuments": [
     "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json",
@@ -127,6 +143,7 @@
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-173-publish-generic-proof-evidence-replay-proof.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-174-publish-parallel-hello-world-replay-proof.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-167-publish-non-closed-requirements-route-replay-artifact.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-175-prove-live-non-closed-requirements-route-artifact.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-168-ratify-gtl-requirement-graph-and-abg-refinement-route.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-169-ratify-requirement-span-identity-across-recursion.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-160-declare-abg-recursive-executive-observer-graph-for-obligation-pressure.md",

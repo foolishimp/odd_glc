@@ -94,6 +94,71 @@ test("interprets T-167 synthetic non-closed route mechanics without claiming clo
   assert.equal(assurance.value.dispositions.every((row) => row.disposition === "continuation_available"), true);
 });
 
+test("interprets T-175 live non-closed route proof from ABI replay truth", async () => {
+  const abgRequirements = await importAbgRequirementsFacade();
+  const { artifact, manifest, proof } = await readPinnedArtifact("t175LiveNonClosedRoute");
+
+  assert.equal(proof.proofClass, "live_execution_grounded");
+  assert.equal(proof.supersedesProofTicket, "T-167");
+  assert.equal(proof.controlCloseDisposition, "close");
+  assert.equal(proof.nonClosedDisposition, "continuation_available");
+  assert.equal(manifest.source.sourceRunKind, "live_fp_non_closed_requirements_route");
+  assert.equal(manifest.source.controlCloseDisposition, "close");
+  assert.equal(manifest.source.nonClosedDisposition, "continuation_available");
+  assert.equal(manifest.artifact.requiredPayloadKindsSatisfied, true);
+  assert.deepEqual(manifest.artifact.requiredPayloadKinds, [
+    "requirement_term_admitted",
+    "requirement_projection_admitted",
+    "requirement_evidence_bound",
+    "requirement_fold_projected",
+    "requirement_residual_projected",
+    "requirement_lifecycle_disposition"
+  ]);
+  assert.equal(artifact.routeEvents.length, proof.routeEventCount);
+  assert.equal(artifact.replayEvents.length, proof.replayEventCount);
+  assert.equal(artifact.source.proofTicket, "T-175");
+  assert.equal(artifact.source.supersedesProofTicket, "T-167");
+  assert.equal(artifact.source.controlCloseDisposition, "close");
+  assert.equal(artifact.source.nonClosedDisposition, "continuation_available");
+
+  const lifecycle = interpretLifecycleState({
+    abgRequirements,
+    query: artifact.lifecycleState.requirementQuery,
+    dispositionRefs: artifact.lifecycleState.dispositionRefs,
+    runtimeEvents: artifact.replayEvents
+  });
+  const assurance = interpretAssuranceState({ runtimeEvents: artifact.replayEvents });
+  const evidence = interpretEvidenceState({ runtimeEvents: artifact.replayEvents });
+  const release = interpretReleaseReadinessState({
+    lifecycleStateView: lifecycle.value,
+    assuranceStateView: assurance.value,
+    evidenceStateView: evidence.value
+  });
+
+  assert.equal(lifecycle.status, "accepted");
+  assert.equal(assurance.status, "accepted");
+  assert.equal(evidence.status, "accepted");
+  assert.equal(release.status, "accepted");
+  assert.deepEqual(lifecycle.value.requirementIds, ["REQ-T175-LIVE-NON-CLOSED-ROUTE"]);
+  assert.equal(lifecycle.value.lifecycleDisposition, "continuation_available");
+  assert.deepEqual(lifecycle.value.dispositionRefs, [
+    "requirement-lifecycle-disposition:sha256:f4921a05d12d25db75d6110cdeb8e2fca720773db51c5b90750bbedc40463320"
+  ]);
+  assert.equal(assurance.value.assuranceDisposition, "residual_pressure");
+  assert.deepEqual(assurance.value.foldStates, ["partial"]);
+  assert.deepEqual(assurance.value.residualRefs, ["requirement-residual:REQ-T175-LIVE-NON-CLOSED-ROUTE:partial"]);
+  assert.deepEqual(assurance.value.dispositionRefs, lifecycle.value.dispositionRefs);
+  assert.equal(assurance.value.dispositions.length, 1);
+  assert.equal(assurance.value.dispositions[0].disposition, "continuation_available");
+  assert.deepEqual(assurance.value.foldRefs, [
+    "requirement-fold:REQ-T175-LIVE-NON-CLOSED-ROUTE:partial:proof://t175/missing_verification/requirements_ready#requirement-projection=projection%3AREQ-T175-LIVE-NON-CLOSED-ROUTE%3Aobligation"
+  ]);
+  assert.equal(evidence.value.evidenceDisposition, "admitted_bound_and_executed");
+  assert.equal(release.value.readiness, "not_ready_residual");
+  assert.equal(release.value.releaseAuthority, "not_claimed");
+  assert.deepEqual(release.value.residualRefs, assurance.value.residualRefs);
+});
+
 test("interprets T-168 requirement graph and aggregate residual truth", async () => {
   const { artifact, manifest, proof } = await readPinnedArtifact("t168RequirementGraphRefinement");
 

@@ -68,9 +68,7 @@ Goals define the current bounded work-wave for `odd_glc`.
 
 Active tickets:
 
-- `T-014`: reprove non-closed lifecycle interpretation against a live
-  execution-grounded ABI artifact. The current ABI T-167 fixture is retained
-  only as an engine-mechanics regression and does not close the ticket.
+- None.
 
 Completed tickets:
 
@@ -116,6 +114,10 @@ Completed tickets:
   digest-pinned ABI T-174 branch/frontier/fan-in replay artifact without
   hand-built route events, odd_glc scheduler authority, or odd_glc-owned
   fan-in policy; completed.
+- `T-014`: prove non-closed lifecycle interpretation over the digest-pinned ABI
+  T-175 live non-closed route replay artifact without hand-built route events,
+  odd_glc retry authority, odd_glc residual projection, or local disposition
+  selection; completed.
 - `T-015`: prove requirement graph and recursive span interpretation over ABI
   T-168/T-169 replay truth without odd_glc graph derivation, span identity, or
   recursive runtime authority; completed.
@@ -139,20 +141,19 @@ evidence. They do not define the row, and no odd_sdlc code, `Sdlc*` carrier,
 phase flow, local ledger, retry behavior, closure rule, or software-domain
 policy may be copied or reproduced in `odd_glc`.
 
-The wave is partially earned. The T-167 non-closed fixture consumed by odd_glc
-is not a live execution-grounded proof; it is an installed engine-mechanics
-artifact whose producer stubs the non-closure disposition. T-014 is reopened
-until ABI publishes a live non-closed route artifact and odd_glc consumes it
-read-only.
+The wave is earned as a source checkpoint. The T-167 non-closed fixture is
+retained only as installed engine-mechanics regression coverage. T-014 now
+closes against ABI T-175, which publishes a live non-closed route artifact with
+control `close`, non-closed `no_close`, partial fold, residual pressure, and
+`continuation_available` disposition emitted by ABI and consumed read-only by
+odd_glc.
 
 The wave executed in this order:
 
-1. Non-closed lifecycle interpretation: current read-model mechanics consume
-   ABI T-167 replay-shaped truth for residual pressure and
-   `continuation_available`, but this is not closure evidence. The closeable
-   target is a successor live ABI artifact for residual pressure,
-   `continuation_available`, `reentry_available`, and `blocked` where
-   published by ABI. `odd_glc` reads and labels only.
+1. Non-closed lifecycle interpretation: read-model mechanics consume ABI T-175
+   live replay truth for residual pressure and `continuation_available`.
+   T-167 remains a mechanics regression. Future non-closed ABI artifacts may
+   add `reentry_available` or `blocked`; `odd_glc` reads and labels only.
 2. Recursive and any-scale interpretation: consume ABI T-168 requirement graph
    projection and T-169 span-lineage/foldback/re-entry truth. `odd_glc` gives
    lifecycle meaning to frame/span/foldback refs but does not own recursion.
@@ -168,10 +169,10 @@ The wave executed in this order:
    supply domain semantics; `odd_glc` shall not author software/test/build/
    release semantics.
 
-Current earned proof for this wave includes the normal odd_glc tenant test suite
-and the live ABI Hello World proofs for the ladder rungs that have live
-scripts: T-165, T-171, T-172, T-173, and T-174. It does not include a live T-167
-non-closed proof.
+Current earned proof for this wave includes the normal odd_glc tenant test
+suite, the live ABI Hello World proofs for the ladder rungs that have live
+scripts (T-165, T-171, T-172, T-173, and T-174), and the T-175 live non-closed
+route proof consumed by T-014.
 
 ## Current Work-Wave Target
 
@@ -227,9 +228,9 @@ This wave closes when the project has:
   proof bindings into odd_glc policy;
 - a completed parallel JavaScript Hello World rung over the committed
   digest-pinned ABI T-174 parallel branch/fan-in fixture of record;
-- active read-only non-closed lifecycle interpretation over ABI T-167
-  mechanics, pending a live execution-grounded ABI non-closed artifact before
-  closure;
+- completed read-only non-closed lifecycle interpretation over the committed
+  digest-pinned ABI T-175 live non-closed route fixture of record, with T-167
+  retained as mechanics regression only;
 - completed read-only requirement graph and recursive span interpretation over
   ABI T-168 and T-169 graph, lineage, foldback, and re-entry truth;
 - completed read-only executive pressure/reprice interpretation over ABI T-160
@@ -239,9 +240,8 @@ This wave closes when the project has:
 - completed generic downstream specialization seam law that excludes copied
   odd_sdlc code, `Sdlc*` carriers, phase flow, local ledgers, retry behavior,
   closure rules, and software-domain policy from generic odd_glc scope;
-- a qualified source-checkpoint record that preserves the distinction between
-  source work, release cut, product, install, and downstream specialization,
-  and does not close T-014 until the live ABI non-closed proof exists;
+- a completed source-checkpoint record that preserves the distinction between
+  source work, release cut, product, install, and downstream specialization;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond read/query, real route replay consumption, and read-only lifecycle
   interpretation over admitted ABI truth.
