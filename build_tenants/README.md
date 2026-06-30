@@ -5,7 +5,7 @@
 
 `specification/` defines `WHAT`.
 
-`build_tenants/` will contain one or more realizations of `HOW` after the first
-requirements and design surfaces are ratified.
+`build_tenants/` contains the active route-1 TypeScript realization line after
+the first requirements and design surfaces were ratified.
 
-No build tenant is active yet.
+The active tenant is recorded in [TENANT_REGISTRY.md](TENANT_REGISTRY.md).

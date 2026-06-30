@@ -128,6 +128,9 @@ Completed tickets:
   completed.
 - `T-018`: define the generic downstream specialization seam without authoring
   software/test/build/release semantics or reproducing odd_sdlc; completed.
+- `T-019`: record the completed generic lifecycle interpretation wave as a
+  source checkpoint, not a release cut, install, deployment, operational
+  return, or downstream odd_sdlc rebuild; completed.
 
 ## Completed Generic Lifecycle Interpretation Wave
 
@@ -226,6 +229,8 @@ This wave closes when the project has:
 - completed generic downstream specialization seam law that excludes copied
   odd_sdlc code, `Sdlc*` carriers, phase flow, local ledgers, retry behavior,
   closure rules, and software-domain policy from generic odd_glc scope;
+- a source-checkpoint closure record that preserves the distinction between
+  source work, release cut, product, install, and downstream specialization;
 - no claimed odd_glc runtime, release, install, or full lifecycle closure
   beyond read/query, real route replay consumption, and read-only lifecycle
   interpretation over admitted ABI truth.

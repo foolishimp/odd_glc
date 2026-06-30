@@ -25,13 +25,16 @@ The tests import the installed ABIogenesis public `abg.requirements` facade
 from the local toolchain path by default. Set `ABG_TYPESCRIPT_TENANT_ROOT` to
 override that package root.
 
-Current proof coverage includes public-facade validation, replay-fact
-interpretation, requirement-route runtime-event interpretation, all route-1
-disposition labels, conservative disposition priority, fail-closed unknown
-disposition refs, data-only F_P/F_H policy overlays, and forbidden
-runtime-authority export checks.
+Current proof coverage includes public-facade validation, digest-pinned real
+ABI replay artifact consumption, requirement-route runtime-event
+interpretation, all route-1 disposition labels, conservative disposition
+priority, fail-closed unknown disposition refs, data-only F_P/F_H policy
+overlays, forbidden runtime-authority export checks, non-closed lifecycle
+interpretation, requirement-graph interpretation, recursive span/foldback
+interpretation, executive pressure/reprice interpretation, release/readiness
+interpretation, and the Hello World ladder through basic CLI, JavaScript
+tenant/test, Rust CLI, Rust service/client, and parallel JavaScript witnesses.
 
-This remains a Phase 4 proof. It proves odd_glc route-1 interpretation against
-the installed ABIogenesis public facade and route-shaped replay/runtime-event
-inputs. Phase 5 requires a serialized real-run ABG lifecycle replay from T-165
-or a successor proof artifact.
+The tenant is read/query only. It consumes committed ABI fixture-of-record
+artifacts and the installed ABIogenesis public facade; it does not execute the
+live proofs itself.

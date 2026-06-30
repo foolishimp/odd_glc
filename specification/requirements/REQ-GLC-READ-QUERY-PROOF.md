@@ -60,7 +60,7 @@ store, admitted-ref minting path, or release artifact.
 
 **REQ-GLC-READ-QUERY-PROOF-011**: Ratified design and implementation tests shall include negative proof where applicable: no native graph-function catalog, no shadow carriers, no local event stream, no local admitted-ref minting, no boolean evidence, no local fold/residual store, and no downstream-public projection emitter.
 
-**REQ-GLC-READ-QUERY-PROOF-012**: The first steel-thread proof shall consume the ABIogenesis route-1 public surfaces recorded in T-002's rc.12 readiness refresh. It shall not re-prove ABG route emission inside odd_glc; it shall prove odd_glc interpretation of ABG-owned route truth.
+**REQ-GLC-READ-QUERY-PROOF-012**: The first steel-thread proof shall consume the ABIogenesis route-1 public surfaces recorded in T-002's readiness refresh and the current pinned ABIogenesis substrate provenance. It shall not re-prove ABG route emission inside odd_glc; it shall prove odd_glc interpretation of ABG-owned route truth.
 
 **REQ-GLC-READ-QUERY-PROOF-013**: A lifecycle query shall fail closed when required upstream truth is `missing`, `placeholder`, `test_only`, `unwired`, `unpinned`, forgeable, or absent from the required runtime/query path.
 

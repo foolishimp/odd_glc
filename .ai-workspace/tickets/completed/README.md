@@ -22,3 +22,4 @@ Completed tickets:
 - `T-016-prove-executive-pressure-reprice-interpretation.md`
 - `T-017-define-release-readiness-interpretation.md`
 - `T-018-define-generic-specialization-seam.md`
+- `T-019-record-source-checkpoint-readiness.md`
