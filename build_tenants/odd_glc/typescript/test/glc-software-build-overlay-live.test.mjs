@@ -202,6 +202,9 @@ test("records the aggregate software-build overlay live manifest without product
     assert.ok(scenario, `Manifest contains unknown scenario ${run.scenarioId}`);
     assert.equal(run.subjectKind, scenario.kind);
     assert.match(run.eventLogSha256, /^sha256:[0-9a-f]{64}$/u);
+    assert.equal(Object.hasOwn(run, "proofPath"), false);
+    assert.equal(typeof run.proofSummary, "string");
+    assert.equal(run.proofSummary.length > 0, true);
     assert.deepEqual(run.requiredRuntimeTruth, [
       "registry_entry_admitted",
       "graph_function_selected",
@@ -213,7 +216,7 @@ test("records the aggregate software-build overlay live manifest without product
     SCENARIOS
       .filter((scenario) => !manifest.runs.some((run) => run.scenarioId === scenario.scenarioId))
       .map((scenario) => scenario.scenarioId),
-    ["SCN-GLC-DATA-MAPPER-LITE-JS"]
+    []
   );
 });
 
@@ -253,6 +256,7 @@ import {
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING
 } from ${JSON.stringify(oddGlcImport)};
+import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { spawn, spawnSync } from "node:child_process";
 import path from "node:path";
@@ -281,6 +285,10 @@ const EXPECTED_PROVE_NODE_TYPES = Object.freeze(
 
 function uniq(values) {
   return Object.freeze([...new Set(values)].sort());
+}
+
+function sha256Text(text) {
+  return \`sha256:\${createHash("sha256").update(text, "utf8").digest("hex")}\`;
 }
 
 function assetSurface(input) {
@@ -351,11 +359,11 @@ const lifecycleArtifactType = nodeType({
 function nodeTypeFromEntry(entry) {
   return nodeType({
     name: entry.nodeName,
-    schemaRef: entry.schemaRef,
+    schemaRef: "schema://odd_glc/software-build/lifecycle-asset",
     typeRef: entry.typeRef,
     markov: entry.markov,
     assetSurface: {
-      kind: entry.assetKind,
+      kind: "lifecycle_asset",
       requiredContexts: ["context://odd_glc/software-build"],
       outputContractRefs: [
         \`contract://\${entry.typeRef}\`,
@@ -386,6 +394,38 @@ const artifactType = TYPE_REFS.artifact === "odd_glc.type.software.data_mapping_
   ? dataMappingBundleComposition.graphFunction
   : lifecycleArtifactType;
 
+const dataMappingBundleNodeContracts = Object.freeze(
+  ODD_GLC_DATA_MAPPING_NODE_TYPES.flatMap((entry) => [
+    \`contract://\${entry.typeRef}\`,
+    \`contract://odd_glc/\${entry.assetKind}\`
+  ])
+);
+
+function artifactNodeShape() {
+  if (TYPE_REFS.artifact === "odd_glc.type.software.data_mapping_implementation_bundle") {
+    return Object.freeze({
+      schemaRef: "schema://odd_glc/software-build/lifecycle-asset",
+      markov: ["declared", "materialized"],
+      assetSurface: {
+        kind: "lifecycle_asset",
+        requiredContexts: ["context://odd_glc/software-build"],
+        outputContractRefs: dataMappingBundleNodeContracts,
+        proofObligationRefs: ["proof://odd_glc/software-build/node-type"]
+      }
+    });
+  }
+  return Object.freeze({
+    schemaRef: "schema://odd_glc/software-build/lifecycle-artifact",
+    markov: ["materialized"],
+    assetSurface: {
+      kind: "target_artifact",
+      requiredContexts: ["context://odd_glc/software-build"],
+      outputContractRefs: ["contract://odd_glc/lifecycle-artifact"],
+      proofObligationRefs: ["proof://odd_glc/software-build/artifact"]
+    }
+  });
+}
+
 const evidenceType = nodeType({
   name: "SoftwareBuildEvidenceBindingViewType",
   schemaRef: "schema://odd_glc/software-build/evidence-binding",
@@ -413,31 +453,23 @@ const lifecycleContext = admittedNode({
   tags: ["source"]
 });
 
+const artifactShape = artifactNodeShape();
+
 const generatedArtifact = admittedNode({
   name: "GeneratedSoftwareBuildArtifact",
-  schemaRef: "schema://odd_glc/software-build/lifecycle-artifact",
+  schemaRef: artifactShape.schemaRef,
   typeRef: TYPE_REFS.artifact,
-  markov: ["materialized"],
-  assetSurface: {
-    kind: "target_artifact",
-    requiredContexts: ["context://odd_glc/software-build"],
-    outputContractRefs: ["contract://odd_glc/lifecycle-artifact"],
-    proofObligationRefs: ["proof://odd_glc/software-build/artifact"]
-  },
+  markov: artifactShape.markov,
+  assetSurface: artifactShape.assetSurface,
   tags: ["artifact-output", SCENARIO.kind]
 });
 
 const runnableArtifact = admittedNode({
   name: "RunnableSoftwareBuildArtifact",
-  schemaRef: "schema://odd_glc/software-build/lifecycle-artifact",
+  schemaRef: artifactShape.schemaRef,
   typeRef: TYPE_REFS.artifact,
-  markov: ["materialized"],
-  assetSurface: {
-    kind: "target_artifact",
-    requiredContexts: ["context://odd_glc/software-build"],
-    outputContractRefs: ["contract://odd_glc/lifecycle-artifact"],
-    proofObligationRefs: ["proof://odd_glc/software-build/artifact"]
-  },
+  markov: artifactShape.markov,
+  assetSurface: artifactShape.assetSurface,
   tags: ["artifact-input", SCENARIO.kind]
 });
 
@@ -837,10 +869,35 @@ async function executeScenario(workspaceRoot) {
     }
     return Object.freeze({ kind: SCENARIO.kind, stdout: fanIn.stdout, commands: [hello, world, fanIn] });
   }
+  if (SCENARIO.kind === "data_mapper_lite_node_test") {
+    const result = runSync(process.execPath, ["--test", "test/logical-data-model.test.mjs"], workspaceRoot);
+    if (result.status !== 0 || !result.stdout.includes("pass 3")) {
+      throw new Error(\`data_mapper_lite_node_test failed: \${JSON.stringify(result)}\`);
+    }
+    return Object.freeze({
+      kind: SCENARIO.kind,
+      stdout: EXPECTED_STDOUT,
+      commands: [result],
+      observedTestPassCount: 3
+    });
+  }
   throw new Error(\`Unknown scenario kind \${SCENARIO.kind}\`);
 }
 
-function promptFor(input) {
+function evidenceSummaryFor(input) {
+  return Object.freeze({
+    stage: input.expectedStage,
+    materializedFileCount: input.materializedFiles.length,
+    materializedFiles: input.materializedFiles.map((filePath) => path.relative(input.workspaceRoot, filePath)),
+    executionStatus: input.execution === null ? null : input.execution.commands.map((command) => command.status),
+    observedStdoutSha256: input.execution === null ? null : sha256Text(input.execution.stdout),
+    observedStdoutPreview: input.execution === null ? null : input.execution.stdout.slice(0, 120),
+    clientStatus: input.execution?.clientRequest?.status ?? null,
+    observedTestPassCount: input.execution?.observedTestPassCount ?? null
+  });
+}
+
+function promptFor(input, evidenceSummary) {
   const stage = input.vectorIndex === 0 ? "materialize" : "prove";
   return [
     "Return only one JSON object. Do not include markdown or commentary.",
@@ -857,6 +914,9 @@ function promptFor(input) {
     \`Current edge: \${input.edge}\`,
     \`Vector index: \${input.vectorIndex}\`,
     "",
+    "Observed evidence generated before this judgment:",
+    JSON.stringify(evidenceSummary),
+    "",
     "Declared generic odd_glc node type refs:",
     \`- lifecycle context: \${TYPE_REFS.context}\`,
     \`- lifecycle artifact: \${TYPE_REFS.artifact}\`,
@@ -866,7 +926,7 @@ function promptFor(input) {
     "{",
     "  \\"accepted\\": true,",
     \`  \\"stage\\": \${JSON.stringify(stage)},\`,
-    \`  \\"expectedStdout\\": \${JSON.stringify(EXPECTED_STDOUT)},\`,
+    "  \\"evidenceAccepted\\": true,",
     "  \\"nodeTypesUsed\\": string[],",
     "  \\"reason\\": string",
     "}",
@@ -902,9 +962,25 @@ export const runtimeBinding = {
         const runRoot = path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", SCENARIO.key);
         await mkdir(runRoot, { recursive: true });
         const label = \`\${SCENARIO.key}-vector-\${pluginInput.vectorIndex}\`;
+        const expectedStage = pluginInput.vectorIndex === 0 ? "materialize" : "prove";
+        const expectedNodeTypes = pluginInput.vectorIndex === 0
+          ? EXPECTED_MATERIALIZE_NODE_TYPES
+          : EXPECTED_PROVE_NODE_TYPES;
+        const materializedFiles = pluginInput.vectorIndex === 0
+          ? await materializeScenario(workspaceRoot)
+          : Object.freeze(SCENARIO.files.map(([relativePath]) => path.join(workspaceRoot, relativePath)));
+        const execution = pluginInput.vectorIndex === 0
+          ? null
+          : await executeScenario(workspaceRoot);
+        const evidenceSummary = evidenceSummaryFor({
+          expectedStage,
+          execution,
+          materializedFiles,
+          workspaceRoot
+        });
         const transport = await runAgentTransport({
           contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "claude"),
-          prompt: promptFor(pluginInput),
+          prompt: promptFor(pluginInput, evidenceSummary),
           cwd: workspaceRoot,
           archiveRoot: runRoot,
           label,
@@ -918,25 +994,15 @@ export const runtimeBinding = {
           throw new Error(\`GLC software-build live worker failed: \${transport.stderr}\`);
         }
         const assessment = extractJsonObject(transport.text);
-        const expectedStage = pluginInput.vectorIndex === 0 ? "materialize" : "prove";
-        const expectedNodeTypes = pluginInput.vectorIndex === 0
-          ? EXPECTED_MATERIALIZE_NODE_TYPES
-          : EXPECTED_PROVE_NODE_TYPES;
         if (
           assessment.accepted !== true ||
           assessment.stage !== expectedStage ||
-          assessment.expectedStdout !== EXPECTED_STDOUT ||
+          assessment.evidenceAccepted !== true ||
           !Array.isArray(assessment.nodeTypesUsed) ||
           !expectedNodeTypes.every((typeRef) => assessment.nodeTypesUsed.includes(typeRef))
         ) {
           throw new Error(\`GLC software-build live worker returned invalid assessment: \${JSON.stringify(assessment)}\`);
         }
-        const materializedFiles = pluginInput.vectorIndex === 0
-          ? await materializeScenario(workspaceRoot)
-          : Object.freeze(SCENARIO.files.map(([relativePath]) => path.join(workspaceRoot, relativePath)));
-        const execution = pluginInput.vectorIndex === 0
-          ? null
-          : await executeScenario(workspaceRoot);
         const assessmentIds = pluginInput.expectedAssessmentIds.length > 0
           ? pluginInput.expectedAssessmentIds
           : [\`software_build_\${SCENARIO.key}_vector_\${pluginInput.vectorIndex}_fulfilled\`];
@@ -952,6 +1018,7 @@ export const runtimeBinding = {
           vectorIndex: pluginInput.vectorIndex,
           stage: expectedStage,
           assessment,
+          evidenceSummary,
           materializedFiles,
           execution,
           stdout: execution?.stdout ?? null,
@@ -1117,6 +1184,7 @@ for (const scenario of selectedScenarios()) {
       runtimeEvents: result.events,
       liveArtifacts: result.artifacts
     });
+    const expectedStdout = scenario.expectedStdout ?? "Hello, world!\n";
 
     assert.equal(result.startOutput.command, "start");
     assert.equal(result.startOutput.stopped_by, "converged");
@@ -1129,8 +1197,9 @@ for (const scenario of selectedScenarios()) {
     assert.equal(view.value.selectedGraphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget), true);
     assert.equal(view.value.selectedEntryKinds.includes("graph_function"), true);
     assert.equal(view.value.selectedEntryKinds.includes("node_type"), false);
-    assert.equal(view.value.stdoutValues.includes("Hello, world!\n"), true);
-    assert.equal(result.artifacts[1].execution.stdout, "Hello, world!\n");
+    assert.equal(view.value.stdoutValues.includes(expectedStdout), true);
+    assert.equal(result.artifacts[1].execution.stdout, expectedStdout);
+    assert.equal(result.artifacts[1].assessment.evidenceAccepted, true);
     assert.equal(result.artifacts.every((artifact) => artifact.overlayRef === ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef), true);
     assert.equal(result.artifacts.every((artifact) => artifact.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget), true);
     assert.equal(

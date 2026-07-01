@@ -34,7 +34,7 @@ non_closure_conditions:
     product law.
   - odd_glc product or runtime surfaces supervise processes, execute commands,
     admit evidence, or schedule parallel branches locally.
-  - A historical rc17 ladder replay fixture is relabeled as typed ABG 4.2
+  - A historical rc17 ladder replay proof input is relabeled as typed ABG 4.2
     startup proof without ABG-emitted startup, registry, selection, graph-call,
     traversal, and evidence truth for that rung.
   - A rung claims parity from startup declaration, sandbox execution, or replay
@@ -43,8 +43,8 @@ non_closure_conditions:
     traverses the scenario vectors, and emits the scenario proof truth.
   - A scenario sandbox writes or mutates ABI replay truth, route facts,
     registry entries, admitted refs, evidence admission, fold, residual,
-    disposition, or selection facts instead of treating ABI fixtures as
-    read-only fixture-of-record truth.
+    disposition, or selection facts instead of treating ABI proof inputs as
+    read-only summary truth.
   - Two scenario rungs share a mutable workspace, output directory, process
     state, or proof summary.
   - A ladder rung mints a scenario-specific odd_glc overlay instead of binding
@@ -67,18 +67,18 @@ non_closure_conditions:
 required_work:
   - Create typed declaration bindings for each rung.
   - Consume ABG 4.2 startup/traversal truth for each rung.
-  - Preserve old ABI fixture provenance as historical witness evidence only.
+  - Preserve old ABI proof-input provenance as historical witness evidence only.
   - Bind the ladder through `ODD_GLC_SOFTWARE_BUILD_OVERLAY` and
     `ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING`; the T-180 Hello World bootstrap
-    binding remains a historical fixture/proof witness, not the reusable
+    binding remains a historical proof witness, not the reusable
     software-build model.
   - Add sandbox parity proofs for the basic CLI, JavaScript tenant/test, Rust
     CLI, Rust service/client, and parallel JavaScript Hello World rungs. Each
     proof shall create a fresh run root, execute only the scenario subject or
-    verifier inside that workspace, copy pinned ABI fixture inputs as read-only
+    verifier inside that workspace, copy pinned ABI proof inputs as read-only
     proof inputs, and write a local sandbox summary.
   - Add a startup sandbox proof that consumes the pinned ABG 4.2 T-180 startup
-    fixture and records its registry, selection, graph-call, traversal, and
+    proof input and records its registry, selection, graph-call, traversal, and
     live-artifact truth without re-emitting any of it.
   - Promote bootstrap traversal to a first-class ladder proof for each rung:
     ABG must consume the odd_glc startup config, admit registry entries, select
@@ -111,15 +111,15 @@ closure_evidence: []
 
 The ladder is coverage evidence. It is not an odd_sdlc port.
 
-Current state: T-024 proves the basic GLC Hello World over ABG 4.2 startup.
-The JavaScript test, Rust CLI, Rust service/client, and parallel JavaScript
-rungs still require fresh typed-startup proof artifacts. Existing rc17 fixtures
-remain historical witness evidence only.
+Current state: the reusable software-build overlay has live ABG 4.2 summary
+proof inputs for basic CLI, JavaScript test, Rust CLI, Rust service/client,
+parallel JavaScript, and data_mapper-lite. Existing rc17 proof inputs remain
+historical witness evidence only.
 
 Sandbox parity is an additional proof layer. It verifies that each Hello World
 rung can run in its own test-run workspace like the odd_sdlc witness runs did,
 while the lifecycle truth interpreted by odd_glc remains the pinned ABI/GTL
-fixture-of-record truth. The sandbox harness may execute subject programs as
+proof-input truth. The sandbox harness may execute subject programs as
 test evidence; it is not an odd_glc product runtime and shall not be exported
 or used as an ABI event/admission/selection/fold path.
 
@@ -129,14 +129,14 @@ The ladder shall bind through the reusable software-build overlay:
 - `ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS`
 - `ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING`
 
-The scenario-specific T-180 GLC Hello World bootstrap binding is retained as a
-historical ABI 4.2 fixture-of-record and as evidence of the startup path. It is
-not the pattern for new ladder rungs.
+The scenario-specific T-180 GLC Hello World bootstrap binding is retained as
+historical ABI 4.2 proof evidence of the startup path. It is not the pattern for
+new ladder rungs.
 
 Bootstrap traversal is the load-bearing parity step between declaration and
 proof. A rung is not parity-complete merely because its startup declarations
 exist, its subject runs in a sandbox, or odd_glc can interpret an older replay
-fixture. It must show the ABG-owned chain:
+proof input. It must show the ABG-owned chain:
 
 `startup config -> registry admission -> lookup/selection -> graph_call_opened -> traversal vectors -> emitted runtime/proof truth -> replay/query -> odd_glc interpretation`.
 
@@ -162,8 +162,11 @@ ABG/GTL system-library work when the same constructive carrier is needed across
 multiple ODD products. In that case `odd_glc` shall bind to the admitted ABG
 catalog entry instead of publishing a duplicate product function.
 
-Current software-build graph-function refs are provisional startup bindings
-pending this audit:
+Current software-build graph-function refs are provisional startup bindings.
+The installed ABIogenesis 4.2 public registry/catalog surface does not publish
+equivalent reusable system-library entries for these refs yet, so the current
+disposition is `abg_4_2_no_equivalent_published`. Future closure shall bind an
+equivalent ABG entry if one is published.
 
 | Current ref | Genericity reading | Required disposition before close |
 | --- | --- | --- |
@@ -286,18 +289,19 @@ Implementation state:
 - `ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS` and
   `ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS` now mark each graph-function
   entry with `catalogReuseStatus:
-  "abg_catalog_reuse_audit_required"`, `genericity:
+  "abg_4_2_no_equivalent_published"`, `genericity:
   "candidate_abg_system_function"`, and `reuseGate:
   "bind_existing_abg_catalog_entry_when_equivalent_exists"`.
 - `ODD_GLC_STARTUP_BINDING` and
   `ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING` now carry
-  `readiness://odd_glc/abg-catalog-reuse-audit-required`.
+  `readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent`.
 - The current graph-function refs remain startup proof bindings only. They are
-  not ratified as final `odd_glc` product-owned functions until classified as
-  bound ABG catalog entry, upstream ABG catalog gap, or product-specific
-  specialization with explicit refinement/override law.
-- The data_mapper-lite live rung remains pending; the committed aggregate
-  manifest records the five completed Hello World live rungs only.
+  not ratified as final `odd_glc` product-owned functions. They are current
+  bindings with no equivalent ABI 4.2 published system-library entry found.
+  Future ABG catalog publication can supersede them by binding an equivalent
+  entry through the startup config.
+- The data_mapper-lite live rung is recorded in the committed aggregate
+  manifest as a summary proof input.
 
 2026-07-01 cleanup: Renamed the active product/software-build
 graph-function surfaces from `*_GRAPH_FUNCTION_LIBRARY` to
@@ -338,8 +342,8 @@ artifact truth.
 
 Each sandbox bootstrap now records
 `ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef` and
-`ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef`. The T-180 bootstrap fixture remains
-the copied ABI proof input; it is not the reusable overlay model.
+`ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef`. The T-180 bootstrap proof input
+remains copied evidence; it is not the reusable overlay model.
 
 Verification:
 
@@ -349,9 +353,8 @@ Verification:
   residual, and F_P invocation APIs in `src/` and the sandbox test returned no
   matches.
 
-This records sandbox parity only. It does not by itself close the remaining
-fresh ABG 4.2 typed-startup proof requirement for the historical rc17 ladder
-rungs.
+This records sandbox parity only. Fresh ABG 4.2 typed-startup summary proof
+inputs are recorded by the software-build overlay live manifest.
 
 ## GLC Software-Build Overlay Live Implementation Record
 
@@ -389,15 +392,16 @@ scenario subject executes only inside the sandbox instance. The odd_glc source
 package still exports no ABG admission, selection, graph-call, event, runtime,
 process, or F_P invocation authority.
 
-Live run evidence:
+Committed live summary evidence:
 
-| Scenario | Subject kind | Duration ms | Required ABG runtime truth | Proof path |
-| --- | ---: | ---: | --- | --- |
-| `SCN-GLC-HELLO-WORLD-CLI-BASIC` | `node_cli` | 51070 | registry admission, graph-function selection, graph-call opening, vector closure | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/basic-cli/20260630T200658183Z_pid7116/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-JS-TENANT-TEST` | `node_test` | 75961 | registry admission, graph-function selection, graph-call opening, vector closure | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/js-tenant-test/20260630T201002209Z_pid9222/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-RUST-CLI` | `rust_cli` | 76486 | registry admission, graph-function selection, graph-call opening, vector closure | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-cli/20260630T201124944Z_pid10185/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-RUST-SERVICE` | `rust_service` | 81391 | registry admission, graph-function selection, graph-call opening, vector closure | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-service/20260630T201248181Z_pid11207/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-PARALLEL-JS` | `parallel_js` | 50271 | registry admission, graph-function selection, graph-call opening, vector closure | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/parallel-js/20260630T201414930Z_pid12258/odd-glc-software-build-overlay-live-proof.json` |
+| Scenario | Subject kind | Duration ms | Event log digest | Summary |
+| --- | --- | ---: | --- | --- |
+| `SCN-GLC-HELLO-WORLD-CLI-BASIC` | `node_cli` | 53393 | `sha256:c8ee056b1dc0374da7d4ff2cb90dee98e264ca085f47b49b000280b80a58206f` | ABG admitted registry entries, selected the reusable software-build graph function, opened graph calls, traversed both vectors, invoked live F_P, and executed the Node CLI sandbox subject to `Hello, world!`. |
+| `SCN-GLC-HELLO-WORLD-JS-TENANT-TEST` | `node_test` | 54933 | `sha256:8bce9357b776db50481da2e94e1d34012e46bb907800102e00eee1b1bfa3a3fa` | ABG admitted registry entries, selected the reusable software-build graph function, opened graph calls, traversed both vectors, invoked live F_P, and executed the Node test sandbox subject with a passing Hello World test. |
+| `SCN-GLC-HELLO-WORLD-RUST-CLI` | `rust_cli` | 22068 | `sha256:5babaf0dc9c58224aafa4931985ec29b240a5f71b7cf78433743417250d95950` | ABG admitted registry entries, selected the reusable software-build graph function, opened graph calls, traversed both vectors, invoked live F_P, and executed the Rust CLI sandbox subject to `Hello, world!`. |
+| `SCN-GLC-HELLO-WORLD-RUST-SERVICE` | `rust_service` | 30168 | `sha256:387db377d2bddbba89472259aebc75176915fa5db21e64f2305e0c46bdab877e` | ABG admitted registry entries, selected the reusable software-build graph function, opened graph calls, traversed both vectors, invoked live F_P, compiled and ran a Rust TCP service, and proved an HTTP 200 `Hello, world!` response. |
+| `SCN-GLC-HELLO-WORLD-PARALLEL-JS` | `parallel_js` | 77716 | `sha256:502ac0d941a555f5031acc362e54d35b8687c1a091e5b0c5e01e01ffec56beb0` | ABG admitted registry entries, selected the reusable software-build graph function, opened graph calls, traversed both vectors, invoked live F_P, executed parallel Node branch scripts, and proved fan-in `Hello, world!`. |
+| `SCN-GLC-DATA-MAPPER-LITE-JS` | `data_mapper_lite_node_test` | 108373 | `sha256:6fc1e0dbbee5c426f47e7aa69e581e1bd7a8b2da6ef0c7e4d07e865e6901e4fc` | ABG admitted software-build/data-mapping node-type registry entries, selected the reusable software-build graph function, opened graph calls, traversed both vectors, invoked live F_P, and executed the data-mapper-lite Node test sandbox with three passing logical-data-model tests. |
 
 Verification:
 
@@ -406,18 +410,8 @@ Verification:
 - `cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ODD_GLC_LIVE_SCENARIO=rust-cli npm run test:live` passed.
 - `cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ODD_GLC_LIVE_SCENARIO=rust-service npm run test:live` passed.
 - `cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ODD_GLC_LIVE_SCENARIO=parallel-js npm run test:live` passed.
-- `cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 npm run test:live` passed: 5/5 live overlay Hello Worlds, duration 241922ms.
-- `cd build_tenants/odd_glc/typescript && npm test` passed: 41/41 non-live checks, 5/5 live overlay checks skipped by default.
+- `cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 npm run test:live` passed: 5/5 original live overlay Hello Worlds, duration 241922ms.
+- `cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ODD_GLC_LIVE_SCENARIO=data-mapper-lite npm run test:live` reported the data-mapper live traversal as passed in 108373ms; the command still failed at that point on the stale manifest assertion, which was then fixed by committing summary evidence for all six rungs.
+- `cd build_tenants/odd_glc/typescript && npm test` passed: 41/41 non-live checks, 6/6 live overlay checks skipped by default.
 - `git diff --check` passed.
 - Forbidden-authority grep across `build_tenants/odd_glc/typescript/src` returned no matches for ABG admission, registry projection, lookup, selection, graph-call opening, event emission, process spawn, or F_P transport calls.
-
-Aggregate live proof paths from the final `CODEX_LIVE_FP=1 npm run test:live`
-run:
-
-| Scenario | Duration ms | Event log digest | Proof path |
-| --- | ---: | --- | --- |
-| `SCN-GLC-HELLO-WORLD-CLI-BASIC` | 53393 | `sha256:c8ee056b1dc0374da7d4ff2cb90dee98e264ca085f47b49b000280b80a58206f` | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/basic-cli/20260630T201645086Z_pid13950/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-JS-TENANT-TEST` | 54933 | `sha256:8bce9357b776db50481da2e94e1d34012e46bb907800102e00eee1b1bfa3a3fa` | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/js-tenant-test/20260630T201739196Z_pid13950/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-RUST-CLI` | 22068 | `sha256:5babaf0dc9c58224aafa4931985ec29b240a5f71b7cf78433743417250d95950` | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-cli/20260630T201834845Z_pid13950/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-RUST-SERVICE` | 30168 | `sha256:387db377d2bddbba89472259aebc75176915fa5db21e64f2305e0c46bdab877e` | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-service/20260630T201857630Z_pid13950/odd-glc-software-build-overlay-live-proof.json` |
-| `SCN-GLC-HELLO-WORLD-PARALLEL-JS` | 77716 | `sha256:502ac0d941a555f5031acc362e54d35b8687c1a091e5b0c5e01e01ffec56beb0` | `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/parallel-js/20260630T201928529Z_pid13950/odd-glc-software-build-overlay-live-proof.json` |
