@@ -130,11 +130,29 @@
       "artifactSha256": "sha256:b0afcb13fa12db98d59347b3532346f810da4f7d96b1eea9ebcb74375cfbce4f",
       "pressureEventCount": 1,
       "replayEventCount": 30
+    },
+    "t180GlcHelloWorldBootstrapLive": {
+      "sourceProduct": "abiogenesis",
+      "sourceTicket": "T-180",
+      "sourceRunId": "20260630T172837931Z_pid12638",
+      "sourceRunKind": "live_glc_hello_world_bootstrap_startup",
+      "proofClass": "live_execution_grounded_startup_registry_traversal",
+      "sourceCommit": "96532521c5a6cb93495bd615749f0b630b4a7e52",
+      "sourceDirty": false,
+      "sourcePackageVersion": "4.2.0-rc.1",
+      "snapshotTarballSha256": "a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4",
+      "fixturePath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t180-glc-hello-world-bootstrap-live/20260630T172837931Z_pid12638/t180-glc-hello-world-bootstrap-live-proof.json",
+      "fixtureManifestPath": "build_tenants/odd_glc/typescript/test/fixtures/abiogenesis-t180-glc-hello-world-bootstrap-live/20260630T172837931Z_pid12638/glc-hello-world-bootstrap-live-manifest.json",
+      "artifactSha256": "sha256:c28a20c8460a20b25c339e0486b7b66223e956f179d294a5b98bf86523859a9a",
+      "eventLogSha256": "sha256:fcebca8a735ce0ad4c5acd1dcf1281bdf87ba807a3e3fb5aaeb45db082b5c099",
+      "eventDigest": "sha256:7d8e258d397952e9f8f4109665670bfa94eb643d98ed084f7dedb95ba6e7895a",
+      "eventCount": 87,
+      "durationMs": 89901
     }
   },
   "proofScope": {
     "phase": "phase_12_generic_lifecycle_interpretation",
-    "claim": "The tenant is proven against installed ABIogenesis 4.2.0-rc.1 public query facades and committed digest-pinned ABI requirements-route replay fixtures for the closed route, Hello World ladder, T-175 live non-closed route, T-168 requirement graph projection, T-169 span-lineage recursion truth, and T-160 executive pressure facts. Historical replay fixtures retain the ABI release identity that produced them. The T-167 non-closed route artifact is retained only as synthetic engine-mechanics regression input; T-175 is the live proof-of-record for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
+    "claim": "The tenant is proven against installed ABIogenesis 4.2.0-rc.1 public query facades and committed digest-pinned ABI requirements-route replay fixtures for the closed route, Hello World ladder, T-175 live non-closed route, T-168 requirement graph projection, T-169 span-lineage recursion truth, T-160 executive pressure facts, and T-180 GLC Hello World startup registry/traversal truth. Historical replay fixtures retain the ABI release identity that produced them. The T-167 non-closed route artifact is retained only as synthetic engine-mechanics regression input; T-175 is the live proof-of-record for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
   },
   "sourceDocuments": [
     "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json",
@@ -148,6 +166,8 @@
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-168-ratify-gtl-requirement-graph-and-abg-refinement-route.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-169-ratify-requirement-span-identity-across-recursion.md",
     "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-160-declare-abg-recursive-executive-observer-graph-for-obligation-pressure.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-177-design-live-abg-runtime-graph-function-registry-lookup.md",
+    "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-180-ratify-reusable-gtl-node-types-and-type-composition.md",
     ".ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",
     ".ai-workspace/tickets/completed/T-005-prove-odd-glc-consumes-real-t165-route-replay.md",

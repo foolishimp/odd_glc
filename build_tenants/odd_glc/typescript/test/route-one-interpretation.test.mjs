@@ -9,7 +9,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import {
   ABIOGENESIS_SUBSTRATE_PROVENANCE,
   FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES,
-  ODD_GLC_OVERLAY_CATALOG,
+  ODD_GLC_LIFECYCLE_SLOT_MAP,
   REQUIRED_ROUTE_ONE_SURFACES,
   defineLifecycleSurfaceMap,
   definePolicyOverlay,
@@ -1323,37 +1323,37 @@ test("keeps F_P and F_H policy surfaces as data declarations", () => {
   assert.equal(rejectedPolicy.reason, "forbidden_authority");
 });
 
-test("defines the odd_glc overlay catalog as data-only lifecycle slots", () => {
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.kind, "odd_glc_overlay_catalog");
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.authority.rule, "data_only_overlay_over_admitted_gtl_abg_truth");
-  assert.equal(containsFunction(ODD_GLC_OVERLAY_CATALOG), false);
-  assert.deepEqual(ODD_GLC_OVERLAY_CATALOG.families, [
+test("defines the odd_glc lifecycle slot map without confusing it for a GTL overlay graph", () => {
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.kind, "odd_glc_lifecycle_interpretation_slot_map");
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.authority.rule, "data_only_slot_map_over_admitted_gtl_abg_truth");
+  assert.equal(containsFunction(ODD_GLC_LIFECYCLE_SLOT_MAP), false);
+  assert.deepEqual(ODD_GLC_LIFECYCLE_SLOT_MAP.families, [
     "lifecycle_surface",
     "policy_overlay",
     "read_model",
     "proof_binding",
     "specialization_seam"
   ]);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.lifecycle_surface.owner, "odd_glc");
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.policy_overlay.allowedUse.includes("as data"), true);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.read_model.forbiddenAuthority.includes("event_emission"), true);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.familyRules.specialization_seam.forbiddenAuthority.includes("odd_sdlc_reproduction"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.lifecycle_surface.owner, "odd_glc");
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.policy_overlay.allowedUse.includes("as data"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.read_model.forbiddenAuthority.includes("event_emission"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.specialization_seam.forbiddenAuthority.includes("odd_sdlc_reproduction"), true);
 
-  const surfaceEntries = ODD_GLC_OVERLAY_CATALOG.entries
+  const surfaceEntries = ODD_GLC_LIFECYCLE_SLOT_MAP.entries
     .filter((entry) => entry.family === "lifecycle_surface")
     .map((entry) => entry.surface);
   assert.deepEqual(surfaceEntries, REQUIRED_ROUTE_ONE_SURFACES);
 
-  const entryIds = new Set(ODD_GLC_OVERLAY_CATALOG.entries.map((entry) => entry.entryId));
+  const entryIds = new Set(ODD_GLC_LIFECYCLE_SLOT_MAP.entries.map((entry) => entry.entryId));
   assert.equal(entryIds.has("policy.fp_semantic_judgment"), true);
   assert.equal(entryIds.has("policy.fh_human_decision"), true);
   assert.equal(entryIds.has("view.lifecycle_state"), true);
   assert.equal(entryIds.has("proof.fixture_of_record"), true);
   assert.equal(entryIds.has("seam.plugin_binding_refs"), true);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("gtl_graph_function_catalog"), true);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("abg_runtime_emitter"), true);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("fp_worker_invocation"), true);
-  assert.equal(ODD_GLC_OVERLAY_CATALOG.forbiddenAuthority.includes("odd_sdlc_phase_or_ledger_reproduction"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("gtl_graph_function_catalog"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("abg_runtime_emitter"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("fp_worker_invocation"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("odd_sdlc_phase_or_ledger_reproduction"), true);
 });
 
 test("does not export local runtime authority", async () => {

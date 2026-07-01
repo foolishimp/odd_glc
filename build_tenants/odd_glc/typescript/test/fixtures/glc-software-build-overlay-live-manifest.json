@@ -1,0 +1,82 @@
+{
+  "kind": "odd_glc_software_build_overlay_live_manifest",
+  "createdAt": "2026-07-01T20:19:28+09:30",
+  "substrate": {
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "4.2.0-rc.1"
+  },
+  "command": "CODEX_LIVE_FP=1 npm run test:live",
+  "durationMs": 241922,
+  "overlayRef": "overlay://odd_glc/software-build-lifecycle",
+  "graphRef": "graph://odd_glc/software-build-lifecycle",
+  "graphFunctionRef": "graph-function://odd_glc/software-build/bootstrap-worksite",
+  "startupConfigRef": "product-registry-startup://odd_glc/software-build-lifecycle",
+  "authorityRule": "ABG owns startup admission, registry projection, lookup, selection, graph-call opening, traversal, event emission, vector closure, and live F_P dispatch; odd_glc supplies GTL declaration data and read interpretation.",
+  "runs": [
+    {
+      "scenarioId": "SCN-GLC-HELLO-WORLD-CLI-BASIC",
+      "subjectKind": "node_cli",
+      "durationMs": 53393,
+      "eventLogSha256": "sha256:c8ee056b1dc0374da7d4ff2cb90dee98e264ca085f47b49b000280b80a58206f",
+      "requiredRuntimeTruth": [
+        "registry_entry_admitted",
+        "graph_function_selected",
+        "graph_call_opened",
+        "vector_closed"
+      ],
+      "proofPath": "build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/basic-cli/20260630T201645086Z_pid13950/odd-glc-software-build-overlay-live-proof.json"
+    },
+    {
+      "scenarioId": "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
+      "subjectKind": "node_test",
+      "durationMs": 54933,
+      "eventLogSha256": "sha256:8bce9357b776db50481da2e94e1d34012e46bb907800102e00eee1b1bfa3a3fa",
+      "requiredRuntimeTruth": [
+        "registry_entry_admitted",
+        "graph_function_selected",
+        "graph_call_opened",
+        "vector_closed"
+      ],
+      "proofPath": "build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/js-tenant-test/20260630T201739196Z_pid13950/odd-glc-software-build-overlay-live-proof.json"
+    },
+    {
+      "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-CLI",
+      "subjectKind": "rust_cli",
+      "durationMs": 22068,
+      "eventLogSha256": "sha256:5babaf0dc9c58224aafa4931985ec29b240a5f71b7cf78433743417250d95950",
+      "requiredRuntimeTruth": [
+        "registry_entry_admitted",
+        "graph_function_selected",
+        "graph_call_opened",
+        "vector_closed"
+      ],
+      "proofPath": "build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-cli/20260630T201834845Z_pid13950/odd-glc-software-build-overlay-live-proof.json"
+    },
+    {
+      "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+      "subjectKind": "rust_service",
+      "durationMs": 30168,
+      "eventLogSha256": "sha256:387db377d2bddbba89472259aebc75176915fa5db21e64f2305e0c46bdab877e",
+      "requiredRuntimeTruth": [
+        "registry_entry_admitted",
+        "graph_function_selected",
+        "graph_call_opened",
+        "vector_closed"
+      ],
+      "proofPath": "build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-service/20260630T201857630Z_pid13950/odd-glc-software-build-overlay-live-proof.json"
+    },
+    {
+      "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+      "subjectKind": "parallel_js",
+      "durationMs": 77716,
+      "eventLogSha256": "sha256:502ac0d941a555f5031acc362e54d35b8687c1a091e5b0c5e01e01ffec56beb0",
+      "requiredRuntimeTruth": [
+        "registry_entry_admitted",
+        "graph_function_selected",
+        "graph_call_opened",
+        "vector_closed"
+      ],
+      "proofPath": "build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/parallel-js/20260630T201928529Z_pid13950/odd-glc-software-build-overlay-live-proof.json"
+    }
+  ]
+}

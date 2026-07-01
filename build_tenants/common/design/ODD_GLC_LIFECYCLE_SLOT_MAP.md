@@ -1,7 +1,7 @@
-# odd_glc Overlay Catalog
+# odd_glc Lifecycle Slot Map
 
 **Status**: Active
-**Scope**: Common design catalog
+**Scope**: Common design slot map
 **Derives from**:
 [PRODUCT.md](../../../specification/PRODUCT.md),
 [REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS](../../../specification/requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md),
@@ -10,20 +10,25 @@
 
 ## Position
 
-The overlay catalog is the `odd_glc` registry of lifecycle interpretation
-slots. It is not a graph-function catalog, runtime catalog, emitter catalog,
-carrier catalog, or odd_sdlc phase catalog.
+The lifecycle slot map is the `odd_glc` registry of lifecycle interpretation
+slots. It is not a GTL graph overlay, graph-function catalog, runtime catalog,
+emitter catalog, carrier catalog, or odd_sdlc phase catalog.
 
-Every catalog entry is data-only. An entry may name lifecycle vocabulary,
+Every slot-map entry is data-only. An entry may name lifecycle vocabulary,
 policy slots, read-model views, proof bindings, or downstream specialization
 seams over GTL/ABG truth. It shall not construct GTL graph truth or ABG runtime
 truth.
 
-## Catalog Shape
+`odd_glc` may also declare reusable GTL overlay graphs, such as the
+software-build lifecycle overlay. Those overlay graphs are GTL declaration
+surfaces consumed by ABG startup. They are separate from this lifecycle slot
+map.
 
-The catalog has:
+## Slot Map Shape
 
-- one catalog authority block;
+The slot map has:
+
+- one slot-map authority block;
 - one family-rule map;
 - many compact entries.
 
@@ -41,13 +46,13 @@ Each family rule has this design shape:
 | `forbiddenAuthority` | Authority entries in the family shall not exercise. |
 | `extensionRule` | How downstream products or plugins may specialize entries in the family. |
 
-## Catalog Entry Shape
+## Slot Entry Shape
 
-Each compact catalog entry has this design shape:
+Each compact slot-map entry has this design shape:
 
 | Field | Meaning |
 | --- | --- |
-| `entryId` | Stable odd_glc catalog id. |
+| `entryId` | Stable odd_glc slot id. |
 | `family` | One of `lifecycle_surface`, `policy_overlay`, `read_model`, `proof_binding`, or `specialization_seam`. |
 | `surface` | Optional lifecycle surface name when the entry binds one of the generic lifecycle surfaces. |
 | `gtlAbgTruth` | GTL/ABG carrier, query, replay fact, or admitted runtime truth consumed by the entry. |
@@ -129,11 +134,12 @@ proof truth. ABI owns live execution and runtime event admission.
 Plugins fill downstream specialization seams. The catalog defines the slot and
 boundary. The plugin supplies domain content through GTL/ABG-bound data.
 
-## Non-Catalog Surfaces
+## Non-Slot-Map Surfaces
 
-The following are explicitly outside the odd_glc overlay catalog:
+The following are explicitly outside the odd_glc lifecycle slot map:
 
 - GTL graph-function catalogs;
+- GTL overlay graphs and public-start overlay rows;
 - GTL graph, node, vector, module, job, interface, wrapper, or carrier law;
 - ABG runtime emitters, admission commands, fold/residual projection commands,
   actor/operator invocation, continuation, correction, or re-entry authority;
@@ -145,5 +151,5 @@ The following are explicitly outside the odd_glc overlay catalog:
 ## Implementation Binding
 
 The TypeScript tenant may export a frozen data constant representing this
-catalog. That export is a library interface for validation and discovery. It
+slot map. That export is a library interface for validation and discovery. It
 shall contain no functions and shall not grant runtime authority.

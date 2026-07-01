@@ -24,6 +24,39 @@ export const FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES = Object.freeze([
   "resolveRequirementLifecycleDisposition"
 ]);
 
+export const REQUIRED_GTL_NODE_TYPE_FACADE_FUNCTIONS = Object.freeze([
+  "constructNode",
+  "constructNodeTypeGraphFunction",
+  "composeNodeTypes"
+]);
+
+export const REQUIRED_GTL_DECLARATION_FACADE_SLOTS = deepFreeze({
+  gtlM01Contracts: ["constructNode"],
+  gtlM01Algebra: ["constructNodeTypeGraphFunction", "composeNodeTypes"],
+  gtlM02Contracts: [
+    "constructGtlLibraryEntryDeclaration",
+    "constructProductRegistryStartupConfig",
+    "constructProductPluginSelectionAdvice"
+  ]
+});
+
+export const REQUIRED_GTL_REGISTRY_DECLARATION_FUNCTIONS = Object.freeze([
+  "constructGtlLibraryEntryDeclaration",
+  "constructProductRegistryStartupConfig",
+  "constructProductPluginSelectionAdvice"
+]);
+
+export const FORBIDDEN_ABG_STARTUP_AUTHORITIES = Object.freeze([
+  "admitRuntimeGraphFunctionRegistryStartup",
+  "admitGtlLibraryEntryDeclaration",
+  "projectRuntimeGraphFunctionRegistry",
+  "lookupRuntimeGraphFunctionRegistry",
+  "selectGraphFunctionFromRegistry",
+  "assertGraphFunctionInvocationSelected",
+  "constructGraphCallOpenedEvent",
+  "emit"
+]);
+
 export const REQUIRED_ROUTE_ONE_SURFACES = Object.freeze([
   "LifeCycleWorksiteAsset",
   "LifecycleContextAsset",
@@ -41,14 +74,542 @@ export const REQUIRED_ROUTE_ONE_SURFACES = Object.freeze([
   "ReentryDecisionAsset"
 ]);
 
-export const ODD_GLC_OVERLAY_CATALOG = deepFreeze({
-  kind: "odd_glc_overlay_catalog",
+export const ODD_GLC_LIFECYCLE_NODE_TYPES = deepFreeze([
+  {
+    typeRef: "odd_glc.type.lifecycle_worksite",
+    nodeName: "LifecycleWorksite",
+    surface: "LifeCycleWorksiteAsset",
+    schemaRef: "odd_glc.schema.lifecycle_worksite",
+    assetKind: "lifecycle_worksite",
+    markov: ["scoped"],
+    tags: ["odd_glc", "lifecycle_surface"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_context",
+    nodeName: "LifecycleContext",
+    surface: "LifecycleContextAsset",
+    schemaRef: "odd_glc.schema.lifecycle_context",
+    assetKind: "lifecycle_context",
+    markov: ["contextualized"],
+    tags: ["odd_glc", "lifecycle_surface", "context"]
+  },
+  {
+    typeRef: "odd_glc.type.intent",
+    nodeName: "LifecycleIntent",
+    surface: "IntentAsset",
+    schemaRef: "odd_glc.schema.intent",
+    assetKind: "lifecycle_intent",
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "what"]
+  },
+  {
+    typeRef: "odd_glc.type.product_definition",
+    nodeName: "ProductDefinition",
+    surface: "ProductDefinitionAsset",
+    schemaRef: "odd_glc.schema.product_definition",
+    assetKind: "product_definition",
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "what"]
+  },
+  {
+    typeRef: "odd_glc.type.requirement_set",
+    nodeName: "RequirementSet",
+    surface: "RequirementSetAsset",
+    schemaRef: "odd_glc.schema.requirement_set",
+    assetKind: "requirement_set",
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "requirements"]
+  },
+  {
+    typeRef: "odd_glc.type.requirement_environment_view",
+    nodeName: "RequirementEnvironmentView",
+    surface: "RequirementEnvironmentViewAsset",
+    schemaRef: "odd_glc.schema.requirement_environment_view",
+    assetKind: "requirement_environment_view",
+    markov: ["projected"],
+    tags: ["odd_glc", "lifecycle_surface", "read_model", "requirements"]
+  },
+  {
+    typeRef: "odd_glc.type.destination_topology",
+    nodeName: "DestinationTopology",
+    surface: "DestinationTopologyAsset",
+    schemaRef: "odd_glc.schema.destination_topology",
+    assetKind: "destination_topology",
+    markov: ["projected"],
+    tags: ["odd_glc", "lifecycle_surface", "topology"]
+  },
+  {
+    typeRef: "odd_glc.type.instruction_set",
+    nodeName: "InstructionSet",
+    surface: "InstructionSetAsset",
+    schemaRef: "odd_glc.schema.instruction_set",
+    assetKind: "instruction_set",
+    markov: ["projected"],
+    tags: ["odd_glc", "lifecycle_surface", "handoff"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_artifact",
+    nodeName: "LifecycleArtifact",
+    surface: "TargetArtifactAsset",
+    schemaRef: "odd_glc.schema.lifecycle_artifact",
+    assetKind: "target_artifact",
+    markov: ["materialized"],
+    tags: ["odd_glc", "lifecycle_surface", "artifact"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_capability",
+    nodeName: "LifecycleCapability",
+    surface: "CapabilityAsset",
+    schemaRef: "odd_glc.schema.lifecycle_capability",
+    assetKind: "capability",
+    markov: ["available"],
+    tags: ["odd_glc", "lifecycle_surface", "capability"]
+  },
+  {
+    typeRef: "odd_glc.type.evidence_binding_view",
+    nodeName: "EvidenceBindingView",
+    surface: "EvidenceBindingAsset",
+    schemaRef: "odd_glc.schema.evidence_binding_view",
+    assetKind: "evidence_binding_view",
+    markov: ["projected"],
+    tags: ["odd_glc", "read_model", "evidence"]
+  },
+  {
+    typeRef: "odd_glc.type.assurance_state_view",
+    nodeName: "AssuranceStateView",
+    surface: "AssuranceFoldViewAsset",
+    schemaRef: "odd_glc.schema.assurance_state_view",
+    assetKind: "assurance_state_view",
+    markov: ["projected"],
+    tags: ["odd_glc", "read_model", "assurance"]
+  },
+  {
+    typeRef: "odd_glc.type.residual_pressure_view",
+    nodeName: "ResidualPressureView",
+    surface: "ResidualPressureViewAsset",
+    schemaRef: "odd_glc.schema.residual_pressure_view",
+    assetKind: "residual_pressure_view",
+    markov: ["projected"],
+    tags: ["odd_glc", "read_model", "residual"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_disposition_view",
+    nodeName: "LifecycleDispositionView",
+    surface: "ReentryDecisionAsset",
+    schemaRef: "odd_glc.schema.lifecycle_disposition_view",
+    assetKind: "lifecycle_disposition_view",
+    markov: ["projected"],
+    tags: ["odd_glc", "read_model", "disposition"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_release_readiness_view",
+    nodeName: "LifecycleReleaseReadinessView",
+    surface: "ReleaseReadinessView",
+    schemaRef: "odd_glc.schema.lifecycle_release_readiness_view",
+    assetKind: "release_readiness_view",
+    markov: ["interpreted"],
+    tags: ["odd_glc", "read_model", "release_readiness"]
+  }
+]);
+
+export const ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES = deepFreeze([
+  {
+    typeRef: "odd_glc.type.lifecycle_definition_bundle",
+    nodeName: "LifecycleDefinitionBundle",
+    constituentTypeRefs: [
+      "odd_glc.type.lifecycle_worksite",
+      "odd_glc.type.lifecycle_context",
+      "odd_glc.type.intent",
+      "odd_glc.type.product_definition",
+      "odd_glc.type.requirement_set"
+    ],
+    surface: "LifecycleDefinitionBundle",
+    overlayMeaning: "minimum lifecycle definition pressure"
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_assurance_bundle",
+    nodeName: "LifecycleAssuranceBundle",
+    constituentTypeRefs: [
+      "odd_glc.type.requirement_environment_view",
+      "odd_glc.type.destination_topology",
+      "odd_glc.type.instruction_set",
+      "odd_glc.type.evidence_binding_view",
+      "odd_glc.type.assurance_state_view",
+      "odd_glc.type.residual_pressure_view",
+      "odd_glc.type.lifecycle_disposition_view"
+    ],
+    surface: "LifecycleAssuranceBundle",
+    overlayMeaning: "read-only assurance and residual interpretation bundle"
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle_release_bundle",
+    nodeName: "LifecycleReleaseBundle",
+    constituentTypeRefs: [
+      "odd_glc.type.lifecycle_artifact",
+      "odd_glc.type.lifecycle_capability",
+      "odd_glc.type.lifecycle_release_readiness_view"
+    ],
+    surface: "LifecycleReleaseBundle",
+    overlayMeaning: "release-readiness interpretation bundle without release authority"
+  }
+]);
+
+export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
+  {
+    typeRef: "odd_glc.type.lifecycle.scenario_surface",
+    nodeName: "ScenarioSurface",
+    surface: "ScenarioSurfaceAsset",
+    schemaRef: "odd_glc.schema.lifecycle.scenario_surface",
+    assetKind: "scenario_surface",
+    baseTypeRefs: ["odd_glc.type.requirement_set"],
+    overlayRefs: [
+      "surface.requirement_set",
+      "software-build.role.scenario_surface"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "software_build", "scenario"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle.design_surface",
+    nodeName: "DesignSurface",
+    surface: "DesignSurfaceAsset",
+    schemaRef: "odd_glc.schema.lifecycle.design_surface",
+    assetKind: "design_surface",
+    baseTypeRefs: ["odd_glc.type.requirement_set"],
+    overlayRefs: [
+      "surface.instruction_set",
+      "software-build.role.design_surface"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "software_build", "design"]
+  },
+  {
+    typeRef: "odd_glc.type.lifecycle.implementation_design",
+    nodeName: "ImplementationDesign",
+    surface: "ImplementationDesignAsset",
+    schemaRef: "odd_glc.schema.lifecycle.implementation_design",
+    assetKind: "implementation_design",
+    baseTypeRefs: ["odd_glc.type.lifecycle.design_surface"],
+    overlayRefs: [
+      "surface.instruction_set",
+      "software-build.role.implementation_design"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "software_build", "design"]
+  },
+  {
+    typeRef: "odd_glc.type.software.source_surface",
+    nodeName: "SoftwareSourceSurface",
+    surface: "SoftwareSourceSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.source_surface",
+    assetKind: "software_source_surface",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.source_artifact"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "source_artifact"]
+  },
+  {
+    typeRef: "odd_glc.type.software.test_source_surface",
+    nodeName: "SoftwareTestSourceSurface",
+    surface: "SoftwareTestSourceSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.test_source_surface",
+    assetKind: "software_test_source_surface",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.test_source"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "test_source"]
+  },
+  {
+    typeRef: "odd_glc.type.software.build_config_surface",
+    nodeName: "SoftwareBuildConfigSurface",
+    surface: "SoftwareBuildConfigSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.build_config_surface",
+    assetKind: "software_build_config_surface",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.build_config"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "build_config"]
+  },
+  {
+    typeRef: "odd_glc.type.software.test_execution_result",
+    nodeName: "SoftwareTestExecutionResult",
+    surface: "SoftwareTestExecutionResultAsset",
+    schemaRef: "odd_glc.schema.software.test_execution_result",
+    assetKind: "software_test_execution_result",
+    baseTypeRefs: ["odd_glc.type.evidence_binding_view"],
+    overlayRefs: [
+      "surface.evidence_binding",
+      "software-build.role.test_execution"
+    ],
+    markov: ["projected"],
+    tags: ["odd_glc", "software_build", "test_execution", "evidence"]
+  }
+]);
+
+export const ODD_GLC_DATA_MAPPING_NODE_TYPES = deepFreeze([
+  {
+    typeRef: "odd_glc.type.software.mapping_spec",
+    nodeName: "DataMappingSpec",
+    surface: "DataMappingSpecAsset",
+    schemaRef: "odd_glc.schema.software.mapping_spec",
+    assetKind: "software_mapping_spec",
+    baseTypeRefs: [
+      "odd_glc.type.requirement_set",
+      "odd_glc.type.lifecycle.design_surface"
+    ],
+    overlayRefs: [
+      "surface.requirement_set",
+      "software-build.role.mapping_spec"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "data_mapping", "requirement_binding"]
+  },
+  {
+    typeRef: "odd_glc.type.software.schema_source",
+    nodeName: "SchemaSource",
+    surface: "SchemaSourceAsset",
+    schemaRef: "odd_glc.schema.software.schema_source",
+    assetKind: "software_schema_source",
+    baseTypeRefs: ["odd_glc.type.software.source_surface"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.schema_source"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "data_mapping", "source_artifact"]
+  },
+  {
+    typeRef: "odd_glc.type.software.mapper_source",
+    nodeName: "MapperSource",
+    surface: "MapperSourceAsset",
+    schemaRef: "odd_glc.schema.software.mapper_source",
+    assetKind: "software_mapper_source",
+    baseTypeRefs: ["odd_glc.type.software.source_surface"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.mapper_source"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "data_mapping", "source_artifact"]
+  },
+  {
+    typeRef: "odd_glc.type.software.mapper_validation_test",
+    nodeName: "MapperValidationTest",
+    surface: "MapperValidationTestAsset",
+    schemaRef: "odd_glc.schema.software.mapper_validation_test",
+    assetKind: "software_mapper_validation_test",
+    baseTypeRefs: ["odd_glc.type.software.test_source_surface"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.mapper_validation_test"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "data_mapping", "test_source"]
+  },
+  {
+    typeRef: "odd_glc.type.software.mapper_build_config",
+    nodeName: "MapperBuildConfig",
+    surface: "MapperBuildConfigAsset",
+    schemaRef: "odd_glc.schema.software.mapper_build_config",
+    assetKind: "software_mapper_build_config",
+    baseTypeRefs: ["odd_glc.type.software.build_config_surface"],
+    overlayRefs: [
+      "surface.target_artifact",
+      "software-build.role.mapper_build_config"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "data_mapping", "build_config"]
+  }
+]);
+
+export const ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES = deepFreeze([
+  {
+    typeRef: "odd_glc.type.software.data_mapping_implementation_bundle",
+    nodeName: "DataMappingImplementationBundle",
+    constituentTypeRefs: [
+      "odd_glc.type.software.mapping_spec",
+      "odd_glc.type.software.schema_source",
+      "odd_glc.type.software.mapper_source",
+      "odd_glc.type.software.mapper_validation_test",
+      "odd_glc.type.software.mapper_build_config"
+    ],
+    surface: "DataMappingImplementationBundle",
+    overlayRefs: [
+      "overlay://odd_glc/software-build-lifecycle",
+      "software-build.role.mapping_spec",
+      "software-build.role.schema_source",
+      "software-build.role.mapper_source",
+      "software-build.role.mapper_validation_test",
+      "software-build.role.mapper_build_config"
+    ],
+    overlayMeaning: "data-mapping implementation package over software-build lifecycle"
+  }
+]);
+
+export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS = deepFreeze([
+  ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
+  ...ODD_GLC_DATA_MAPPING_NODE_TYPES,
+  ...ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES
+].map((entry) => `gtl-library-entry://odd_glc/node-type/${entry.typeRef}`));
+
+export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY = deepFreeze([
+  {
+    entryRef: "registry-entry://odd_glc/glc-bootstrap/node-type/bootstrap-context",
+    declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/node-type/bootstrap-context",
+    typeRef: "node-type://odd_glc/GlcBootstrapContext",
+    interfaceRef: "interface://odd_glc/node-type/bootstrap-context",
+    sourceContractRef: "contract://odd_glc/bootstrap-context",
+    targetContractRef: "contract://odd_glc/bootstrap-context",
+    overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"]
+  },
+  {
+    entryRef: "registry-entry://odd_glc/glc-bootstrap/node-type/lifecycle-artifact",
+    declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/node-type/lifecycle-artifact",
+    typeRef: "node-type://odd_glc/GlcLifecycleArtifact",
+    interfaceRef: "interface://odd_glc/node-type/lifecycle-artifact",
+    sourceContractRef: "contract://odd_glc/lifecycle-artifact",
+    targetContractRef: "contract://odd_glc/lifecycle-artifact",
+    overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"]
+  },
+  {
+    entryRef: "registry-entry://odd_glc/glc-bootstrap/node-type/executable-artifact",
+    declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/node-type/executable-artifact",
+    typeRef: "node-type://odd_glc/GlcExecutableArtifact",
+    interfaceRef: "interface://odd_glc/node-type/executable-artifact",
+    sourceContractRef: "contract://odd_glc/lifecycle-artifact",
+    targetContractRef: "contract://odd_glc/lifecycle-artifact",
+    overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"]
+  },
+  {
+    entryRef: "registry-entry://odd_glc/glc-bootstrap/node-type/hello-world-program",
+    declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/node-type/hello-world-program",
+    typeRef: "node-type://odd_glc/GlcHelloWorldProgramArtifact",
+    interfaceRef: "interface://odd_glc/node-type/hello-world-program",
+    sourceContractRef: "contract://odd_glc/lifecycle-artifact",
+    targetContractRef: "contract://odd_glc/lifecycle-artifact",
+    overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"]
+  },
+  {
+    entryRef: "registry-entry://odd_glc/glc-bootstrap/node-type/execution-evidence",
+    declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/node-type/execution-evidence",
+    typeRef: "node-type://odd_glc/GlcExecutionEvidence",
+    interfaceRef: "interface://odd_glc/node-type/execution-evidence",
+    sourceContractRef: "contract://odd_glc/execution-evidence",
+    targetContractRef: "contract://odd_glc/execution-evidence",
+    overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"]
+  }
+]);
+
+export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY = deepFreeze([
+  {
+    entryRef: "registry-entry://odd_glc/glc-bootstrap/graph-function/glc-hello-world-bootstrap",
+    declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/graph-function/glc-hello-world-bootstrap",
+    graphFunctionName: "odd_glc.glc_bootstrap.produce_hello_world_program;odd_glc.glc_bootstrap.prove_hello_world_execution",
+    interfaceRef: "interface://odd_glc/glc-hello-world-bootstrap",
+    sourceContractRef: "contract://odd_glc/bootstrap-context",
+    targetContractRef: "contract://odd_glc/execution-evidence",
+    overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"]
+  }
+]);
+
+export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING = deepFreeze({
+  kind: "odd_glc_hello_world_bootstrap_startup_binding",
   schemaVersion: "1",
-  catalogId: "odd_glc.overlay_catalog.route_1",
+  configRef: "product-registry-startup://odd_glc/glc-hello-world-bootstrap",
+  productNamespace: "odd_glc",
+  ownerRef: "owner://odd_glc",
+  overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"],
+  pluginRefs: ["plugin://odd_glc/glc-bootstrap/live-fp-dispatch"],
+  readinessRefs: ["readiness://odd_glc/glc-bootstrap/t180"],
+  proofRefs: ["proof://odd_glc/glc-bootstrap/live"],
+  policyRefs: ["policy://odd_glc/glc-bootstrap-selection"],
+  configSourceRefs: ["config://odd_glc/glc-bootstrap/startup"],
+  entryRefs: [
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY.map((entry) => entry.entryRef),
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY.map((entry) => entry.entryRef)
+  ],
+  declarationRefs: [
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY.map((entry) => entry.declarationRef),
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY.map((entry) => entry.declarationRef)
+  ]
+});
+
+export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
+  {
+    entryRef: "gtl-library-entry://odd_glc/bootstrap/observe-lifecycle-context",
+    graphFunctionRef: "graph-function://odd_glc/bootstrap/observe-lifecycle-context",
+    interfaceRef: "interface://odd_glc/bootstrap/context-to-definition",
+    sourceContractRef: "contract://odd_glc/lifecycle-context",
+    targetContractRef: "contract://odd_glc/lifecycle-definition",
+    overlayRefs: ["surface.lifecycle_context", "surface.intent", "surface.product_definition"],
+    policyRefs: ["policy.fp_semantic_judgment"],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/startup-bound"],
+    proofRefs: ["proof.negative_boundary"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/bootstrap/bind-requirement-pressure",
+    graphFunctionRef: "graph-function://odd_glc/bootstrap/bind-requirement-pressure",
+    interfaceRef: "interface://odd_glc/bootstrap/definition-to-requirements",
+    sourceContractRef: "contract://odd_glc/lifecycle-definition",
+    targetContractRef: "contract://odd_glc/requirement-pressure",
+    overlayRefs: ["surface.requirement_set", "surface.requirement_environment_view"],
+    policyRefs: ["policy.fp_semantic_judgment"],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/requirements-route"],
+    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/deployment/project-release-readiness",
+    graphFunctionRef: "graph-function://odd_glc/deployment/project-release-readiness",
+    interfaceRef: "interface://odd_glc/deployment/assurance-to-readiness",
+    sourceContractRef: "contract://odd_glc/assurance-state",
+    targetContractRef: "contract://odd_glc/release-readiness",
+    overlayRefs: ["view.assurance_state", "view.release_readiness_state"],
+    policyRefs: ["policy.fh_human_decision"],
+    readinessRefs: ["readiness://odd_glc/release-authority-not-claimed"],
+    proofRefs: ["proof.negative_boundary"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/deployment/observe-operational-feedback",
+    graphFunctionRef: "graph-function://odd_glc/deployment/observe-operational-feedback",
+    interfaceRef: "interface://odd_glc/deployment/feedback-to-pressure",
+    sourceContractRef: "contract://odd_glc/operational-feedback",
+    targetContractRef: "contract://odd_glc/lifecycle-pressure",
+    overlayRefs: ["view.executive_pressure_state", "surface.reentry_decision"],
+    policyRefs: ["policy.fh_human_decision"],
+    readinessRefs: ["readiness://odd_glc/operational-feedback-deferred"],
+    proofRefs: ["proof.negative_boundary"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  }
+]);
+
+export const ODD_GLC_LIFECYCLE_SLOT_MAP = deepFreeze({
+  kind: "odd_glc_lifecycle_interpretation_slot_map",
+  schemaVersion: "1",
+  catalogId: "odd_glc.lifecycle_interpretation_slots.route_1",
   authority: {
     owner: "odd_glc",
     substrate: "gtl_abg",
-    rule: "data_only_overlay_over_admitted_gtl_abg_truth"
+    rule: "data_only_slot_map_over_admitted_gtl_abg_truth"
   },
   families: [
     "lifecycle_surface",
@@ -329,6 +890,246 @@ export const ODD_GLC_OVERLAY_CATALOG = deepFreeze({
   ]
 });
 
+export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
+  kind: "odd_glc_software_build_overlay_graph",
+  schemaVersion: "1",
+  overlayRef: "overlay://odd_glc/software-build-lifecycle",
+  graphRef: "graph://odd_glc/software-build-lifecycle",
+  ownerRef: "product://odd_glc",
+  scope: "reusable_software_build_lifecycle",
+  rule: "gtl_overlay_graph_declaration_over_gtl_abg_truth",
+  graphFunctionRefs: [
+    "graph-function://odd_glc/software-build/bootstrap-worksite",
+    "graph-function://odd_glc/software-build/materialize-artifact",
+    "graph-function://odd_glc/software-build/prove-artifact",
+    "graph-function://odd_glc/software-build/fan-in-branches"
+  ],
+  graphVectorRefs: [
+    "graph-vector://odd_glc/software-build/context-to-requirements",
+    "graph-vector://odd_glc/software-build/requirements-to-artifact",
+    "graph-vector://odd_glc/software-build/artifact-to-evidence",
+    "graph-vector://odd_glc/software-build/branches-to-artifact"
+  ],
+  publicStartTargets: [
+    "graph-function://odd_glc/software-build/bootstrap-worksite"
+  ],
+  defaultStartTarget: "graph-function://odd_glc/software-build/bootstrap-worksite",
+  slotRefs: [
+    "surface.lifecycle_worksite",
+    "surface.lifecycle_context",
+    "surface.intent",
+    "surface.product_definition",
+    "surface.requirement_set",
+    "surface.requirement_environment_view",
+    "surface.instruction_set",
+    "surface.target_artifact",
+    "surface.capability",
+    "surface.evidence_binding",
+    "surface.assurance_fold_view",
+    "surface.residual_pressure_view",
+    "surface.reentry_decision",
+    "view.lifecycle_state",
+    "view.evidence_state",
+    "view.assurance_state",
+    "view.requirement_graph_state",
+    "view.parallel_frontier_state",
+    "view.release_readiness_state"
+  ],
+  roleRefs: [
+    "software-build.role.source_artifact",
+    "software-build.role.generated_artifact",
+    "software-build.role.build_command",
+    "software-build.role.scenario_surface",
+    "software-build.role.design_surface",
+    "software-build.role.implementation_design",
+    "software-build.role.test_source",
+    "software-build.role.test_execution",
+    "software-build.role.service_process",
+    "software-build.role.client_request",
+    "software-build.role.parallel_branch",
+    "software-build.role.branch_fan_in",
+    "software-build.role.release_candidate",
+    "software-build.role.build_config",
+    "software-build.role.mapping_spec",
+    "software-build.role.schema_source",
+    "software-build.role.mapper_source",
+    "software-build.role.mapper_validation_test",
+    "software-build.role.mapper_build_config"
+  ],
+  policyRefs: [
+    "policy.fp_semantic_judgment",
+    "policy.fh_human_decision"
+  ],
+  pluginRefs: [
+    "plugin://odd_glc/software-build-lifecycle"
+  ],
+  forbiddenAuthority: [
+    "odd_sdlc_code_or_phase_flow",
+    "product_local_runtime_shell",
+    "graph_function_selection",
+    "graph_call_opening",
+    "event_emission",
+    "evidence_admission",
+    "requirement_fold_or_residual_projection",
+    "continuation_or_reentry_routing"
+  ]
+});
+
+export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
+  {
+    entryRef: "gtl-library-entry://odd_glc/software-build/bootstrap-worksite",
+    graphFunctionRef: "graph-function://odd_glc/software-build/bootstrap-worksite",
+    interfaceRef: "interface://odd_glc/software-build/worksite-to-requirements",
+    sourceContractRef: "contract://odd_glc/lifecycle-context",
+    targetContractRef: "contract://odd_glc/requirement-pressure",
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+      "surface.lifecycle_context",
+      "surface.requirement_set",
+      "surface.requirement_environment_view"
+    ],
+    policyRefs: ["policy.fp_semantic_judgment"],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/startup-bound"],
+    proofRefs: ["proof.negative_boundary"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/software-build/materialize-artifact",
+    graphFunctionRef: "graph-function://odd_glc/software-build/materialize-artifact",
+    interfaceRef: "interface://odd_glc/software-build/requirements-to-artifact",
+    sourceContractRef: "contract://odd_glc/requirement-pressure",
+    targetContractRef: "contract://odd_glc/lifecycle-artifact",
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+      "surface.instruction_set",
+      "surface.target_artifact",
+      "surface.capability"
+    ],
+    policyRefs: ["policy.fp_semantic_judgment"],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/bootstrap-traversal-required"],
+    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/software-build/prove-artifact",
+    graphFunctionRef: "graph-function://odd_glc/software-build/prove-artifact",
+    interfaceRef: "interface://odd_glc/software-build/artifact-to-evidence",
+    sourceContractRef: "contract://odd_glc/lifecycle-artifact",
+    targetContractRef: "contract://odd_glc/execution-evidence",
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+      "surface.evidence_binding",
+      "view.evidence_state",
+      "view.assurance_state"
+    ],
+    policyRefs: ["policy.fp_semantic_judgment"],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/evidence-route-required"],
+    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/software-build/fan-in-branches",
+    graphFunctionRef: "graph-function://odd_glc/software-build/fan-in-branches",
+    interfaceRef: "interface://odd_glc/software-build/branches-to-artifact",
+    sourceContractRef: "contract://odd_glc/parallel-branch-artifacts",
+    targetContractRef: "contract://odd_glc/lifecycle-artifact",
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+      "view.parallel_frontier_state",
+      "surface.target_artifact",
+      "surface.assurance_fold_view"
+    ],
+    policyRefs: ["policy.fp_semantic_judgment"],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/parallel-frontier-required"],
+    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  }
+]);
+
+export const ODD_GLC_STARTUP_BINDING = deepFreeze({
+  kind: "odd_glc_startup_binding",
+  schemaVersion: "1",
+  configRef: "gtl-startup-config://odd_glc/abg-4.2/route-1",
+  productNamespace: "odd_glc",
+  ownerRef: "product://odd_glc",
+  version: "0.0.0-source",
+  enabledLibraryRefs: [
+    "gtl-library://odd_glc/lifecycle-node-types",
+    "gtl-library://odd_glc/software-build-node-types",
+    "gtl-library://odd_glc/data-mapping-node-types",
+    "gtl-library://odd_glc/software-build-graph-function-bindings",
+    "gtl-library://odd_glc/bootstrap-graph-function-bindings",
+    "gtl-library://odd_glc/deployment-graph-function-bindings"
+  ],
+  overlayRefs: [
+    ...ODD_GLC_LIFECYCLE_SLOT_MAP.entries.map((entry) => entry.entryId),
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef
+  ],
+  pluginRefs: [
+    "plugin://odd_glc/downstream-specialization-seam",
+    "plugin://odd_glc/software-build-lifecycle"
+  ],
+  readinessRefs: [
+    "readiness://odd_glc/abg-4.2-installed",
+    "readiness://odd_glc/startup-declarations-only",
+    "readiness://odd_glc/abg-catalog-reuse-audit-required"
+  ],
+  proofRefs: ["proof.negative_boundary"],
+  policyRefs: ["policy.fp_semantic_judgment", "policy.fh_human_decision"],
+  configSourceRefs: [
+    "specification/PRODUCT.md",
+    "build_tenants/common/design/ODD_GLC_LIFECYCLE_SLOT_MAP.md"
+  ]
+});
+
+export const ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING = deepFreeze({
+  kind: "odd_glc_software_build_startup_binding",
+  schemaVersion: "1",
+  configRef: "product-registry-startup://odd_glc/software-build-lifecycle",
+  productNamespace: "odd_glc",
+  ownerRef: "product://odd_glc",
+  version: "0.0.0-source",
+  overlayRefs: [ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef],
+  pluginRefs: ODD_GLC_SOFTWARE_BUILD_OVERLAY.pluginRefs,
+  readinessRefs: [
+    "readiness://odd_glc/abg-4.2-installed",
+    "readiness://odd_glc/software-build-bootstrap-traversal-required",
+    "readiness://odd_glc/abg-catalog-reuse-audit-required"
+  ],
+  proofRefs: ["proof.fixture_of_record", "proof.live_run_reference", "proof.negative_boundary"],
+  policyRefs: ODD_GLC_SOFTWARE_BUILD_OVERLAY.policyRefs,
+  configSourceRefs: [
+    "specification/PRODUCT.md",
+    "build_tenants/common/design/ODD_GLC_ABG42_TYPED_STARTUP_BINDING.md",
+    "build_tenants/common/design/ODD_GLC_GENERIC_PARITY_MATRIX.md"
+  ],
+  entryRefs: [
+    ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS,
+    ...ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.entryRef)
+  ],
+  declarationRefs: [
+    ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS,
+    ...ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.entryRef)
+  ].map((entryRef) =>
+    entryRef.replace("gtl-library-entry://odd_glc/", "gtl-declaration://odd_glc/")
+  ),
+  enabledLibraryRefs: [
+    ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS,
+    ...ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.entryRef)
+  ].flatMap((entryRef) => [
+    entryRef,
+    entryRef.replace("gtl-library-entry://odd_glc/", "gtl-declaration://odd_glc/")
+  ])
+});
+
 export const REQUIRED_EVIDENCE_EVENT_KINDS = Object.freeze([
   "actor_invocation_started",
   "actor_result_artifact_observed",
@@ -461,6 +1262,273 @@ export function definePolicyOverlay(input) {
   }, [input.id]);
 }
 
+export function validateGtlAbg42DeclarationFacades(input) {
+  if (!isRecord(input)) {
+    return rejected("malformed_input", ["GTL declaration facades input must be an object"]);
+  }
+
+  const gtlM01Contracts = isRecord(input.gtlM01Contracts) ? input.gtlM01Contracts : {};
+  const gtlM01Algebra = isRecord(input.gtlM01Algebra) ? input.gtlM01Algebra : {};
+  const gtlM02Contracts = isRecord(input.gtlM02Contracts) ? input.gtlM02Contracts : {};
+  const moduleSlots = {
+    gtlM01Contracts,
+    gtlM01Algebra,
+    gtlM02Contracts
+  };
+  const missing = Object.entries(REQUIRED_GTL_DECLARATION_FACADE_SLOTS).flatMap(([slot, names]) => (
+    names.filter((name) => typeof moduleSlots[slot][name] !== "function")
+      .map((name) => ({ slot, name }))
+  ));
+  if (missing.length > 0) {
+    return rejected(
+      "missing_public_query",
+      missing.map((row) => `Missing public GTL declaration function ${row.slot}.${row.name}`),
+      missing.map((row) => row.name)
+    );
+  }
+
+  const forbidden = Object.entries(moduleSlots).flatMap(([slot, facade]) => (
+    FORBIDDEN_ABG_STARTUP_AUTHORITIES
+      .filter((name) => Object.hasOwn(facade, name))
+      .map((name) => `${slot}.${name}`)
+  ));
+  if (forbidden.length > 0) {
+    return rejected(
+      "forbidden_authority",
+      forbidden.map((name) => `ABG startup/runtime authority is not an odd_glc declaration dependency: ${name}`),
+      forbidden
+    );
+  }
+
+  const required = Object.values(REQUIRED_GTL_DECLARATION_FACADE_SLOTS).flat();
+  return accepted({
+    kind: "gtl_abg42_declaration_facades",
+    availableFunctions: Object.freeze(required)
+  }, required);
+}
+
+function lifecycleNodeInit(entry) {
+  return Object.freeze({
+    name: entry.nodeName,
+    schema: Object.freeze({
+      kind: "symbolic",
+      ref: "odd_glc.schema.lifecycle_asset"
+    }),
+    typeRef: entry.typeRef,
+    markov: entry.markov,
+    assetSurface: Object.freeze({
+      kind: "lifecycle_asset",
+      requiredContexts: Object.freeze(["workspace"]),
+      standardsRefs: Object.freeze(["standard://odd_glc/lifecycle-node-model"]),
+      outputContractRefs: Object.freeze([`contract://${entry.typeRef}`, `contract://odd_glc/${entry.assetKind}`]),
+      constructorRefs: Object.freeze([`constructor://${entry.typeRef}`]),
+      constructorInputAssetKinds: Object.freeze([]),
+      rendererRefs: Object.freeze([]),
+      renderedViewDigestPolicyRef: null,
+      sectionKindRefs: Object.freeze([]),
+      clauseKindRefs: Object.freeze([]),
+      authoritySlots: Object.freeze([]),
+      proofObligationRefs: Object.freeze(["proof.negative_boundary"])
+    }),
+    tags: entry.tags,
+    id: `node://${entry.typeRef}`
+  });
+}
+
+function libraryDeclarationInput(entry) {
+  return Object.freeze({
+    declarationRef: `gtl-declaration://odd_glc/${entry.entryRef}`,
+    entryRef: entry.entryRef,
+    libraryScope: "product",
+    entryKind: "graph_function",
+    namespace: "odd_glc",
+    ownerRef: "product://odd_glc",
+    version: "0.0.0-source",
+    graphFunctionRef: entry.graphFunctionRef,
+    interfaceRef: entry.interfaceRef,
+    sourceContractRef: entry.sourceContractRef,
+    targetContractRef: entry.targetContractRef,
+    contextRefs: ["context://odd_glc/lifecycle"],
+    authorityRefs: ["authority://abg/runtime-selection"],
+    overlayRefs: entry.overlayRefs,
+    provenanceRefs: ["provenance://abiogenesis/4.2.0-rc.1"],
+    readinessRefs: entry.readinessRefs,
+    proofRefs: entry.proofRefs,
+    policyRefs: entry.policyRefs,
+    declarationSourceRefs: [
+      "gtl-declaration://odd_glc/startup-binding",
+      entry.graphFunctionRef
+    ]
+  });
+}
+
+function overlayRefsForSurface(surface) {
+  return uniqueStrings(ODD_GLC_LIFECYCLE_SLOT_MAP.entries
+    .filter((entry) => entry.family === "lifecycle_surface" && entry.surface === surface)
+    .map((entry) => entry.entryId));
+}
+
+function overlayRefsForNodeTypeEntry(entry) {
+  if (Array.isArray(entry.overlayRefs) && entry.overlayRefs.length > 0) {
+    return uniqueStrings(entry.overlayRefs);
+  }
+  const refs = overlayRefsForSurface(entry.surface);
+  return refs.length > 0 ? refs : Object.freeze(["surface.lifecycle_worksite"]);
+}
+
+function allPrimitiveNodeTypeEntries() {
+  return Object.freeze([
+    ...ODD_GLC_LIFECYCLE_NODE_TYPES,
+    ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
+    ...ODD_GLC_DATA_MAPPING_NODE_TYPES
+  ]);
+}
+
+function allComposedNodeTypeEntries() {
+  return Object.freeze([
+    ...ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES,
+    ...ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES
+  ]);
+}
+
+function overlayRefsForTypeRef(typeRef) {
+  const primitiveEntry = allPrimitiveNodeTypeEntries().find((entry) => entry.typeRef === typeRef);
+  if (primitiveEntry) {
+    return overlayRefsForNodeTypeEntry(primitiveEntry);
+  }
+  const composedEntry = allComposedNodeTypeEntries().find((entry) => entry.typeRef === typeRef);
+  return composedEntry ? overlayRefsForComposedNodeTypeEntry(composedEntry) : Object.freeze([]);
+}
+
+function overlayRefsForComposedNodeTypeEntry(entry) {
+  if (Array.isArray(entry.overlayRefs) && entry.overlayRefs.length > 0) {
+    return uniqueStrings(entry.overlayRefs);
+  }
+  return uniqueStrings(entry.constituentTypeRefs.flatMap(overlayRefsForTypeRef));
+}
+
+export function defineLifecycleNodeTypeDeclarations(input) {
+  const validation = validateGtlAbg42DeclarationFacades(input);
+  if (validation.status === "rejected") {
+    return validation;
+  }
+
+  const contracts = input.gtlM01Contracts;
+  const algebra = input.gtlM01Algebra;
+  const m02 = input.gtlM02Contracts;
+  const primitiveEntries = allPrimitiveNodeTypeEntries();
+  const composedEntries = allComposedNodeTypeEntries();
+  const nodes = primitiveEntries.map((entry) => contracts.constructNode(lifecycleNodeInit(entry)));
+  const nodeTypeGraphFunctions = nodes.map((node, index) => algebra.constructNodeTypeGraphFunction(node, {
+    typeRef: primitiveEntries[index].typeRef,
+    tags: ["odd_glc", "node_type", "non_callable"]
+  }));
+  const compositionResults = composedEntries.map((entry) => algebra.composeNodeTypes({
+    typeRef: entry.typeRef,
+    constituentTypeRefs: entry.constituentTypeRefs,
+    graphFunctions: nodeTypeGraphFunctions,
+    name: entry.nodeName,
+    tags: ["odd_glc", "node_type", "composed", "non_callable"]
+  }));
+  const failedCompositions = compositionResults.filter((result) => result.satisfied !== true);
+  if (failedCompositions.length > 0) {
+    return rejected(
+      "abg_query_rejected",
+      failedCompositions.map((result) => `GTL node-type composition rejected ${result.typeRef}: ${result.rejectionReason}`),
+      failedCompositions.map((result) => result.typeRef)
+    );
+  }
+  const composedGraphFunctions = compositionResults.map((result) => result.graphFunction).filter(Boolean);
+  const allGraphFunctions = Object.freeze([...nodeTypeGraphFunctions, ...composedGraphFunctions]);
+  const sourceEntriesByTypeRef = new Map(primitiveEntries.map((entry) => [entry.typeRef, entry]));
+  const composedEntriesByTypeRef = new Map(composedEntries.map((entry) => [entry.typeRef, entry]));
+  const libraryEntries = allGraphFunctions.map((graphFunction) => {
+    const sourceEntry = sourceEntriesByTypeRef.get(graphFunction.name);
+    const composedEntry = composedEntriesByTypeRef.get(graphFunction.name);
+    const overlayRefs = sourceEntry
+      ? overlayRefsForNodeTypeEntry(sourceEntry)
+      : composedEntry
+        ? overlayRefsForComposedNodeTypeEntry(composedEntry)
+        : Object.freeze(["surface.lifecycle_worksite"]);
+    return m02.constructGtlLibraryEntryDeclaration({
+    declarationRef: `gtl-declaration://odd_glc/node-type/${graphFunction.name}`,
+    entryRef: `gtl-library-entry://odd_glc/node-type/${graphFunction.name}`,
+    libraryScope: "product",
+    entryKind: "node_type",
+    namespace: "odd_glc",
+    ownerRef: "product://odd_glc",
+    version: "0.0.0-source",
+    graphFunctionRef: graphFunction.id,
+    interfaceRef: `interface://odd_glc/node-type/${graphFunction.name}`,
+    sourceContractRef: `contract://odd_glc/node-type/${graphFunction.name}`,
+    targetContractRef: `contract://odd_glc/node-type/${graphFunction.name}`,
+    contextRefs: ["context://odd_glc/lifecycle"],
+    authorityRefs: ["authority://gtl/node-type/non-callable"],
+    overlayRefs,
+    provenanceRefs: ["provenance://abiogenesis/4.2.0-rc.1"],
+    readinessRefs: ["readiness://odd_glc/node-type-declared"],
+    proofRefs: ["proof.negative_boundary"],
+    policyRefs: [],
+    declarationSourceRefs: [
+      "gtl-declaration://odd_glc/lifecycle-node-types",
+      graphFunction.id
+    ]
+  });
+  });
+
+  return accepted({
+    kind: "odd_glc_lifecycle_node_type_declarations",
+    nodeTypeEntries: ODD_GLC_LIFECYCLE_NODE_TYPES,
+    softwareBuildNodeTypeEntries: ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
+    dataMappingNodeTypeEntries: ODD_GLC_DATA_MAPPING_NODE_TYPES,
+    allNodeTypeEntries: primitiveEntries,
+    composedNodeTypeEntries: ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES,
+    dataMappingComposedNodeTypeEntries: ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES,
+    allComposedNodeTypeEntries: composedEntries,
+    nodes: Object.freeze(nodes),
+    graphFunctions: allGraphFunctions,
+    compositionResults: Object.freeze(compositionResults),
+    libraryEntries: Object.freeze(libraryEntries)
+  }, libraryEntries.map((entry) => entry.entryRef));
+}
+
+export function defineOddGlcStartupBinding(input) {
+  const validation = validateGtlAbg42DeclarationFacades(input);
+  if (validation.status === "rejected") {
+    return validation;
+  }
+  const m02 = input.gtlM02Contracts;
+  const graphFunctionBindings = [
+    ...ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS,
+    ...ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS
+  ].map((entry) => (
+    m02.constructGtlLibraryEntryDeclaration(libraryDeclarationInput(entry))
+  ));
+  const startupConfig = m02.constructProductRegistryStartupConfig(ODD_GLC_STARTUP_BINDING);
+  const pluginAdvice = m02.constructProductPluginSelectionAdvice({
+    adviceRef: "plugin-advice://odd_glc/downstream-specialization-seam/no-preference",
+    pluginRef: "plugin://odd_glc/downstream-specialization-seam",
+    lookupResultRef: "registry-lookup-result://abg/runtime-owned",
+    preferredCandidateRef: null,
+    rankedCandidateRefs: [],
+    constraintRefs: ["constraint://odd_glc/no-local-selection-authority"],
+    rationaleRef: "rationale://odd_glc/plugin-advice-is-advisory",
+    policyRefs: ["policy.fp_semantic_judgment", "policy.fh_human_decision"],
+    forbiddenAuthorityRefs: FORBIDDEN_ABG_STARTUP_AUTHORITIES
+  });
+  return accepted({
+    kind: "odd_glc_startup_declaration_binding",
+    startupConfig,
+    libraryEntries: Object.freeze(graphFunctionBindings),
+    pluginAdvice,
+    overlayRefs: ODD_GLC_STARTUP_BINDING.overlayRefs
+  }, [
+    startupConfig.configRef,
+    ...graphFunctionBindings.map((entry) => entry.entryRef),
+    pluginAdvice.adviceRef
+  ]);
+}
+
 function runtimeDispositionFacts(runtimeEvents) {
   if (!Array.isArray(runtimeEvents)) {
     return Object.freeze([]);
@@ -498,6 +1566,61 @@ function stringOrNull(value) {
 
 function uniqueStrings(values) {
   return Object.freeze([...new Set(values.filter((value) => typeof value === "string" && value.length > 0))]);
+}
+
+export function interpretStartupRegistryState(input) {
+  const runtimeEvents = Array.isArray(input?.runtimeEvents) ? input.runtimeEvents : [];
+  const proof = isRecord(input?.proof) ? input.proof : {};
+  const liveArtifacts = Array.isArray(input?.liveArtifacts) ? input.liveArtifacts : [];
+  const registryEntries = runtimeEvents.filter((event) => isRecord(event) && event.kind === "registry_entry_admitted");
+  const selections = runtimeEvents.filter((event) => isRecord(event) && event.kind === "graph_function_selected");
+  const graphCalls = runtimeEvents.filter((event) => isRecord(event) && event.kind === "graph_call_opened");
+  const vectorClosed = runtimeEvents.filter((event) => isRecord(event) && event.kind === "vector_closed");
+  const nodeTypeEntryRefs = uniqueStrings(registryEntries
+    .filter((event) => event.entryKind === "node_type")
+    .map((event) => event.entryRef));
+  const graphFunctionEntryRefs = uniqueStrings(registryEntries
+    .filter((event) => event.entryKind === "graph_function")
+    .map((event) => event.entryRef));
+  const selectedEntryKinds = uniqueStrings(selections.map((event) => event.selectedEntryKind));
+  const selectedGraphFunctionRefs = uniqueStrings(selections.map((event) => event.selectedGraphFunctionRef));
+  const graphCallIds = uniqueStrings(graphCalls.map((event) => event.graphCallId));
+  const vectorClosedRefs = uniqueStrings(vectorClosed.map((event) => event.eventId ?? event.eventRef ?? event.vectorRef));
+  const stdoutValues = uniqueStrings(liveArtifacts
+    .map((artifact) => isRecord(artifact) && isRecord(artifact.execution) ? artifact.execution.stdout : null));
+  let readiness = "no_startup_truth";
+  if (registryEntries.length > 0) {
+    readiness = "registry_admitted";
+  }
+  if (selections.length > 0 && graphCalls.length > 0) {
+    readiness = "graph_function_selected";
+  }
+  if (proof.status === "converged" || (isRecord(proof.startOutput) && proof.startOutput.status === "converged")) {
+    readiness = "traversal_converged";
+  }
+
+  return accepted({
+    kind: "odd_glc_startup_registry_state_view",
+    tenant: TENANT_ID,
+    readiness,
+    registryEntryCount: registryEntries.length,
+    nodeTypeEntryRefs,
+    graphFunctionEntryRefs,
+    selectionRefs: uniqueStrings(selections.map((event) => event.selectionRef)),
+    selectedEntryKinds,
+    selectedGraphFunctionRefs,
+    graphCallIds,
+    vectorClosedRefs,
+    stdoutValues,
+    eventKinds: uniqueStrings(runtimeEvents.map((event) => event.kind)),
+    sourceEventRefs: uniqueStrings(runtimeEvents.map(eventRefFor)),
+    abgStartOutput: proof.startOutput ?? null
+  }, [
+    ...nodeTypeEntryRefs,
+    ...graphFunctionEntryRefs,
+    ...selectedGraphFunctionRefs,
+    ...graphCallIds
+  ]);
 }
 
 function routeEvidenceBindings(runtimeEvents) {

@@ -1,0 +1,54 @@
+{
+  "artifactKind": "odd_glc_glc_hello_world_bootstrap_live_artifact",
+  "edge": "glc_bootstrap_to_hello_world_program",
+  "actor": "claude",
+  "vectorIndex": 0,
+  "assessment": {
+    "stage": "program",
+    "source": "process.stdout.write('Hello, world!\\n');\n",
+    "expectedStdout": "Hello, world!\n",
+    "nodeTypesUsed": [
+      "node-type://odd_glc/GlcBootstrapContext",
+      "node-type://odd_glc/GlcHelloWorldProgramArtifact"
+    ],
+    "reason": "Vector index 0 on edge glc_bootstrap_to_hello_world_program is the bootstrap-to-program step, so I construct the composed Hello World program artifact from the bootstrap context. The minimal ESM program writes the exact bytes 'Hello, world!\\n' to stdout via process.stdout.write, avoiding console.log formatting variance so expectedStdout matches deterministically. F_D can verify by executing the source and comparing stdout."
+  },
+  "execution": {
+    "command": [
+      "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+      "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/generated/hello-world.mjs"
+    ],
+    "status": 0,
+    "stdout": "Hello, world!\n",
+    "stderr": ""
+  },
+  "programPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/generated/hello-world.mjs",
+  "fulfillment_assessments": [
+    {
+      "id": "glc_bootstrap_to_hello_world_program_accepted",
+      "evaluator": "glc_bootstrap_to_hello_world_program_accepted",
+      "fulfillment_status": "fulfilled",
+      "fulfillment_detail": "Live F_P worker produced a minimal executable Hello World program and the local Node execution proof emitted the expected stdout.",
+      "blocking_reasons": [],
+      "evidence_refs": [
+        "live://odd_glc/glc-bootstrap",
+        "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/generated/hello-world.mjs",
+        "node-type://odd_glc/GlcHelloWorldProgramArtifact",
+        "node-type://odd_glc/GlcExecutionEvidence"
+      ]
+    }
+  ],
+  "selected_worker_id": "worker://odd_glc/glc-bootstrap-live",
+  "selected_backend": "backend://claude",
+  "role_id": "role://odd_glc/live-fp",
+  "assignment_source": "policy://odd_glc/glc-bootstrap-live",
+  "resolved_runtime_ref": "runtime://odd_glc/glc-bootstrap-live",
+  "transport": {
+    "status": 0,
+    "command": "claude",
+    "traceResultPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/.ai-workspace/glc-hello-world-live/t180-glc-bootstrap-vector-0.trace/result.json",
+    "outputPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/.ai-workspace/glc-hello-world-live/t180-glc-bootstrap-vector-0-output.txt",
+    "structuredEventCount": 7,
+    "apiRetryCount": 0
+  }
+}

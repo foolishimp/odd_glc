@@ -23,3 +23,9 @@ Completed tickets:
 - `T-017-define-release-readiness-interpretation.md`
 - `T-018-define-generic-specialization-seam.md`
 - `T-019-record-source-checkpoint-readiness.md`
+- `T-020-upgrade-installed-abg-substrate-to-4-2.md`
+- `T-021-reprice-product-state-for-abg-4-2-parity-wave.md`
+- `T-022-define-typed-lifecycle-node-model.md`
+- `T-023-bind-overlays-and-library-entries-to-abg-startup.md`
+- `T-024-prove-glc-hello-world-over-abg-4-2-startup.md`
+- `T-028-refresh-generic-parity-matrix.md`

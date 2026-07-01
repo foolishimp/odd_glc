@@ -9,4 +9,7 @@ tenant after the tenant registry activates it.
 ## Active Decisions
 
 - [ADR-001 route-1 GTL/ABG lifecycle consumption](adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
-- [odd_glc overlay catalog](ODD_GLC_OVERLAY_CATALOG.md)
+- [odd_glc lifecycle slot map](ODD_GLC_LIFECYCLE_SLOT_MAP.md)
+- [ABIogenesis 4.2 typed startup binding](ODD_GLC_ABG42_TYPED_STARTUP_BINDING.md)
+- [generic parity matrix](ODD_GLC_GENERIC_PARITY_MATRIX.md)
+- [dense odd_sdlc feature parity table](ODD_GLC_ODD_SDLC_FEATURE_PARITY_TABLE.md)

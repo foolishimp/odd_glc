@@ -3,7 +3,7 @@
 **Status**: Active route-1 tenant
 
 This tenant implements the first `odd_glc` realization line:
-read/query and policy interpretation over ABIogenesis `4.1.0-rc.17` public
+read/query and policy interpretation over ABIogenesis `4.2.0-rc.1` public
 GTL/ABG surfaces.
 
 The consumed substrate identity is declared in
@@ -15,10 +15,20 @@ It does not implement graph functions, runtime execution, event replay,
 admission, evidence binding, assurance fold, residual projection,
 continuation, or re-entry authority.
 
-It exports a frozen `ODD_GLC_OVERLAY_CATALOG` as a data-only library interface
-for lifecycle surface, policy overlay, read-model, proof-binding, and
-specialization-seam discovery. That catalog is not a graph-function catalog and
-does not grant runtime authority.
+It exports a frozen `ODD_GLC_LIFECYCLE_SLOT_MAP` as a data-only library
+interface for lifecycle surface, policy overlay, read-model, proof-binding, and
+specialization-seam discovery. That slot map is not a GTL overlay graph,
+graph-function catalog, and does not grant runtime authority.
+
+It also exports `ODD_GLC_SOFTWARE_BUILD_OVERLAY` as a reusable GTL overlay
+graph declaration for ABG startup consumption. The overlay declaration is data;
+ABG owns registry admission, lookup, selection, graph-call opening, traversal,
+event emission, and proof truth.
+
+Graph-function refs exported by this tenant are startup bindings under ABG
+catalog reuse audit. They are not a product-local graph-function catalog.
+When an equivalent GTL/ABG system-library function exists, the binding must
+reuse that catalog entry rather than ratify a duplicate `odd_glc` function.
 
 ## Commands
 

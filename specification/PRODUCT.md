@@ -1,7 +1,7 @@
 # odd_glc Product
 
 **Status**: Active
-**Date**: 2026-06-28
+**Date**: 2026-07-01
 **Derived From**: [GOALS.md](./GOALS.md), [INTENT.md](./INTENT.md),
 `.ai-workspace/context/project_bootstrap.md`,
 `/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`
@@ -142,21 +142,33 @@ copy or reproduce `odd_sdlc` source code, `Sdlc*` carriers, local ledgers,
 phase flow, closure rules, retry behavior, or software-domain policy as
 `odd_glc` law or as a required downstream implementation shape.
 
-## Current Non-Closure
+## Current Source State
 
-`T-001` is the active governance ticket for the first requirements and graph
-design wave.
+`T-001` through `T-024` and `T-028` are completed. `T-025`, `T-026`, and
+`T-027` are active for the remaining typed-startup parity wave. The current
+source checkpoint has an active TypeScript tenant under
+`build_tenants/odd_glc/typescript/` that reads and interprets admitted GTL/ABG
+truth from the installed ABIogenesis `4.2.0-rc.1` substrate.
 
-The current project has no active build tenant, runtime implementation, release
-cut, install, or claimed lifecycle closure.
+That tenant is not an odd_glc runtime. It does not emit runtime events, admit
+evidence, mint admitted refs, select graph functions, invoke actors, fold
+requirements, project residuals, route continuation, or execute `F_P` workers.
 
-The first steel-thread scenario is
+The first steel-thread scenario remains
 [SCN-GLC-HELLO-WORLD-MINIMAL](./scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md). It
-forces the thread through the layers as an MVP proof vehicle. It is not the
-product scope.
+is an MVP proof vehicle, not the product scope.
 
-Ratified graph design under `build_tenants/common/design/` shall not be
-accepted until boundary authority and GTL/ABG consumption requirements identify
-the lawful substrate, upstream readiness state, `F_D`/`F_P`/`F_H` boundaries,
-and non-closure gates for each lifecycle binding, query, or GTL composition
-slot.
+The active parity wave extends the completed ABIogenesis 4.2 startup,
+registry, node-type, and typed-composition foundation into the scenario ladder,
+non-closed/re-entry proof, and recursive/any-scale proof. `odd_glc` may
+declare lifecycle node types, graph-function bindings, overlays, policy data,
+and startup configuration for ABG to consume. Those bindings reuse GTL/ABG
+catalog entries wherever generic equivalents exist; product-owned graph
+functions require explicit specialization proof. ABG owns startup admission,
+registry projection, lookup, selection, graph-call opening, traversal, runtime
+truth, evidence, fold, residual, and disposition.
+
+Full lifecycle parity with `odd_sdlc` means user-visible lifecycle coverage
+over generic `odd_glc` capabilities. It does not mean rebuilding, copying, or
+reproducing `odd_sdlc` source code, `Sdlc*` carriers, local ledgers, phase
+flow, retry behavior, closure rules, or software-domain policy.

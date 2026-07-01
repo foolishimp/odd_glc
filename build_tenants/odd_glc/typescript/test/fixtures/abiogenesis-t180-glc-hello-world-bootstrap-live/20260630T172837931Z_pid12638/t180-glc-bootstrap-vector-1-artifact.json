@@ -1,0 +1,54 @@
+{
+  "artifactKind": "odd_glc_glc_hello_world_bootstrap_live_artifact",
+  "edge": "glc_hello_world_program_to_execution_evidence",
+  "actor": "claude",
+  "vectorIndex": 1,
+  "assessment": {
+    "stage": "execution_evidence",
+    "source": "The composed Hello World program artifact is a minimal JavaScript ESM that writes the line 'Hello, world!' to stdout. When run under a Node ESM host, it produces exactly 'Hello, world!\\n' on standard output with a zero exit status and no stderr. The observed output matches the declared program intent, so the execution evidence is consistent with the program artifact.",
+    "expectedStdout": "Hello, world!\n",
+    "nodeTypesUsed": [
+      "node-type://odd_glc/GlcHelloWorldProgramArtifact",
+      "node-type://odd_glc/GlcExecutionEvidence"
+    ],
+    "reason": "This edge is program_to_execution_evidence, so the source is the program artifact and the target is execution evidence; vector index 1 is the transition that produces the evidence. My F_P judgment is that running the minimal ESM program yields stdout equal to the required literal, making the execution evidence consistent with the program intent."
+  },
+  "execution": {
+    "command": [
+      "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+      "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/generated/hello-world.mjs"
+    ],
+    "status": 0,
+    "stdout": "Hello, world!\n",
+    "stderr": ""
+  },
+  "programPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/generated/hello-world.mjs",
+  "fulfillment_assessments": [
+    {
+      "id": "glc_hello_world_program_to_execution_evidence_accepted",
+      "evaluator": "glc_hello_world_program_to_execution_evidence_accepted",
+      "fulfillment_status": "fulfilled",
+      "fulfillment_detail": "Live F_P worker inspected the generated Hello World program intent and the local Node execution proof emitted the expected stdout.",
+      "blocking_reasons": [],
+      "evidence_refs": [
+        "live://odd_glc/glc-bootstrap",
+        "file:///Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/generated/hello-world.mjs",
+        "node-type://odd_glc/GlcHelloWorldProgramArtifact",
+        "node-type://odd_glc/GlcExecutionEvidence"
+      ]
+    }
+  ],
+  "selected_worker_id": "worker://odd_glc/glc-bootstrap-live",
+  "selected_backend": "backend://claude",
+  "role_id": "role://odd_glc/live-fp",
+  "assignment_source": "policy://odd_glc/glc-bootstrap-live",
+  "resolved_runtime_ref": "runtime://odd_glc/glc-bootstrap-live",
+  "transport": {
+    "status": 0,
+    "command": "claude",
+    "traceResultPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/.ai-workspace/glc-hello-world-live/t180-glc-bootstrap-vector-1.trace/result.json",
+    "outputPath": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t180_glc_hello_world_bootstrap_live/20260630T172837931Z_pid12638/instance/.ai-workspace/glc-hello-world-live/t180-glc-bootstrap-vector-1-output.txt",
+    "structuredEventCount": 11,
+    "apiRetryCount": 0
+  }
+}
