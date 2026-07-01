@@ -554,7 +554,7 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     policyRefs: ["policy.fp_semantic_judgment"],
     readinessRefs: ["readiness://odd_glc/abg-4.2/startup-bound"],
     proofRefs: ["proof.negative_boundary"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   },
@@ -567,8 +567,8 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     overlayRefs: ["surface.requirement_set", "surface.requirement_environment_view"],
     policyRefs: ["policy.fp_semantic_judgment"],
     readinessRefs: ["readiness://odd_glc/abg-4.2/requirements-route"],
-    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   },
@@ -582,7 +582,7 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     policyRefs: ["policy.fh_human_decision"],
     readinessRefs: ["readiness://odd_glc/release-authority-not-claimed"],
     proofRefs: ["proof.negative_boundary"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   },
@@ -596,7 +596,7 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     policyRefs: ["policy.fh_human_decision"],
     readinessRefs: ["readiness://odd_glc/operational-feedback-deferred"],
     proofRefs: ["proof.negative_boundary"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   }
@@ -835,7 +835,7 @@ export const ODD_GLC_LIFECYCLE_SLOT_MAP = deepFreeze({
       overlayMeaning: "parallel branch/fan-in lifecycle view"
     },
     {
-      entryId: "proof.fixture_of_record",
+      entryId: "proof.committed_abg_proof_input",
       family: "proof_binding",
       gtlAbgTruth: "digest-pinned ABI artifact and manifest",
       overlayMeaning: "read-only proof input"
@@ -849,7 +849,7 @@ export const ODD_GLC_LIFECYCLE_SLOT_MAP = deepFreeze({
     {
       entryId: "proof.negative_boundary",
       family: "proof_binding",
-      gtlAbgTruth: "import/export and fixture checks",
+      gtlAbgTruth: "import/export and proof-input checks",
       overlayMeaning: "negative proof that forbidden local authority is absent"
     },
     {
@@ -991,7 +991,7 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     policyRefs: ["policy.fp_semantic_judgment"],
     readinessRefs: ["readiness://odd_glc/abg-4.2/startup-bound"],
     proofRefs: ["proof.negative_boundary"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   },
@@ -1009,8 +1009,8 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     ],
     policyRefs: ["policy.fp_semantic_judgment"],
     readinessRefs: ["readiness://odd_glc/abg-4.2/bootstrap-traversal-required"],
-    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   },
@@ -1028,8 +1028,8 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     ],
     policyRefs: ["policy.fp_semantic_judgment"],
     readinessRefs: ["readiness://odd_glc/abg-4.2/evidence-route-required"],
-    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   },
@@ -1047,8 +1047,8 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     ],
     policyRefs: ["policy.fp_semantic_judgment"],
     readinessRefs: ["readiness://odd_glc/abg-4.2/parallel-frontier-required"],
-    proofRefs: ["proof.fixture_of_record", "proof.live_run_reference"],
-    catalogReuseStatus: "abg_catalog_reuse_audit_required",
+    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   }
@@ -1080,7 +1080,7 @@ export const ODD_GLC_STARTUP_BINDING = deepFreeze({
   readinessRefs: [
     "readiness://odd_glc/abg-4.2-installed",
     "readiness://odd_glc/startup-declarations-only",
-    "readiness://odd_glc/abg-catalog-reuse-audit-required"
+    "readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent"
   ],
   proofRefs: ["proof.negative_boundary"],
   policyRefs: ["policy.fp_semantic_judgment", "policy.fh_human_decision"],
@@ -1102,9 +1102,9 @@ export const ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING = deepFreeze({
   readinessRefs: [
     "readiness://odd_glc/abg-4.2-installed",
     "readiness://odd_glc/software-build-bootstrap-traversal-required",
-    "readiness://odd_glc/abg-catalog-reuse-audit-required"
+    "readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent"
   ],
-  proofRefs: ["proof.fixture_of_record", "proof.live_run_reference", "proof.negative_boundary"],
+  proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference", "proof.negative_boundary"],
   policyRefs: ODD_GLC_SOFTWARE_BUILD_OVERLAY.policyRefs,
   configSourceRefs: [
     "specification/PRODUCT.md",

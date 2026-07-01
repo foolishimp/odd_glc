@@ -36,7 +36,7 @@ dependent lifecycle binding or GTL composition declaration.
 | `ready` | Capability is present, release-pinned or otherwise explicitly admitted, callable from the expected runtime path, and proven by non-forgeable evidence. | Dependent binding may ratify if its local requirements are satisfied. |
 | `missing` | Capability is not present in the consumed GTL/ABG substrate. | Dependent binding shall defer or block. |
 | `placeholder` | Capability exists as a stub, partial carrier, compatibility alias, or prose claim without real runtime behavior. | Dependent binding shall not ratify or close. |
-| `test_only` | Capability is exercised only by tests or fixtures and has no non-test runtime caller or public path. | Dependent binding shall not ratify or close. |
+| `test_only` | Capability is exercised only by tests or test-only proof inputs and has no non-test runtime caller or public path. | Dependent binding shall not ratify or close. |
 | `unwired` | Capability exists but is not connected to the required runtime, replay, admission, fold, residual, continuation, or query path. | Dependent binding shall not ratify or close. |
 | `unpinned` | Capability source or release snapshot is not identified enough for repeatable consumption. | Dependent binding shall not ratify or close. |
 
@@ -62,13 +62,13 @@ graph functions.
 | --- | --- | --- | --- |
 | context observation and gap routing | `abg.requirements.ingest_context_fragments` / `abg.requirements.route_context_constraint` | `routeContextConstraint` | odd_glc admits or routes staged context locally. |
 | requirement authoring | GTL requirement-declaration carrier or wrapper preserving requirement identity, relations, spans, context refs, evidence-policy refs, and projection refs for ABG admission | GTL declaration and ABG admission surfaces | `RequirementSetAsset` holds an odd_glc-native structure that must later be translated into ABG terms. |
-| requirement environment projection | `abg.requirements.compile_edge_environment` | `buildEdgeRequirementEnvironment` | Span matching is substring-based, narrowing-only, fixture-only, or not wired to runtime query. |
+| requirement environment projection | `abg.requirements.compile_edge_environment` | `buildEdgeRequirementEnvironment` | Span matching is substring-based, narrowing-only, test-only, or not wired to runtime query. |
 | requirement graph/refinement | `abg.requirements.derive_requirement_graph` / `abg.requirements.refine_goal` | T-162 requirement carriers | odd_glc decomposes WHAT through a native constructive function. |
 | edge obligations and work pressure | `abg.requirements.project_edge_obligations` | `projectRequirements`, `projectMaterializationTargets`, `projectExecutionSchedules` | odd_glc constructs local obligation, materialization, or schedule ledgers. |
 | destination topology | ABG `DestinationTopology` carrier | ABG destination-topology carrier | Destination topology silently rewrites active requirement meaning or becomes an odd_glc carrier. |
 | side-effecting capability and execution | GTL/ABG capability carrier plus ABG-owned actor/operator invocation | ABG actor/operator and payload admission surfaces | odd_glc shells out, supervises, retries, or treats a local command contract as runtime truth. |
 | evidence binding | `abg.requirements.bind_evidence` | `bindRequirementEvidence` | Evidence is inferred from local files, stdout text, path shape, or test harness assertions without ABG admission. |
-| assurance fold and assurance case | `abg.requirements.fold_requirement_state` / `abg.requirements.project_assurance_case` | `foldRequirementEvidence`, `projectAssuranceCase` | Fold state is forgeable, substring-derived, fixture-only, or not callable from a runtime path. |
+| assurance fold and assurance case | `abg.requirements.fold_requirement_state` / `abg.requirements.project_assurance_case` | `foldRequirementEvidence`, `projectAssuranceCase` | Fold state is forgeable, substring-derived, test-only, or not callable from a runtime path. |
 | residual and attenuation | residual output of `abg.requirements.fold_requirement_state` plus attenuation classification | `residualizeRequirementFolds`, `classifyRequirementAttenuation` | Residuals are represented by local compatibility wrappers or narrowing-only placeholders. |
 | re-entry disposition | ABG continuation, correction, re-entry, release, or block facts tied to runtime/replay truth | ABG continuation and re-entry truth | odd_glc decides retry, continuation, or re-entry through a local controller or checklist. |
 

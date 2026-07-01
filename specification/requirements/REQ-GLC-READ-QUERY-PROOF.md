@@ -54,9 +54,9 @@ store, admitted-ref minting path, or release artifact.
 
 **REQ-GLC-READ-QUERY-PROOF-008**: A proof claim shall be execution-grounded when it concerns side effects. Command success, stdout/stderr, artifacts, digests, and capability use shall count only when produced or admitted by ABG-owned actor/operator and evidence paths.
 
-**REQ-GLC-READ-QUERY-PROOF-009**: A proof claim shall be event-sourced and replay-derived. The same lifecycle proof state shall be recoverable from admitted ABG replay/query truth without relying on mutable process memory, local test fixtures, or odd_glc side state.
+**REQ-GLC-READ-QUERY-PROOF-009**: A proof claim shall be event-sourced and replay-derived. The same lifecycle proof state shall be recoverable from admitted ABG replay/query truth without relying on mutable process memory, local test-only data, or odd_glc side state.
 
-**REQ-GLC-READ-QUERY-PROOF-010**: A proof claim shall be non-tautological. The prompt, declaration, expected output, or fixture shall not carry the answer being proved as the proof result.
+**REQ-GLC-READ-QUERY-PROOF-010**: A proof claim shall be non-tautological. The prompt, declaration, expected output, or test input shall not carry the answer being proved as the proof result.
 
 **REQ-GLC-READ-QUERY-PROOF-011**: Ratified design and implementation tests shall include negative proof where applicable: no native graph-function catalog, no shadow carriers, no local event stream, no local admitted-ref minting, no boolean evidence, no local fold/residual store, and no downstream-public projection emitter.
 

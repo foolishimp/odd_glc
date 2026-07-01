@@ -63,18 +63,18 @@ async function importGtlFacades() {
 async function readPinnedGlcStartupFixture() {
   const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive;
   assert.ok(proof, "Missing ABG 4.2 GLC startup proof provenance");
-  const fixtureRoot = path.join(
+  const proofRoot = path.join(
     tenantRoot,
-    proof.fixturePath.replace(/^build_tenants\/odd_glc\/typescript\/test\/fixtures\//u, "test/fixtures/")
+    proof.proofArtifactPath.replace(/^build_tenants\/odd_glc\/typescript\/test\/proof_inputs\//u, "test/proof_inputs/")
   );
-  const manifestPath = path.join(path.dirname(fixtureRoot), "glc-hello-world-bootstrap-live-manifest.json");
-  const eventsPath = path.join(path.dirname(fixtureRoot), "events.jsonl");
-  const vector0Path = path.join(path.dirname(fixtureRoot), "glc-bootstrap-vector-0-artifact.json");
-  const vector1Path = path.join(path.dirname(fixtureRoot), "glc-bootstrap-vector-1-artifact.json");
-  for (const filePath of [fixtureRoot, manifestPath, eventsPath, vector0Path, vector1Path]) {
+  const manifestPath = path.join(path.dirname(proofRoot), "glc-hello-world-bootstrap-live-manifest.json");
+  const eventsPath = path.join(path.dirname(proofRoot), "events.jsonl");
+  const vector0Path = path.join(path.dirname(proofRoot), "glc-bootstrap-vector-0-artifact.json");
+  const vector1Path = path.join(path.dirname(proofRoot), "glc-bootstrap-vector-1-artifact.json");
+  for (const filePath of [proofRoot, manifestPath, eventsPath, vector0Path, vector1Path]) {
     assert.equal(existsSync(filePath), true, `Missing pinned ABG 4.2 startup proof input at ${filePath}`);
   }
-  const rawProof = await readFile(fixtureRoot, "utf8");
+  const rawProof = await readFile(proofRoot, "utf8");
   const rawEvents = await readFile(eventsPath, "utf8");
   const rawVector0 = await readFile(vector0Path, "utf8");
   const rawVector1 = await readFile(vector1Path, "utf8");
@@ -234,12 +234,12 @@ test("defines startup binding as GTL declarations for ABG startup consumption", 
   assert.equal(startup.value.overlayRefs.includes("view.release_readiness_state"), true);
   assert.equal(startup.value.overlayRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef), true);
   assert.equal(
-    ODD_GLC_STARTUP_BINDING.readinessRefs.includes("readiness://odd_glc/abg-catalog-reuse-audit-required"),
+    ODD_GLC_STARTUP_BINDING.readinessRefs.includes("readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent"),
     true
   );
   assert.equal(
     expectedGraphFunctionBindings.every((entry) =>
-      entry.catalogReuseStatus === "abg_catalog_reuse_audit_required" &&
+      entry.catalogReuseStatus === "abg_4_2_no_equivalent_published" &&
       entry.genericity === "candidate_abg_system_function" &&
       entry.reuseGate === "bind_existing_abg_catalog_entry_when_equivalent_exists"
     ),
@@ -292,7 +292,7 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   );
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.every((entry) =>
-      entry.catalogReuseStatus === "abg_catalog_reuse_audit_required" &&
+      entry.catalogReuseStatus === "abg_4_2_no_equivalent_published" &&
       entry.genericity === "candidate_abg_system_function"
     ),
     true

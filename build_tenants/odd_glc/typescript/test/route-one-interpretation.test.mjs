@@ -35,23 +35,23 @@ const defaultAbgRoot = path.join(
 );
 const defaultBasicCliArtifactPath = path.join(
   tenantRoot,
-  "test/fixtures/abiogenesis-basic-cli-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json"
+  "test/proof_inputs/abiogenesis-basic-cli-route-replay/20260628T175945864Z_pid34852/requirements-route-replay-artifact.json"
 );
 const defaultRustCliArtifactPath = path.join(
   tenantRoot,
-  "test/fixtures/abiogenesis-rust-cli-toolchain-execution/20260629T134455708Z_pid97032/non-js-toolchain-replay-artifact.json"
+  "test/proof_inputs/abiogenesis-rust-cli-toolchain-execution/20260629T134455708Z_pid97032/non-js-toolchain-replay-artifact.json"
 );
 const defaultRustServiceArtifactPath = path.join(
   tenantRoot,
-  "test/fixtures/abiogenesis-rust-service-process-request/20260629T140453156Z_pid14978/service-process-request-replay-artifact.json"
+  "test/proof_inputs/abiogenesis-rust-service-process-request/20260629T140453156Z_pid14978/service-process-request-replay-artifact.json"
 );
 const defaultJsTenantTestArtifactPath = path.join(
   tenantRoot,
-  "test/fixtures/abiogenesis-js-tenant-test-proof-evidence/20260629T131855445Z_pid76289/generic-proof-evidence-replay-artifact.json"
+  "test/proof_inputs/abiogenesis-js-tenant-test-proof-evidence/20260629T131855445Z_pid76289/generic-proof-evidence-replay-artifact.json"
 );
 const defaultParallelJsArtifactPath = path.join(
   tenantRoot,
-  "test/fixtures/abiogenesis-parallel-js-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-artifact.json"
+  "test/proof_inputs/abiogenesis-parallel-js-hello-world/20260629T174248134Z_pid74140/parallel-hello-world-replay-artifact.json"
 );
 
 function containsFunction(value) {
@@ -1026,16 +1026,16 @@ test("evidence interpretation does not treat route bindings alone as executed pr
       Object.freeze({
         kind: "requirement_route_fact_projected",
         routePayloadKind: "requirement_evidence_bound",
-        routePayloadRef: "binding:fixture",
+        routePayloadRef: "binding:synthetic",
         routeEventRef: "event:route:binding",
         requirementPayload: Object.freeze({
           binding: Object.freeze({
-            evidenceRef: "evidence:fixture",
+            evidenceRef: "evidence:synthetic",
             requirementId: "REQ-FIXTURE",
-            projectionRef: "projection:fixture",
+            projectionRef: "projection:synthetic",
             evidenceRole: "asset",
             bindingStatus: "admitted",
-            digest: "sha256:fixture"
+            digest: "sha256:synthetic"
           })
         })
       })
@@ -1066,23 +1066,23 @@ test("interprets assurance fold state from real ABIogenesis replay events", asyn
 });
 
 test("interprets residual pressure from replay-shaped ABG route events", () => {
-  const residualRef = "requirement-residual://fixture/needs-repair";
+  const residualRef = "requirement-residual://synthetic/needs-repair";
   const result = interpretAssuranceState({
     runtimeEvents: Object.freeze([
       Object.freeze({
         kind: "requirement_route_fact_projected",
         routePayloadKind: "requirement_fold_projected",
-        routePayloadRef: "requirement-fold://fixture/partial",
+        routePayloadRef: "requirement-fold://synthetic/partial",
         routeEventRef: "event:route:fold:partial",
         requirementPayload: Object.freeze({
           fold: Object.freeze({
-            foldRef: "requirement-fold://fixture/partial",
+            foldRef: "requirement-fold://synthetic/partial",
             requirementId: "REQ-FIXTURE",
-            requirementProjectionRef: "projection://fixture",
+            requirementProjectionRef: "projection://synthetic",
             state: "partial",
-            evidenceRefs: Object.freeze(["evidence://fixture"]),
-            evidenceBindingRefs: Object.freeze(["binding://fixture"]),
-            sourceAbgTruthRefs: Object.freeze(["assurance://fixture"])
+            evidenceRefs: Object.freeze(["evidence://synthetic"]),
+            evidenceBindingRefs: Object.freeze(["binding://synthetic"]),
+            sourceAbgTruthRefs: Object.freeze(["assurance://synthetic"])
           })
         })
       }),
@@ -1095,12 +1095,12 @@ test("interprets residual pressure from replay-shaped ABG route events", () => {
           residual: Object.freeze({
             residualRef,
             requirementId: "REQ-FIXTURE",
-            requirementProjectionRef: "projection://fixture",
-            foldRef: "requirement-fold://fixture/partial",
+            requirementProjectionRef: "projection://synthetic",
+            foldRef: "requirement-fold://synthetic/partial",
             pressureClass: "repair",
             ownerSurface: "F_P",
-            evidenceRefs: Object.freeze(["evidence://fixture"]),
-            sourceFoldRefs: Object.freeze(["requirement-fold://fixture/partial"])
+            evidenceRefs: Object.freeze(["evidence://synthetic"]),
+            sourceFoldRefs: Object.freeze(["requirement-fold://synthetic/partial"])
           })
         })
       })
@@ -1281,7 +1281,7 @@ test("defines the odd_glc lifecycle slot map without confusing it for a GTL over
   assert.equal(entryIds.has("policy.fp_semantic_judgment"), true);
   assert.equal(entryIds.has("policy.fh_human_decision"), true);
   assert.equal(entryIds.has("view.lifecycle_state"), true);
-  assert.equal(entryIds.has("proof.fixture_of_record"), true);
+  assert.equal(entryIds.has("proof.committed_abg_proof_input"), true);
   assert.equal(entryIds.has("seam.plugin_binding_refs"), true);
   assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("gtl_graph_function_catalog"), true);
   assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("abg_runtime_emitter"), true);

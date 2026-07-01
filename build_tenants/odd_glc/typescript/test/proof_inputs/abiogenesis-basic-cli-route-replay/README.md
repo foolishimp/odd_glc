@@ -1,6 +1,6 @@
 # ABIogenesis Basic CLI Route Replay Proof
 
-This fixture is the proof input for odd_glc route-1 replay consumption.
+This proof input is the proof input for odd_glc route-1 replay consumption.
 
 Source run:
 

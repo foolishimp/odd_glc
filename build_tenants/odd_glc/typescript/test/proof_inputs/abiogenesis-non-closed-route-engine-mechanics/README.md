@@ -1,6 +1,6 @@
 # ABIogenesis Non-Closed Route Mechanics Regression
 
-This fixture is a committed ABG installed replay artifact for non-closed
+This proof input is a committed ABG installed replay artifact for non-closed
 requirements-route mechanics.
 
 `odd_glc` consumes it as read-only ABG replay truth. It does not emit residuals,

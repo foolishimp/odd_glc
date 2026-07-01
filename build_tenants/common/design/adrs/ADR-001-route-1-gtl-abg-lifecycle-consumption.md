@@ -132,7 +132,7 @@ activation. The interface shall stay within these families:
 | lifecycle binding validation | Pure F_D validation that labels and refs match the surface map. | Requirement compilation, graph construction, or admitted-ref minting. |
 | policy declaration assembly | Data declarations for F_P prompts/rubrics and F_H policies. | Direct LLM invocation, shell execution, or owner decision authority. |
 | lifecycle state interpretation | Read-only projection from ABG public query output to odd_glc vocabulary labels. | Emitting events, folding evidence, residualizing pressure, or routing retries. |
-| negative regression proof | Import/export and fixture checks that forbidden emitters/carriers do not exist. | Synthetic proof that bypasses ABG replay/query truth. |
+| negative regression proof | Import/export and proof-input checks that forbidden emitters/carriers do not exist. | Synthetic proof that bypasses ABG replay/query truth. |
 
 ## Downstream Specialization Seam
 

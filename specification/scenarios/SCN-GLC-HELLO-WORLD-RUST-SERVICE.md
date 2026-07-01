@@ -18,8 +18,8 @@ service startup or probe failure.
 
 ## odd_sdlc Witness
 
-- T-164 Rust hello service lite bootstrap:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t164_rust_hello_service_lite/bootstrap.md`
+The source witness is the Rust service/client Hello World behavior from
+`odd_sdlc`.
 
 Witness behavior:
 
@@ -58,4 +58,3 @@ client request, response body evidence, and requirement fold/disposition.
 
 odd_glc shall not own service supervision, port allocation, HTTP probing,
 process cleanup, or evidence admission.
-

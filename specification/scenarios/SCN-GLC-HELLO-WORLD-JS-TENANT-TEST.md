@@ -18,8 +18,8 @@ without giving odd_glc a local materialization or test ledger.
 
 ## odd_sdlc Witness
 
-- T-132 JavaScript single-tenant bootstrap:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t132_hello_world_single_tenant/bootstrap.md`
+The source witness is the JavaScript single-tenant Hello World behavior from
+`odd_sdlc`.
 
 Witness behavior:
 
@@ -52,4 +52,3 @@ and the test execution evidence bound to the active requirement projection.
 
 odd_glc shall not maintain a tenant materialization ledger, test ledger,
 stdout parser, or local execution runner.
-

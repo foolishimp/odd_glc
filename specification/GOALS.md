@@ -27,8 +27,9 @@ process shells, or controllers.
    - Use `ODD_GLC_SOFTWARE_BUILD_OVERLAY` as the reusable GTL overlay graph.
    - Add data-mapping roles and node-type declarations as specialization data.
    - Treat graph-function refs in that overlay as ABG catalog bindings first;
-     ratify an `odd_glc` graph function only after a reuse audit proves no
-     equivalent GTL/ABG system function exists.
+     current refs are audited against ABI 4.2 with no equivalent published
+     GTL/ABG system entry found, and remain gated to bind upstream if an
+     equivalent appears.
    - Do not create scenario-specific overlay models for each Hello World or
      data_mapper witness.
 
@@ -84,9 +85,10 @@ Execution order:
    declaration model.
 3. Add tests proving the declarations are GTL-owned data and ABG-validatable,
    not local runtime behavior.
-4. Audit reusable overlay graph-function refs against the ABG system catalog.
-   Bind to ABG entries where generic functions exist; record upstream ABG gaps
-   where they do not.
+4. Preserve the ABI 4.2 graph-function reuse audit result.
+   Current overlay refs have no equivalent published ABI 4.2 system entry.
+   Bind to future ABG entries where generic functions appear; record upstream
+   ABG gaps where a function should become generic system law.
 5. Add the first data_mapper-lite glc sandbox proof over ABG startup.
 6. Expand to full/deep/resume data_mapper witnesses only after the lite proof
    closes without boundary drift.
@@ -98,7 +100,8 @@ Execution order:
 - lifecycle vocabulary and stage meaning;
 - GTL declaration data for lifecycle/software-build overlays and node types;
 - product-library graph-function declarations only where an ABG-catalog reuse
-  audit proves product-specific specialization is required;
+  audit proves no equivalent published system entry exists, with a standing
+  gate to bind upstream when an equivalent generic function appears;
 - data-only `F_P`/`F_H` policy overlays;
 - read/query interpretation over admitted GTL/ABG truth;
 - downstream specialization seams.

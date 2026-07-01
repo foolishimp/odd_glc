@@ -36,9 +36,9 @@ async function importAbgRequirementsFacade() {
 async function readPinnedArtifact(provenanceKey) {
   const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts[provenanceKey];
   assert.ok(proof, `Missing substrate provenance entry ${provenanceKey}`);
-  const artifactPath = path.join(tenantRoot, proof.fixturePath.replace(/^build_tenants\/odd_glc\/typescript\//u, ""));
-  const manifestPath = path.join(tenantRoot, proof.fixtureManifestPath.replace(/^build_tenants\/odd_glc\/typescript\//u, ""));
-  assert.equal(existsSync(artifactPath), true, `Missing committed ABI artifact fixture at ${artifactPath}`);
+  const artifactPath = path.join(tenantRoot, proof.proofArtifactPath.replace(/^build_tenants\/odd_glc\/typescript\//u, ""));
+  const manifestPath = path.join(tenantRoot, proof.proofManifestPath.replace(/^build_tenants\/odd_glc\/typescript\//u, ""));
+  assert.equal(existsSync(artifactPath), true, `Missing committed ABI proof input at ${artifactPath}`);
   assert.equal(existsSync(manifestPath), true, `Missing committed ABI artifact manifest at ${manifestPath}`);
 
   const rawArtifact = await readFile(artifactPath, "utf8");

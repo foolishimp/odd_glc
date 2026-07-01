@@ -12,7 +12,7 @@
 
 ## Position
 
-ABIogenesis 4.2 changes the odd_glc parity path from fixture-only replay
+ABIogenesis 4.2 changes the odd_glc parity path from proof-input replay
 consumption to canonical startup consumption.
 
 `odd_glc` supplies GTL declaration data:
@@ -156,7 +156,7 @@ It declares:
 | --- | --- |
 | `overlayRef` | GTL overlay identity consumed by ABG startup and registry selection. |
 | `graphRef` | GTL graph identity for the reusable software-build lifecycle graph. |
-| `graphFunctionRefs` | Callable graph-function refs bound by the overlay. These are ABG catalog bindings first; product-owned refs require an explicit reuse audit. |
+| `graphFunctionRefs` | Callable graph-function refs bound by the overlay. These are ABG catalog bindings first; product-owned refs require an explicit reuse audit before use. |
 | `graphVectorRefs` | GTL graph-vector identities used by the overlay graph. |
 | `publicStartTargets` | Callable graph-function refs that ABG may start through public startup. |
 | `defaultStartTarget` | Default callable graph-function ref for bootstrap traversal. |
@@ -180,9 +180,16 @@ graph-call opening, event emission, evidence admission, requirement fold or
 residual projection, and continuation or re-entry routing.
 
 `ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS` currently declares four
-software-build startup bindings. They are provisional graph-function refs used
-to prove ABG startup/registry/traversal integration while the ABG catalog reuse
-audit is open:
+software-build startup bindings. The ABI 4.2 reuse audit found no matching
+published ABI system-library entry for these refs. They remain candidate system
+functions: a later ABI publication of an equivalent generic carrier shall
+replace the product ref instead of preserving a duplicate `odd_glc` function.
+
+Audit basis: ABIogenesis 4.2.0-rc.1 source, GTL runtime-registry declarations,
+and installed proof surfaces were searched for equivalent published entries for
+bootstrap-worksite, materialize-artifact, prove-artifact, and fan-in-branches.
+Only sandbox/proof-local odd_glc refs were found; no ABI system-library entry
+was available to bind.
 
 | Entry | Role | Boundary |
 | --- | --- | --- |
@@ -191,8 +198,8 @@ audit is open:
 | `software-build/prove-artifact` | Bind artifact proof/evidence. | Candidate ABG system function; ABG owns evidence admission and proof truth. |
 | `software-build/fan-in-branches` | Interpret branch outputs into a lifecycle artifact. | Candidate ABG system function; ABG owns branch/frontier/fan-in truth. |
 
-Close rule: no software-build graph-function ref may be treated as final
-`odd_glc` product law until it is classified as one of:
+Close rule: no software-build graph-function ref may be treated as permanent
+`odd_glc` product law unless it remains classified as one of:
 
 1. bound existing ABG system-library catalog entry;
 2. upstream ABG system-library gap to open or track;

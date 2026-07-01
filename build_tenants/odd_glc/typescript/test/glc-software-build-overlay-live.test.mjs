@@ -188,7 +188,7 @@ async function readJson(filePath) {
 }
 
 test("records the aggregate software-build overlay live manifest without product runtime authority", async () => {
-  const manifest = await readJson(path.join(dirname, "fixtures", "glc-software-build-overlay-live-manifest.json"));
+  const manifest = await readJson(path.join(dirname, "proof_inputs", "glc-software-build-overlay-live-manifest.json"));
 
   assert.equal(manifest.kind, "odd_glc_software_build_overlay_live_manifest");
   assert.equal(manifest.substrate.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);

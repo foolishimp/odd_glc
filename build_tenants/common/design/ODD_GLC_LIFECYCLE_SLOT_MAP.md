@@ -115,7 +115,7 @@ route continuation.
 
 | Entry | Family | Meaning |
 | --- | --- | --- |
-| `proof.fixture_of_record` | `proof_binding` | Digest-pinned ABI artifact and manifest consumed as read-only proof input. |
+| `proof.committed_abg_proof_input` | `proof_binding` | Digest-pinned ABI artifact and manifest consumed as read-only proof input. |
 | `proof.live_run_reference` | `proof_binding` | Pointer to ABI live proof run metadata, when available. |
 | `proof.negative_boundary` | `proof_binding` | Regression proof that forbidden emitters, carriers, or executable policy are absent. |
 

@@ -1,6 +1,6 @@
 # ABIogenesis Parallel JavaScript Hello World Proof
 
-This fixture is a committed ABG live replay artifact used by odd_glc for the
+This proof input is a committed ABG live replay artifact used by odd_glc for the
 parallel JavaScript Hello World ladder rung.
 
 Source:
@@ -11,7 +11,7 @@ Source:
 - artifact sha256:
   `sha256:9b6f28d095bc698c579bd1a22ac1990524369a8197fae7e0bc3eafbb36ef175c`
 
-The fixture is ABG replay truth for a generic dependency-frontier plus
+The proof input is ABG replay truth for a generic dependency-frontier plus
 requirements-route proof. JavaScript branch artifacts, branch names, and Hello
 World fan-in are proof-binding policy, not ABI or odd_glc policy. odd_glc tests
 may read the artifact, verify its digest, and interpret lifecycle,

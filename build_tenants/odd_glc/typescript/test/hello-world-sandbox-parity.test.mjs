@@ -55,7 +55,7 @@ function sha256Text(text) {
   return `sha256:${createHash("sha256").update(text, "utf8").digest("hex")}`;
 }
 
-function fixturePathFromProvenance(value) {
+function proofArtifactPathFromProvenance(value) {
   return path.join(
     tenantRoot,
     value.replace(/^build_tenants\/odd_glc\/typescript\//u, "")
@@ -65,8 +65,8 @@ function fixturePathFromProvenance(value) {
 async function readPinnedRouteProof(proofKey) {
   const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts[proofKey];
   assert.ok(proof, `Missing substrate provenance for ${proofKey}`);
-  const artifactPath = fixturePathFromProvenance(proof.fixturePath);
-  const manifestPath = fixturePathFromProvenance(proof.fixtureManifestPath);
+  const artifactPath = proofArtifactPathFromProvenance(proof.proofArtifactPath);
+  const manifestPath = proofArtifactPathFromProvenance(proof.proofManifestPath);
   const rawArtifact = await readFile(artifactPath, "utf8");
   const rawManifest = await readFile(manifestPath, "utf8");
   const artifactSha256 = sha256Text(rawArtifact);
@@ -93,12 +93,12 @@ async function readPinnedRouteProof(proofKey) {
 async function readPinnedGlcStartupProof() {
   const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive;
   assert.ok(proof, "Missing ABG 4.2 startup provenance");
-  const proofPath = fixturePathFromProvenance(proof.fixturePath);
-  const manifestPath = fixturePathFromProvenance(proof.fixtureManifestPath);
-  const fixtureDir = path.dirname(proofPath);
-  const eventsPath = path.join(fixtureDir, "events.jsonl");
-  const vector0Path = path.join(fixtureDir, "glc-bootstrap-vector-0-artifact.json");
-  const vector1Path = path.join(fixtureDir, "glc-bootstrap-vector-1-artifact.json");
+  const proofPath = proofArtifactPathFromProvenance(proof.proofArtifactPath);
+  const manifestPath = proofArtifactPathFromProvenance(proof.proofManifestPath);
+  const proofDir = path.dirname(proofPath);
+  const eventsPath = path.join(proofDir, "events.jsonl");
+  const vector0Path = path.join(proofDir, "glc-bootstrap-vector-0-artifact.json");
+  const vector1Path = path.join(proofDir, "glc-bootstrap-vector-1-artifact.json");
   const rawProof = await readFile(proofPath, "utf8");
   const rawManifest = await readFile(manifestPath, "utf8");
   const rawEvents = await readFile(eventsPath, "utf8");

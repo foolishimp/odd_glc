@@ -51,8 +51,8 @@ export interface AbiogenesisSubstrateProvenance {
     readonly sourceProduct: "abiogenesis";
     readonly sourceCapability?: string;
     readonly sourceRunId: string;
-    readonly fixturePath: string;
-    readonly fixtureManifestPath: string;
+    readonly proofArtifactPath: string;
+    readonly proofManifestPath: string;
     readonly artifactSha256: string;
     readonly sourceRunKind?: string;
     readonly proofClass?: string;
@@ -113,7 +113,7 @@ export interface OddGlcGraphFunctionBindingEntry {
   readonly policyRefs: readonly string[];
   readonly readinessRefs: readonly string[];
   readonly proofRefs: readonly string[];
-  readonly catalogReuseStatus?: "abg_catalog_reuse_audit_required";
+  readonly catalogReuseStatus?: "abg_4_2_no_equivalent_published";
   readonly genericity?: "candidate_abg_system_function" | "product_specific_specialization";
   readonly reuseGate?: "bind_existing_abg_catalog_entry_when_equivalent_exists";
 }

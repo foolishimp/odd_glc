@@ -1,6 +1,6 @@
 # ABIogenesis Executive Observer Pressure Proof
 
-This fixture is a committed ABG live executive-observer artifact for executive
+This proof input is a committed ABG live executive-observer artifact for executive
 pressure facts.
 
 `odd_glc` consumes it as read-only ABI pressure truth. It does not invoke F_P,

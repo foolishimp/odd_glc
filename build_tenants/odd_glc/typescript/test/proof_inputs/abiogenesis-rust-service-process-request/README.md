@@ -1,6 +1,6 @@
 # ABIogenesis Rust Service Process/Request Proof
 
-This fixture is a committed ABG live replay artifact used by odd_glc for the
+This proof input is a committed ABG live replay artifact used by odd_glc for the
 Rust service/client Hello World ladder rung.
 
 Source:
@@ -10,7 +10,7 @@ Source:
 - artifact sha256:
   `sha256:0f817cd642667bf042fcb408884fbac5130eb83650ec4a5da9a166b105369c87`
 
-The fixture is ABG replay truth for a generic process/request capability.
+The proof input is ABG replay truth for a generic process/request capability.
 Service readiness, protocol semantics, response acceptability, and cleanup
 policy are proof-binding or downstream plugin policy. odd_glc tests may read
 the artifact, verify its digest, and interpret lifecycle/evidence/fold/
