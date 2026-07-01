@@ -461,7 +461,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS = deepFreeze([
   ...ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES
 ].map((entry) => `gtl-library-entry://odd_glc/node-type/${entry.typeRef}`));
 
-export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY = deepFreeze([
+export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS = deepFreeze([
   {
     entryRef: "registry-entry://odd_glc/glc-bootstrap/node-type/bootstrap-context",
     declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/node-type/bootstrap-context",
@@ -509,7 +509,7 @@ export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY = deepFreeze([
   }
 ]);
 
-export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY = deepFreeze([
+export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS = deepFreeze([
   {
     entryRef: "registry-entry://odd_glc/glc-bootstrap/graph-function/glc-hello-world-bootstrap",
     declarationRef: "gtl-declaration://odd_glc/glc-bootstrap/graph-function/glc-hello-world-bootstrap",
@@ -529,17 +529,17 @@ export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING = deepFreeze({
   ownerRef: "owner://odd_glc",
   overlayRefs: ["overlay://odd_glc/glc-hello-world-bootstrap"],
   pluginRefs: ["plugin://odd_glc/glc-bootstrap/live-fp-dispatch"],
-  readinessRefs: ["readiness://odd_glc/glc-bootstrap/t180"],
+  readinessRefs: ["readiness://odd_glc/glc-bootstrap/abg-4.2"],
   proofRefs: ["proof://odd_glc/glc-bootstrap/live"],
   policyRefs: ["policy://odd_glc/glc-bootstrap-selection"],
   configSourceRefs: ["config://odd_glc/glc-bootstrap/startup"],
   entryRefs: [
-    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY.map((entry) => entry.entryRef),
-    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY.map((entry) => entry.entryRef)
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS.map((entry) => entry.entryRef),
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.entryRef)
   ],
   declarationRefs: [
-    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY.map((entry) => entry.declarationRef),
-    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY.map((entry) => entry.declarationRef)
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS.map((entry) => entry.declarationRef),
+    ...ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.declarationRef)
   ]
 });
 

@@ -20,14 +20,7 @@ Derives from:
   - specification/GOALS.md
   - specification/PRODUCT.md
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
-  - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.1.0-rc.17/release-snapshot-manifest.json
   - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json
-  - .ai-workspace/comments/codex/20260628T170821Z_T002_rc12_readiness_refresh.md
-  - .ai-workspace/tickets/completed/T-014-prove-non-closed-lifecycle-interpretation.md
-  - .ai-workspace/tickets/completed/T-015-prove-requirement-graph-and-recursive-span-interpretation.md
-  - .ai-workspace/tickets/completed/T-016-prove-executive-pressure-reprice-interpretation.md
-  - .ai-workspace/tickets/completed/T-017-define-release-readiness-interpretation.md
-  - .ai-workspace/tickets/completed/T-018-define-generic-specialization-seam.md
 Supersedes: none
 Superseded by: none
 Retained special case: none
@@ -162,18 +155,17 @@ model and not an odd_sdlc reproduction plan.
 
 ## Generic Lifecycle Read Models
 
-ABI 4.2 is the installed substrate. The fixture-of-record replay artifacts
-listed below remain pinned to the ABI release and source ticket that produced
-them. Several were produced by rc17 and are intentionally not relabeled as
-4.2 artifacts.
+ABI 4.2 is the installed substrate. Committed replay artifacts are read-only
+provenance inputs, and current Hello World proofs use the ABG 4.2
+software-build startup binding path.
 
 | ABI proof artifact | odd_glc interpretation | Non-authority rule |
 | --- | --- | --- |
-| T-167 non-closed route replay | residual pressure, `continuation_available`, and non-closed lifecycle readiness. | odd_glc does not retry, route re-entry, or select a disposition. |
-| T-168 requirement graph/refinement replay | parent/child requirement graph and aggregate residual labels. | odd_glc does not derive requirement graphs or infer parent closure. |
-| T-169 span identity/recursion replay | recursive frame, zoom, foldback, and re-entry lifecycle labels. | odd_glc does not open frames, mint span identity, or fold back spans. |
-| T-160 executive observer replay | executive pressure and lawful STDO reprice signal labels. | odd_glc does not invoke F_P, mutate STDO surfaces, or route continuation. |
-| T-174 parallel Hello World replay | dependency frontier, branch evidence, and fan-in readiness labels. | odd_glc does not schedule branches or project fan-in. |
+| Non-closed route replay | residual pressure, `continuation_available`, and non-closed lifecycle readiness. | odd_glc does not retry, route re-entry, or select a disposition. |
+| Requirement graph/refinement replay | parent/child requirement graph and aggregate residual labels. | odd_glc does not derive requirement graphs or infer parent closure. |
+| Span identity/recursion replay | recursive frame, zoom, foldback, and re-entry lifecycle labels. | odd_glc does not open frames, mint span identity, or fold back spans. |
+| Executive observer replay | executive pressure and lawful STDO reprice signal labels. | odd_glc does not invoke F_P, mutate STDO surfaces, or route continuation. |
+| Parallel Hello World replay | dependency frontier, branch evidence, and fan-in readiness labels. | odd_glc does not schedule branches or project fan-in. |
 
 These read models are not a fixed graph. They are generic lifecycle views over
 ABI replay/query truth. A downstream product may bind different GTL graphs,

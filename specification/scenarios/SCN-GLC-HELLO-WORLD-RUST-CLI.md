@@ -17,10 +17,8 @@ execution evidence.
 
 ## odd_sdlc Witness
 
-- T-133 Rust minimum-overhead bootstrap:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t133_rust_hello_world_minimal/bootstrap.md`
-- T-160 Rust lite requirements:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t160_hello_world_rust_lite/specification/requirements/01-hello-world-rust.md`
+The source witnesses are the Rust minimum-overhead and Rust-lite Hello World
+behaviors from `odd_sdlc`.
 
 Witness behavior:
 
@@ -53,4 +51,3 @@ stdout against the active requirement projection.
 
 odd_glc does not infer Rust build success from file presence, worker prose, or
 local command logs.
-

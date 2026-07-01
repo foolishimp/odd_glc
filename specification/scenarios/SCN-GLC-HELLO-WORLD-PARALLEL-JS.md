@@ -17,10 +17,8 @@ behavior without moving parallel control into odd_glc.
 
 ## odd_sdlc Witness
 
-- T-174 parallel JavaScript Hello World bootstrap:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t174_parallel_hello_world_js/bootstrap.md`
-- T-174 requirements:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t174_parallel_hello_world_js/specification/requirements/01-parallel-hello-world.md`
+The source witness is the parallel JavaScript Hello World behavior from
+`odd_sdlc`.
 
 Witness behavior:
 
@@ -58,4 +56,3 @@ branch evidence, fan-in evidence, and final composed behavior.
 odd_glc shall not own ready-frontier selection, concurrency limits, branch
 leases, parallel execution, fan-in projection, aggregate fold, retry, or
 continuation.
-

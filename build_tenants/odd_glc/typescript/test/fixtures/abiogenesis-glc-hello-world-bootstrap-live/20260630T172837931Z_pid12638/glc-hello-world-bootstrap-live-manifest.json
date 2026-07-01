@@ -1,7 +1,7 @@
 {
   "kind": "odd_glc_glc_hello_world_bootstrap_live_fixture_manifest",
   "sourceProduct": "abiogenesis",
-  "sourceTicket": "T-180",
+  "sourceCapability": "abg_4_2_glc_hello_world_bootstrap_startup",
   "sourceRunId": "20260630T172837931Z_pid12638",
   "sourceCommit": "96532521c5a6cb93495bd615749f0b630b4a7e52",
   "sourceDirty": false,
@@ -9,7 +9,7 @@
   "snapshotTarballSha256": "a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4",
   "durationMs": 89901,
   "proof": {
-    "path": "t180-glc-hello-world-bootstrap-live-proof.json",
+    "path": "glc-hello-world-bootstrap-live-proof.json",
     "sha256": "sha256:c28a20c8460a20b25c339e0486b7b66223e956f179d294a5b98bf86523859a9a"
   },
   "events": {
@@ -20,11 +20,11 @@
   },
   "liveArtifacts": [
     {
-      "path": "t180-glc-bootstrap-vector-0-artifact.json",
+      "path": "glc-bootstrap-vector-0-artifact.json",
       "sha256": "sha256:e50c95fa078a16d0c45c29bca400fc93070e7410bec773d7888b89de2807e058"
     },
     {
-      "path": "t180-glc-bootstrap-vector-1-artifact.json",
+      "path": "glc-bootstrap-vector-1-artifact.json",
       "sha256": "sha256:b0123fefacb1eca3c333e0af8547728f22c82b9913d8d0ad955d83f4145da406"
     }
   ]

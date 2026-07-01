@@ -50,6 +50,6 @@ interpretation, executive pressure/reprice interpretation, release/readiness
 interpretation, and the Hello World ladder through basic CLI, JavaScript
 tenant/test, Rust CLI, Rust service/client, and parallel JavaScript witnesses.
 
-The tenant is read/query only. It consumes committed ABI fixture-of-record
-artifacts and the installed ABIogenesis public facade; it does not execute the
-live proofs itself.
+The tenant is read/query only. It consumes committed ABI proof artifacts and
+the installed ABIogenesis public facade; live LLM-backed proofs run only when
+the live test flag is set.

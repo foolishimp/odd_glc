@@ -1,16 +1,12 @@
-# ABIogenesis T-172 Service Process Request Fixture
+# ABIogenesis Rust Service Process/Request Proof
 
-This fixture is a committed copy of the ABIogenesis T-172 live replay artifact
-used by odd_glc for the Rust service/client Hello World ladder rung.
+This fixture is a committed ABG live replay artifact used by odd_glc for the
+Rust service/client Hello World ladder rung.
 
 Source:
 
 - product: `abiogenesis`
-- release: `4.1.0-rc.17`
-- ticket: `T-172`
 - run id: `20260629T140453156Z_pid14978`
-- source manifest:
-  `/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/test_env/test_runs/t172_service_process_request_live/20260629T140453156Z_pid14978/service-process-request-replay-manifest.json`
 - artifact sha256:
   `sha256:0f817cd642667bf042fcb408884fbac5130eb83650ec4a5da9a166b105369c87`
 

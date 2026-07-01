@@ -49,16 +49,17 @@ export interface AbiogenesisSubstrateProvenance {
   };
   readonly proofArtifacts: Readonly<Record<string, {
     readonly sourceProduct: "abiogenesis";
-    readonly sourceTicket: string;
+    readonly sourceCapability?: string;
     readonly sourceRunId: string;
     readonly fixturePath: string;
     readonly fixtureManifestPath: string;
-	    readonly artifactSha256: string;
-	    readonly sourceRunKind?: string;
-	    readonly proofClass?: string;
-	    readonly closureReadiness?: string;
-	    readonly replacedByTicket?: string;
-	    readonly routeEventCount?: number;
+    readonly artifactSha256: string;
+    readonly sourceRunKind?: string;
+    readonly proofClass?: string;
+    readonly closureReadiness?: string;
+    readonly replacedByCapability?: string;
+    readonly supersedesCapability?: string;
+    readonly routeEventCount?: number;
     readonly pressureEventCount?: number;
     readonly replayEventCount: number;
   }>>;
@@ -154,7 +155,7 @@ export interface OddGlcSoftwareBuildStartupBinding {
   readonly enabledLibraryRefs: readonly string[];
 }
 
-export interface OddGlcHelloWorldBootstrapNodeTypeLibraryEntry {
+export interface OddGlcHelloWorldBootstrapNodeTypeBindingEntry {
   readonly entryRef: string;
   readonly declarationRef: string;
   readonly typeRef: string;
@@ -164,7 +165,7 @@ export interface OddGlcHelloWorldBootstrapNodeTypeLibraryEntry {
   readonly overlayRefs: readonly string[];
 }
 
-export interface OddGlcHelloWorldBootstrapGraphFunctionLibraryEntry {
+export interface OddGlcHelloWorldBootstrapGraphFunctionBindingEntry {
   readonly entryRef: string;
   readonly declarationRef: string;
   readonly graphFunctionName: string;
@@ -448,8 +449,8 @@ export declare const ODD_GLC_DATA_MAPPING_NODE_TYPES: readonly OddGlcLifecycleNo
 export declare const ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES: readonly OddGlcComposedLifecycleNodeTypeEntry[];
 export declare const ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES: readonly OddGlcComposedLifecycleNodeTypeEntry[];
 export declare const ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS: readonly string[];
-export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY: readonly OddGlcHelloWorldBootstrapNodeTypeLibraryEntry[];
-export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY: readonly OddGlcHelloWorldBootstrapGraphFunctionLibraryEntry[];
+export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS: readonly OddGlcHelloWorldBootstrapNodeTypeBindingEntry[];
+export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS: readonly OddGlcHelloWorldBootstrapGraphFunctionBindingEntry[];
 export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING: OddGlcHelloWorldBootstrapStartupBinding;
 export declare const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS: readonly OddGlcGraphFunctionBindingEntry[];
 export declare const ODD_GLC_SOFTWARE_BUILD_OVERLAY: OddGlcSoftwareBuildOverlay;

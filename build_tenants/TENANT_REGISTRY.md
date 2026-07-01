@@ -21,9 +21,9 @@ The tenant was activated after requirements and ratified design defined:
 The active tenant is a TypeScript-compatible read/query and policy
 interpretation library over installed ABIogenesis `4.2.0-rc.1`.
 
-Older committed fixture-of-record replay artifacts retain their original ABI
-producer identity. The tenant's current package/runtime dependency is 4.2; a
-fixture produced by rc17 remains rc17 proof input.
+Committed ABI proof artifacts are read-only provenance inputs. The tenant's
+current package/runtime dependency is ABIogenesis `4.2.0-rc.1`, and active
+Hello World proofs use the ABG 4.2 software-build startup binding path.
 
 The tenant descends from
 [ADR-001 route-1 GTL/ABG lifecycle consumption](common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)

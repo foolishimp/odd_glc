@@ -39,8 +39,8 @@ process shells, or controllers.
      type-satisfaction projection, and traversal-close validation.
 
 3. Use `odd_sdlc` data_mapper tests as witnesses only.
-   - T-031, T-152, T-154, T-188, T-164/T-171/T-200, T-199, and T-109/T-115
-     name coverage pressure and deletion targets.
+   - Lite, full, deep, resume, acceptance, restart, and migration data-mapper
+     witnesses name coverage pressure and deletion targets.
    - Each witness row must identify artifact ownership: GTL declaration, ABG
      runtime truth, odd_glc read interpretation, or sandbox/product output.
    - No row may close by constructing local glc truth or copied SDLC truth.
@@ -56,7 +56,7 @@ process shells, or controllers.
 5. Reproduce the Hello World and data_mapper witnesses as glc proofs.
    - Each proof gets its own sandbox/run root.
    - Subject programs may execute in the sandbox as proof subjects.
-   - Runtime truth must be ABG-emitted or digest-pinned ABG fixture truth.
+   - Runtime truth must be ABG-emitted or digest-pinned ABG proof truth.
    - Live tests mean a live F_P/LLM worker was called through ABG.
 
 ## Active Tickets
@@ -124,6 +124,5 @@ the product boundary, ABIogenesis 4.2 substrate pin, lifecycle slot map, typed
 lifecycle node model, startup binding, first ABG 4.2 Hello World startup proof,
 and generic parity matrix.
 
-Those completed tickets remain historical authority for what has been earned.
-This goals file names the current wave rather than restating their full
-closure records.
+Those completed tickets remain trace records for what has been earned. This
+goals file names the current wave and is the active planning surface.

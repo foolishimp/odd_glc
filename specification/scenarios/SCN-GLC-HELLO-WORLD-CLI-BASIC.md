@@ -17,10 +17,12 @@ first row of the ladder. It remains a proof vehicle, not product scope.
 
 ## odd_sdlc Witness
 
-- T-160 JavaScript lite fixture:
-  `/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/fixtures/t160_hello_world_js_lite/specification/requirements/01-hello-world.md`
-- ABI T-165 Hello World route proof, consumed by odd_glc through the committed
-  T-166 replay fixture.
+The source witness is the JavaScript-lite Hello World behavior from
+`odd_sdlc`: declare one greeting requirement, produce one CLI artifact, execute
+it, and prove the emitted greeting.
+
+The current odd_glc proof consumes the committed ABG requirements-route proof
+for that behavior through read-only replay/query truth.
 
 ## Generic Lifecycle Capability
 
@@ -51,4 +53,3 @@ The scenario closes only when replay/query truth shows:
 - no unhandled residual pressure.
 
 odd_glc does not execute the command, admit evidence, or fold the requirement.
-

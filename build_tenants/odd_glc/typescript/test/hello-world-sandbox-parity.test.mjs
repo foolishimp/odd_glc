@@ -37,11 +37,11 @@ const defaultAbgRoot = path.join(
 );
 
 const ROUTE_PROOFS = Object.freeze({
-  basicCli: "t166RouteReplay",
-  rustCli: "t171NonJsToolchainExecution",
-  rustService: "t172ServiceProcessRequest",
-  jsTenantTest: "t173GenericProofEvidence",
-  parallelJs: "t174ParallelHelloWorld"
+  basicCli: "basicCliRouteReplay",
+  rustCli: "rustCliToolchainExecution",
+  rustService: "rustServiceProcessRequest",
+  jsTenantTest: "jsTenantTestProofEvidence",
+  parallelJs: "parallelJsHelloWorld"
 });
 
 async function importAbgRequirementsFacade() {
@@ -90,15 +90,15 @@ async function readPinnedRouteProof(proofKey) {
   });
 }
 
-async function readPinnedT180StartupProof() {
-  const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t180GlcHelloWorldBootstrapLive;
-  assert.ok(proof, "Missing T-180 startup provenance");
+async function readPinnedGlcStartupProof() {
+  const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive;
+  assert.ok(proof, "Missing ABG 4.2 startup provenance");
   const proofPath = fixturePathFromProvenance(proof.fixturePath);
   const manifestPath = fixturePathFromProvenance(proof.fixtureManifestPath);
   const fixtureDir = path.dirname(proofPath);
   const eventsPath = path.join(fixtureDir, "events.jsonl");
-  const vector0Path = path.join(fixtureDir, "t180-glc-bootstrap-vector-0-artifact.json");
-  const vector1Path = path.join(fixtureDir, "t180-glc-bootstrap-vector-1-artifact.json");
+  const vector0Path = path.join(fixtureDir, "glc-bootstrap-vector-0-artifact.json");
+  const vector1Path = path.join(fixtureDir, "glc-bootstrap-vector-1-artifact.json");
   const rawProof = await readFile(proofPath, "utf8");
   const rawManifest = await readFile(manifestPath, "utf8");
   const rawEvents = await readFile(eventsPath, "utf8");
@@ -166,14 +166,14 @@ async function copyRouteProofInputs(sandbox, proof) {
     artifactSha256: proof.artifactSha256,
     copiedArtifactPath: artifactTarget,
     copiedManifestPath: manifestTarget,
-    sourceTicket: proof.proof.sourceTicket,
+    sourceCapability: proof.proof.sourceCapability,
     sourceRunId: proof.proof.sourceRunId
   });
   return Object.freeze({ artifactTarget, manifestTarget, targetRoot });
 }
 
 async function copyStartupProofInputs(sandbox, proof) {
-  const targetRoot = path.join(sandbox.proofRoot, "abi", "t180GlcHelloWorldBootstrapLive");
+  const targetRoot = path.join(sandbox.proofRoot, "abi", "glcHelloWorldBootstrapLive");
   await mkdir(targetRoot, { recursive: true });
   for (const sourcePath of [proof.proofPath, proof.manifestPath, proof.eventsPath, proof.vector0Path, proof.vector1Path]) {
     await copyFile(sourcePath, path.join(targetRoot, path.basename(sourcePath)));
@@ -537,7 +537,7 @@ test("runs SCN-GLC-HELLO-WORLD-PARALLEL-JS in an isolated sandbox", async () => 
 test("records SCN-GLC-HELLO-WORLD-ABG42-STARTUP in an isolated sandbox", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-ABG42-STARTUP";
   const sandbox = await prepareSandbox(scenarioId);
-  const proof = await readPinnedT180StartupProof();
+  const proof = await readPinnedGlcStartupProof();
   await copyStartupProofInputs(sandbox, proof);
   const view = interpretStartupRegistryState({
     proof: proof.proof,
@@ -554,10 +554,10 @@ test("records SCN-GLC-HELLO-WORLD-ABG42-STARTUP in an isolated sandbox", async (
   assert.equal(proof.proof.startOutput.event_kinds.includes("graph_call_opened"), true);
 
   const summaryPath = await writeSandboxSummary(sandbox, {
-    artifactSha256: ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t180GlcHelloWorldBootstrapLive.artifactSha256,
+    artifactSha256: ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive.artifactSha256,
     interpretedStartupReadiness: view.value.readiness,
     registryEntryCount: view.value.registryEntryCount,
-    sourceRule: "ABG 4.2 startup fixture copied read-only; no sandbox re-emission of registry or traversal truth"
+    sourceRule: "ABG 4.2 startup proof copied read-only; no sandbox re-emission of registry or traversal truth"
   });
   assert.equal(existsSync(summaryPath), true);
 });

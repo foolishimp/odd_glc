@@ -12,8 +12,8 @@ import {
   ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES,
   ODD_GLC_DATA_MAPPING_NODE_TYPES,
   ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES,
-  ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY,
-  ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY,
+  ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS,
+  ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS,
   ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING,
   ODD_GLC_LIFECYCLE_SLOT_MAP,
   ODD_GLC_LIFECYCLE_NODE_TYPES,
@@ -60,19 +60,19 @@ async function importGtlFacades() {
   });
 }
 
-async function readPinnedT180StartupFixture() {
-  const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.t180GlcHelloWorldBootstrapLive;
-  assert.ok(proof, "Missing T-180 GLC startup proof provenance");
+async function readPinnedGlcStartupFixture() {
+  const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive;
+  assert.ok(proof, "Missing ABG 4.2 GLC startup proof provenance");
   const fixtureRoot = path.join(
     tenantRoot,
     proof.fixturePath.replace(/^build_tenants\/odd_glc\/typescript\/test\/fixtures\//u, "test/fixtures/")
   );
   const manifestPath = path.join(path.dirname(fixtureRoot), "glc-hello-world-bootstrap-live-manifest.json");
   const eventsPath = path.join(path.dirname(fixtureRoot), "events.jsonl");
-  const vector0Path = path.join(path.dirname(fixtureRoot), "t180-glc-bootstrap-vector-0-artifact.json");
-  const vector1Path = path.join(path.dirname(fixtureRoot), "t180-glc-bootstrap-vector-1-artifact.json");
+  const vector0Path = path.join(path.dirname(fixtureRoot), "glc-bootstrap-vector-0-artifact.json");
+  const vector1Path = path.join(path.dirname(fixtureRoot), "glc-bootstrap-vector-1-artifact.json");
   for (const filePath of [fixtureRoot, manifestPath, eventsPath, vector0Path, vector1Path]) {
-    assert.equal(existsSync(filePath), true, `Missing pinned T-180 fixture input at ${filePath}`);
+    assert.equal(existsSync(filePath), true, `Missing pinned ABG 4.2 startup proof input at ${filePath}`);
   }
   const rawProof = await readFile(fixtureRoot, "utf8");
   const rawEvents = await readFile(eventsPath, "utf8");
@@ -175,7 +175,7 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
     const overlayEntry = ODD_GLC_LIFECYCLE_SLOT_MAP.entries.find((row) => row.surface === entry.surface);
     if (overlayEntry) {
       const libraryEntry = declarations.value.libraryEntries.find((row) => row.graphFunctionRef === graphFunction.id);
-      assert.ok(libraryEntry, `Missing library entry for ${entry.typeRef}`);
+      assert.ok(libraryEntry, `Missing GTL binding entry for ${entry.typeRef}`);
       assert.equal(
         libraryEntry.overlayRefs.includes(overlayEntry.entryId),
         true,
@@ -188,7 +188,7 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
     assert.ok(graphFunction, `Missing identity graph function for ${entry.typeRef}`);
     assert.equal(graphFunction.effects.length, 0);
     const libraryEntry = declarations.value.libraryEntries.find((row) => row.graphFunctionRef === graphFunction.id);
-    assert.ok(libraryEntry, `Missing library entry for ${entry.typeRef}`);
+    assert.ok(libraryEntry, `Missing GTL binding entry for ${entry.typeRef}`);
     assert.equal(
       libraryEntry.overlayRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef) ||
         libraryEntry.overlayRefs.some((ref) => ref.startsWith("software-build.role.")),
@@ -203,7 +203,7 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
   const dataMappingBundle = declarations.value.libraryEntries.find(
     (entry) => entry.graphFunctionRef === dataMappingBundleGraphFunction.id
   );
-  assert.ok(dataMappingBundle, "Missing data-mapping composed node-type library entry");
+  assert.ok(dataMappingBundle, "Missing data-mapping composed node-type GTL binding entry");
   assert.equal(dataMappingBundle.overlayRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef), true);
   assert.equal(dataMappingBundle.overlayRefs.includes("software-build.role.mapping_spec"), true);
 });
@@ -377,8 +377,8 @@ test("rejects missing GTL declaration facades and exports no ABG startup authori
   }
 });
 
-test("consumes the T-180 live GLC startup proof as ABG-emitted registry and traversal truth", async () => {
-  const { proof, events, liveArtifacts, manifest } = await readPinnedT180StartupFixture();
+test("consumes the ABG 4.2 live GLC startup proof as emitted registry and traversal truth", async () => {
+  const { proof, events, liveArtifacts, manifest } = await readPinnedGlcStartupFixture();
   const view = interpretStartupRegistryState({
     proof,
     runtimeEvents: events,
@@ -401,17 +401,17 @@ test("consumes the T-180 live GLC startup proof as ABG-emitted registry and trav
   assert.equal(view.value.graphFunctionEntryRefs.length, 1);
   assert.deepEqual(
     [...view.value.nodeTypeEntryRefs].sort(),
-    ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY.map((entry) => entry.entryRef).sort()
+    ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS.map((entry) => entry.entryRef).sort()
   );
   assert.deepEqual(
     [...view.value.graphFunctionEntryRefs].sort(),
-    ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY.map((entry) => entry.entryRef).sort()
+    ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.entryRef).sort()
   );
   assert.deepEqual(
     [...view.value.nodeTypeEntryRefs, ...view.value.graphFunctionEntryRefs].sort(),
     [...ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING.entryRefs].sort()
   );
-  for (const declared of ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY) {
+  for (const declared of ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS) {
     const event = events.find((row) => row.kind === "registry_entry_admitted" && row.entryRef === declared.entryRef);
     assert.ok(event, `Missing ABG registry admission for ${declared.entryRef}`);
     assert.equal(event.entryKind, "node_type");
@@ -419,7 +419,7 @@ test("consumes the T-180 live GLC startup proof as ABG-emitted registry and trav
     assert.equal(event.graphFunctionRef, declared.typeRef);
     assert.deepEqual(event.overlayRefs, declared.overlayRefs);
   }
-  for (const declared of ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY) {
+  for (const declared of ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS) {
     const event = events.find((row) => row.kind === "registry_entry_admitted" && row.entryRef === declared.entryRef);
     assert.ok(event, `Missing ABG registry admission for ${declared.entryRef}`);
     assert.equal(event.entryKind, "graph_function");
@@ -430,7 +430,7 @@ test("consumes the T-180 live GLC startup proof as ABG-emitted registry and trav
   assert.equal(
     events.some((event) =>
       event.kind === "graph_function_selected" &&
-      event.selectedEntryRef === ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY[0].entryRef
+      event.selectedEntryRef === ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS[0].entryRef
     ),
     true
   );

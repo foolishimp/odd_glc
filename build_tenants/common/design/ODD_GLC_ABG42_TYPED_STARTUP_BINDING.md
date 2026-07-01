@@ -231,26 +231,24 @@ Startup data is represented by `ODD_GLC_STARTUP_BINDING`:
 ABG consumes this config at startup. odd_glc does not open graph calls or
 select candidates.
 
-## T-180 Hello World Startup Binding
+## Hello World Bootstrap Startup Binding
 
-The first live startup proof uses a scenario-specific declaration set rather
-than the generic product-library group placeholders. The TypeScript tenant
-publishes this as:
+The current Hello World bootstrap proof uses explicit odd_glc startup
+declaration bindings. The TypeScript tenant publishes this as:
 
-- `ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_LIBRARY`;
-- `ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_LIBRARY`;
+- `ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS`;
+- `ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS`;
 - `ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING`.
 
-The fixture-of-record is valid only when ABG emits `registry_entry_admitted`
+The committed proof is valid only when ABG emits `registry_entry_admitted`
 events for those exact odd_glc declaration refs and later emits
-`graph_function_selected` for the declared T-180 graph-function entry before
-opening a graph call. A generic ABI GLC bootstrap artifact with different
-product refs is not sufficient proof for this tenant.
+`graph_function_selected` for the declared graph-function binding before opening
+a graph call. A generic ABI GLC bootstrap artifact with different product refs
+is not sufficient proof for this tenant.
 
-This T-180 binding is historical proof input and a bootstrap witness. It is not
-the long-term software-build overlay. New Hello World ladder proofs should use
-the reusable software-build startup binding unless a ticket explicitly prices a
-different specialization.
+The reusable software-build startup binding remains the current model for new
+Hello World ladder proofs unless a ticket explicitly prices a different
+specialization.
 
 ## Proof Surface
 
