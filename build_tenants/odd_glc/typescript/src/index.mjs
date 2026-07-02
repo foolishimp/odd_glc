@@ -264,6 +264,20 @@ export const ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES = deepFreeze([
 
 export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
   {
+    typeRef: "odd_glc.type.lifecycle.goal_surface",
+    nodeName: "GoalSurface",
+    surface: "GoalSurfaceAsset",
+    schemaRef: "odd_glc.schema.lifecycle.goal_surface",
+    assetKind: "goal_surface",
+    baseTypeRefs: ["odd_glc.type.product_definition"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.goal_surface"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "lifecycle_surface", "software_build", "goal"]
+  },
+  {
     typeRef: "odd_glc.type.lifecycle.scenario_surface",
     nodeName: "ScenarioSurface",
     surface: "ScenarioSurfaceAsset",
@@ -320,6 +334,36 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     tags: ["odd_glc", "software_build", "source_artifact"]
   },
   {
+    typeRef: "odd_glc.type.software.component_code_surface",
+    nodeName: "SoftwareComponentCodeSurface",
+    surface: "SoftwareComponentCodeSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.component_code_surface",
+    assetKind: "software_component_code_surface",
+    baseTypeRefs: ["odd_glc.type.software.source_surface"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.source_artifact",
+      "software-build.role.component_code"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "source_artifact", "component_code"]
+  },
+  {
+    typeRef: "odd_glc.type.software.code_surface",
+    nodeName: "SoftwareCodeSurface",
+    surface: "SoftwareCodeSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.code_surface",
+    assetKind: "software_code_surface",
+    baseTypeRefs: ["odd_glc.type.software.source_surface"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.source_artifact",
+      "software-build.role.code_surface"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "source_artifact", "code"]
+  },
+  {
     typeRef: "odd_glc.type.software.test_source_surface",
     nodeName: "SoftwareTestSourceSurface",
     surface: "SoftwareTestSourceSurfaceAsset",
@@ -363,6 +407,34 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     ],
     markov: ["materialized"],
     tags: ["odd_glc", "software_build", "test_source", "uat_test", "validation_test"]
+  },
+  {
+    typeRef: "odd_glc.type.software.uat_testcases_surface",
+    nodeName: "SoftwareUatTestcasesSurface",
+    surface: "SoftwareUatTestcasesSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.uat_testcases_surface",
+    assetKind: "software_uat_testcases_surface",
+    baseTypeRefs: ["odd_glc.type.requirement_set"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.uat_testcases"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "uat_testcases"]
+  },
+  {
+    typeRef: "odd_glc.type.software.testcase_authority_surface",
+    nodeName: "SoftwareTestcaseAuthoritySurface",
+    surface: "SoftwareTestcaseAuthoritySurfaceAsset",
+    schemaRef: "odd_glc.schema.software.testcase_authority_surface",
+    assetKind: "software_testcase_authority_surface",
+    baseTypeRefs: ["odd_glc.type.software.uat_testcases_surface"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.testcase_authority"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "testcase_authority"]
   },
   {
     typeRef: "odd_glc.type.software.test_design_surface",
@@ -419,6 +491,104 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     ],
     markov: ["projected"],
     tags: ["odd_glc", "software_build", "test_execution", "evidence"]
+  },
+  {
+    typeRef: "odd_glc.type.software.feature_decomposition_surface",
+    nodeName: "SoftwareFeatureDecompositionSurface",
+    surface: "SoftwareFeatureDecompositionSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.feature_decomposition_surface",
+    assetKind: "software_feature_decomposition_surface",
+    baseTypeRefs: ["odd_glc.type.requirement_set"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.feature_decomposition"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "feature_decomposition"]
+  },
+  {
+    typeRef: "odd_glc.type.software.component_realization_qualification",
+    nodeName: "SoftwareComponentRealizationQualification",
+    surface: "SoftwareComponentRealizationQualificationAsset",
+    schemaRef: "odd_glc.schema.software.component_realization_qualification",
+    assetKind: "software_component_realization_qualification",
+    baseTypeRefs: ["odd_glc.type.evidence_binding_view"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.component_realization_qualification"
+    ],
+    markov: ["projected"],
+    tags: ["odd_glc", "software_build", "qualification", "evidence"]
+  },
+  {
+    typeRef: "odd_glc.type.software.component_test_execution_qualification",
+    nodeName: "SoftwareComponentTestExecutionQualification",
+    surface: "SoftwareComponentTestExecutionQualificationAsset",
+    schemaRef: "odd_glc.schema.software.component_test_execution_qualification",
+    assetKind: "software_component_test_execution_qualification",
+    baseTypeRefs: ["odd_glc.type.evidence_binding_view"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.component_test_execution_qualification"
+    ],
+    markov: ["projected"],
+    tags: ["odd_glc", "software_build", "qualification", "test_execution"]
+  },
+  {
+    typeRef: "odd_glc.type.software.component_repair_schedule",
+    nodeName: "SoftwareComponentRepairSchedule",
+    surface: "SoftwareComponentRepairScheduleAsset",
+    schemaRef: "odd_glc.schema.software.component_repair_schedule",
+    assetKind: "software_component_repair_schedule",
+    baseTypeRefs: ["odd_glc.type.residual_pressure_view"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.component_repair_schedule"
+    ],
+    markov: ["projected"],
+    tags: ["odd_glc", "software_build", "repair", "schedule"]
+  },
+  {
+    typeRef: "odd_glc.type.software.test_run_archive",
+    nodeName: "SoftwareTestRunArchive",
+    surface: "SoftwareTestRunArchiveAsset",
+    schemaRef: "odd_glc.schema.software.test_run_archive",
+    assetKind: "software_test_run_archive",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.test_run_archive"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "archive", "test_run"]
+  },
+  {
+    typeRef: "odd_glc.type.software.release_depth_parity",
+    nodeName: "SoftwareReleaseDepthParity",
+    surface: "SoftwareReleaseDepthParityAsset",
+    schemaRef: "odd_glc.schema.software.release_depth_parity",
+    assetKind: "software_release_depth_parity",
+    baseTypeRefs: ["odd_glc.type.lifecycle_release_readiness_view"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.release_depth_parity"
+    ],
+    markov: ["interpreted"],
+    tags: ["odd_glc", "software_build", "release_depth", "readiness"]
+  },
+  {
+    typeRef: "odd_glc.type.software.release_preparation",
+    nodeName: "SoftwareReleasePreparation",
+    surface: "SoftwareReleasePreparationAsset",
+    schemaRef: "odd_glc.schema.software.release_preparation",
+    assetKind: "software_release_preparation",
+    baseTypeRefs: ["odd_glc.type.lifecycle_release_readiness_view"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.release_preparation"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "release_preparation"]
   }
 ]);
 
@@ -531,6 +701,9 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS = deepFreeze([
 export const ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF =
   "graph-function://odd_glc/software-build/sdlc-software-build";
 
+export const ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF =
+  "graph-function://odd_glc/software-build/full-data-mapper";
+
 export const ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN = deepFreeze([
   {
     stage: "conformance_project",
@@ -629,6 +802,208 @@ export const ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN = deepFreeze([
       "odd_glc.type.software.test_execution_result",
       "odd_glc.type.evidence_binding_view"
     ]
+  }
+]);
+
+export const ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN = deepFreeze([
+  {
+    stage: "derive_intent_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-intent-surface",
+    sourceTypeRef: "odd_glc.type.lifecycle_context",
+    sourceName: "DataMapperLifecycleContext",
+    targetTypeRef: "odd_glc.type.intent",
+    targetName: "DataMapperIntentSurface",
+    requiredNodeTypes: ["odd_glc.type.lifecycle_context", "odd_glc.type.intent"]
+  },
+  {
+    stage: "derive_product_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-product-surface",
+    sourceTypeRef: "odd_glc.type.intent",
+    sourceName: "DataMapperIntentSurfaceInput",
+    targetTypeRef: "odd_glc.type.product_definition",
+    targetName: "DataMapperProductSurface",
+    requiredNodeTypes: ["odd_glc.type.intent", "odd_glc.type.product_definition"]
+  },
+  {
+    stage: "derive_goal_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-goal-surface",
+    sourceTypeRef: "odd_glc.type.product_definition",
+    sourceName: "DataMapperProductSurfaceInput",
+    targetTypeRef: "odd_glc.type.lifecycle.goal_surface",
+    targetName: "DataMapperGoalSurface",
+    requiredNodeTypes: ["odd_glc.type.product_definition", "odd_glc.type.lifecycle.goal_surface"]
+  },
+  {
+    stage: "derive_requirement_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-requirement-surface",
+    sourceTypeRef: "odd_glc.type.lifecycle.goal_surface",
+    sourceName: "DataMapperGoalSurfaceInput",
+    targetTypeRef: "odd_glc.type.requirement_set",
+    targetName: "DataMapperRequirementSurface",
+    requiredNodeTypes: ["odd_glc.type.lifecycle.goal_surface", "odd_glc.type.requirement_set"]
+  },
+  {
+    stage: "derive_uat_testcases_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-uat-testcases-surface",
+    sourceTypeRef: "odd_glc.type.requirement_set",
+    sourceName: "DataMapperRequirementSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.uat_testcases_surface",
+    targetName: "DataMapperUatTestcasesSurface",
+    requiredNodeTypes: ["odd_glc.type.requirement_set", "odd_glc.type.software.uat_testcases_surface"]
+  },
+  {
+    stage: "derive_testcase_authority_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-testcase-authority-surface",
+    sourceTypeRef: "odd_glc.type.software.uat_testcases_surface",
+    sourceName: "DataMapperUatTestcasesSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.testcase_authority_surface",
+    targetName: "DataMapperTestcaseAuthoritySurface",
+    requiredNodeTypes: ["odd_glc.type.software.uat_testcases_surface", "odd_glc.type.software.testcase_authority_surface"]
+  },
+  {
+    stage: "derive_feature_decomp_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-feature-decomp-surface",
+    sourceTypeRef: "odd_glc.type.software.testcase_authority_surface",
+    sourceName: "DataMapperTestcaseAuthoritySurfaceInput",
+    targetTypeRef: "odd_glc.type.software.feature_decomposition_surface",
+    targetName: "DataMapperFeatureDecompositionSurface",
+    requiredNodeTypes: ["odd_glc.type.software.testcase_authority_surface", "odd_glc.type.software.feature_decomposition_surface"]
+  },
+  {
+    stage: "derive_design_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-design-surface",
+    sourceTypeRef: "odd_glc.type.software.feature_decomposition_surface",
+    sourceName: "DataMapperFeatureDecompositionSurfaceInput",
+    targetTypeRef: "odd_glc.type.lifecycle.design_surface",
+    targetName: "DataMapperDesignSurface",
+    requiredNodeTypes: ["odd_glc.type.software.feature_decomposition_surface", "odd_glc.type.lifecycle.design_surface"]
+  },
+  {
+    stage: "derive_scenario_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-scenario-surface",
+    sourceTypeRef: "odd_glc.type.lifecycle.design_surface",
+    sourceName: "DataMapperDesignSurfaceInput",
+    targetTypeRef: "odd_glc.type.lifecycle.scenario_surface",
+    targetName: "DataMapperScenarioSurface",
+    requiredNodeTypes: ["odd_glc.type.lifecycle.design_surface", "odd_glc.type.lifecycle.scenario_surface"]
+  },
+  {
+    stage: "derive_implementation_design_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-implementation-design-surface",
+    sourceTypeRef: "odd_glc.type.lifecycle.scenario_surface",
+    sourceName: "DataMapperScenarioSurfaceInput",
+    targetTypeRef: "odd_glc.type.lifecycle.implementation_design",
+    targetName: "DataMapperImplementationDesignSurface",
+    requiredNodeTypes: ["odd_glc.type.lifecycle.scenario_surface", "odd_glc.type.lifecycle.implementation_design"]
+  },
+  {
+    stage: "derive_component_code_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-component-code-surface",
+    sourceTypeRef: "odd_glc.type.lifecycle.implementation_design",
+    sourceName: "DataMapperImplementationDesignSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_code_surface",
+    targetName: "DataMapperComponentCodeSurface",
+    requiredNodeTypes: ["odd_glc.type.lifecycle.implementation_design", "odd_glc.type.software.component_code_surface"]
+  },
+  {
+    stage: "qualify_component_realization_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/qualify-component-realization-surface",
+    sourceTypeRef: "odd_glc.type.software.component_code_surface",
+    sourceName: "DataMapperComponentCodeSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_realization_qualification",
+    targetName: "DataMapperComponentRealizationQualification",
+    requiredNodeTypes: ["odd_glc.type.software.component_code_surface", "odd_glc.type.software.component_realization_qualification"]
+  },
+  {
+    stage: "derive_code_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-code-surface",
+    sourceTypeRef: "odd_glc.type.software.component_realization_qualification",
+    sourceName: "DataMapperComponentRealizationQualificationInput",
+    targetTypeRef: "odd_glc.type.software.code_surface",
+    targetName: "DataMapperCodeSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_realization_qualification", "odd_glc.type.software.code_surface"]
+  },
+  {
+    stage: "derive_test_design_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-test-design-surface",
+    sourceTypeRef: "odd_glc.type.software.code_surface",
+    sourceName: "DataMapperCodeSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_design_surface",
+    targetName: "DataMapperTestDesignSurface",
+    requiredNodeTypes: ["odd_glc.type.software.code_surface", "odd_glc.type.software.test_design_surface"]
+  },
+  {
+    stage: "derive_component_test_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-component-test-surface",
+    sourceTypeRef: "odd_glc.type.software.test_design_surface",
+    sourceName: "DataMapperTestDesignSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_test_source_surface",
+    targetName: "DataMapperComponentTestSurface",
+    requiredNodeTypes: ["odd_glc.type.software.test_design_surface", "odd_glc.type.software.component_test_source_surface"]
+  },
+  {
+    stage: "prepare_test_execution_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/prepare-test-execution-surface",
+    sourceTypeRef: "odd_glc.type.software.component_test_source_surface",
+    sourceName: "DataMapperComponentTestSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_execution_plan",
+    targetName: "DataMapperTestExecutionPlanSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_test_source_surface", "odd_glc.type.software.test_execution_plan"]
+  },
+  {
+    stage: "derive_test_execution_result_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-test-execution-result-surface",
+    sourceTypeRef: "odd_glc.type.software.test_execution_plan",
+    sourceName: "DataMapperTestExecutionPlanSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_execution_result",
+    targetName: "DataMapperTestExecutionResultSurface",
+    executeBeforeAssessment: true,
+    requiredNodeTypes: ["odd_glc.type.software.test_execution_plan", "odd_glc.type.software.test_execution_result", "odd_glc.type.evidence_binding_view"]
+  },
+  {
+    stage: "qualify_component_test_execution_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/qualify-component-test-execution-surface",
+    sourceTypeRef: "odd_glc.type.software.test_execution_result",
+    sourceName: "DataMapperTestExecutionResultSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_test_execution_qualification",
+    targetName: "DataMapperComponentTestExecutionQualification",
+    requiredNodeTypes: ["odd_glc.type.software.test_execution_result", "odd_glc.type.software.component_test_execution_qualification"]
+  },
+  {
+    stage: "derive_component_repair_schedule_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-component-repair-schedule-surface",
+    sourceTypeRef: "odd_glc.type.software.component_test_execution_qualification",
+    sourceName: "DataMapperComponentTestExecutionQualificationInput",
+    targetTypeRef: "odd_glc.type.software.component_repair_schedule",
+    targetName: "DataMapperComponentRepairScheduleSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_test_execution_qualification", "odd_glc.type.software.component_repair_schedule"]
+  },
+  {
+    stage: "derive_test_run_archive_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-test-run-archive-surface",
+    sourceTypeRef: "odd_glc.type.software.component_repair_schedule",
+    sourceName: "DataMapperComponentRepairScheduleSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_run_archive",
+    targetName: "DataMapperTestRunArchiveSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_repair_schedule", "odd_glc.type.software.test_run_archive"]
+  },
+  {
+    stage: "derive_release_depth_parity_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/derive-release-depth-parity-surface",
+    sourceTypeRef: "odd_glc.type.software.test_run_archive",
+    sourceName: "DataMapperTestRunArchiveSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.release_depth_parity",
+    targetName: "DataMapperReleaseDepthParitySurface",
+    requiredNodeTypes: ["odd_glc.type.software.test_run_archive", "odd_glc.type.software.release_depth_parity"]
+  },
+  {
+    stage: "prepare_release_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-data-mapper/prepare-release-surface",
+    sourceTypeRef: "odd_glc.type.software.release_depth_parity",
+    sourceName: "DataMapperReleaseDepthParitySurfaceInput",
+    targetTypeRef: "odd_glc.type.software.release_preparation",
+    targetName: "DataMapperReleasePreparationSurface",
+    requiredNodeTypes: ["odd_glc.type.software.release_depth_parity", "odd_glc.type.software.release_preparation"]
   }
 ]);
 
@@ -829,6 +1204,7 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
   graphFunctionRefs: [
     "graph-function://odd_glc/software-build/bootstrap-worksite",
     ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+    ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
     "graph-function://odd_glc/software-build/materialize-artifact",
     "graph-function://odd_glc/software-build/prove-artifact",
     "graph-function://odd_glc/software-build/fan-in-branches"
@@ -838,20 +1214,28 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
     "graph-vector://odd_glc/software-build/requirements-to-artifact",
     "graph-vector://odd_glc/software-build/artifact-to-evidence",
     "graph-vector://odd_glc/software-build/branches-to-artifact",
-    ...ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
+    ...ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId),
+    ...ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.vectorId)
   ],
   publicStartTargets: [
     "graph-function://odd_glc/software-build/bootstrap-worksite",
-    ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF
+    ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+    ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF
   ],
   defaultStartTarget: "graph-function://odd_glc/software-build/bootstrap-worksite",
   roleRefs: [
     "software-build.role.source_artifact",
+    "software-build.role.goal_surface",
     "software-build.role.generated_artifact",
     "software-build.role.build_command",
     "software-build.role.scenario_surface",
     "software-build.role.design_surface",
     "software-build.role.implementation_design",
+    "software-build.role.uat_testcases",
+    "software-build.role.testcase_authority",
+    "software-build.role.feature_decomposition",
+    "software-build.role.component_code",
+    "software-build.role.code_surface",
     "software-build.role.test_design",
     "software-build.role.test_source",
     "software-build.role.component_test_source",
@@ -869,7 +1253,13 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
     "software-build.role.schema_source",
     "software-build.role.mapper_source",
     "software-build.role.mapper_validation_test",
-    "software-build.role.mapper_build_config"
+    "software-build.role.mapper_build_config",
+    "software-build.role.component_realization_qualification",
+    "software-build.role.component_test_execution_qualification",
+    "software-build.role.component_repair_schedule",
+    "software-build.role.test_run_archive",
+    "software-build.role.release_depth_parity",
+    "software-build.role.release_preparation"
   ],
   policyRefs: [
     ODD_GLC_FP_SEMANTIC_POLICY_REF,
@@ -927,6 +1317,39 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     ],
     policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/sdlc-software-build-required"],
+    proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/software-build/full-data-mapper",
+    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
+    interfaceRef: "interface://odd_glc/software-build/full-data-mapper",
+    sourceContractRef: "contract://odd_glc/lifecycle-context",
+    targetContractRef: "contract://odd_glc/release-preparation",
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+      "software-build.role.goal_surface",
+      "software-build.role.uat_testcases",
+      "software-build.role.testcase_authority",
+      "software-build.role.feature_decomposition",
+      "software-build.role.implementation_design",
+      "software-build.role.component_code",
+      "software-build.role.code_surface",
+      "software-build.role.test_design",
+      "software-build.role.component_test_source",
+      "software-build.role.test_execution_plan",
+      "software-build.role.test_execution",
+      "software-build.role.component_realization_qualification",
+      "software-build.role.component_test_execution_qualification",
+      "software-build.role.component_repair_schedule",
+      "software-build.role.test_run_archive",
+      "software-build.role.release_depth_parity",
+      "software-build.role.release_preparation"
+    ],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF, ODD_GLC_FH_HUMAN_DECISION_POLICY_REF],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/full-data-mapper-required"],
     proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",

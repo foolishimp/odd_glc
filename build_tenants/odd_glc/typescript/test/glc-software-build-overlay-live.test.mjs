@@ -12,6 +12,8 @@ import {
   ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES,
   ODD_GLC_DATA_MAPPING_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
+  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
+  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
@@ -51,8 +53,16 @@ const SDLC_REQUIRED_STAGE_NAMES = Object.freeze(
   ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
 );
 
+const FULL_DATA_MAPPER_REQUIRED_STAGE_NAMES = Object.freeze(
+  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.stage)
+);
+
 function sdlcStagePlan(overrides) {
   return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN, overrides);
+}
+
+function fullDataMapperStagePlan(overrides) {
+  return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN, overrides);
 }
 
 function sdlcComplianceScenario(input) {
@@ -66,6 +76,21 @@ function sdlcComplianceScenario(input) {
     expectedReturnValue: input.expectedReturnValue ?? "Hello, world!",
     requiredStageNames: SDLC_REQUIRED_STAGE_NAMES,
     stagePlan: sdlcStagePlan(input.stagePlan)
+  });
+}
+
+function fullDataMapperComplianceScenario(input) {
+  return Object.freeze({
+    ...input,
+    proofClass: "full_data_mapper_graph_traversal_compliance",
+    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
+    materializedSurfaceCount: input.materializedSurfaceCount ?? 21,
+    manifestRequired: false,
+    executeFromPlan: true,
+    executionStage: "derive_test_execution_result_surface",
+    expectedReturnValue: input.expectedReturnValue ?? "data_mapper_full ok",
+    requiredStageNames: FULL_DATA_MAPPER_REQUIRED_STAGE_NAMES,
+    stagePlan: fullDataMapperStagePlan(input.stagePlan)
   });
 }
 
@@ -734,11 +759,259 @@ const SCENARIOS = Object.freeze([
         ]
       }
     ]
+  }),
+  fullDataMapperComplianceScenario({
+    key: "data-mapper-full",
+    scenarioId: "SCN-GLC-DATA-MAPPER-FULL-JS",
+    kind: "data_mapper_full_node_test",
+    expectedStdout: null,
+    expectedReturnValue: "data_mapper_full ok",
+    artifactTypeRef: "odd_glc.type.software.data_mapping_implementation_bundle",
+    stagePlan: [
+      {
+        stage: "derive_intent_surface",
+        filesToProduce: ["specification/intent.md"],
+        instructions: [
+          "Write only specification/intent.md.",
+          "Declare the intent for a generic logical data-mapper lifecycle build.",
+          "The mapper must model typed entities, directed morphisms, identity morphisms, and lawful dot-path composition.",
+          "State that GTL/ABG owns startup, registry selection, graph-call opening, vector traversal, F_P dispatch, evidence admission, event emission, fold, residual, and replay truth.",
+          "Do not write product, requirements, design, source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "derive_product_surface",
+        filesToProduce: ["specification/product.md"],
+        instructions: [
+          "Write only specification/product.md.",
+          "Use the prior intent artifact as authority.",
+          "Define the product as a JavaScript LogicalDataModel module plus tests that prove entity and morphism behavior.",
+          "Name the public source API: addEntity, addMorphism, identityFor, morphism, dotPath, and projectRecord.",
+          "Do not write requirements, design, source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "derive_goal_surface",
+        filesToProduce: ["specification/goals.md"],
+        instructions: [
+          "Write only specification/goals.md.",
+          "Use the prior intent and product artifacts as authority.",
+          "List the build goals: create the LogicalDataModel source, prove directed graph structure, prove cardinality validation, prove dot-path composition, and prove record projection.",
+          "Do not write requirements, design, source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "derive_requirement_surface",
+        filesToProduce: ["specification/requirements.md"],
+        instructions: [
+          "Write only specification/requirements.md.",
+          "Use the prior goal artifact as authority.",
+          "Define requirements for entities, morphisms with cardinality 1:1, N:1, or 1:N, identity morphisms, dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "projectRecord must project a source record value through a lawful path into an object keyed by targetField.",
+          "Do not write design, source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "derive_uat_testcases_surface",
+        filesToProduce: ["specification/uat-testcases.md"],
+        instructions: [
+          "Write only specification/uat-testcases.md.",
+          "Use the prior requirements artifact as authority.",
+          "Define user acceptance testcases for Customer -> Order -> Country mapping, invalid cardinality rejection, invalid dot-path rejection, and projectRecord output.",
+          "Do not write executable test source in this vector."
+        ]
+      },
+      {
+        stage: "derive_testcase_authority_surface",
+        filesToProduce: ["specification/testcase-authority.md"],
+        instructions: [
+          "Write only specification/testcase-authority.md.",
+          "Use the prior UAT testcase artifact as authority.",
+          "Declare that generated component and UAT tests must bind to the public API named in product and requirements.",
+          "Forbid tests from calling unimplemented helper names such as compose, defineMorphism, validateCardinality, or mapRecord."
+        ]
+      },
+      {
+        stage: "derive_feature_decomp_surface",
+        filesToProduce: ["design/feature-decomposition.md"],
+        instructions: [
+          "Write only design/feature-decomposition.md.",
+          "Use the prior requirements and testcase-authority artifacts as authority.",
+          "Decompose the implementation into entity registry, morphism registry, identity morphism lookup, dot-path validation, and record projection.",
+          "Do not write source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "derive_design_surface",
+        filesToProduce: ["design/module-design.md"],
+        instructions: [
+          "Write only design/module-design.md.",
+          "Use the prior feature-decomposition artifact as authority.",
+          "Design a single JavaScript class LogicalDataModel with private Maps for entities and morphisms.",
+          "Specify failure behavior for unknown entities, unsupported cardinality, unknown morphisms, and codomain/domain mismatch.",
+          "Do not write source or tests in this vector."
+        ]
+      },
+      {
+        stage: "derive_scenario_surface",
+        filesToProduce: ["specification/scenario.md"],
+        instructions: [
+          "Write only specification/scenario.md.",
+          "Use prior UAT and design artifacts as authority.",
+          "Describe the scenario: define Customer, Order, Country; add places Customer->Order and shipsTo Order->Country; dotPath(\"places\", \"shipsTo\") is lawful; dotPath(\"shipsTo\", \"places\") is rejected; projectRecord projects country.",
+          "Do not write source or tests in this vector."
+        ]
+      },
+      {
+        stage: "derive_implementation_design_surface",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Use all prior specification and design artifacts as authority.",
+          "Specify exact source files package.json and src/logical-data-model.mjs.",
+          "Specify LogicalDataModel methods addEntity, addMorphism, identityFor, morphism, dotPath, and projectRecord.",
+          "Do not write source or tests in this vector."
+        ]
+      },
+      {
+        stage: "derive_component_code_surface",
+        filesToProduce: ["design/component-code-surface.md"],
+        instructions: [
+          "Write only design/component-code-surface.md.",
+          "Use implementation_design as authority.",
+          "Describe the component code surface and list the exact public methods and expected thrown error cases.",
+          "Do not write package.json, source files, tests, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "qualify_component_realization_surface",
+        filesToProduce: ["proof/component-realization-qualification.md"],
+        instructions: [
+          "Write only proof/component-realization-qualification.md.",
+          "Use the component-code-surface and implementation-design artifacts as authority.",
+          "State the criteria the later source artifact must satisfy: exact public API, no compose alias, cardinality validation, dot-path validation, and record projection.",
+          "Do not write source or tests in this vector."
+        ]
+      },
+      {
+        stage: "derive_code_surface",
+        filesToProduce: ["package.json", "src/logical-data-model.mjs"],
+        instructions: [
+          "Write only package.json and src/logical-data-model.mjs.",
+          "Use the prior implementation_design and component_realization_qualification artifacts as authority.",
+          "package.json must be private:true and type:module.",
+          "src/logical-data-model.mjs must export default class LogicalDataModel and named export LogicalDataModel.",
+          "Implement addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "Allowed cardinalities are exactly 1:1, N:1, and 1:N; reject all others.",
+          "dotPath must accept separate morphism-name arguments and reject codomain/domain mismatch.",
+          "projectRecord must accept a dotPath result and project the final codomain value from sourceRecord using the path's morphism names into an object keyed by targetField.",
+          "Do not export or rely on a compose method."
+        ]
+      },
+      {
+        stage: "derive_test_design_surface",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Use the code surface and testcase authority artifacts as evidence.",
+          "Specify component tests for entity/morphism registration, cardinality rejection, and dot-path mismatch rejection.",
+          "Specify UAT tests for Customer -> Order -> Country lawful composition and projectRecord output.",
+          "Do not write executable test source in this vector."
+        ]
+      },
+      {
+        stage: "derive_component_test_surface",
+        filesToProduce: ["test/component/logical-data-model.test.mjs"],
+        instructions: [
+          "Write only test/component/logical-data-model.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import LogicalDataModel from ../../src/logical-data-model.mjs.",
+          "Create exactly three test() blocks: registers entities and morphisms, rejects unsupported cardinality, and rejects invalid dot-path composition.",
+          "Use dotPath(...morphismNames) for composition checks; do not call compose."
+        ]
+      },
+      {
+        stage: "prepare_test_execution_surface",
+        filesToProduce: ["test/uat/logical-data-model.uat.test.mjs", "test-execution-plan.json"],
+        instructions: [
+          "Write only test/uat/logical-data-model.uat.test.mjs and test-execution-plan.json.",
+          "The UAT test must use node:test and node:assert/strict and import LogicalDataModel from ../../src/logical-data-model.mjs.",
+          "Create exactly two UAT test() blocks: one proves Customer -> Order -> Country dotPath lawfully composes, and one proves projectRecord returns { country: \"AU\" } for a source record with nested order.country value.",
+          "test-execution-plan.json must set command to node.",
+          "The args must be [\"--test\", \"test/component/logical-data-model.test.mjs\", \"test/uat/logical-data-model.uat.test.mjs\"].",
+          "expectedTestPassCount must be 5.",
+          "expectedStdoutMatch must include stable substrings pass 5 and fail 0.",
+          "assertedReturnValue must be \"data_mapper_full ok\"."
+        ]
+      },
+      {
+        stage: "derive_test_execution_result_surface",
+        instructions: [
+          "Produce no files.",
+          "Accept only if the data-mapper test plan command exited 0, observedTestPassCount is 5, planSatisfied is true, and assertedReturnValue is \"data_mapper_full ok\"."
+        ]
+      },
+      {
+        stage: "qualify_component_test_execution_surface",
+        filesToProduce: ["proof/component-test-execution-qualification.md"],
+        instructions: [
+          "Write only proof/component-test-execution-qualification.md.",
+          "Use the prior test_execution_result artifact as authority.",
+          "Summarize the observed command, pass count, planSatisfied flag, stdout digest, and asserted return value.",
+          "Do not rerun tests in this vector."
+        ]
+      },
+      {
+        stage: "derive_component_repair_schedule_surface",
+        filesToProduce: ["repair/component-repair-schedule.md"],
+        instructions: [
+          "Write only repair/component-repair-schedule.md.",
+          "Use the test execution qualification as authority.",
+          "If the test execution result passed, state that no repair is scheduled and preserve residual pressure as none for this scenario.",
+          "If it did not pass, identify the failing surface without inventing local closure truth."
+        ]
+      },
+      {
+        stage: "derive_test_run_archive_surface",
+        filesToProduce: ["archive/test-run-archive.md"],
+        instructions: [
+          "Write only archive/test-run-archive.md.",
+          "Use the test execution qualification and repair schedule artifacts as authority.",
+          "Archive the command, observed pass count, asserted return value, and generated artifact list.",
+          "Do not claim release approval."
+        ]
+      },
+      {
+        stage: "derive_release_depth_parity_surface",
+        filesToProduce: ["release/release-depth-parity.md"],
+        instructions: [
+          "Write only release/release-depth-parity.md.",
+          "Use the test run archive and repair schedule artifacts as authority.",
+          "Compare the generated lifecycle coverage against the 22 full data-mapper stages and state whether release-depth parity evidence is present.",
+          "Do not claim production release authority."
+        ]
+      },
+      {
+        stage: "prepare_release_surface",
+        filesToProduce: ["release/release-preparation.md"],
+        instructions: [
+          "Write only release/release-preparation.md.",
+          "Use release-depth-parity and the test run archive as authority.",
+          "Prepare a release-readiness summary that preserves ABG as owner of proof truth and states odd_glc only interprets the replayed lifecycle.",
+          "State that production release authority is not claimed by odd_glc."
+        ]
+      }
+    ]
   })
 ]);
 
 function liveEnabled() {
   return process.env.ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE === "1" || process.env.CODEX_LIVE_FP === "1";
+}
+
+function isComplianceScenario(scenario) {
+  return scenario.proofClass === "sdlc_graph_traversal_compliance" ||
+    scenario.proofClass === "full_data_mapper_graph_traversal_compliance";
 }
 
 function selectedScenarios() {
@@ -747,9 +1020,7 @@ function selectedScenarios() {
     return SCENARIOS;
   }
   if (requested === "compliance") {
-    return Object.freeze(SCENARIOS.filter((scenario) =>
-      scenario.proofClass === "sdlc_graph_traversal_compliance"
-    ));
+    return Object.freeze(SCENARIOS.filter(isComplianceScenario));
   }
   if (requested === "diagnostic") {
     return Object.freeze(SCENARIOS.filter((scenario) =>
@@ -839,10 +1110,8 @@ async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, "utf8"));
 }
 
-test("classifies every current Hello World scenario as SDLC traversal compliance", () => {
-  const compliantScenarios = SCENARIOS.filter((scenario) =>
-    scenario.proofClass === "sdlc_graph_traversal_compliance"
-  );
+test("classifies every current live scenario as GTL/ABG traversal compliance", () => {
+  const compliantScenarios = SCENARIOS.filter(isComplianceScenario);
   const diagnosticScenarios = SCENARIOS.filter((scenario) =>
     scenario.proofClass === "diagnostic_smoke_not_compliance"
   );
@@ -854,15 +1123,29 @@ test("classifies every current Hello World scenario as SDLC traversal compliance
   assert.equal(diagnosticScenarios.length, 0);
 
   for (const scenario of compliantScenarios) {
-    assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF);
-    assert.deepEqual(
-      scenario.stagePlan.map((stage) => stage.vectorId),
-      ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
-    );
-    assert.deepEqual(
-      scenario.requiredStageNames,
-      ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
-    );
+    if (scenario.proofClass === "sdlc_graph_traversal_compliance") {
+      assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF);
+      assert.deepEqual(
+        scenario.stagePlan.map((stage) => stage.vectorId),
+        ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
+      );
+      assert.deepEqual(
+        scenario.requiredStageNames,
+        ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
+      );
+    } else if (scenario.proofClass === "full_data_mapper_graph_traversal_compliance") {
+      assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF);
+      assert.deepEqual(
+        scenario.stagePlan.map((stage) => stage.vectorId),
+        ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.vectorId)
+      );
+      assert.deepEqual(
+        scenario.requiredStageNames,
+        ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.stage)
+      );
+    } else {
+      assert.fail(`Unexpected compliance proof class ${scenario.proofClass}`);
+    }
   }
 
   for (const scenario of diagnosticScenarios) {
@@ -2414,7 +2697,11 @@ for (const scenario of selectedScenarios()) {
     });
     const expectedStdout = Object.hasOwn(scenario, "expectedStdout") ? scenario.expectedStdout : "Hello, world!\n";
     const finalArtifact = result.artifacts[result.artifacts.length - 1];
+    const executionArtifact = typeof scenario.executionStage === "string"
+      ? result.artifacts.find((artifact) => artifact.stage === scenario.executionStage)
+      : finalArtifact;
     const vectorClosedCount = result.events.filter((event) => event.kind === "vector_closed").length;
+    assert.ok(executionArtifact, `Missing execution artifact for ${scenario.executionStage ?? "final stage"}`);
 
     assert.equal(result.proof.sandboxIdentity.kind, "odd_glc_abg42_software_build_live_sandbox");
     assert.equal(result.proof.sandboxIdentity.workspaceRoot, result.workspaceRoot);
@@ -2459,13 +2746,13 @@ for (const scenario of selectedScenarios()) {
       assert.equal(finalArtifact.execution.stdout, expectedStdout);
     }
     if (scenario.executeFromPlan === true) {
-      assert.equal(finalArtifact.execution.planSatisfied, true);
-      assert.equal(finalArtifact.execution.observedTestPassCount > 0, true);
-      assert.equal(view.value.stdoutValues.includes(finalArtifact.execution.stdout), true);
+      assert.equal(executionArtifact.execution.planSatisfied, true);
+      assert.equal(executionArtifact.execution.observedTestPassCount > 0, true);
+      assert.equal(view.value.stdoutValues.includes(executionArtifact.execution.stdout), true);
     }
     if (typeof scenario.expectedReturnValue === "string") {
-      assert.equal(finalArtifact.execution.assertedReturnValue, scenario.expectedReturnValue);
-      assert.equal(finalArtifact.execution.observedTestPassCount > 0, true);
+      assert.equal(executionArtifact.execution.assertedReturnValue, scenario.expectedReturnValue);
+      assert.equal(executionArtifact.execution.observedTestPassCount > 0, true);
     }
     assert.equal(finalArtifact.assessment.evidenceAccepted, true);
     assert.equal(result.artifacts.every((artifact) => artifact.overlayRef === ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef), true);

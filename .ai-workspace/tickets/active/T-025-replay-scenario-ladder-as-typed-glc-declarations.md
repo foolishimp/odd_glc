@@ -799,7 +799,7 @@ must be represented as additional GTL/ABG graph/evaluator truth.
 
 Diagnostic smoke is not compliance. The current `glc-software-build-overlay`
 live suite no longer relies on the two-vector smoke graph for parity claims.
-The seven current Hello World/data-mapper scenarios run through the common
+The Hello World and data-mapper-lite scout scenarios run through the common
 eight-vector SDLC graph traversal:
 
 1. conformance project;
@@ -811,9 +811,57 @@ eight-vector SDLC graph traversal:
 7. test execution plan;
 8. test execution result.
 
-`ODD_GLC_LIVE_SCENARIO=compliance` selects these traversal-compliance
-scenarios. Subject-smoke tests remain diagnostic only and shall not be used as
+The full data-mapper control scenario is now represented as a separate
+22-vector GTL graph over the same reusable software-build overlay:
+
+1. derive intent surface;
+2. derive product surface;
+3. derive goal surface;
+4. derive requirement surface;
+5. derive UAT testcase surface;
+6. derive testcase authority surface;
+7. derive feature decomposition surface;
+8. derive design surface;
+9. derive scenario surface;
+10. derive implementation design surface;
+11. derive component code surface;
+12. qualify component realization surface;
+13. derive code surface;
+14. derive test design surface;
+15. derive component test surface;
+16. prepare test execution surface;
+17. derive test execution result surface;
+18. qualify component test execution surface;
+19. derive component repair schedule surface;
+20. derive test run archive surface;
+21. derive release-depth parity surface;
+22. prepare release surface.
+
+`ODD_GLC_LIVE_SCENARIO=compliance` selects both traversal-compliance graph
+families. Subject-smoke tests remain diagnostic only and shall not be used as
 closure evidence.
+
+Implementation update 2026-07-03:
+
+- `ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF` is declared and
+  bound through `ODD_GLC_SOFTWARE_BUILD_OVERLAY`.
+- `ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN` declares the full
+  22-vector graph above.
+- Software-build node-type declarations now cover the added full data-mapper
+  surfaces: goal, UAT testcases, testcase authority, feature decomposition,
+  component code, code, component realization qualification, component test
+  execution qualification, repair schedule, test-run archive, release-depth
+  parity, and release preparation.
+- `SCN-GLC-DATA-MAPPER-FULL-JS` is present in the live scenario suite as
+  `full_data_mapper_graph_traversal_compliance`.
+- Non-live verification passed with the live-worker tests skipped by default:
+  `cd build_tenants/odd_glc/typescript && npm test` reported 52 passing checks
+  and 8 skipped live-worker checks.
+- `git diff --check` passed.
+
+Open closure gate: run and debug `SCN-GLC-DATA-MAPPER-FULL-JS` as a live-worker
+or live-terminal ABG startup traversal. Declaration presence and non-live
+classification do not close full data-mapper parity.
 
 Current remaining work is not another local odd_glc runner. Remaining work, if
 required by a later parity witness, must be classified as one of:

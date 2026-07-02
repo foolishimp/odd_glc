@@ -21,6 +21,8 @@ import {
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS,
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
+  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
+  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
   ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN,
@@ -118,17 +120,29 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
   assert.deepEqual(
     ODD_GLC_SOFTWARE_BUILD_NODE_TYPES.map((entry) => entry.typeRef),
     [
+      "odd_glc.type.lifecycle.goal_surface",
       "odd_glc.type.lifecycle.scenario_surface",
       "odd_glc.type.lifecycle.design_surface",
       "odd_glc.type.lifecycle.implementation_design",
       "odd_glc.type.software.source_surface",
+      "odd_glc.type.software.component_code_surface",
+      "odd_glc.type.software.code_surface",
       "odd_glc.type.software.test_source_surface",
       "odd_glc.type.software.component_test_source_surface",
       "odd_glc.type.software.uat_test_source_surface",
+      "odd_glc.type.software.uat_testcases_surface",
+      "odd_glc.type.software.testcase_authority_surface",
       "odd_glc.type.software.test_design_surface",
       "odd_glc.type.software.test_execution_plan",
       "odd_glc.type.software.build_config_surface",
-      "odd_glc.type.software.test_execution_result"
+      "odd_glc.type.software.test_execution_result",
+      "odd_glc.type.software.feature_decomposition_surface",
+      "odd_glc.type.software.component_realization_qualification",
+      "odd_glc.type.software.component_test_execution_qualification",
+      "odd_glc.type.software.component_repair_schedule",
+      "odd_glc.type.software.test_run_archive",
+      "odd_glc.type.software.release_depth_parity",
+      "odd_glc.type.software.release_preparation"
     ]
   );
   assert.deepEqual(
@@ -269,16 +283,30 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.scope, "reusable_software_build_lifecycle");
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.rule, "gtl_overlay_graph_declaration_over_gtl_abg_truth");
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef.includes("hello-world"), false);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.length, 5);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.length, 4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.length, 6);
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.length,
+    4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length + ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.length
+  );
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF),
     true
   );
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF),
+    true
+  );
   assert.deepEqual(
-    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.slice(4),
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.slice(4, 4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length),
     ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
   );
+  assert.deepEqual(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.slice(4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length),
+    ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.vectorId)
+  );
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.length, 22);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN[0].stage, "derive_intent_surface");
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.at(-1).stage, "prepare_release_surface");
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.some((ref) =>
       /framework-smoke|min-fp|sdlc-js-full-live/u.test(ref)
@@ -300,16 +328,28 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.test_design"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.test_execution_plan"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.scenario_surface"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.goal_surface"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.uat_testcases"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.testcase_authority"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.feature_decomposition"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.implementation_design"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.component_code"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.code_surface"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.mapping_spec"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.mapper_source"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.mapper_validation_test"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.mapper_build_config"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.service_process"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.parallel_branch"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.component_realization_qualification"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.component_test_execution_qualification"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.component_repair_schedule"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.test_run_archive"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.release_depth_parity"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.release_preparation"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.forbiddenAuthority.includes("product_local_runtime_shell"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.forbiddenAuthority.includes("graph_function_selection"), true);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.length, 5);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.length, 6);
   assert.deepEqual(
     ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.graphFunctionRef),
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs
@@ -320,6 +360,13 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
     ),
     true
   );
+  const fullDataMapperBinding = ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.find((entry) =>
+    entry.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF
+  );
+  assert.ok(fullDataMapperBinding);
+  assert.equal(fullDataMapperBinding.entryRef, "gtl-library-entry://odd_glc/software-build/full-data-mapper");
+  assert.equal(fullDataMapperBinding.targetContractRef, "contract://odd_glc/release-preparation");
+  assert.equal(fullDataMapperBinding.overlayRefs.includes("software-build.role.release_preparation"), true);
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.some((entry) =>
       /framework-smoke|min-fp|sdlc-js-full-live/u.test(entry.graphFunctionRef)
