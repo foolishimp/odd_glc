@@ -9,9 +9,9 @@ Goals define the current bounded work-wave for `odd_glc`.
 
 ## Current Goal
 
-Bring `odd_glc` closer to user-visible `odd_sdlc` lifecycle parity by proving
-an SDLC-like software-build/data-mapping lifecycle over GTL/ABG 4.2 startup,
-registry, typed-node, traversal, evidence, fold, residual, and replay truth.
+Bring `odd_glc` to user-visible `odd_sdlc` lifecycle parity by proving a full
+data-mapper lifecycle over GTL/ABG 4.2 startup, registry, typed-node,
+traversal, evidence, fold, residual, and replay truth.
 
 Parity means:
 
@@ -63,8 +63,21 @@ truth, local shells, or a product-owned traversal controller.
    - odd_glc may interpret that truth; it may not select, call, emit, admit,
      fold, residualize, route, or invoke F_P.
 
-5. Reproduce the Hello World and data_mapper witnesses as glc graph-traversal
-   proofs.
+5. Reproduce the full data_mapper witness as the controlling glc
+   graph-traversal proof.
+   - The full target is the `odd_sdlc`
+     `t164_data_mapper_full_capability_live` witness family, whose current
+     summaries declare 22 required lifecycle edges from intent/product/goal/
+     requirement pressure through UAT/test authority, feature decomposition,
+     design, implementation, component/code qualification, execution result,
+     repair schedule, archive, release-depth parity, and release preparation.
+   - The already-earned data-mapper-lite rung remains scout/debug evidence. It
+     does not close parity.
+   - Closure requires those full data-mapper edges to be represented as GTL
+     graph vectors, typed node declarations, ABG startup/registry selection,
+     ABG traversal events, ABG evidence/proof truth, and odd_glc read
+     interpretation.
+6. Reproduce the Hello World witnesses as support/scout coverage.
    - Closure-grade proofs get their own ABG startup/run root.
    - Scenario-sandbox ports must create governed run roots, install
      ABIogenesis RC3 into fresh workspaces, write sandbox identities, and bind
@@ -130,7 +143,7 @@ Execution order:
      The remaining CLI, JS tenant/test, Rust CLI, Rust service, parallel JS,
      and data-mapper scenarios remain open until each has a traversal shape
      that matches its witness or exposes an ABI/GTL substrate gap.
-6. For any missing stage, classify the failure as an ABI substrate gap before
+7. For any missing stage, classify the failure as an ABI substrate gap before
    editing odd_glc code.
    - Missing GTL graph/vector expressiveness, registry startup binding,
      graph-function selection, F_P dispatch, event emission, evidence
@@ -138,14 +151,12 @@ Execution order:
    - Missing domain content or policy data belongs in the downstream/plugin
      seam.
    - Missing read interpretation over admitted truth belongs in odd_glc.
-7. Add the first data_mapper-lite glc ABG startup proof using the same
-   live-terminal evidence bar when the ticket claims live-terminal behavior.
 8. Keep the old odd_sdlc Hello World sandbox witnesses as sandbox-port setup
    checks over ABG RC3 install and odd_glc startup binding. These are not
    traversal closure, live-worker proof, live-terminal proof, or parity by
    themselves.
-9. Expand to full/deep/resume data_mapper witnesses only after the lite proof
-   closes without boundary drift.
+9. Treat deep/resume data_mapper witnesses as follow-on coverage after the
+   full data-mapper traversal closes or exposes an upstream ABI/GTL gap.
 
 ## Boundary
 

@@ -5,10 +5,9 @@ type: proof
 ticket_category: implementation
 status: active
 goal: >-
-  Re-express the Hello World ladder as typed odd_glc GTL declarations and
-  ABG-started runs that reproduce the selected odd_sdlc witness graph
-  traversal shapes for JavaScript test, Rust CLI, Rust service/client,
-  parallel JavaScript, and data-mapper witnesses.
+  Re-express the selected odd_sdlc full data-mapper witness as typed odd_glc
+  GTL declarations and ABG-started runs, with the Hello World ladder retained
+  as supporting/scout coverage for the same reusable software-build overlay.
 change_class: realization_refactor
 re_entry_point: build_tenant_proof
 owner: odd_glc
@@ -23,11 +22,11 @@ source_documents:
   - .ai-workspace/tickets/completed/T-012-prove-rust-service-hello-world-ladder-rung.md
   - .ai-workspace/tickets/completed/T-013-track-parallel-js-hello-world-ladder-rung.md
 closure_law: >-
-  Close only when the ladder is proven as generic typed odd_glc declarations
-  over ABG startup/traversal truth and reproduces the same graph-traversal
-  stage coverage and handoff order as the selected odd_sdlc witness for that
-  rung. Software-domain semantics remain plugin or proof bindings rather than
-  odd_glc law. Each scenario-rung proof must run in an ABG startup/run root,
+  Close only when the full data-mapper witness is proven as generic typed
+  odd_glc declarations over ABG startup/traversal truth and reproduces the
+  same graph-traversal stage coverage and handoff order as the selected
+  odd_sdlc full-capability witness. Software-domain semantics remain plugin or
+  proof bindings rather than odd_glc law. Each proof must run in an ABG startup/run root,
   mirroring the odd_sdlc witness standard without importing odd_sdlc code,
   local phase-flow controllers, carriers, ledgers, or local runtime authority.
   If ABIogenesis 4.2 RC3 cannot express and run the selected witness traversal
@@ -73,6 +72,9 @@ non_closure_conditions:
   - A parity witness compresses an odd_sdlc multi-stage witness into a
     two-vector `materialize -> prove` smoke and claims parity for the original
     witness.
+  - A data-mapper-lite run, Hello World rung, subject-smoke check, sandbox-port
+    setup, or copied proof input is used as substitute closure for the full
+    data-mapper witness.
   - A parity witness omits the corresponding odd_sdlc stage map, including
     stage name, target graph function, expected source node type, expected
     target node type, proof obligation, and owner for every reproduced vector.
@@ -92,7 +94,18 @@ non_closure_conditions:
     it as product law instead of a temporary binding pending system-catalog
     reconciliation.
 required_work:
+  - Make the full data-mapper witness the controlling parity target for this
+    ticket. Lite data-mapper and Hello World rungs are scout/debug coverage.
   - Create typed declaration bindings for each rung.
+  - Write the full data-mapper witness traversal map before implementation.
+    The map shall start from the `odd_sdlc`
+    `t164_data_mapper_full_capability_live` witness family and include all
+    required lifecycle edges: intent, product, goal, requirement, UAT
+    testcases, testcase authority, feature decomposition, design, scenario,
+    implementation design, component code, component qualification, code,
+    test design, component test, execution preparation, execution result,
+    execution qualification, repair schedule, test-run archive,
+    release-depth parity, and release preparation.
   - For each selected odd_sdlc witness, write the witness traversal map before
     implementation. The map shall list the original odd_sdlc run path, original
     target graph functions or operator stages, elapsed timing, operator-run
@@ -166,9 +179,10 @@ proof_commands:
 closure_evidence: []
 ---
 
-# T-025: Typed Scenario Ladder And SDLC Graph-Traversal Parity
+# T-025: Full Data-Mapper And SDLC Graph-Traversal Parity
 
-The ladder is coverage evidence. It is not an odd_sdlc port.
+The full data-mapper lifecycle is the controlling parity target. The Hello
+World ladder is coverage evidence. Neither is an odd_sdlc port.
 
 This ticket uses `odd_sdlc` as graph-traversal witness evidence. The required
 parity target is the same lifecycle traversal shape, not the same code. The
@@ -179,8 +193,9 @@ runtime shell.
 
 Current state: the reusable software-build overlay has live ABG 4.2 summary
 proof inputs for basic CLI, JavaScript test, Rust CLI, Rust service/client,
-parallel JavaScript, and data_mapper-lite. Existing rc17 proof inputs remain
-historical witness evidence only.
+parallel JavaScript, and data_mapper-lite. Those prove the current reusable
+eight-vector software-build shape. They do not close full data-mapper parity.
+Existing rc17 proof inputs remain historical witness evidence only.
 
 Subject smoke is a diagnostic layer, not a closure layer. It verifies that
 each Hello World subject can run in its own test-run workspace while the
@@ -216,7 +231,58 @@ and execution result stages.
 
 ## SDLC Graph-Traversal Parity Target
 
-The current parity baseline is drawn from these observed odd_sdlc live
+The controlling parity baseline is the full data-mapper lifecycle. Hello World
+and data-mapper-lite runs are scout/debug coverage for the reusable overlay,
+not substitutes for the full target.
+
+## Full Data-Mapper Parity Target
+
+The full target is drawn from the `odd_sdlc`
+`t164_data_mapper_full_capability_live` witness family. The latest observed
+run root reviewed for target shape was:
+
+`/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/test_runs/t164_data_mapper_full_capability_live/20260610T150236517Z_pid85651`
+
+That run root was a started witness, not a closure proof, but its
+`run_summary.json` gives the governing full-capability edge set. The GLC proof
+must express each edge below as GTL graph/vector/type declaration plus
+ABG-emitted traversal/proof truth, or classify the gap before implementing
+around it.
+
+| Edge | Required full data-mapper lifecycle edge | Required GLC/ABG treatment |
+| ---: | --- | --- |
+| 1 | `derive_intent_surface` | GTL typed node/vector declaration; ABG traversal emits admitted surface/proof truth; odd_glc reads intent lifecycle meaning. |
+| 2 | `derive_product_surface` | Same pattern for product definition pressure; no local product-truth carrier. |
+| 3 | `derive_goal_surface` | Same pattern for goal/work-wave pressure; no local goal ledger. |
+| 4 | `derive_requirement_surface` | GTL requirement declarations plus ABG admitted requirement truth. |
+| 5 | `derive_uat_testcases_surface` | Software-domain testcase content as product/plugin output; ABG evidence/proof truth. |
+| 6 | `derive_testcase_authority_surface` | F_H/F_P policy declarations as data; ABG admits any evidence or decision truth. |
+| 7 | `derive_feature_decomp_surface` | GTL/ABG requirement graph/decomposition truth or upstream gap if RC3 cannot express it. |
+| 8 | `derive_design_surface` | Typed design artifact vector; ABG traversal and evidence truth. |
+| 9 | `derive_scenario_surface` | Typed scenario/proof-intent vector; ABG traversal truth. |
+| 10 | `derive_implementation_design_surface` | Typed implementation-design vector; product artifact output, ABG proof truth. |
+| 11 | `derive_component_code_surface` | Typed source/artifact vector; product source output, ABG evidence truth. |
+| 12 | `qualify_component_realization_surface` | ABG evidence/fold truth over realized component; no odd_glc qualification ledger. |
+| 13 | `derive_code_surface` | Typed code/artifact vector; product output, ABG proof truth. |
+| 14 | `derive_test_design_surface` | Typed test-design vector; product output, ABG proof truth. |
+| 15 | `derive_component_test_surface` | Typed test-source vector; product output, ABG proof truth. |
+| 16 | `prepare_test_execution_surface` | ABG-owned execution preparation/schedule truth or upstream gap if unavailable. |
+| 17 | `derive_test_execution_result_surface` | ABG-owned process/execution/evidence truth; odd_glc read interpretation only. |
+| 18 | `qualify_component_test_execution_surface` | ABG assurance/fold truth over execution evidence. |
+| 19 | `derive_component_repair_schedule_surface` | ABG continuation/reprice/repair pressure or upstream gap; no odd_glc retry controller. |
+| 20 | `derive_test_run_archive_surface` | Product/archive artifact plus ABG admitted proof truth. |
+| 21 | `derive_release_depth_parity_surface` | Release-depth readiness view over ABG proof/fold/residual truth; no release authority claim. |
+| 22 | `prepare_release_surface` | Release-preparation artifact/proof view; release cut authority remains outside odd_glc unless later ratified. |
+
+Closure for full data-mapper parity requires a fresh ABG 4.2 RC3-or-later
+startup run over the reusable odd_glc software-build/data-mapping overlay. It
+must use one ABG start/resume boundary per scenario, not per-vector harness
+calls. It must preserve runtime events, event times, F_P worker evidence,
+terminal transcripts when claiming live-terminal proof, artifact summaries,
+and the odd_glc read interpretation. A shorter data-mapper-lite run may remain
+as regression coverage only.
+
+The supporting Hello World parity baseline is drawn from these observed odd_sdlc live
 witnesses:
 
 | Witness | Run path | Observed duration | Observed traversal shape | Required odd_glc replacement |
