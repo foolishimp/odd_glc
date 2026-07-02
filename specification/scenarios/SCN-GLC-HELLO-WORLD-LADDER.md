@@ -44,7 +44,7 @@ Current execution order:
 4. Interpret ABG replay/query truth through odd_glc lifecycle views.
 
 The current completed Hello World rungs follow this order over ABIogenesis
-`4.2.0-rc.1`. New rungs follow the same order unless a ticket explicitly
+`4.2.0-rc.3`. New rungs follow the same order unless a ticket explicitly
 prices a different specialization.
 
 ## Standing Boundary

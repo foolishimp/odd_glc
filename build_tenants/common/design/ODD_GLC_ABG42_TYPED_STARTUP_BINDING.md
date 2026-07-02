@@ -5,7 +5,6 @@
 **Derives from**:
 [PRODUCT.md](../../../specification/PRODUCT.md),
 [GOALS.md](../../../specification/GOALS.md),
-[ODD_GLC_LIFECYCLE_SLOT_MAP.md](./ODD_GLC_LIFECYCLE_SLOT_MAP.md),
 `.ai-workspace/tickets/completed/T-022-define-typed-lifecycle-node-model.md`,
 `.ai-workspace/tickets/completed/T-023-bind-overlays-and-library-entries-to-abg-startup.md`,
 `.ai-workspace/tickets/completed/T-024-prove-glc-hello-world-over-abg-4-2-startup.md`
@@ -15,6 +14,13 @@
 ABIogenesis 4.2 changes the odd_glc parity path from proof-input replay
 consumption to canonical startup consumption.
 
+This design is also an ABIogenesis 4.2 substrate acceptance probe. If the
+selected odd_sdlc witness traversal cannot be expressed and run through GTL/ABG
+startup, registry, graph-call, traversal, evidence, and replay truth, the
+substrate is incomplete for that parity target. odd_glc may record and
+interpret the gap, but it shall not fill it with a product-local shell,
+selector, event emitter, or traversal controller.
+
 `odd_glc` supplies GTL declaration data:
 
 - lifecycle node types;
@@ -23,7 +29,7 @@ consumption to canonical startup consumption.
 - reusable software-build GTL overlay graph refs;
 - reusable software-build graph-function bindings, preferring ABG catalog
   entries whenever generic equivalents exist;
-- lifecycle slot-map refs;
+- lifecycle program overlay graph refs;
 - data-only `F_P` and `F_H` policy refs;
 - plugin refs;
 - readiness and proof refs;
@@ -76,9 +82,9 @@ per-type contracts. This is deliberate: ABI 4.2 type composition requires
 compatible schema and asset-surface kind, while odd_glc lifecycle meaning lives
 in `typeRef`, contracts, overlays, and read-model interpretation.
 
-Node-type library declarations bind to the data-only lifecycle slot-map entry
-for the same lifecycle surface. They shall not all collapse to
-`surface.lifecycle_worksite` or `view.lifecycle_state`.
+Node-type library declarations bind to the appropriate GTL overlay graph and
+role refs for the same lifecycle surface. They shall not collapse into local
+`surface.*` or `view.*` mapping refs.
 
 ## Software-Build And Data-Mapping Node Types
 
@@ -91,8 +97,12 @@ with SDLC-like software-build roles needed by the reusable overlay graph:
 | `odd_glc.type.lifecycle.design_surface` | Design authority surface. |
 | `odd_glc.type.lifecycle.implementation_design` | Buildable implementation design. |
 | `odd_glc.type.software.source_surface` | Product source artifact surface. |
+| `odd_glc.type.software.test_design_surface` | Product test design surface. |
 | `odd_glc.type.software.test_source_surface` | Product test source surface. |
+| `odd_glc.type.software.component_test_source_surface` | Specialized component test source surface. |
+| `odd_glc.type.software.uat_test_source_surface` | Specialized UAT or validation test source surface. |
 | `odd_glc.type.software.build_config_surface` | Build/package configuration surface. |
+| `odd_glc.type.software.test_execution_plan` | Test execution preparation surface. |
 | `odd_glc.type.software.test_execution_result` | Test execution evidence result surface. |
 
 `ODD_GLC_DATA_MAPPING_NODE_TYPES` adds data_mapper witness specializations:
@@ -148,7 +158,7 @@ that catalog entry instead of ratifying a duplicate `odd_glc` function.
 
 `ODD_GLC_SOFTWARE_BUILD_OVERLAY` is the reusable SDLC-like GTL overlay graph
 for odd_glc software-build lifecycle work. It is not a Hello World scenario
-artifact and is not the lifecycle slot map.
+artifact and is not a local lifecycle map.
 
 It declares:
 
@@ -160,7 +170,6 @@ It declares:
 | `graphVectorRefs` | GTL graph-vector identities used by the overlay graph. |
 | `publicStartTargets` | Callable graph-function refs that ABG may start through public startup. |
 | `defaultStartTarget` | Default callable graph-function ref for bootstrap traversal. |
-| `slotRefs` | odd_glc lifecycle slot-map refs interpreted after ABG emits truth. |
 | `roleRefs` | Software-build proof roles supplied as specialization data. |
 
 The overlay graph names software-build roles that downstream products and
@@ -169,9 +178,9 @@ plugins can bind to GTL/ABG truth:
 | Role group | Role refs |
 | --- | --- |
 | Artifacts | `software-build.role.source_artifact`, `software-build.role.generated_artifact`, `software-build.role.release_candidate` |
-| Execution | `software-build.role.build_command`, `software-build.role.test_execution`, `software-build.role.service_process`, `software-build.role.client_request` |
+| Execution | `software-build.role.build_command`, `software-build.role.test_execution_plan`, `software-build.role.test_execution`, `software-build.role.service_process`, `software-build.role.client_request` |
 | Design and scenario | `software-build.role.scenario_surface`, `software-build.role.design_surface`, `software-build.role.implementation_design` |
-| Tests | `software-build.role.test_source`, `software-build.role.mapper_validation_test` |
+| Tests | `software-build.role.test_design`, `software-build.role.test_source`, `software-build.role.mapper_validation_test` |
 | Data mapping | `software-build.role.mapping_spec`, `software-build.role.schema_source`, `software-build.role.mapper_source`, `software-build.role.mapper_build_config` |
 | Parallel work | `software-build.role.parallel_branch`, `software-build.role.branch_fan_in` |
 
@@ -179,15 +188,16 @@ The overlay graph forbids product-local runtime shells, graph-function selection
 graph-call opening, event emission, evidence admission, requirement fold or
 residual projection, and continuation or re-entry routing.
 
-`ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS` currently declares four
+`ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS` currently declares five
 software-build startup bindings. The ABI 4.2 reuse audit found no matching
 published ABI system-library entry for these refs. They remain candidate system
 functions: a later ABI publication of an equivalent generic carrier shall
 replace the product ref instead of preserving a duplicate `odd_glc` function.
 
-Audit basis: ABIogenesis 4.2.0-rc.1 source, GTL runtime-registry declarations,
+Audit basis: ABIogenesis 4.2.0-rc.3 source, GTL runtime-registry declarations,
 and installed proof surfaces were searched for equivalent published entries for
-bootstrap-worksite, materialize-artifact, prove-artifact, and fan-in-branches.
+bootstrap-worksite, materialize-artifact, prove-artifact, fan-in-branches, and
+sdlc-software-build.
 Only sandbox/proof-local odd_glc refs were found; no ABI system-library entry
 was available to bind.
 
@@ -197,6 +207,7 @@ was available to bind.
 | `software-build/materialize-artifact` | Move requirement pressure toward a lifecycle artifact. | Candidate ABG system function; ABG owns materialization, execution, and artifact truth. |
 | `software-build/prove-artifact` | Bind artifact proof/evidence. | Candidate ABG system function; ABG owns evidence admission and proof truth. |
 | `software-build/fan-in-branches` | Interpret branch outputs into a lifecycle artifact. | Candidate ABG system function; ABG owns branch/frontier/fan-in truth. |
+| `software-build/sdlc-software-build` | Traverse the reusable SDLC software-build stage plan through conformance, implementation design, source, test design, component test source, UAT test source, execution preparation, and execution result. | Candidate ABG system function; ABG owns graph selection, traversal, F_P dispatch, sandbox execution evidence, runtime events, and vector closure. |
 
 Close rule: no software-build graph-function ref may be treated as permanent
 `odd_glc` product law unless it remains classified as one of:
@@ -229,7 +240,7 @@ Startup data is represented by `ODD_GLC_STARTUP_BINDING`:
 | `configRef` | Stable odd_glc startup config ref. |
 | `productNamespace` | `odd_glc`. |
 | `enabledLibraryRefs` | Product library groups to admit. |
-| `overlayRefs` | GTL overlay graph refs plus lifecycle slot-map refs where the binding intentionally exposes interpretation slots. |
+| `overlayRefs` | GTL overlay graph refs consumed by ABG startup and registry truth. |
 | `pluginRefs` | Downstream specialization seam refs. |
 | `readinessRefs` | Source readiness claims. |
 | `proofRefs` | Proof references. |
@@ -269,9 +280,25 @@ The TypeScript tenant proves this design by:
 - rejecting missing declaration facades;
 - proving odd_glc exports no ABG startup/runtime authority.
 
-The next proof ticket must run a GLC-owned Hello World through ABG startup and
-traversal using the reusable software-build GTL overlay graph. This design does
-not claim that live traversal proof.
+Current SDLC Hello World proofs shall select
+`graph-function://odd_glc/software-build/sdlc-software-build` through ABG
+startup and registry truth. The SDLC graph function closes the JavaScript
+full-live witness stage shape as eight ABG-emitted graph-call/vector stages:
+conformance project, implementation design, source, test design, component test
+source, UAT test source, test execution plan, and test execution result.
+
+Earlier `framework-smoke-min-fp` and `sdlc-js-full-live` scenario-specific
+graph-function refs are superseded and cannot close this design. They are stage
+feasibility evidence only. A current proof must select the reusable SDLC graph
+function above.
+
+Current committed RC3 proof input:
+`abiogenesis-canonical-hello-world-full-stack-live/20260702T191230832Z_pid95807`.
+That artifact is ABG-owned startup, registry, graph-call, traversal, F_P
+dispatch, event emission, and replay truth over `@abiogenesis/typescript-tenant`
+`4.2.0-rc.3`. It is consumed read-only by this tenant. Full SDLC witness-shape
+closure remains governed by `T-025`; it shall not be closed by relabeling an
+older software-build run or by replaying a local mapping surface.
 
 ## Non-Closure
 
@@ -284,5 +311,11 @@ This design is not closeable if:
 - odd_glc invokes actors or F_P workers;
 - odd_glc claims node-type entries are callable traversal functions;
 - odd_glc treats product plugin advice as selection truth;
-- odd_glc imports odd_sdlc code, `Sdlc*` carriers, phase flow, local ledgers,
-  retry behavior, closure rules, or software-domain policy.
+- odd_glc imports odd_sdlc code, `Sdlc*` carriers, local phase-flow
+  controllers, local ledgers, retry behavior, closure rules, or
+  software-domain policy;
+- a parity proof compresses a selected multi-stage odd_sdlc witness into a
+  two-vector materialize/prove smoke and claims equivalent graph-traversal
+  coverage;
+- an ABI/GTL substrate gap is patched in odd_glc instead of being recorded as
+  an upstream blocker.

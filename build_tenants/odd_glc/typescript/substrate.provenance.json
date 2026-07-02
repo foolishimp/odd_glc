@@ -5,13 +5,13 @@
   "substrate": {
     "productId": "abiogenesis",
     "packageName": "@abiogenesis/typescript-tenant",
-    "packageVersion": "4.2.0-rc.1",
-    "releaseTag": "v4.2.0-rc.1",
-    "sourceCommit": "54c21ce1f984f0be922199232fd8cb981f000ce4",
-    "snapshotCommit": "9653252077a6b52ff343832101748d41a3483b0f",
-    "tarballSha256": "a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4",
-    "productToolchainManifestDigest": "ad5cfca0a3411bf6be3b5771965f1bfe78edfed4f2f38225794f2adb60cf87a7",
-    "releaseSnapshotManifestSha256": "50632ae83fa3c0dd987608f4bbe9755d645978dd99525a3d37a8ec48ed5969fa"
+    "packageVersion": "4.2.0-rc.3",
+    "releaseTag": "v4.2.0-rc.3",
+    "sourceCommit": "c4e635013cf3023b4c4670ecba44d4774b45770f",
+    "snapshotCommit": "2ff420ebf0a26e115a46210d65e20095083228a8",
+    "tarballSha256": "65570b9c50a77406b818cf00395ae9d0a006793792a6bac7b6863a2d9f32a640",
+    "productToolchainManifestDigest": "a81bfabfc010f68e2ad94747c00b8e79fad56c9c3ea41f8884a63d6bb091652b",
+    "releaseSnapshotManifestSha256": "d8e056557950541308acfc005c5242abb32e3b71b57ce7c2b174487b573cb052"
   },
   "publicSurfaces": {
     "gtlRequirements": "./gtl/requirements",
@@ -131,29 +131,38 @@
     },
     "glcHelloWorldBootstrapLive": {
       "sourceProduct": "abiogenesis",
-      "sourceCapability": "abg_4_2_glc_hello_world_bootstrap_startup",
-      "sourceRunId": "20260630T172837931Z_pid12638",
-      "sourceRunKind": "live_glc_hello_world_bootstrap_startup",
-      "proofClass": "live_execution_grounded_startup_registry_traversal",
-      "sourceCommit": "96532521c5a6cb93495bd615749f0b630b4a7e52",
+      "sourceCapability": "abg_4_2_canonical_hello_world_full_stack",
+      "sourceRunId": "20260702T191230832Z_pid95807",
+      "sourceRunKind": "canonical_hello_world_full_stack_live",
+      "proofClass": "live_execution_grounded_startup_registry_instruction_traversal",
+      "sourceCommit": "c4e635013cf3023b4c4670ecba44d4774b45770f",
       "sourceDirty": false,
-      "sourcePackageVersion": "4.2.0-rc.1",
-      "snapshotTarballSha256": "a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4",
-      "proofArtifactPath": "build_tenants/odd_glc/typescript/test/proof_inputs/abiogenesis-glc-hello-world-bootstrap-live/20260630T172837931Z_pid12638/glc-hello-world-bootstrap-live-proof.json",
-      "proofManifestPath": "build_tenants/odd_glc/typescript/test/proof_inputs/abiogenesis-glc-hello-world-bootstrap-live/20260630T172837931Z_pid12638/glc-hello-world-bootstrap-live-manifest.json",
-      "artifactSha256": "sha256:c28a20c8460a20b25c339e0486b7b66223e956f179d294a5b98bf86523859a9a",
-      "eventLogSha256": "sha256:fcebca8a735ce0ad4c5acd1dcf1281bdf87ba807a3e3fb5aaeb45db082b5c099",
-      "eventDigest": "sha256:7d8e258d397952e9f8f4109665670bfa94eb643d98ed084f7dedb95ba6e7895a",
-      "eventCount": 87,
-      "durationMs": 89901
+      "sourcePackageVersion": "4.2.0-rc.3",
+      "snapshotTarballSha256": "65570b9c50a77406b818cf00395ae9d0a006793792a6bac7b6863a2d9f32a640",
+      "proofArtifactPath": "build_tenants/odd_glc/typescript/test/proof_inputs/abiogenesis-canonical-hello-world-full-stack-live/20260702T191230832Z_pid95807/canonical-hello-world-full-stack-live-proof.json",
+      "eventLogPath": "build_tenants/odd_glc/typescript/test/proof_inputs/abiogenesis-canonical-hello-world-full-stack-live/20260702T191230832Z_pid95807/events.jsonl",
+      "artifactSha256": "sha256:37b4635dd9d050b39bfa81b1db33c738ee4aed88b37b7b75acb5bbfced579266",
+      "eventLogSha256": "sha256:abca0973e12d58ae83a501e3f39632a4ce85c73b3d8524ba149073a9cd1931bb",
+      "eventDigest": "sha256:34aa0ce9220b95738bf651592c80a53583dcb582e0d45b2e0ebc2f44dd788a11",
+      "eventCount": 92,
+      "durationMs": 154988,
+      "promptManifestCount": 2,
+      "responseAdmissionCount": 2,
+      "actorResultArtifactCount": 2,
+      "registryAdmissionCount": 6,
+      "graphFunctionSelectionCount": 2,
+      "causalCarryBound": true,
+      "executionStdout": "Hello, world!\n",
+      "sourceArtifactSha256": "sha256:fd32f0159f5b7763d6a7457a1f3814d5168df2ee6d30d24db484344f77cbf629",
+      "localArtifactPathRewrite": "liveArtifacts paths rewritten to committed odd_glc proof_inputs files"
     }
   },
   "proofScope": {
     "phase": "phase_12_generic_lifecycle_interpretation",
-    "claim": "The tenant is proven against installed ABIogenesis 4.2.0-rc.1 public query facades and committed digest-pinned ABI proof artifacts for the closed route, Hello World ladder, live non-closed route, requirement graph projection, span-lineage recursion truth, executive pressure facts, and ABG 4.2 GLC Hello World startup registry/traversal truth. Committed proof artifacts are read-only ABI truth inputs. The synthetic non-closed route artifact is retained only as engine-mechanics regression input; the live non-closed route artifact is the proof for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
+    "claim": "The tenant is proven against installed ABIogenesis 4.2.0-rc.3 public query facades and committed digest-pinned ABI proof artifacts for the closed route, Hello World ladder, live non-closed route, requirement graph projection, span-lineage recursion truth, executive pressure facts, and ABG 4.2 canonical Hello World startup registry, instruction-manifest, causal-carry, traversal truth. Committed proof artifacts are read-only ABI truth inputs. The synthetic non-closed route artifact is retained only as engine-mechanics regression input; the live non-closed route artifact is the proof for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
   },
   "sourceDocuments": [
-    "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json",
+    "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.3/release-snapshot-manifest.json",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",
     "build_tenants/common/design/ODD_GLC_ABG42_TYPED_STARTUP_BINDING.md"
   ]

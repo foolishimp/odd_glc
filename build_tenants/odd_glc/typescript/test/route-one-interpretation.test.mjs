@@ -9,9 +9,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import {
   ABIOGENESIS_SUBSTRATE_PROVENANCE,
   FORBIDDEN_ABG_REQUIREMENTS_AUTHORITIES,
-  ODD_GLC_LIFECYCLE_SLOT_MAP,
+  ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY,
   REQUIRED_ROUTE_ONE_SURFACES,
-  defineLifecycleSurfaceMap,
   definePolicyOverlay,
   interpretAssuranceState,
   interpretEvidenceState,
@@ -271,12 +270,6 @@ async function readParallelJsProofArtifact() {
   });
 }
 
-function surfaceMapFixture() {
-  return Object.fromEntries(
-    REQUIRED_ROUTE_ONE_SURFACES.map((surface) => [surface, `glc.route1.${surface}`])
-  );
-}
-
 const queryFixture = Object.freeze({
   kind: "requirement_query_read_model",
   requirementIds: Object.freeze(["REQ-HELLO-WORLD-GREETING"])
@@ -396,13 +389,13 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.consumerTenant, "build_tenants/odd_glc/typescript");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productId, "abiogenesis");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName, "@abiogenesis/typescript-tenant");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.2.0-rc.1");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.2.0-rc.1");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "54c21ce1f984f0be922199232fd8cb981f000ce4");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "9653252077a6b52ff343832101748d41a3483b0f");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "ad5cfca0a3411bf6be3b5771965f1bfe78edfed4f2f38225794f2adb60cf87a7");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "50632ae83fa3c0dd987608f4bbe9755d645978dd99525a3d37a8ec48ed5969fa");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.2.0-rc.3");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.2.0-rc.3");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "c4e635013cf3023b4c4670ecba44d4774b45770f");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "2ff420ebf0a26e115a46210d65e20095083228a8");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "65570b9c50a77406b818cf00395ae9d0a006793792a6bac7b6863a2d9f32a640");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "a81bfabfc010f68e2ad94747c00b8e79fad56c9c3ea41f8884a63d6bb091652b");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "d8e056557950541308acfc005c5242abb32e3b71b57ce7c2b174487b573cb052");
   assert.equal(packageJson.name, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName);
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(
@@ -413,7 +406,6 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
 
 test("interprets ABG lifecycle state as odd_glc release/readiness vocabulary", async () => {
   const abgRequirements = await importAbgRequirementsFacade();
-  const surfaceMap = defineLifecycleSurfaceMap({ surfaces: surfaceMapFixture() });
   const policy = definePolicyOverlay({
     id: "policy:hello-world",
     fp: {
@@ -424,7 +416,6 @@ test("interprets ABG lifecycle state as odd_glc release/readiness vocabulary", a
     }
   });
 
-  assert.equal(surfaceMap.status, "accepted");
   assert.equal(policy.status, "accepted");
 
   const result = interpretLifecycleState({
@@ -432,7 +423,6 @@ test("interprets ABG lifecycle state as odd_glc release/readiness vocabulary", a
     query: queryFixture,
     dispositionRefs: Object.freeze(["disp:hello-world:closed"]),
     replayFacts: replayFactsFixture,
-    surfaceMap: surfaceMap.value,
     policyOverlay: policy.value
   });
 
@@ -1256,37 +1246,20 @@ test("keeps F_P and F_H policy surfaces as data declarations", () => {
   assert.equal(rejectedPolicy.reason, "forbidden_authority");
 });
 
-test("defines the odd_glc lifecycle slot map without confusing it for a GTL overlay graph", () => {
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.kind, "odd_glc_lifecycle_interpretation_slot_map");
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.authority.rule, "data_only_slot_map_over_admitted_gtl_abg_truth");
-  assert.equal(containsFunction(ODD_GLC_LIFECYCLE_SLOT_MAP), false);
-  assert.deepEqual(ODD_GLC_LIFECYCLE_SLOT_MAP.families, [
-    "lifecycle_surface",
-    "policy_overlay",
-    "read_model",
-    "proof_binding",
-    "specialization_seam"
-  ]);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.lifecycle_surface.owner, "odd_glc");
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.policy_overlay.allowedUse.includes("as data"), true);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.read_model.forbiddenAuthority.includes("event_emission"), true);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.familyRules.specialization_seam.forbiddenAuthority.includes("odd_sdlc_reproduction"), true);
+test("defines lifecycle meaning as a GTL program overlay rather than a local mapping export", async () => {
+  const module = await import("../src/index.mjs");
+  const exportNames = Object.keys(module);
 
-  const surfaceEntries = ODD_GLC_LIFECYCLE_SLOT_MAP.entries
-    .filter((entry) => entry.family === "lifecycle_surface")
-    .map((entry) => entry.surface);
-  assert.deepEqual(surfaceEntries, REQUIRED_ROUTE_ONE_SURFACES);
-
-  const entryIds = new Set(ODD_GLC_LIFECYCLE_SLOT_MAP.entries.map((entry) => entry.entryId));
-  assert.equal(entryIds.has("policy.fp_semantic_judgment"), true);
-  assert.equal(entryIds.has("policy.fh_human_decision"), true);
-  assert.equal(entryIds.has("view.lifecycle_state"), true);
-  assert.equal(entryIds.has("proof.committed_abg_proof_input"), true);
-  assert.equal(entryIds.has("seam.plugin_binding_refs"), true);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("gtl_graph_function_catalog"), true);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("abg_runtime_emitter"), true);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("fp_worker_invocation"), true);
-  assert.equal(ODD_GLC_LIFECYCLE_SLOT_MAP.forbiddenAuthority.includes("odd_sdlc_phase_or_ledger_reproduction"), true);
+  assert.equal(exportNames.some((name) => name.includes("SLOT_MAP")), false);
+  assert.equal(exportNames.some((name) => name.includes("LifecycleSurfaceMap")), false);
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.kind, "odd_glc_lifecycle_program_overlay_graph");
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.overlayRef, "overlay://odd_glc/general-lifecycle");
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.rule, "gtl_overlay_graph_declaration_over_gtl_abg_truth");
+  assert.equal(containsFunction(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY), false);
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.roleRefs.length >= REQUIRED_ROUTE_ONE_SURFACES.length, true);
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.forbiddenAuthority.includes("event_emission"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.forbiddenAuthority.includes("graph_function_selection"), true);
+  assert.equal(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.forbiddenAuthority.includes("odd_sdlc_phase_or_ledger_reproduction"), true);
 });
 
 test("does not export local runtime authority", async () => {

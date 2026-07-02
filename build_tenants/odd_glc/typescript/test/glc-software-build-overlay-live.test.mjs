@@ -14,6 +14,8 @@ import {
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
+  ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+  ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING,
   interpretStartupRegistryState
 } from "../src/index.mjs";
@@ -35,103 +37,704 @@ const defaultAbgPackageRoot = path.join(
 );
 const liveRoot = path.join(tenantRoot, "test_runs", "glc_software_build_overlay_live");
 
+function withStageBootstrap(stagePlan, overrides) {
+  const byStage = Array.isArray(overrides)
+    ? new Map(overrides.map((override) => [override.stage, override]))
+    : new Map(Object.entries(overrides));
+  return Object.freeze(stagePlan.map((stage) => Object.freeze({
+    ...stage,
+    ...(byStage.get(stage.stage) ?? {})
+  })));
+}
+
+const SDLC_REQUIRED_STAGE_NAMES = Object.freeze(
+  ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
+);
+
+function sdlcStagePlan(overrides) {
+  return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN, overrides);
+}
+
+function sdlcComplianceScenario(input) {
+  return Object.freeze({
+    ...input,
+    proofClass: "sdlc_graph_traversal_compliance",
+    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+    materializedSurfaceCount: 7,
+    manifestRequired: false,
+    executeFromPlan: true,
+    expectedReturnValue: input.expectedReturnValue ?? "Hello, world!",
+    requiredStageNames: SDLC_REQUIRED_STAGE_NAMES,
+    stagePlan: sdlcStagePlan(input.stagePlan)
+  });
+}
+
 const SCENARIOS = Object.freeze([
-  {
+  sdlcComplianceScenario({
     key: "basic-cli",
     scenarioId: "SCN-GLC-HELLO-WORLD-CLI-BASIC",
     kind: "node_cli",
-    files: [
-      ["generated/hello-world.mjs", "console.log(\"Hello, world!\");\n"]
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare a minimal CLI Hello World software-build traversal.",
+          "The source surface must be generated/hello-world.mjs.",
+          "The execution proof must run the CLI and observe stdout exactly \"Hello, world!\\n\".",
+          "Do not write source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Use the prior conformance_project artifact as authority.",
+          "Define a minimal Node CLI script at generated/hello-world.mjs.",
+          "The script must print exactly \"Hello, world!\" followed by one newline.",
+          "Name component and UAT test source surfaces that execute the CLI and assert stdout."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["generated/hello-world.mjs"],
+        instructions: [
+          "Write only generated/hello-world.mjs.",
+          "The script must execute under node without package installation.",
+          "It must write exactly \"Hello, world!\\n\" to stdout."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Specify component and UAT validation of the CLI stdout contract.",
+          "Both tests must spawn node generated/hello-world.mjs and assert status 0 and stdout exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/hello-cli.test.mjs"],
+        instructions: [
+          "Write only test/component/hello-cli.test.mjs.",
+          "Use node:test, node:assert/strict, and node:child_process spawnSync.",
+          "Run process.execPath with [\"generated/hello-world.mjs\"] from the project root.",
+          "Assert status 0 and stdout exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/hello-cli.uat.test.mjs"],
+        instructions: [
+          "Write only test/uat/hello-cli.uat.test.mjs.",
+          "Use node:test, node:assert/strict, and node:child_process spawnSync.",
+          "Run process.execPath with [\"generated/hello-world.mjs\"] from the project root.",
+          "Assert the user-visible CLI output is exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "The JSON command must be node.",
+          "The args must be [\"--test\", \"test/component/hello-cli.test.mjs\", \"test/uat/hello-cli.uat.test.mjs\"].",
+          "expectedTestPassCount must be 2.",
+          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "assertedReturnValue must be \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        instructions: [
+          "Produce no files.",
+          "Accept only if the execution plan command exited 0, observedTestPassCount is 2, and planSatisfied is true."
+        ]
+      }
     ]
-  },
-  {
+  }),
+  sdlcComplianceScenario({
     key: "js-tenant-test",
     scenarioId: "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
     kind: "node_test",
-    files: [
-      ["package.json", "{\n  \"private\": true,\n  \"type\": \"module\"\n}\n"],
-      ["src/hello.mjs", "export function helloWorld() {\n  return \"Hello, world!\";\n}\n"],
-      [
-        "test/hello.test.mjs",
-        "import assert from \"node:assert/strict\";\nimport { test } from \"node:test\";\nimport { helloWorld } from \"../src/hello.mjs\";\n\ntest(\"hello world subject returns the greeting\", () => {\n  assert.equal(helloWorld(), \"Hello, world!\");\n});\n"
-      ]
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare a JavaScript module plus node:test Hello World traversal.",
+          "Name implementation design, source, test design, component test source, UAT test source, test execution plan, and test execution result as separate lifecycle surfaces."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Define a private type:module package with src/hello.mjs exporting helloWorld().",
+          "helloWorld() must return exactly \"Hello, world!\".",
+          "The component and UAT tests must import helloWorld and assert the exact return value."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["package.json", "src/hello.mjs"],
+        instructions: [
+          "Write only package.json and src/hello.mjs.",
+          "package.json must be private:true and type:module.",
+          "src/hello.mjs must export helloWorld() returning exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Specify component and UAT validation obligations over the exported helloWorld function.",
+          "Both validations must assert the exact return value \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/hello.test.mjs"],
+        instructions: [
+          "Write only test/component/hello.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import helloWorld from ../../src/hello.mjs.",
+          "Assert helloWorld() returns exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/hello.uat.test.mjs"],
+        instructions: [
+          "Write only test/uat/hello.uat.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import helloWorld from ../../src/hello.mjs.",
+          "Assert the user-visible greeting contract is exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "The JSON command must be node.",
+          "The args must be [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
+          "expectedTestPassCount must be 2.",
+          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "assertedReturnValue must be \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        instructions: [
+          "Produce no files.",
+          "Accept only if both component and UAT tests passed, observedTestPassCount is 2, and planSatisfied is true."
+        ]
+      }
     ]
-  },
-  {
+  }),
+  sdlcComplianceScenario({
+    key: "js-sdlc-bootstrap",
+    scenarioId: "SCN-GLC-HELLO-WORLD-JS-SDLC-BOOTSTRAP",
+    kind: "sdlc_js_full_node_test",
+    expectedStdout: null,
+    expectedReturnValue: "Hello, world!",
+    executeFromPlan: false,
+    witness: {
+      sourceProject: "odd_sdlc",
+      runPath: "/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/test_runs/scenario_t132_hello_world_js_live/20260624T185624005Z_pid20893",
+      durationMinutes: 41.64,
+      traversalShape: [
+        "Fg_conform_project",
+        "derive_lite_design_adr_surface",
+        "derive_lite_component_code_surface",
+        "derive_lite_test_design_surface",
+        "derive_lite_component_test_surface",
+        "derive_lite_uat_test_source_surface",
+        "prepare_test_execution_surface",
+        "derive_test_execution_result_surface"
+      ],
+      parityRule: "reproduce traversal shape as typed GTL vectors consumed by ABG startup; do not copy odd_sdlc runtime code, ledgers, phase-flow controller, or local truth surfaces"
+    },
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare the project pressure for a JavaScript Hello World software build traversal.",
+          "Name the required downstream lifecycle surfaces: implementation design, source, test design, component test source, UAT test source, test execution plan, and test execution result.",
+          "State that ABG owns startup admission, registry selection, graph-call opening, vector traversal, F_P dispatch, evidence admission, event emission, closure, and convergence.",
+          "Do not write source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Use the prior conformance_project artifact as the authority.",
+          "Define a minimal JavaScript module that exports helloWorld() returning exactly \"Hello, world!\".",
+          "Name package.json, src/hello.mjs, design/test-design.md, test/component/hello.test.mjs, test/uat/hello.uat.test.mjs, test-execution-plan.json, and execution result as separate lifecycle surfaces.",
+          "Do not materialize source, tests, package files, or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["package.json", "src/hello.mjs"],
+        instructions: [
+          "Write only package.json and src/hello.mjs.",
+          "Use the prior implementation_design artifact as the authority.",
+          "package.json must be private:true and type:module.",
+          "src/hello.mjs must export helloWorld() returning exactly \"Hello, world!\".",
+          "Do not write test source or execution plans in this vector."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Use the prior source artifact summaries as the evidence source.",
+          "Specify both component and UAT validation obligations.",
+          "The component test must import helloWorld and assert the exact return value \"Hello, world!\".",
+          "The UAT test must validate the user-visible greeting contract through the same exported function.",
+          "Do not write test source in this vector."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/hello.test.mjs"],
+        instructions: [
+          "Write only test/component/hello.test.mjs.",
+          "Use the prior test_design and source artifact summaries as the evidence source.",
+          "Use node:test and node:assert/strict.",
+          "Import helloWorld from ../../src/hello.mjs.",
+          "Assert helloWorld() returns exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/hello.uat.test.mjs"],
+        instructions: [
+          "Write only test/uat/hello.uat.test.mjs.",
+          "Use the prior component_test_source, test_design, and source artifact summaries as the evidence source.",
+          "Use node:test and node:assert/strict.",
+          "Import helloWorld from ../../src/hello.mjs.",
+          "Assert the user-visible greeting contract is exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "Use the prior component_test_source and uat_test_source artifact summaries as the evidence source.",
+          "The command must be node with args [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
+          "expectedTestPassCount must be 2.",
+          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "assertedReturnValue must be \"Hello, world!\".",
+          "Do not execute the test in this vector."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        instructions: [
+          "Produce no files.",
+          "Judge the observed executionStatus, planSatisfied flag, observedTestPassCount, and stdout digest against the prior test_execution_plan.",
+          "Accept only if both component and UAT tests passed, planSatisfied is true, and observedTestPassCount is 2.",
+          "Do not reject solely because node:test uses a different TAP prefix glyph when the F_D pass-count check is satisfied."
+        ]
+      }
+    ]
+  }),
+  sdlcComplianceScenario({
     key: "rust-cli",
     scenarioId: "SCN-GLC-HELLO-WORLD-RUST-CLI",
     kind: "rust_cli",
-    files: [
-      ["Cargo.toml", "[package]\nname = \"glc_hello_world_rust\"\nversion = \"0.0.0\"\nedition = \"2021\"\n\n[dependencies]\n"],
-      ["src/main.rs", "fn main() {\n    println!(\"Hello, world!\");\n}\n"]
+    expectedStdout: "Hello, world!\n",
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare a Rust CLI Hello World software-build traversal.",
+          "The source surface must include Cargo.toml and src/main.rs.",
+          "The execution proof must run cargo run --quiet and observe stdout exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Define a minimal Rust binary crate named glc_hello_world_rust.",
+          "The binary must print exactly \"Hello, world!\" followed by one newline.",
+          "Name component and UAT test source surfaces that execute cargo run --quiet and assert stdout."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["Cargo.toml", "src/main.rs"],
+        instructions: [
+          "Write only Cargo.toml and src/main.rs.",
+          "Cargo.toml must define package name glc_hello_world_rust, version 0.0.0, edition 2021, and no dependencies.",
+          "src/main.rs must define main() and print exactly \"Hello, world!\" followed by one newline."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Specify component and UAT validation of the Rust CLI stdout contract.",
+          "Both tests must spawn cargo run --quiet from the project root and assert status 0 and stdout exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/rust-cli.test.mjs"],
+        instructions: [
+          "Write only test/component/rust-cli.test.mjs.",
+          "Use node:test, node:assert/strict, and node:child_process spawnSync.",
+          "Run cargo with [\"run\", \"--quiet\"] from the project root.",
+          "Assert status 0 and stdout exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/rust-cli.uat.test.mjs"],
+        instructions: [
+          "Write only test/uat/rust-cli.uat.test.mjs.",
+          "Use node:test, node:assert/strict, and node:child_process spawnSync.",
+          "Run cargo with [\"run\", \"--quiet\"] from the project root.",
+          "Assert the user-visible Rust CLI output is exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "The JSON command must be node.",
+          "The args must be [\"--test\", \"test/component/rust-cli.test.mjs\", \"test/uat/rust-cli.uat.test.mjs\"].",
+          "expectedTestPassCount must be 2.",
+          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "assertedReturnValue must be \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        instructions: [
+          "Produce no files.",
+          "Accept only if the planned node:test command exited 0, observedTestPassCount is 2, and planSatisfied is true."
+        ]
+      }
     ]
-  },
-  {
+  }),
+  sdlcComplianceScenario({
     key: "rust-service",
     scenarioId: "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
     kind: "rust_service",
-    files: [
-      [
-        "src/service.rs",
-        "use std::env;\nuse std::fs;\nuse std::io::{Read, Write};\nuse std::net::TcpListener;\n\nfn main() {\n    let port_file = env::args().nth(1).expect(\"port file path\");\n    let listener = TcpListener::bind(\"127.0.0.1:0\").expect(\"bind service\");\n    let port = listener.local_addr().expect(\"local addr\").port();\n    fs::write(&port_file, port.to_string()).expect(\"write port\");\n    if let Ok((mut stream, _addr)) = listener.accept() {\n        let mut buffer = [0_u8; 1024];\n        let _ = stream.read(&mut buffer);\n        let body = \"Hello, world!\\n\";\n        let response = format!(\n            \"HTTP/1.1 200 OK\\r\\nContent-Length: {}\\r\\nContent-Type: text/plain\\r\\nConnection: close\\r\\n\\r\\n{}\",\n            body.len(),\n            body\n        );\n        stream.write_all(response.as_bytes()).expect(\"write response\");\n    }\n}\n"
-      ]
+    expectedStdout: null,
+    expectedReturnValue: "Hello, world!",
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare a Rust service Hello World software-build traversal.",
+          "The source surface must include src/service.rs.",
+          "The test source must compile the service with rustc, start it on 127.0.0.1 using a system-assigned port, send one HTTP request, and observe response body exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Define a single-file Rust TCP HTTP service in src/service.rs.",
+          "The service must accept one command-line argument: a port-file path.",
+          "It must bind 127.0.0.1:0, write the selected port to the port file, handle one HTTP request, return 200 OK with body \"Hello, world!\\n\", then exit cleanly."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["src/service.rs"],
+        instructions: [
+          "Write only src/service.rs.",
+          "Use only Rust standard library modules.",
+          "Implement the service described by the implementation_design artifact.",
+          "The response body must be exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Specify a component test and UAT test for compiling the Rust service, starting it, making a real HTTP request, and asserting status 200 and body exactly \"Hello, world!\\n\".",
+          "The tests must use a temporary port file and terminate only after the service exits."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/rust-service.test.mjs"],
+        instructions: [
+          "Write only test/component/rust-service.test.mjs.",
+          "Use node:test, node:assert/strict, node:child_process spawn/spawnSync, node:fs/promises, node:os, and node:path.",
+          "Compile src/service.rs with rustc to a temporary binary.",
+          "Start the binary with a temporary port-file path, wait for the port file, fetch http://127.0.0.1:${port}/hello, and assert response status 200 and body exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/rust-service.uat.test.mjs"],
+        instructions: [
+          "Write only test/uat/rust-service.uat.test.mjs.",
+          "Use node:test and the same service-start/request pattern as the component test.",
+          "Assert the user-visible service contract: an HTTP GET to /hello returns 200 and body exactly \"Hello, world!\\n\"."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "The JSON command must be node.",
+          "The args must be [\"--test\", \"test/component/rust-service.test.mjs\", \"test/uat/rust-service.uat.test.mjs\"].",
+          "expectedTestPassCount must be 2.",
+          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "assertedReturnValue must be \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        instructions: [
+          "Produce no files.",
+          "Accept only if both service tests passed, observedTestPassCount is 2, and planSatisfied is true."
+        ]
+      }
     ]
-  },
-  {
+  }),
+  sdlcComplianceScenario({
     key: "parallel-js",
     scenarioId: "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
     kind: "parallel_js",
-    files: [
-      [
-        "parallel/hello-branch.mjs",
-        "import { mkdir, writeFile } from \"node:fs/promises\";\nawait mkdir(new URL(\"./output/\", import.meta.url), { recursive: true });\nawait writeFile(new URL(\"./output/hello.txt\", import.meta.url), \"Hello\", \"utf8\");\nprocess.stdout.write(\"Hello\");\n"
-      ],
-      [
-        "parallel/world-branch.mjs",
-        "import { mkdir, writeFile } from \"node:fs/promises\";\nawait mkdir(new URL(\"./output/\", import.meta.url), { recursive: true });\nawait writeFile(new URL(\"./output/world.txt\", import.meta.url), \"world\", \"utf8\");\nprocess.stdout.write(\"world\");\n"
-      ],
-      [
-        "parallel/fan-in.mjs",
-        "import { readFile, writeFile } from \"node:fs/promises\";\nconst hello = await readFile(new URL(\"./output/hello.txt\", import.meta.url), \"utf8\");\nconst world = await readFile(new URL(\"./output/world.txt\", import.meta.url), \"utf8\");\nconst greeting = `${hello}, ${world}!\\n`;\nawait writeFile(new URL(\"./output/fan-in.txt\", import.meta.url), greeting, \"utf8\");\nprocess.stdout.write(greeting);\n"
-      ]
+    expectedStdout: null,
+    expectedReturnValue: "Hello, world!",
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare a JavaScript Hello World product with parallel branch implementation pressure.",
+          "The source surface must have a hello branch, a world branch, and a fan-in module that composes the greeting.",
+          "The execution proof must prove branch behavior and composed behavior."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Define a type:module package with src/hello.mjs exporting helloPart(), src/world.mjs exporting worldPart(), and src/index.mjs exporting helloWorld().",
+          "helloWorld() must compose the branch functions and return exactly \"Hello, world!\".",
+          "State that this scenario proves product-level parallel branch shape inside the reusable SDLC graph; it does not claim ABG branch-frontier traversal."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["package.json", "src/hello.mjs", "src/world.mjs", "src/index.mjs"],
+        instructions: [
+          "Write only package.json, src/hello.mjs, src/world.mjs, and src/index.mjs.",
+          "package.json must be private:true and type:module.",
+          "src/hello.mjs must export helloPart() returning \"Hello\".",
+          "src/world.mjs must export worldPart() returning \"world\".",
+          "src/index.mjs must export helloWorld() returning exactly \"Hello, world!\" by composing helloPart and worldPart."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Specify separate component checks for helloPart and worldPart plus a UAT check for helloWorld.",
+          "The UAT check must prove the composed exported behavior returns exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/parallel-branches.test.mjs"],
+        instructions: [
+          "Write only test/component/parallel-branches.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import helloPart from ../../src/hello.mjs and worldPart from ../../src/world.mjs.",
+          "Assert helloPart() returns \"Hello\" and worldPart() returns \"world\" in separate test() blocks."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/parallel-fanin.uat.test.mjs"],
+        instructions: [
+          "Write only test/uat/parallel-fanin.uat.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import helloWorld from ../../src/index.mjs.",
+          "Assert helloWorld() returns exactly \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "The JSON command must be node.",
+          "The args must be [\"--test\", \"test/component/parallel-branches.test.mjs\", \"test/uat/parallel-fanin.uat.test.mjs\"].",
+          "expectedTestPassCount must be 3.",
+          "expectedStdoutMatch must include stable substrings pass 3 and fail 0.",
+          "assertedReturnValue must be \"Hello, world!\"."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        instructions: [
+          "Produce no files.",
+          "Accept only if the branch and fan-in tests passed, observedTestPassCount is 3, and planSatisfied is true."
+        ]
+      }
     ]
-  },
-  {
+  }),
+  sdlcComplianceScenario({
     key: "data-mapper-lite",
     scenarioId: "SCN-GLC-DATA-MAPPER-LITE-JS",
     kind: "data_mapper_lite_node_test",
-    expectedStdout: "data_mapper_lite ok\n",
+    expectedStdout: null,
+    expectedReturnValue: "data_mapper_lite ok",
     artifactTypeRef: "odd_glc.type.software.data_mapping_implementation_bundle",
-    materializeNodeTypes: [
-      "odd_glc.type.lifecycle_context",
-      "odd_glc.type.software.mapping_spec",
-      "odd_glc.type.software.schema_source",
-      "odd_glc.type.software.mapper_source",
-      "odd_glc.type.software.mapper_validation_test",
-      "odd_glc.type.software.mapper_build_config",
-      "odd_glc.type.software.data_mapping_implementation_bundle"
-    ],
-    proveNodeTypes: [
-      "odd_glc.type.software.data_mapping_implementation_bundle",
-      "odd_glc.type.software.test_execution_result",
-      "odd_glc.type.evidence_binding_view"
-    ],
-    files: [
-      ["package.json", "{\n  \"private\": true,\n  \"type\": \"module\"\n}\n"],
-      [
-        "specification/REQUIREMENTS.md",
-        "# Data Mapper Lite Requirements\n\n- REQ-LDM-01: model is a directed multigraph of objects and morphisms.\n- REQ-LDM-02: every morphism declares one of 1:1, N:1, or 1:N cardinality.\n- REQ-LDM-03: dot paths compose only when each morphism exists and codomain/domain match.\n"
-      ],
-      [
-        "src/logical-data-model.mjs",
-        "const CARDINALITIES = new Set([\"1:1\", \"N:1\", \"1:N\"]);\n\nexport class LogicalDataModel {\n  constructor() {\n    this.entities = new Map();\n    this.morphisms = new Map();\n  }\n\n  addEntity(name) {\n    if (typeof name !== \"string\" || name.length === 0) {\n      throw new Error(\"entity name is required\");\n    }\n    this.entities.set(name, { name, identity: `${name}.id` });\n    return this.entities.get(name);\n  }\n\n  addMorphism(id, source, target, cardinality) {\n    if (!this.entities.has(source)) {\n      throw new Error(`unknown source entity: ${source}`);\n    }\n    if (!this.entities.has(target)) {\n      throw new Error(`unknown target entity: ${target}`);\n    }\n    if (!CARDINALITIES.has(cardinality)) {\n      throw new Error(`unknown cardinality: ${cardinality}`);\n    }\n    const row = { id, source, target, cardinality };\n    this.morphisms.set(id, row);\n    return row;\n  }\n\n  identityFor(entity) {\n    const row = this.entities.get(entity);\n    if (row === undefined) {\n      throw new Error(`unknown entity: ${entity}`);\n    }\n    return { id: row.identity, source: entity, target: entity, cardinality: \"1:1\" };\n  }\n\n  morphism(id) {\n    const row = this.morphisms.get(id);\n    if (row === undefined) {\n      throw new Error(`missing morphism: ${id}`);\n    }\n    return row;\n  }\n\n  dotPath(ids) {\n    if (!Array.isArray(ids) || ids.length === 0) {\n      throw new Error(\"path requires morphisms\");\n    }\n    const rows = ids.map((id) => this.morphism(id));\n    for (let index = 1; index < rows.length; index += 1) {\n      if (rows[index - 1].target !== rows[index].source) {\n        throw new Error(`composition mismatch: ${rows[index - 1].id} -> ${rows[index].id}`);\n      }\n    }\n    return rows;\n  }\n}\n"
-      ],
-      [
-        "test/logical-data-model.test.mjs",
-        "import assert from \"node:assert/strict\";\nimport { test } from \"node:test\";\nimport { LogicalDataModel } from \"../src/logical-data-model.mjs\";\n\nfunction model() {\n  const graph = new LogicalDataModel();\n  graph.addEntity(\"Customer\");\n  graph.addEntity(\"Order\");\n  graph.addEntity(\"Country\");\n  graph.addMorphism(\"customer.orders\", \"Customer\", \"Order\", \"1:N\");\n  graph.addMorphism(\"customer.primaryOrder\", \"Customer\", \"Order\", \"1:1\");\n  graph.addMorphism(\"order.country\", \"Order\", \"Country\", \"N:1\");\n  return graph;\n}\n\ntest(\"REQ-LDM-01 directed multigraph structure is explicit and queryable\", () => {\n  const graph = model();\n  assert.equal(graph.identityFor(\"Customer\").target, \"Customer\");\n  assert.equal(graph.morphism(\"customer.orders\").source, \"Customer\");\n  assert.equal(graph.morphism(\"customer.primaryOrder\").target, \"Order\");\n});\n\ntest(\"REQ-LDM-02 cardinality is required and constrained\", () => {\n  const graph = model();\n  assert.equal(graph.morphism(\"customer.orders\").cardinality, \"1:N\");\n  assert.throws(() => graph.addMorphism(\"bad\", \"Customer\", \"Order\", \"many\"), /unknown cardinality/u);\n});\n\ntest(\"REQ-LDM-03 dot paths compose only across matching codomain/domain\", () => {\n  const graph = model();\n  assert.deepEqual(graph.dotPath([\"customer.orders\", \"order.country\"]).map((row) => row.id), [\"customer.orders\", \"order.country\"]);\n  assert.throws(() => graph.dotPath([\"order.country\", \"customer.orders\"]), /composition mismatch/u);\n});\n"
-      ]
+    stagePlan: [
+      {
+        stage: "conformance_project",
+        filesToProduce: ["specification/project-conformance.md"],
+        requiredNodeTypes: [
+          "odd_glc.type.lifecycle_context",
+          "odd_glc.type.software.mapping_spec"
+        ],
+        instructions: [
+          "Write only specification/project-conformance.md.",
+          "Declare a lite data-mapper software-build traversal.",
+          "The mapper must model entities and morphisms, constrain cardinality to 1:1, N:1, or 1:N, and validate dot-path composition across matching codomain/domain.",
+          "The public composition API for later source and tests is dotPath(...morphismNames); do not introduce a separate compose API.",
+          "Do not write source or tests in this vector."
+        ]
+      },
+      {
+        stage: "implementation_design",
+        filesToProduce: ["design/implementation-design.md"],
+        instructions: [
+          "Write only design/implementation-design.md.",
+          "Define a JavaScript LogicalDataModel module with the exact public methods addEntity, addMorphism, identityFor, morphism, and dotPath.",
+          "dotPath must be the only public composition API and must accept separate morphism-name arguments, for example dotPath(\"places\", \"shipsTo\").",
+          "Do not name or require an unimplemented compose API.",
+          "Name component and UAT tests that cover all three requirements."
+        ]
+      },
+      {
+        stage: "source",
+        filesToProduce: ["package.json", "src/logical-data-model.mjs"],
+        requiredNodeTypes: [
+          "odd_glc.type.lifecycle.implementation_design",
+          "odd_glc.type.software.mapper_source",
+          "odd_glc.type.software.schema_source"
+        ],
+        instructions: [
+          "Write only package.json and src/logical-data-model.mjs.",
+          "package.json must be private:true and type:module.",
+          "src/logical-data-model.mjs must export class LogicalDataModel.",
+          "LogicalDataModel must support addEntity, addMorphism, identityFor, morphism, and dotPath.",
+          "dotPath must accept separate morphism-name arguments and throw on codomain/domain mismatch.",
+          "Do not export or rely on a compose method."
+        ]
+      },
+      {
+        stage: "test_design",
+        filesToProduce: ["design/test-design.md"],
+        instructions: [
+          "Write only design/test-design.md.",
+          "Specify component and UAT tests for directed multigraph structure, cardinality constraints, and lawful dot-path composition.",
+          "The tests must bind to the actual public source API: addEntity, addMorphism, identityFor, morphism, and dotPath(...morphismNames).",
+          "Do not specify tests that call compose, defineMorphism, validateCardinality, or other helper names unless those names are explicitly present in the source artifact."
+        ]
+      },
+      {
+        stage: "component_test_source",
+        filesToProduce: ["test/component/logical-data-model.test.mjs"],
+        requiredNodeTypes: [
+          "odd_glc.type.software.test_design_surface",
+          "odd_glc.type.software.mapper_validation_test"
+        ],
+        instructions: [
+          "Write only test/component/logical-data-model.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import LogicalDataModel from ../../src/logical-data-model.mjs.",
+          "Create separate tests for graph structure, cardinality rejection, and dot-path composition rejection.",
+          "Use dotPath(...morphismNames) for composition checks; do not call compose."
+        ]
+      },
+      {
+        stage: "uat_test_source",
+        filesToProduce: ["test/uat/logical-data-model.uat.test.mjs"],
+        requiredNodeTypes: [
+          "odd_glc.type.software.mapper_validation_test",
+          "odd_glc.type.software.uat_test_source_surface"
+        ],
+        instructions: [
+          "Write only test/uat/logical-data-model.uat.test.mjs.",
+          "Use node:test and node:assert/strict.",
+          "Import LogicalDataModel from ../../src/logical-data-model.mjs.",
+          "Assert the user-visible mapper behavior composes Customer -> Order -> Country via dotPath(...morphismNames) and rejects Order -> Country -> Customer.",
+          "Do not call compose; dotPath is the public composition API for this scenario."
+        ]
+      },
+      {
+        stage: "test_execution_plan",
+        filesToProduce: ["test-execution-plan.json"],
+        requiredNodeTypes: [
+          "odd_glc.type.software.uat_test_source_surface",
+          "odd_glc.type.software.mapper_build_config",
+          "odd_glc.type.software.test_execution_plan"
+        ],
+        instructions: [
+          "Write only test-execution-plan.json.",
+          "The JSON command must be node.",
+          "The args must be [\"--test\", \"test/component/logical-data-model.test.mjs\", \"test/uat/logical-data-model.uat.test.mjs\"].",
+          "expectedTestPassCount must equal the exact number of test() blocks in the admitted component and UAT test source files.",
+          "expectedStdoutMatch must include stable substrings pass N and fail 0, where N is the same expectedTestPassCount value.",
+          "assertedReturnValue must be \"data_mapper_lite ok\"."
+        ]
+      },
+      {
+        stage: "test_execution_result",
+        requiredNodeTypes: [
+          "odd_glc.type.software.data_mapping_implementation_bundle",
+          "odd_glc.type.software.test_execution_result",
+          "odd_glc.type.evidence_binding_view"
+        ],
+        instructions: [
+          "Produce no files.",
+          "Accept only if the mapper test plan passed, observedTestPassCount equals the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
+        ]
+      }
     ]
-  }
+  })
 ]);
 
 function liveEnabled() {
@@ -142,6 +745,16 @@ function selectedScenarios() {
   const requested = process.env.ODD_GLC_LIVE_SCENARIO;
   if (requested === undefined || requested.length === 0 || requested === "all") {
     return SCENARIOS;
+  }
+  if (requested === "compliance") {
+    return Object.freeze(SCENARIOS.filter((scenario) =>
+      scenario.proofClass === "sdlc_graph_traversal_compliance"
+    ));
+  }
+  if (requested === "diagnostic") {
+    return Object.freeze(SCENARIOS.filter((scenario) =>
+      scenario.proofClass === "diagnostic_smoke_not_compliance"
+    ));
   }
   const selected = SCENARIOS.filter((scenario) => scenario.key === requested || scenario.scenarioId === requested);
   assert.notEqual(selected.length, 0, `Unknown ODD_GLC_LIVE_SCENARIO ${requested}`);
@@ -162,6 +775,45 @@ function parseJsonLines(text) {
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => JSON.parse(line));
+}
+
+function eventUnixMs(event, fieldName) {
+  assert.equal(Number.isSafeInteger(event.eventTimeUnixMs), true, `${fieldName}.eventTimeUnixMs missing`);
+  assert.equal(typeof event.eventTime, "string", `${fieldName}.eventTime missing`);
+  return event.eventTimeUnixMs;
+}
+
+function traversalTimingReport(events, artifacts) {
+  return Object.freeze(artifacts.map((artifact) => {
+    const vectorIndex = artifact.vectorIndex;
+    const planned = events.find((event) =>
+      event.kind === "vector_traversal_planned" && event.vectorIndex === vectorIndex
+    );
+    const closed = events.find((event) =>
+      event.kind === "vector_closed" && event.vectorIndex === vectorIndex
+    );
+    assert.ok(planned, `missing vector_traversal_planned for vector ${vectorIndex}`);
+    assert.ok(closed, `missing vector_closed for vector ${vectorIndex}`);
+    const plannedMs = eventUnixMs(planned, `vector ${vectorIndex} planned`);
+    const closedMs = eventUnixMs(closed, `vector ${vectorIndex} closed`);
+    return Object.freeze({
+      vectorIndex,
+      stage: artifact.stage,
+      vectorId: artifact.stagePlan.vectorId,
+      edge: artifact.edge,
+      traversalPlannedAt: planned.eventTime,
+      vectorClosedAt: closed.eventTime,
+      traversalDurationMs: closedMs - plannedMs,
+      dispatchDurationMs: artifact.timing.dispatch.durationMs,
+      workerTraceDurationMs: artifact.timing.workerTrace?.timing?.durationMs ?? null,
+      subjectExecutionDurationMs: artifact.timing.subjectExecution?.durationMs ?? null,
+      deterministicMaterializeDurationMs: artifact.timing.deterministicMaterialize?.durationMs ?? null,
+      assessmentMaterializeDurationMs: artifact.timing.assessmentMaterialize?.durationMs ?? null,
+      executorProfile: artifact.transport.executorProfile,
+      terminalSessionId: artifact.transport.terminalSessionId,
+      traceResultPath: artifact.transport.traceResultPath
+    });
+  }));
 }
 
 function run(command, args, options) {
@@ -187,37 +839,67 @@ async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, "utf8"));
 }
 
-test("records the aggregate software-build overlay live manifest without product runtime authority", async () => {
-  const manifest = await readJson(path.join(dirname, "proof_inputs", "glc-software-build-overlay-live-manifest.json"));
-
-  assert.equal(manifest.kind, "odd_glc_software_build_overlay_live_manifest");
-  assert.equal(manifest.substrate.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
-  assert.equal(manifest.overlayRef, ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef);
-  assert.equal(manifest.graphRef, ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphRef);
-  assert.equal(manifest.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget);
-  assert.equal(manifest.startupConfigRef, ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef);
-  const scenariosById = new Map(SCENARIOS.map((scenario) => [scenario.scenarioId, scenario]));
-  for (const run of manifest.runs) {
-    const scenario = scenariosById.get(run.scenarioId);
-    assert.ok(scenario, `Manifest contains unknown scenario ${run.scenarioId}`);
-    assert.equal(run.subjectKind, scenario.kind);
-    assert.match(run.eventLogSha256, /^sha256:[0-9a-f]{64}$/u);
-    assert.equal(Object.hasOwn(run, "proofPath"), false);
-    assert.equal(typeof run.proofSummary, "string");
-    assert.equal(run.proofSummary.length > 0, true);
-    assert.deepEqual(run.requiredRuntimeTruth, [
-      "registry_entry_admitted",
-      "graph_function_selected",
-      "graph_call_opened",
-      "vector_closed"
-    ]);
-  }
-  assert.deepEqual(
-    SCENARIOS
-      .filter((scenario) => !manifest.runs.some((run) => run.scenarioId === scenario.scenarioId))
-      .map((scenario) => scenario.scenarioId),
-    []
+test("classifies every current Hello World scenario as SDLC traversal compliance", () => {
+  const compliantScenarios = SCENARIOS.filter((scenario) =>
+    scenario.proofClass === "sdlc_graph_traversal_compliance"
   );
+  const diagnosticScenarios = SCENARIOS.filter((scenario) =>
+    scenario.proofClass === "diagnostic_smoke_not_compliance"
+  );
+
+  assert.deepEqual(
+    compliantScenarios.map((scenario) => scenario.scenarioId),
+    SCENARIOS.map((scenario) => scenario.scenarioId)
+  );
+  assert.equal(diagnosticScenarios.length, 0);
+
+  for (const scenario of compliantScenarios) {
+    assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF);
+    assert.deepEqual(
+      scenario.stagePlan.map((stage) => stage.vectorId),
+      ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
+    );
+    assert.deepEqual(
+      scenario.requiredStageNames,
+      ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
+    );
+  }
+
+  for (const scenario of diagnosticScenarios) {
+    assert.notEqual(
+      scenario.graphFunctionRef ?? ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget,
+      ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+      `${scenario.scenarioId} is diagnostic only and must not claim the SDLC compliance graph`
+    );
+    assert.equal(
+      Array.isArray(scenario.stagePlan),
+      false,
+      `${scenario.scenarioId} is diagnostic only and must not carry a parity stage plan`
+    );
+  }
+});
+
+test("selects traversal compliance separately from diagnostic scenarios", () => {
+  const previous = process.env.ODD_GLC_LIVE_SCENARIO;
+  try {
+    process.env.ODD_GLC_LIVE_SCENARIO = "compliance";
+    assert.deepEqual(
+      selectedScenarios().map((scenario) => scenario.scenarioId),
+      SCENARIOS.map((scenario) => scenario.scenarioId)
+    );
+
+    process.env.ODD_GLC_LIVE_SCENARIO = "diagnostic";
+    assert.deepEqual(
+      selectedScenarios().map((scenario) => scenario.proofClass),
+      []
+    );
+  } finally {
+    if (previous === undefined) {
+      delete process.env.ODD_GLC_LIVE_SCENARIO;
+    } else {
+      process.env.ODD_GLC_LIVE_SCENARIO = previous;
+    }
+  }
 });
 
 function runtimeBindingSource(input) {
@@ -248,6 +930,7 @@ function runtimeBindingSource(input) {
   satisfiesNodeType
 } from ${JSON.stringify(packageImport)};
 import {
+  ABIOGENESIS_SUBSTRATE_PROVENANCE,
   ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES,
   ODD_GLC_DATA_MAPPING_NODE_TYPES,
   ODD_GLC_LIFECYCLE_NODE_TYPES,
@@ -267,20 +950,51 @@ const OWNER_REF = ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.ownerRef;
 const PRODUCT_VERSION = ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.version;
 const OVERLAY_REF = ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef;
 const GRAPH_REF = ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphRef;
-const GRAPH_FUNCTION_REF = ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget;
+const GRAPH_FUNCTION_REF = SCENARIO.graphFunctionRef ?? ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget;
+const ABI_PROVENANCE_REF = \`provenance://abiogenesis/\${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}\`;
 const TYPE_REFS = Object.freeze({
   context: "odd_glc.type.lifecycle_context",
   lifecycleArtifact: "odd_glc.type.lifecycle_artifact",
   artifact: SCENARIO.artifactTypeRef ?? "odd_glc.type.lifecycle_artifact",
   evidence: "odd_glc.type.evidence_binding_view",
+  implementationDesign: "odd_glc.type.lifecycle.implementation_design",
+  sourceSurface: "odd_glc.type.software.source_surface",
+  testDesignSurface: "odd_glc.type.software.test_design_surface",
+  testSourceSurface: "odd_glc.type.software.test_source_surface",
+  testExecutionPlan: "odd_glc.type.software.test_execution_plan",
   testExecutionResult: "odd_glc.type.software.test_execution_result"
 });
-const EXPECTED_STDOUT = SCENARIO.expectedStdout ?? "Hello, world!\\n";
+const EXPECTED_STDOUT = Object.hasOwn(SCENARIO, "expectedStdout") ? SCENARIO.expectedStdout : "Hello, world!\\n";
+const EXPECTED_ASSERTED_RETURN_VALUE = SCENARIO.expectedReturnValue ?? "Hello, world!";
 const EXPECTED_MATERIALIZE_NODE_TYPES = Object.freeze(
   SCENARIO.materializeNodeTypes ?? [TYPE_REFS.context, TYPE_REFS.artifact]
 );
 const EXPECTED_PROVE_NODE_TYPES = Object.freeze(
   SCENARIO.proveNodeTypes ?? [TYPE_REFS.artifact, TYPE_REFS.evidence]
+);
+const STAGE_PLAN = Object.freeze(
+  SCENARIO.stagePlan ?? [
+    {
+      stage: "materialize",
+      vectorId: ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs[0],
+      sourceTypeRef: TYPE_REFS.context,
+      sourceName: "GlcSoftwareBuildContext",
+      targetTypeRef: TYPE_REFS.artifact,
+      targetName: "GeneratedSoftwareBuildArtifact",
+      requiredNodeTypes: EXPECTED_MATERIALIZE_NODE_TYPES,
+      deterministicMaterialize: true
+    },
+    {
+      stage: "prove",
+      vectorId: ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs[2],
+      sourceTypeRef: TYPE_REFS.artifact,
+      sourceName: "RunnableSoftwareBuildArtifact",
+      targetTypeRef: TYPE_REFS.evidence,
+      targetName: "SoftwareBuildExecutionEvidenceView",
+      requiredNodeTypes: EXPECTED_PROVE_NODE_TYPES,
+      executeBeforeAssessment: true
+    }
+  ]
 );
 
 function uniq(values) {
@@ -289,6 +1003,78 @@ function uniq(values) {
 
 function sha256Text(text) {
   return \`sha256:\${createHash("sha256").update(text, "utf8").digest("hex")}\`;
+}
+
+function timestampNow() {
+  const epochMs = Date.now();
+  return Object.freeze({
+    epochMs,
+    iso: new Date(epochMs).toISOString()
+  });
+}
+
+function timingRecord(started) {
+  const ended = timestampNow();
+  return Object.freeze({
+    startedAtEpochMs: started.epochMs,
+    startedAt: started.iso,
+    endedAtEpochMs: ended.epochMs,
+    endedAt: ended.iso,
+    durationMs: ended.epochMs - started.epochMs
+  });
+}
+
+async function measuredStep(label, operation) {
+  const started = timestampNow();
+  const value = await operation();
+  return Object.freeze({
+    label,
+    timing: timingRecord(started),
+    value
+  });
+}
+
+function parseTraceEvents(text) {
+  return text
+    .split(/\\r?\\n/u)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => JSON.parse(line));
+}
+
+function traceTiming(events) {
+  if (events.length === 0) {
+    return null;
+  }
+  const first = events[0];
+  const last = events[events.length - 1];
+  const firstMs = Date.parse(first.createdAt);
+  const lastMs = Date.parse(last.createdAt);
+  if (!Number.isFinite(firstMs) || !Number.isFinite(lastMs)) {
+    return null;
+  }
+  return Object.freeze({
+    startedAtEpochMs: firstMs,
+    startedAt: first.createdAt,
+    endedAtEpochMs: lastMs,
+    endedAt: last.createdAt,
+    durationMs: Math.max(0, lastMs - firstMs)
+  });
+}
+
+async function workerTraceTiming(transport) {
+  const eventsPath = transport.tracePaths?.events;
+  if (typeof eventsPath !== "string") {
+    return null;
+  }
+  const events = parseTraceEvents(await readFile(eventsPath, "utf8"));
+  return Object.freeze({
+    source: "abg_traced_process_events",
+    eventsPath,
+    eventCount: events.length,
+    eventKinds: Object.freeze(events.map((event) => event.kind)),
+    timing: traceTiming(events)
+  });
 }
 
 function assetSurface(input) {
@@ -439,54 +1225,6 @@ const evidenceType = nodeType({
   }
 });
 
-const lifecycleContext = admittedNode({
-  name: "GlcSoftwareBuildContext",
-  schemaRef: "schema://odd_glc/software-build/lifecycle-context",
-  typeRef: TYPE_REFS.context,
-  markov: ["contextualized"],
-  assetSurface: {
-    kind: "lifecycle_context",
-    requiredContexts: ["context://odd_glc/software-build"],
-    outputContractRefs: ["contract://odd_glc/lifecycle-context"],
-    proofObligationRefs: ["proof://odd_glc/software-build/context"]
-  },
-  tags: ["source"]
-});
-
-const artifactShape = artifactNodeShape();
-
-const generatedArtifact = admittedNode({
-  name: "GeneratedSoftwareBuildArtifact",
-  schemaRef: artifactShape.schemaRef,
-  typeRef: TYPE_REFS.artifact,
-  markov: artifactShape.markov,
-  assetSurface: artifactShape.assetSurface,
-  tags: ["artifact-output", SCENARIO.kind]
-});
-
-const runnableArtifact = admittedNode({
-  name: "RunnableSoftwareBuildArtifact",
-  schemaRef: artifactShape.schemaRef,
-  typeRef: TYPE_REFS.artifact,
-  markov: artifactShape.markov,
-  assetSurface: artifactShape.assetSurface,
-  tags: ["artifact-input", SCENARIO.kind]
-});
-
-const evidenceView = admittedNode({
-  name: "SoftwareBuildExecutionEvidenceView",
-  schemaRef: "schema://odd_glc/software-build/evidence-binding",
-  typeRef: TYPE_REFS.evidence,
-  markov: ["projected"],
-  assetSurface: {
-    kind: "evidence_binding_view",
-    requiredContexts: ["context://odd_glc/software-build"],
-    outputContractRefs: ["contract://odd_glc/evidence-binding"],
-    proofObligationRefs: ["proof://odd_glc/software-build/evidence"]
-  },
-  tags: ["evidence-output", SCENARIO.kind]
-});
-
 const nodeTypeGraphFunctions = Object.freeze([
   ...new Map([
     contextType,
@@ -497,12 +1235,93 @@ const nodeTypeGraphFunctions = Object.freeze([
   ].filter(Boolean).map((graphFunction) => [graphFunction.id, graphFunction])).values()
 ]);
 
-for (const [node, typeRef] of [
-  [lifecycleContext, TYPE_REFS.context],
-  [generatedArtifact, TYPE_REFS.artifact],
-  [runnableArtifact, TYPE_REFS.artifact],
-  [evidenceView, TYPE_REFS.evidence]
-]) {
+const declaredStageNodeTypes = Object.freeze([
+  ...ODD_GLC_LIFECYCLE_NODE_TYPES,
+  ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
+  ...ODD_GLC_DATA_MAPPING_NODE_TYPES
+]);
+
+function shapeForTypeRef(typeRef) {
+  if (typeRef === TYPE_REFS.context) {
+    return Object.freeze({
+      schemaRef: "schema://odd_glc/software-build/lifecycle-context",
+      markov: ["contextualized"],
+      assetSurface: {
+        kind: "lifecycle_context",
+        requiredContexts: ["context://odd_glc/software-build"],
+        outputContractRefs: ["contract://odd_glc/lifecycle-context"],
+        proofObligationRefs: ["proof://odd_glc/software-build/context"]
+      }
+    });
+  }
+  if (typeRef === TYPE_REFS.lifecycleArtifact) {
+    return Object.freeze({
+      schemaRef: "schema://odd_glc/software-build/lifecycle-artifact",
+      markov: ["materialized"],
+      assetSurface: {
+        kind: "target_artifact",
+        requiredContexts: ["context://odd_glc/software-build"],
+        outputContractRefs: ["contract://odd_glc/lifecycle-artifact"],
+        proofObligationRefs: ["proof://odd_glc/software-build/artifact"]
+      }
+    });
+  }
+  if (typeRef === TYPE_REFS.evidence) {
+    return Object.freeze({
+      schemaRef: "schema://odd_glc/software-build/evidence-binding",
+      markov: ["projected"],
+      assetSurface: {
+        kind: "evidence_binding_view",
+        requiredContexts: ["context://odd_glc/software-build"],
+        outputContractRefs: ["contract://odd_glc/evidence-binding"],
+        proofObligationRefs: ["proof://odd_glc/software-build/evidence"]
+      }
+    });
+  }
+  if (typeRef === "odd_glc.type.software.data_mapping_implementation_bundle") {
+    return artifactNodeShape();
+  }
+  const declared = declaredStageNodeTypes.find((entry) => entry.typeRef === typeRef);
+  if (declared !== undefined) {
+    return Object.freeze({
+      schemaRef: "schema://odd_glc/software-build/lifecycle-asset",
+      markov: declared.markov,
+      assetSurface: {
+        kind: "lifecycle_asset",
+        requiredContexts: ["context://odd_glc/software-build"],
+        outputContractRefs: [
+          \`contract://\${typeRef}\`,
+          \`contract://odd_glc/\${declared.assetKind ?? "lifecycle_asset"}\`
+        ],
+        proofObligationRefs: ["proof://odd_glc/software-build/node-type"]
+      }
+    });
+  }
+  throw new Error(\`No odd_glc node shape declared for \${typeRef}\`);
+}
+
+function admittedNodeForStage(typeRef, name, tags) {
+  const shape = shapeForTypeRef(typeRef);
+  return admittedNode({
+    name,
+    schemaRef: shape.schemaRef,
+    typeRef,
+    markov: shape.markov,
+    assetSurface: shape.assetSurface,
+    tags
+  });
+}
+
+const stageRows = Object.freeze(STAGE_PLAN.map((stage, index) => {
+  const source = admittedNodeForStage(stage.sourceTypeRef, stage.sourceName, ["stage-source", stage.stage]);
+  const target = admittedNodeForStage(stage.targetTypeRef, stage.targetName, ["stage-target", stage.stage]);
+  return Object.freeze({ ...stage, index, source, target });
+}));
+
+for (const [node, typeRef] of stageRows.flatMap((stage) => [
+  [stage.source, stage.sourceTypeRef],
+  [stage.target, stage.targetTypeRef]
+])) {
   const satisfaction = satisfiesNodeType({
     node,
     typeRef,
@@ -533,47 +1352,38 @@ function vector(source, target, id, name) {
   }).vectors[0];
 }
 
-const materializeArtifact = graphFunctionForVector(
-  vector(
-    lifecycleContext,
-    generatedArtifact,
-    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs[0],
-    "software_build_bootstrap_to_artifact"
-  ),
-  {
-    id: "graph-function://odd_glc/software-build/internal/materialize-artifact",
-    name: "odd_glc.software_build.materialize_artifact",
-    tags: ["odd_glc", "software-build", SCENARIO.key]
-  }
-);
+const stageGraphFunctions = Object.freeze(stageRows.map((stage) =>
+  graphFunctionForVector(
+    vector(
+      stage.source,
+      stage.target,
+      stage.vectorId,
+      \`software_build_\${stage.stage}\`
+    ),
+    {
+      id: \`graph-function://odd_glc/software-build/internal/\${SCENARIO.key}/\${stage.stage}\`,
+      name: \`odd_glc.software_build.\${stage.stage}\`,
+      tags: ["odd_glc", "software-build", SCENARIO.key, stage.stage]
+    }
+  )
+));
 
-const proveArtifact = graphFunctionForVector(
-  vector(
-    runnableArtifact,
-    evidenceView,
-    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs[2],
-    "software_build_artifact_to_evidence"
+const composedSoftwareBuild = stageGraphFunctions.slice(1).reduce((composed, graphFunction, index) =>
+  composeWithTypeWiring(
+    composed,
+    graphFunction,
+    {
+      nodeTypeGraphFunctions,
+      wiring: [
+        {
+          providedNodeName: stageRows[index].targetName,
+          requiredNodeName: stageRows[index + 1].sourceName,
+          typeRef: stageRows[index + 1].sourceTypeRef
+        }
+      ]
+    }
   ),
-  {
-    id: "graph-function://odd_glc/software-build/internal/prove-artifact",
-    name: "odd_glc.software_build.prove_artifact",
-    tags: ["odd_glc", "software-build", SCENARIO.key]
-  }
-);
-
-const composedSoftwareBuild = composeWithTypeWiring(
-  materializeArtifact,
-  proveArtifact,
-  {
-    nodeTypeGraphFunctions,
-    wiring: [
-      {
-        providedNodeName: "GeneratedSoftwareBuildArtifact",
-        requiredNodeName: "RunnableSoftwareBuildArtifact",
-        typeRef: TYPE_REFS.artifact
-      }
-    ]
-  }
+  stageGraphFunctions[0]
 );
 
 const softwareBuildBootstrap = constructGraphFunction({
@@ -627,9 +1437,9 @@ function nodeTypeDeclaration(input) {
     contextRefs: ["context://odd_glc/software-build"],
     authorityRefs: ["authority://gtl/typecheck"],
     overlayRefs: uniq([OVERLAY_REF, ...(input.overlayRefs ?? [input.slotRef])]),
-    provenanceRefs: ["provenance://abiogenesis/4.2.0-rc.1"],
+    provenanceRefs: [ABI_PROVENANCE_REF],
     readinessRefs: ["readiness://odd_glc/software-build/node-type-declared"],
-    proofRefs: ["proof.negative_boundary"],
+    proofRefs: ["proof://odd_glc/negative-boundary"],
     policyRefs: ["policy://odd_glc/typecheck-only"],
     declarationSourceRefs: [GRAPH_REF]
   });
@@ -652,10 +1462,10 @@ function metadataForNodeType(graphFunction) {
   const overlayRefs = Array.isArray(declared?.overlayRefs) && declared.overlayRefs.length > 0
     ? declared.overlayRefs
     : typeRef === TYPE_REFS.context
-      ? ["surface.lifecycle_context"]
+      ? [OVERLAY_REF, "software-build.role.scenario_surface"]
       : typeRef === TYPE_REFS.evidence
-        ? ["surface.evidence_binding"]
-        : ["surface.target_artifact"];
+        ? [OVERLAY_REF, "software-build.role.test_execution"]
+        : [OVERLAY_REF, "software-build.role.generated_artifact"];
   const assetKind = typeof declared?.assetKind === "string"
     ? declared.assetKind
     : typeRef === TYPE_REFS.evidence
@@ -698,7 +1508,7 @@ const productDeclarations = Object.freeze([
     contextRefs: ["context://odd_glc/software-build"],
     authorityRefs: ["authority://abg/runtime"],
     overlayRefs: bootstrapBinding.overlayRefs,
-    provenanceRefs: ["provenance://abiogenesis/4.2.0-rc.1"],
+    provenanceRefs: [ABI_PROVENANCE_REF],
     readinessRefs: bootstrapBinding.readinessRefs,
     proofRefs: bootstrapBinding.proofRefs,
     policyRefs: bootstrapBinding.policyRefs,
@@ -728,19 +1538,65 @@ const runtimeRegistryStartup = Object.freeze({
 
 function extractJsonObject(text) {
   const trimmed = text.trim();
-  const fenced = trimmed.match(new RegExp("\`\`\`(?:json)?\\\\s*([\\\\s\\\\S]*?)\\\\s*\`\`\`", "iu"));
-  const candidate = fenced?.[1] ?? trimmed;
-  const start = candidate.indexOf("{");
-  const end = candidate.lastIndexOf("}");
-  if (start < 0 || end <= start) {
+  const start = trimmed.indexOf("{");
+  if (start < 0) {
     throw new Error(\`GLC live worker did not return JSON: \${text}\`);
   }
-  return JSON.parse(candidate.slice(start, end + 1));
+  let depth = 0;
+  let inString = false;
+  let escaping = false;
+  for (let index = start; index < trimmed.length; index += 1) {
+    const char = trimmed[index];
+    if (inString) {
+      if (escaping) {
+        escaping = false;
+      } else if (char === "\\\\") {
+        escaping = true;
+      } else if (char === "\\\"") {
+        inString = false;
+      }
+      continue;
+    }
+    if (char === "\\\"") {
+      inString = true;
+      continue;
+    }
+    if (char === "{") {
+      depth += 1;
+    } else if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return JSON.parse(trimmed.slice(start, index + 1));
+      }
+    }
+  }
+  throw new Error(\`GLC live worker returned unterminated JSON: \${text}\`);
 }
 
 async function writeText(filePath, content) {
   await mkdir(path.dirname(filePath), { recursive: true });
   await writeFile(filePath, content, "utf8");
+}
+
+function truncateForPrompt(text, maxChars = 2400) {
+  return text.length <= maxChars
+    ? text
+    : text.slice(0, maxChars) + "\\n...[truncated]";
+}
+
+async function summarizeMaterializedFiles(workspaceRoot, filePaths) {
+  const summaries = [];
+  for (const filePath of filePaths) {
+    const content = await readFile(filePath, "utf8");
+    summaries.push(Object.freeze({
+      path: path.relative(workspaceRoot, filePath),
+      sha256: sha256Text(content),
+      byteLength: Buffer.byteLength(content, "utf8"),
+      lineCount: content.length === 0 ? 0 : content.split("\\n").length,
+      contentPreview: truncateForPrompt(content)
+    }));
+  }
+  return Object.freeze(summaries);
 }
 
 function runSync(command, args, cwd) {
@@ -773,11 +1629,146 @@ function runAsync(command, args, cwd) {
   });
 }
 
+function nodeTestPassCount(stdout) {
+  const match = stdout.match(/(?:^|\\n)\\u2139 pass (\\d+)(?:\\n|$)/u);
+  if (match === null) {
+    return null;
+  }
+  return Number.parseInt(match[1], 10);
+}
+
+async function expectedPassCountFromExecutionPlan(workspaceRoot, fallback) {
+  const planPath = path.join(workspaceRoot, "test-execution-plan.json");
+  try {
+    const plan = JSON.parse(await readFile(planPath, "utf8"));
+    if (Number.isInteger(plan.expectedTestPassCount) && plan.expectedTestPassCount >= 0) {
+      return plan.expectedTestPassCount;
+    }
+  } catch (error) {
+    if (error.code !== "ENOENT") {
+      throw error;
+    }
+  }
+  return fallback;
+}
+
+async function executionPlanFor(workspaceRoot) {
+  try {
+    return JSON.parse(await readFile(path.join(workspaceRoot, "test-execution-plan.json"), "utf8"));
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return null;
+    }
+    throw error;
+  }
+}
+
+function commandFromPlan(command) {
+  if (command === "node") {
+    return process.execPath;
+  }
+  return command;
+}
+
+async function executePlannedScenario(workspaceRoot) {
+  const plan = await executionPlanFor(workspaceRoot);
+  if (plan === null || typeof plan !== "object") {
+    throw new Error("Missing test-execution-plan.json for planned scenario execution");
+  }
+  if (typeof plan.command !== "string" || !Array.isArray(plan.args)) {
+    throw new Error("Malformed execution plan command: " + JSON.stringify(plan));
+  }
+  const cwd = typeof plan.cwd === "string" && plan.cwd.length > 0
+    ? path.resolve(workspaceRoot, plan.cwd)
+    : workspaceRoot;
+  if (cwd !== workspaceRoot && !cwd.startsWith(workspaceRoot + path.sep)) {
+    throw new Error("Execution plan cwd escapes workspace: " + plan.cwd);
+  }
+  const result = runSync(commandFromPlan(plan.command), plan.args, cwd);
+  const observedPassCount = nodeTestPassCount(result.stdout);
+  if (!Number.isInteger(plan.expectedTestPassCount) || plan.expectedTestPassCount < 0) {
+    throw new Error("Execution plan must declare a non-negative integer expectedTestPassCount: " + JSON.stringify(plan));
+  }
+  const expectedPassCount = plan.expectedTestPassCount;
+  const expectedStdout = typeof plan.expectedStdout === "string"
+    ? plan.expectedStdout
+    : null;
+  const expectedStdoutMatch = Array.isArray(plan.expectedStdoutMatch)
+    ? plan.expectedStdoutMatch
+    : [];
+  const passCountSatisfied = observedPassCount === expectedPassCount;
+  const stdoutSatisfied = expectedStdout === null || result.stdout === expectedStdout;
+  const stdoutMatchSatisfied = expectedStdoutMatch.every((fragment) =>
+    typeof fragment === "string" && result.stdout.includes(fragment)
+  );
+  if (result.status !== 0 || !passCountSatisfied || !stdoutSatisfied || !stdoutMatchSatisfied) {
+    throw new Error("planned scenario execution failed: " + JSON.stringify({
+      plan,
+      result,
+      observedPassCount,
+      passCountSatisfied,
+      stdoutSatisfied,
+      stdoutMatchSatisfied
+    }));
+  }
+  return Object.freeze({
+    kind: SCENARIO.kind,
+    stdout: expectedStdout ?? result.stdout,
+    commands: [result],
+    planSatisfied: true,
+    expectedTestPassCount: expectedPassCount,
+    observedTestPassCount: observedPassCount,
+    expectedStdoutMatch: Object.freeze(expectedStdoutMatch),
+    assertedReturnValue: plan.assertedReturnValue ?? EXPECTED_ASSERTED_RETURN_VALUE
+  });
+}
+
 async function materializeScenario(workspaceRoot) {
   for (const [relativePath, contents] of SCENARIO.files) {
     await writeText(path.join(workspaceRoot, relativePath), contents);
   }
   return Object.freeze(SCENARIO.files.map(([relativePath]) => path.join(workspaceRoot, relativePath)));
+}
+
+async function materializeAssessmentFiles(workspaceRoot, stageSpec, assessment) {
+  if (!Array.isArray(stageSpec.filesToProduce) || stageSpec.filesToProduce.length === 0) {
+    return Object.freeze([]);
+  }
+  if (!Array.isArray(assessment.files)) {
+    throw new Error(\`GLC live worker did not return files for stage \${stageSpec.stage}\`);
+  }
+  const allowed = new Set(stageSpec.filesToProduce);
+  const seen = new Set();
+  const written = [];
+  for (const file of assessment.files) {
+    const content = Array.isArray(file?.contentLines)
+      ? file.contentLines.join("\\n") + "\\n"
+      : file?.content;
+    if (
+      file === null ||
+      typeof file !== "object" ||
+      typeof file.path !== "string" ||
+      typeof content !== "string"
+    ) {
+      throw new Error(\`Malformed file payload for stage \${stageSpec.stage}: \${JSON.stringify(file)}\`);
+    }
+    if (!allowed.has(file.path)) {
+      throw new Error(\`Unexpected file path for stage \${stageSpec.stage}: \${file.path}\`);
+    }
+    seen.add(file.path);
+    const absolutePath = path.resolve(workspaceRoot, file.path);
+    if (absolutePath !== workspaceRoot && !absolutePath.startsWith(\`\${workspaceRoot}\${path.sep}\`)) {
+      throw new Error(\`Refusing to write outside workspace: \${file.path}\`);
+    }
+    await writeText(absolutePath, content);
+    written.push(absolutePath);
+  }
+  for (const required of allowed) {
+    if (!seen.has(required)) {
+      throw new Error(\`Missing required file for stage \${stageSpec.stage}: \${required}\`);
+    }
+  }
+  return Object.freeze(written);
 }
 
 async function waitForPortFile(portPath, timeoutMs) {
@@ -799,6 +1790,9 @@ async function waitForPortFile(portPath, timeoutMs) {
 }
 
 async function executeScenario(workspaceRoot) {
+  if (SCENARIO.executeFromPlan === true) {
+    return executePlannedScenario(workspaceRoot);
+  }
   if (SCENARIO.kind === "node_cli") {
     const result = runSync(process.execPath, ["generated/hello-world.mjs"], workspaceRoot);
     if (result.status !== 0 || result.stdout !== "Hello, world!\\n") {
@@ -808,10 +1802,34 @@ async function executeScenario(workspaceRoot) {
   }
   if (SCENARIO.kind === "node_test") {
     const result = runSync(process.execPath, ["--test", "test/hello.test.mjs"], workspaceRoot);
-    if (result.status !== 0 || !result.stdout.includes("pass 1")) {
+    if (result.status !== 0 || nodeTestPassCount(result.stdout) !== 1) {
       throw new Error(\`node_test failed: \${JSON.stringify(result)}\`);
     }
     return Object.freeze({ kind: SCENARIO.kind, stdout: "Hello, world!\\n", commands: [result] });
+  }
+  if (SCENARIO.kind === "framework_smoke_min_fp_node_test" || SCENARIO.kind === "sdlc_js_full_node_test") {
+    const args = SCENARIO.kind === "sdlc_js_full_node_test"
+      ? ["--test", "test/component/hello.test.mjs", "test/uat/hello.uat.test.mjs"]
+      : ["--test", "test/hello.test.mjs"];
+    const result = runSync(process.execPath, args, workspaceRoot);
+    const plan = await executionPlanFor(workspaceRoot);
+    const expectedPassCount = Number.isInteger(plan?.expectedTestPassCount)
+      ? plan.expectedTestPassCount
+      : await expectedPassCountFromExecutionPlan(workspaceRoot, SCENARIO.kind === "sdlc_js_full_node_test" ? 2 : 1);
+    const observedPassCount = nodeTestPassCount(result.stdout);
+    if (result.status !== 0 || observedPassCount !== expectedPassCount) {
+      throw new Error(\`\${SCENARIO.kind} failed: \${JSON.stringify(result)}\`);
+    }
+    return Object.freeze({
+      kind: SCENARIO.kind,
+      stdout: result.stdout,
+      commands: [result],
+      planSatisfied: true,
+      expectedTestPassCount: expectedPassCount,
+      observedTestPassCount: observedPassCount,
+      expectedStdoutMatch: Object.freeze(plan?.expectedStdoutMatch ?? []),
+      assertedReturnValue: plan?.assertedReturnValue ?? EXPECTED_ASSERTED_RETURN_VALUE
+    });
   }
   if (SCENARIO.kind === "rust_cli") {
     const result = runSync("cargo", ["run", "--quiet"], workspaceRoot);
@@ -871,14 +1889,15 @@ async function executeScenario(workspaceRoot) {
   }
   if (SCENARIO.kind === "data_mapper_lite_node_test") {
     const result = runSync(process.execPath, ["--test", "test/logical-data-model.test.mjs"], workspaceRoot);
-    if (result.status !== 0 || !result.stdout.includes("pass 3")) {
+    const observedPassCount = nodeTestPassCount(result.stdout);
+    if (result.status !== 0 || observedPassCount !== 3) {
       throw new Error(\`data_mapper_lite_node_test failed: \${JSON.stringify(result)}\`);
     }
     return Object.freeze({
       kind: SCENARIO.kind,
       stdout: EXPECTED_STDOUT,
       commands: [result],
-      observedTestPassCount: 3
+      observedTestPassCount: observedPassCount
     });
   }
   throw new Error(\`Unknown scenario kind \${SCENARIO.kind}\`);
@@ -890,50 +1909,135 @@ function evidenceSummaryFor(input) {
     materializedFileCount: input.materializedFiles.length,
     materializedFiles: input.materializedFiles.map((filePath) => path.relative(input.workspaceRoot, filePath)),
     executionStatus: input.execution === null ? null : input.execution.commands.map((command) => command.status),
+    planSatisfied: input.execution?.planSatisfied ?? null,
+    expectedTestPassCount: input.execution?.expectedTestPassCount ?? null,
     observedStdoutSha256: input.execution === null ? null : sha256Text(input.execution.stdout),
     observedStdoutPreview: input.execution === null ? null : input.execution.stdout.slice(0, 120),
     clientStatus: input.execution?.clientRequest?.status ?? null,
-    observedTestPassCount: input.execution?.observedTestPassCount ?? null
+    observedTestPassCount: input.execution?.observedTestPassCount ?? null,
+    assertedReturnValue: input.execution?.assertedReturnValue ?? null
   });
 }
 
-function promptFor(input, evidenceSummary) {
-  const stage = input.vectorIndex === 0 ? "materialize" : "prove";
+const STAGE_FILE_INSTRUCTIONS = Object.freeze({
+  implementation_design: Object.freeze([
+    "Write only design/implementation-design.md.",
+    "Define the minimal implementation decision without placeholders or illustrative substitutes.",
+    "The source surface path is exactly src/hello.mjs.",
+    "The source must export helloWorld() returning exactly \\"Hello, world!\\".",
+    "The test design surface path is exactly design/test-design.md.",
+    "The test source surface path is exactly test/hello.test.mjs.",
+    "The execution plan surface path is exactly test-execution-plan.json.",
+    "The execution result must prove stdout exactly \\"Hello, world!\\\\n\\" and zero failing tests.",
+    "Name those exact downstream source, test design, test source, execution plan, and execution result surfaces.",
+    "Do not materialize source, tests, package files, or execution plans in this vector."
+  ]),
+  source: Object.freeze([
+    "Write only package.json and src/hello.mjs.",
+    "Use the prior implementation_design artifact as the authority for what source to emit.",
+    "Do not substitute another module path, function name, or return constant.",
+    "package.json must be private:true and type:module.",
+    "src/hello.mjs must export helloWorld() returning exactly \\"Hello, world!\\"."
+  ]),
+  test_design: Object.freeze([
+    "Write only design/test-design.md.",
+    "Use the prior source artifact summaries as the evidence source.",
+    "Specify the exact observable contract the test source must check.",
+    "The observable contract must include the named export helloWorld and exact return value \\"Hello, world!\\".",
+    "Do not write test source in this vector."
+  ]),
+  test_source: Object.freeze([
+    "Write only test/hello.test.mjs.",
+    "Use the prior test_design and source artifact summaries as the evidence source.",
+    "Use node:test and node:assert/strict.",
+    "Assert helloWorld() returns exactly \\"Hello, world!\\"."
+  ]),
+  test_execution_plan: Object.freeze([
+    "Write only test-execution-plan.json.",
+    "Use the prior test_source artifact summary as the evidence source.",
+    "Include command, args, cwd, expectedStdout or expectedStdoutMatch, expectedTestPassCount, and assertedReturnValue.",
+    "expectedTestPassCount must equal the number of test() blocks in the admitted test source.",
+    "For node:test output, expectedStdoutMatch must use stable substrings such as pass N and fail 0, not TAP prefix symbols.",
+    "Do not execute the test in this vector."
+  ]),
+  test_execution_result: Object.freeze([
+    "Produce no files.",
+    "Judge the observed executionStatus, planSatisfied flag, observedTestPassCount, and stdout digest against the prior test_execution_plan.",
+    "Accept only if the command exited successfully, planSatisfied is true, and observedTestPassCount equals expectedTestPassCount.",
+    "Do not reject solely because node:test uses a different TAP prefix glyph when the F_D pass-count check is satisfied."
+  ])
+});
+
+function promptFor(input, evidenceSummary, priorStageArtifacts) {
+  const stageSpec = STAGE_PLAN[input.vectorIndex];
+  const expectedNodeTypes = stageSpec.requiredNodeTypes;
+  const allowedPaths = Object.freeze(stageSpec.filesToProduce ?? []);
+  const stageInstructions = Array.isArray(stageSpec.instructions)
+    ? Object.freeze(stageSpec.instructions)
+    : STAGE_FILE_INSTRUCTIONS[stageSpec.stage] ?? Object.freeze([]);
+  const fileInstructions = Array.isArray(stageSpec.filesToProduce) && stageSpec.filesToProduce.length > 0
+    ? [
+        "",
+        "This stage must produce files. Return them in files as path/contentLines objects.",
+        \`Allowed paths: \${allowedPaths.join(", ")}.\`,
+        "Do not write outside those paths.",
+        "Do not put raw multi-line text in a JSON string. Use contentLines: string[] for every file.",
+        "Do not include markdown code fences inside contentLines."
+      ]
+    : [
+        "",
+        "This stage must not produce files. Omit files or return an empty files array."
+      ];
+  const priorStageText = priorStageArtifacts.length === 0
+    ? "[]"
+    : JSON.stringify(priorStageArtifacts, null, 2);
   return [
     "Return only one JSON object. Do not include markdown or commentary.",
-    "You are the live F_P worker for an odd_glc software-build lifecycle traversal.",
+    "You are the F_P worker for an odd_glc software-build lifecycle traversal.",
     "ABG owns registry startup, graph-function selection, graph-call opening, traversal events, and closure.",
     "odd_glc supplies GTL declaration data: the reusable software-build overlay graph and startup binding.",
     "",
     \`Scenario: \${SCENARIO.scenarioId}\`,
     \`Scenario kind: \${SCENARIO.kind}\`,
-    \`Stage: \${stage}\`,
+    \`Stage: \${stageSpec.stage}\`,
     \`Overlay ref: \${OVERLAY_REF}\`,
     \`Graph ref: \${GRAPH_REF}\`,
     \`Selected graph function ref: \${GRAPH_FUNCTION_REF}\`,
     \`Current edge: \${input.edge}\`,
     \`Vector index: \${input.vectorIndex}\`,
+    \`Expected runtime stdout: \${JSON.stringify(EXPECTED_STDOUT)}\`,
     "",
-    "Observed evidence generated before this judgment:",
+    "Typed edge contract:",
+    \`- sourceTypeRef: \${stageSpec.sourceTypeRef}\`,
+    \`- targetTypeRef: \${stageSpec.targetTypeRef}\`,
+    \`- vectorId: \${stageSpec.vectorId}\`,
+    \`- requiredNodeTypes: \${expectedNodeTypes.join(", ")}\`,
+    "",
+    "Observed current-edge evidence generated before this judgment:",
     JSON.stringify(evidenceSummary),
     "",
-    "Declared generic odd_glc node type refs:",
-    \`- lifecycle context: \${TYPE_REFS.context}\`,
-    \`- lifecycle artifact: \${TYPE_REFS.artifact}\`,
-    \`- evidence binding view: \${TYPE_REFS.evidence}\`,
+    "Prior stage artifacts admitted by earlier vectors:",
+    priorStageText,
+    "",
+    "Stage-specific instructions:",
+    ...stageInstructions.map((line) => \`- \${line}\`),
+    "",
+    typeof EXPECTED_STDOUT === "string"
+      ? \`Expected command stdout: \${JSON.stringify(EXPECTED_STDOUT)}\`
+      : \`Expected asserted return value: \${JSON.stringify(EXPECTED_ASSERTED_RETURN_VALUE)}\`,
     "",
     "Required JSON:",
     "{",
     "  \\"accepted\\": true,",
-    \`  \\"stage\\": \${JSON.stringify(stage)},\`,
+    \`  \\"stage\\": \${JSON.stringify(stageSpec.stage)},\`,
     "  \\"evidenceAccepted\\": true,",
     "  \\"nodeTypesUsed\\": string[],",
+    "  \\"files\\": [{ \\"path\\": string, \\"contentLines\\": string[] }],",
     "  \\"reason\\": string",
     "}",
     "",
-    input.vectorIndex === 0
-      ? \`nodeTypesUsed must include at least: \${EXPECTED_MATERIALIZE_NODE_TYPES.join(", ")}.\`
-      : \`nodeTypesUsed must include at least: \${EXPECTED_PROVE_NODE_TYPES.join(", ")}.\`,
+    \`nodeTypesUsed must include at least: \${expectedNodeTypes.join(", ")}.\`,
+    ...fileInstructions,
     "Do not claim to emit ABG events, select graph functions, open graph calls, or close traversal."
   ].join("\\n");
 }
@@ -956,34 +2060,51 @@ export const runtimeBinding = {
   runId: \`run://odd_glc/software-build/\${SCENARIO.key}\`,
   workKey: \`wk://odd_glc/software-build/\${SCENARIO.key}\`,
   createPlugins: ({ workspaceRoot }) => {
+    const priorStageArtifacts = [];
     const fpDispatch = Object.freeze({
       contract: defaultFpDispatchPlugin.contract,
       dispatch: async (pluginInput) => {
+        const dispatchStarted = timestampNow();
         const runRoot = path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", SCENARIO.key);
         await mkdir(runRoot, { recursive: true });
         const label = \`\${SCENARIO.key}-vector-\${pluginInput.vectorIndex}\`;
-        const expectedStage = pluginInput.vectorIndex === 0 ? "materialize" : "prove";
-        const expectedNodeTypes = pluginInput.vectorIndex === 0
-          ? EXPECTED_MATERIALIZE_NODE_TYPES
-          : EXPECTED_PROVE_NODE_TYPES;
-        const materializedFiles = pluginInput.vectorIndex === 0
-          ? await materializeScenario(workspaceRoot)
-          : Object.freeze(SCENARIO.files.map(([relativePath]) => path.join(workspaceRoot, relativePath)));
-        const execution = pluginInput.vectorIndex === 0
-          ? null
-          : await executeScenario(workspaceRoot);
+        const stageSpec = STAGE_PLAN[pluginInput.vectorIndex];
+        if (stageSpec === undefined) {
+          throw new Error(\`No stage plan entry for vector index \${pluginInput.vectorIndex}\`);
+        }
+        const expectedStage = stageSpec.stage;
+        const expectedNodeTypes = stageSpec.requiredNodeTypes;
+        let materializedFiles = Object.freeze([]);
+        let execution = null;
+        let deterministicMaterializeTiming = null;
+        let subjectExecutionTiming = null;
+        let assessmentMaterializeTiming = null;
+        if (stageSpec.deterministicMaterialize === true) {
+          const measured = await measuredStep("deterministic_materialize", () => materializeScenario(workspaceRoot));
+          materializedFiles = measured.value;
+          deterministicMaterializeTiming = measured.timing;
+        }
+        if (stageSpec.executeBeforeAssessment === true) {
+          materializedFiles = Object.freeze((SCENARIO.files ?? []).map(([relativePath]) => path.join(workspaceRoot, relativePath)));
+          const measured = await measuredStep("subject_execution", () => executeScenario(workspaceRoot));
+          execution = measured.value;
+          subjectExecutionTiming = measured.timing;
+        }
         const evidenceSummary = evidenceSummaryFor({
           expectedStage,
           execution,
           materializedFiles,
           workspaceRoot
         });
+        const executorProfile = process.env.ABG_TS_AGENT_EXECUTOR_PROFILE ?? "local-spawn";
         const transport = await runAgentTransport({
           contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "claude"),
-          prompt: promptFor(pluginInput, evidenceSummary),
+          prompt: promptFor(pluginInput, evidenceSummary, Object.freeze([...priorStageArtifacts])),
           cwd: workspaceRoot,
           archiveRoot: runRoot,
           label,
+          executorProfile,
+          ...(executorProfile === "pty-terminal" ? { terminalSessionKey: label } : {}),
           timeoutMs: Number.parseInt(process.env.ABG_TS_LIVE_TIMEOUT_MS ?? "240000", 10),
           outputPath: path.join(runRoot, \`\${label}-output.txt\`),
           promptPath: path.join(runRoot, \`\${label}-prompt.txt\`),
@@ -992,6 +2113,9 @@ export const runtimeBinding = {
         });
         if (transport.status !== 0) {
           throw new Error(\`GLC software-build live worker failed: \${transport.stderr}\`);
+        }
+        if (executorProfile === "pty-terminal" && transport.terminalSessionId === null) {
+          throw new Error("pty-terminal live proof must record a terminalSessionId");
         }
         const assessment = extractJsonObject(transport.text);
         if (
@@ -1003,9 +2127,22 @@ export const runtimeBinding = {
         ) {
           throw new Error(\`GLC software-build live worker returned invalid assessment: \${JSON.stringify(assessment)}\`);
         }
+        if (stageSpec.deterministicMaterialize !== true) {
+          const measured = await measuredStep("assessment_materialize", () =>
+            materializeAssessmentFiles(workspaceRoot, stageSpec, assessment)
+          );
+          materializedFiles = measured.value;
+          assessmentMaterializeTiming = measured.timing;
+        }
+        const summaryMeasured = await measuredStep("summarize_materialized_files", () =>
+          summarizeMaterializedFiles(workspaceRoot, materializedFiles)
+        );
+        const materializedFileSummaries = summaryMeasured.value;
         const assessmentIds = pluginInput.expectedAssessmentIds.length > 0
           ? pluginInput.expectedAssessmentIds
           : [\`software_build_\${SCENARIO.key}_vector_\${pluginInput.vectorIndex}_fulfilled\`];
+        const traceTiming = await workerTraceTiming(transport);
+        const dispatchTiming = timingRecord(dispatchStarted);
         const artifact = Object.freeze({
           artifactKind: "odd_glc_software_build_overlay_live_artifact",
           scenarioId: SCENARIO.scenarioId,
@@ -1017,20 +2154,37 @@ export const runtimeBinding = {
           actor: process.env.ABG_TS_LIVE_AGENT ?? "claude",
           vectorIndex: pluginInput.vectorIndex,
           stage: expectedStage,
+          stagePlan: Object.freeze({
+            sourceTypeRef: stageSpec.sourceTypeRef,
+            targetTypeRef: stageSpec.targetTypeRef,
+            vectorId: stageSpec.vectorId,
+            filesToProduce: Object.freeze(stageSpec.filesToProduce ?? []),
+            executeBeforeAssessment: stageSpec.executeBeforeAssessment === true
+          }),
           assessment,
           evidenceSummary,
           materializedFiles,
+          materializedFileSummaries,
           execution,
+          timing: Object.freeze({
+            timingAuthority: "abg_called_fp_dispatch_plugin_result_artifact",
+            timingScope: "ABG selected this vector and invoked the F_P dispatch plugin. These timings describe the ABG-called dispatch side effects and worker trace, not odd_glc-owned traversal control.",
+            vectorIndex: pluginInput.vectorIndex,
+            stage: expectedStage,
+            dispatch: dispatchTiming,
+            deterministicMaterialize: deterministicMaterializeTiming,
+            subjectExecution: subjectExecutionTiming,
+            workerTrace: traceTiming,
+            assessmentMaterialize: assessmentMaterializeTiming,
+            materializedFileSummary: summaryMeasured.timing
+          }),
           stdout: execution?.stdout ?? null,
           fulfillment_assessments: assessmentIds.map((assessmentId) =>
             Object.freeze({
               id: assessmentId,
               evaluator: assessmentId,
               fulfillment_status: "fulfilled",
-              fulfillment_detail:
-                pluginInput.vectorIndex === 0
-                  ? "Live F_P worker accepted materialization of the software-build Hello World artifact under the reusable odd_glc overlay graph."
-                  : "Live F_P worker accepted execution proof for the software-build Hello World artifact under the reusable odd_glc overlay graph.",
+              fulfillment_detail: \`Live F_P worker accepted \${expectedStage} for the software-build Hello World traversal under the reusable odd_glc overlay graph.\`,
               blocking_reasons: [],
               evidence_refs: [
                 OVERLAY_REF,
@@ -1048,12 +2202,39 @@ export const runtimeBinding = {
           transport: Object.freeze({
             status: transport.status,
             command: transport.command,
+            executorProfile: transport.executorProfile,
+            terminalSessionId: transport.terminalSessionId,
             traceResultPath: transport.traceResultPath,
             outputPath: transport.outputPath,
             structuredEventCount: transport.structuredEventCount,
             apiRetryCount: transport.apiRetryCount
           })
         });
+        const artifactSha256 = sha256Text(JSON.stringify(artifact));
+        priorStageArtifacts.push(Object.freeze({
+          vectorIndex: pluginInput.vectorIndex,
+          stage: expectedStage,
+          edge: pluginInput.edge,
+          vectorId: stageSpec.vectorId,
+          targetTypeRef: stageSpec.targetTypeRef,
+          artifactSha256,
+          files: materializedFileSummaries,
+          execution: execution === null
+            ? null
+            : Object.freeze({
+                commandStatuses: execution.commands.map((command) => command.status),
+                stdoutSha256: sha256Text(execution.stdout),
+                stdoutPreview: execution.stdout.slice(0, 240),
+                clientStatus: execution.clientRequest?.status ?? null,
+                observedTestPassCount: execution.observedTestPassCount ?? null
+              }),
+          assessment: Object.freeze({
+            accepted: assessment.accepted,
+            evidenceAccepted: assessment.evidenceAccepted,
+            nodeTypesUsed: assessment.nodeTypesUsed,
+            reasonPreview: typeof assessment.reason === "string" ? truncateForPrompt(assessment.reason, 600) : null
+          })
+        }));
         await writeText(path.join(runRoot, \`\${label}-artifact.json\`), \`\${JSON.stringify(artifact, null, 2)}\\n\`);
         return constructFpDispatchOutcome({
           status: "dispatched",
@@ -1094,6 +2275,34 @@ async function runScenarioLive(scenario) {
   const workspaceRoot = path.join(runRoot, "instance");
   const toolchainRoot = path.join(runRoot, "toolchain");
   await mkdir(workspaceRoot, { recursive: true });
+  const requestedExecutorProfile = process.env.ABG_TS_AGENT_EXECUTOR_PROFILE ?? "local-spawn";
+  const sandboxIdentity = Object.freeze({
+    kind: "odd_glc_abg42_software_build_live_sandbox",
+    schemaVersion: "1",
+    proofClass: requestedExecutorProfile === "pty-terminal"
+      ? "live_terminal_abg_traversal_sandbox"
+      : "live_worker_local_spawn_abg_traversal_sandbox",
+    scenarioProofClass: scenario.proofClass,
+    scenarioId: scenario.scenarioId,
+    scenarioKind: scenario.kind,
+    substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate,
+    startupConfigRef: ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef,
+    overlayRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+    graphRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphRef,
+    graphFunctionRef: scenario.graphFunctionRef ?? ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget,
+    runRoot,
+    workspaceRoot,
+    toolchainRoot,
+    subjectWriteRoot: workspaceRoot,
+    requestedExecutorProfile,
+    terminalProofRequired: requestedExecutorProfile === "pty-terminal",
+    authorityRule: "ABG owns install, startup admission, registry projection, selection, graph-call opening, traversal, F_P invocation, event emission, and replay truth. odd_glc supplies declaration data and read interpretation only."
+  });
+  await writeText(path.join(runRoot, "sandbox-identity.json"), `${JSON.stringify(sandboxIdentity, null, 2)}\n`);
+  await writeText(
+    path.join(workspaceRoot, ".ai-workspace", "sandbox-identity.json"),
+    `${JSON.stringify(sandboxIdentity, null, 2)}\n`
+  );
   run(
     genesisCommand,
     [
@@ -1141,24 +2350,42 @@ async function runScenarioLive(scenario) {
   const startOutput = JSON.parse(start.stdout.trim());
   const events = parseJsonLines(await readFile(startOutput.events_path, "utf8"));
   const artifactRoot = path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", scenario.key);
-  const artifacts = [
-    await readJson(path.join(artifactRoot, `${scenario.key}-vector-0-artifact.json`)),
-    await readJson(path.join(artifactRoot, `${scenario.key}-vector-1-artifact.json`))
-  ];
+  const stageCount = Array.isArray(scenario.stagePlan) ? scenario.stagePlan.length : 2;
+  const artifacts = [];
+  for (let index = 0; index < stageCount; index += 1) {
+    artifacts.push(await readJson(path.join(artifactRoot, `${scenario.key}-vector-${index}-artifact.json`)));
+  }
+  const vectorTimingReport = traversalTimingReport(events, artifacts);
   const proof = {
     kind: "odd_glc_software_build_overlay_live_proof",
     scenarioId: scenario.scenarioId,
     scenarioKind: scenario.kind,
+    proofClass: scenario.proofClass,
     durationMs,
     substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate,
     startupConfigRef: ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef,
     overlayRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
     graphRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphRef,
-    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget,
+    graphFunctionRef: scenario.graphFunctionRef ?? ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget,
+    sandboxIdentity,
     runtimeBindingPath,
     workspaceRoot,
     startOutput,
+    externalAbgStartInvocationCount: 1,
+    abgInvocationShape: "single installed genesis-ts start --until converged per scenario; ABG owns internal graph-call opening, vector traversal, F_P dispatch, event emission, closure, and convergence",
     eventLogSha256: sha256Text(await readFile(startOutput.events_path, "utf8")),
+    eventSequence: events.map((event, index) => Object.freeze({
+      index,
+      kind: event.kind,
+      edge: event.edge ?? null,
+      vectorIndex: event.vectorIndex ?? null,
+      graphFunctionRef: event.graphFunctionRef ?? null,
+      eventTime: event.eventTime ?? null,
+      eventTimeUnixMs: event.eventTimeUnixMs ?? null,
+      eventAdmissionOrdinal: event.eventAdmissionOrdinal ?? null
+    })),
+    vectorTimingAuthority: "ABG canonical runtime events provide traversal sequence, closure truth, eventTime, eventTimeUnixMs, and eventAdmissionOrdinal. Per-vector traversalDurationMs is computed from vector_traversal_planned.eventTimeUnixMs to vector_closed.eventTimeUnixMs. Dispatch and worker timings remain secondary ABG-called plugin trace details.",
+    vectorTimingReport,
     artifactSha256s: artifacts.map((artifact) => sha256Text(JSON.stringify(artifact)))
   };
   await writeText(
@@ -1171,12 +2398,13 @@ async function runScenarioLive(scenario) {
 for (const scenario of selectedScenarios()) {
   test(`runs ${scenario.scenarioId} through the odd_glc software-build GTL overlay graph`, async (t) => {
     if (!liveEnabled()) {
-      t.skip("set CODEX_LIVE_FP=1 or ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE=1 to run live LLM-backed GLC Hello Worlds");
+      t.skip("set CODEX_LIVE_FP=1 or ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE=1 to run live-worker GLC Hello Worlds; add ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal for live-terminal proof");
       return;
     }
     const result = await runScenarioLive(scenario);
+    const selectedGraphFunctionRef = scenario.graphFunctionRef ?? ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget;
     const graphFunctionEntry = ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.find((entry) =>
-      entry.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget
+      entry.graphFunctionRef === selectedGraphFunctionRef
     );
     assert.ok(graphFunctionEntry);
     const view = interpretStartupRegistryState({
@@ -1184,24 +2412,74 @@ for (const scenario of selectedScenarios()) {
       runtimeEvents: result.events,
       liveArtifacts: result.artifacts
     });
-    const expectedStdout = scenario.expectedStdout ?? "Hello, world!\n";
+    const expectedStdout = Object.hasOwn(scenario, "expectedStdout") ? scenario.expectedStdout : "Hello, world!\n";
+    const finalArtifact = result.artifacts[result.artifacts.length - 1];
+    const vectorClosedCount = result.events.filter((event) => event.kind === "vector_closed").length;
 
+    assert.equal(result.proof.sandboxIdentity.kind, "odd_glc_abg42_software_build_live_sandbox");
+    assert.equal(result.proof.sandboxIdentity.workspaceRoot, result.workspaceRoot);
+    assert.equal(existsSync(path.join(result.runRoot, "sandbox-identity.json")), true);
+    assert.equal(existsSync(path.join(result.workspaceRoot, ".ai-workspace", "sandbox-identity.json")), true);
     assert.equal(result.startOutput.command, "start");
     assert.equal(result.startOutput.stopped_by, "converged");
+    assert.equal(result.proof.externalAbgStartInvocationCount, 1);
+    assert.match(result.proof.abgInvocationShape, /single installed genesis-ts start --until converged/u);
     assert.equal(result.startOutput.event_kinds.includes("registry_entry_admitted"), true);
     assert.equal(result.startOutput.event_kinds.includes("graph_function_selected"), true);
     assert.equal(result.startOutput.event_kinds.includes("graph_call_opened"), true);
+    assert.match(result.proof.vectorTimingAuthority, /ABG canonical runtime events provide traversal sequence/u);
+    assert.equal(result.proof.vectorTimingReport.length, result.artifacts.length);
+    assert.equal(
+      result.proof.vectorTimingReport.every((row) =>
+        Number.isInteger(row.traversalDurationMs) &&
+          row.traversalDurationMs >= 0 &&
+        Number.isInteger(row.dispatchDurationMs) &&
+          row.dispatchDurationMs >= 0 &&
+          typeof row.workerTraceDurationMs === "number" &&
+          row.workerTraceDurationMs >= 0 &&
+          row.executorProfile === result.proof.sandboxIdentity.requestedExecutorProfile
+      ),
+      true
+    );
+    assert.equal(
+      result.artifacts.every((artifact) =>
+        artifact.timing.timingAuthority === "abg_called_fp_dispatch_plugin_result_artifact" &&
+          /not odd_glc-owned traversal control/u.test(artifact.timing.timingScope)
+      ),
+      true
+    );
     assert.equal(view.status, "accepted");
     assert.equal(view.value.readiness, "traversal_converged");
     assert.equal(view.value.graphFunctionEntryRefs.includes(graphFunctionEntry.entryRef), true);
-    assert.equal(view.value.selectedGraphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget), true);
+    assert.equal(view.value.selectedGraphFunctionRefs.includes(selectedGraphFunctionRef), true);
     assert.equal(view.value.selectedEntryKinds.includes("graph_function"), true);
     assert.equal(view.value.selectedEntryKinds.includes("node_type"), false);
-    assert.equal(view.value.stdoutValues.includes(expectedStdout), true);
-    assert.equal(result.artifacts[1].execution.stdout, expectedStdout);
-    assert.equal(result.artifacts[1].assessment.evidenceAccepted, true);
+    if (scenario.executeFromPlan !== true && typeof expectedStdout === "string") {
+      assert.equal(view.value.stdoutValues.includes(expectedStdout), true);
+      assert.equal(finalArtifact.execution.stdout, expectedStdout);
+    }
+    if (scenario.executeFromPlan === true) {
+      assert.equal(finalArtifact.execution.planSatisfied, true);
+      assert.equal(finalArtifact.execution.observedTestPassCount > 0, true);
+      assert.equal(view.value.stdoutValues.includes(finalArtifact.execution.stdout), true);
+    }
+    if (typeof scenario.expectedReturnValue === "string") {
+      assert.equal(finalArtifact.execution.assertedReturnValue, scenario.expectedReturnValue);
+      assert.equal(finalArtifact.execution.observedTestPassCount > 0, true);
+    }
+    assert.equal(finalArtifact.assessment.evidenceAccepted, true);
     assert.equal(result.artifacts.every((artifact) => artifact.overlayRef === ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef), true);
-    assert.equal(result.artifacts.every((artifact) => artifact.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget), true);
+    assert.equal(result.artifacts.every((artifact) => artifact.graphFunctionRef === selectedGraphFunctionRef), true);
+    assert.equal(vectorClosedCount, result.artifacts.length);
+    if (Array.isArray(scenario.requiredStageNames)) {
+      assert.deepEqual(result.artifacts.map((artifact) => artifact.stage), scenario.requiredStageNames);
+    }
+    if (typeof scenario.materializedSurfaceCount === "number") {
+      assert.equal(
+        result.artifacts.filter((artifact) => artifact.materializedFiles.length > 0).length,
+        scenario.materializedSurfaceCount
+      );
+    }
     assert.equal(
       result.events.findIndex((event) => event.kind === "graph_function_selected") <
         result.events.findIndex((event) => event.kind === "graph_call_opened"),

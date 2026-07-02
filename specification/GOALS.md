@@ -1,9 +1,9 @@
 # odd_glc Goals
 
 **Status**: Active
-**Date**: 2026-07-01
+**Date**: 2026-07-02
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.3/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
@@ -18,8 +18,17 @@ Parity means:
 `GTL/ABG substrate truth -> odd_glc generic lifecycle interpretation -> downstream/plugin specialization`
 
 It does not mean porting or reproducing `odd_sdlc` source code, `Sdlc*`
-carriers, phase flow, local ledgers, retry loops, closure registers,
-process shells, or controllers.
+carriers, local phase-flow controllers, local ledgers, retry loops, closure
+registers, process shells, or controllers. It may require reproducing a
+selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
+by ABG.
+
+ABIogenesis `4.2.0-rc.3` is the substrate under test for this wave. If the
+selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
+startup, registry, graph-call, vector traversal, evidence, and replay truth,
+then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
+the gap and block or reprice upstream; it shall not compensate with local
+truth, local shells, or a product-owned traversal controller.
 
 ## Active Plan
 
@@ -43,7 +52,7 @@ process shells, or controllers.
    - Lite, full, deep, resume, acceptance, restart, and migration data-mapper
      witnesses name coverage pressure and deletion targets.
    - Each witness row must identify artifact ownership: GTL declaration, ABG
-     runtime truth, odd_glc read interpretation, or sandbox/product output.
+     runtime truth, odd_glc read interpretation, or product/subject output.
    - No row may close by constructing local glc truth or copied SDLC truth.
 
 4. Prove bootstrap traversal before claiming parity.
@@ -54,11 +63,23 @@ process shells, or controllers.
    - odd_glc may interpret that truth; it may not select, call, emit, admit,
      fold, residualize, route, or invoke F_P.
 
-5. Reproduce the Hello World and data_mapper witnesses as glc proofs.
-   - Each proof gets its own sandbox/run root.
-   - Subject programs may execute in the sandbox as proof subjects.
+5. Reproduce the Hello World and data_mapper witnesses as glc graph-traversal
+   proofs.
+   - Closure-grade proofs get their own ABG startup/run root.
+   - Scenario-sandbox ports must create governed run roots, install
+     ABIogenesis RC3 into fresh workspaces, write sandbox identities, and bind
+     old witness pressure to the reusable `odd_glc` software-build overlay.
+   - Subject programs may execute as product subjects inside that run root.
    - Runtime truth must be ABG-emitted or digest-pinned ABG proof truth.
-   - Live tests mean a live F_P/LLM worker was called through ABG.
+   - The selected `odd_sdlc` witness graph traversal shape must be reproduced
+     as GTL graph vectors consumed by ABG. Matching the subject output with a
+     compressed materialize/prove diagnostic run is not compliance for a witness that
+     historically traversed design, source, test design, test source,
+     execution preparation, execution result, service/client, or fan-in stages.
+   - Live-worker evidence means ABG invoked a real F_P/LLM worker.
+   - Live-terminal evidence additionally requires `executorProfile:
+     pty-terminal`, a non-null `terminalSessionId`, and a preserved terminal
+     transcript. `local-spawn` live-worker runs are not live-terminal proofs.
 
 ## Active Tickets
 
@@ -89,8 +110,41 @@ Execution order:
    Current overlay refs have no equivalent published ABI 4.2 system entry.
    Bind to future ABG entries where generic functions appear; record upstream
    ABG gaps where a function should become generic system law.
-5. Add the first data_mapper-lite glc sandbox proof over ABG startup.
-6. Expand to full/deep/resume data_mapper witnesses only after the lite proof
+5. Rework the Hello World live rungs from diagnostic shortcuts into SDLC
+   graph-traversal parity.
+   - Current two-vector materialize/prove rungs are diagnostic only and not
+     compliance.
+   - The SDLC witness traversal is now represented by one reusable
+     software-build GTL graph overlay, one reusable SDLC graph-function ref,
+     and one reusable stage-plan declaration.
+   - Hello World rungs are bootstrap inputs over that shared graph, not
+     scenario-specific graph functions.
+   - Closure requires an ABG startup run selecting
+     `graph-function://odd_glc/software-build/sdlc-software-build` whose GTL
+     graph vectors reproduce the selected odd_sdlc stage coverage and handoff
+     order without copying SDLC runtime flow.
+   - The live runner separates `sdlc_graph_traversal_compliance` from
+     `diagnostic_smoke_not_compliance`. Diagnostic runs may find bugs but do
+     not count as compliance.
+   - The current compliance selector covers only the JavaScript SDLC bootstrap.
+     The remaining CLI, JS tenant/test, Rust CLI, Rust service, parallel JS,
+     and data-mapper scenarios remain open until each has a traversal shape
+     that matches its witness or exposes an ABI/GTL substrate gap.
+6. For any missing stage, classify the failure as an ABI substrate gap before
+   editing odd_glc code.
+   - Missing GTL graph/vector expressiveness, registry startup binding,
+     graph-function selection, F_P dispatch, event emission, evidence
+     admission, continuation, or replay truth belongs upstream in ABI/GTL.
+   - Missing domain content or policy data belongs in the downstream/plugin
+     seam.
+   - Missing read interpretation over admitted truth belongs in odd_glc.
+7. Add the first data_mapper-lite glc ABG startup proof using the same
+   live-terminal evidence bar when the ticket claims live-terminal behavior.
+8. Keep the old odd_sdlc Hello World sandbox witnesses as sandbox-port setup
+   checks over ABG RC3 install and odd_glc startup binding. These are not
+   traversal closure, live-worker proof, live-terminal proof, or parity by
+   themselves.
+9. Expand to full/deep/resume data_mapper witnesses only after the lite proof
    closes without boundary drift.
 
 ## Boundary
@@ -116,16 +170,16 @@ GTL/ABG owns:
 - evidence admission;
 - requirement fold, residual, disposition, and replay truth.
 
-The sandbox/product owns generated source, test, build, service, data, and
+The subject/product owns generated source, test, build, service, data, and
 execution-output artifacts. `odd_glc` may label and interpret those artifacts
 only after GTL/ABG admits or projects the relevant truth.
 
 ## Completed Checkpoint
 
 `T-001` through `T-024` and `T-028` are completed source work. They established
-the product boundary, ABIogenesis 4.2 substrate pin, lifecycle slot map, typed
-lifecycle node model, startup binding, first ABG 4.2 Hello World startup proof,
-and generic parity matrix.
+the product boundary, ABIogenesis 4.2 substrate pin, lifecycle program overlay,
+typed lifecycle node model, startup binding, first ABG 4.2 Hello World startup
+proof, and generic parity matrix.
 
 Those completed tickets remain trace records for what has been earned. This
 goals file names the current wave and is the active planning surface.

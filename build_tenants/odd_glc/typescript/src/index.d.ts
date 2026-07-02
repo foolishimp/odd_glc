@@ -70,11 +70,6 @@ export interface AbiogenesisSubstrateProvenance {
   readonly sourceDocuments: readonly string[];
 }
 
-export interface LifecycleSurfaceMap {
-  readonly kind: "odd_glc_lifecycle_surface_map";
-  readonly surfaces: Readonly<Record<string, string>>;
-}
-
 export interface PolicyOverlay {
   readonly kind: "odd_glc_policy_overlay";
   readonly id: string;
@@ -118,6 +113,17 @@ export interface OddGlcGraphFunctionBindingEntry {
   readonly reuseGate?: "bind_existing_abg_catalog_entry_when_equivalent_exists";
 }
 
+export interface OddGlcSoftwareBuildStagePlanEntry {
+  readonly stage: string;
+  readonly vectorId: string;
+  readonly sourceTypeRef: string;
+  readonly sourceName: string;
+  readonly targetTypeRef: string;
+  readonly targetName: string;
+  readonly requiredNodeTypes: readonly string[];
+  readonly executeBeforeAssessment?: boolean;
+}
+
 export interface OddGlcSoftwareBuildOverlay {
   readonly kind: "odd_glc_software_build_overlay_graph";
   readonly schemaVersion: "1";
@@ -130,7 +136,21 @@ export interface OddGlcSoftwareBuildOverlay {
   readonly graphVectorRefs: readonly string[];
   readonly publicStartTargets: readonly string[];
   readonly defaultStartTarget: string;
-  readonly slotRefs: readonly string[];
+  readonly roleRefs: readonly string[];
+  readonly policyRefs: readonly string[];
+  readonly pluginRefs: readonly string[];
+  readonly forbiddenAuthority: readonly string[];
+}
+
+export interface OddGlcLifecycleProgramOverlay {
+  readonly kind: "odd_glc_lifecycle_program_overlay_graph";
+  readonly schemaVersion: "1";
+  readonly overlayRef: string;
+  readonly graphRef: string;
+  readonly ownerRef: "product://odd_glc";
+  readonly scope: "generic_lifecycle_interpretation";
+  readonly rule: "gtl_overlay_graph_declaration_over_gtl_abg_truth";
+  readonly graphFunctionRefs: readonly string[];
   readonly roleRefs: readonly string[];
   readonly policyRefs: readonly string[];
   readonly pluginRefs: readonly string[];
@@ -207,43 +227,6 @@ export interface OddGlcStartupBinding {
   readonly configSourceRefs: readonly string[];
 }
 
-export type OverlayCatalogFamily =
-  | "lifecycle_surface"
-  | "policy_overlay"
-  | "read_model"
-  | "proof_binding"
-  | "specialization_seam";
-
-export interface OverlayCatalogEntry {
-  readonly entryId: string;
-  readonly family: OverlayCatalogFamily;
-  readonly surface?: string;
-  readonly gtlAbgTruth: string;
-  readonly overlayMeaning: string;
-}
-
-export interface OverlayCatalogFamilyRule {
-  readonly owner: string;
-  readonly allowedUse: string;
-  readonly forbiddenAuthority: readonly string[];
-  readonly extensionRule: string;
-}
-
-export interface OddGlcLifecycleSlotMap {
-  readonly kind: "odd_glc_lifecycle_interpretation_slot_map";
-  readonly schemaVersion: "1";
-  readonly catalogId: string;
-  readonly authority: {
-    readonly owner: "odd_glc";
-    readonly substrate: "gtl_abg";
-    readonly rule: "data_only_slot_map_over_admitted_gtl_abg_truth";
-  };
-  readonly families: readonly OverlayCatalogFamily[];
-  readonly familyRules: Readonly<Record<OverlayCatalogFamily, OverlayCatalogFamilyRule>>;
-  readonly entries: readonly OverlayCatalogEntry[];
-  readonly forbiddenAuthority: readonly string[];
-}
-
 export interface OddGlcLifecycleStateView {
   readonly kind: "odd_glc_lifecycle_state_view";
   readonly tenant: "build_tenants/odd_glc/typescript";
@@ -258,7 +241,6 @@ export interface OddGlcLifecycleStateView {
   readonly sourceEventRefs: readonly string[];
   readonly sourceProjectionRefs: readonly string[];
   readonly interpretedDispositions: readonly unknown[];
-  readonly surfaceMap: LifecycleSurfaceMap | null;
   readonly policyOverlayId: string | null;
   readonly abgReadModel: unknown;
 }
@@ -442,6 +424,10 @@ export declare const REQUIRED_GTL_NODE_TYPE_FACADE_FUNCTIONS: readonly string[];
 export declare const REQUIRED_GTL_REGISTRY_DECLARATION_FUNCTIONS: readonly string[];
 export declare const REQUIRED_GTL_DECLARATION_FACADE_SLOTS: Readonly<Record<string, readonly string[]>>;
 export declare const FORBIDDEN_ABG_STARTUP_AUTHORITIES: readonly string[];
+export declare const ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF: string;
+export declare const ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF: string;
+export declare const ODD_GLC_FP_SEMANTIC_POLICY_REF: string;
+export declare const ODD_GLC_FH_HUMAN_DECISION_POLICY_REF: string;
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];
 export declare const ODD_GLC_LIFECYCLE_NODE_TYPES: readonly OddGlcLifecycleNodeTypeEntry[];
 export declare const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES: readonly OddGlcLifecycleNodeTypeEntry[];
@@ -449,15 +435,17 @@ export declare const ODD_GLC_DATA_MAPPING_NODE_TYPES: readonly OddGlcLifecycleNo
 export declare const ODD_GLC_COMPOSED_LIFECYCLE_NODE_TYPES: readonly OddGlcComposedLifecycleNodeTypeEntry[];
 export declare const ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES: readonly OddGlcComposedLifecycleNodeTypeEntry[];
 export declare const ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS: readonly string[];
+export declare const ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF: string;
+export declare const ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN: readonly OddGlcSoftwareBuildStagePlanEntry[];
 export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS: readonly OddGlcHelloWorldBootstrapNodeTypeBindingEntry[];
 export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS: readonly OddGlcHelloWorldBootstrapGraphFunctionBindingEntry[];
 export declare const ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING: OddGlcHelloWorldBootstrapStartupBinding;
 export declare const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS: readonly OddGlcGraphFunctionBindingEntry[];
+export declare const ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY: OddGlcLifecycleProgramOverlay;
 export declare const ODD_GLC_SOFTWARE_BUILD_OVERLAY: OddGlcSoftwareBuildOverlay;
 export declare const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS: readonly OddGlcGraphFunctionBindingEntry[];
 export declare const ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING: OddGlcSoftwareBuildStartupBinding;
 export declare const ODD_GLC_STARTUP_BINDING: OddGlcStartupBinding;
-export declare const ODD_GLC_LIFECYCLE_SLOT_MAP: OddGlcLifecycleSlotMap;
 export declare const REQUIRED_EVIDENCE_EVENT_KINDS: readonly string[];
 export declare const ABIOGENESIS_SUBSTRATE_PROVENANCE: AbiogenesisSubstrateProvenance;
 
@@ -467,10 +455,6 @@ export declare function validateAbgRequirementsFacade(
   readonly kind: "abg_requirements_query_facade";
   readonly availableFunctions: readonly string[];
 }>;
-
-export declare function defineLifecycleSurfaceMap(input: {
-  readonly surfaces: Readonly<Record<string, string>>;
-}): OddGlcResult<LifecycleSurfaceMap>;
 
 export declare function definePolicyOverlay(input: {
   readonly id: string;
@@ -524,7 +508,6 @@ export declare function interpretLifecycleState(input: {
   readonly dispositionRefs: readonly unknown[];
   readonly replayFacts?: readonly unknown[];
   readonly runtimeEvents?: readonly unknown[];
-  readonly surfaceMap?: LifecycleSurfaceMap;
   readonly policyOverlay?: PolicyOverlay;
 }): OddGlcResult<OddGlcLifecycleStateView>;
 

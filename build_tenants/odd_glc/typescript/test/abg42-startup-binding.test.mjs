@@ -15,13 +15,15 @@ import {
   ODD_GLC_HELLO_WORLD_BOOTSTRAP_GRAPH_FUNCTION_BINDINGS,
   ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS,
   ODD_GLC_HELLO_WORLD_BOOTSTRAP_STARTUP_BINDING,
-  ODD_GLC_LIFECYCLE_SLOT_MAP,
+  ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY,
   ODD_GLC_LIFECYCLE_NODE_TYPES,
   ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS,
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
+  ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+  ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING,
   ODD_GLC_STARTUP_BINDING,
   REQUIRED_ROUTE_ONE_SURFACES,
@@ -63,33 +65,41 @@ async function importGtlFacades() {
 async function readPinnedGlcStartupFixture() {
   const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive;
   assert.ok(proof, "Missing ABG 4.2 GLC startup proof provenance");
-  const proofRoot = path.join(
+  const proofPath = path.join(
     tenantRoot,
     proof.proofArtifactPath.replace(/^build_tenants\/odd_glc\/typescript\/test\/proof_inputs\//u, "test/proof_inputs/")
   );
-  const manifestPath = path.join(path.dirname(proofRoot), "glc-hello-world-bootstrap-live-manifest.json");
-  const eventsPath = path.join(path.dirname(proofRoot), "events.jsonl");
-  const vector0Path = path.join(path.dirname(proofRoot), "glc-bootstrap-vector-0-artifact.json");
-  const vector1Path = path.join(path.dirname(proofRoot), "glc-bootstrap-vector-1-artifact.json");
-  for (const filePath of [proofRoot, manifestPath, eventsPath, vector0Path, vector1Path]) {
+  const eventsPath = path.join(
+    tenantRoot,
+    proof.eventLogPath.replace(/^build_tenants\/odd_glc\/typescript\/test\/proof_inputs\//u, "test/proof_inputs/")
+  );
+  for (const filePath of [proofPath, eventsPath]) {
     assert.equal(existsSync(filePath), true, `Missing pinned ABG 4.2 startup proof input at ${filePath}`);
   }
-  const rawProof = await readFile(proofRoot, "utf8");
+  const rawProof = await readFile(proofPath, "utf8");
   const rawEvents = await readFile(eventsPath, "utf8");
-  const rawVector0 = await readFile(vector0Path, "utf8");
-  const rawVector1 = await readFile(vector1Path, "utf8");
-  const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  const parsedProof = JSON.parse(rawProof);
+  const liveArtifactPaths = parsedProof.liveArtifacts.map((artifactPath) =>
+    path.join(
+      tenantRoot,
+      artifactPath.replace(/^build_tenants\/odd_glc\/typescript\/test\/proof_inputs\//u, "test/proof_inputs/")
+    )
+  );
+  for (const filePath of liveArtifactPaths) {
+    assert.equal(existsSync(filePath), true, `Missing pinned ABG 4.2 live artifact at ${filePath}`);
+  }
+  const liveArtifactTexts = await Promise.all(liveArtifactPaths.map((filePath) => readFile(filePath, "utf8")));
   const eventDigest = `sha256:${createHash("sha256").update(rawEvents, "utf8").digest("hex")}`;
-  assert.equal(`sha256:${createHash("sha256").update(rawProof, "utf8").digest("hex")}`, manifest.proof.sha256);
-  assert.equal(eventDigest, manifest.events.sha256);
+  assert.equal(`sha256:${createHash("sha256").update(rawProof, "utf8").digest("hex")}`, proof.artifactSha256);
   assert.equal(eventDigest, proof.eventLogSha256);
-  assert.equal(`sha256:${createHash("sha256").update(rawVector0, "utf8").digest("hex")}`, manifest.liveArtifacts[0].sha256);
-  assert.equal(`sha256:${createHash("sha256").update(rawVector1, "utf8").digest("hex")}`, manifest.liveArtifacts[1].sha256);
+  assert.equal(parsedProof.eventDigest, proof.eventDigest);
+  assert.equal(parsedProof.durationMs, proof.durationMs);
+  assert.equal(parsedProof.installedPackage.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
+  assert.equal(parsedProof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256);
   return Object.freeze({
-    proof: JSON.parse(rawProof),
+    proof: parsedProof,
     events: rawEvents.trim().split(/\r?\n/u).filter(Boolean).map((line) => JSON.parse(line)),
-    liveArtifacts: [JSON.parse(rawVector0), JSON.parse(rawVector1)],
-    manifest
+    liveArtifacts: liveArtifactTexts.map((text) => JSON.parse(text))
   });
 }
 
@@ -113,6 +123,10 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
       "odd_glc.type.lifecycle.implementation_design",
       "odd_glc.type.software.source_surface",
       "odd_glc.type.software.test_source_surface",
+      "odd_glc.type.software.component_test_source_surface",
+      "odd_glc.type.software.uat_test_source_surface",
+      "odd_glc.type.software.test_design_surface",
+      "odd_glc.type.software.test_execution_plan",
       "odd_glc.type.software.build_config_surface",
       "odd_glc.type.software.test_execution_result"
     ]
@@ -172,16 +186,13 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
     assert.ok(graphFunction, `Missing identity graph function for ${entry.typeRef}`);
     assert.equal(graphFunction.effects.length, 0);
     assert.equal(graphFunction.tags.includes("gtl:node_type"), true);
-    const overlayEntry = ODD_GLC_LIFECYCLE_SLOT_MAP.entries.find((row) => row.surface === entry.surface);
-    if (overlayEntry) {
-      const libraryEntry = declarations.value.libraryEntries.find((row) => row.graphFunctionRef === graphFunction.id);
-      assert.ok(libraryEntry, `Missing GTL binding entry for ${entry.typeRef}`);
-      assert.equal(
-        libraryEntry.overlayRefs.includes(overlayEntry.entryId),
-        true,
-        `Missing ${overlayEntry.entryId} binding for ${entry.typeRef}`
-      );
-    }
+    const libraryEntry = declarations.value.libraryEntries.find((row) => row.graphFunctionRef === graphFunction.id);
+    assert.ok(libraryEntry, `Missing GTL binding entry for ${entry.typeRef}`);
+    assert.equal(
+      libraryEntry.overlayRefs.includes(ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.overlayRef),
+      true,
+      `Missing lifecycle program overlay binding for ${entry.typeRef}`
+    );
   }
   for (const entry of [...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES, ...ODD_GLC_DATA_MAPPING_NODE_TYPES]) {
     const graphFunction = declarations.value.graphFunctions.find((row) => row.name === entry.typeRef);
@@ -230,8 +241,12 @@ test("defines startup binding as GTL declarations for ABG startup consumption", 
   assert.equal(startup.value.pluginAdvice.kind, "product_plugin_selection_advice");
   assert.equal(startup.value.pluginAdvice.preferredCandidateRef, null);
   assert.equal(startup.value.pluginAdvice.forbiddenAuthorityRefs.length, FORBIDDEN_ABG_STARTUP_AUTHORITIES.length);
-  assert.equal(startup.value.overlayRefs.includes("surface.lifecycle_worksite"), true);
-  assert.equal(startup.value.overlayRefs.includes("view.release_readiness_state"), true);
+  assert.deepEqual(startup.value.overlayRefs, [
+    ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.overlayRef,
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef
+  ]);
+  assert.equal(startup.value.overlayRefs.some((ref) => ref.startsWith("surface.")), false);
+  assert.equal(startup.value.overlayRefs.some((ref) => ref.startsWith("view.")), false);
   assert.equal(startup.value.overlayRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef), true);
   assert.equal(
     ODD_GLC_STARTUP_BINDING.readinessRefs.includes("readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent"),
@@ -254,8 +269,22 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.scope, "reusable_software_build_lifecycle");
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.rule, "gtl_overlay_graph_declaration_over_gtl_abg_truth");
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef.includes("hello-world"), false);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.length, 4);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.length, 4);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.length, 5);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.length, 4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length);
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF),
+    true
+  );
+  assert.deepEqual(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.slice(4),
+    ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
+  );
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.some((ref) =>
+      /framework-smoke|min-fp|sdlc-js-full-live/u.test(ref)
+    ),
+    false
+  );
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget),
     true
@@ -265,6 +294,11 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
     true
   );
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.test_source"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.component_test_source"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.uat_test_source"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.validation_test_source"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.test_design"), true);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.test_execution_plan"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.scenario_surface"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.implementation_design"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.mapping_spec"), true);
@@ -275,10 +309,22 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.roleRefs.includes("software-build.role.parallel_branch"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.forbiddenAuthority.includes("product_local_runtime_shell"), true);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.forbiddenAuthority.includes("graph_function_selection"), true);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.length, 4);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.length, 5);
   assert.deepEqual(
     ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.graphFunctionRef),
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs
+  );
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.some((entry) =>
+      entry.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF
+    ),
+    true
+  );
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.some((entry) =>
+      /framework-smoke|min-fp|sdlc-js-full-live/u.test(entry.graphFunctionRef)
+    ),
+    false
   );
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.every((entry) =>
@@ -378,7 +424,7 @@ test("rejects missing GTL declaration facades and exports no ABG startup authori
 });
 
 test("consumes the ABG 4.2 live GLC startup proof as emitted registry and traversal truth", async () => {
-  const { proof, events, liveArtifacts, manifest } = await readPinnedGlcStartupFixture();
+  const { proof, events, liveArtifacts } = await readPinnedGlcStartupFixture();
   const view = interpretStartupRegistryState({
     proof,
     runtimeEvents: events,
@@ -390,12 +436,15 @@ test("consumes the ABG 4.2 live GLC startup proof as emitted registry and traver
   assert.equal(view.value.readiness, "traversal_converged");
   assert.equal(proof.sourceDirty, false);
   assert.equal(proof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256);
-  assert.equal(proof.durationMs, manifest.durationMs);
+  assert.equal(proof.durationMs, ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive.durationMs);
   assert.equal(proof.startOutput.status, "converged");
   assert.equal(proof.startOutput.stopped_by, "converged");
   assert.equal(proof.startOutput.event_kinds.includes("registry_entry_admitted"), true);
   assert.equal(proof.startOutput.event_kinds.includes("graph_function_selected"), true);
   assert.equal(proof.startOutput.event_kinds.includes("graph_call_opened"), true);
+  assert.equal(proof.startOutput.event_kinds.includes("instruction_prompt_manifest_projected"), true);
+  assert.equal(proof.startOutput.event_kinds.includes("fp_dispatch_requested"), true);
+  assert.equal(proof.startOutput.event_kinds.includes("instruction_causal_context_bound"), true);
   assert.equal(view.value.registryEntryCount, 6);
   assert.equal(view.value.nodeTypeEntryRefs.length, 5);
   assert.equal(view.value.graphFunctionEntryRefs.length, 1);
@@ -427,6 +476,12 @@ test("consumes the ABG 4.2 live GLC startup proof as emitted registry and traver
     assert.deepEqual(event.overlayRefs, declared.overlayRefs);
   }
   assert.deepEqual(view.value.selectedEntryKinds, ["graph_function"]);
+  assert.equal(proof.promptManifestCount, 2);
+  assert.equal(proof.responseAdmissionCount, 2);
+  assert.equal(proof.actorResultArtifactCount, 2);
+  assert.equal(proof.registryAdmissionCount, 6);
+  assert.equal(proof.graphFunctionSelectionCount, 2);
+  assert.equal(proof.executionStdout, "Hello, world!\n");
   assert.equal(
     events.some((event) =>
       event.kind === "graph_function_selected" &&
@@ -436,6 +491,10 @@ test("consumes the ABG 4.2 live GLC startup proof as emitted registry and traver
   );
   assert.equal(view.value.selectedGraphFunctionRefs.length, 1);
   assert.equal(events.filter((event) => event.kind === "graph_call_opened").length, 2);
+  assert.equal(events.filter((event) => event.kind === "instruction_prompt_manifest_projected").length, 2);
+  assert.equal(events.filter((event) => event.kind === "fp_dispatch_requested").length, 2);
+  assert.equal(events.filter((event) => event.kind === "instruction_response_contract_admitted").length, 2);
+  assert.equal(events.filter((event) => event.kind === "instruction_causal_context_bound").length, 1);
   assert.equal(view.value.graphCallIds.length, 1);
   assert.equal(view.value.vectorClosedRefs.length, 2);
   assert.deepEqual(view.value.stdoutValues, ["Hello, world!\n"]);

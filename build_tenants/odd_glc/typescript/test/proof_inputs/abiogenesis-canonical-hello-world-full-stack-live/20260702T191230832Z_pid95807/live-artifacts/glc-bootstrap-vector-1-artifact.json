@@ -1,0 +1,15 @@
+{
+  "stage": "execution_evidence",
+  "source": "console.log(\"Hello, world!\");\n",
+  "expectedStdout": "Hello, world!\n",
+  "nodeTypesUsed": [
+    "node-type://odd_glc/GlcHelloWorldProgramArtifact",
+    "node-type://odd_glc/GlcExecutionEvidence"
+  ],
+  "causalInputPayloadRefsSeen": [
+    "payload:target_carrier:sha256:0ce563f1f523bf94c94c05c09e0a570c13e911aa8dcf745248b7bca4d33e8cd3"
+  ],
+  "causalInputContentDigestSeen": "sha256:e0ee518f157ec7db789fbf09d018d473c2f67d979976502f6a2136e82192421e",
+  "causalInputContentSummary": "The prior_artifact is the program-stage lifecycle artifact from actor claude. Its source is the ESM program console.log(\"Hello, world!\"), which on execution prints Hello, world followed by a trailing newline, matching the expected stdout Hello, world!.",
+  "reason": "execution_evidence stage: I inspected only the ABG runtime bound_refs prior_artifact row. Its ref is echoed exactly into causalInputPayloadRefsSeen and its contentDigest into causalInputContentDigestSeen. The contentExcerpt shows a program-stage artifact whose JavaScript source emits Hello, world!, summarized in causalInputContentSummary. The GeneratedHelloWorldProgram lifecycle artifact is the causal input and the GlcHelloWorldExecutionEvidence is produced, so nodeTypesUsed is exactly those two node types. ABG owns event emission, admission, and closure; this is F_P worker construction only."
+}

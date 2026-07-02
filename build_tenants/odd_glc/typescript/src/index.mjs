@@ -1,4 +1,6 @@
-export { ABIOGENESIS_SUBSTRATE_PROVENANCE } from "./substrate_provenance.mjs";
+import { ABIOGENESIS_SUBSTRATE_PROVENANCE } from "./substrate_provenance.mjs";
+
+export { ABIOGENESIS_SUBSTRATE_PROVENANCE };
 
 export const REQUIRED_ABG_REQUIREMENTS_QUERY_FUNCTIONS = Object.freeze([
   "projectLifecycleState"
@@ -56,6 +58,12 @@ export const FORBIDDEN_ABG_STARTUP_AUTHORITIES = Object.freeze([
   "constructGraphCallOpenedEvent",
   "emit"
 ]);
+
+export const ABI_PROVENANCE_REF = `provenance://abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}`;
+export const ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF = "overlay://odd_glc/general-lifecycle";
+export const ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF = "overlay://odd_glc/software-build-lifecycle";
+export const ODD_GLC_FP_SEMANTIC_POLICY_REF = "policy://odd_glc/fp-semantic-judgment";
+export const ODD_GLC_FH_HUMAN_DECISION_POLICY_REF = "policy://odd_glc/fh-human-decision";
 
 export const REQUIRED_ROUTE_ONE_SURFACES = Object.freeze([
   "LifeCycleWorksiteAsset",
@@ -263,7 +271,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "scenario_surface",
     baseTypeRefs: ["odd_glc.type.requirement_set"],
     overlayRefs: [
-      "surface.requirement_set",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.scenario_surface"
     ],
     markov: ["declared"],
@@ -277,7 +285,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "design_surface",
     baseTypeRefs: ["odd_glc.type.requirement_set"],
     overlayRefs: [
-      "surface.instruction_set",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.design_surface"
     ],
     markov: ["declared"],
@@ -291,7 +299,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "implementation_design",
     baseTypeRefs: ["odd_glc.type.lifecycle.design_surface"],
     overlayRefs: [
-      "surface.instruction_set",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.implementation_design"
     ],
     markov: ["declared"],
@@ -305,7 +313,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "software_source_surface",
     baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.source_artifact"
     ],
     markov: ["materialized"],
@@ -319,11 +327,70 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "software_test_source_surface",
     baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.test_source"
     ],
     markov: ["materialized"],
     tags: ["odd_glc", "software_build", "test_source"]
+  },
+  {
+    typeRef: "odd_glc.type.software.component_test_source_surface",
+    nodeName: "SoftwareComponentTestSourceSurface",
+    surface: "SoftwareComponentTestSourceSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.component_test_source_surface",
+    assetKind: "software_component_test_source_surface",
+    baseTypeRefs: ["odd_glc.type.software.test_source_surface"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.test_source",
+      "software-build.role.component_test_source"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "test_source", "component_test"]
+  },
+  {
+    typeRef: "odd_glc.type.software.uat_test_source_surface",
+    nodeName: "SoftwareUatTestSourceSurface",
+    surface: "SoftwareUatTestSourceSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.uat_test_source_surface",
+    assetKind: "software_uat_test_source_surface",
+    baseTypeRefs: ["odd_glc.type.software.test_source_surface"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.test_source",
+      "software-build.role.uat_test_source",
+      "software-build.role.validation_test_source"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "test_source", "uat_test", "validation_test"]
+  },
+  {
+    typeRef: "odd_glc.type.software.test_design_surface",
+    nodeName: "SoftwareTestDesignSurface",
+    surface: "SoftwareTestDesignSurfaceAsset",
+    schemaRef: "odd_glc.schema.software.test_design_surface",
+    assetKind: "software_test_design_surface",
+    baseTypeRefs: ["odd_glc.type.lifecycle.design_surface"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.test_design"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "test_design"]
+  },
+  {
+    typeRef: "odd_glc.type.software.test_execution_plan",
+    nodeName: "SoftwareTestExecutionPlan",
+    surface: "SoftwareTestExecutionPlanAsset",
+    schemaRef: "odd_glc.schema.software.test_execution_plan",
+    assetKind: "software_test_execution_plan",
+    baseTypeRefs: ["odd_glc.type.instruction_set"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.test_execution_plan"
+    ],
+    markov: ["declared"],
+    tags: ["odd_glc", "software_build", "test_execution_plan"]
   },
   {
     typeRef: "odd_glc.type.software.build_config_surface",
@@ -333,7 +400,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "software_build_config_surface",
     baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.build_config"
     ],
     markov: ["materialized"],
@@ -347,7 +414,7 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     assetKind: "software_test_execution_result",
     baseTypeRefs: ["odd_glc.type.evidence_binding_view"],
     overlayRefs: [
-      "surface.evidence_binding",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.test_execution"
     ],
     markov: ["projected"],
@@ -367,7 +434,7 @@ export const ODD_GLC_DATA_MAPPING_NODE_TYPES = deepFreeze([
       "odd_glc.type.lifecycle.design_surface"
     ],
     overlayRefs: [
-      "surface.requirement_set",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.mapping_spec"
     ],
     markov: ["declared"],
@@ -381,7 +448,7 @@ export const ODD_GLC_DATA_MAPPING_NODE_TYPES = deepFreeze([
     assetKind: "software_schema_source",
     baseTypeRefs: ["odd_glc.type.software.source_surface"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.schema_source"
     ],
     markov: ["materialized"],
@@ -395,7 +462,7 @@ export const ODD_GLC_DATA_MAPPING_NODE_TYPES = deepFreeze([
     assetKind: "software_mapper_source",
     baseTypeRefs: ["odd_glc.type.software.source_surface"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.mapper_source"
     ],
     markov: ["materialized"],
@@ -409,7 +476,7 @@ export const ODD_GLC_DATA_MAPPING_NODE_TYPES = deepFreeze([
     assetKind: "software_mapper_validation_test",
     baseTypeRefs: ["odd_glc.type.software.test_source_surface"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.mapper_validation_test"
     ],
     markov: ["materialized"],
@@ -423,7 +490,7 @@ export const ODD_GLC_DATA_MAPPING_NODE_TYPES = deepFreeze([
     assetKind: "software_mapper_build_config",
     baseTypeRefs: ["odd_glc.type.software.build_config_surface"],
     overlayRefs: [
-      "surface.target_artifact",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.mapper_build_config"
     ],
     markov: ["materialized"],
@@ -444,7 +511,7 @@ export const ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES = deepFreeze([
     ],
     surface: "DataMappingImplementationBundle",
     overlayRefs: [
-      "overlay://odd_glc/software-build-lifecycle",
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
       "software-build.role.mapping_spec",
       "software-build.role.schema_source",
       "software-build.role.mapper_source",
@@ -460,6 +527,110 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS = deepFreeze([
   ...ODD_GLC_DATA_MAPPING_NODE_TYPES,
   ...ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES
 ].map((entry) => `gtl-library-entry://odd_glc/node-type/${entry.typeRef}`));
+
+export const ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF =
+  "graph-function://odd_glc/software-build/sdlc-software-build";
+
+export const ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN = deepFreeze([
+  {
+    stage: "conformance_project",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/conformance-project",
+    sourceTypeRef: "odd_glc.type.lifecycle_context",
+    sourceName: "SdlcLifecycleContext",
+    targetTypeRef: "odd_glc.type.lifecycle.scenario_surface",
+    targetName: "SdlcConformanceProject",
+    requiredNodeTypes: [
+      "odd_glc.type.lifecycle_context",
+      "odd_glc.type.lifecycle.scenario_surface"
+    ]
+  },
+  {
+    stage: "implementation_design",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/implementation-design",
+    sourceTypeRef: "odd_glc.type.lifecycle.scenario_surface",
+    sourceName: "SdlcConformanceProjectInput",
+    targetTypeRef: "odd_glc.type.lifecycle.implementation_design",
+    targetName: "SdlcImplementationDesign",
+    requiredNodeTypes: [
+      "odd_glc.type.lifecycle.scenario_surface",
+      "odd_glc.type.lifecycle.implementation_design"
+    ]
+  },
+  {
+    stage: "source",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/source",
+    sourceTypeRef: "odd_glc.type.lifecycle.implementation_design",
+    sourceName: "SdlcImplementationDesignInput",
+    targetTypeRef: "odd_glc.type.software.source_surface",
+    targetName: "SdlcSourceSurface",
+    requiredNodeTypes: [
+      "odd_glc.type.lifecycle.implementation_design",
+      "odd_glc.type.software.source_surface"
+    ]
+  },
+  {
+    stage: "test_design",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/test-design",
+    sourceTypeRef: "odd_glc.type.software.source_surface",
+    sourceName: "SdlcSourceSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_design_surface",
+    targetName: "SdlcTestDesignSurface",
+    requiredNodeTypes: [
+      "odd_glc.type.software.source_surface",
+      "odd_glc.type.software.test_design_surface"
+    ]
+  },
+  {
+    stage: "component_test_source",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/component-test-source",
+    sourceTypeRef: "odd_glc.type.software.test_design_surface",
+    sourceName: "SdlcTestDesignSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_test_source_surface",
+    targetName: "SdlcComponentTestSourceSurface",
+    requiredNodeTypes: [
+      "odd_glc.type.software.test_design_surface",
+      "odd_glc.type.software.component_test_source_surface"
+    ]
+  },
+  {
+    stage: "uat_test_source",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/uat-test-source",
+    sourceTypeRef: "odd_glc.type.software.component_test_source_surface",
+    sourceName: "SdlcComponentTestSourceInput",
+    targetTypeRef: "odd_glc.type.software.uat_test_source_surface",
+    targetName: "SdlcUatTestSourceSurface",
+    requiredNodeTypes: [
+      "odd_glc.type.software.component_test_source_surface",
+      "odd_glc.type.software.uat_test_source_surface"
+    ]
+  },
+  {
+    stage: "test_execution_plan",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/test-execution-plan",
+    sourceTypeRef: "odd_glc.type.software.uat_test_source_surface",
+    sourceName: "SdlcUatTestSourceInput",
+    targetTypeRef: "odd_glc.type.software.test_execution_plan",
+    targetName: "SdlcTestExecutionPlan",
+    requiredNodeTypes: [
+      "odd_glc.type.software.uat_test_source_surface",
+      "odd_glc.type.software.test_execution_plan"
+    ]
+  },
+  {
+    stage: "test_execution_result",
+    vectorId: "graph-vector://odd_glc/software-build/sdlc/test-execution-result",
+    sourceTypeRef: "odd_glc.type.software.test_execution_plan",
+    sourceName: "SdlcTestExecutionPlanInput",
+    targetTypeRef: "odd_glc.type.software.test_execution_result",
+    targetName: "SdlcTestExecutionResult",
+    executeBeforeAssessment: true,
+    requiredNodeTypes: [
+      "odd_glc.type.software.test_execution_plan",
+      "odd_glc.type.software.test_execution_result",
+      "odd_glc.type.evidence_binding_view"
+    ]
+  }
+]);
 
 export const ODD_GLC_HELLO_WORLD_BOOTSTRAP_NODE_TYPE_BINDINGS = deepFreeze([
   {
@@ -550,10 +721,10 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     interfaceRef: "interface://odd_glc/bootstrap/context-to-definition",
     sourceContractRef: "contract://odd_glc/lifecycle-context",
     targetContractRef: "contract://odd_glc/lifecycle-definition",
-    overlayRefs: ["surface.lifecycle_context", "surface.intent", "surface.product_definition"],
-    policyRefs: ["policy.fp_semantic_judgment"],
+    overlayRefs: [ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/startup-bound"],
-    proofRefs: ["proof.negative_boundary"],
+    proofRefs: ["proof://odd_glc/negative-boundary"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -564,10 +735,10 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     interfaceRef: "interface://odd_glc/bootstrap/definition-to-requirements",
     sourceContractRef: "contract://odd_glc/lifecycle-definition",
     targetContractRef: "contract://odd_glc/requirement-pressure",
-    overlayRefs: ["surface.requirement_set", "surface.requirement_environment_view"],
-    policyRefs: ["policy.fp_semantic_judgment"],
+    overlayRefs: [ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/requirements-route"],
-    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -578,10 +749,10 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     interfaceRef: "interface://odd_glc/deployment/assurance-to-readiness",
     sourceContractRef: "contract://odd_glc/assurance-state",
     targetContractRef: "contract://odd_glc/release-readiness",
-    overlayRefs: ["view.assurance_state", "view.release_readiness_state"],
-    policyRefs: ["policy.fh_human_decision"],
+    overlayRefs: [ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF],
+    policyRefs: [ODD_GLC_FH_HUMAN_DECISION_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/release-authority-not-claimed"],
-    proofRefs: ["proof.negative_boundary"],
+    proofRefs: ["proof://odd_glc/negative-boundary"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -592,300 +763,57 @@ export const ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     interfaceRef: "interface://odd_glc/deployment/feedback-to-pressure",
     sourceContractRef: "contract://odd_glc/operational-feedback",
     targetContractRef: "contract://odd_glc/lifecycle-pressure",
-    overlayRefs: ["view.executive_pressure_state", "surface.reentry_decision"],
-    policyRefs: ["policy.fh_human_decision"],
+    overlayRefs: [ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF],
+    policyRefs: [ODD_GLC_FH_HUMAN_DECISION_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/operational-feedback-deferred"],
-    proofRefs: ["proof.negative_boundary"],
+    proofRefs: ["proof://odd_glc/negative-boundary"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
   }
 ]);
 
-export const ODD_GLC_LIFECYCLE_SLOT_MAP = deepFreeze({
-  kind: "odd_glc_lifecycle_interpretation_slot_map",
+export const ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY = deepFreeze({
+  kind: "odd_glc_lifecycle_program_overlay_graph",
   schemaVersion: "1",
-  catalogId: "odd_glc.lifecycle_interpretation_slots.route_1",
-  authority: {
-    owner: "odd_glc",
-    substrate: "gtl_abg",
-    rule: "data_only_slot_map_over_admitted_gtl_abg_truth"
-  },
-  families: [
-    "lifecycle_surface",
-    "policy_overlay",
-    "read_model",
-    "proof_binding",
-    "specialization_seam"
+  overlayRef: ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF,
+  graphRef: "graph://odd_glc/general-lifecycle",
+  ownerRef: "product://odd_glc",
+  scope: "generic_lifecycle_interpretation",
+  rule: "gtl_overlay_graph_declaration_over_gtl_abg_truth",
+  graphFunctionRefs: ODD_GLC_PRODUCT_GRAPH_FUNCTION_BINDINGS.map((entry) => entry.graphFunctionRef),
+  roleRefs: [
+    "lifecycle.role.worksite",
+    "lifecycle.role.context",
+    "lifecycle.role.intent",
+    "lifecycle.role.product-definition",
+    "lifecycle.role.requirement-pressure",
+    "lifecycle.role.requirement-environment",
+    "lifecycle.role.destination-topology",
+    "lifecycle.role.instruction-handoff",
+    "lifecycle.role.target-artifact",
+    "lifecycle.role.capability",
+    "lifecycle.role.evidence-binding",
+    "lifecycle.role.assurance",
+    "lifecycle.role.residual-pressure",
+    "lifecycle.role.reentry-decision",
+    "lifecycle.role.release-readiness"
   ],
-  familyRules: {
-    lifecycle_surface: {
-      owner: "odd_glc",
-      allowedUse: "map lifecycle labels to admitted GTL/ABG refs and readiness states",
-      forbiddenAuthority: [
-        "native_carrier_shadowing",
-        "gtl_graph_construction",
-        "abg_runtime_truth_construction"
-      ],
-      extensionRule: "downstream may add domain asset roles only when bound to GTL/ABG refs"
-    },
-    policy_overlay: {
-      owner: "odd_glc_or_downstream",
-      allowedUse: "declare F_P/F_H prompts, rubrics, evidence expectations, owner, risk, reprice, block, and escalation policy as data",
-      forbiddenAuthority: [
-        "fp_worker_invocation",
-        "owner_decision_controller",
-        "evidence_admission",
-        "closure_decision"
-      ],
-      extensionRule: "downstream or plugins may supply domain policy data without executable authority"
-    },
-    read_model: {
-      owner: "odd_glc",
-      allowedUse: "interpret ABG public query output and replay facts as lifecycle vocabulary",
-      forbiddenAuthority: [
-        "event_emission",
-        "evidence_admission",
-        "admitted_ref_minting",
-        "fold_or_residual_projection",
-        "continuation_or_reentry_routing"
-      ],
-      extensionRule: "downstream may add query overlays that preserve ABG refs and source truth"
-    },
-    proof_binding: {
-      owner: "odd_glc",
-      allowedUse: "record digest-pinned ABI proof inputs and negative boundary checks",
-      forbiddenAuthority: [
-        "proof_truth_creation",
-        "runtime_execution",
-        "artifact_admission"
-      ],
-      extensionRule: "downstream may add proof references only when ABI or another governed substrate owns the proof truth"
-    },
-    specialization_seam: {
-      owner: "odd_glc_and_downstream",
-      allowedUse: "name extension slots for domain assets, data policy, proof expectations, and plugin binding refs",
-      forbiddenAuthority: [
-        "product_local_runtime",
-        "graph_function_catalog",
-        "retry_loop",
-        "closure_ledger",
-        "odd_sdlc_reproduction"
-      ],
-      extensionRule: "plugins fill the slot with GTL/ABG-bound data and shall not supply local runtime authority"
-    }
-  },
-  entries: [
-    {
-      entryId: "surface.lifecycle_worksite",
-      family: "lifecycle_surface",
-      surface: "LifeCycleWorksiteAsset",
-      gtlAbgTruth: "ABG run/worksite refs and GTL module/job refs where present",
-      overlayMeaning: "lifecycle scope label"
-    },
-    {
-      entryId: "surface.lifecycle_context",
-      family: "lifecycle_surface",
-      surface: "LifecycleContextAsset",
-      gtlAbgTruth: "ABG AuthorityContextFragment and context routing truth",
-      overlayMeaning: "lifecycle context label"
-    },
-    {
-      entryId: "surface.intent",
-      family: "lifecycle_surface",
-      surface: "IntentAsset",
-      gtlAbgTruth: "GTL/ABG refs used by requirement declarations and staged context",
-      overlayMeaning: "product intent meaning"
-    },
-    {
-      entryId: "surface.product_definition",
-      family: "lifecycle_surface",
-      surface: "ProductDefinitionAsset",
-      gtlAbgTruth: "GTL/ABG refs used by requirement declarations and proof policy",
-      overlayMeaning: "product-definition meaning"
-    },
-    {
-      entryId: "surface.requirement_set",
-      family: "lifecycle_surface",
-      surface: "RequirementSetAsset",
-      gtlAbgTruth: "GTL requirement declarations, bundles, and traversal spans",
-      overlayMeaning: "lifecycle requirement pressure binding"
-    },
-    {
-      entryId: "surface.requirement_environment_view",
-      family: "lifecycle_surface",
-      surface: "RequirementEnvironmentViewAsset",
-      gtlAbgTruth: "ABG requirement environment projection",
-      overlayMeaning: "active requirement environment view"
-    },
-    {
-      entryId: "surface.destination_topology",
-      family: "lifecycle_surface",
-      surface: "DestinationTopologyAsset",
-      gtlAbgTruth: "ABG destination topology and GTL topology declarations",
-      overlayMeaning: "lifecycle destination label"
-    },
-    {
-      entryId: "surface.instruction_set",
-      family: "lifecycle_surface",
-      surface: "InstructionSetAsset",
-      gtlAbgTruth: "ABG obligation, target, and schedule projections",
-      overlayMeaning: "bounded construction handoff label"
-    },
-    {
-      entryId: "surface.target_artifact",
-      family: "lifecycle_surface",
-      surface: "TargetArtifactAsset",
-      gtlAbgTruth: "GTL asset surfaces and ABG admitted artifact refs",
-      overlayMeaning: "lifecycle target artifact label"
-    },
-    {
-      entryId: "surface.capability",
-      family: "lifecycle_surface",
-      surface: "CapabilityAsset",
-      gtlAbgTruth: "GTL/ABG capability carriers and ABG actor/operator invocation truth",
-      overlayMeaning: "lifecycle capability label"
-    },
-    {
-      entryId: "surface.evidence_binding",
-      family: "lifecycle_surface",
-      surface: "EvidenceBindingAsset",
-      gtlAbgTruth: "ABG admitted evidence and requirement evidence binding",
-      overlayMeaning: "evidence-binding view"
-    },
-    {
-      entryId: "surface.assurance_fold_view",
-      family: "lifecycle_surface",
-      surface: "AssuranceFoldViewAsset",
-      gtlAbgTruth: "ABG assurance fold and assurance-case projections",
-      overlayMeaning: "assurance state view"
-    },
-    {
-      entryId: "surface.residual_pressure_view",
-      family: "lifecycle_surface",
-      surface: "ResidualPressureViewAsset",
-      gtlAbgTruth: "ABG residual projection and attenuation classification",
-      overlayMeaning: "residual pressure view"
-    },
-    {
-      entryId: "surface.reentry_decision",
-      family: "lifecycle_surface",
-      surface: "ReentryDecisionAsset",
-      gtlAbgTruth: "ABG continuation, correction, re-entry, release, or block facts",
-      overlayMeaning: "lifecycle disposition label"
-    },
-    {
-      entryId: "policy.fp_semantic_judgment",
-      family: "policy_overlay",
-      gtlAbgTruth: "data declaration consumed by GTL/ABG or interpreted after replay",
-      overlayMeaning: "F_P prompts, rubrics, evidence expectations, and semantic judgment criteria"
-    },
-    {
-      entryId: "policy.fh_human_decision",
-      family: "policy_overlay",
-      gtlAbgTruth: "data declaration consumed by GTL/ABG or interpreted after replay",
-      overlayMeaning: "F_H owner, risk, reprice, block, escalation, and release-readiness policy"
-    },
-    {
-      entryId: "view.lifecycle_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG projectLifecycleState read model and replayed disposition facts",
-      overlayMeaning: "lifecycle disposition vocabulary"
-    },
-    {
-      entryId: "view.evidence_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG admitted evidence and requirement evidence-binding facts",
-      overlayMeaning: "evidence readiness vocabulary"
-    },
-    {
-      entryId: "view.assurance_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG fold, residual, and lifecycle disposition facts",
-      overlayMeaning: "assurance and residual vocabulary"
-    },
-    {
-      entryId: "view.requirement_graph_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG requirement graph/refinement projections",
-      overlayMeaning: "requirement graph lifecycle view"
-    },
-    {
-      entryId: "view.recursive_span_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG frame, zoom, span, foldback, and re-entry facts",
-      overlayMeaning: "recursive lifecycle readiness view"
-    },
-    {
-      entryId: "view.executive_pressure_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG executive pressure facts and continuation refs",
-      overlayMeaning: "reprice, block, and pressure-preservation view"
-    },
-    {
-      entryId: "view.release_readiness_state",
-      family: "read_model",
-      gtlAbgTruth: "lifecycle, assurance, and evidence views",
-      overlayMeaning: "release-readiness interpretation without release authority"
-    },
-    {
-      entryId: "view.parallel_frontier_state",
-      family: "read_model",
-      gtlAbgTruth: "ABG saga/frontier, branch, fan-in, fold, and disposition facts",
-      overlayMeaning: "parallel branch/fan-in lifecycle view"
-    },
-    {
-      entryId: "proof.committed_abg_proof_input",
-      family: "proof_binding",
-      gtlAbgTruth: "digest-pinned ABI artifact and manifest",
-      overlayMeaning: "read-only proof input"
-    },
-    {
-      entryId: "proof.live_run_reference",
-      family: "proof_binding",
-      gtlAbgTruth: "ABI live proof run metadata",
-      overlayMeaning: "live proof provenance pointer"
-    },
-    {
-      entryId: "proof.negative_boundary",
-      family: "proof_binding",
-      gtlAbgTruth: "import/export and proof-input checks",
-      overlayMeaning: "negative proof that forbidden local authority is absent"
-    },
-    {
-      entryId: "seam.domain_asset_roles",
-      family: "specialization_seam",
-      gtlAbgTruth: "domain asset role names bound to GTL/ABG refs",
-      overlayMeaning: "downstream asset-role extension slot"
-    },
-    {
-      entryId: "seam.domain_policy_slots",
-      family: "specialization_seam",
-      gtlAbgTruth: "domain-specific F_P/F_H data policy",
-      overlayMeaning: "downstream policy extension slot"
-    },
-    {
-      entryId: "seam.domain_proof_expectations",
-      family: "specialization_seam",
-      gtlAbgTruth: "domain evidence expectations over ABG admitted evidence",
-      overlayMeaning: "downstream proof interpretation extension slot"
-    },
-    {
-      entryId: "seam.plugin_binding_refs",
-      family: "specialization_seam",
-      gtlAbgTruth: "plugin refs that supply data declarations or downstream interpretation",
-      overlayMeaning: "downstream plugin binding slot"
-    }
+  policyRefs: [
+    ODD_GLC_FP_SEMANTIC_POLICY_REF,
+    ODD_GLC_FH_HUMAN_DECISION_POLICY_REF
+  ],
+  pluginRefs: [
+    "plugin://odd_glc/downstream-specialization-seam"
   ],
   forbiddenAuthority: [
-    "gtl_graph_function_catalog",
-    "abg_runtime_emitter",
-    "admitted_ref_minting",
+    "product_local_runtime_shell",
+    "graph_function_selection",
+    "graph_call_opening",
+    "event_emission",
     "evidence_admission",
-    "assurance_fold_projection",
-    "residual_projection",
+    "requirement_fold_or_residual_projection",
     "continuation_or_reentry_routing",
-    "fp_worker_invocation",
     "odd_sdlc_phase_or_ledger_reproduction"
   ]
 });
@@ -893,13 +821,14 @@ export const ODD_GLC_LIFECYCLE_SLOT_MAP = deepFreeze({
 export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
   kind: "odd_glc_software_build_overlay_graph",
   schemaVersion: "1",
-  overlayRef: "overlay://odd_glc/software-build-lifecycle",
+  overlayRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
   graphRef: "graph://odd_glc/software-build-lifecycle",
   ownerRef: "product://odd_glc",
   scope: "reusable_software_build_lifecycle",
   rule: "gtl_overlay_graph_declaration_over_gtl_abg_truth",
   graphFunctionRefs: [
     "graph-function://odd_glc/software-build/bootstrap-worksite",
+    ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
     "graph-function://odd_glc/software-build/materialize-artifact",
     "graph-function://odd_glc/software-build/prove-artifact",
     "graph-function://odd_glc/software-build/fan-in-branches"
@@ -908,33 +837,14 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
     "graph-vector://odd_glc/software-build/context-to-requirements",
     "graph-vector://odd_glc/software-build/requirements-to-artifact",
     "graph-vector://odd_glc/software-build/artifact-to-evidence",
-    "graph-vector://odd_glc/software-build/branches-to-artifact"
+    "graph-vector://odd_glc/software-build/branches-to-artifact",
+    ...ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.vectorId)
   ],
   publicStartTargets: [
-    "graph-function://odd_glc/software-build/bootstrap-worksite"
+    "graph-function://odd_glc/software-build/bootstrap-worksite",
+    ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF
   ],
   defaultStartTarget: "graph-function://odd_glc/software-build/bootstrap-worksite",
-  slotRefs: [
-    "surface.lifecycle_worksite",
-    "surface.lifecycle_context",
-    "surface.intent",
-    "surface.product_definition",
-    "surface.requirement_set",
-    "surface.requirement_environment_view",
-    "surface.instruction_set",
-    "surface.target_artifact",
-    "surface.capability",
-    "surface.evidence_binding",
-    "surface.assurance_fold_view",
-    "surface.residual_pressure_view",
-    "surface.reentry_decision",
-    "view.lifecycle_state",
-    "view.evidence_state",
-    "view.assurance_state",
-    "view.requirement_graph_state",
-    "view.parallel_frontier_state",
-    "view.release_readiness_state"
-  ],
   roleRefs: [
     "software-build.role.source_artifact",
     "software-build.role.generated_artifact",
@@ -942,7 +852,12 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
     "software-build.role.scenario_surface",
     "software-build.role.design_surface",
     "software-build.role.implementation_design",
+    "software-build.role.test_design",
     "software-build.role.test_source",
+    "software-build.role.component_test_source",
+    "software-build.role.uat_test_source",
+    "software-build.role.validation_test_source",
+    "software-build.role.test_execution_plan",
     "software-build.role.test_execution",
     "software-build.role.service_process",
     "software-build.role.client_request",
@@ -957,8 +872,8 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
     "software-build.role.mapper_build_config"
   ],
   policyRefs: [
-    "policy.fp_semantic_judgment",
-    "policy.fh_human_decision"
+    ODD_GLC_FP_SEMANTIC_POLICY_REF,
+    ODD_GLC_FH_HUMAN_DECISION_POLICY_REF
   ],
   pluginRefs: [
     "plugin://odd_glc/software-build-lifecycle"
@@ -984,13 +899,35 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     targetContractRef: "contract://odd_glc/requirement-pressure",
     overlayRefs: [
       ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
-      "surface.lifecycle_context",
-      "surface.requirement_set",
-      "surface.requirement_environment_view"
+      "software-build.role.scenario_surface"
     ],
-    policyRefs: ["policy.fp_semantic_judgment"],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/startup-bound"],
-    proofRefs: ["proof.negative_boundary"],
+    proofRefs: ["proof://odd_glc/negative-boundary"],
+    catalogReuseStatus: "abg_4_2_no_equivalent_published",
+    genericity: "candidate_abg_system_function",
+    reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
+  },
+  {
+    entryRef: "gtl-library-entry://odd_glc/software-build/sdlc-software-build",
+    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
+    interfaceRef: "interface://odd_glc/software-build/sdlc-software-build",
+    sourceContractRef: "contract://odd_glc/lifecycle-context",
+    targetContractRef: "contract://odd_glc/test-execution-evidence",
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
+      "software-build.role.scenario_surface",
+      "software-build.role.implementation_design",
+      "software-build.role.source_artifact",
+      "software-build.role.test_design",
+      "software-build.role.component_test_source",
+      "software-build.role.uat_test_source",
+      "software-build.role.test_execution_plan",
+      "software-build.role.test_execution"
+    ],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
+    readinessRefs: ["readiness://odd_glc/abg-4.2/sdlc-software-build-required"],
+    proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -1003,13 +940,11 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     targetContractRef: "contract://odd_glc/lifecycle-artifact",
     overlayRefs: [
       ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
-      "surface.instruction_set",
-      "surface.target_artifact",
-      "surface.capability"
+      "software-build.role.source_artifact"
     ],
-    policyRefs: ["policy.fp_semantic_judgment"],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/bootstrap-traversal-required"],
-    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -1022,13 +957,11 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     targetContractRef: "contract://odd_glc/execution-evidence",
     overlayRefs: [
       ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
-      "surface.evidence_binding",
-      "view.evidence_state",
-      "view.assurance_state"
+      "software-build.role.test_execution"
     ],
-    policyRefs: ["policy.fp_semantic_judgment"],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/evidence-route-required"],
-    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -1041,13 +974,12 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
     targetContractRef: "contract://odd_glc/lifecycle-artifact",
     overlayRefs: [
       ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
-      "view.parallel_frontier_state",
-      "surface.target_artifact",
-      "surface.assurance_fold_view"
+      "software-build.role.parallel_branch",
+      "software-build.role.branch_fan_in"
     ],
-    policyRefs: ["policy.fp_semantic_judgment"],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF],
     readinessRefs: ["readiness://odd_glc/abg-4.2/parallel-frontier-required"],
-    proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference"],
+    proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference"],
     catalogReuseStatus: "abg_4_2_no_equivalent_published",
     genericity: "candidate_abg_system_function",
     reuseGate: "bind_existing_abg_catalog_entry_when_equivalent_exists"
@@ -1070,7 +1002,7 @@ export const ODD_GLC_STARTUP_BINDING = deepFreeze({
     "gtl-library://odd_glc/deployment-graph-function-bindings"
   ],
   overlayRefs: [
-    ...ODD_GLC_LIFECYCLE_SLOT_MAP.entries.map((entry) => entry.entryId),
+    ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.overlayRef,
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef
   ],
   pluginRefs: [
@@ -1082,11 +1014,11 @@ export const ODD_GLC_STARTUP_BINDING = deepFreeze({
     "readiness://odd_glc/startup-declarations-only",
     "readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent"
   ],
-  proofRefs: ["proof.negative_boundary"],
-  policyRefs: ["policy.fp_semantic_judgment", "policy.fh_human_decision"],
+  proofRefs: ["proof://odd_glc/negative-boundary"],
+  policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF, ODD_GLC_FH_HUMAN_DECISION_POLICY_REF],
   configSourceRefs: [
     "specification/PRODUCT.md",
-    "build_tenants/common/design/ODD_GLC_LIFECYCLE_SLOT_MAP.md"
+    "build_tenants/common/design/ODD_GLC_ABG42_TYPED_STARTUP_BINDING.md"
   ]
 });
 
@@ -1104,7 +1036,7 @@ export const ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING = deepFreeze({
     "readiness://odd_glc/software-build-bootstrap-traversal-required",
     "readiness://odd_glc/abg-4.2/catalog-reuse-audited-no-equivalent"
   ],
-  proofRefs: ["proof.committed_abg_proof_input", "proof.live_run_reference", "proof.negative_boundary"],
+  proofRefs: ["proof://odd_glc/committed-abg-proof-input", "proof://odd_glc/live-run-reference", "proof://odd_glc/negative-boundary"],
   policyRefs: ODD_GLC_SOFTWARE_BUILD_OVERLAY.policyRefs,
   configSourceRefs: [
     "specification/PRODUCT.md",
@@ -1223,28 +1155,6 @@ export function validateAbgRequirementsFacade(facade) {
   }, availableFunctions);
 }
 
-export function defineLifecycleSurfaceMap(input) {
-  if (!isRecord(input) || !isRecord(input.surfaces)) {
-    return rejected("malformed_input", ["Lifecycle surface map requires a surfaces object"]);
-  }
-
-  const missing = REQUIRED_ROUTE_ONE_SURFACES.filter(
-    (surface) => typeof input.surfaces[surface] !== "string" || input.surfaces[surface].length === 0
-  );
-  if (missing.length > 0) {
-    return rejected(
-      "malformed_input",
-      missing.map((surface) => `Missing route-1 lifecycle surface binding ${surface}`),
-      missing
-    );
-  }
-
-  return accepted({
-    kind: "odd_glc_lifecycle_surface_map",
-    surfaces: Object.freeze({ ...input.surfaces })
-  }, Object.values(input.surfaces));
-}
-
 export function definePolicyOverlay(input) {
   if (!isRecord(input) || typeof input.id !== "string" || input.id.length === 0) {
     return rejected("malformed_input", ["Policy overlay requires a stable id"]);
@@ -1328,7 +1238,7 @@ function lifecycleNodeInit(entry) {
       sectionKindRefs: Object.freeze([]),
       clauseKindRefs: Object.freeze([]),
       authoritySlots: Object.freeze([]),
-      proofObligationRefs: Object.freeze(["proof.negative_boundary"])
+      proofObligationRefs: Object.freeze(["proof://odd_glc/negative-boundary"])
     }),
     tags: entry.tags,
     id: `node://${entry.typeRef}`
@@ -1351,7 +1261,7 @@ function libraryDeclarationInput(entry) {
     contextRefs: ["context://odd_glc/lifecycle"],
     authorityRefs: ["authority://abg/runtime-selection"],
     overlayRefs: entry.overlayRefs,
-    provenanceRefs: ["provenance://abiogenesis/4.2.0-rc.1"],
+    provenanceRefs: [ABI_PROVENANCE_REF],
     readinessRefs: entry.readinessRefs,
     proofRefs: entry.proofRefs,
     policyRefs: entry.policyRefs,
@@ -1362,18 +1272,11 @@ function libraryDeclarationInput(entry) {
   });
 }
 
-function overlayRefsForSurface(surface) {
-  return uniqueStrings(ODD_GLC_LIFECYCLE_SLOT_MAP.entries
-    .filter((entry) => entry.family === "lifecycle_surface" && entry.surface === surface)
-    .map((entry) => entry.entryId));
-}
-
 function overlayRefsForNodeTypeEntry(entry) {
   if (Array.isArray(entry.overlayRefs) && entry.overlayRefs.length > 0) {
     return uniqueStrings(entry.overlayRefs);
   }
-  const refs = overlayRefsForSurface(entry.surface);
-  return refs.length > 0 ? refs : Object.freeze(["surface.lifecycle_worksite"]);
+  return Object.freeze([ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.overlayRef]);
 }
 
 function allPrimitiveNodeTypeEntries() {
@@ -1449,7 +1352,7 @@ export function defineLifecycleNodeTypeDeclarations(input) {
       ? overlayRefsForNodeTypeEntry(sourceEntry)
       : composedEntry
         ? overlayRefsForComposedNodeTypeEntry(composedEntry)
-        : Object.freeze(["surface.lifecycle_worksite"]);
+        : Object.freeze([ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY.overlayRef]);
     return m02.constructGtlLibraryEntryDeclaration({
     declarationRef: `gtl-declaration://odd_glc/node-type/${graphFunction.name}`,
     entryRef: `gtl-library-entry://odd_glc/node-type/${graphFunction.name}`,
@@ -1465,9 +1368,9 @@ export function defineLifecycleNodeTypeDeclarations(input) {
     contextRefs: ["context://odd_glc/lifecycle"],
     authorityRefs: ["authority://gtl/node-type/non-callable"],
     overlayRefs,
-    provenanceRefs: ["provenance://abiogenesis/4.2.0-rc.1"],
+    provenanceRefs: [ABI_PROVENANCE_REF],
     readinessRefs: ["readiness://odd_glc/node-type-declared"],
-    proofRefs: ["proof.negative_boundary"],
+    proofRefs: ["proof://odd_glc/negative-boundary"],
     policyRefs: [],
     declarationSourceRefs: [
       "gtl-declaration://odd_glc/lifecycle-node-types",
@@ -1513,7 +1416,7 @@ export function defineOddGlcStartupBinding(input) {
     rankedCandidateRefs: [],
     constraintRefs: ["constraint://odd_glc/no-local-selection-authority"],
     rationaleRef: "rationale://odd_glc/plugin-advice-is-advisory",
-    policyRefs: ["policy.fp_semantic_judgment", "policy.fh_human_decision"],
+    policyRefs: [ODD_GLC_FP_SEMANTIC_POLICY_REF, ODD_GLC_FH_HUMAN_DECISION_POLICY_REF],
     forbiddenAuthorityRefs: FORBIDDEN_ABG_STARTUP_AUTHORITIES
   });
   return accepted({
@@ -1586,8 +1489,18 @@ export function interpretStartupRegistryState(input) {
   const selectedGraphFunctionRefs = uniqueStrings(selections.map((event) => event.selectedGraphFunctionRef));
   const graphCallIds = uniqueStrings(graphCalls.map((event) => event.graphCallId));
   const vectorClosedRefs = uniqueStrings(vectorClosed.map((event) => event.eventId ?? event.eventRef ?? event.vectorRef));
-  const stdoutValues = uniqueStrings(liveArtifacts
-    .map((artifact) => isRecord(artifact) && isRecord(artifact.execution) ? artifact.execution.stdout : null));
+  const stdoutValues = uniqueStrings([
+    proof.executionStdout,
+    ...liveArtifacts.map((artifact) => {
+      if (!isRecord(artifact)) {
+        return null;
+      }
+      if (isRecord(artifact.execution)) {
+        return artifact.execution.stdout;
+      }
+      return artifact.expectedStdout;
+    })
+  ]);
   let readiness = "no_startup_truth";
   if (registryEntries.length > 0) {
     readiness = "registry_admitted";
@@ -2184,7 +2097,6 @@ export function interpretLifecycleState(input) {
     sourceEventRefs: Object.freeze([...(readModel.sourceEventRefs ?? [])]),
     sourceProjectionRefs: Object.freeze([...(readModel.sourceProjectionRefs ?? [])]),
     interpretedDispositions: Object.freeze(interpretedDispositions),
-    surfaceMap: input.surfaceMap ?? null,
     policyOverlayId: input.policyOverlay?.id ?? null,
     abgReadModel: readModel
   }, [

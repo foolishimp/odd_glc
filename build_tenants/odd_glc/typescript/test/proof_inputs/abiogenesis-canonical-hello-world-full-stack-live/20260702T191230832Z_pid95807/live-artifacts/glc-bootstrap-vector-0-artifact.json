@@ -1,0 +1,13 @@
+{
+  "stage": "program",
+  "source": "console.log(\"Hello, world!\");\n",
+  "expectedStdout": "Hello, world!\n",
+  "nodeTypesUsed": [
+    "node-type://odd_glc/GlcBootstrapContext",
+    "node-type://odd_glc/GlcHelloWorldProgramArtifact"
+  ],
+  "causalInputPayloadRefsSeen": [],
+  "causalInputContentDigestSeen": null,
+  "causalInputContentSummary": null,
+  "reason": "Program stage: no prior_artifact row exists in bound_refs, so all causal-input fields are empty/null. The GlcBootstrapContext source node is consumed and the GeneratedHelloWorldProgram lifecycle artifact is produced, so nodeTypesUsed is exactly those two node types. The source is a minimal ESM program that emits exactly 'Hello, world!\\n' via console.log, which appends the single trailing newline matching expectedStdout."
+}

@@ -6,7 +6,7 @@ The first active build tenant is:
 
 | Tenant | Status | Scope |
 | --- | --- | --- |
-| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over installed ABIogenesis `4.2.0-rc.1` public GTL/ABG surfaces. |
+| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over installed ABIogenesis `4.2.0-rc.3` public GTL/ABG surfaces. |
 
 The tenant was activated after requirements and ratified design defined:
 
@@ -19,10 +19,10 @@ The tenant was activated after requirements and ratified design defined:
 ## Realization Line
 
 The active tenant is a TypeScript-compatible read/query and policy
-interpretation library over installed ABIogenesis `4.2.0-rc.1`.
+interpretation library over installed ABIogenesis `4.2.0-rc.3`.
 
 Committed ABI proof artifacts are read-only provenance inputs. The tenant's
-current package/runtime dependency is ABIogenesis `4.2.0-rc.1`, and active
+current package/runtime dependency is ABIogenesis `4.2.0-rc.3`, and active
 Hello World proofs use the ABG 4.2 software-build startup binding path.
 
 The tenant descends from

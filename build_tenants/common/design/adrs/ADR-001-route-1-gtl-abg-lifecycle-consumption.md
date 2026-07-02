@@ -20,7 +20,7 @@ Derives from:
   - specification/GOALS.md
   - specification/PRODUCT.md
   - specification/scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md
-  - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json
+  - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.3/release-snapshot-manifest.json
 Supersedes: none
 Superseded by: none
 Retained special case: none
@@ -31,28 +31,28 @@ Retained special case: none
 ## Decision
 
 `odd_glc` route-1 shall be a lifecycle binding and read-model design over
-installed ABIogenesis `4.2.0-rc.1` public GTL/ABG surfaces.
+installed ABIogenesis `4.2.0-rc.3` public GTL/ABG surfaces.
 
 It shall not create a fixed odd_glc graph, a native `glc.*` graph-function
 catalog, a local runtime, an event stream, admitted-ref minting, evidence
 admission, assurance folding, residual projection, or a re-entry controller.
 
 The route-1 graph shape is supplied by GTL/ABG. `odd_glc` supplies lifecycle
-surface labels, policy declarations, downstream specialization constraints,
-and read/query interpretation over ABG replay/query truth.
+overlay declarations, policy declarations, downstream specialization
+constraints, and read/query interpretation over ABG replay/query truth.
 
 ## Consumed Substrate
 
 | Substrate | Identity |
 | --- | --- |
-| Product | `@abiogenesis/typescript-tenant@4.2.0-rc.1` |
-| Tag | `v4.2.0-rc.1` |
-| Source commit | `54c21ce1f984f0be922199232fd8cb981f000ce4` |
-| Snapshot commit | `9653252077a6b52ff343832101748d41a3483b0f` |
-| Tarball SHA256 | `a29b0ae40185759034e45eccfab0f2c032b5ddea5cb8cd765472516a647603b4` |
-| Product-toolchain manifest SHA256 | `ad5cfca0a3411bf6be3b5771965f1bfe78edfed4f2f38225794f2adb60cf87a7` |
-| Release manifest SHA256 | `50632ae83fa3c0dd987608f4bbe9755d645978dd99525a3d37a8ec48ed5969fa` |
-| Install source | `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.1/release-snapshot-manifest.json` |
+| Product | `@abiogenesis/typescript-tenant@4.2.0-rc.3` |
+| Tag | `v4.2.0-rc.3` |
+| Source commit | `623da85864d03c736a3daec2ca414f516221f85b` |
+| Snapshot commit | `31c4105883a16f574d40ba73e20ec1e49c9aac55` |
+| Tarball SHA256 | `fd94966566ad95e3fb1048b23265e0a215a1a1c656706c43fcc2fddf833b510c` |
+| Product-toolchain manifest SHA256 | `2944da84ca68ce2e06d31427334b606b2ff5608939f364b3811dae1955f1b295` |
+| Release manifest SHA256 | `e7d1e3fee427cf9df8371bc616672fdd06f4b028e53170e5484fb3c7843e0422` |
+| Install source | `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.3/release-snapshot-manifest.json` |
 
 ## No Fixed Graph Rule
 
@@ -78,7 +78,7 @@ domain while preserving the same lifecycle binding rules.
 | GTL declaration inputs | downstream public via GTL | GTL | Requirement declarations, bundles, traversal spans, optional lifecycle composition refs. | odd_glc-native requirement representation or compiler. |
 | ABG route emitters | ABG-runtime-internal | ABG | Admit declarations, bind evidence, fold assurance, project residuals, emit disposition. | downstream-public emitter calls or local truth construction. |
 | ABG query facade | downstream public via ABG | ABG | `compileEdgeRequirementEnvironment`, projections, `projectLifecycleState`, assurance/readiness queries. | query-lazy invention or side-array proof. |
-| Lifecycle surface map | odd_glc source/design | odd_glc | Map lifecycle labels to admitted GTL/ABG refs and readiness states. | mint native carriers that shadow GTL/ABG carriers. |
+| Lifecycle program overlay | odd_glc source/design | odd_glc | Declare lifecycle labels, roles, and policy refs as GTL overlay data consumed by ABG. | mint native carriers or local maps that shadow GTL/ABG carriers. |
 | F_P policy declarations | odd_glc/downstream policy | odd_glc or downstream | Semantic judgment prompts, rubrics, evidence expectations. | invoke an evaluator or treat text output as admitted proof. |
 | F_H policy declarations | odd_glc/downstream policy | odd_glc or downstream | Owner, risk, release/readiness, reprice, block, and escalation policy. | hidden retry, release, or re-entry controller. |
 | Lifecycle read model | odd_glc public surface after tenant activation | odd_glc | Interpret ABG public query output as lifecycle vocabulary. | emit events, admit evidence, mint refs, fold, residualize, or route re-entry. |
@@ -129,7 +129,7 @@ activation. The interface shall stay within these families:
 
 | Interface family | Allowed shape | Disallowed shape |
 | --- | --- | --- |
-| lifecycle binding validation | Pure F_D validation that labels and refs match the surface map. | Requirement compilation, graph construction, or admitted-ref minting. |
+| lifecycle binding validation | Pure F_D validation that labels and refs match admitted GTL/ABG overlay and query truth. | Requirement compilation, graph construction, or admitted-ref minting. |
 | policy declaration assembly | Data declarations for F_P prompts/rubrics and F_H policies. | Direct LLM invocation, shell execution, or owner decision authority. |
 | lifecycle state interpretation | Read-only projection from ABG public query output to odd_glc vocabulary labels. | Emitting events, folding evidence, residualizing pressure, or routing retries. |
 | negative regression proof | Import/export and proof-input checks that forbidden emitters/carriers do not exist. | Synthetic proof that bypasses ABG replay/query truth. |
@@ -223,7 +223,7 @@ when the missing function is generic GTL/ABG substrate.
 ## Consequences
 
 The first build tenant can be priced as a read/query and policy-interpretation
-library over installed ABIogenesis `4.2.0-rc.1`. It cannot contain runtime
+library over installed ABIogenesis `4.2.0-rc.3`. It cannot contain runtime
 authority or compatibility ledgers.
 
 Tenant activation is still a separate registry decision. Until that decision,

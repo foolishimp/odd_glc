@@ -26,11 +26,13 @@ import {
   interpretStartupRegistryState
 } from "../src/index.mjs";
 
+// These tests execute local subject programs and read pinned ABI proof truth.
+// They are not live-terminal proofs, parity claims, or ABG traversal proofs.
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const tenantRoot = path.resolve(dirname, "..");
 const repoRoot = path.resolve(tenantRoot, "../../..");
 const appsRoot = path.resolve(repoRoot, "..");
-const sandboxRoot = path.join(tenantRoot, "test_runs", "hello_world_sandbox_parity");
+const subjectSmokeRoot = path.join(tenantRoot, "test_runs", "hello_world_subject_smoke");
 const defaultAbgRoot = path.join(
   appsRoot,
   `.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/${ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion}/lib/node_modules/@abiogenesis/typescript-tenant`
@@ -94,33 +96,26 @@ async function readPinnedGlcStartupProof() {
   const proof = ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive;
   assert.ok(proof, "Missing ABG 4.2 startup provenance");
   const proofPath = proofArtifactPathFromProvenance(proof.proofArtifactPath);
-  const manifestPath = proofArtifactPathFromProvenance(proof.proofManifestPath);
-  const proofDir = path.dirname(proofPath);
-  const eventsPath = path.join(proofDir, "events.jsonl");
-  const vector0Path = path.join(proofDir, "glc-bootstrap-vector-0-artifact.json");
-  const vector1Path = path.join(proofDir, "glc-bootstrap-vector-1-artifact.json");
+  const eventsPath = proofArtifactPathFromProvenance(proof.eventLogPath);
   const rawProof = await readFile(proofPath, "utf8");
-  const rawManifest = await readFile(manifestPath, "utf8");
   const rawEvents = await readFile(eventsPath, "utf8");
-  const rawVector0 = await readFile(vector0Path, "utf8");
-  const rawVector1 = await readFile(vector1Path, "utf8");
-  const manifest = JSON.parse(rawManifest);
+  const parsedProof = JSON.parse(rawProof);
+  const liveArtifactPaths = parsedProof.liveArtifacts.map(proofArtifactPathFromProvenance);
+  const liveArtifactTexts = await Promise.all(liveArtifactPaths.map((filePath) => readFile(filePath, "utf8")));
 
   assert.equal(sha256Text(rawProof), proof.artifactSha256);
-  assert.equal(sha256Text(rawProof), manifest.proof.sha256);
   assert.equal(sha256Text(rawEvents), proof.eventLogSha256);
-  assert.equal(sha256Text(rawEvents), manifest.events.sha256);
+  assert.equal(parsedProof.installedPackage.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
+  assert.equal(parsedProof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256);
+  assert.equal(parsedProof.eventDigest, proof.eventDigest);
 
   return Object.freeze({
     events: rawEvents.trim().split(/\r?\n/u).filter(Boolean).map((line) => JSON.parse(line)),
     eventsPath,
-    liveArtifacts: [JSON.parse(rawVector0), JSON.parse(rawVector1)],
-    manifest,
-    manifestPath,
-    proof: JSON.parse(rawProof),
+    liveArtifacts: liveArtifactTexts.map((text) => JSON.parse(text)),
+    proof: parsedProof,
     proofPath,
-    vector0Path,
-    vector1Path
+    liveArtifactPaths
   });
 }
 
@@ -129,20 +124,20 @@ function runIdFor(scenarioId) {
   return `${timestamp}_pid${process.pid}_${randomUUID().slice(0, 8)}`;
 }
 
-async function prepareSandbox(scenarioId) {
-  const runRoot = path.join(sandboxRoot, scenarioId, runIdFor(scenarioId));
+async function prepareSubjectSmokeWorkspace(scenarioId) {
+  const runRoot = path.join(subjectSmokeRoot, scenarioId, runIdFor(scenarioId));
   const workspace = path.join(runRoot, "workspace");
   const proofRoot = path.join(workspace, ".ai-workspace", "proofs");
   const eventsRoot = path.join(workspace, ".ai-workspace", "events");
   await mkdir(proofRoot, { recursive: true });
   await mkdir(eventsRoot, { recursive: true });
   await writeJson(path.join(workspace, ".ai-workspace", "bootstrap.json"), {
-    kind: "odd_glc_hello_world_sandbox_bootstrap",
+    kind: "odd_glc_hello_world_subject_smoke_bootstrap",
     scenarioId,
     substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate,
     startupConfigRef: ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef,
     overlayRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
-    rule: "sandbox_executes_subject_only_odd_glc_interprets_pinned_abi_truth"
+    rule: "subject_smoke_executes_local_subject_only_odd_glc_interprets_pinned_abi_truth"
   });
   return Object.freeze({
     eventsRoot,
@@ -153,15 +148,15 @@ async function prepareSandbox(scenarioId) {
   });
 }
 
-async function copyRouteProofInputs(sandbox, proof) {
-  const targetRoot = path.join(sandbox.proofRoot, "abi", proof.proofKey);
+async function copyRouteProofInputs(subjectSmoke, proof) {
+  const targetRoot = path.join(subjectSmoke.proofRoot, "abi", proof.proofKey);
   await mkdir(targetRoot, { recursive: true });
   const artifactTarget = path.join(targetRoot, path.basename(proof.artifactPath));
   const manifestTarget = path.join(targetRoot, path.basename(proof.manifestPath));
   await copyFile(proof.artifactPath, artifactTarget);
   await copyFile(proof.manifestPath, manifestTarget);
   await writeJson(path.join(targetRoot, "proof-input-summary.json"), {
-    kind: "odd_glc_sandbox_readonly_abi_proof_input",
+    kind: "odd_glc_subject_smoke_readonly_abi_proof_input",
     proofKey: proof.proofKey,
     artifactSha256: proof.artifactSha256,
     copiedArtifactPath: artifactTarget,
@@ -172,10 +167,10 @@ async function copyRouteProofInputs(sandbox, proof) {
   return Object.freeze({ artifactTarget, manifestTarget, targetRoot });
 }
 
-async function copyStartupProofInputs(sandbox, proof) {
-  const targetRoot = path.join(sandbox.proofRoot, "abi", "glcHelloWorldBootstrapLive");
+async function copyStartupProofInputs(subjectSmoke, proof) {
+  const targetRoot = path.join(subjectSmoke.proofRoot, "abi", "glcHelloWorldBootstrapLive");
   await mkdir(targetRoot, { recursive: true });
-  for (const sourcePath of [proof.proofPath, proof.manifestPath, proof.eventsPath, proof.vector0Path, proof.vector1Path]) {
+  for (const sourcePath of [proof.proofPath, proof.eventsPath, ...proof.liveArtifactPaths]) {
     await copyFile(sourcePath, path.join(targetRoot, path.basename(sourcePath)));
   }
   return targetRoot;
@@ -281,52 +276,58 @@ async function assertClosedInterpretation(artifact, scenarioId) {
   });
 }
 
-async function writeSandboxSummary(sandbox, value) {
-  const summaryPath = path.join(sandbox.runRoot, "sandbox-summary.json");
+async function writeSubjectSmokeSummary(subjectSmoke, value) {
+  const summaryPath = path.join(subjectSmoke.runRoot, "subject-smoke-summary.json");
   await writeJson(summaryPath, {
-    kind: "odd_glc_hello_world_sandbox_summary",
-    scenarioId: sandbox.scenarioId,
-    runRoot: sandbox.runRoot,
-    workspace: sandbox.workspace,
+    kind: "odd_glc_hello_world_subject_smoke_summary",
+    proofClass: "subject_smoke_readonly_abi_truth",
+    notClosureEvidenceFor: [
+      "live_terminal_fp_worker",
+      "abg_startup_traversal",
+      "odd_sdlc_parity"
+    ],
+    scenarioId: subjectSmoke.scenarioId,
+    runRoot: subjectSmoke.runRoot,
+    workspace: subjectSmoke.workspace,
     ...value
   });
   return summaryPath;
 }
 
-test("runs SCN-GLC-HELLO-WORLD-CLI-BASIC in an isolated sandbox", async () => {
+test("executes SCN-GLC-HELLO-WORLD-CLI-BASIC as subject smoke in a scratch workspace", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-CLI-BASIC";
-  const sandbox = await prepareSandbox(scenarioId);
+  const subjectSmoke = await prepareSubjectSmokeWorkspace(scenarioId);
   const proof = await readPinnedRouteProof(ROUTE_PROOFS.basicCli);
-  await copyRouteProofInputs(sandbox, proof);
-  const programPath = path.join(sandbox.workspace, "generated", "hello-world.mjs");
+  await copyRouteProofInputs(subjectSmoke, proof);
+  const programPath = path.join(subjectSmoke.workspace, "generated", "hello-world.mjs");
   await writeText(programPath, `console.log("Hello, world!");\n`);
 
   const execution = await runCommand(process.execPath, [programPath], {
-    cwd: sandbox.workspace,
+    cwd: subjectSmoke.workspace,
     timeoutMs: 10000,
-    workspace: sandbox.workspace
+    workspace: subjectSmoke.workspace
   });
   const interpreted = await assertClosedInterpretation(proof.artifact, scenarioId);
 
   assert.equal(execution.status, 0);
   assert.equal(execution.stdout, "Hello, world!\n");
-  assertInsideWorkspace(programPath, sandbox.workspace);
+  assertInsideWorkspace(programPath, subjectSmoke.workspace);
 
-  const summaryPath = await writeSandboxSummary(sandbox, {
+  const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: proof.artifactSha256,
     commandProofs: [execution],
     interpretedDisposition: interpreted.lifecycle.lifecycleDisposition,
-    sourceRule: "basic cli subject executed in sandbox; ABI route truth copied read-only"
+    sourceRule: "basic CLI subject executed as local smoke only; ABI route truth copied read-only"
   });
   assert.equal(existsSync(summaryPath), true);
 });
 
-test("runs SCN-GLC-HELLO-WORLD-JS-TENANT-TEST in an isolated sandbox", async () => {
+test("executes SCN-GLC-HELLO-WORLD-JS-TENANT-TEST as subject smoke in a scratch workspace", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST";
-  const sandbox = await prepareSandbox(scenarioId);
+  const subjectSmoke = await prepareSubjectSmokeWorkspace(scenarioId);
   const proof = await readPinnedRouteProof(ROUTE_PROOFS.jsTenantTest);
-  await copyRouteProofInputs(sandbox, proof);
-  await writeJson(path.join(sandbox.workspace, "package.json"), {
+  await copyRouteProofInputs(subjectSmoke, proof);
+  await writeJson(path.join(subjectSmoke.workspace, "package.json"), {
     private: true,
     type: "module",
     scripts: {
@@ -334,70 +335,70 @@ test("runs SCN-GLC-HELLO-WORLD-JS-TENANT-TEST in an isolated sandbox", async () 
     }
   });
   await writeText(
-    path.join(sandbox.workspace, "src", "hello.mjs"),
+    path.join(subjectSmoke.workspace, "src", "hello.mjs"),
     `export function helloWorld() {\n  return "Hello, world!";\n}\n`
   );
   await writeText(
-    path.join(sandbox.workspace, "test", "hello.test.mjs"),
+    path.join(subjectSmoke.workspace, "test", "hello.test.mjs"),
     `import assert from "node:assert/strict";\nimport { test } from "node:test";\nimport { helloWorld } from "../src/hello.mjs";\n\ntest("hello world subject returns the greeting", () => {\n  assert.equal(helloWorld(), "Hello, world!");\n});\n`
   );
 
   const execution = await runCommand(process.execPath, ["--test", "test/hello.test.mjs"], {
-    cwd: sandbox.workspace,
+    cwd: subjectSmoke.workspace,
     timeoutMs: 15000,
-    workspace: sandbox.workspace
+    workspace: subjectSmoke.workspace
   });
   const interpreted = await assertClosedInterpretation(proof.artifact, scenarioId);
 
   assert.equal(execution.status, 0);
   assert.equal(execution.stdout.includes("pass 1"), true);
 
-  const summaryPath = await writeSandboxSummary(sandbox, {
+  const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: proof.artifactSha256,
     commandProofs: [execution],
     interpretedDisposition: interpreted.lifecycle.lifecycleDisposition,
-    sourceRule: "js subject and verifier executed in sandbox; ABI route truth copied read-only"
+    sourceRule: "JS subject and verifier executed as local smoke only; ABI route truth copied read-only"
   });
   assert.equal(existsSync(summaryPath), true);
 });
 
-test("runs SCN-GLC-HELLO-WORLD-RUST-CLI in an isolated sandbox", async () => {
+test("executes SCN-GLC-HELLO-WORLD-RUST-CLI as subject smoke in a scratch workspace", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-RUST-CLI";
-  const sandbox = await prepareSandbox(scenarioId);
+  const subjectSmoke = await prepareSubjectSmokeWorkspace(scenarioId);
   const proof = await readPinnedRouteProof(ROUTE_PROOFS.rustCli);
-  await copyRouteProofInputs(sandbox, proof);
-  const projectRoot = path.join(sandbox.workspace, "build_tenants", "hello_world_rust");
+  await copyRouteProofInputs(subjectSmoke, proof);
+  const projectRoot = path.join(subjectSmoke.workspace, "build_tenants", "hello_world_rust");
   await writeText(
     path.join(projectRoot, "Cargo.toml"),
-    `[package]\nname = "hello_world_rust_sandbox"\nversion = "0.0.0"\nedition = "2021"\n\n[dependencies]\n`
+    `[package]\nname = "hello_world_rust_subject_smoke"\nversion = "0.0.0"\nedition = "2021"\n\n[dependencies]\n`
   );
   await writeText(path.join(projectRoot, "src", "main.rs"), `fn main() {\n    println!("Hello, world!");\n}\n`);
 
   const execution = await runCommand("cargo", ["run", "--quiet"], {
     cwd: projectRoot,
     timeoutMs: 120000,
-    workspace: sandbox.workspace
+    workspace: subjectSmoke.workspace
   });
   const interpreted = await assertClosedInterpretation(proof.artifact, scenarioId);
 
   assert.equal(execution.status, 0);
   assert.equal(execution.stdout, "Hello, world!\n");
 
-  const summaryPath = await writeSandboxSummary(sandbox, {
+  const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: proof.artifactSha256,
     commandProofs: [execution],
     interpretedDisposition: interpreted.lifecycle.lifecycleDisposition,
-    sourceRule: "rust cargo subject executed in sandbox; ABI route truth copied read-only"
+    sourceRule: "Rust cargo subject executed as local smoke only; ABI route truth copied read-only"
   });
   assert.equal(existsSync(summaryPath), true);
 });
 
-test("runs SCN-GLC-HELLO-WORLD-RUST-SERVICE in an isolated sandbox", async () => {
+test("executes SCN-GLC-HELLO-WORLD-RUST-SERVICE as subject smoke in a scratch workspace", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-RUST-SERVICE";
-  const sandbox = await prepareSandbox(scenarioId);
+  const subjectSmoke = await prepareSubjectSmokeWorkspace(scenarioId);
   const proof = await readPinnedRouteProof(ROUTE_PROOFS.rustService);
-  await copyRouteProofInputs(sandbox, proof);
-  const serviceRoot = path.join(sandbox.workspace, "service-request-proof");
+  await copyRouteProofInputs(subjectSmoke, proof);
+  const serviceRoot = path.join(subjectSmoke.workspace, "service-request-proof");
   const sourcePath = path.join(serviceRoot, "src", "service.rs");
   const binaryPath = path.join(serviceRoot, "hello_service");
   const portPath = path.join(serviceRoot, "service.port");
@@ -406,7 +407,7 @@ test("runs SCN-GLC-HELLO-WORLD-RUST-SERVICE in an isolated sandbox", async () =>
   const compile = await runCommand("rustc", [sourcePath, "-o", binaryPath], {
     cwd: serviceRoot,
     timeoutMs: 120000,
-    workspace: sandbox.workspace
+    workspace: subjectSmoke.workspace
   });
   assert.equal(compile.status, 0);
 
@@ -459,22 +460,22 @@ test("runs SCN-GLC-HELLO-WORLD-RUST-SERVICE in an isolated sandbox", async () =>
     status: response.status,
     url: `http://127.0.0.1:${port}/hello`
   });
-  const summaryPath = await writeSandboxSummary(sandbox, {
+  const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: proof.artifactSha256,
     clientRequest,
     commandProofs: [compile, serviceRun],
     interpretedDisposition: interpreted.lifecycle.lifecycleDisposition,
-    sourceRule: "rust service subject and client request executed in sandbox; ABI route truth copied read-only"
+    sourceRule: "Rust service subject and client request executed as local smoke only; ABI route truth copied read-only"
   });
   assert.equal(existsSync(summaryPath), true);
 });
 
-test("runs SCN-GLC-HELLO-WORLD-PARALLEL-JS in an isolated sandbox", async () => {
+test("executes SCN-GLC-HELLO-WORLD-PARALLEL-JS as subject smoke in a scratch workspace", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-PARALLEL-JS";
-  const sandbox = await prepareSandbox(scenarioId);
+  const subjectSmoke = await prepareSubjectSmokeWorkspace(scenarioId);
   const proof = await readPinnedRouteProof(ROUTE_PROOFS.parallelJs);
-  await copyRouteProofInputs(sandbox, proof);
-  const scriptRoot = path.join(sandbox.workspace, "parallel");
+  await copyRouteProofInputs(subjectSmoke, proof);
+  const scriptRoot = path.join(subjectSmoke.workspace, "parallel");
   const outputRoot = path.join(scriptRoot, "output");
   await writeText(
     path.join(scriptRoot, "hello-branch.mjs"),
@@ -493,18 +494,18 @@ test("runs SCN-GLC-HELLO-WORLD-PARALLEL-JS in an isolated sandbox", async () => 
     runCommand(process.execPath, ["hello-branch.mjs"], {
       cwd: scriptRoot,
       timeoutMs: 10000,
-      workspace: sandbox.workspace
+      workspace: subjectSmoke.workspace
     }),
     runCommand(process.execPath, ["world-branch.mjs"], {
       cwd: scriptRoot,
       timeoutMs: 10000,
-      workspace: sandbox.workspace
+      workspace: subjectSmoke.workspace
     })
   ]);
   const fanIn = await runCommand(process.execPath, ["fan-in.mjs"], {
     cwd: scriptRoot,
     timeoutMs: 10000,
-    workspace: sandbox.workspace
+    workspace: subjectSmoke.workspace
   });
   const interpreted = await assertClosedInterpretation(proof.artifact, scenarioId);
   const frontier = interpretParallelFrontierState({
@@ -524,21 +525,21 @@ test("runs SCN-GLC-HELLO-WORLD-PARALLEL-JS in an isolated sandbox", async () => 
   assert.equal(frontier.value.branchPayloads.length, 3);
   assert.equal(interpreted.lifecycle.lifecycleDisposition, "release_readiness_candidate");
 
-  const summaryPath = await writeSandboxSummary(sandbox, {
+  const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: proof.artifactSha256,
     commandProofs: [hello, world, fanIn],
     interpretedDisposition: interpreted.lifecycle.lifecycleDisposition,
     parallelReadiness: frontier.value.readiness,
-    sourceRule: "parallel js branch subjects executed in sandbox; ABI branch/frontier truth copied read-only"
+    sourceRule: "Parallel JS branch subjects executed as local smoke only; ABI branch/frontier truth copied read-only"
   });
   assert.equal(existsSync(summaryPath), true);
 });
 
-test("records SCN-GLC-HELLO-WORLD-ABG42-STARTUP in an isolated sandbox", async () => {
+test("copies SCN-GLC-HELLO-WORLD-ABG42-STARTUP as read-only startup input", async () => {
   const scenarioId = "SCN-GLC-HELLO-WORLD-ABG42-STARTUP";
-  const sandbox = await prepareSandbox(scenarioId);
+  const subjectSmoke = await prepareSubjectSmokeWorkspace(scenarioId);
   const proof = await readPinnedGlcStartupProof();
-  await copyStartupProofInputs(sandbox, proof);
+  await copyStartupProofInputs(subjectSmoke, proof);
   const view = interpretStartupRegistryState({
     proof: proof.proof,
     runtimeEvents: proof.events,
@@ -553,11 +554,11 @@ test("records SCN-GLC-HELLO-WORLD-ABG42-STARTUP in an isolated sandbox", async (
   assert.equal(proof.proof.startOutput.event_kinds.includes("graph_function_selected"), true);
   assert.equal(proof.proof.startOutput.event_kinds.includes("graph_call_opened"), true);
 
-  const summaryPath = await writeSandboxSummary(sandbox, {
+  const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive.artifactSha256,
     interpretedStartupReadiness: view.value.readiness,
     registryEntryCount: view.value.registryEntryCount,
-    sourceRule: "ABG 4.2 startup proof copied read-only; no sandbox re-emission of registry or traversal truth"
+    sourceRule: "ABG 4.2 startup proof copied read-only; no subject-smoke re-emission of registry or traversal truth"
   });
   assert.equal(existsSync(summaryPath), true);
 });
@@ -583,13 +584,13 @@ async function waitForPortFile(portPath, timeoutMs) {
   throw new Error(`Timed out waiting for service port file at ${portPath}`);
 }
 
-test("sandbox runs do not share mutable workspaces", async () => {
-  await rm(path.join(sandboxRoot, "workspace-sharing-negative-control"), {
+test("subject-smoke runs do not share mutable scratch workspaces", async () => {
+  await rm(path.join(subjectSmokeRoot, "workspace-sharing-negative-control"), {
     force: true,
     recursive: true
   });
-  const left = await prepareSandbox("workspace-sharing-negative-control");
-  const right = await prepareSandbox("workspace-sharing-negative-control");
+  const left = await prepareSubjectSmokeWorkspace("workspace-sharing-negative-control");
+  const right = await prepareSubjectSmokeWorkspace("workspace-sharing-negative-control");
 
   assert.notEqual(left.runRoot, right.runRoot);
   assert.notEqual(left.workspace, right.workspace);
