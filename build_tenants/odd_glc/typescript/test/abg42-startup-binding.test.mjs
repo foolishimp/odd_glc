@@ -21,8 +21,8 @@ import {
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPE_LIBRARY_REFS,
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
-  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
-  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN,
+  ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF,
+  ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
   ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN,
@@ -286,14 +286,14 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.length, 6);
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.length,
-    4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length + ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.length
+    4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length + ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.length
   );
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF),
     true
   );
   assert.equal(
-    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF),
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.includes(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF),
     true
   );
   assert.deepEqual(
@@ -302,11 +302,11 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   );
   assert.deepEqual(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.slice(4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length),
-    ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.vectorId)
+    ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.vectorId)
   );
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.length, 22);
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN[0].stage, "derive_intent_surface");
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.at(-1).stage, "prepare_release_surface");
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.length, 22);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN[0].stage, "derive_intent_surface");
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.at(-1).stage, "prepare_release_surface");
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.some((ref) =>
       /framework-smoke|min-fp|sdlc-js-full-live/u.test(ref)
@@ -360,13 +360,13 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
     ),
     true
   );
-  const fullDataMapperBinding = ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.find((entry) =>
-    entry.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF
+  const fullLifecycleBinding = ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.find((entry) =>
+    entry.graphFunctionRef === ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF
   );
-  assert.ok(fullDataMapperBinding);
-  assert.equal(fullDataMapperBinding.entryRef, "gtl-library-entry://odd_glc/software-build/full-data-mapper");
-  assert.equal(fullDataMapperBinding.targetContractRef, "contract://odd_glc/release-preparation");
-  assert.equal(fullDataMapperBinding.overlayRefs.includes("software-build.role.release_preparation"), true);
+  assert.ok(fullLifecycleBinding);
+  assert.equal(fullLifecycleBinding.entryRef, "gtl-library-entry://odd_glc/software-build/full-lifecycle");
+  assert.equal(fullLifecycleBinding.targetContractRef, "contract://odd_glc/release-preparation");
+  assert.equal(fullLifecycleBinding.overlayRefs.includes("software-build.role.release_preparation"), true);
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.some((entry) =>
       /framework-smoke|min-fp|sdlc-js-full-live/u.test(entry.graphFunctionRef)

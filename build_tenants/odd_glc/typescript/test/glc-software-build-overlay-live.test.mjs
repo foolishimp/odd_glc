@@ -12,8 +12,8 @@ import {
   ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES,
   ODD_GLC_DATA_MAPPING_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
-  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
-  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN,
+  ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF,
+  ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
@@ -53,16 +53,16 @@ const SDLC_REQUIRED_STAGE_NAMES = Object.freeze(
   ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
 );
 
-const FULL_DATA_MAPPER_REQUIRED_STAGE_NAMES = Object.freeze(
-  ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.stage)
+const FULL_LIFECYCLE_REQUIRED_STAGE_NAMES = Object.freeze(
+  ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.stage)
 );
 
 function sdlcStagePlan(overrides) {
   return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN, overrides);
 }
 
-function fullDataMapperStagePlan(overrides) {
-  return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN, overrides);
+function fullLifecycleStagePlan(overrides) {
+  return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN, overrides);
 }
 
 function sdlcComplianceScenario(input) {
@@ -79,18 +79,18 @@ function sdlcComplianceScenario(input) {
   });
 }
 
-function fullDataMapperComplianceScenario(input) {
+function fullLifecycleComplianceScenario(input) {
   return Object.freeze({
     ...input,
-    proofClass: "full_data_mapper_graph_traversal_compliance",
-    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF,
+    proofClass: "full_lifecycle_graph_traversal_compliance",
+    graphFunctionRef: ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF,
     materializedSurfaceCount: input.materializedSurfaceCount ?? 21,
     manifestRequired: false,
     executeFromPlan: true,
     executionStage: "derive_test_execution_result_surface",
     expectedReturnValue: input.expectedReturnValue ?? "data_mapper_full ok",
-    requiredStageNames: FULL_DATA_MAPPER_REQUIRED_STAGE_NAMES,
-    stagePlan: fullDataMapperStagePlan(input.stagePlan)
+    requiredStageNames: FULL_LIFECYCLE_REQUIRED_STAGE_NAMES,
+    stagePlan: fullLifecycleStagePlan(input.stagePlan)
   });
 }
 
@@ -760,7 +760,7 @@ const SCENARIOS = Object.freeze([
       }
     ]
   }),
-  fullDataMapperComplianceScenario({
+  fullLifecycleComplianceScenario({
     key: "data-mapper-full",
     scenarioId: "SCN-GLC-DATA-MAPPER-FULL-JS",
     kind: "data_mapper_full_node_test",
@@ -1011,7 +1011,7 @@ function liveEnabled() {
 
 function isComplianceScenario(scenario) {
   return scenario.proofClass === "sdlc_graph_traversal_compliance" ||
-    scenario.proofClass === "full_data_mapper_graph_traversal_compliance";
+    scenario.proofClass === "full_lifecycle_graph_traversal_compliance";
 }
 
 function selectedScenarios() {
@@ -1133,15 +1133,15 @@ test("classifies every current live scenario as GTL/ABG traversal compliance", (
         scenario.requiredStageNames,
         ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.map((stage) => stage.stage)
       );
-    } else if (scenario.proofClass === "full_data_mapper_graph_traversal_compliance") {
-      assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF);
+    } else if (scenario.proofClass === "full_lifecycle_graph_traversal_compliance") {
+      assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF);
       assert.deepEqual(
         scenario.stagePlan.map((stage) => stage.vectorId),
-        ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.vectorId)
+        ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.vectorId)
       );
       assert.deepEqual(
         scenario.requiredStageNames,
-        ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN.map((stage) => stage.stage)
+        ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.stage)
       );
     } else {
       assert.fail(`Unexpected compliance proof class ${scenario.proofClass}`);

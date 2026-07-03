@@ -811,8 +811,9 @@ eight-vector SDLC graph traversal:
 7. test execution plan;
 8. test execution result.
 
-The full data-mapper control scenario is now represented as a separate
-22-vector GTL graph over the same reusable software-build overlay:
+The full data-mapper control scenario now runs over a reusable 22-vector
+full-lifecycle software-build GTL graph declared on the same reusable
+software-build overlay:
 
 1. derive intent surface;
 2. derive product surface;
@@ -843,9 +844,9 @@ closure evidence.
 
 Implementation update 2026-07-03:
 
-- `ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_GRAPH_FUNCTION_REF` is declared and
+- `ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF` is declared and
   bound through `ODD_GLC_SOFTWARE_BUILD_OVERLAY`.
-- `ODD_GLC_SOFTWARE_BUILD_FULL_DATA_MAPPER_STAGE_PLAN` declares the full
+- `ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN` declares the full
   22-vector graph above.
 - Software-build node-type declarations now cover the added full data-mapper
   surfaces: goal, UAT testcases, testcase authority, feature decomposition,
@@ -853,7 +854,7 @@ Implementation update 2026-07-03:
   execution qualification, repair schedule, test-run archive, release-depth
   parity, and release preparation.
 - `SCN-GLC-DATA-MAPPER-FULL-JS` is present in the live scenario suite as
-  `full_data_mapper_graph_traversal_compliance`.
+  `full_lifecycle_graph_traversal_compliance`.
 - Non-live verification passed with the live-worker tests skipped by default:
   `cd build_tenants/odd_glc/typescript && npm test` reported 52 passing checks
   and 8 skipped live-worker checks.
