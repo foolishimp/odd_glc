@@ -792,7 +792,8 @@ const SCENARIOS = Object.freeze([
           "Write only specification/product.md.",
           "Use the prior intent artifact as authority.",
           "Define the product as a JavaScript LogicalDataModel module plus tests that prove entity and morphism behavior.",
-          "Name the public source API: addEntity, addMorphism, identityFor, morphism, dotPath, and projectRecord.",
+          "Name the exact public source API: addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "Do not describe addMorphism as addMorphism(source, target, fn), compose, defineMorphism, validateCardinality, mapRecord, or any API outside that exact list.",
           "Do not write requirements, design, source, tests, package files, or execution plans in this vector."
         ]
       },
@@ -813,6 +814,7 @@ const SCENARIOS = Object.freeze([
           "Write only specification/requirements.md.",
           "Use the prior goal artifact as authority.",
           "Define requirements for entities, morphisms with cardinality 1:1, N:1, or 1:N, identity morphisms, dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "dotPath(...morphismNames) must return a path object carrying { morphisms: string[], source: string, target: string }; it must not return a dot-separated string.",
           "projectRecord must project a source record value through a lawful path into an object keyed by targetField.",
           "Do not write design, source, tests, package files, or execution plans in this vector."
         ]
@@ -855,6 +857,7 @@ const SCENARIOS = Object.freeze([
           "Use the prior feature-decomposition artifact as authority.",
           "Design a single JavaScript class LogicalDataModel with private Maps for entities and morphisms.",
           "The public API contract is exact: addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "dotPath(...morphismNames) returns a path object exactly shaped as { morphisms: string[], source: string, target: string }, not a string.",
           "The projectRecord path argument is the object returned by dotPath(...morphismNames), not a string and not a morphism name.",
           "Do not describe projectRecord as projectRecord(morphismOrPath, record), projectRecord(morphismName, record), or any other two-argument shape.",
           "Specify failure behavior for unknown entities, unsupported cardinality, unknown morphisms, and codomain/domain mismatch.",
@@ -868,6 +871,7 @@ const SCENARIOS = Object.freeze([
           "Write only specification/scenario.md.",
           "Use prior UAT and design artifacts as authority.",
           "Describe the scenario: define Customer, Order, Country; add places Customer->Order and shipsTo Order->Country; dotPath(\"places\", \"shipsTo\") is lawful; dotPath(\"shipsTo\", \"places\") is rejected; projectRecord(sourceRecord, path, targetField) projects country.",
+          "The lawful dotPath proof expects a path object with morphisms [\"places\", \"shipsTo\"], source \"Customer\", and target \"Country\"; do not expect the string \"places.shipsTo\".",
           "The projectRecord proof uses sourceRecord { places: { shipsTo: \"AU\" } }, the path returned by dotPath(\"places\", \"shipsTo\"), and targetField \"country\" to return { country: \"AU\" }.",
           "Do not write source or tests in this vector."
         ]
@@ -880,6 +884,7 @@ const SCENARIOS = Object.freeze([
           "Use all prior specification and design artifacts as authority.",
           "Specify exact source files package.json and src/logical-data-model.mjs.",
           "Specify LogicalDataModel methods addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "Specify dotPath(...morphismNames) returns { morphisms, source, target }; do not specify or permit a string return value for dotPath.",
           "The projectRecord path parameter is the dotPath(...morphismNames) result object carrying the composed path, not a string path expression.",
           "Do not describe or permit projectRecord(morphismOrPath, record), projectRecord(morphismName, record), or any two-argument projectRecord signature.",
           "Do not write source or tests in this vector."
@@ -893,6 +898,7 @@ const SCENARIOS = Object.freeze([
           "Use implementation_design as authority.",
           "Describe the component code surface and list the exact public methods and expected thrown error cases.",
           "The exact public methods are addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "The dotPath return contract is the object { morphisms: string[], source: string, target: string }; tests must use deepStrictEqual for that object shape.",
           "The projectRecord path parameter is the dotPath result object; do not specify a string path or morphism-name argument for projectRecord.",
           "Do not restate projectRecord with a two-argument signature.",
           "Do not write package.json, source files, tests, or execution plans in this vector."
@@ -919,7 +925,8 @@ const SCENARIOS = Object.freeze([
           "src/logical-data-model.mjs must export default class LogicalDataModel and named export LogicalDataModel.",
           "Implement addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
           "Allowed cardinalities are exactly 1:1, N:1, and 1:N; reject all others.",
-          "dotPath must accept separate morphism-name arguments and reject codomain/domain mismatch.",
+          "dotPath must accept separate morphism-name arguments, reject codomain/domain mismatch, and return { morphisms: string[], source: string, target: string }.",
+          "dotPath must not return a dot-separated string.",
           "projectRecord must accept a dotPath result and project the final codomain value from sourceRecord using the path's morphism names into an object keyed by targetField.",
           "Do not export or rely on a compose method."
         ]
@@ -932,6 +939,7 @@ const SCENARIOS = Object.freeze([
           "Use the code surface and testcase authority artifacts as evidence.",
           "Specify component tests for entity/morphism registration, cardinality rejection, and dot-path mismatch rejection.",
           "Specify UAT tests for Customer -> Order -> Country lawful composition and projectRecord output.",
+          "The lawful composition UAT must assert deepStrictEqual(path, { morphisms: [\"places\", \"shipsTo\"], source: \"Customer\", target: \"Country\" }); it must not compare path to \"places.shipsTo\".",
           "The UAT record-projection design must call projectRecord(sourceRecord, path, targetField), where path is the dotPath(\"places\", \"shipsTo\") result and targetField is \"country\".",
           "The sourceRecord fixture for projectRecord must be { places: { shipsTo: \"AU\" } }, matching the path's morphism-name traversal.",
           "Do not write executable test source in this vector."
@@ -945,7 +953,10 @@ const SCENARIOS = Object.freeze([
           "Use node:test and node:assert/strict.",
           "Import LogicalDataModel from ../../src/logical-data-model.mjs.",
           "Create exactly three test() blocks: registers entities and morphisms, rejects unsupported cardinality, and rejects invalid dot-path composition.",
-          "Use dotPath(...morphismNames) for composition checks; do not call compose."
+          "Use dotPath(...morphismNames) for composition checks; do not call compose.",
+          "In the registers entities and morphisms test, build path = model.dotPath(\"order\", \"country\") and assert.deepStrictEqual(path, { morphisms: [\"order\", \"country\"], source: \"Customer\", target: \"Country\" }).",
+          "Do not assert path.domain or path.codomain; the path fields are source and target.",
+          "When asserting a lawful path object, use assert.deepStrictEqual, not assert.equal or string comparison."
         ]
       },
       {
@@ -955,6 +966,7 @@ const SCENARIOS = Object.freeze([
           "Write only test/uat/logical-data-model.uat.test.mjs and test-execution-plan.json.",
           "The UAT test must use node:test and node:assert/strict and import LogicalDataModel from ../../src/logical-data-model.mjs.",
           "Create exactly two UAT test() blocks: one proves Customer -> Order -> Country dotPath lawfully composes, and one proves projectRecord(sourceRecord, path, targetField) returns { country: \"AU\" }.",
+          "The lawful composition test must assert.deepStrictEqual(path, { morphisms: [\"places\", \"shipsTo\"], source: \"Customer\", target: \"Country\" }); it must not assert path === \"places.shipsTo\".",
           "The projectRecord UAT must build path = model.dotPath(\"places\", \"shipsTo\") and call model.projectRecord({ places: { shipsTo: \"AU\" } }, path, \"country\").",
           "Do not call projectRecord with two arguments.",
           "test-execution-plan.json must set command to node.",
@@ -1988,7 +2000,7 @@ async function writeText(filePath, content) {
   await writeFile(filePath, content, "utf8");
 }
 
-function truncateForPrompt(text, maxChars = 2400) {
+function truncateForPrompt(text, maxChars = 1200) {
   return text.length <= maxChars
     ? text
     : text.slice(0, maxChars) + "\\n...[truncated]";
@@ -2003,10 +2015,35 @@ async function summarizeMaterializedFiles(workspaceRoot, filePaths) {
       sha256: sha256Text(content),
       byteLength: Buffer.byteLength(content, "utf8"),
       lineCount: content.length === 0 ? 0 : content.split("\\n").length,
-      contentPreview: truncateForPrompt(content)
+      contentPreview: truncateForPrompt(content, 1200)
     }));
   }
   return Object.freeze(summaries);
+}
+
+function priorStageArtifactsForPrompt(priorStageArtifacts) {
+  return Object.freeze(priorStageArtifacts.map((artifact) => Object.freeze({
+    vectorIndex: artifact.vectorIndex,
+    stage: artifact.stage,
+    edge: artifact.edge,
+    vectorId: artifact.vectorId,
+    targetTypeRef: artifact.targetTypeRef,
+    artifactSha256: artifact.artifactSha256,
+    files: Object.freeze((artifact.files ?? []).map((file) => Object.freeze({
+      path: file.path,
+      sha256: file.sha256,
+      byteLength: file.byteLength,
+      lineCount: file.lineCount,
+      contentExcerpt: truncateForPrompt(file.contentPreview ?? "", 900)
+    }))),
+    execution: artifact.execution,
+    assessment: Object.freeze({
+      accepted: artifact.assessment?.accepted ?? null,
+      evidenceAccepted: artifact.assessment?.evidenceAccepted ?? null,
+      nodeTypesUsed: artifact.assessment?.nodeTypesUsed ?? [],
+      reasonExcerpt: truncateForPrompt(artifact.assessment?.reasonPreview ?? "", 240)
+    })
+  })));
 }
 
 function runSync(command, args, cwd) {
@@ -2400,9 +2437,11 @@ function promptFor(input, evidenceSummary, priorStageArtifacts) {
       ];
   const priorStageText = priorStageArtifacts.length === 0
     ? "[]"
-    : JSON.stringify(priorStageArtifacts, null, 2);
+    : JSON.stringify(priorStageArtifactsForPrompt(priorStageArtifacts), null, 2);
   return [
     "Return only one JSON object. Do not include markdown or commentary.",
+    "Do not call advisor, tools, subagents, shell commands, slash commands, or external helpers. Tool/advisor use is a failure for this traversal.",
+    "Do not ask clarifying questions. Resolve the current vector directly from the typed edge contract, admitted prior artifacts, and stage-specific instructions.",
     "You are the F_P worker for an odd_glc software-build lifecycle traversal.",
     "ABG owns registry startup, graph-function selection, graph-call opening, traversal events, and closure.",
     "odd_glc supplies GTL declaration data: the reusable software-build overlay graph and startup binding.",
