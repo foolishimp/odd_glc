@@ -96,8 +96,8 @@ async function readPinnedGlcStartupFixture() {
   assert.equal(eventDigest, proof.eventLogSha256);
   assert.equal(parsedProof.eventDigest, proof.eventDigest);
   assert.equal(parsedProof.durationMs, proof.durationMs);
-  assert.equal(parsedProof.installedPackage.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
-  assert.equal(parsedProof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256);
+  assert.equal(parsedProof.installedPackage.packageVersion, proof.sourcePackageVersion);
+  assert.equal(parsedProof.snapshotTarballSha256, proof.snapshotTarballSha256);
   return Object.freeze({
     proof: parsedProof,
     events: rawEvents.trim().split(/\r?\n/u).filter(Boolean).map((line) => JSON.parse(line)),
@@ -482,7 +482,7 @@ test("consumes the ABG 4.2 live GLC startup proof as emitted registry and traver
   assert.equal(view.value.kind, "odd_glc_startup_registry_state_view");
   assert.equal(view.value.readiness, "traversal_converged");
   assert.equal(proof.sourceDirty, false);
-  assert.equal(proof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256);
+  assert.equal(proof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive.snapshotTarballSha256);
   assert.equal(proof.durationMs, ABIOGENESIS_SUBSTRATE_PROVENANCE.proofArtifacts.glcHelloWorldBootstrapLive.durationMs);
   assert.equal(proof.startOutput.status, "converged");
   assert.equal(proof.startOutput.stopped_by, "converged");

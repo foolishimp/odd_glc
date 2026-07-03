@@ -105,8 +105,8 @@ async function readPinnedGlcStartupProof() {
 
   assert.equal(sha256Text(rawProof), proof.artifactSha256);
   assert.equal(sha256Text(rawEvents), proof.eventLogSha256);
-  assert.equal(parsedProof.installedPackage.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
-  assert.equal(parsedProof.snapshotTarballSha256, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256);
+  assert.equal(parsedProof.installedPackage.packageVersion, proof.sourcePackageVersion);
+  assert.equal(parsedProof.snapshotTarballSha256, proof.snapshotTarballSha256);
   assert.equal(parsedProof.eventDigest, proof.eventDigest);
 
   return Object.freeze({

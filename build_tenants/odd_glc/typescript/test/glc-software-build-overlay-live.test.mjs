@@ -854,6 +854,9 @@ const SCENARIOS = Object.freeze([
           "Write only design/module-design.md.",
           "Use the prior feature-decomposition artifact as authority.",
           "Design a single JavaScript class LogicalDataModel with private Maps for entities and morphisms.",
+          "The public API contract is exact: addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "The projectRecord path argument is the object returned by dotPath(...morphismNames), not a string and not a morphism name.",
+          "Do not describe projectRecord as projectRecord(morphismOrPath, record), projectRecord(morphismName, record), or any other two-argument shape.",
           "Specify failure behavior for unknown entities, unsupported cardinality, unknown morphisms, and codomain/domain mismatch.",
           "Do not write source or tests in this vector."
         ]
@@ -864,7 +867,8 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only specification/scenario.md.",
           "Use prior UAT and design artifacts as authority.",
-          "Describe the scenario: define Customer, Order, Country; add places Customer->Order and shipsTo Order->Country; dotPath(\"places\", \"shipsTo\") is lawful; dotPath(\"shipsTo\", \"places\") is rejected; projectRecord projects country.",
+          "Describe the scenario: define Customer, Order, Country; add places Customer->Order and shipsTo Order->Country; dotPath(\"places\", \"shipsTo\") is lawful; dotPath(\"shipsTo\", \"places\") is rejected; projectRecord(sourceRecord, path, targetField) projects country.",
+          "The projectRecord proof uses sourceRecord { places: { shipsTo: \"AU\" } }, the path returned by dotPath(\"places\", \"shipsTo\"), and targetField \"country\" to return { country: \"AU\" }.",
           "Do not write source or tests in this vector."
         ]
       },
@@ -875,7 +879,9 @@ const SCENARIOS = Object.freeze([
           "Write only design/implementation-design.md.",
           "Use all prior specification and design artifacts as authority.",
           "Specify exact source files package.json and src/logical-data-model.mjs.",
-          "Specify LogicalDataModel methods addEntity, addMorphism, identityFor, morphism, dotPath, and projectRecord.",
+          "Specify LogicalDataModel methods addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "The projectRecord path parameter is the dotPath(...morphismNames) result object carrying the composed path, not a string path expression.",
+          "Do not describe or permit projectRecord(morphismOrPath, record), projectRecord(morphismName, record), or any two-argument projectRecord signature.",
           "Do not write source or tests in this vector."
         ]
       },
@@ -886,6 +892,9 @@ const SCENARIOS = Object.freeze([
           "Write only design/component-code-surface.md.",
           "Use implementation_design as authority.",
           "Describe the component code surface and list the exact public methods and expected thrown error cases.",
+          "The exact public methods are addEntity(name), addMorphism(name, domain, codomain, cardinality), identityFor(entityName), morphism(name), dotPath(...morphismNames), and projectRecord(sourceRecord, path, targetField).",
+          "The projectRecord path parameter is the dotPath result object; do not specify a string path or morphism-name argument for projectRecord.",
+          "Do not restate projectRecord with a two-argument signature.",
           "Do not write package.json, source files, tests, or execution plans in this vector."
         ]
       },
@@ -896,6 +905,7 @@ const SCENARIOS = Object.freeze([
           "Write only proof/component-realization-qualification.md.",
           "Use the component-code-surface and implementation-design artifacts as authority.",
           "State the criteria the later source artifact must satisfy: exact public API, no compose alias, cardinality validation, dot-path validation, and record projection.",
+          "The record projection criterion must name projectRecord(sourceRecord, path, targetField), not a two-argument projectRecord variant.",
           "Do not write source or tests in this vector."
         ]
       },
@@ -922,6 +932,8 @@ const SCENARIOS = Object.freeze([
           "Use the code surface and testcase authority artifacts as evidence.",
           "Specify component tests for entity/morphism registration, cardinality rejection, and dot-path mismatch rejection.",
           "Specify UAT tests for Customer -> Order -> Country lawful composition and projectRecord output.",
+          "The UAT record-projection design must call projectRecord(sourceRecord, path, targetField), where path is the dotPath(\"places\", \"shipsTo\") result and targetField is \"country\".",
+          "The sourceRecord fixture for projectRecord must be { places: { shipsTo: \"AU\" } }, matching the path's morphism-name traversal.",
           "Do not write executable test source in this vector."
         ]
       },
@@ -942,7 +954,9 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only test/uat/logical-data-model.uat.test.mjs and test-execution-plan.json.",
           "The UAT test must use node:test and node:assert/strict and import LogicalDataModel from ../../src/logical-data-model.mjs.",
-          "Create exactly two UAT test() blocks: one proves Customer -> Order -> Country dotPath lawfully composes, and one proves projectRecord returns { country: \"AU\" } for a source record with nested order.country value.",
+          "Create exactly two UAT test() blocks: one proves Customer -> Order -> Country dotPath lawfully composes, and one proves projectRecord(sourceRecord, path, targetField) returns { country: \"AU\" }.",
+          "The projectRecord UAT must build path = model.dotPath(\"places\", \"shipsTo\") and call model.projectRecord({ places: { shipsTo: \"AU\" } }, path, \"country\").",
+          "Do not call projectRecord with two arguments.",
           "test-execution-plan.json must set command to node.",
           "The args must be [\"--test\", \"test/component/logical-data-model.test.mjs\", \"test/uat/logical-data-model.uat.test.mjs\"].",
           "expectedTestPassCount must be 5.",
@@ -1491,8 +1505,20 @@ function nodeTypeFromEntry(entry) {
   });
 }
 
+const locallyDeclaredTypeRefs = new Set([
+  TYPE_REFS.context,
+  TYPE_REFS.lifecycleArtifact,
+  TYPE_REFS.evidence
+]);
+
 const softwareBuildSpecializedTypes = Object.freeze(
-  [...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES, ...ODD_GLC_DATA_MAPPING_NODE_TYPES].map(nodeTypeFromEntry)
+  [
+    ...ODD_GLC_LIFECYCLE_NODE_TYPES,
+    ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
+    ...ODD_GLC_DATA_MAPPING_NODE_TYPES
+  ]
+    .filter((entry) => !locallyDeclaredTypeRefs.has(entry.typeRef))
+    .map(nodeTypeFromEntry)
 );
 
 const dataMappingBundleComposition = composeNodeTypes({
@@ -1866,17 +1892,32 @@ const runtimeRegistryStartup = Object.freeze({
   correlationId: \`correlation://odd_glc/software-build/\${SCENARIO.key}/startup\`
 });
 
-function extractJsonObject(text) {
-  const trimmed = text.trim();
-  const start = trimmed.indexOf("{");
-  if (start < 0) {
-    throw new Error(\`GLC live worker did not return JSON: \${text}\`);
+function isAssessmentObject(value) {
+  return value !== null &&
+    typeof value === "object" &&
+    typeof value.accepted === "boolean" &&
+    typeof value.stage === "string" &&
+    typeof value.evidenceAccepted === "boolean" &&
+    Array.isArray(value.nodeTypesUsed) &&
+    Array.isArray(value.files) &&
+    typeof value.reason === "string";
+}
+
+function parseAssessmentJson(candidate) {
+  try {
+    const parsed = JSON.parse(candidate.trim());
+    return isAssessmentObject(parsed) ? parsed : null;
+  } catch {
+    return null;
   }
+}
+
+function balancedObjectSliceAt(text, start) {
   let depth = 0;
   let inString = false;
   let escaping = false;
-  for (let index = start; index < trimmed.length; index += 1) {
-    const char = trimmed[index];
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
     if (inString) {
       if (escaping) {
         escaping = false;
@@ -1896,11 +1937,50 @@ function extractJsonObject(text) {
     } else if (char === "}") {
       depth -= 1;
       if (depth === 0) {
-        return JSON.parse(trimmed.slice(start, index + 1));
+        return text.slice(start, index + 1);
       }
     }
   }
-  throw new Error(\`GLC live worker returned unterminated JSON: \${text}\`);
+  return null;
+}
+
+function extractJsonObject(text) {
+  const trimmed = text.trim();
+  const fence = String.fromCharCode(96, 96, 96);
+  let searchIndex = 0;
+  while (searchIndex < trimmed.length) {
+    const fenceStart = trimmed.indexOf(fence, searchIndex);
+    if (fenceStart < 0) {
+      break;
+    }
+    const lineEnd = trimmed.indexOf("\\n", fenceStart + fence.length);
+    const bodyStart = lineEnd < 0 ? fenceStart + fence.length : lineEnd + 1;
+    const fenceEnd = trimmed.indexOf(fence, bodyStart);
+    if (fenceEnd < 0) {
+      break;
+    }
+    const parsed = parseAssessmentJson(trimmed.slice(bodyStart, fenceEnd));
+    if (parsed !== null) {
+      return parsed;
+    }
+    searchIndex = fenceEnd + fence.length;
+  }
+
+  for (let index = 0; index < trimmed.length; index += 1) {
+    if (trimmed[index] !== "{") {
+      continue;
+    }
+    const candidate = balancedObjectSliceAt(trimmed, index);
+    if (candidate === null) {
+      continue;
+    }
+    const parsed = parseAssessmentJson(candidate);
+    if (parsed !== null) {
+      return parsed;
+    }
+  }
+
+  throw new Error(\`GLC live worker did not return parseable assessment JSON: \${trimmed.slice(0, 240)}\`);
 }
 
 async function writeText(filePath, content) {

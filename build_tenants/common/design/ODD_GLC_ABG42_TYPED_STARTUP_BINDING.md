@@ -194,7 +194,7 @@ published ABI system-library entry for these refs. They remain candidate system
 functions: a later ABI publication of an equivalent generic carrier shall
 replace the product ref instead of preserving a duplicate `odd_glc` function.
 
-Audit basis: ABIogenesis 4.2.0-rc.3 source, GTL runtime-registry declarations,
+Audit basis: ABIogenesis 4.2.0-rc.4 source, GTL runtime-registry declarations,
 and installed proof surfaces were searched for equivalent published entries for
 bootstrap-worksite, materialize-artifact, prove-artifact, fan-in-branches, and
 sdlc-software-build.
@@ -292,13 +292,15 @@ graph-function refs are superseded and cannot close this design. They are stage
 feasibility evidence only. A current proof must select the reusable SDLC graph
 function above.
 
-Current committed RC3 proof input:
+Current committed canonical proof input inherited from the RC3 release record:
 `abiogenesis-canonical-hello-world-full-stack-live/20260702T191230832Z_pid95807`.
 That artifact is ABG-owned startup, registry, graph-call, traversal, F_P
 dispatch, event emission, and replay truth over `@abiogenesis/typescript-tenant`
-`4.2.0-rc.3`. It is consumed read-only by this tenant. Full SDLC witness-shape
-closure remains governed by `T-025`; it shall not be closed by relabeling an
-older software-build run or by replaying a local mapping surface.
+`4.2.0-rc.3`, and is carried forward as an inherited proof in the
+`4.2.0-rc.4` release record. It is consumed read-only by this tenant. Full
+SDLC witness-shape closure remains governed by `T-025`; it shall not be closed
+by relabeling an older software-build run or by replaying a local mapping
+surface.
 
 ## Non-Closure
 

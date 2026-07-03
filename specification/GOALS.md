@@ -3,7 +3,7 @@
 **Status**: Active
 **Date**: 2026-07-02
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.3/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.4/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
@@ -23,7 +23,7 @@ registers, process shells, or controllers. It may require reproducing a
 selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
 by ABG.
 
-ABIogenesis `4.2.0-rc.3` is the substrate under test for this wave. If the
+ABIogenesis `4.2.0-rc.4` is the substrate under test for this wave. If the
 selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
 startup, registry, graph-call, vector traversal, evidence, and replay truth,
 then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
@@ -80,7 +80,7 @@ truth, local shells, or a product-owned traversal controller.
 6. Reproduce the Hello World witnesses as support/scout coverage.
    - Closure-grade proofs get their own ABG startup/run root.
    - Scenario-sandbox ports must create governed run roots, install
-     ABIogenesis RC3 into fresh workspaces, write sandbox identities, and bind
+     ABIogenesis RC4 into fresh workspaces, write sandbox identities, and bind
      old witness pressure to the reusable `odd_glc` software-build overlay.
    - Subject programs may execute as product subjects inside that run root.
    - Runtime truth must be ABG-emitted or digest-pinned ABG proof truth.
@@ -154,7 +154,7 @@ Execution order:
      seam.
    - Missing read interpretation over admitted truth belongs in odd_glc.
 8. Keep the old odd_sdlc Hello World sandbox witnesses as sandbox-port setup
-   checks over ABG RC3 install and odd_glc startup binding. These are not
+   checks over ABG RC4 install and odd_glc startup binding. These are not
    traversal closure, live-worker proof, live-terminal proof, or parity by
    themselves.
 9. Treat deep/resume data_mapper witnesses as follow-on coverage after the
