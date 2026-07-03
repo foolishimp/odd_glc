@@ -21,6 +21,12 @@ import {
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING,
   interpretStartupRegistryState
 } from "../src/index.mjs";
+import {
+  ODD_GLC_INSTALL_FILES,
+  ODD_GLC_INSTALL_PACKAGE_NAME,
+  ODD_GLC_INSTALL_VERSION,
+  installOddGlcProductForSandbox
+} from "./sandbox-install-helpers.mjs";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const tenantRoot = path.resolve(dirname, "..");
@@ -1185,11 +1191,52 @@ test("selects traversal compliance separately from diagnostic scenarios", () => 
   }
 });
 
+test("installs odd_glc into sandbox before generating ABG runtime binding", async () => {
+  const scenario = SCENARIOS.find((row) => row.key === "basic-cli");
+  assert.ok(scenario);
+  const runRoot = path.join(liveRoot, "install-shape", timestampId());
+  const workspaceRoot = path.join(runRoot, "instance");
+  await mkdir(workspaceRoot, { recursive: true });
+
+  const oddGlcInstall = await installOddGlcProductForSandbox({
+    runRoot,
+    workspaceRoot,
+    tenantRoot,
+    substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
+  });
+  const runtimeBindingPath = await writeRuntimeBinding({
+    abgPackageRoot: defaultAbgPackageRoot,
+    oddGlcPackageRoot: oddGlcInstall.packageRoot,
+    scenario,
+    workspaceRoot
+  });
+  const runtimeBindingText = await readFile(runtimeBindingPath, "utf8");
+  const sourceImportPath = path.join(tenantRoot, "src", "index.mjs");
+
+  assert.equal(existsSync(path.join(oddGlcInstall.packageRoot, "src", "index.mjs")), true);
+  assert.equal(existsSync(path.join(workspaceRoot, ".odd_glc", "install-manifest.json")), true);
+  assert.equal(existsSync(path.join(workspaceRoot, ".ai-workspace", "odd-glc-install-manifest.json")), true);
+  assert.equal(runtimeBindingText.includes(sourceImportPath), false);
+  assert.equal(runtimeBindingText.includes(oddGlcInstall.packageRoot), true);
+  assert.equal(oddGlcInstall.manifest.packageName, ODD_GLC_INSTALL_PACKAGE_NAME);
+  assert.equal(oddGlcInstall.manifest.packageVersion, ODD_GLC_INSTALL_VERSION);
+  assert.deepEqual(
+    oddGlcInstall.manifest.copiedFiles.map((file) => file.relativePath),
+    ODD_GLC_INSTALL_FILES
+  );
+  assert.equal(
+    oddGlcInstall.manifest.copiedFiles.every((file) => file.sha256.startsWith("sha256:")),
+    true
+  );
+});
+
 function runtimeBindingSource(input) {
   const packageImport = pathToFileURL(
     path.join(input.abgPackageRoot, "build", "semantic", "code", "src", "index.js")
   ).href;
-  const oddGlcImport = pathToFileURL(path.join(tenantRoot, "src", "index.mjs")).href;
+  const oddGlcIndexPath = path.join(input.oddGlcPackageRoot, "src", "index.mjs");
+  assert.equal(existsSync(oddGlcIndexPath), true, `Missing installed odd_glc package at ${oddGlcIndexPath}`);
+  const oddGlcImport = pathToFileURL(oddGlcIndexPath).href;
   return `import {
   admitModule,
   admitNode,
@@ -2557,6 +2604,8 @@ async function runScenarioLive(scenario) {
   const runRoot = path.join(liveRoot, scenario.key, timestampId());
   const workspaceRoot = path.join(runRoot, "instance");
   const toolchainRoot = path.join(runRoot, "toolchain");
+  const oddGlcProductRoot = path.join(runRoot, "products", "odd_glc", ODD_GLC_INSTALL_VERSION);
+  const oddGlcPackageRoot = path.join(oddGlcProductRoot, "lib", "node_modules", "@odd-glc", "route-one-typescript");
   await mkdir(workspaceRoot, { recursive: true });
   const requestedExecutorProfile = process.env.ABG_TS_AGENT_EXECUTOR_PROFILE ?? "local-spawn";
   const sandboxIdentity = Object.freeze({
@@ -2576,6 +2625,10 @@ async function runScenarioLive(scenario) {
     runRoot,
     workspaceRoot,
     toolchainRoot,
+    oddGlcProductRoot,
+    oddGlcPackageRoot,
+    oddGlcPackageName: ODD_GLC_INSTALL_PACKAGE_NAME,
+    oddGlcPackageVersion: ODD_GLC_INSTALL_VERSION,
     subjectWriteRoot: workspaceRoot,
     requestedExecutorProfile,
     terminalProofRequired: requestedExecutorProfile === "pty-terminal",
@@ -2603,7 +2656,19 @@ async function runScenarioLive(scenario) {
       env: process.env
     }
   );
-  const runtimeBindingPath = await writeRuntimeBinding({ abgPackageRoot, scenario, workspaceRoot });
+  const oddGlcInstall = await installOddGlcProductForSandbox({
+    runRoot,
+    workspaceRoot,
+    tenantRoot,
+    substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
+  });
+  assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
+  const runtimeBindingPath = await writeRuntimeBinding({
+    abgPackageRoot,
+    oddGlcPackageRoot: oddGlcInstall.packageRoot,
+    scenario,
+    workspaceRoot
+  });
   const startedAt = Date.now();
   const start = run(
     genesisCommand,
@@ -2651,6 +2716,10 @@ async function runScenarioLive(scenario) {
     graphRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphRef,
     graphFunctionRef: scenario.graphFunctionRef ?? ODD_GLC_SOFTWARE_BUILD_OVERLAY.defaultStartTarget,
     sandboxIdentity,
+    oddGlcInstallManifestPath: oddGlcInstall.manifestPath,
+    oddGlcWorkspaceInstallManifestPath: oddGlcInstall.workspaceManifestPath,
+    oddGlcPackageRoot: oddGlcInstall.packageRoot,
+    oddGlcInstallFileSha256s: oddGlcInstall.manifest.copiedFiles.map((file) => file.sha256),
     runtimeBindingPath,
     workspaceRoot,
     startOutput,
@@ -2707,6 +2776,16 @@ for (const scenario of selectedScenarios()) {
     assert.equal(result.proof.sandboxIdentity.workspaceRoot, result.workspaceRoot);
     assert.equal(existsSync(path.join(result.runRoot, "sandbox-identity.json")), true);
     assert.equal(existsSync(path.join(result.workspaceRoot, ".ai-workspace", "sandbox-identity.json")), true);
+    assert.equal(existsSync(result.proof.oddGlcInstallManifestPath), true);
+    assert.equal(existsSync(result.proof.oddGlcWorkspaceInstallManifestPath), true);
+    assert.equal(existsSync(path.join(result.proof.oddGlcPackageRoot, "src", "index.mjs")), true);
+    assert.equal(result.proof.sandboxIdentity.oddGlcPackageRoot, result.proof.oddGlcPackageRoot);
+    assert.equal(result.proof.sandboxIdentity.oddGlcPackageName, ODD_GLC_INSTALL_PACKAGE_NAME);
+    assert.equal(result.proof.sandboxIdentity.oddGlcPackageVersion, ODD_GLC_INSTALL_VERSION);
+    assert.equal(
+      (await readFile(result.proof.runtimeBindingPath, "utf8")).includes(path.join(tenantRoot, "src", "index.mjs")),
+      false
+    );
     assert.equal(result.startOutput.command, "start");
     assert.equal(result.startOutput.stopped_by, "converged");
     assert.equal(result.proof.externalAbgStartInvocationCount, 1);

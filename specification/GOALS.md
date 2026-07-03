@@ -98,6 +98,8 @@ truth, local shells, or a product-owned traversal controller.
 
 - `T-025`: typed scenario ladder and data_mapper witness preparation over the
   reusable software-build overlay.
+- `T-029`: install-shaped scenario sandboxes so ABG/GTL and odd_glc are both
+  consumed as installed products before ABG traversal starts.
 - `T-026`: non-closed, re-entry, blocked, and reprice interpretation over
   typed glc startup.
 - `T-027`: recursive any-scale lifecycle composition over ABG frame, span,

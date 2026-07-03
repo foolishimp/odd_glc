@@ -17,6 +17,11 @@ import {
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING
 } from "../src/index.mjs";
+import {
+  ODD_GLC_INSTALL_PACKAGE_NAME,
+  ODD_GLC_INSTALL_VERSION,
+  installOddGlcProductForSandbox
+} from "./sandbox-install-helpers.mjs";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const tenantRoot = path.resolve(dirname, "..");
@@ -309,6 +314,8 @@ async function createSandbox(port) {
   const root = path.join(sandboxRoot, portKey, runId());
   const workspace = path.join(root, "workspace");
   const toolchainRoot = path.join(root, "toolchain");
+  const oddGlcProductRoot = path.join(root, "products", "odd_glc", ODD_GLC_INSTALL_VERSION);
+  const oddGlcPackageRoot = path.join(oddGlcProductRoot, "lib", "node_modules", "@odd-glc", "route-one-typescript");
   await mkdir(workspace, { recursive: true });
 
   const sandboxIdentity = Object.freeze({
@@ -327,6 +334,10 @@ async function createSandbox(port) {
     runRoot: root,
     workspace,
     toolchainRoot,
+    oddGlcProductRoot,
+    oddGlcPackageRoot,
+    oddGlcPackageName: ODD_GLC_INSTALL_PACKAGE_NAME,
+    oddGlcPackageVersion: ODD_GLC_INSTALL_VERSION,
     subjectWriteRoot: workspace,
     notClosureEvidenceFor: [
       "live_worker",
@@ -355,6 +366,13 @@ async function createSandbox(port) {
       label: `ABIogenesis RC3 install for ${port.portId}`
     }
   );
+  const oddGlcInstall = await installOddGlcProductForSandbox({
+    runRoot: root,
+    workspaceRoot: workspace,
+    tenantRoot,
+    substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
+  });
+  assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
 
   for (const [relativePath, contents] of Object.entries({
     ...BASE_FIXTURE_FILES,
@@ -374,6 +392,9 @@ async function createSandbox(port) {
     graphFunctionBinding: ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS.find((entry) =>
       entry.graphFunctionRef === port.graphFunctionRef
     ) ?? null,
+    oddGlcInstallManifestPath: oddGlcInstall.manifestPath,
+    oddGlcWorkspaceInstallManifestPath: oddGlcInstall.workspaceManifestPath,
+    oddGlcPackageRoot: oddGlcInstall.packageRoot,
     nodeTypeRefs: port.expectedNodeTypeRefs,
     nodeTypeLibraryRefs: [
       ...ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
@@ -397,6 +418,10 @@ async function createSandbox(port) {
     requiredExportCount: Array.isArray(installManifest.runtimePackage?.requiredExports)
       ? installManifest.runtimePackage.requiredExports.length
       : null,
+    oddGlcPackageName: oddGlcInstall.manifest.packageName,
+    oddGlcPackageVersion: oddGlcInstall.manifest.packageVersion,
+    oddGlcPackageRoot: oddGlcInstall.packageRoot,
+    oddGlcInstallManifestPath: oddGlcInstall.manifestPath,
     startupConfigRef: ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef,
     overlayRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
     graphFunctionRef: port.graphFunctionRef,
@@ -406,6 +431,7 @@ async function createSandbox(port) {
 
   return Object.freeze({
     installManifest,
+    oddGlcInstall,
     port,
     proofSummary,
     root,
@@ -443,10 +469,19 @@ for (const port of PORTED_HELLO_WORLD_SANDBOXES) {
     assert.equal(result.installManifest.runtimePackage.packageVersion, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
     assert.equal(existsSync(path.join(result.workspace, ".abiogenesis", "install-manifest.json")), true);
     assert.equal(existsSync(path.join(result.workspace, ".abiogenesis", "install-provenance.json")), true);
+    assert.equal(existsSync(path.join(result.workspace, ".odd_glc", "install-manifest.json")), true);
+    assert.equal(existsSync(path.join(result.workspace, ".ai-workspace", "odd-glc-install-manifest.json")), true);
+    assert.equal(existsSync(path.join(result.oddGlcInstall.packageRoot, "src", "index.mjs")), true);
+    assert.equal(result.sandboxIdentity.oddGlcPackageRoot, result.oddGlcInstall.packageRoot);
+    assert.equal(result.sandboxIdentity.oddGlcPackageName, ODD_GLC_INSTALL_PACKAGE_NAME);
+    assert.equal(result.sandboxIdentity.oddGlcPackageVersion, ODD_GLC_INSTALL_VERSION);
     assert.equal(existsSync(path.join(result.workspace, ".ai-workspace", "sandbox-identity.json")), true);
     assert.equal(existsSync(path.join(result.workspace, ".ai-workspace", "odd_glc-startup-binding.json")), true);
+    assert.equal(result.startupBinding.oddGlcPackageRoot, result.oddGlcInstall.packageRoot);
     assert.equal(result.startupBinding.graphFunctionRef, port.graphFunctionRef);
     assert.equal(result.startupBinding.graphFunctionBinding?.graphFunctionRef, port.graphFunctionRef);
+    assert.equal(result.proofSummary.oddGlcPackageName, ODD_GLC_INSTALL_PACKAGE_NAME);
+    assert.equal(result.proofSummary.oddGlcPackageVersion, ODD_GLC_INSTALL_VERSION);
     assert.deepEqual(
       port.expectedNodeTypeRefs.filter((typeRef) => !result.startupBinding.nodeTypeRefs.includes(typeRef)),
       []
