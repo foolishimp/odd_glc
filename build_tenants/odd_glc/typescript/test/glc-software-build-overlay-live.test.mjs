@@ -3519,8 +3519,11 @@ function acceptedReviewFor(input, review) {
 // PRODUCT DATA consumed by ABG startup (rc.8 one-passthrough authority).
 const T030_REQUIREMENT_ID = "REQ-GLC-SB-001";
 const T030_STRENGTH_REF = "evidence-role://odd_glc/software-build/execution-evidence";
-const t030FinalStage = STAGE_PLAN[STAGE_PLAN.length - 1];
 const t030FinalStageIndex = STAGE_PLAN.length - 1;
+const t030FinalStage = STAGE_PLAN[t030FinalStageIndex];
+// span identity from the ADMITTED graph (row shapes vary per scenario)
+const t030FinalVector =
+  softwareBuildBootstrap.template.graph.vectors[t030FinalStageIndex];
 const t030SpanId = \`span://odd_glc/software-build/\${SCENARIO.key}/final-prove\`;
 const t030Bundle = declareBundle({
   requirements: [
@@ -3540,10 +3543,10 @@ const t030Bundle = declareBundle({
     declareTraversalSpan({
       spanId: t030SpanId,
       graphFunctionRef: softwareBuildBootstrap.id,
-      graphVectorRefs: [t030FinalStage.vectorId],
+      graphVectorRefs: [t030FinalVector.id],
       vectorIndexes: [t030FinalStageIndex],
-      sourceNodeRef: t030FinalStage.source.id,
-      targetNodeRef: t030FinalStage.target.id
+      sourceNodeRef: t030FinalVector.source[0].id,
+      targetNodeRef: t030FinalVector.target.id
     })
   ]
 });

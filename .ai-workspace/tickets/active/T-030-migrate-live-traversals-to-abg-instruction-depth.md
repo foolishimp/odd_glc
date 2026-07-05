@@ -458,3 +458,32 @@ The full data-mapper run is the next debugging target after this ticket. It is
 not a migration proof for this ticket. If the data-mapper run starts before
 T-030 closes, the result is diagnostic only and shall not be cited as parity,
 depth, or ABG T-183/T-188 migration evidence.
+
+## Data-Mapper Debugging Campaign — Builder-Bug Ledger (2026-07-06)
+
+User directive: the full data-mapper live scenario (codex xhigh workers)
+runs as the TRUE depth test; failures are debugged in the BUILDER
+(ABI/GTL/odd_glc binding), never compensated in the data-mapper scenario.
+Runs are diagnostic for T-030 (per this ticket's Data-Mapper Gate) until
+the migration proof suite closes.
+
+BUG #1 (odd_glc binding, FIXED): the P4 requirement-span construction read
+`.source.id/.target.id` off scenario stage rows; data-mapper rows carry a
+different shape. Fixed to the lawful form — span identity from the
+ADMITTED graph function's vectors (decoupled from declaration-row
+internals). Run 1: failed at 983ms pre-worker; post-fix suite 54/0.
+
+BUG #2 (ABI transport, SHIMMED here + upstream item): transport_contracts
+hardcodes `--model gpt-5.3-codex`; ChatGPT-account codex rejects it (400
+per attempt). Run 2: 11 fast retry attempts on vector 0, then a LAWFUL
+frontier stop — retry allowlist, admission chain, and the five rc.8
+temporal verdicts all behaved correctly around the broken transport
+(machinery vindicated). Run-harness fix: PATH shim drops the model pin and
+injects `-c model_reasoning_effort=xhigh` (diagnostic transport shaping,
+not product truth). UPSTREAM ROOT-CAUSE ITEM (ABI rc.9): codex model must
+be env-overridable (e.g. ABG_TS_CODEX_MODEL), not hardcoded.
+
+Run 2 also demonstrated end-to-end rc.8 depth machinery live on the
+data-mapper path: manifests before every dispatch, payload/response
+admission per attempt, retry/continuation truth replay-visible, temporal
+verdicts at terminal.
