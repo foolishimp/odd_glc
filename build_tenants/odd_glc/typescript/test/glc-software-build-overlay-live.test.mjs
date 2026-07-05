@@ -1491,12 +1491,19 @@ function runtimeBindingSource(input) {
   const m03ContractsImport = pathToFileURL(
     path.join(input.abgPackageRoot, "build", "semantic", "code", "src", "abg", "m03", "contracts", "index.js")
   ).href;
+  const gtlRequirementsImport = pathToFileURL(
+    path.join(input.abgPackageRoot, "build", "semantic", "code", "src", "gtl", "requirements", "index.js")
+  ).href;
   const oddGlcIndexPath = path.join(input.oddGlcPackageRoot, "src", "index.mjs");
   assert.equal(existsSync(oddGlcIndexPath), true, `Missing installed odd_glc package at ${oddGlcIndexPath}`);
   const oddGlcImport = pathToFileURL(oddGlcIndexPath).href;
   return `import {
   admitModule,
   admitNode,
+  STANDING_GATE_TEMPORAL_PROPERTY_RULES,
+  constructGtlContractFulfillmentBinding,
+  constructRequirementProofCandidateClassificationTable,
+  constructRequirementProofCarryThroughContract,
   admitResolvedPolicyIdentity,
   admitResolvedRuntimeIdentity,
   composeNodeTypes,
@@ -1518,6 +1525,11 @@ function runtimeBindingSource(input) {
   runAgentTransport,
   satisfiesNodeType
 } from ${JSON.stringify(packageImport)};
+import {
+  declareBundle,
+  declareRequirement,
+  declareTraversalSpan
+} from ${JSON.stringify(gtlRequirementsImport)};
 import {
   compileInstructionAssemblyPlan,
   constructDerivedDependencyInstructionTruth,
@@ -3503,6 +3515,123 @@ function acceptedReviewFor(input, review) {
     stageSpec.requiredNodeTypes.every((typeRef) => nodeTypesUsed.includes(typeRef));
 }
 
+// T-030 P4: requirement route + carry-through + standing temporal gates as
+// PRODUCT DATA consumed by ABG startup (rc.8 one-passthrough authority).
+const T030_REQUIREMENT_ID = "REQ-GLC-SB-001";
+const T030_STRENGTH_REF = "evidence-role://odd_glc/software-build/execution-evidence";
+const t030FinalStage = STAGE_PLAN[STAGE_PLAN.length - 1];
+const t030FinalStageIndex = STAGE_PLAN.length - 1;
+const t030SpanId = \`span://odd_glc/software-build/\${SCENARIO.key}/final-prove\`;
+const t030Bundle = declareBundle({
+  requirements: [
+    declareRequirement({
+      requirementId: T030_REQUIREMENT_ID,
+      termKind: "atom",
+      stableId: T030_REQUIREMENT_ID,
+      sourceRef: "specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md#software-build",
+      sourceDigest: "sha256:odd-glc-software-build-r1",
+      relationRefs: [],
+      spanRefs: [t030SpanId],
+      contextRefs: [],
+      evidencePolicyRefs: ["policy://odd_glc/software-build/evidence"]
+    })
+  ],
+  spans: [
+    declareTraversalSpan({
+      spanId: t030SpanId,
+      graphFunctionRef: softwareBuildBootstrap.id,
+      graphVectorRefs: [t030FinalStage.vectorId],
+      vectorIndexes: [t030FinalStageIndex],
+      sourceNodeRef: t030FinalStage.source.id,
+      targetNodeRef: t030FinalStage.target.id
+    })
+  ]
+});
+const t030Table = constructRequirementProofCandidateClassificationTable({
+  tableRef: "classification-table://odd_glc/software-build/live",
+  sourceRef: "gtl-overlay://odd_glc/software-build",
+  rules: [
+    {
+      kind: "requirement_proof_candidate_classification_rule",
+      ruleRef: "classification-rule://odd_glc/software-build/artifact",
+      stageRole: "transform",
+      outputCandidateKind: "candidate-kind://odd_glc/software-build/artifact",
+      admissionTargetKind: "admission-target://abg/payload",
+      evidenceRoleRefs: ["evidence-role://odd_glc/software-build/realization"]
+    }
+  ]
+});
+const t030Contract = constructRequirementProofCarryThroughContract({
+  contractRef: "plugin-proof-contract://odd_glc/software-build/live",
+  pluginRef: "plugin://odd_glc/software-build/live",
+  stageRole: "transform",
+  resultInterfaceRef: "result-interface://odd_glc/software-build/live",
+  responseContractRefs: ["response-contract://odd_glc/software-build/live"],
+  selectedCompositionRef: "composition://odd_glc/software-build/live",
+  selectedCompositionDigest: "sha256:odd-glc-software-build-composition",
+  fulfillmentBindings: [
+    constructGtlContractFulfillmentBinding({
+      bindingRef: "gtl-contract-fulfillment-binding://odd_glc/software-build/r1",
+      obligationRef: "requirement-obligation://odd_glc/software-build/r1",
+      requirementRef: T030_REQUIREMENT_ID,
+      productRequirementRef: "product-requirement://odd_glc/software-build/r1",
+      designObligationRef: "design-obligation://odd_glc/software-build/live",
+      componentRef: "component://odd_glc/software-build/live",
+      productTargetRef: "target://odd_glc/software-build/live",
+      outputSurfaceRef: "output-surface://odd_glc/software-build/live",
+      functionOrEntrypointRef: "function://odd_glc/software-build/live",
+      realizationEvidenceRefs: [OVERLAY_REF],
+      testOrExecutionEvidenceRefs: ["proof-obligation://odd_glc/software-build/execution"],
+      evaluatorFindingRef: "evaluator-finding://odd_glc/software-build/execution",
+      authorityRefs: ["authority://odd_glc/software-build/live-fp"],
+      evidenceRefs: [OVERLAY_REF]
+    })
+  ],
+  proofPolicyRefs: ["proof-policy://odd_glc/software-build/positive-negative"],
+  expectedEvidenceShapeRefs: [
+    "evidence-shape://odd_glc/software-build/positive",
+    "evidence-shape://odd_glc/software-build/negative"
+  ],
+  proofStrengthRefs: ["proof-strength://odd_glc/software-build/execution"],
+  depthPolicyRefs: ["proof-depth-policy://odd_glc/software-build/live"],
+  requiredDepthClassRefs: ["depth-class://positive", "depth-class://negative"],
+  fdStrengthCriterionRefs: [T030_STRENGTH_REF],
+  requiredAdversarialCheckRefs: [],
+  evidenceRoleRefs: ["evidence-role://odd_glc/software-build/realization"],
+  outputCandidateKinds: ["candidate-kind://odd_glc/software-build/artifact"],
+  admissionTargetKinds: ["admission-target://abg/payload"],
+  classificationTableRef: t030Table.tableRef,
+  classificationTableDigest: t030Table.tableDigest
+});
+const t030EnvelopeTemplate = {
+  contractRef: "plugin-proof-contract://odd_glc/software-build/live",
+  stageRole: "transform",
+  taskRole: "task-role://odd_glc/software-build/prove",
+  outputCandidateKind: "candidate-kind://odd_glc/software-build/artifact",
+  admissionTargetKind: "admission-target://abg/payload",
+  sourceRequirementObligationRefs: ["requirement-obligation://odd_glc/software-build/r1"],
+  evidenceRoleRefs: ["evidence-role://odd_glc/software-build/realization"],
+  proofObligationRefs: ["proof-obligation://odd_glc/software-build/execution"],
+  proofPolicyRefs: ["proof-policy://odd_glc/software-build/positive-negative"],
+  expectedEvidenceShapeRefs: [
+    "evidence-shape://odd_glc/software-build/positive",
+    "evidence-shape://odd_glc/software-build/negative"
+  ],
+  positiveEvidenceShapeRefs: ["evidence-shape://odd_glc/software-build/positive"],
+  negativeEvidenceShapeRefs: ["evidence-shape://odd_glc/software-build/negative"],
+  proofStrengthRefs: ["proof-strength://odd_glc/software-build/execution"],
+  depthPolicyRefs: ["proof-depth-policy://odd_glc/software-build/live"],
+  depthClassRefs: ["depth-class://positive", "depth-class://negative"],
+  proofStrengthAdmissionRefs: [T030_STRENGTH_REF],
+  fdStrengthCriterionRefs: [T030_STRENGTH_REF],
+  adversarialAttemptRefs: [],
+  counterexampleRefs: [],
+  responseContractRef: "response-contract://odd_glc/software-build/live",
+  resultInterfaceRef: "result-interface://odd_glc/software-build/live",
+  selectedCompositionRef: "composition://odd_glc/software-build/live",
+  selectedCompositionDigest: "sha256:odd-glc-software-build-composition"
+};
+
 export const runtimeBinding = {
   module,
   runtimeIdentity: admitResolvedRuntimeIdentity({
@@ -3519,6 +3648,19 @@ export const runtimeBinding = {
   }),
   runtimeRegistryStartup,
   instructionAssemblyStartup,
+  requirementRouteDeclarationBundle: t030Bundle,
+  requirementProofCarryThroughStartup: {
+    entries: [
+      {
+        contract: t030Contract,
+        classificationTable: t030Table,
+        requirementIds: [T030_REQUIREMENT_ID],
+        envelopeTemplate: t030EnvelopeTemplate,
+        edge: edgeNameForStage(t030FinalStage)
+      }
+    ]
+  },
+  temporalPropertyStartup: { rules: STANDING_GATE_TEMPORAL_PROPERTY_RULES },
   runId: \`run://odd_glc/software-build/\${SCENARIO.key}\`,
   workKey: \`wk://odd_glc/software-build/\${SCENARIO.key}\`,
   createPlugins: ({ workspaceRoot }) => {
@@ -3736,6 +3878,7 @@ export const runtimeBinding = {
                 OVERLAY_REF,
                 GRAPH_REF,
                 GRAPH_FUNCTION_REF,
+                T030_STRENGTH_REF,
                 ...expectedNodeTypes
               ]
             })
