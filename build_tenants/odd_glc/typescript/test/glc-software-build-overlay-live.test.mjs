@@ -3190,6 +3190,15 @@ function transformInstructionText(stageSpec) {
   ].join("\\n");
 }
 
+function stageCarriesExecution(stageSpec) {
+  return (
+    stageSpec.deterministicExecution === true ||
+    stageSpec.deterministicMaterialize === true ||
+    stageSpec.postMaterializationValidation != null ||
+    /test_execution|execution_result/.test(stageSpec.stage)
+  );
+}
+
 function evaluateInstructionText(stageSpec) {
   return [
     "Return only one JSON object. Do not include markdown or commentary.",
@@ -3207,7 +3216,12 @@ function evaluateInstructionText(stageSpec) {
     ...stageInstructionsFor(stageSpec).map((line) => "- " + line),
     "",
     "Review criteria:",
-    "- reviewAccepted is true only if the candidate stage, vector index, node types, generated file paths, and execution evidence satisfy the typed vector contract.",
+    ...(stageCarriesExecution(stageSpec)
+      ? ["- reviewAccepted is true only if the candidate stage, vector index, node types, generated file paths, and execution evidence satisfy the typed vector contract."]
+      : [
+          "- reviewAccepted is true only if the candidate stage, vector index, node types, generated file paths, and file content satisfy the typed vector contract.",
+          "- This stage carries NO execution evidence by design: do not require postMaterializationValidation, executionStatus, compile results, or test results here; that evidence belongs to the later test-execution stages."
+        ]),
     "- closeDisposition must be close for accepted vectors, retry for repairable same-vector defects, reprice for upstream-contract defects, or block for unrecoverable execution/proof failure.",
     "- The ABG prompt manifest must include a runtime payload binding for the candidate worker artifact.",
     "- If the bound candidate payload includes candidateEvidence.postMaterializationValidation with accepted=true, treat that as ABG-called F_D post-materialization validation evidence for this candidate; do not require a second shell run or a separate evidence slot for the same compile gate.",
@@ -3770,7 +3784,23 @@ export const runtimeBinding = {
           if (executorProfile === "pty-terminal" && transport.terminalSessionId === null) {
             throw new Error("pty-terminal live proof must record a terminalSessionId");
           }
-          assessment = extractJsonObject(transport.text);
+          try {
+            assessment = extractJsonObject(transport.text);
+          } catch (parseError) {
+            // Builder bug #5 (T-030 campaign): worker-side output corruption
+            // (observed: byte-level chunk fault in codex -o emission) is a
+            // CONTRACT FAILURE for the ABG retry allowlist — blocked truth,
+            // not a crash.
+            return constructFpDispatchOutcome({
+              status: "blocked",
+              reason: \`GLC software-build live worker output unparseable (contract_failure): \${String(parseError.message).slice(0, 200)}\`,
+              attachedResultArtifact: runtimeFailureArtifactForTransport(
+                transport,
+                label
+              ),
+              evidenceRefs: [pluginInput.sourceProjectionRef]
+            });
+          }
         }
         // Builder bug #3b (T-030 campaign): an honest, well-formed worker
         // REFUSAL (accepted:false with a non-empty reason and the right
