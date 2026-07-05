@@ -3051,11 +3051,17 @@ function candidateEvidenceSummaryFor(input) {
           cwd: path.relative(input.workspaceRoot, post.cwd),
           status: post.status,
           accepted: post.accepted,
-          stdoutSha256: sha256Text(post.stdout),
-          stderrSha256: sha256Text(post.stderr),
-          stdoutExcerpt: truncateForPrompt(post.stdout, 2400),
-          stderrExcerpt: truncateForPrompt(post.stderr, 1200),
-          issues: Object.freeze(post.issues)
+          stdoutSha256: sha256Text(post.stdout ?? ""),
+          stderrSha256: sha256Text(post.stderr ?? ""),
+          stdoutExcerpt: truncateForPrompt(post.stdout ?? "", 2400),
+          stderrExcerpt: truncateForPrompt(post.stderr ?? "", 1200),
+          issues: Object.freeze([
+            ...(post.stdout === undefined || post.stdout === null
+              ? ["post-materialization stdout was not captured (spawn error path)"]
+              : []),
+            ...(post.error === undefined ? [] : [\`spawn error: \${String(post.error)}\`]),
+            ...post.issues
+          ])
         })
   });
 }
