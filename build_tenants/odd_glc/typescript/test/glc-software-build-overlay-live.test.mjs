@@ -2885,10 +2885,10 @@ function deterministicExecutionTransportFor(input) {
   });
 }
 
-function runtimeFailureArtifactForTransport(transport, label) {
+function runtimeFailureArtifactForTransport(transport, label, failureClassOverride) {
   return Object.freeze({
     kind: "runtime_failure",
-    failureClass: transport.failureClass ?? "runtime_failure",
+    failureClass: failureClassOverride ?? transport.failureClass ?? "runtime_failure",
     detail: [
       "ABG-called live F_P transport failed",
       "label=" + label,
@@ -3796,7 +3796,8 @@ export const runtimeBinding = {
               reason: \`GLC software-build live worker output unparseable (contract_failure): \${String(parseError.message).slice(0, 200)}\`,
               attachedResultArtifact: runtimeFailureArtifactForTransport(
                 transport,
-                label
+                label,
+                "contract_failure"
               ),
               evidenceRefs: [pluginInput.sourceProjectionRef]
             });

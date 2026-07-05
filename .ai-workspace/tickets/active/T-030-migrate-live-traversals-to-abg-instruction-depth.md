@@ -487,3 +487,26 @@ Run 2 also demonstrated end-to-end rc.8 depth machinery live on the
 data-mapper path: manifests before every dispatch, payload/response
 admission per attempt, retry/continuation truth replay-visible, temporal
 verdicts at terminal.
+
+Campaign ledger additions (runs 5-7):
+- BUG #4 (binding, FIXED): spawn-error post-validation evidence crashed
+  the CLI (undefined stdout hash) — evidence now fail-safe, spawn errors
+  are typed issues.
+- BUG #5 (binding, FIXED in two steps): worker-side output corruption
+  (intermittent byte fault at ~offset 6000 in codex -o emission under the
+  pty profile; clean 3-of-4 attempts) crashed the run; now a typed
+  blocked outcome — and #5b: classified contract_failure so the ABG retry
+  allowlist owns it (the first classification defaulted to
+  runtime_failure, which is NOT allowlisted, and blocked instantly).
+- BUG #6 (product policy, FIXED): the generic evaluator criteria demanded
+  execution evidence at EVERY stage, making non-execution stages
+  structurally unclosable (vector-12 retry-forever with valid 14-file
+  Scala candidates). Execution criteria now apply only to stages that
+  carry execution by design.
+- LEDGER #7 (upstream, OPEN): the ~6000-offset emission corruption —
+  suspects: codex -o under GNU-screen pty profile vs codex CLI chunking;
+  two corrupt artifacts captured for diffing. Root-cause pending; #5b
+  makes it retry-absorbable meanwhile.
+- Depth log: run 5 reached vector 10 (39.8m), run 6 vector 12 with three
+  VALID full Scala code surfaces (32.3m), run 7 vector 12 (17.7m — the
+  #6 fix visibly sped early-stage closure before dying on #5b).
