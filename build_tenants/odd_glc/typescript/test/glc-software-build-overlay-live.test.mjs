@@ -2334,7 +2334,7 @@ function extractJsonObject(text, parseCandidate = parseAssessmentJson, failureLa
 
 async function writeText(filePath, content) {
   await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, content, "utf8");
+  await writeFile(filePath, content ?? "", "utf8");
 }
 
 const MATERIALIZED_FILE_SUMMARY_MAX_CHARS = 12000;
