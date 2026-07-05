@@ -3452,6 +3452,9 @@ function compiledPromptPlanForStage(stage, computeStageRole) {
     sectionDecisions: [instructionSectionForStage(stage, computeStageRole)],
     bindingSlots: runtimeBindingSlotsForStage(stage, computeStageRole),
     proportionalityClass: "P2",
+    // rc.9 plan policy (T-030 bug #3a): multi-module admitted source
+    // surfaces must carry whole into downstream prompts.
+    causalExcerptMaxChars: 96000,
     instructionWorkKind: "target_work",
     dependencyInstructionTruth: dependencyInstructionTruthForStage(stage),
     proofDepthInstructionTruth: proofDepthInstructionTruthForStage(stage),
@@ -3763,14 +3766,26 @@ export const runtimeBinding = {
           }
           assessment = extractJsonObject(transport.text);
         }
+        // Builder bug #3b (T-030 campaign): an honest, well-formed worker
+        // REFUSAL (accepted:false with a non-empty reason and the right
+        // stage) is VALID BLOCKED truth for ABG retry/residual routing —
+        // never a process error. Only malformed shapes are invalid.
+        const wellFormedRefusal =
+          assessment.stage === expectedStage &&
+          assessment.accepted === false &&
+          typeof assessment.reason === "string" &&
+          assessment.reason.trim().length > 0;
         if (
-          assessment.stage !== expectedStage ||
-          !Array.isArray(assessment.nodeTypesUsed) ||
-          !expectedNodeTypes.every((typeRef) => assessment.nodeTypesUsed.includes(typeRef)) ||
-          (deterministicExecutionStage !== true && (
-            assessment.accepted !== true ||
-            assessment.evidenceAccepted !== true
-          ))
+          !wellFormedRefusal &&
+          (
+            assessment.stage !== expectedStage ||
+            !Array.isArray(assessment.nodeTypesUsed) ||
+            !expectedNodeTypes.every((typeRef) => assessment.nodeTypesUsed.includes(typeRef)) ||
+            (deterministicExecutionStage !== true && (
+              assessment.accepted !== true ||
+              assessment.evidenceAccepted !== true
+            ))
+          )
         ) {
           throw new Error(\`GLC software-build live worker returned invalid assessment: \${JSON.stringify(assessment)}\`);
         }

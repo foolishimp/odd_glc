@@ -52,7 +52,7 @@ const BASE_FIXTURE_FILES = Object.freeze({
     "project:",
     "  source: odd_glc",
     "  proof_class: scenario_sandbox_port",
-    "  substrate: abiogenesis-4.2.0-rc.8",
+    "  substrate: abiogenesis-4.2.0-rc.9",
     ""
   ].join("\n")
 });
