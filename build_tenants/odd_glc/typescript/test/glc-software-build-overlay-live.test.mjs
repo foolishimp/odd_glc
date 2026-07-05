@@ -2959,7 +2959,7 @@ function attemptSuffixFor(pluginInput) {
 }
 
 async function writeAttemptAndLatestJson(runRoot, baseLabel, attemptLabel, suffix, value) {
-  const serialized = JSON.stringify(value, null, 2) + "\\n";
+  const serialized = JSON.stringify(value ?? { absent: true }, null, 2) + "\\n";
   const attemptPath = path.join(runRoot, attemptLabel + "-" + suffix + ".json");
   await writeText(attemptPath, serialized);
   if (attemptLabel !== baseLabel) {
@@ -2968,10 +2968,11 @@ async function writeAttemptAndLatestJson(runRoot, baseLabel, attemptLabel, suffi
 }
 
 async function writeAttemptAndLatestText(runRoot, baseLabel, attemptLabel, suffix, value) {
+  const safeValue = value ?? "";
   const attemptPath = path.join(runRoot, attemptLabel + "-" + suffix);
-  await writeText(attemptPath, value);
+  await writeText(attemptPath, safeValue);
   if (attemptLabel !== baseLabel) {
-    await writeText(path.join(runRoot, baseLabel + "-" + suffix), value);
+    await writeText(path.join(runRoot, baseLabel + "-" + suffix), safeValue);
   }
 }
 
