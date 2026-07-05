@@ -1,9 +1,9 @@
 # odd_glc Goals
 
 **Status**: Active
-**Date**: 2026-07-02
+**Date**: 2026-07-05
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.4/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.6/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
@@ -23,12 +23,18 @@ registers, process shells, or controllers. It may require reproducing a
 selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
 by ABG.
 
-ABIogenesis `4.2.0-rc.4` is the substrate under test for this wave. If the
+ABIogenesis `4.2.0-rc.6` is the substrate under test for this wave. If the
 selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
 startup, registry, graph-call, vector traversal, evidence, and replay truth,
 then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
 the gap and block or reprice upstream; it shall not compensate with local
 truth, local shells, or a product-owned traversal controller.
+
+Current migration gate: full data-mapper live runs are paused until T-030
+proves that odd_glc live software-build traversals consume ABG T-183
+instruction assembly and T-188 requirement-proof carry-through on the real
+startup traversal path. A run that bypasses those capabilities is diagnostic
+only and shall not close data-mapper parity.
 
 ## Active Plan
 
@@ -63,24 +69,44 @@ truth, local shells, or a product-owned traversal controller.
    - odd_glc may interpret that truth; it may not select, call, emit, admit,
      fold, residualize, route, or invoke F_P.
 
-5. Reproduce the full data_mapper witness as the controlling glc
+5. Migrate live traversal sandboxes to ABG instruction and proof-depth truth.
+   - The current live software-build runner still contains local prompt and
+     evaluator prompt construction; that is pre-T-183/T-188 behavior.
+   - Closure-grade live proofs must provide `instructionAssemblyStartup` to
+     installed ABG startup, emit `instruction_prompt_manifest_projected`
+     before required F_P dispatch, bind worker prompts from ABG instruction
+     manifests, and carry requirement/proof/dependency/depth truth through
+     ABG admission.
+   - The unit of closure-grade compute is the ABG traversal monad. odd_glc may
+     supply startup configuration and read replay truth; it shall not compute
+     lifecycle edge outcomes through local helpers, prompt shells, trackers, or
+     proof gates.
+   - Requirement-lineage monitoring in this wave is a read-only canary over
+     ABG replay truth. If obligations are dropped, the fix belongs in
+     ABI/GTL, not in an odd_glc tracker.
+   - No further full data-mapper run may be cited as parity or depth evidence
+     until T-030 closes.
+
+6. Reproduce the full data_mapper witness as the controlling glc
    graph-traversal proof.
    - The full target is the `odd_sdlc`
      `t164_data_mapper_full_capability_live` witness family, whose current
-     summaries declare 22 required lifecycle edges from intent/product/goal/
+     summaries now drive 26 required lifecycle edges from intent/product/goal/
      requirement pressure through UAT/test authority, feature decomposition,
      design, implementation, component/code qualification, execution result,
-     repair schedule, archive, release-depth parity, and release preparation.
+     repair schedule, repair application, repaired execution plan, repaired
+     execution result, repaired qualification, archive, release-depth parity,
+     and release preparation.
    - The already-earned data-mapper-lite rung remains scout/debug evidence. It
      does not close parity.
    - Closure requires those full data-mapper edges to be represented as GTL
      graph vectors, typed node declarations, ABG startup/registry selection,
      ABG traversal events, ABG evidence/proof truth, and odd_glc read
      interpretation.
-6. Reproduce the Hello World witnesses as support/scout coverage.
+7. Reproduce the Hello World witnesses as support/scout coverage.
    - Closure-grade proofs get their own ABG startup/run root.
    - Scenario-sandbox ports must create governed run roots, install
-     ABIogenesis RC4 into fresh workspaces, write sandbox identities, and bind
+     ABIogenesis RC6 into fresh workspaces, write sandbox identities, and bind
      old witness pressure to the reusable `odd_glc` software-build overlay.
    - Subject programs may execute as product subjects inside that run root.
    - Runtime truth must be ABG-emitted or digest-pinned ABG proof truth.
@@ -98,6 +124,9 @@ truth, local shells, or a product-owned traversal controller.
 
 - `T-025`: typed scenario ladder and data_mapper witness preparation over the
   reusable software-build overlay.
+- `T-030`: migration of odd_glc live traversal sandboxes to ABG T-183
+  instruction assembly and T-188 requirement-proof carry-through before any
+  further full data-mapper run.
 - `T-029`: install-shaped scenario sandboxes so ABG/GTL and odd_glc are both
   consumed as installed products before ABG traversal starts.
 - `T-026`: non-closed, re-entry, blocked, and reprice interpretation over
@@ -116,6 +145,15 @@ T-025 now carries the active data_mapper parity control surface:
 
 Execution order:
 
+0. Close T-030 before the next full data-mapper live run.
+   - Audit current live traversal code for local prompt shells, local proof
+     gates, direct plugin/vector calls, and missing T-183/T-188 startup
+     inputs.
+   - Migrate the live software-build runtime binding to ABG
+     `instructionAssemblyStartup`, instruction manifests, and
+     requirement-proof carry-through.
+   - Prove with a smaller software-build Hello World run before returning to
+     the full data-mapper witness.
 1. Add data-mapping node-type declarations to the TypeScript tenant.
 2. Bind those declarations to the reusable software-build overlay and startup
    declaration model.
@@ -141,10 +179,16 @@ Execution order:
    - The live runner separates `sdlc_graph_traversal_compliance` from
      `diagnostic_smoke_not_compliance`. Diagnostic runs may find bugs but do
      not count as compliance.
-   - The current compliance selector covers only the JavaScript SDLC bootstrap.
+   - The current compliance selector includes the JavaScript SDLC bootstrap and
+     the Scala/SBT full data-mapper target. The full data-mapper lifecycle
+     traversal remains open until it produces the Scala/SBT `scala_spark`
+     tenant witness shape: CDME source, ScalaTest source, `sbt test`, and
+     eight SBT XML reports: `cdme-core` plus the seven CDME concern modules.
+     The previous RC4 data-mapper run produced a JavaScript/Node subject and is
+     invalid as data-mapper parity evidence.
      The remaining CLI, JS tenant/test, Rust CLI, Rust service, parallel JS,
-     and data-mapper scenarios remain open until each has a traversal shape
-     that matches its witness or exposes an ABI/GTL substrate gap.
+     and remaining data-mapper variants remain open until each has a traversal
+     shape that matches its witness or exposes an ABI/GTL substrate gap.
 7. For any missing stage, classify the failure as an ABI substrate gap before
    editing odd_glc code.
    - Missing GTL graph/vector expressiveness, registry startup binding,
@@ -154,7 +198,7 @@ Execution order:
      seam.
    - Missing read interpretation over admitted truth belongs in odd_glc.
 8. Keep the old odd_sdlc Hello World sandbox witnesses as sandbox-port setup
-   checks over ABG RC4 install and odd_glc startup binding. These are not
+   checks over ABG RC6 install and odd_glc startup binding. These are not
    traversal closure, live-worker proof, live-terminal proof, or parity by
    themselves.
 9. Treat deep/resume data_mapper witnesses as follow-on coverage after the

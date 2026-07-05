@@ -140,6 +140,7 @@ test("defines lifecycle node types through ABI 4.2 GTL node-type surfaces", asyn
       "odd_glc.type.software.component_realization_qualification",
       "odd_glc.type.software.component_test_execution_qualification",
       "odd_glc.type.software.component_repair_schedule",
+      "odd_glc.type.software.component_repair_application",
       "odd_glc.type.software.test_run_archive",
       "odd_glc.type.software.release_depth_parity",
       "odd_glc.type.software.release_preparation"
@@ -304,8 +305,16 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphVectorRefs.slice(4 + ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN.length),
     ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.vectorId)
   );
-  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.length, 22);
+  assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.length, 26);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN[0].stage, "derive_intent_surface");
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.stage).includes("apply_component_repair_surface"),
+    true
+  );
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.map((stage) => stage.stage).includes("derive_repaired_test_execution_result_surface"),
+    true
+  );
   assert.equal(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.at(-1).stage, "prepare_release_surface");
   assert.equal(
     ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.some((ref) =>

@@ -52,7 +52,7 @@ const BASE_FIXTURE_FILES = Object.freeze({
     "project:",
     "  source: odd_glc",
     "  proof_class: scenario_sandbox_port",
-    "  substrate: abiogenesis-4.2.0-rc.4",
+    "  substrate: abiogenesis-4.2.0-rc.6",
     ""
   ].join("\n")
 });
@@ -363,7 +363,7 @@ async function createSandbox(port) {
     ],
     {
       cwd: root,
-      label: `ABIogenesis RC4 install for ${port.portId}`
+      label: `ABIogenesis RC6 install for ${port.portId}`
     }
   );
   const oddGlcInstall = await installOddGlcProductForSandbox({
@@ -441,7 +441,7 @@ async function createSandbox(port) {
   });
 }
 
-test("maps old odd_sdlc Hello World scenario sandboxes to current odd_glc/ABG RC4 setup ports", () => {
+test("maps old odd_sdlc Hello World scenario sandboxes to current odd_glc/ABG RC6 setup ports", () => {
   assert.deepEqual(
     PORTED_HELLO_WORLD_SANDBOXES.map((port) => port.oldScenarioId),
     [

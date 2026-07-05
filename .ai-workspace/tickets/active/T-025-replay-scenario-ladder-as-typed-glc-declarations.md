@@ -15,6 +15,7 @@ priority: medium
 created_at: 2026-07-01
 governance_scope: STDO Method, ODD Method, generic lifecycle scenario coverage
 source_documents:
+  - .ai-workspace/tickets/active/T-030-migrate-live-traversals-to-abg-instruction-depth.md
   - .ai-workspace/tickets/completed/T-024-prove-glc-hello-world-over-abg-4-2-startup.md
   - .ai-workspace/tickets/completed/T-008-govern-hello-world-scenario-ladder.md
   - .ai-workspace/tickets/completed/T-010-prove-js-tenant-test-hello-world-ladder-rung.md
@@ -29,11 +30,14 @@ closure_law: >-
   proof bindings rather than odd_glc law. Each proof must run in an ABG startup/run root,
   mirroring the odd_sdlc witness standard without importing odd_sdlc code,
   local phase-flow controllers, carriers, ledgers, or local runtime authority.
-  If ABIogenesis 4.2 RC3 cannot express and run the selected witness traversal
+  If ABIogenesis 4.2 RC6 cannot express and run the selected witness traversal
   as GTL/ABG startup, registry, graph-call, vector traversal, evidence, and
   replay truth, this ticket shall record an upstream ABI substrate gap rather
   than close through an odd_glc workaround.
 non_closure_conditions:
+  - A full data-mapper live run is started or cited as parity evidence before
+    T-030 proves odd_glc live traversals use ABG T-183 instruction assembly and
+    T-188 requirement-proof carry-through on the real startup traversal path.
   - A ladder rung imports odd_sdlc code or a local odd_sdlc phase-flow
     controller.
   - A ladder rung copies an odd_sdlc local phase-flow controller instead of
@@ -78,7 +82,7 @@ non_closure_conditions:
   - A parity witness omits the corresponding odd_sdlc stage map, including
     stage name, target graph function, expected source node type, expected
     target node type, proof obligation, and owner for every reproduced vector.
-  - ABIogenesis 4.2 RC3 cannot express or run a required witness traversal
+  - ABIogenesis 4.2 RC6 cannot express or run a required witness traversal
     stage and odd_glc fills the gap with a local shell, local graph-function
     caller, local event/proof emitter, or local traversal controller instead of
     recording an upstream ABI/GTL substrate gap.
@@ -94,6 +98,10 @@ non_closure_conditions:
     it as product law instead of a temporary binding pending system-catalog
     reconciliation.
 required_work:
+  - Treat T-030 as a hard prerequisite before the next full data-mapper live
+    run. This ticket may continue declaration/audit work, but it shall not
+    claim data-mapper traversal proof while the live path still uses local
+    prompt/proof shells instead of ABG T-183/T-188.
   - Make the full data-mapper witness the controlling parity target for this
     ticket. Lite data-mapper and Hello World rungs are scout/debug coverage.
   - Create typed declaration bindings for each rung.
@@ -124,7 +132,7 @@ required_work:
     proof inputs, and write a local subject-smoke summary.
   - Add governed scenario-sandbox ports for the old `odd_sdlc` Hello World
     sandbox witnesses. Each port shall create a fresh run root, install
-    ABIogenesis 4.2 RC3 into a workspace, write a sandbox identity, copy only
+    ABIogenesis 4.2 RC6 into a workspace, write a sandbox identity, copy only
     source pressure/fixture inputs, and bind the witness to the reusable
     `odd_glc` software-build overlay/startup declaration model.
   - Add a startup read-only input check that consumes the pinned ABG 4.2 T-180 startup
@@ -150,7 +158,7 @@ required_work:
     design, source, test design, component test source, UAT or validation test
     source where present, execution preparation, execution result,
     service/client observation where present, and fan-in where present.
-  - For every stage that cannot be reproduced through ABIogenesis 4.2 RC3,
+  - For every stage that cannot be reproduced through ABIogenesis 4.2 RC6,
     classify the blocker before implementing around it: GTL language gap,
     ABG registry/startup gap, ABG traversal/event gap, ABG evidence/execution
     gap, ABG replay/query gap, downstream plugin/policy gap, or odd_glc
@@ -257,7 +265,7 @@ around it.
 | 4 | `derive_requirement_surface` | GTL requirement declarations plus ABG admitted requirement truth. |
 | 5 | `derive_uat_testcases_surface` | Software-domain testcase content as product/plugin output; ABG evidence/proof truth. |
 | 6 | `derive_testcase_authority_surface` | F_H/F_P policy declarations as data; ABG admits any evidence or decision truth. |
-| 7 | `derive_feature_decomp_surface` | GTL/ABG requirement graph/decomposition truth or upstream gap if RC3 cannot express it. |
+| 7 | `derive_feature_decomp_surface` | GTL/ABG requirement graph/decomposition truth or upstream gap if RC6 cannot express it. |
 | 8 | `derive_design_surface` | Typed design artifact vector; ABG traversal and evidence truth. |
 | 9 | `derive_scenario_surface` | Typed scenario/proof-intent vector; ABG traversal truth. |
 | 10 | `derive_implementation_design_surface` | Typed implementation-design vector; product artifact output, ABG proof truth. |
@@ -270,11 +278,15 @@ around it.
 | 17 | `derive_test_execution_result_surface` | ABG-owned process/execution/evidence truth; odd_glc read interpretation only. |
 | 18 | `qualify_component_test_execution_surface` | ABG assurance/fold truth over execution evidence. |
 | 19 | `derive_component_repair_schedule_surface` | ABG continuation/reprice/repair pressure or upstream gap; no odd_glc retry controller. |
-| 20 | `derive_test_run_archive_surface` | Product/archive artifact plus ABG admitted proof truth. |
-| 21 | `derive_release_depth_parity_surface` | Release-depth readiness view over ABG proof/fold/residual truth; no release authority claim. |
-| 22 | `prepare_release_surface` | Release-preparation artifact/proof view; release cut authority remains outside odd_glc unless later ratified. |
+| 20 | `apply_component_repair_surface` | Product repair-application artifact over ABG pressure truth; no odd_glc retry controller. |
+| 21 | `prepare_repaired_test_execution_surface` | Revised execution-plan artifact over admitted repair pressure; no shell wrapper. |
+| 22 | `derive_repaired_test_execution_result_surface` | ABG-owned repaired process/execution/evidence truth; must pass before release inputs are valid. |
+| 23 | `qualify_repaired_component_test_execution_surface` | ABG assurance/fold truth over repaired execution evidence. |
+| 24 | `derive_test_run_archive_surface` | Product/archive artifact plus ABG admitted original and repaired proof truth. |
+| 25 | `derive_release_depth_parity_surface` | Release-depth readiness view over ABG proof/fold/residual truth; no release authority claim. |
+| 26 | `prepare_release_surface` | Release-preparation artifact/proof view; release cut authority remains outside odd_glc unless later ratified. |
 
-Closure for full data-mapper parity requires a fresh ABG 4.2 RC3-or-later
+Closure for full data-mapper parity requires a fresh ABG 4.2 RC6
 startup run over the reusable odd_glc software-build/data-mapping overlay. It
 must use one ABG start/resume boundary per scenario, not per-vector harness
 calls. It must preserve runtime events, event times, F_P worker evidence,
@@ -295,7 +307,7 @@ These witness paths are not source authority and do not authorize code
 copying. They define the minimum graph-traversal shape that must be reproduced
 through GTL/ABG before T-025 can claim parity for the corresponding rung.
 
-ABIogenesis `4.2.0-rc.3` is the substrate under test. If a witness stage cannot
+ABIogenesis `4.2.0-rc.6` is the substrate under test. If a witness stage cannot
 be reproduced as GTL/ABG truth, the result is not permission for odd_glc to
 build local runtime machinery. The result is a blocker classification:
 
@@ -326,8 +338,8 @@ Each witness map shall classify every reproduced vector:
 | `allowedRegime` | `F_D`, `F_P`, or `F_H`, with `F_P` used only where the work is not a known algebra or total function. |
 | `parityStatus` | `not_started`, `diagnostic_only_not_compliance`, `partial`, or `earned`. |
 
-Current status after the 2026-07-02 ABG 4.2 RC3 live-terminal SDLC graph
-traversal runs:
+Current status after the pre-T030 2026-07-02 ABG 4.2 RC3 live-terminal SDLC
+graph traversal runs:
 
 | Current odd_glc rung | Current vectors | Status against SDLC graph-traversal parity |
 | --- | ---: | --- |
@@ -563,7 +575,7 @@ summary proof inputs are recorded by the software-build overlay live manifest.
 2026-07-02: Added `glc-hello-world-sandbox-port.test.mjs`.
 
 This test ports the old `odd_sdlc` Hello World scenario sandbox descriptors
-into current `odd_glc`/ABIogenesis 4.2 RC3 sandbox setup evidence. Each port
+into the then-current `odd_glc`/ABIogenesis 4.2 RC3 sandbox setup evidence. Each port
 creates a governed run root under
 `test_runs/glc_hello_world_sandbox_port/<port>/<run>`, installs ABIogenesis
 RC3 into a fresh workspace, writes `sandbox-identity.json`, copies only source
@@ -596,9 +608,9 @@ Verification:
 
 2026-07-01: Added `glc-software-build-overlay-live.test.mjs`.
 
-The live launcher creates a fresh run instance for each rung, runs the
-installed ABIogenesis `4.2.0-rc.3` installer into that instance, writes an ABG
-runtime binding under `.abiogenesis/typescript-runtime.mjs`, and then invokes
+The pre-T030 live launcher created a fresh run instance for each rung, ran the
+installed ABIogenesis `4.2.0-rc.3` installer into that instance, wrote an ABG
+runtime binding under `.abiogenesis/typescript-runtime.mjs`, and then invoked
 the installed `genesis-ts start --until converged` command exactly once for
 that scenario. All graph-call, vector, F_P worker, evidence, closure, and
 convergence facts are ABG-internal effects of that single start invocation,
@@ -695,7 +707,7 @@ installed ABIogenesis `4.2.0-rc.3`, wrote sandbox identity, invoked
 entries, select a callable graph function, open graph calls, traverse vectors,
 invoke F_P workers, emit runtime truth, and converge.
 
-Closure reading: this earns the current odd_glc reusable SDLC
+Closure reading at the time: this earned the then-current odd_glc reusable SDLC
 graph-traversal stage shape for the seven listed scenarios. The run does not
 copy odd_sdlc code, phase-flow controllers, ledgers, closure registers, or
 local runtime shells. The remaining parity question is not these seven
@@ -790,7 +802,7 @@ Per-vector timing:
 | 6 | `test_execution_plan` | 93531 | 93470 | 93462 | n/a |
 | 7 | `test_execution_result` | 76324 | 76278 | 76216 | 59 |
 
-Closure reading: this proof earns the common SDLC graph-function selection and
+Closure reading at the time: this proof earned the common SDLC graph-function selection and
 eight-vector stage-shape traversal over ABG 4.2 RC3. It does not by itself
 settle whether the older odd_sdlc worker/evaluator operator-run substructure
 must be represented as additional GTL/ABG graph/evaluator truth.
@@ -811,7 +823,7 @@ eight-vector SDLC graph traversal:
 7. test execution plan;
 8. test execution result.
 
-The full data-mapper control scenario now runs over a reusable 22-vector
+The full data-mapper control scenario now runs over a reusable 26-vector
 full-lifecycle software-build GTL graph declared on the same reusable
 software-build overlay:
 
@@ -834,9 +846,13 @@ software-build overlay:
 17. derive test execution result surface;
 18. qualify component test execution surface;
 19. derive component repair schedule surface;
-20. derive test run archive surface;
-21. derive release-depth parity surface;
-22. prepare release surface.
+20. apply component repair surface;
+21. prepare repaired test execution surface;
+22. derive repaired test execution result surface;
+23. qualify repaired component test execution surface;
+24. derive test run archive surface;
+25. derive release-depth parity surface;
+26. prepare release surface.
 
 `ODD_GLC_LIVE_SCENARIO=compliance` selects both traversal-compliance graph
 families. Subject-smoke tests remain diagnostic only and shall not be used as
@@ -847,35 +863,64 @@ Implementation update 2026-07-03:
 - `ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_GRAPH_FUNCTION_REF` is declared and
   bound through `ODD_GLC_SOFTWARE_BUILD_OVERLAY`.
 - `ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN` declares the full
-  22-vector graph above.
+  26-vector graph above.
 - Software-build node-type declarations now cover the added full data-mapper
   surfaces: goal, UAT testcases, testcase authority, feature decomposition,
   component code, code, component realization qualification, component test
-  execution qualification, repair schedule, test-run archive, release-depth
-  parity, and release preparation.
-- `SCN-GLC-DATA-MAPPER-FULL-JS` is present in the live scenario suite as
-  `full_lifecycle_graph_traversal_compliance`.
-- Non-live verification passed with the live-worker tests skipped by default:
-  `cd build_tenants/odd_glc/typescript && npm test` reported 52 passing checks
+  execution qualification, repair schedule, repair application, test-run
+  archive, release-depth parity, and release preparation.
+- The full lifecycle graph routes failed execution evidence through repair
+  application, repaired execution-plan preparation, repaired execution result,
+  and repaired execution qualification before archive or release-depth views may
+  cite closure evidence.
+- `SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT` replaces the invalid JavaScript
+  data-mapper target. The scenario shall generate the Scala/SBT
+  `scala_spark` tenant witness shape, not a Node or JavaScript substitute.
+- Non-live verification proves the scenario demands the required Scala/SBT
+  source, ScalaTest source, `sbt test` execution plan, and SBT XML reports:
+  `cd build_tenants/odd_glc/typescript && npm test` reported 54 passing checks
   and 8 skipped live-worker checks.
 - `git diff --check` passed.
 
-Open closure gate: run and debug `SCN-GLC-DATA-MAPPER-FULL-JS` as a live-worker
-or live-terminal ABG startup traversal. Declaration presence and non-live
-classification do not close full data-mapper parity.
+Resolved data-mapper parity gate: `SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT` must
+reproduce the Scala/SBT data-mapper witness shape, not merely converge as a
+multi-vector traversal. Closure requires all of:
+
+- ABG startup selects the shared software-build graph overlay and graph
+  function through admitted startup/registry truth.
+- The run creates `build_tenants/scala_spark/build.sbt`,
+  `project/plugins.sbt`, and `project/build.properties`.
+- The run creates Scala main source for `cdme-compiler`, `cdme-executor`,
+  `cdme-adjoint`, `cdme-accounting`, `cdme-assurance`, `cdme-fidelity`, and
+  `cdme-engine`.
+- The run creates ScalaTest source for all seven CDME modules.
+- The execution plan runs `sbt test` from `build_tenants/scala_spark`.
+- The repaired execution result observes exit status `0`, `planSatisfied=true`,
+  at least 20 observed ScalaTest passes, and exactly eight SBT XML test report
+  files: `cdme-core` plus the seven CDME concern modules.
+- The result records `data_mapper_full_sbt ok`.
+- The workspace contains no JavaScript/Node substitute subject such as
+  `package.json`, `src/logical-data-model.mjs`, or Node test files.
+
+Invalidated evidence: the 2026-07-03 RC4 data-mapper run at
+`test_runs/glc_software_build_overlay_live/data-mapper-full/20260703T224154495Z_pid94170`
+is not parity evidence because it produced a JavaScript/Node
+`LogicalDataModel` subject with five Node tests and no Scala code, no ScalaTest
+code, and no SBT test reports. It may be used only as a rejected debug
+baseline.
 
 Current remaining work is not another local odd_glc runner. Remaining work, if
 required by a later parity witness, must be classified as one of:
 
 - ABG/GTL graph-shape extension, for example explicit branch-frontier/fan-in
   traversal rather than product-level branch/fan-in source;
-- ABG/GTL evaluator/operator extension, if a witness requires separate
-  worker/evaluator/reviewer operator-run truth per vector;
+- ABG/GTL evaluator/operator extension, only if a later witness requires more
+  than the current worker plus evaluate.C/F_P reviewer operator truth per vector;
 - downstream plugin/policy declaration, if the substrate exists but the
   software-domain content is not yet supplied;
 - odd_glc read interpretation, only when GTL/ABG truth already exists.
 
-If a required graph shape cannot be represented by GTL/ABG RC3 startup,
+If a required graph shape cannot be represented by GTL/ABG RC6 startup,
 registry, typed-node, graph-call, traversal, F_P dispatch, evidence, or replay
 truth, the result is an ABI/GTL bug or substrate gap. odd_glc shall not fill the
 gap with local controllers, local ledgers, local event streams, or

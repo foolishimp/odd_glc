@@ -104,6 +104,11 @@ with SDLC-like software-build roles needed by the reusable overlay graph:
 | `odd_glc.type.software.build_config_surface` | Build/package configuration surface. |
 | `odd_glc.type.software.test_execution_plan` | Test execution preparation surface. |
 | `odd_glc.type.software.test_execution_result` | Test execution evidence result surface. |
+| `odd_glc.type.software.component_repair_schedule` | Repair-pressure schedule view over execution qualification. |
+| `odd_glc.type.software.component_repair_application` | Repair-application artifact that preserves the scheduled repair as product output. |
+| `odd_glc.type.software.test_run_archive` | Archive over original and repaired execution evidence. |
+| `odd_glc.type.software.release_depth_parity` | Release-depth readiness view over repaired proof truth. |
+| `odd_glc.type.software.release_preparation` | Release-preparation artifact without release authority. |
 
 `ODD_GLC_DATA_MAPPING_NODE_TYPES` adds data_mapper witness specializations:
 
@@ -181,6 +186,7 @@ plugins can bind to GTL/ABG truth:
 | Execution | `software-build.role.build_command`, `software-build.role.test_execution_plan`, `software-build.role.test_execution`, `software-build.role.service_process`, `software-build.role.client_request` |
 | Design and scenario | `software-build.role.scenario_surface`, `software-build.role.design_surface`, `software-build.role.implementation_design` |
 | Tests | `software-build.role.test_design`, `software-build.role.test_source`, `software-build.role.mapper_validation_test` |
+| Repair and release | `software-build.role.component_repair_schedule`, `software-build.role.component_repair_application`, `software-build.role.test_run_archive`, `software-build.role.release_depth_parity`, `software-build.role.release_preparation` |
 | Data mapping | `software-build.role.mapping_spec`, `software-build.role.schema_source`, `software-build.role.mapper_source`, `software-build.role.mapper_build_config` |
 | Parallel work | `software-build.role.parallel_branch`, `software-build.role.branch_fan_in` |
 
@@ -194,7 +200,7 @@ published ABI system-library entry for these refs. They remain candidate system
 functions: a later ABI publication of an equivalent generic carrier shall
 replace the product ref instead of preserving a duplicate `odd_glc` function.
 
-Audit basis: ABIogenesis 4.2.0-rc.4 source, GTL runtime-registry declarations,
+Audit basis: ABIogenesis 4.2.0-rc.6 source, GTL runtime-registry declarations,
 and installed proof surfaces were searched for equivalent published entries for
 bootstrap-worksite, materialize-artifact, prove-artifact, fan-in-branches, and
 sdlc-software-build.
@@ -297,7 +303,7 @@ Current committed canonical proof input inherited from the RC3 release record:
 That artifact is ABG-owned startup, registry, graph-call, traversal, F_P
 dispatch, event emission, and replay truth over `@abiogenesis/typescript-tenant`
 `4.2.0-rc.3`, and is carried forward as an inherited proof in the
-`4.2.0-rc.4` release record. It is consumed read-only by this tenant. Full
+`4.2.0-rc.4`, `4.2.0-rc.5`, and `4.2.0-rc.6` release records. It is consumed read-only by this tenant. Full
 SDLC witness-shape closure remains governed by `T-025`; it shall not be closed
 by relabeling an older software-build run or by replaying a local mapping
 surface.

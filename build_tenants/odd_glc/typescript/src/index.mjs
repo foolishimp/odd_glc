@@ -549,6 +549,20 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     tags: ["odd_glc", "software_build", "repair", "schedule"]
   },
   {
+    typeRef: "odd_glc.type.software.component_repair_application",
+    nodeName: "SoftwareComponentRepairApplication",
+    surface: "SoftwareComponentRepairApplicationAsset",
+    schemaRef: "odd_glc.schema.software.component_repair_application",
+    assetKind: "software_component_repair_application",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.component_repair_application"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "repair", "application"]
+  },
+  {
     typeRef: "odd_glc.type.software.test_run_archive",
     nodeName: "SoftwareTestRunArchive",
     surface: "SoftwareTestRunArchiveAsset",
@@ -979,13 +993,50 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     requiredNodeTypes: ["odd_glc.type.software.component_test_execution_qualification", "odd_glc.type.software.component_repair_schedule"]
   },
   {
-    stage: "derive_test_run_archive_surface",
-    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-test-run-archive-surface",
+    stage: "apply_component_repair_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/apply-component-repair-surface",
     sourceTypeRef: "odd_glc.type.software.component_repair_schedule",
     sourceName: "FullLifecycleComponentRepairScheduleSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_repair_application",
+    targetName: "FullLifecycleComponentRepairApplicationSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_repair_schedule", "odd_glc.type.software.component_repair_application"]
+  },
+  {
+    stage: "prepare_repaired_test_execution_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/prepare-repaired-test-execution-surface",
+    sourceTypeRef: "odd_glc.type.software.component_repair_application",
+    sourceName: "FullLifecycleComponentRepairApplicationSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_execution_plan",
+    targetName: "FullLifecycleRepairedTestExecutionPlanSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_repair_application", "odd_glc.type.software.test_execution_plan"]
+  },
+  {
+    stage: "derive_repaired_test_execution_result_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-repaired-test-execution-result-surface",
+    sourceTypeRef: "odd_glc.type.software.test_execution_plan",
+    sourceName: "FullLifecycleRepairedTestExecutionPlanSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.test_execution_result",
+    targetName: "FullLifecycleRepairedTestExecutionResultSurface",
+    executeBeforeAssessment: true,
+    requiredNodeTypes: ["odd_glc.type.software.test_execution_plan", "odd_glc.type.software.test_execution_result", "odd_glc.type.evidence_binding_view"]
+  },
+  {
+    stage: "qualify_repaired_component_test_execution_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/qualify-repaired-component-test-execution-surface",
+    sourceTypeRef: "odd_glc.type.software.test_execution_result",
+    sourceName: "FullLifecycleRepairedTestExecutionResultSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.component_test_execution_qualification",
+    targetName: "FullLifecycleRepairedComponentTestExecutionQualification",
+    requiredNodeTypes: ["odd_glc.type.software.test_execution_result", "odd_glc.type.software.component_test_execution_qualification"]
+  },
+  {
+    stage: "derive_test_run_archive_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-test-run-archive-surface",
+    sourceTypeRef: "odd_glc.type.software.component_test_execution_qualification",
+    sourceName: "FullLifecycleRepairedComponentTestExecutionQualificationInput",
     targetTypeRef: "odd_glc.type.software.test_run_archive",
     targetName: "FullLifecycleTestRunArchiveSurface",
-    requiredNodeTypes: ["odd_glc.type.software.component_repair_schedule", "odd_glc.type.software.test_run_archive"]
+    requiredNodeTypes: ["odd_glc.type.software.component_test_execution_qualification", "odd_glc.type.software.test_run_archive"]
   },
   {
     stage: "derive_release_depth_parity_surface",
@@ -1257,6 +1308,7 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
     "software-build.role.component_realization_qualification",
     "software-build.role.component_test_execution_qualification",
     "software-build.role.component_repair_schedule",
+    "software-build.role.component_repair_application",
     "software-build.role.test_run_archive",
     "software-build.role.release_depth_parity",
     "software-build.role.release_preparation"
@@ -1344,6 +1396,7 @@ export const ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS = deepFreeze([
       "software-build.role.component_realization_qualification",
       "software-build.role.component_test_execution_qualification",
       "software-build.role.component_repair_schedule",
+      "software-build.role.component_repair_application",
       "software-build.role.test_run_archive",
       "software-build.role.release_depth_parity",
       "software-build.role.release_preparation"
