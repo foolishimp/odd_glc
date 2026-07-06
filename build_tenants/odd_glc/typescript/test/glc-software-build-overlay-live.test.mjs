@@ -4117,9 +4117,28 @@ export const runtimeBinding = {
         });
       }
     });
+    // Crash self-location (campaign instrumentation): the CLI catches and
+    // wraps thrown errors, losing stacks — log them at the plugin boundary
+    // BEFORE they propagate.
+    const withStackLog = (label, fn) => async (...args) => {
+      try {
+        return await fn(...args);
+      } catch (error) {
+        try {
+          fsSyncAppend(\`plugin \${label} threw: \${error?.stack ?? error}\`);
+        } catch {}
+        throw error;
+      }
+    };
     return Object.freeze({
-      fpDispatch,
-      fpEvaluator
+      fpDispatch: Object.freeze({
+        contract: fpDispatch.contract,
+        dispatch: withStackLog("fpDispatch", fpDispatch.dispatch)
+      }),
+      fpEvaluator: Object.freeze({
+        contract: fpEvaluator.contract,
+        evaluate: withStackLog("fpEvaluator", fpEvaluator.evaluate)
+      })
     });
   }
 };
