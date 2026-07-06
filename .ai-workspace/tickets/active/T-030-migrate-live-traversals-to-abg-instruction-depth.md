@@ -510,3 +510,13 @@ Campaign ledger additions (runs 5-7):
 - Depth log: run 5 reached vector 10 (39.8m), run 6 vector 12 with three
   VALID full Scala code surfaces (32.3m), run 7 vector 12 (17.7m — the
   #6 fix visibly sped early-stage closure before dying on #5b).
+
+Visibility law (user adjudication, 2026-07-06): failures are EVENTS, not
+side files. Plugin-boundary throws now convert to typed blocked outcomes
+that ABG admits into replay truth (projection/verdict/canary-visible;
+lawful gap_stop with the stack in the reason detail). The
+binding-crash.log shrinks to the pre-event sliver (outcome construction
+itself failing) as harness diagnostics only. UPSTREAM LEDGER ITEM (ABI):
+the genesis-ts CLI catch should emit a typed runtime-failure EVENT before
+wrapping any error, so binding defects land in replay universally and no
+downstream product needs boundary guards for visibility.

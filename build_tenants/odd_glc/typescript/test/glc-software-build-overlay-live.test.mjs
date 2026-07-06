@@ -4117,27 +4117,50 @@ export const runtimeBinding = {
         });
       }
     });
-    // Crash self-location (campaign instrumentation): the CLI catches and
-    // wraps thrown errors, losing stacks — log them at the plugin boundary
-    // BEFORE they propagate.
-    const withStackLog = (label, fn) => async (...args) => {
+    // Failures are EVENTS, not side files: a plugin-boundary throw becomes
+    // a typed blocked outcome so ABG admits it into replay truth (visible
+    // to projections, verdicts, and the canary) and the run ends lawfully.
+    // The file log remains ONLY as a fallback when outcome construction
+    // itself fails (pre-event sliver).
+    const dispatchGuard = (fn) => async (...args) => {
       try {
         return await fn(...args);
       } catch (error) {
+        const detail = String(error?.stack ?? error).slice(0, 1600);
         try {
-          fsSyncAppend(\`plugin \${label} threw: \${error?.stack ?? error}\`);
-        } catch {}
+          return constructFpDispatchOutcome({
+            status: "blocked",
+            reason: \`binding defect (runtime_failure): \${detail}\`,
+            attachedResultArtifact: Object.freeze({
+              kind: "runtime_failure",
+              failureClass: "runtime_failure",
+              detail
+            }),
+            evidenceRefs: []
+          });
+        } catch (secondary) {
+          try { fsSyncAppend(\`dispatch outcome construction failed: \${secondary?.stack ?? secondary}\nafter: \${detail}\`); } catch {}
+          throw error;
+        }
+      }
+    };
+    const evaluatorGuard = (fn) => async (...args) => {
+      try {
+        return await fn(...args);
+      } catch (error) {
+        const detail = String(error?.stack ?? error).slice(0, 1600);
+        try { fsSyncAppend(\`fpEvaluator threw (converted to rethrow, no lawful blocked-outcome carrier wired yet): \${detail}\`); } catch {}
         throw error;
       }
     };
     return Object.freeze({
       fpDispatch: Object.freeze({
         contract: fpDispatch.contract,
-        dispatch: withStackLog("fpDispatch", fpDispatch.dispatch)
+        dispatch: dispatchGuard(fpDispatch.dispatch)
       }),
       fpEvaluator: Object.freeze({
         contract: fpEvaluator.contract,
-        evaluate: withStackLog("fpEvaluator", fpEvaluator.evaluate)
+        evaluate: evaluatorGuard(fpEvaluator.evaluate)
       })
     });
   }
