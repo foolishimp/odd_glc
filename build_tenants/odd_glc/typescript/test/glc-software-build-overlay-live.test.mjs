@@ -3148,8 +3148,18 @@ function deterministicPostMaterializationValidationForStage(input) {
   // EVIDENCE for the repair stages (which may edit main sources), not
   // a test-surface failure. Block only when the errors implicate the
   // tests themselves (src/test or unattributable).
-  const mainSourceErrors = errorLines.filter((line) => line.includes("/src/main/"));
-  const testSurfaceErrors = errorLines.filter((line) => !line.includes("/src/main/"));
+  // attribution is BLOCK-level: scalac emits one file-bearing line then
+  // pathless continuation lines — continuations inherit the current
+  // block's attribution instead of defaulting to test-surface.
+  let currentAttribution = "unattributed";
+  const mainSourceErrors = [];
+  const testSurfaceErrors = [];
+  for (const line of errorLines) {
+    if (line.includes("/src/main/")) currentAttribution = "main";
+    else if (line.includes("/src/test/")) currentAttribution = "test";
+    if (currentAttribution === "main") mainSourceErrors.push(line);
+    else testSurfaceErrors.push(line);
+  }
   const accepted =
     result.status === 0 ||
     (mainSourceErrors.length > 0 && testSurfaceErrors.length === 0);
