@@ -530,3 +530,25 @@ proof: the same substrate ran JS/Rust/Scala tenants unchanged. Any
 vector-16 fix that mentions a tool by name in binding mechanics or ABI
 is unlawful; host-environment facts (Java home, tool presence) are
 scenario/provisioning data.
+
+## RUN-18 SPEC: resume-mode (the wiring that closes the iteration loop)
+
+WHAT EXISTS TODAY (engine, proven in suites all session):
+- CLI `start` over an existing workspace reads events.jsonl, derives
+  the frontier, and CONTINUES — closed vectors stay closed (T-072
+  re-entry proof); retry state resumes from replay (T-084).
+WHAT DOES NOT EXIST (the actual gap; I proposed it as "one flag" —
+it is a small lane addition, not a shipped switch):
+- the live lane has no resume mode: it always mints a fresh run dir,
+  reinstalls the sandbox, regenerates the binding, and calls start
+  once. ADD: ODD_GLC_LIVE_RESUME=<run-dir> — skip install/materialize,
+  reuse the instance workspace, invoke installed start again (optionally
+  loop until converged/blocked-with-new-reason).
+ONE SEMANTIC TO VERIFY AT WIRING: retry-budget state after
+gap_stop(retry_budget_exhausted) — re-entry after an F_H fix should
+open a fresh attempt window (the human gate passed); if the replay-
+derived frontier still reads exhausted, add a declared re-entry policy
+(budget refresh on operator-ratified resume) rather than hand-editing
+truth.
+Expected economics: fixes cost one stage's wall-time (~2-4 min), not a
+50-minute re-proof of vectors 0-15.
