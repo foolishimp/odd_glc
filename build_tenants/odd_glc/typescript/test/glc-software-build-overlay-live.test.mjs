@@ -3139,7 +3139,18 @@ function deterministicPostMaterializationValidationForStage(input) {
   }
   const cwd = path.join(input.workspaceRoot, "build_tenants", "scala_spark");
   const result = runSync("sbt", ["Test/compile"], cwd);
-  const accepted = result.status === 0;
+  const errorLines = compileErrorLines(result.stdout);
+  // campaign #18 (re-entry law at stage 14): this stage's OBLIGATION is
+  // the TEST surface. A compile failure whose errors live in src/main
+  // is an UPSTREAM code defect discovered downstream — truthful
+  // EVIDENCE for the repair stages (which may edit main sources), not
+  // a test-surface failure. Block only when the errors implicate the
+  // tests themselves (src/test or unattributable).
+  const mainSourceErrors = errorLines.filter((line) => line.includes("/src/main/"));
+  const testSurfaceErrors = errorLines.filter((line) => !line.includes("/src/main/"));
+  const accepted =
+    result.status === 0 ||
+    (mainSourceErrors.length > 0 && testSurfaceErrors.length === 0);
   return Object.freeze({
     kind: "post_materialization_validation",
     stage: input.stageSpec.stage,
@@ -3152,10 +3163,16 @@ function deterministicPostMaterializationValidationForStage(input) {
     stderr: result.stderr,
     accepted,
     issues: accepted
-      ? []
+      ? (result.status === 0
+          ? []
+          : [
+              "sbt Test/compile exited " + String(result.status) +
+                " with MAIN-SOURCE errors only — accepted as upstream-defect evidence for the repair stages",
+              ...mainSourceErrors
+            ])
       : [
           "sbt Test/compile exited " + String(result.status),
-          ...compileErrorLines(result.stdout)
+          ...errorLines
         ]
   });
 }
