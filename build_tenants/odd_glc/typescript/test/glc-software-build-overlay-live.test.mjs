@@ -2521,7 +2521,10 @@ async function executePlannedScenario(workspaceRoot) {
     if (JSON.stringify(plan.args) !== JSON.stringify(expected.args)) {
       mismatches.push({ field: "args", expected: expected.args, actual: plan.args });
     }
-    if (plan.expectedTestPassCount !== expected.expectedTestPassCount) {
+    // Campaign bug #9: the contract count is a FLOOR (anti-lowball guard),
+    // not an exact pin — a worker declaring MORE tests than required is
+    // depth-positive, never a mismatch.
+    if (plan.expectedTestPassCount < expected.expectedTestPassCount) {
       mismatches.push({
         field: "expectedTestPassCount",
         expected: expected.expectedTestPassCount,
