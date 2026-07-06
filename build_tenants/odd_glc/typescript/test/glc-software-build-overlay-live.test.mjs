@@ -2395,13 +2395,24 @@ function runSync(command, args, cwd, envOverrides = Object.freeze({})) {
       : value;
   }
   Object.assign(env, expanded);
-  const result = spawnSync(command, args, { cwd, encoding: "utf8", env });
+  // Campaign bug #11: spawnSync's 1MB default maxBuffer truncates
+  // long-running tool output (ENOBUFS -> status null, empty stdout);
+  // execution evidence needs the WHOLE stream, and a spawn-level error
+  // must be visible evidence, never a silent null.
+  const result = spawnSync(command, args, {
+    cwd,
+    encoding: "utf8",
+    env,
+    maxBuffer: 64 * 1024 * 1024
+  });
   return Object.freeze({
     command,
     args,
     cwd,
     envOverrides,
     status: result.status,
+    signal: result.signal ?? null,
+    error: result.error === undefined ? null : String(result.error),
     stdout: result.stdout,
     stderr: result.stderr
   });
