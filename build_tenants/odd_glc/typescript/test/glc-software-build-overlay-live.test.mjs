@@ -1088,6 +1088,8 @@ const SCENARIOS = Object.freeze([
           "This vector is immediately compile-gated with sbt Test/compile after materialization. A source/test API mismatch is a vector failure.",
           "Each file must be a ScalaTest AnyFunSuite or AnyFlatSpec-style test compatible with ScalaTest 3.2.x.",
           "Each CDME module, including cdme-core, must have at least one nontrivial assertion against the module implementation or declared contract DTOs.",
+          "COMPLETENESS OVER COVERAGE: every emitted file must be syntactically complete (all braces closed, compilable on its own). If the full response would be large, write SHORTER test bodies (two or three focused assertions per module) rather than long ones — a truncated file fails the compile gate; a short complete file passes.",
+          "If a main-source API defect prevents a clean test compile, still emit complete, correct tests against the DECLARED API; the compile gate attributes main-source errors upstream and the repair stages own them.",
           "Do not write Node tests or JavaScript files."
         ]
       },
