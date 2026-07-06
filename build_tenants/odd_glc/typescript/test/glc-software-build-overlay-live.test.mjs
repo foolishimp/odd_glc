@@ -4331,10 +4331,29 @@ export const runtimeBinding = {
           input.vectorIndex === pressure.vectorIndex &&
           repairReentryCount < REPAIR_REENTRY_BUDGET
         ) {
+          const composedVectors = Array.isArray(softwareBuildBootstrap.vectors)
+            ? softwareBuildBootstrap.vectors
+            : composedSoftwareBuild.vectors;
+          const targetVector = Array.isArray(composedVectors)
+            ? composedVectors[REPAIR_REENTRY_TARGET_VECTOR_INDEX]
+            : undefined;
+          const sourceNode = targetVector?.source?.[0];
+          if (targetVector === undefined || sourceNode === undefined) {
+            // a routing plugin must NEVER kill the run: fall through to
+            // the no-action projection (the vector still advances; the
+            // gap surfaces at qualification instead).
+            return {
+              kind: "consequence_projection",
+              status: "projected",
+              consequenceRef: "consequence://odd_glc/software-build/reentry-unavailable",
+              domainReadModelRefs: [],
+              traversalAction: null,
+              evidenceRefs: ["evidence://odd_glc/software-build/reentry-target-unresolved"],
+              reason: "re-entry target vector unresolved; advancing without re-entry"
+            };
+          }
           repairReentryCount += 1;
           repairedExecutionFailure = null;
-          const targetVector = softwareBuildBootstrap.vectors[REPAIR_REENTRY_TARGET_VECTOR_INDEX];
-          const sourceNode = targetVector.source[0];
           return {
             kind: "consequence_projection",
             status: "projected",
