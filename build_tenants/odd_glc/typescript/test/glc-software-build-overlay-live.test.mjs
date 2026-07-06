@@ -2971,7 +2971,7 @@ function deterministicExecutionAssessmentFor(input) {
       : [];
   const repairedExecutionStage = input.expectedStage === "derive_repaired_test_execution_result_surface";
   const repairedEnvSatisfied = repairedExecutionStage !== true ||
-    execution.envOverrides?.JAVA_HOME === DATA_MAPPER_SCALA_JAVA11_HOME;
+    execution.envOverrides?.JAVA_HOME === ${JSON.stringify(DATA_MAPPER_SCALA_JAVA11_HOME)};
   const accepted =
     commandStatuses.length > 0 &&
     commandStatuses.every((status) => Number.isInteger(status) || status === null) &&
@@ -3010,7 +3010,7 @@ function deterministicExecutionAssessmentFor(input) {
 	            ? "repaired execution result requires planSatisfied=true."
 	            : "",
 	          repairedEnvSatisfied !== true
-	            ? "repaired execution result requires JAVA_HOME=" + DATA_MAPPER_SCALA_JAVA11_HOME + "."
+	            ? "repaired execution result requires JAVA_HOME=" + ${JSON.stringify(DATA_MAPPER_SCALA_JAVA11_HOME)} + "."
 	            : "",
 	          "issues=" + JSON.stringify(issues) + "."
 	        ].filter((part) => typeof part === "string" && part.length > 0).join(" ")
