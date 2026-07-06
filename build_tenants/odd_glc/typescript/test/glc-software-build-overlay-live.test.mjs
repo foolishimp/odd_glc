@@ -2385,7 +2385,16 @@ function validatedPlanEnv(plan) {
 function runSync(command, args, cwd, envOverrides = Object.freeze({})) {
   const env = { ...process.env };
   delete env.NODE_TEST_CONTEXT;
-  Object.assign(env, envOverrides);
+  // Campaign bug #10: plan env values are TEMPLATES — \${VAR} references
+  // expand against the live environment (JSON carries no shell expansion;
+  // the literal "\${PATH}" made sbt unfindable and the SBT gate silent).
+  const expanded = {};
+  for (const [key, value] of Object.entries(envOverrides ?? {})) {
+    expanded[key] = typeof value === "string"
+      ? value.replace(/\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g, (m, name) => env[name] ?? "")
+      : value;
+  }
+  Object.assign(env, expanded);
   const result = spawnSync(command, args, { cwd, encoding: "utf8", env });
   return Object.freeze({
     command,
