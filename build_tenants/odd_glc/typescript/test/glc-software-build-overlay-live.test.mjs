@@ -4349,13 +4349,15 @@ async function runScenarioLive(scenario) {
       substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
     });
     assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
-    await writeRuntimeBinding({
-      abgPackageRoot,
-      oddGlcPackageRoot: oddGlcInstall.packageRoot,
-      scenario,
-      workspaceRoot
-    });
   }
+  // the binding regenerates on RESUME too (idempotent; carries current
+  // framework-side binding fixes into the reused workspace)
+  await writeRuntimeBinding({
+    abgPackageRoot,
+    oddGlcPackageRoot,
+    scenario,
+    workspaceRoot
+  });
   const runtimeBindingPath = path.join(workspaceRoot, ".abiogenesis", "typescript-runtime.mjs");
   assert.equal(existsSync(runtimeBindingPath), true, `missing runtime binding at ${runtimeBindingPath}`);
   const startedAt = Date.now();
