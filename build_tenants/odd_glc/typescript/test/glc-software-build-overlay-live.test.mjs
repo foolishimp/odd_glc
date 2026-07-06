@@ -1281,7 +1281,7 @@ function timestampId() {
 }
 
 function sha256Text(text) {
-  return `sha256:${createHash("sha256").update(text, "utf8").digest("hex")}`;
+  return `sha256:${createHash("sha256").update(text ?? "", "utf8").digest("hex")}`;
 }
 
 function parseJsonLines(text) {
@@ -1347,7 +1347,7 @@ function run(command, args, options) {
 
 async function writeText(filePath, contents) {
   await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, contents, "utf8");
+  await writeFile(filePath, contents ?? "", "utf8");
 }
 
 async function readJson(filePath) {
@@ -1618,7 +1618,7 @@ function uniq(values) {
 }
 
 function sha256Text(text) {
-  return \`sha256:\${createHash("sha256").update(text, "utf8").digest("hex")}\`;
+  return \`sha256:\${createHash("sha256").update(text ?? "", "utf8").digest("hex")}\`;
 }
 
 function timestampNow() {
@@ -2358,7 +2358,7 @@ async function summarizeMaterializedFiles(workspaceRoot, filePaths) {
     summaries.push(Object.freeze({
       path: path.relative(workspaceRoot, filePath),
       sha256: sha256Text(content),
-      byteLength: Buffer.byteLength(content, "utf8"),
+      byteLength: Buffer.byteLength(content ?? "", "utf8"),
       lineCount: content.length === 0 ? 0 : content.split("\\n").length,
       contentPreview: truncateForPrompt(content)
     }));
@@ -3664,6 +3664,23 @@ const t030EnvelopeTemplate = {
   selectedCompositionRef: "composition://odd_glc/software-build/live",
   selectedCompositionDigest: "sha256:odd-glc-software-build-composition"
 };
+
+process.on("uncaughtException", (error) => {
+  try {
+    fsSyncAppend(\`uncaughtException: \${error?.stack ?? error}\`);
+  } catch {}
+  throw error;
+});
+process.on("unhandledRejection", (error) => {
+  try {
+    fsSyncAppend(\`unhandledRejection: \${error?.stack ?? error}\`);
+  } catch {}
+});
+function fsSyncAppend(text) {
+  const target = path.join(process.cwd(), ".ai-workspace", "binding-crash.log");
+  fsSync.mkdirSync(path.dirname(target), { recursive: true });
+  fsSync.appendFileSync(target, text + "\\n---\\n", "utf8");
+}
 
 export const runtimeBinding = {
   module,
