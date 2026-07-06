@@ -2606,11 +2606,21 @@ async function executePlannedScenario(workspaceRoot) {
   if (plan === null || typeof plan !== "object") {
     throw new Error("Missing test-execution-plan.json for planned scenario execution");
   }
-  // campaign #13 (framework responsibility): normalize the lawful
-  // argv-array shape before judging; reject the rest with TYPED,
-  // corrective guidance the retry re-preparation can surface to the
-  // worker (the substrate converts this to a blocked outcome and the
-  // retry lane re-dispatches — never a dead end).
+  // campaign #13/#14 (framework responsibility): the plan reader
+  // accepts the DECLARED shape family — the repaired-surface node type
+  // lawfully nests the execution block under testExecution; the
+  // original surface writes it flat. Normalize before judging.
+  if (
+    plan.testExecution !== null &&
+    typeof plan.testExecution === "object" &&
+    !Array.isArray(plan.testExecution)
+  ) {
+    plan = Object.freeze({ ...plan, ...plan.testExecution });
+  }
+  // normalize the lawful argv-array shape before judging; reject the
+  // rest with TYPED, corrective guidance the retry re-preparation can
+  // surface to the worker (the substrate converts this to a blocked
+  // outcome and the retry lane re-dispatches — never a dead end).
   if (
     Array.isArray(plan.command) &&
     plan.command.length > 0 &&
