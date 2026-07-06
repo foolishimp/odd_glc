@@ -1055,6 +1055,12 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only design/test-design.md.",
           "Use the code surface and testcase authority artifacts as evidence.",
+          // Bug #8 (T-030 campaign): the primary spec paths are FIXED
+          // product contract data; design consumes them — one authority
+          // direction (product policy -> design -> tests -> evaluator),
+          // never emergent names that collide with the materialize allowlist.
+          "The per-module primary ScalaTest spec file paths are a FIXED product contract and MUST be adopted verbatim as each module's primary spec in the test design: " + DATA_MAPPER_SCALA_TEST_FILES.join(", ") + ".",
+          "Do not rename, move, or substitute these primary spec paths; additional helper specs are not allowed at this stage.",
           "Specify one ScalaTest spec for every CDME module, including cdme-core.",
           "The tests must exercise core contract DTO construction, topology compilation, executor transformation, adjoint lineage registration, accounting balance, assurance threshold behavior, fidelity scoring, and engine integration.",
           "The test design must use sbt test and SBT XML test reports as execution evidence.",
