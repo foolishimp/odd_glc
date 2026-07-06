@@ -1528,6 +1528,7 @@ function runtimeBindingSource(input) {
   constructNode,
   constructNodeTypeGraphFunction,
   constructProductRegistryStartupConfig,
+  constructEnginePluginContract,
   contractForKnownAgent,
   defaultFpDispatchPlugin,
   defaultFpEvaluatorPlugin,
@@ -2154,6 +2155,13 @@ const softwareBuildBootstrap = constructGraphFunction({
             ] }
           ]
         } })
+      }),
+      Object.freeze({
+        key: "abg.consequence.allowed_traversal_families",
+        value: Object.freeze({
+          kind: "string_list",
+          value: Object.freeze(["depth_traversal"])
+        })
       }),
       Object.freeze({
         key: "abg.hog_program_ladder",
@@ -2828,6 +2836,9 @@ async function waitForPortFile(portPath, timeoutMs) {
   }
   throw new Error(\`Timed out waiting for service port file at \${portPath}\`);
 }
+
+let repairedExecutionFailure = null;
+let repairReentryCount = 0;
 
 async function executeScenario(workspaceRoot) {
   if (SCENARIO.executeFromPlan === true) {
@@ -3913,6 +3924,19 @@ export const runtimeBinding = {
             expectedNodeTypes,
             execution
           });
+          // 4.5 re-entry law: a failing REPAIRED execution surfaces as
+          // consequence pressure — the consequence stage lands the
+          // traversal back at the code vector (declared family:
+          // depth_traversal), bounded by repairReentryBudget.
+          if (
+            expectedStage === "derive_repaired_test_execution_result_surface" &&
+            assessment.accepted !== true
+          ) {
+            repairedExecutionFailure = Object.freeze({
+              vectorIndex: pluginInput.vectorIndex,
+              reason: String(assessment.reason ?? "repaired execution failing").slice(0, 300)
+            });
+          }
           transport = deterministicExecutionTransportFor({ accepted: assessment.accepted === true });
         } else {
           transport = await runAgentTransport({
@@ -4258,12 +4282,84 @@ export const runtimeBinding = {
         });
       }
     });
+    // 4.5 CONSEQUENCE RE-ENTRY (declared family depth_traversal):
+    // when the repaired execution keeps failing, the consequence stage
+    // emits a traversal action landing at the CODE vector — the engine
+    // admits it through the declared catalog and re-enters upstream
+    // (GOALS 4.5 bar: convergence THROUGH upstream re-entry).
+    const REPAIR_REENTRY_TARGET_VECTOR_INDEX = 12;
+    const REPAIR_REENTRY_BUDGET = 2;
+    const consequenceProjection = Object.freeze({
+      contract: constructEnginePluginContract({
+        ref: "plugin://odd_glc/software-build/consequence-reentry",
+        pluginKind: "consequence_projection",
+        authority: "effect_plugin",
+        inputCarrier: "EnginePluginInput",
+        outputCarrier: "ConsequenceProjectionOutcome"
+      }),
+      project(input) {
+        const pressure = repairedExecutionFailure;
+        if (
+          pressure !== null &&
+          input.vectorIndex === pressure.vectorIndex &&
+          repairReentryCount < REPAIR_REENTRY_BUDGET
+        ) {
+          repairReentryCount += 1;
+          repairedExecutionFailure = null;
+          const targetVector = softwareBuildBootstrap.vectors[REPAIR_REENTRY_TARGET_VECTOR_INDEX];
+          const sourceNode = targetVector.source[0];
+          return {
+            kind: "consequence_projection",
+            status: "projected",
+            consequenceRef: "consequence://odd_glc/software-build/repaired-execution-failure",
+            domainReadModelRefs: ["read-model://odd_glc/software-build/repaired-execution-failure"],
+            traversalAction: {
+              kind: "consequence_traversal_action",
+              actionRef: "action://odd_glc/software-build/repair-reentry-" + String(repairReentryCount),
+              consequenceRef: "consequence://odd_glc/software-build/repaired-execution-failure",
+              strategyDecisionRef: "strategy-decision://odd_glc/software-build/repair-to-code",
+              parentObligationRef: "obligation://odd_glc/software-build/tests-pass",
+              actionKind: "reenter_graph_span",
+              selectedTraversalFamily: "depth_traversal",
+              selectedGraphFunctionRef: softwareBuildBootstrap.id,
+              selectedOverlayRef: "overlay://odd_glc/software-build-lifecycle",
+              selectedRefinementBoundaryRef: "refinement-boundary://odd_glc/software-build/repair-to-code",
+              sourceNodeRef: sourceNode.id,
+              targetNodeRef: targetVector.target.id,
+              graphVectorRef: targetVector.id,
+              graphSpanRef: "graph-span://odd_glc/software-build/code-to-repaired-execution",
+              reentryTargetRef: "graph-reentry-point://realization/" + String(REPAIR_REENTRY_TARGET_VECTOR_INDEX),
+              targetOutcomeRef: "outcome://odd_glc/software-build/repaired-execution-passing",
+              inputAssetRefs: ["asset://odd_glc/software-build/failing-execution-evidence"],
+              expectedOutputAssetRefs: ["asset://odd_glc/software-build/passing-test-execution"],
+              requiredAuthorityRefs: ["REQ-R-ABG3-ITERATION-009"],
+              proportionalityBasisRefs: ["proportionality://odd_glc/software-build/repair-reentry"],
+              evidencePolicyRef: "evidence-policy://odd_glc/software-build/execution-evidence",
+              foldbackPolicyRef: "foldback-policy://odd_glc/software-build/repaired-execution",
+              nonAdmissionReasonRefs: []
+            },
+            evidenceRefs: ["evidence://odd_glc/software-build/repaired-execution-failure"],
+            reason: pressure.reason
+          };
+        }
+        return {
+          kind: "consequence_projection",
+          status: "projected",
+          consequenceRef: "consequence://odd_glc/software-build/pass/" + String(input.vectorIndex),
+          domainReadModelRefs: [],
+          traversalAction: null,
+          evidenceRefs: ["evidence://odd_glc/software-build/pass/" + String(input.vectorIndex)],
+          reason: null
+        };
+      }
+    });
     // T-200 P4 upstream: the substrate converts plugin throws into typed
     // blocked outcomes (contract_failure) at the executor — the local
     // guards are retired; failures are events by engine law now.
     return Object.freeze({
       fpDispatch,
-      fpEvaluator
+      fpEvaluator,
+      consequenceProjection
     });
   }
 };
