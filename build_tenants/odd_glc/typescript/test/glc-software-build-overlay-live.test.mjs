@@ -2602,12 +2602,34 @@ function commandFromPlan(command) {
 }
 
 async function executePlannedScenario(workspaceRoot) {
-  const plan = await executionPlanFor(workspaceRoot);
+  let plan = await executionPlanFor(workspaceRoot);
   if (plan === null || typeof plan !== "object") {
     throw new Error("Missing test-execution-plan.json for planned scenario execution");
   }
+  // campaign #13 (framework responsibility): normalize the lawful
+  // argv-array shape before judging; reject the rest with TYPED,
+  // corrective guidance the retry re-preparation can surface to the
+  // worker (the substrate converts this to a blocked outcome and the
+  // retry lane re-dispatches — never a dead end).
+  if (
+    Array.isArray(plan.command) &&
+    plan.command.length > 0 &&
+    plan.command.every((part) => typeof part === "string") &&
+    plan.args === undefined
+  ) {
+    plan = Object.freeze({
+      ...plan,
+      command: plan.command[0],
+      args: plan.command.slice(1)
+    });
+  }
   if (typeof plan.command !== "string" || !Array.isArray(plan.args)) {
-    throw new Error("Malformed execution plan command: " + JSON.stringify(plan));
+    throw new Error(
+      "Malformed execution plan: command must be a string and args an array of strings. " +
+      "Re-emit test-execution-plan.json per the stage contract with " +
+      '{"command":"sbt","args":["test"],...} shape. Got: ' +
+      JSON.stringify({ command: plan.command, args: plan.args }).slice(0, 200)
+    );
   }
   if (SCENARIO.expectedExecutionPlan !== undefined) {
     const expected = SCENARIO.expectedExecutionPlan;
