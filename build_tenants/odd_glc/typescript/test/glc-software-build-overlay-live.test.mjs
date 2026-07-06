@@ -2811,7 +2811,7 @@ function evidenceSummaryFor(input) {
     planSatisfied: input.execution?.planSatisfied ?? null,
     expectedTestPassCount: input.execution?.expectedTestPassCount ?? null,
     observedStdoutSha256: input.execution === null ? null : sha256Text(input.execution.stdout),
-    observedStdoutPreview: input.execution === null ? null : input.execution.stdout.slice(0, 120),
+    observedStdoutPreview: input.execution === null ? null : (input.execution.stdout ?? "").slice(0, 120),
     clientStatus: input.execution?.clientRequest?.status ?? null,
     observedTestPassCount: input.execution?.observedTestPassCount ?? null,
     envOverrides: input.execution?.envOverrides ?? null,
