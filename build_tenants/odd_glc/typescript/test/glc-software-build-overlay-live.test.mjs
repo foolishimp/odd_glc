@@ -111,9 +111,14 @@ const DATA_MAPPER_SCALA_TEST_REPORTS = Object.freeze([
 ]);
 
 const DATA_MAPPER_SCALA_JAVA11_HOME = "/opt/homebrew/opt/openjdk@11";
+// campaign #12: the sbt binary home is an ENVIRONMENTAL BINDING
+// (HANDLERS-015 class) — declared here as scenario env data so the
+// deterministic gate finds the toolchain regardless of the CLI
+// process env it inherits.
+const DATA_MAPPER_TOOLCHAIN_BIN = "/opt/homebrew/bin";
 const DATA_MAPPER_SCALA_JAVA11_ENV = Object.freeze({
   JAVA_HOME: DATA_MAPPER_SCALA_JAVA11_HOME,
-  PATH: `${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${process.env.PATH ?? ""}`
+  PATH: `${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${DATA_MAPPER_TOOLCHAIN_BIN}:${process.env.PATH ?? ""}`
 });
 
 const DATA_MAPPER_SHARED_CORE_CONTRACT_TYPES = Object.freeze([
@@ -1095,7 +1100,7 @@ const SCENARIOS = Object.freeze([
           "test-execution-plan.json must set command to sbt.",
           "cwd must be \"build_tenants/scala_spark\".",
           "The args must be [\"test\"].",
-          `If ${DATA_MAPPER_SCALA_JAVA11_HOME} exists, include env with JAVA_HOME set to ${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin so Spark/Hadoop test execution uses a compatible JDK.`,
+          `If ${DATA_MAPPER_SCALA_JAVA11_HOME} exists, include env with JAVA_HOME set to ${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${DATA_MAPPER_TOOLCHAIN_BIN} so Spark/Hadoop test execution uses a compatible JDK and the build toolchain resolves.`,
           "expectedTestPassCount must be 20, matching the admitted ScalaTest test-case count across the eight expected suites.",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
           "assertedReturnValue must be \"data_mapper_full_sbt ok\".",
@@ -2086,7 +2091,88 @@ const softwareBuildBootstrap = constructGraphFunction({
   outputs: composedSoftwareBuild.outputs,
   template: composedSoftwareBuild.template,
   effects: composedSoftwareBuild.effects,
-  declarations: composedSoftwareBuild.declarations,
+  declarations: Object.freeze({
+    entries: Object.freeze([
+      ...composedSoftwareBuild.declarations.entries,
+      // 4.5 migration: labelled HoG catalog + ladder as typed GTL —
+      // every C call on this run carries a declared programRef; retry
+      // escalates lean -> deep (compression descent, CCALL-017).
+      Object.freeze({
+        key: "abg.hog_program_catalog",
+        value: Object.freeze({ kind: "json_blob", value: {
+          kind: "array",
+          items: [
+            { kind: "object", entries: [
+              { key: "syntaxVersion", value: "hog-syntax/1" },
+              { key: "programRef", value: "gtl://odd_glc/software-build/hog/lean" },
+              { key: "proportionalityClass", value: "P1" },
+              { key: "stages", value: { kind: "array", items: [
+                { kind: "object", entries: [
+                  { key: "stageRole", value: "transform" },
+                  { key: "defaultRegime", value: "F_P" },
+                  { key: "armId", value: "arm://odd_glc/software-build/lean/transform" },
+                  { key: "resultBearing", value: true }
+                ] },
+                { kind: "object", entries: [
+                  { key: "stageRole", value: "evaluate" },
+                  { key: "defaultRegime", value: "F_P" },
+                  { key: "armId", value: "arm://odd_glc/software-build/lean/evaluate" },
+                  { key: "resultBearing", value: false }
+                ] },
+                { kind: "object", entries: [
+                  { key: "stageRole", value: "consequence" },
+                  { key: "defaultRegime", value: "F_D" },
+                  { key: "armId", value: "arm://odd_glc/software-build/lean/consequence" },
+                  { key: "resultBearing", value: false }
+                ] }
+              ] } }
+            ] },
+            { kind: "object", entries: [
+              { key: "syntaxVersion", value: "hog-syntax/1" },
+              { key: "programRef", value: "gtl://odd_glc/software-build/hog/deep" },
+              { key: "proportionalityClass", value: "P2" },
+              { key: "stages", value: { kind: "array", items: [
+                { kind: "object", entries: [
+                  { key: "stageRole", value: "transform" },
+                  { key: "defaultRegime", value: "F_P" },
+                  { key: "armId", value: "arm://odd_glc/software-build/deep/transform" },
+                  { key: "resultBearing", value: true }
+                ] },
+                { kind: "object", entries: [
+                  { key: "stageRole", value: "evaluate" },
+                  { key: "defaultRegime", value: "F_P" },
+                  { key: "armId", value: "arm://odd_glc/software-build/deep/evaluate" },
+                  { key: "resultBearing", value: false }
+                ] },
+                { kind: "object", entries: [
+                  { key: "stageRole", value: "consequence" },
+                  { key: "defaultRegime", value: "F_D" },
+                  { key: "armId", value: "arm://odd_glc/software-build/deep/consequence" },
+                  { key: "resultBearing", value: false }
+                ] }
+              ] } }
+            ] }
+          ]
+        } })
+      }),
+      Object.freeze({
+        key: "abg.hog_program_ladder",
+        value: Object.freeze({ kind: "json_blob", value: {
+          kind: "array",
+          items: [
+            { kind: "object", entries: [
+              { key: "programRef", value: "gtl://odd_glc/software-build/hog/lean" },
+              { key: "fromAttempt", value: 1 }
+            ] },
+            { kind: "object", entries: [
+              { key: "programRef", value: "gtl://odd_glc/software-build/hog/deep" },
+              { key: "fromAttempt", value: 2 }
+            ] }
+          ]
+        } })
+      })
+    ])
+  }),
   tags: uniq([...composedSoftwareBuild.tags, "odd_glc", "software-build", SCENARIO.key, OVERLAY_REF]),
   id: GRAPH_FUNCTION_REF
 });
@@ -4165,8 +4251,21 @@ async function runScenarioLive(scenario) {
   assert.equal(existsSync(genesisCommand), true, `Missing installed genesis-ts at ${genesisCommand}`);
   assert.equal(existsSync(path.join(abgPackageRoot, "build", "semantic", "code", "src", "index.js")), true);
 
-  const runRoot = path.join(liveRoot, scenario.key, timestampId());
+  // T-030 run-18 spec: ODD_GLC_LIVE_RESUME=<runRoot> reuses the existing
+  // workspace — engine re-entry continues from the replay frontier
+  // (closed C calls stay closed; a fixed defect costs one stage, not a
+  // full re-proof). Install/binding are skipped; start re-invokes.
+  const resumeRoot = process.env.ODD_GLC_LIVE_RESUME ?? null;
+  const resuming = resumeRoot !== null && resumeRoot.length > 0;
+  const runRoot = resuming ? resumeRoot : path.join(liveRoot, scenario.key, timestampId());
   const workspaceRoot = path.join(runRoot, "instance");
+  if (resuming) {
+    assert.equal(
+      existsSync(path.join(runRoot, "sandbox-identity.json")),
+      true,
+      `ODD_GLC_LIVE_RESUME target is not a sandbox run root: ${runRoot}`
+    );
+  }
   const toolchainRoot = path.join(runRoot, "toolchain");
   const oddGlcProductRoot = path.join(runRoot, "products", "odd_glc", ODD_GLC_INSTALL_VERSION);
   const oddGlcPackageRoot = path.join(oddGlcProductRoot, "lib", "node_modules", "@odd-glc", "route-one-typescript");
@@ -4198,41 +4297,45 @@ async function runScenarioLive(scenario) {
     terminalProofRequired: requestedExecutorProfile === "pty-terminal",
     authorityRule: "ABG owns install, startup admission, registry projection, selection, graph-call opening, traversal, F_P invocation, event emission, and replay truth. odd_glc supplies declaration data and read interpretation only."
   });
-  await writeText(path.join(runRoot, "sandbox-identity.json"), `${JSON.stringify(sandboxIdentity, null, 2)}\n`);
-  await writeText(
-    path.join(workspaceRoot, ".ai-workspace", "sandbox-identity.json"),
-    `${JSON.stringify(sandboxIdentity, null, 2)}\n`
-  );
-  run(
-    genesisCommand,
-    [
-      "install",
-      "--target",
+  if (!resuming) {
+    await writeText(path.join(runRoot, "sandbox-identity.json"), `${JSON.stringify(sandboxIdentity, null, 2)}\n`);
+    await writeText(
+      path.join(workspaceRoot, ".ai-workspace", "sandbox-identity.json"),
+      `${JSON.stringify(sandboxIdentity, null, 2)}\n`
+    );
+    run(
+      genesisCommand,
+      [
+        "install",
+        "--target",
+        workspaceRoot,
+        "--package-source",
+        abgPackageRoot,
+        "--toolchain-root",
+        toolchainRoot
+      ],
+      {
+        cwd: runRoot,
+        label: `installed genesis-ts install for ${scenario.key}`,
+        env: process.env
+      }
+    );
+    const oddGlcInstall = await installOddGlcProductForSandbox({
+      runRoot,
       workspaceRoot,
-      "--package-source",
+      tenantRoot,
+      substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
+    });
+    assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
+    await writeRuntimeBinding({
       abgPackageRoot,
-      "--toolchain-root",
-      toolchainRoot
-    ],
-    {
-      cwd: runRoot,
-      label: `installed genesis-ts install for ${scenario.key}`,
-      env: process.env
-    }
-  );
-  const oddGlcInstall = await installOddGlcProductForSandbox({
-    runRoot,
-    workspaceRoot,
-    tenantRoot,
-    substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
-  });
-  assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
-  const runtimeBindingPath = await writeRuntimeBinding({
-    abgPackageRoot,
-    oddGlcPackageRoot: oddGlcInstall.packageRoot,
-    scenario,
-    workspaceRoot
-  });
+      oddGlcPackageRoot: oddGlcInstall.packageRoot,
+      scenario,
+      workspaceRoot
+    });
+  }
+  const runtimeBindingPath = path.join(workspaceRoot, ".abiogenesis", "typescript-runtime.mjs");
+  assert.equal(existsSync(runtimeBindingPath), true, `missing runtime binding at ${runtimeBindingPath}`);
   const startedAt = Date.now();
   const start = run(
     genesisCommand,
