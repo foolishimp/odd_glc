@@ -520,3 +520,13 @@ itself failing) as harness diagnostics only. UPSTREAM LEDGER ITEM (ABI):
 the genesis-ts CLI catch should emit a typed runtime-failure EVENT before
 wrapping any error, so binding defects land in replay universally and no
 downstream product needs boundary guards for visibility.
+
+BOUNDARY LAW (user, 2026-07-06): tool knowledge is EMERGENT — the
+substrate never knows about sbt (or cargo, node, scalac). Tool names
+enter only as emergent data: worker-authored plans, scenario contract
+rows, admitted artifacts. The substrate's obligation is the generic
+triple {execute declared plan, capture evidence, admit truth}. Empirical
+proof: the same substrate ran JS/Rust/Scala tenants unchanged. Any
+vector-16 fix that mentions a tool by name in binding mechanics or ABI
+is unlawful; host-environment facts (Java home, tool presence) are
+scenario/provisioning data.
