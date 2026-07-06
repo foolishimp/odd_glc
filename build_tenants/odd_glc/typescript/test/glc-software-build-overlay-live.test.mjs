@@ -4331,27 +4331,10 @@ export const runtimeBinding = {
           input.vectorIndex === pressure.vectorIndex &&
           repairReentryCount < REPAIR_REENTRY_BUDGET
         ) {
-          const composedVectors = Array.isArray(softwareBuildBootstrap.vectors)
-            ? softwareBuildBootstrap.vectors
-            : composedSoftwareBuild.vectors;
-          const targetVector = Array.isArray(composedVectors)
-            ? composedVectors[REPAIR_REENTRY_TARGET_VECTOR_INDEX]
-            : undefined;
-          const sourceNode = targetVector?.source?.[0];
-          if (targetVector === undefined || sourceNode === undefined) {
-            // a routing plugin must NEVER kill the run: fall through to
-            // the no-action projection (the vector still advances; the
-            // gap surfaces at qualification instead).
-            return {
-              kind: "consequence_projection",
-              status: "projected",
-              consequenceRef: "consequence://odd_glc/software-build/reentry-unavailable",
-              domainReadModelRefs: [],
-              traversalAction: null,
-              evidenceRefs: ["evidence://odd_glc/software-build/reentry-target-unresolved"],
-              reason: "re-entry target vector unresolved; advancing without re-entry"
-            };
-          }
+          // refs are GENERATION-TIME data from the declared stage plan;
+          // the engine's landing validates reentryTargetRef against the
+          // basis graph (parseConsequenceReentryTarget) — no runtime
+          // vector lookup needed.
           repairReentryCount += 1;
           repairedExecutionFailure = null;
           return {
@@ -4370,9 +4353,9 @@ export const runtimeBinding = {
               selectedGraphFunctionRef: softwareBuildBootstrap.id,
               selectedOverlayRef: "overlay://odd_glc/software-build-lifecycle",
               selectedRefinementBoundaryRef: "refinement-boundary://odd_glc/software-build/repair-to-code",
-              sourceNodeRef: sourceNode.id,
-              targetNodeRef: targetVector.target.id,
-              graphVectorRef: targetVector.id,
+              sourceNodeRef: "node://odd_glc/software-build/" + stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX].sourceName,
+              targetNodeRef: "node://odd_glc/software-build/" + stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX].targetName,
+              graphVectorRef: stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX].vectorId,
               graphSpanRef: "graph-span://odd_glc/software-build/code-to-repaired-execution",
               reentryTargetRef: "graph-reentry-point://realization/" + String(REPAIR_REENTRY_TARGET_VECTOR_INDEX),
               targetOutcomeRef: "outcome://odd_glc/software-build/repaired-execution-passing",
