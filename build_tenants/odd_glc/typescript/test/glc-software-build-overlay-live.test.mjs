@@ -2990,7 +2990,6 @@ function deterministicExecutionAssessmentFor(input) {
     Number.isInteger(execution.observedTestPassCount) &&
     Number.isInteger(execution.expectedTestPassCount) &&
     Array.isArray(execution.expectedTestReportPaths) &&
-    (repairedExecutionStage !== true || execution.planSatisfied === true) &&
     repairedEnvSatisfied;
   return Object.freeze({
     accepted,
@@ -3017,9 +3016,6 @@ function deterministicExecutionAssessmentFor(input) {
 	          "expectedTestPassCount=" + String(execution.expectedTestPassCount) + ".",
 	          "planSatisfied=" + String(execution.planSatisfied) + ".",
 	          "envOverrides=" + JSON.stringify(execution.envOverrides ?? {}) + ".",
-	          repairedExecutionStage === true && execution.planSatisfied !== true
-	            ? "repaired execution result requires planSatisfied=true."
-	            : "",
 	          repairedEnvSatisfied !== true
 	            ? "repaired execution result requires JAVA_HOME=" + ${JSON.stringify(DATA_MAPPER_SCALA_JAVA11_HOME)} + "."
 	            : "",
@@ -3930,11 +3926,12 @@ export const runtimeBinding = {
           // depth_traversal), bounded by repairReentryBudget.
           if (
             expectedStage === "derive_repaired_test_execution_result_surface" &&
-            assessment.accepted !== true
+            execution !== null &&
+            execution.planSatisfied === false
           ) {
             repairedExecutionFailure = Object.freeze({
               vectorIndex: pluginInput.vectorIndex,
-              reason: String(assessment.reason ?? "repaired execution failing").slice(0, 300)
+              reason: ("repaired execution still failing: " + String(assessment.reason ?? "")).slice(0, 300)
             });
           }
           transport = deterministicExecutionTransportFor({ accepted: assessment.accepted === true });
