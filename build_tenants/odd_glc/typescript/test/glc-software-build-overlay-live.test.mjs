@@ -2485,7 +2485,7 @@ function runSync(command, args, cwd, envOverrides = Object.freeze({})) {
   const expanded = {};
   for (const [key, value] of Object.entries(envOverrides ?? {})) {
     expanded[key] = typeof value === "string"
-      ? value.replace(/\$\{([A-Za-z_][A-Za-z0-9_]*)\}/g, (m, name) => env[name] ?? "")
+      ? value.replace(/\\$\\{([A-Za-z_][A-Za-z0-9_]*)\\}/g, (m, name) => env[name] ?? "")
       : value;
   }
   Object.assign(env, expanded);
