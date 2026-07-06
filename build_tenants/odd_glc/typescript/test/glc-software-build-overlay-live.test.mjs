@@ -1190,8 +1190,9 @@ const SCENARIOS = Object.freeze([
         ],
         instructions: [
           "Produce no files.",
-          "Accept only if the repaired declared sbt test command actually ran, exited 0, recorded command status, planSatisfied, observedTestPassCount, expectedTestPassCount, expected report paths, assertedReturnValue, and env evidence.",
-          "The repaired result must have all eight expected SBT XML test reports present with zero failures/errors, observedTestPassCount at least 20, planSatisfied true, and assertedReturnValue \"data_mapper_full_sbt ok\"."
+          "Accept when the repaired declared sbt test command ACTUALLY RAN with full recorded evidence: command status, planSatisfied, observedTestPassCount, expectedTestPassCount, expected report paths, assertedReturnValue, and env evidence. TRUTHFUL FAILING evidence is an acceptable result-surface derivation: the consequence stage routes a failing repaired execution back to the code vector for another repair pass (re-entry law); do not reject solely because tests fail.",
+          "Reject only when the evidence itself is malformed or incomplete: the command did not actually run, statuses/counts are missing or non-numeric, report paths are undeclared, or env evidence is absent.",
+          "A PASSING repaired result (exit 0, all eight SBT XML reports, zero failures/errors, observedTestPassCount >= 20, planSatisfied true, assertedReturnValue \"data_mapper_full_sbt ok\") advances toward qualification; state pass/fail plainly in the review."
         ]
       },
       {
