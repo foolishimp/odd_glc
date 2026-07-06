@@ -1566,6 +1566,7 @@ import {
 } from ${JSON.stringify(oddGlcImport)};
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { spawn, spawnSync } from "node:child_process";
 import path from "node:path";
 
@@ -2479,19 +2480,24 @@ function validatedPlanEnv(plan) {
   return Object.freeze(Object.fromEntries(entries));
 }
 
-function runSync(command, args, cwd, envOverrides = Object.freeze({})) {
-  const env = { ...process.env };
-  delete env.NODE_TEST_CONTEXT;
-  // Campaign bug #10: plan env values are TEMPLATES — \${VAR} references
-  // expand against the live environment (JSON carries no shell expansion;
-  // the literal "\${PATH}" made sbt unfindable and the SBT gate silent).
+// PURE (unit lane): Campaign bug #10/#10b — plan env values are
+// TEMPLATES; \${VAR} references expand against the provided base env
+// (JSON carries no shell expansion; a literal "\${PATH}" made sbt
+// unfindable and the SBT gate silent).
+export function expandEnvTemplates(envOverrides, baseEnv) {
   const expanded = {};
   for (const [key, value] of Object.entries(envOverrides ?? {})) {
     expanded[key] = typeof value === "string"
-      ? value.replace(/\\$\\{([A-Za-z_][A-Za-z0-9_]*)\\}/g, (m, name) => env[name] ?? "")
+      ? value.replace(/\\$\\{([A-Za-z_][A-Za-z0-9_]*)\\}/g, (m, name) => baseEnv[name] ?? "")
       : value;
   }
-  Object.assign(env, expanded);
+  return expanded;
+}
+
+function runSync(command, args, cwd, envOverrides = Object.freeze({})) {
+  const env = { ...process.env };
+  delete env.NODE_TEST_CONTEXT;
+  Object.assign(env, expandEnvTemplates(envOverrides, env));
   // Campaign bug #11: spawnSync's 1MB default maxBuffer truncates
   // long-running tool output (ENOBUFS -> status null, empty stdout);
   // execution evidence needs the WHOLE stream, and a spawn-level error
@@ -2848,8 +2854,39 @@ async function waitForPortFile(portPath, timeoutMs) {
   throw new Error(\`Timed out waiting for service port file at \${portPath}\`);
 }
 
-let repairedExecutionFailure = null;
-let repairReentryCount = 0;
+// P1b (T-030 no-plugin-closure-state): re-entry pressure and budget are
+// DURABLE WORKSPACE TRUTH (one observed-state file), not plugin closure
+// state — a resume reads the same truth the crashed process wrote.
+function repairReentryStatePath(workspaceRoot) {
+  return path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", "repair-reentry-state.json");
+}
+export function readRepairReentryState(workspaceRoot) {
+  const statePath = repairReentryStatePath(workspaceRoot);
+  if (!existsSync(statePath)) {
+    return Object.freeze({ pressure: null, reentryCount: 0 });
+  }
+  try {
+    const raw = JSON.parse(readFileSync(statePath, "utf8"));
+    return Object.freeze({
+      pressure:
+        raw.pressure !== null && typeof raw.pressure === "object" &&
+        Number.isSafeInteger(raw.pressure.vectorIndex)
+          ? Object.freeze({
+              vectorIndex: raw.pressure.vectorIndex,
+              reason: String(raw.pressure.reason ?? "")
+            })
+          : null,
+      reentryCount: Number.isSafeInteger(raw.reentryCount) ? raw.reentryCount : 0
+    });
+  } catch {
+    return Object.freeze({ pressure: null, reentryCount: 0 });
+  }
+}
+export function writeRepairReentryState(workspaceRoot, state) {
+  const statePath = repairReentryStatePath(workspaceRoot);
+  mkdirSync(path.dirname(statePath), { recursive: true });
+  writeFileSync(statePath, JSON.stringify(state, null, 2) + "\\n", "utf8");
+}
 
 async function executeScenario(workspaceRoot) {
   if (SCENARIO.executeFromPlan === true) {
@@ -3209,11 +3246,11 @@ function deterministicPostMaterializationValidationForStage(input) {
           : [
               "sbt Test/compile exited " + String(result.status) +
                 " with MAIN-SOURCE errors only — accepted as upstream-defect evidence for the repair stages",
-              ...mainSourceErrors
+              ...mainSourceErrors.slice(0, 16)
             ])
       : [
           "sbt Test/compile exited " + String(result.status),
-          ...errorLines
+          ...errorLines.slice(0, 16)
         ]
   });
 }
@@ -3280,11 +3317,13 @@ function candidateEvidenceSummaryFor(input) {
 }
 
 function compileErrorLines(stdout) {
+  // P2a (codex): NO cap here — the attribution DECISION must see every
+  // error line (a test-source error after line 16 must still block);
+  // excerpt caps apply only where issue text is assembled.
   return stdout
     .split(String.fromCharCode(10))
     .map((line) => line.endsWith(String.fromCharCode(13)) ? line.slice(0, -1) : line)
-    .filter((line) => line.includes("[error]"))
-    .slice(0, 16);
+    .filter((line) => line.includes("[error]"));
 }
 
 const STAGE_FILE_INSTRUCTIONS = Object.freeze({
@@ -3987,9 +4026,13 @@ export const runtimeBinding = {
             execution !== null &&
             execution.planSatisfied === false
           ) {
-            repairedExecutionFailure = Object.freeze({
-              vectorIndex: pluginInput.vectorIndex,
-              reason: ("repaired execution still failing: " + String(assessment.reason ?? "")).slice(0, 300)
+            const priorReentryState = readRepairReentryState(workspaceRoot);
+            writeRepairReentryState(workspaceRoot, {
+              pressure: {
+                vectorIndex: pluginInput.vectorIndex,
+                reason: ("repaired execution still failing: " + String(assessment.reason ?? "")).slice(0, 300)
+              },
+              reentryCount: priorReentryState.reentryCount
             });
           }
           transport = deterministicExecutionTransportFor({ accepted: assessment.accepted === true });
@@ -4353,11 +4396,12 @@ export const runtimeBinding = {
         outputCarrier: "ConsequenceProjectionOutcome"
       }),
       project(input) {
-        const pressure = repairedExecutionFailure;
+        const reentryState = readRepairReentryState(workspaceRoot);
+        const pressure = reentryState.pressure;
         if (
           pressure !== null &&
           input.vectorIndex === pressure.vectorIndex &&
-          repairReentryCount < REPAIR_REENTRY_BUDGET
+          reentryState.reentryCount < REPAIR_REENTRY_BUDGET
         ) {
           // refs come from the declared stage plan at template-runtime;
           // the engine's landing validates reentryTargetRef against the
@@ -4376,8 +4420,8 @@ export const runtimeBinding = {
               reason: "re-entry target row unresolved; advancing without re-entry"
             };
           }
-          repairReentryCount += 1;
-          repairedExecutionFailure = null;
+          const consumedCount = reentryState.reentryCount + 1;
+          writeRepairReentryState(workspaceRoot, { pressure: null, reentryCount: consumedCount });
           return {
             kind: "consequence_projection",
             status: "projected",
@@ -4385,7 +4429,7 @@ export const runtimeBinding = {
             domainReadModelRefs: ["read-model://odd_glc/software-build/repaired-execution-failure"],
             traversalAction: {
               kind: "consequence_traversal_action",
-              actionRef: "action://odd_glc/software-build/repair-reentry-" + String(repairReentryCount),
+              actionRef: "action://odd_glc/software-build/repair-reentry-" + String(consumedCount),
               consequenceRef: "consequence://odd_glc/software-build/repaired-execution-failure",
               strategyDecisionRef: "strategy-decision://odd_glc/software-build/repair-to-code",
               parentObligationRef: "obligation://odd_glc/software-build/tests-pass",
@@ -4504,6 +4548,7 @@ async function runScenarioLive(scenario) {
     terminalProofRequired: requestedExecutorProfile === "pty-terminal",
     authorityRule: "ABG owns install, startup admission, registry projection, selection, graph-call opening, traversal, F_P invocation, event emission, and replay truth. odd_glc supplies declaration data and read interpretation only."
   });
+  let oddGlcInstall;
   if (!resuming) {
     await writeText(path.join(runRoot, "sandbox-identity.json"), `${JSON.stringify(sandboxIdentity, null, 2)}\n`);
     await writeText(
@@ -4527,13 +4572,29 @@ async function runScenarioLive(scenario) {
         env: process.env
       }
     );
-    const oddGlcInstall = await installOddGlcProductForSandbox({
+    oddGlcInstall = await installOddGlcProductForSandbox({
       runRoot,
       workspaceRoot,
       tenantRoot,
       substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
     });
     assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
+  } else {
+    // P0 (codex): the resume path reconstructs the install record from
+    // the durable manifests written at install time — proof assembly
+    // uses the SAME shape on both paths.
+    const manifestPath = path.join(oddGlcProductRoot, "odd-glc-install-manifest.json");
+    const workspaceManifestPath = path.join(workspaceRoot, ".odd_glc", "install-manifest.json");
+    assert.equal(existsSync(manifestPath), true, `resume requires ${manifestPath}`);
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+    oddGlcInstall = Object.freeze({
+      manifest,
+      manifestPath,
+      workspaceManifestPath,
+      aiWorkspaceManifestPath: path.join(workspaceRoot, ".ai-workspace", "odd-glc-install-manifest.json"),
+      productRoot: oddGlcProductRoot,
+      packageRoot: oddGlcPackageRoot
+    });
   }
   // the binding regenerates on RESUME too (idempotent; carries current
   // framework-side binding fixes into the reused workspace)
@@ -4892,4 +4953,47 @@ test("binding unit lane: pure surfaces — plan shape family (#14), compile attr
   assert.notEqual(target, null);
   assert.equal(target.index >= 0, true);
   assert.equal(typeof target.row.vectorId, "string");
+});
+
+test("binding unit lane: #10b expansion behavior, P1b durable re-entry state, P2a uncapped attribution", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  const {
+    expandEnvTemplates,
+    attributeCompileErrorLines,
+    readRepairReentryState,
+    writeRepairReentryState,
+    resolveRepairReentryTargetRow
+  } = binding;
+  // #10b BEHAVIOR: templates expand against the BASE env, unknown -> ""
+  const expanded = expandEnvTemplates(
+    { PATH: "/opt/j11/bin:${PATH}", JAVA_HOME: "/opt/j11", RAW: 7, MISSING: "${NOT_A_VAR}" },
+    { PATH: "/usr/bin" }
+  );
+  assert.equal(expanded.PATH, "/opt/j11/bin:/usr/bin");
+  assert.equal(expanded.JAVA_HOME, "/opt/j11");
+  assert.equal(expanded.RAW, 7);
+  assert.equal(expanded.MISSING, "");
+  // P2a: a test-source error BEYOND the old 16-line cap still blocks
+  const manyMain = Array.from({ length: 20 }, (unused, index) =>
+    `[error] /w/build_tenants/scala_spark/m${index}/src/main/scala/M${index}.scala:1:1: bad`);
+  const lateTest = attributeCompileErrorLines([
+    ...manyMain,
+    "[error] /w/build_tenants/scala_spark/core/src/test/scala/Spec.scala:9:1: Missing closing brace"
+  ]);
+  assert.equal(lateTest.testSurfaceErrors.length, 1, "late test-source error must remain visible");
+  // P1b: durable state round-trip in an isolated workspace
+  const stateRoot = path.join(liveRoot, "binding-unit", `state-${timestampId()}`);
+  await mkdir(stateRoot, { recursive: true });
+  assert.deepEqual(readRepairReentryState(stateRoot), { pressure: null, reentryCount: 0 });
+  writeRepairReentryState(stateRoot, { pressure: { vectorIndex: 21, reason: "failing" }, reentryCount: 1 });
+  const readBack = readRepairReentryState(stateRoot);
+  assert.equal(readBack.pressure.vectorIndex, 21);
+  assert.equal(readBack.reentryCount, 1);
+  writeRepairReentryState(stateRoot, { pressure: null, reentryCount: 2 });
+  assert.deepEqual(readRepairReentryState(stateRoot), { pressure: null, reentryCount: 2 });
+  // and the re-entry ref format the engine's landing parses
+  const target = resolveRepairReentryTargetRow();
+  assert.match(`graph-reentry-point://realization/${target.index}`, /^graph-reentry-point:\/\/[^/]+\/[0-9]+$/);
 });
