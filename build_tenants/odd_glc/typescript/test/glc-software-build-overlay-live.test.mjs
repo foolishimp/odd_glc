@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { test } from "node:test";
@@ -4314,7 +4314,9 @@ export const runtimeBinding = {
     // emits a traversal action landing at the CODE vector — the engine
     // admits it through the declared catalog and re-enters upstream
     // (GOALS 4.5 bar: convergence THROUGH upstream re-entry).
-    const REPAIR_REENTRY_TARGET_VECTOR_INDEX = 12;
+    const REPAIR_REENTRY_TARGET_VECTOR_INDEX = stageRows.findIndex(
+      (row) => row.stage === "derive_code_surface"
+    );
     const REPAIR_REENTRY_BUDGET = 2;
     const consequenceProjection = Object.freeze({
       contract: constructEnginePluginContract({
@@ -4331,10 +4333,29 @@ export const runtimeBinding = {
           input.vectorIndex === pressure.vectorIndex &&
           repairReentryCount < REPAIR_REENTRY_BUDGET
         ) {
-          // refs are GENERATION-TIME data from the declared stage plan;
+          // refs come from the declared stage plan at template-runtime;
           // the engine's landing validates reentryTargetRef against the
-          // basis graph (parseConsequenceReentryTarget) — no runtime
-          // vector lookup needed.
+          // basis graph (parseConsequenceReentryTarget). A ROUTING
+          // PLUGIN MUST NEVER KILL THE RUN (F1): any resolution failure
+          // falls through to the no-action projection below.
+          const reentryRow = stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX];
+          if (
+            REPAIR_REENTRY_TARGET_VECTOR_INDEX < 0 ||
+            reentryRow === undefined ||
+            typeof reentryRow.sourceName !== "string" ||
+            typeof reentryRow.targetName !== "string" ||
+            typeof reentryRow.vectorId !== "string"
+          ) {
+            return {
+              kind: "consequence_projection",
+              status: "projected",
+              consequenceRef: "consequence://odd_glc/software-build/reentry-unavailable",
+              domainReadModelRefs: [],
+              traversalAction: null,
+              evidenceRefs: ["evidence://odd_glc/software-build/reentry-target-unresolved"],
+              reason: "re-entry target row unresolved; advancing without re-entry"
+            };
+          }
           repairReentryCount += 1;
           repairedExecutionFailure = null;
           return {
@@ -4353,9 +4374,9 @@ export const runtimeBinding = {
               selectedGraphFunctionRef: softwareBuildBootstrap.id,
               selectedOverlayRef: "overlay://odd_glc/software-build-lifecycle",
               selectedRefinementBoundaryRef: "refinement-boundary://odd_glc/software-build/repair-to-code",
-              sourceNodeRef: "node://odd_glc/software-build/" + stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX].sourceName,
-              targetNodeRef: "node://odd_glc/software-build/" + stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX].targetName,
-              graphVectorRef: stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX].vectorId,
+              sourceNodeRef: "node://odd_glc/software-build/" + reentryRow.sourceName,
+              targetNodeRef: "node://odd_glc/software-build/" + reentryRow.targetName,
+              graphVectorRef: reentryRow.vectorId,
               graphSpanRef: "graph-span://odd_glc/software-build/code-to-repaired-execution",
               reentryTargetRef: "graph-reentry-point://realization/" + String(REPAIR_REENTRY_TARGET_VECTOR_INDEX),
               targetOutcomeRef: "outcome://odd_glc/software-build/repaired-execution-passing",
@@ -4417,10 +4438,19 @@ async function runScenarioLive(scenario) {
   const runRoot = resuming ? resumeRoot : path.join(liveRoot, scenario.key, timestampId());
   const workspaceRoot = path.join(runRoot, "instance");
   if (resuming) {
+    const identityPath = path.join(runRoot, "sandbox-identity.json");
     assert.equal(
-      existsSync(path.join(runRoot, "sandbox-identity.json")),
+      existsSync(identityPath),
       true,
       `ODD_GLC_LIVE_RESUME target is not a sandbox run root: ${runRoot}`
+    );
+    // F3: a resume must never regenerate the binding for a DIFFERENT
+    // scenario into a reused workspace.
+    const priorIdentity = JSON.parse(readFileSync(identityPath, "utf8"));
+    assert.equal(
+      priorIdentity.scenarioId,
+      scenario.scenarioId,
+      `ODD_GLC_LIVE_RESUME scenario mismatch: workspace is ${priorIdentity.scenarioId}, selected ${scenario.scenarioId}`
     );
   }
   const toolchainRoot = path.join(runRoot, "toolchain");
