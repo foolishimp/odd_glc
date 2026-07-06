@@ -2612,15 +2612,13 @@ function commandFromPlan(command) {
   return command;
 }
 
-async function executePlannedScenario(workspaceRoot) {
-  let plan = await executionPlanFor(workspaceRoot);
+// PURE (unit lane): the plan reader's shape family — nested
+// testExecution envelope + argv-array normalization + typed rejection.
+export function normalizeExecutionPlanShape(planInput) {
+  let plan = planInput;
   if (plan === null || typeof plan !== "object") {
-    throw new Error("Missing test-execution-plan.json for planned scenario execution");
+    return Object.freeze({ plan: null, issue: "missing_plan" });
   }
-  // campaign #13/#14 (framework responsibility): the plan reader
-  // accepts the DECLARED shape family — the repaired-surface node type
-  // lawfully nests the execution block under testExecution; the
-  // original surface writes it flat. Normalize before judging.
   if (
     plan.testExecution !== null &&
     typeof plan.testExecution === "object" &&
@@ -2628,10 +2626,6 @@ async function executePlannedScenario(workspaceRoot) {
   ) {
     plan = Object.freeze({ ...plan, ...plan.testExecution });
   }
-  // normalize the lawful argv-array shape before judging; reject the
-  // rest with TYPED, corrective guidance the retry re-preparation can
-  // surface to the worker (the substrate converts this to a blocked
-  // outcome and the retry lane re-dispatches — never a dead end).
   if (
     Array.isArray(plan.command) &&
     plan.command.length > 0 &&
@@ -2645,13 +2639,27 @@ async function executePlannedScenario(workspaceRoot) {
     });
   }
   if (typeof plan.command !== "string" || !Array.isArray(plan.args)) {
-    throw new Error(
-      "Malformed execution plan: command must be a string and args an array of strings. " +
-      "Re-emit test-execution-plan.json per the stage contract with " +
-      '{"command":"sbt","args":["test"],...} shape. Got: ' +
-      JSON.stringify({ command: plan.command, args: plan.args }).slice(0, 200)
-    );
+    return Object.freeze({
+      plan: null,
+      issue:
+        "Malformed execution plan: command must be a string and args an array of strings. " +
+        "Re-emit test-execution-plan.json per the stage contract with " +
+        '{"command":"sbt","args":["test"],...} shape. Got: ' +
+        JSON.stringify({ command: plan.command, args: plan.args }).slice(0, 200)
+    });
   }
+  return Object.freeze({ plan, issue: null });
+}
+
+async function executePlannedScenario(workspaceRoot) {
+  const normalized = normalizeExecutionPlanShape(await executionPlanFor(workspaceRoot));
+  if (normalized.issue === "missing_plan") {
+    throw new Error("Missing test-execution-plan.json for planned scenario execution");
+  }
+  if (normalized.issue !== null) {
+    throw new Error(normalized.issue);
+  }
+  const plan = normalized.plan;
   if (SCENARIO.expectedExecutionPlan !== undefined) {
     const expected = SCENARIO.expectedExecutionPlan;
     const actualReports = Array.isArray(plan.expectedTestReportPaths)
@@ -3133,6 +3141,41 @@ async function writeAttemptAndLatestText(runRoot, baseLabel, attemptLabel, suffi
   }
 }
 
+// PURE (unit lane): BLOCK-level compile-error attribution — scalac
+// emits one file-bearing line then pathless continuation lines;
+// continuations inherit the current block's attribution (#18/#18b).
+export function attributeCompileErrorLines(errorLines) {
+  let currentAttribution = "unattributed";
+  const mainSourceErrors = [];
+  const testSurfaceErrors = [];
+  for (const line of errorLines) {
+    if (line.includes("/src/main/")) currentAttribution = "main";
+    else if (line.includes("/src/test/")) currentAttribution = "test";
+    if (currentAttribution === "main") mainSourceErrors.push(line);
+    else testSurfaceErrors.push(line);
+  }
+  return Object.freeze({
+    mainSourceErrors: Object.freeze(mainSourceErrors),
+    testSurfaceErrors: Object.freeze(testSurfaceErrors)
+  });
+}
+
+// PURE (unit lane): the re-entry target row, name-derived (F1).
+export function resolveRepairReentryTargetRow() {
+  const index = stageRows.findIndex((row) => row.stage === "derive_code_surface");
+  const row = stageRows[index];
+  if (
+    index < 0 ||
+    row === undefined ||
+    typeof row.sourceName !== "string" ||
+    typeof row.targetName !== "string" ||
+    typeof row.vectorId !== "string"
+  ) {
+    return null;
+  }
+  return Object.freeze({ index, row });
+}
+
 function deterministicPostMaterializationValidationForStage(input) {
   if (
     SCENARIO.kind !== "data_mapper_full_scala_sbt_test" ||
@@ -3143,24 +3186,9 @@ function deterministicPostMaterializationValidationForStage(input) {
   const cwd = path.join(input.workspaceRoot, "build_tenants", "scala_spark");
   const result = runSync("sbt", ["Test/compile"], cwd);
   const errorLines = compileErrorLines(result.stdout);
-  // campaign #18 (re-entry law at stage 14): this stage's OBLIGATION is
-  // the TEST surface. A compile failure whose errors live in src/main
-  // is an UPSTREAM code defect discovered downstream — truthful
-  // EVIDENCE for the repair stages (which may edit main sources), not
-  // a test-surface failure. Block only when the errors implicate the
-  // tests themselves (src/test or unattributable).
-  // attribution is BLOCK-level: scalac emits one file-bearing line then
-  // pathless continuation lines — continuations inherit the current
-  // block's attribution instead of defaulting to test-surface.
-  let currentAttribution = "unattributed";
-  const mainSourceErrors = [];
-  const testSurfaceErrors = [];
-  for (const line of errorLines) {
-    if (line.includes("/src/main/")) currentAttribution = "main";
-    else if (line.includes("/src/test/")) currentAttribution = "test";
-    if (currentAttribution === "main") mainSourceErrors.push(line);
-    else testSurfaceErrors.push(line);
-  }
+  const attribution = attributeCompileErrorLines(errorLines);
+  const mainSourceErrors = attribution.mainSourceErrors;
+  const testSurfaceErrors = attribution.testSurfaceErrors;
   const accepted =
     result.status === 0 ||
     (mainSourceErrors.length > 0 && testSurfaceErrors.length === 0);
@@ -4314,9 +4342,7 @@ export const runtimeBinding = {
     // emits a traversal action landing at the CODE vector — the engine
     // admits it through the declared catalog and re-enters upstream
     // (GOALS 4.5 bar: convergence THROUGH upstream re-entry).
-    const REPAIR_REENTRY_TARGET_VECTOR_INDEX = stageRows.findIndex(
-      (row) => row.stage === "derive_code_surface"
-    );
+    const repairReentryTarget = resolveRepairReentryTargetRow();
     const REPAIR_REENTRY_BUDGET = 2;
     const consequenceProjection = Object.freeze({
       contract: constructEnginePluginContract({
@@ -4338,14 +4364,8 @@ export const runtimeBinding = {
           // basis graph (parseConsequenceReentryTarget). A ROUTING
           // PLUGIN MUST NEVER KILL THE RUN (F1): any resolution failure
           // falls through to the no-action projection below.
-          const reentryRow = stageRows[REPAIR_REENTRY_TARGET_VECTOR_INDEX];
-          if (
-            REPAIR_REENTRY_TARGET_VECTOR_INDEX < 0 ||
-            reentryRow === undefined ||
-            typeof reentryRow.sourceName !== "string" ||
-            typeof reentryRow.targetName !== "string" ||
-            typeof reentryRow.vectorId !== "string"
-          ) {
+          const reentryRow = repairReentryTarget?.row;
+          if (repairReentryTarget === null || reentryRow === undefined) {
             return {
               kind: "consequence_projection",
               status: "projected",
@@ -4378,7 +4398,7 @@ export const runtimeBinding = {
               targetNodeRef: "node://odd_glc/software-build/" + reentryRow.targetName,
               graphVectorRef: reentryRow.vectorId,
               graphSpanRef: "graph-span://odd_glc/software-build/code-to-repaired-execution",
-              reentryTargetRef: "graph-reentry-point://realization/" + String(REPAIR_REENTRY_TARGET_VECTOR_INDEX),
+              reentryTargetRef: "graph-reentry-point://realization/" + String(repairReentryTarget.index),
               targetOutcomeRef: "outcome://odd_glc/software-build/repaired-execution-passing",
               inputAssetRefs: ["asset://odd_glc/software-build/failing-execution-evidence"],
               expectedOutputAssetRefs: ["asset://odd_glc/software-build/passing-test-execution"],
@@ -4796,3 +4816,80 @@ for (const scenario of selectedScenarios()) {
     );
   });
 }
+
+// ─── F2: THE BINDING UNIT LANE (default suite, no live env) ───
+// Generates the data-mapper binding, verifies GENERATION FIDELITY
+// (parses; no template-mangling signatures), imports it in-process, and
+// drives the pure surfaces with the campaign's own failure shapes.
+
+test("binding unit lane: generation fidelity — parses, no mangled templates, declarations present", async () => {
+  const scenario = SCENARIOS.find((row) => row.key === "data-mapper-full");
+  assert.ok(scenario);
+  const unitRoot = path.join(liveRoot, "binding-unit", timestampId());
+  const workspaceRoot = path.join(unitRoot, "instance");
+  await mkdir(path.join(workspaceRoot, ".abiogenesis"), { recursive: true });
+  const bindingPath = await writeRuntimeBinding({
+    abgPackageRoot: defaultAbgPackageRoot,
+    oddGlcPackageRoot: tenantRoot,
+    scenario,
+    workspaceRoot
+  });
+  const source = readFileSync(bindingPath, "utf8");
+  // parses as a module
+  const check = spawnSync(process.execPath, ["--check", bindingPath], { encoding: "utf8" });
+  assert.equal(check.status, 0, check.stderr);
+  // the escape-discipline class, pinned forever (#10b, #15 signatures)
+  assert.equal(source.includes("value.replace(/${("), false, "#10b mangled-regex signature");
+  assert.doesNotMatch(source, /[^"'`\w.]DATA_MAPPER_SCALA_JAVA11_HOME\b/, "#15 bare test-scope identifier");
+  // the 4.5 declarations are data in the binding
+  for (const key of ["abg.hog_program_catalog", "abg.hog_program_ladder", "abg.consequence.allowed_traversal_families"]) {
+    assert.equal(source.includes(key), true, `missing declaration key ${key}`);
+  }
+  globalThis.__bindingUnitPath = bindingPath;
+});
+
+test("binding unit lane: pure surfaces — plan shape family (#14), compile attribution (#18b), re-entry target (F1)", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  const { normalizeExecutionPlanShape, attributeCompileErrorLines, resolveRepairReentryTargetRow } = binding;
+  assert.equal(typeof normalizeExecutionPlanShape, "function");
+  // #14 shapes: flat, nested envelope, argv array, malformed, missing
+  const flat = normalizeExecutionPlanShape({ command: "sbt", args: ["test"], env: {} });
+  assert.equal(flat.issue, null);
+  assert.equal(flat.plan.command, "sbt");
+  const nested = normalizeExecutionPlanShape({
+    scenario: "x", testExecution: { command: "sbt", args: ["test"], cwd: "w" }
+  });
+  assert.equal(nested.issue, null);
+  assert.equal(nested.plan.cwd, "w");
+  const argv = normalizeExecutionPlanShape({ command: ["sbt", "test"] });
+  assert.equal(argv.issue, null);
+  assert.deepEqual([argv.plan.command, argv.plan.args], ["sbt", ["test"]]);
+  const malformed = normalizeExecutionPlanShape({ command: { scenario: "oops" } });
+  assert.match(malformed.issue, /Malformed execution plan/);
+  assert.equal(normalizeExecutionPlanShape(null).issue, "missing_plan");
+  // #18b: block-level attribution with continuation + trailing summary lines
+  const scalac = [
+    "[error] /w/build_tenants/scala_spark/cdme-engine/src/main/scala/com/cdme/engine/CdmeEngineRunner.scala:40:25: overloaded method",
+    "[error]   [A <: Product](data: Seq[A])...",
+    "[error]  cannot be applied to (Seq[String])",
+    "[error] one error found"
+  ];
+  const mainOnly = attributeCompileErrorLines(scalac);
+  assert.equal(mainOnly.testSurfaceErrors.length, 0, "continuations inherit main attribution");
+  assert.equal(mainOnly.mainSourceErrors.length, 4);
+  const mixed = attributeCompileErrorLines([
+    ...scalac,
+    "[error] /w/build_tenants/scala_spark/cdme-core/src/test/scala/com/cdme/core/CoreContractsSpec.scala:69:1: Missing closing brace",
+    "[error] two errors found"
+  ]);
+  assert.equal(mixed.testSurfaceErrors.length, 2, "test block owns its continuation/summary");
+  const unattributed = attributeCompileErrorLines(["[error] stack trace suppressed"]);
+  assert.equal(unattributed.testSurfaceErrors.length, 1, "unattributable fails closed to blocking");
+  // F1: the re-entry target resolves by NAME with full row fields
+  const target = resolveRepairReentryTargetRow();
+  assert.notEqual(target, null);
+  assert.equal(target.index >= 0, true);
+  assert.equal(typeof target.row.vectorId, "string");
+});
