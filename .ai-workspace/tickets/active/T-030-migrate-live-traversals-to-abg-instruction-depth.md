@@ -3,7 +3,7 @@ id: T-030
 title: Migrate odd_glc live traversals to ABG instruction and depth proof
 type: implementation
 ticket_category: realization
-status: completed
+status: active
 goal: >-
   Migrate odd_glc live traversal sandboxes from local prompt/proof shells to
   the latest installed ABIogenesis release's instruction assembly and
@@ -231,7 +231,7 @@ proof_commands:
   - cd build_tenants/odd_glc/typescript && node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "instruction assembly|proof carry-through|local prompt shell|software-build Hello World"
   - cd build_tenants/odd_glc/typescript && node --test test/lineage-canary.test.mjs test/live-proof-shape.test.mjs
   - cd build_tenants/odd_glc/typescript && rg -n "instructionAssemblyStartup|instruction_prompt_manifest_projected|instructionPromptManifest|instruction_causal_context_bound|dependencyInstructionTruth|proofDepthInstructionTruth|RequirementProofCarry|proofCoverage|responseContract|requirementObligation|sourceRequirement|lineage|residual" test src
-  - cd build_tenants/odd_glc/typescript && rg -n "computeStageRole.*evaluate|instructionPromptManifest|server-tool|contract_failure|edge-effective|generic lifecycle/node-type labels|candidate material" test ../../../.ai-workspace/tickets/active/T-030-migrate-live-traversals-to-abg-instruction-depth.md
+  - cd build_tenants/odd_glc/typescript && rg -n "computeStageRole.*evaluate|instructionPromptManifest|server-tool|contract_failure|edge-effective|generic lifecycle/node-type labels|candidate material" test ../../../.ai-workspace/tickets/*/T-030-migrate-live-traversals-to-abg-instruction-depth.md
   - cd build_tenants/odd_glc/typescript && ! rg -n "promptFor\\(|evaluatorPromptFor\\(" test src
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=basic-cli node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-HELLO-WORLD-CLI-BASIC"
   - git diff --check
@@ -646,3 +646,22 @@ The full data-mapper live traversal is UNBLOCKED as the next debugging
 target (campaign mode per the builder-bug ledger; RUN-18 resume-mode
 lane remains the named economics item). Per the Data-Mapper Gate, that
 run is the next target, not retroactive proof for this ticket.
+
+## REOPENED (2026-07-08, codex review HIGH)
+
+The closure claimed requirement-obligation lineage was proven end to end.
+FALSE on the preserved proof: `enteringPromptRefCounts: [0]` for
+REQ-GLC-SB-001 — the canary MEASURED that no requirement pressure entered
+the vector-7 instruction manifest, and the live assertion checked only
+`droppedRequirementIds`. The ticket's closure law (manifest-carried
+obligation pressure BEFORE dispatch) and the Phase 6 checklist row
+("requirement obligations entering the prompt") were not satisfied; the
+downstream half (carry-through admission, eligible coverage, satisfied
+fold) was real but is not the same claim. Re-close requires: root-cause
+of the manifest-pressure gap (expected home: ABI instruction assembly per
+REQ-R-ABG3-REQUIREMENT-PROOF-CARRY-THROUGH-007), the fix landed at its
+lawful owner, the canary's entering-prompt measurement corrected to match
+obligation refs (not requirementId substring), the live assertion
+strengthened to fail on zero entering-prompt pressure for reached
+requirement-bearing vectors, and a fresh live proof. Data-mapper runs
+revert to DIAGNOSTIC-ONLY under the Data-Mapper Gate until re-close.
