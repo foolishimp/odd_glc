@@ -1,16 +1,16 @@
 # odd_glc Goals
 
 **Status**: Active
-**Date**: 2026-07-05
+**Date**: 2026-07-07
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.2.0-rc.6/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.5.0-rc.4/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
 ## Current Goal
 
 Bring `odd_glc` to user-visible `odd_sdlc` lifecycle parity by proving a full
-data-mapper lifecycle over GTL/ABG 4.2 startup, registry, typed-node,
+data-mapper lifecycle over GTL/ABG 4.5 startup, registry, typed-node,
 traversal, evidence, fold, residual, and replay truth.
 
 Parity means:
@@ -23,18 +23,22 @@ registers, process shells, or controllers. It may require reproducing a
 selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
 by ABG.
 
-ABIogenesis `4.2.0-rc.6` is the substrate under test for this wave. If the
+ABIogenesis `4.5.0-rc.4` is the substrate under test for this wave. If the
 selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
 startup, registry, graph-call, vector traversal, evidence, and replay truth,
 then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
 the gap and block or reprice upstream; it shall not compensate with local
 truth, local shells, or a product-owned traversal controller.
 
-Current migration gate: full data-mapper live runs are paused until T-030
-proves that odd_glc live software-build traversals consume ABG T-183
-instruction assembly and T-188 requirement-proof carry-through on the real
-startup traversal path. A run that bypasses those capabilities is diagnostic
-only and shall not close data-mapper parity.
+Current migration gate: T-030 is the live traversal migration and proof lane.
+The next closure-grade data-mapper run must start from installed ABIogenesis
+`4.5.0-rc.4`, consume ABG instruction assembly, requirement-proof
+carry-through, HoG handler/program truth, and consequence re-entry through the
+real startup traversal path, then produce a live upstream
+`graph_reentry_applied` witness before convergence. Any run that bypasses
+those capabilities, starts from an older installed substrate, or completes
+without the re-entry witness is diagnostic only and shall not close
+data-mapper parity.
 
 ## Active Plan
 
@@ -42,7 +46,7 @@ only and shall not close data-mapper parity.
    - Use `ODD_GLC_SOFTWARE_BUILD_OVERLAY` as the reusable GTL overlay graph.
    - Add data-mapping roles and node-type declarations as specialization data.
    - Treat graph-function refs in that overlay as ABG catalog bindings first;
-     current refs are audited against ABI 4.2 with no equivalent published
+     current refs are audited against the installed ABI substrate with no equivalent published
      GTL/ABG system entry found, and remain gated to bind upstream if an
      equivalent appears.
    - Do not create scenario-specific overlay models for each Hello World or
@@ -84,8 +88,10 @@ only and shall not close data-mapper parity.
    - Requirement-lineage monitoring in this wave is a read-only canary over
      ABG replay truth. If obligations are dropped, the fix belongs in
      ABI/GTL, not in an odd_glc tracker.
-   - No further full data-mapper run may be cited as parity or depth evidence
-     until T-030 closes.
+   - A full data-mapper run may be cited as parity or depth evidence only
+     when it runs on the current installed ABI substrate through the T-030
+     lane and carries the required instruction, proof-depth, and re-entry
+     witnesses in ABG replay truth.
 
 6. Reproduce the full data_mapper witness as the controlling glc
    graph-traversal proof.
@@ -106,7 +112,7 @@ only and shall not close data-mapper parity.
 7. Reproduce the Hello World witnesses as support/scout coverage.
    - Closure-grade proofs get their own ABG startup/run root.
    - Scenario-sandbox ports must create governed run roots, install
-     ABIogenesis RC6 into fresh workspaces, write sandbox identities, and bind
+     the current ABIogenesis release candidate into fresh workspaces, write sandbox identities, and bind
      old witness pressure to the reusable `odd_glc` software-build overlay.
    - Subject programs may execute as product subjects inside that run root.
    - Runtime truth must be ABG-emitted or digest-pinned ABG proof truth.
@@ -159,8 +165,8 @@ Execution order:
    declaration model.
 3. Add tests proving the declarations are GTL-owned data and ABG-validatable,
    not local runtime behavior.
-4. Preserve the ABI 4.2 graph-function reuse audit result.
-   Current overlay refs have no equivalent published ABI 4.2 system entry.
+4. Preserve the ABI graph-function reuse audit result.
+   Current overlay refs have no equivalent published ABI system entry.
    Bind to future ABG entries where generic functions appear; record upstream
    ABG gaps where a function should become generic system law.
 5. Rework the Hello World live rungs from diagnostic shortcuts into SDLC
@@ -198,7 +204,7 @@ Execution order:
      seam.
    - Missing read interpretation over admitted truth belongs in odd_glc.
 8. Keep the old odd_sdlc Hello World sandbox witnesses as sandbox-port setup
-   checks over ABG RC6 install and odd_glc startup binding. These are not
+   checks over current ABG install and odd_glc startup binding. These are not
    traversal closure, live-worker proof, live-terminal proof, or parity by
    themselves.
 9. Treat deep/resume data_mapper witnesses as follow-on coverage after the
@@ -234,8 +240,8 @@ only after GTL/ABG admits or projects the relevant truth.
 ## Completed Checkpoint
 
 `T-001` through `T-024` and `T-028` are completed source work. They established
-the product boundary, ABIogenesis 4.2 substrate pin, lifecycle program overlay,
-typed lifecycle node model, startup binding, first ABG 4.2 Hello World startup
+the product boundary, ABIogenesis substrate pin, lifecycle program overlay,
+typed lifecycle node model, startup binding, first ABG startup
 proof, and generic parity matrix.
 
 Those completed tickets remain trace records for what has been earned. This

@@ -39,6 +39,7 @@ const defaultAbgPackageRoot = path.join(
   "typescript-tenant"
 );
 const sandboxRoot = path.join(tenantRoot, "test_runs", "glc_hello_world_sandbox_port");
+const substrateVersion = ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion;
 
 const BASE_FIXTURE_FILES = Object.freeze({
   "bootstrap.md": [
@@ -52,7 +53,7 @@ const BASE_FIXTURE_FILES = Object.freeze({
     "project:",
     "  source: odd_glc",
     "  proof_class: scenario_sandbox_port",
-    "  substrate: abiogenesis-4.5.0-rc.3",
+    `  substrate: abiogenesis-${substrateVersion}`,
     ""
   ].join("\n")
 });
@@ -363,7 +364,7 @@ async function createSandbox(port) {
     ],
     {
       cwd: root,
-      label: `ABIogenesis RC6 install for ${port.portId}`
+      label: `ABIogenesis ${substrateVersion} install for ${port.portId}`
     }
   );
   const oddGlcInstall = await installOddGlcProductForSandbox({
@@ -441,7 +442,7 @@ async function createSandbox(port) {
   });
 }
 
-test("maps old odd_sdlc Hello World scenario sandboxes to current odd_glc/ABG RC6 setup ports", () => {
+test(`maps old odd_sdlc Hello World scenario sandboxes to current odd_glc/ABG ${substrateVersion} setup ports`, () => {
   assert.deepEqual(
     PORTED_HELLO_WORLD_SANDBOXES.map((port) => port.oldScenarioId),
     [
