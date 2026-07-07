@@ -78,7 +78,17 @@ export function deriveRequirementLineageCanary(input) {
     }
     if (event.kind === "instruction_prompt_manifest_projected" && Number.isInteger(event.vectorIndex)) {
       const rows = manifestsByVector.get(event.vectorIndex) ?? [];
-      rows.push(Array.isArray(event.includedCarrierRefs) ? event.includedCarrierRefs : []);
+      rows.push(Object.freeze({
+        includedCarrierRefs: Array.isArray(event.includedCarrierRefs) ? event.includedCarrierRefs : [],
+        // rc.8 -007: the typed ENGINE-derived pressure surface. The
+        // field-present flag preserves the substrate distinction: on
+        // pre-rc.8 replays the field is absent and the presence law is
+        // inert; on rc.8+ every manifest event carries it.
+        pressureFieldPresent: Array.isArray(event.requirementPressureRefs),
+        requirementPressureRefs: Array.isArray(event.requirementPressureRefs)
+          ? event.requirementPressureRefs
+          : []
+      }));
       manifestsByVector.set(event.vectorIndex, rows);
       continue;
     }
@@ -147,6 +157,7 @@ export function deriveRequirementLineageCanary(input) {
 
   const requirements = [];
   const droppedRequirementIds = [];
+  const pressureMissingRequirementIds = [];
   for (const [requirementId, spanIds] of requirementSpanIds) {
     const vectorIndexes = [...new Set(
       [...spanIds].flatMap((spanId) => spansById.get(spanId)?.vectorIndexes ?? [])
@@ -163,14 +174,31 @@ export function deriveRequirementLineageCanary(input) {
       )
     ].filter((status) => typeof status === "string");
     const residualPressureRefs = foldRows.flatMap((row) => row.residualPressureRefs);
+    // rc.8 -007: pressure is measured from the TYPED requirementPressureRefs
+    // field (the codex-review substring heuristic undercounted — obligation
+    // refs do not embed the requirement id). A manifest carries pressure
+    // for this requirement when its pressure refs name the requirement id.
     const enteringPromptRefCounts = vectorIndexes.map((vectorIndex) => {
       const manifests = manifestsByVector.get(vectorIndex) ?? [];
-      return manifests
-        .flat()
-        .filter((ref) => typeof ref === "string" && ref.includes(requirementId)).length;
+      return manifests.filter((manifest) =>
+        manifest.requirementPressureRefs.includes(requirementId)
+      ).length;
     });
     const reachedVectorIndexes = vectorIndexes.filter((vectorIndex) => closedVectors.has(vectorIndex));
     const notReachedVectorIndexes = vectorIndexes.filter((vectorIndex) => !closedVectors.has(vectorIndex));
+    // PRESENCE LAW (T-030 reopen): for every REACHED span vector that
+    // emitted manifests carrying the typed pressure field, this
+    // requirement's pressure must have entered at least one manifest.
+    // Mechanical presence only — whether the worker HONOURED the pressure
+    // is F_P evaluator judgment admitted as evidence, never a canary check.
+    const pressureMissing = vectorIndexes.some((vectorIndex, index) => {
+      if (!closedVectors.has(vectorIndex)) {
+        return false;
+      }
+      const manifests = manifestsByVector.get(vectorIndex) ?? [];
+      const pressureCapable = manifests.some((manifest) => manifest.pressureFieldPresent);
+      return pressureCapable && (enteringPromptRefCounts[index] ?? 0) === 0;
+    });
     const downstreamTruthPresent =
       carryRows.length > 0 ||
       foldRows.length > 0 ||
@@ -192,8 +220,12 @@ export function deriveRequirementLineageCanary(input) {
       evidenceBindingCount: (evidenceBindingsByRequirement.get(requirementId) ?? []).length,
       foldStates: Object.freeze([...new Set(foldRows.map((row) => row.state))].sort()),
       residualPressureRefs: Object.freeze([...new Set(residualPressureRefs)].sort()),
+      pressureMissing,
       dropped
     }));
+    if (pressureMissing) {
+      pressureMissingRequirementIds.push(requirementId);
+    }
   }
 
   const vectors = [...closedVectors.entries()]
@@ -214,6 +246,7 @@ export function deriveRequirementLineageCanary(input) {
     role: "diagnostic_proof_instrumentation_read_only",
     requirements: Object.freeze(requirements),
     droppedRequirementIds: Object.freeze(droppedRequirementIds.sort()),
+    pressureMissingRequirementIds: Object.freeze(pressureMissingRequirementIds.sort()),
     vectors: Object.freeze(vectors)
   });
 }

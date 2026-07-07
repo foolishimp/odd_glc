@@ -67,6 +67,11 @@ test("live tests declare single-start ABG traversal shape", async () => {
     );
     assert.match(
       source,
+      /pressureMissingRequirementIds/u,
+      `${file} must fail the run when requirement pressure did not enter the prompt for a reached requirement-bearing vector`
+    );
+    assert.match(
+      source,
       /unlocks, but does not substitute for, the full data-mapper run/u,
       `${file} must state the data-mapper gate in the run summary`
     );

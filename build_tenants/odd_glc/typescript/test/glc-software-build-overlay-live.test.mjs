@@ -5017,6 +5017,11 @@ for (const scenario of selectedScenarios()) {
     const canary = result.proof.requirementLineageCanary;
     assert.equal(canary.role, "diagnostic_proof_instrumentation_read_only");
     assert.deepEqual([...canary.droppedRequirementIds], []);
+    // T-030 reopen (codex HIGH): requirement pressure must ENTER the
+    // prompt for reached requirement-bearing vectors — mechanical
+    // presence on the typed requirementPressureRefs manifest field.
+    // Whether the worker honoured it is F_P evaluator judgment.
+    assert.deepEqual([...canary.pressureMissingRequirementIds], []);
     if ((result.proof.eventCounts.requirement_route_fact_projected ?? 0) > 0) {
       assert.notEqual(canary.requirements.length, 0);
     }

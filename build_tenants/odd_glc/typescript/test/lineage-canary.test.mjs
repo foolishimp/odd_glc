@@ -156,3 +156,71 @@ test("T-030 canary is total over empty and foreign replay shapes", () => {
   });
   assert.deepEqual([...foreign.droppedRequirementIds], []);
 });
+
+// T-030 reopen differentials: the PRESENCE LAW over the typed rc.8
+// requirementPressureRefs manifest field.
+function manifestEvent(vectorIndex, pressureRefs) {
+  return {
+    kind: "instruction_prompt_manifest_projected",
+    vectorIndex,
+    includedCarrierRefs: ["node:{...}"],
+    ...(pressureRefs === undefined ? {} : { requirementPressureRefs: pressureRefs })
+  };
+}
+
+test("T-030 presence law: pressure entering the typed field counts; zero pressure on a reached spanned vector fails", () => {
+  const withPressure = deriveRequirementLineageCanary({
+    events: [
+      ...declarationFacts(),
+      vectorPlan(7, 1000),
+      manifestEvent(7, [REQ, "requirement-obligation://odd_glc/software-build/r1"]),
+      carryAdmitted(),
+      foldProjected("satisfied", [COVERAGE_REF]),
+      vectorClose(7, "software_build_test_execution_result", 5000)
+    ]
+  });
+  assert.deepEqual([...withPressure.pressureMissingRequirementIds], []);
+  const row = withPressure.requirements.find((r) => r.requirementId === REQ);
+  assert.deepEqual([...row.enteringPromptRefCounts], [1]);
+  assert.equal(row.pressureMissing, false);
+
+  // rc.8 substrate (field present) but pressure absent for the
+  // requirement on its reached span vector -> pressureMissing
+  const missing = deriveRequirementLineageCanary({
+    events: [
+      ...declarationFacts(),
+      vectorPlan(7, 1000),
+      manifestEvent(7, []),
+      carryAdmitted(),
+      foldProjected("satisfied", [COVERAGE_REF]),
+      vectorClose(7, "software_build_test_execution_result", 5000)
+    ]
+  });
+  assert.deepEqual([...missing.pressureMissingRequirementIds], [REQ]);
+  assert.equal(missing.requirements.find((r) => r.requirementId === REQ).pressureMissing, true);
+});
+
+test("T-030 presence law is inert on pre-rc.8 replays (field absent) and on unreached vectors", () => {
+  // pre-rc.8: manifests without the typed field -> law inert
+  const legacy = deriveRequirementLineageCanary({
+    events: [
+      ...declarationFacts(),
+      vectorPlan(7, 1000),
+      manifestEvent(7, undefined),
+      carryAdmitted(),
+      foldProjected("satisfied", [COVERAGE_REF]),
+      vectorClose(7, "software_build_test_execution_result", 5000)
+    ]
+  });
+  assert.deepEqual([...legacy.pressureMissingRequirementIds], []);
+  // unreached span vector: no presence obligation
+  const unreached = deriveRequirementLineageCanary({
+    events: [
+      ...declarationFacts(),
+      vectorPlan(3, 1000),
+      manifestEvent(3, []),
+      vectorClose(3, "software_build_test_design", 2000)
+    ]
+  });
+  assert.deepEqual([...unreached.pressureMissingRequirementIds], []);
+});
