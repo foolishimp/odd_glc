@@ -234,6 +234,8 @@ proof_commands:
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 npm run test:live -- --test-name-pattern "software-build Hello World"
   - git diff --check
 closure_evidence: []
+checkpoint_evidence:
+  - .ai-workspace/comments/codex/20260707T111258Z_SOURCE_CHECKPOINT_t030-codex-pty-hello-world.md records the Codex PTY Hello World source checkpoint over ABIogenesis 4.5.0-rc.5. It is not T-030 closure or data-mapper parity closure.
 ---
 
 # T-030: Migrate Live Traversals To ABG Instruction And Depth Proof

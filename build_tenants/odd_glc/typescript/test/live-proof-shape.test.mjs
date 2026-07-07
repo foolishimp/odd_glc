@@ -25,5 +25,15 @@ test("live tests declare single-start ABG traversal shape", async () => {
     assert.match(source, /"converged"/u, `${file} must run ABG until convergence`);
     assert.match(source, /externalAbgStartInvocationCount/u, `${file} must record one external ABG start invocation`);
     assert.match(source, /abgInvocationShape/u, `${file} must record ABG-owned internal traversal shape`);
+    assert.doesNotMatch(
+      source,
+      /JSON\.parse\(\s*start\.stdout\.trim\(\)\s*\)/u,
+      `${file} must not assume installed ABG start stdout is a pure JSON stream under PTY execution`
+    );
+    assert.match(
+      source,
+      /parseCliStartOutput/u,
+      `${file} must extract ABG start summary from mixed terminal-safe output`
+    );
   }
 });

@@ -240,8 +240,8 @@ const SCENARIOS = Object.freeze([
           "Write only test-execution-plan.json.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/hello-cli.test.mjs\", \"test/uat/hello-cli.uat.test.mjs\"].",
-          "expectedTestPassCount must be 2.",
-          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
+          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\"."
         ]
       },
@@ -249,7 +249,7 @@ const SCENARIOS = Object.freeze([
         stage: "test_execution_result",
         instructions: [
           "Produce no files.",
-          "Accept only if the execution plan command exited 0, observedTestPassCount is 2, and planSatisfied is true."
+          "Accept only if the execution plan command exited 0, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
         ]
       }
     ]
@@ -302,7 +302,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only test/component/hello.test.mjs.",
           "Use node:test and node:assert/strict.",
-          "Import helloWorld from ../../src/hello.mjs.",
+          "Import the named export exactly as: import { helloWorld } from \"../../src/hello.mjs\".",
           "Assert helloWorld() returns exactly \"Hello, world!\"."
         ]
       },
@@ -312,7 +312,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only test/uat/hello.uat.test.mjs.",
           "Use node:test and node:assert/strict.",
-          "Import helloWorld from ../../src/hello.mjs.",
+          "Import the named export exactly as: import { helloWorld } from \"../../src/hello.mjs\".",
           "Assert the user-visible greeting contract is exactly \"Hello, world!\"."
         ]
       },
@@ -323,8 +323,8 @@ const SCENARIOS = Object.freeze([
           "Write only test-execution-plan.json.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
-          "expectedTestPassCount must be 2.",
-          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
+          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\"."
         ]
       },
@@ -332,7 +332,7 @@ const SCENARIOS = Object.freeze([
         stage: "test_execution_result",
         instructions: [
           "Produce no files.",
-          "Accept only if both component and UAT tests passed, observedTestPassCount is 2, and planSatisfied is true."
+          "Accept only if both component and UAT tests passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
         ]
       }
     ]
@@ -413,7 +413,7 @@ const SCENARIOS = Object.freeze([
           "Write only test/component/hello.test.mjs.",
           "Use the prior test_design and source artifact summaries as the evidence source.",
           "Use node:test and node:assert/strict.",
-          "Import helloWorld from ../../src/hello.mjs.",
+          "Import the named export exactly as: import { helloWorld } from \"../../src/hello.mjs\".",
           "Assert helloWorld() returns exactly \"Hello, world!\"."
         ]
       },
@@ -424,7 +424,7 @@ const SCENARIOS = Object.freeze([
           "Write only test/uat/hello.uat.test.mjs.",
           "Use the prior component_test_source, test_design, and source artifact summaries as the evidence source.",
           "Use node:test and node:assert/strict.",
-          "Import helloWorld from ../../src/hello.mjs.",
+          "Import the named export exactly as: import { helloWorld } from \"../../src/hello.mjs\".",
           "Assert the user-visible greeting contract is exactly \"Hello, world!\"."
         ]
       },
@@ -435,8 +435,8 @@ const SCENARIOS = Object.freeze([
           "Write only test-execution-plan.json.",
           "Use the prior component_test_source and uat_test_source artifact summaries as the evidence source.",
           "The command must be node with args [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
-          "expectedTestPassCount must be 2.",
-          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
+          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\".",
           "Do not execute the test in this vector."
         ]
@@ -446,7 +446,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Produce no files.",
           "Judge the observed executionStatus, planSatisfied flag, observedTestPassCount, and stdout digest against the prior test_execution_plan.",
-          "Accept only if both component and UAT tests passed, planSatisfied is true, and observedTestPassCount is 2.",
+          "Accept only if both component and UAT tests passed, planSatisfied is true, and observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount.",
           "Do not reject solely because node:test uses a different TAP prefix glyph when the F_D pass-count check is satisfied."
         ]
       }
@@ -523,8 +523,8 @@ const SCENARIOS = Object.freeze([
           "Write only test-execution-plan.json.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/rust-cli.test.mjs\", \"test/uat/rust-cli.uat.test.mjs\"].",
-          "expectedTestPassCount must be 2.",
-          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
+          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\"."
         ]
       },
@@ -532,7 +532,7 @@ const SCENARIOS = Object.freeze([
         stage: "test_execution_result",
         instructions: [
           "Produce no files.",
-          "Accept only if the planned node:test command exited 0, observedTestPassCount is 2, and planSatisfied is true."
+          "Accept only if the planned node:test command exited 0, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
         ]
       }
     ]
@@ -609,8 +609,8 @@ const SCENARIOS = Object.freeze([
           "Write only test-execution-plan.json.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/rust-service.test.mjs\", \"test/uat/rust-service.uat.test.mjs\"].",
-          "expectedTestPassCount must be 2.",
-          "expectedStdoutMatch must include stable substrings pass 2 and fail 0.",
+          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
+          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\"."
         ]
       },
@@ -618,7 +618,7 @@ const SCENARIOS = Object.freeze([
         stage: "test_execution_result",
         instructions: [
           "Produce no files.",
-          "Accept only if both service tests passed, observedTestPassCount is 2, and planSatisfied is true."
+          "Accept only if both service tests passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
         ]
       }
     ]
@@ -686,7 +686,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only test/uat/parallel-fanin.uat.test.mjs.",
           "Use node:test and node:assert/strict.",
-          "Import helloWorld from ../../src/index.mjs.",
+          "Import the named export exactly as: import { helloWorld } from \"../../src/index.mjs\".",
           "Assert helloWorld() returns exactly \"Hello, world!\"."
         ]
       },
@@ -697,8 +697,8 @@ const SCENARIOS = Object.freeze([
           "Write only test-execution-plan.json.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/parallel-branches.test.mjs\", \"test/uat/parallel-fanin.uat.test.mjs\"].",
-          "expectedTestPassCount must be 3.",
-          "expectedStdoutMatch must include stable substrings pass 3 and fail 0.",
+          "expectedTestPassCount must be at least 3, matching the admitted branch and fan-in coverage floor.",
+          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\"."
         ]
       },
@@ -706,7 +706,7 @@ const SCENARIOS = Object.freeze([
         stage: "test_execution_result",
         instructions: [
           "Produce no files.",
-          "Accept only if the branch and fan-in tests passed, observedTestPassCount is 3, and planSatisfied is true."
+          "Accept only if the branch and fan-in tests passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
         ]
       }
     ]
@@ -1300,14 +1300,174 @@ function parseJsonLines(text) {
     .map((line) => JSON.parse(line));
 }
 
+function balancedJsonObjectSliceAt(text, start) {
+  let depth = 0;
+  let inString = false;
+  let escaping = false;
+  for (let index = start; index < text.length; index += 1) {
+    const char = text[index];
+    if (inString) {
+      if (escaping) {
+        escaping = false;
+      } else if (char === "\\") {
+        escaping = true;
+      } else if (char === "\"") {
+        inString = false;
+      }
+      continue;
+    }
+    if (char === "\"") {
+      inString = true;
+      continue;
+    }
+    if (char === "{") {
+      depth += 1;
+    } else if (char === "}") {
+      depth -= 1;
+      if (depth === 0) {
+        return text.slice(start, index + 1);
+      }
+    }
+  }
+  return null;
+}
+
+function parseJsonObjectCandidate(candidate) {
+  try {
+    const parsed = JSON.parse(candidate);
+    return parsed !== null && typeof parsed === "object" && !Array.isArray(parsed)
+      ? parsed
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+function parseJsonObjectsFromMixedStream(text) {
+  const values = [];
+  for (let index = 0; index < text.length; index += 1) {
+    if (text[index] !== "{") {
+      continue;
+    }
+    const candidate = balancedJsonObjectSliceAt(text, index);
+    if (candidate === null) {
+      continue;
+    }
+    const parsed = parseJsonObjectCandidate(candidate);
+    if (parsed !== null) {
+      values.push(parsed);
+      index += candidate.length - 1;
+    }
+  }
+  return Object.freeze(values);
+}
+
+function parseFirstJsonObjectFromMixedStream(text, predicate, label) {
+  const parsed = parseJsonObjectsFromMixedStream(text).find(predicate);
+  if (parsed !== undefined) {
+    return parsed;
+  }
+  throw new Error(`${label}: ${text.slice(0, 500)}`);
+}
+
+function parseCliStartOutput(text) {
+  return parseFirstJsonObjectFromMixedStream(
+    text,
+    (value) =>
+      value.command === "start" &&
+      typeof value.events_path === "string" &&
+      Array.isArray(value.event_kinds),
+    "installed genesis-ts start did not emit a parseable start summary"
+  );
+}
+
+function parseTraceEventsFromMixedStream(text) {
+  return parseJsonObjectsFromMixedStream(text).filter((value) =>
+    typeof value.type === "string"
+  );
+}
+
+function parseTraceArchiveEvents(text) {
+  return parseJsonLines(text).filter((value) =>
+    value !== null &&
+      typeof value === "object" &&
+      (typeof value.kind === "string" || typeof value.type === "string")
+  );
+}
+
+function traceArchiveTiming(events) {
+  if (events.length === 0) {
+    return null;
+  }
+  const first = events[0];
+  const last = events[events.length - 1];
+  const firstMs = Date.parse(first.createdAt);
+  const lastMs = Date.parse(last.createdAt);
+  if (!Number.isFinite(firstMs) || !Number.isFinite(lastMs)) {
+    return null;
+  }
+  return Object.freeze({
+    startedAtEpochMs: firstMs,
+    startedAt: first.createdAt,
+    endedAtEpochMs: lastMs,
+    endedAt: last.createdAt,
+    durationMs: Math.max(0, lastMs - firstMs)
+  });
+}
+
 function eventUnixMs(event, fieldName) {
   assert.equal(Number.isSafeInteger(event.eventTimeUnixMs), true, `${fieldName}.eventTimeUnixMs missing`);
   assert.equal(typeof event.eventTime, "string", `${fieldName}.eventTime missing`);
   return event.eventTimeUnixMs;
 }
 
-function traversalTimingReport(events, artifacts) {
-  return Object.freeze(artifacts.map((artifact) => {
+async function traceTimingFromResultPath(traceResultPath) {
+  const traceEventsPath = path.join(path.dirname(traceResultPath), "events.ndjson");
+  try {
+    const events = parseTraceArchiveEvents(await readFile(traceEventsPath, "utf8"));
+    const timing = traceArchiveTiming(events);
+    if (timing !== null) {
+      return Object.freeze({
+        durationMs: timing.durationMs,
+        apiDurationMs: null,
+        turns: null
+      });
+    }
+  } catch {
+    // Older or non-PTY traces may not carry an events.ndjson archive.
+  }
+  const traceResult = await readJson(traceResultPath);
+  const resultEvent = typeof traceResult.stdout === "string"
+    ? parseTraceEventsFromMixedStream(traceResult.stdout).find((event) => event.type === "result")
+    : null;
+  return Object.freeze({
+    durationMs: Number.isFinite(resultEvent?.duration_ms)
+      ? resultEvent.duration_ms
+      : null,
+    apiDurationMs: Number.isFinite(resultEvent?.duration_api_ms)
+      ? resultEvent.duration_api_ms
+      : null,
+    turns: Number.isInteger(resultEvent?.num_turns)
+      ? resultEvent.num_turns
+      : null
+  });
+}
+
+async function workerTraceDurationFromArtifact(artifact) {
+  const embeddedDuration = artifact.timing.workerTrace?.timing?.durationMs;
+  if (typeof embeddedDuration === "number" && embeddedDuration >= 0) {
+    return embeddedDuration;
+  }
+  const traceResultPath = artifact.transport?.traceResultPath;
+  if (typeof traceResultPath !== "string") {
+    return null;
+  }
+  return (await traceTimingFromResultPath(traceResultPath)).durationMs;
+}
+
+async function traversalTimingReport(events, artifacts) {
+  const rows = [];
+  for (const artifact of artifacts) {
     const vectorIndex = artifact.vectorIndex;
     const planned = events.find((event) =>
       event.kind === "vector_traversal_planned" && event.vectorIndex === vectorIndex
@@ -1319,7 +1479,7 @@ function traversalTimingReport(events, artifacts) {
     assert.ok(closed, `missing vector_closed for vector ${vectorIndex}`);
     const plannedMs = eventUnixMs(planned, `vector ${vectorIndex} planned`);
     const closedMs = eventUnixMs(closed, `vector ${vectorIndex} closed`);
-    return Object.freeze({
+    rows.push(Object.freeze({
       vectorIndex,
       stage: artifact.stage,
       vectorId: artifact.stagePlan.vectorId,
@@ -1328,15 +1488,16 @@ function traversalTimingReport(events, artifacts) {
       vectorClosedAt: closed.eventTime,
       traversalDurationMs: closedMs - plannedMs,
       dispatchDurationMs: artifact.timing.dispatch.durationMs,
-      workerTraceDurationMs: artifact.timing.workerTrace?.timing?.durationMs ?? null,
+      workerTraceDurationMs: await workerTraceDurationFromArtifact(artifact),
       subjectExecutionDurationMs: artifact.timing.subjectExecution?.durationMs ?? null,
       deterministicMaterializeDurationMs: artifact.timing.deterministicMaterialize?.durationMs ?? null,
       assessmentMaterializeDurationMs: artifact.timing.assessmentMaterialize?.durationMs ?? null,
       executorProfile: artifact.transport.executorProfile,
       terminalSessionId: artifact.transport.terminalSessionId,
       traceResultPath: artifact.transport.traceResultPath
-    });
-  }));
+    }));
+  }
+  return Object.freeze(rows);
 }
 
 function run(command, args, options) {
@@ -1361,6 +1522,37 @@ async function writeText(filePath, contents) {
 async function readJson(filePath) {
   return JSON.parse(await readFile(filePath, "utf8"));
 }
+
+test("live harness parses structured records from mixed PTY streams", () => {
+  const startOutput = parseCliStartOutput([
+    "\u001b[2Kterminal prelude",
+    JSON.stringify({
+      command: "start",
+      events_path: "/tmp/events.jsonl",
+      event_kinds: ["basis_admitted"],
+      stopped_by: "converged"
+    }),
+    "terminal epilogue"
+  ].join("\n"));
+  assert.equal(startOutput.events_path, "/tmp/events.jsonl");
+  assert.deepEqual(
+    parseTraceEventsFromMixedStream([
+      "pty banner",
+      JSON.stringify({ type: "turn", createdAt: "2026-07-07T00:00:00.000Z" }),
+      "non-json status line",
+      JSON.stringify({ type: "result", duration_ms: 12, num_turns: 1 })
+    ].join("\n")).map((event) => event.type),
+    ["turn", "result"]
+  );
+});
+
+test("live binding falls back to PTY result stream when event trace has no timing", () => {
+  const source = readFileSync(fileURLToPath(import.meta.url), "utf8");
+  assert.match(source, /const timing = traceTiming\(events\);[\s\S]+if \(timing !== null\)/u);
+  assert.match(source, /abg_traced_process_terminal_events/u);
+  assert.match(source, /\? parseTraceEvents\(traceResult\.stdout\)/u);
+  assert.match(source, /abg_traced_process_result_stdout/u);
+});
 
 test("classifies every current live scenario as GTL/ABG traversal compliance", () => {
   const compliantScenarios = SCENARIOS.filter(isComplianceScenario);
@@ -1661,11 +1853,31 @@ async function measuredStep(label, operation) {
 }
 
 function parseTraceEvents(text) {
-  return text
-    .split(/\\r?\\n/u)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => JSON.parse(line));
+  const events = [];
+  for (const line of text.split(/\\r?\\n/u)) {
+    const trimmed = line.trim();
+    if (trimmed.length === 0) {
+      continue;
+    }
+    const start = trimmed.indexOf("{");
+    const end = trimmed.lastIndexOf("}");
+    if (start < 0 || end < start) {
+      continue;
+    }
+    try {
+      const parsed = JSON.parse(trimmed.slice(start, end + 1));
+      if (
+        parsed !== null &&
+        typeof parsed === "object" &&
+        (typeof parsed.type === "string" || typeof parsed.kind === "string")
+      ) {
+        events.push(parsed);
+      }
+    } catch {
+      // PTY transcripts may include status lines; only structured trace rows matter here.
+    }
+  }
+  return Object.freeze(events);
 }
 
 function traceTiming(events) {
@@ -1689,17 +1901,72 @@ function traceTiming(events) {
 }
 
 async function workerTraceTiming(transport) {
-  const eventsPath = transport.tracePaths?.events;
-  if (typeof eventsPath !== "string") {
+  const eventsPaths = [];
+  if (typeof transport.tracePaths?.events === "string") {
+    eventsPaths.push(Object.freeze({
+      source: "abg_traced_process_events",
+      eventsPath: transport.tracePaths.events
+    }));
+  }
+  if (typeof transport.traceResultPath === "string") {
+    eventsPaths.push(Object.freeze({
+      source: "abg_traced_process_terminal_events",
+      eventsPath: path.join(path.dirname(transport.traceResultPath), "events.ndjson")
+    }));
+  }
+  const seenEventsPaths = new Set();
+  for (const candidate of eventsPaths) {
+    if (seenEventsPaths.has(candidate.eventsPath)) {
+      continue;
+    }
+    seenEventsPaths.add(candidate.eventsPath);
+    try {
+      const events = parseTraceEvents(await readFile(candidate.eventsPath, "utf8"));
+      const timing = traceTiming(events);
+      if (timing !== null) {
+        return Object.freeze({
+          source: candidate.source,
+          eventsPath: candidate.eventsPath,
+          eventCount: events.length,
+          eventKinds: Object.freeze(events.map((event) => event.kind ?? event.type)),
+          timing
+        });
+      }
+    } catch {
+      // Fall through to the result stream for non-PTY or older trace archives.
+    }
+  }
+  if (typeof transport.traceResultPath !== "string") {
     return null;
   }
-  const events = parseTraceEvents(await readFile(eventsPath, "utf8"));
+  const traceResult = JSON.parse(await readFile(transport.traceResultPath, "utf8"));
+  const streamEvents = typeof traceResult.stdout === "string"
+    ? parseTraceEvents(traceResult.stdout)
+    : [];
+  const resultEvent = streamEvents.find((event) => event.type === "result") ?? null;
+  const durationMs = Number.isFinite(resultEvent?.duration_ms)
+    ? resultEvent.duration_ms
+    : null;
   return Object.freeze({
-    source: "abg_traced_process_events",
-    eventsPath,
-    eventCount: events.length,
-    eventKinds: Object.freeze(events.map((event) => event.kind)),
-    timing: traceTiming(events)
+    source: "abg_traced_process_result_stdout",
+    resultPath: transport.traceResultPath,
+    eventCount: streamEvents.length,
+    eventKinds: Object.freeze(streamEvents.map((event) => event.type)),
+    timing: durationMs === null
+      ? null
+      : Object.freeze({
+          startedAtEpochMs: null,
+          startedAt: null,
+          endedAtEpochMs: null,
+          endedAt: null,
+          durationMs
+        }),
+    apiDurationMs: Number.isFinite(resultEvent?.duration_api_ms)
+      ? resultEvent.duration_api_ms
+      : null,
+    turns: Number.isInteger(resultEvent?.num_turns)
+      ? resultEvent.num_turns
+      : null
   });
 }
 
@@ -2731,7 +2998,9 @@ async function executePlannedScenario(workspaceRoot) {
     : null;
   const expectedStdoutMatch = Array.isArray(plan.expectedStdoutMatch)
     ? plan.expectedStdoutMatch
-    : [];
+    : typeof plan.expectedStdoutMatch === "string"
+      ? [plan.expectedStdoutMatch]
+      : [];
   const passCountSatisfied = observedPassCount >= expectedPassCount;
   const stdoutSatisfied = expectedStdout === null || result.stdout === expectedStdout;
   const stdoutMatchSatisfied = expectedStdoutMatch.every((fragment) =>
@@ -2926,7 +3195,13 @@ async function executeScenario(workspaceRoot) {
       planSatisfied: true,
       expectedTestPassCount: expectedPassCount,
       observedTestPassCount: observedPassCount,
-      expectedStdoutMatch: Object.freeze(plan?.expectedStdoutMatch ?? []),
+      expectedStdoutMatch: Object.freeze(
+        Array.isArray(plan?.expectedStdoutMatch)
+          ? plan.expectedStdoutMatch
+          : typeof plan?.expectedStdoutMatch === "string"
+            ? [plan.expectedStdoutMatch]
+            : []
+      ),
       assertedReturnValue: plan?.assertedReturnValue ?? EXPECTED_ASSERTED_RETURN_VALUE
     });
   }
@@ -3357,6 +3632,7 @@ const STAGE_FILE_INSTRUCTIONS = Object.freeze({
     "Write only test/hello.test.mjs.",
     "Use the prior test_design and source artifact summaries as the evidence source.",
     "Use node:test and node:assert/strict.",
+    "Import named exports with braces when the source artifact declares named exports.",
     "Assert helloWorld() returns exactly \\"Hello, world!\\"."
   ]),
   test_execution_plan: Object.freeze([
@@ -3389,6 +3665,13 @@ function stageInstructionsFor(stageSpec) {
 
 function transformInstructionText(stageSpec) {
   const allowedPaths = Object.freeze(stageSpec.filesToProduce ?? []);
+  const declaredStagePlan = SCENARIO.stagePlan.map((stage) =>
+    "- " + stage.stage + ": " + (
+      Array.isArray(stage.filesToProduce) && stage.filesToProduce.length > 0
+        ? stage.filesToProduce.join(", ")
+        : "no materialized file"
+    )
+  );
   const fileInstructions = allowedPaths.length > 0
     ? [
         "",
@@ -3422,6 +3705,11 @@ function transformInstructionText(stageSpec) {
     "- targetTypeRef: " + stageSpec.targetTypeRef,
     "- vectorId: " + stageSpec.vectorId,
     "- requiredNodeTypes: " + stageSpec.requiredNodeTypes.join(", "),
+    "",
+    "Declared scenario stage plan:",
+    ...declaredStagePlan,
+    "Use these declared stage/file paths exactly when naming lifecycle surfaces.",
+    "Do not substitute alternate witness paths, legacy odd_sdlc paths, or illustrative filenames.",
     "",
     "Stage-specific instructions:",
     ...stageInstructionsFor(stageSpec).map((line) => "- " + line),
@@ -4038,7 +4326,7 @@ export const runtimeBinding = {
           transport = deterministicExecutionTransportFor({ accepted: assessment.accepted === true });
         } else {
           transport = await runAgentTransport({
-            contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "claude"),
+            contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
             prompt: pluginInput.instructionPromptManifest.renderedPrompt,
             responseJsonSchema: transformResponseJsonSchema(stageSpec),
             cwd: workspaceRoot,
@@ -4150,7 +4438,18 @@ export const runtimeBinding = {
         const assessmentIds = pluginInput.expectedAssessmentIds.length > 0
           ? pluginInput.expectedAssessmentIds
           : [\`software_build_\${SCENARIO.key}_vector_\${pluginInput.vectorIndex}_fulfilled\`];
-        const traceTiming = transport.traceResultPath === null ? null : await workerTraceTiming(transport);
+        let traceTiming = null;
+        if (transport.traceResultPath !== null) {
+          try {
+            traceTiming = await workerTraceTiming(transport);
+          } catch (traceError) {
+            traceTiming = Object.freeze({
+              source: "trace_timing_unavailable",
+              error: String(traceError?.message ?? traceError).slice(0, 300),
+              timing: null
+            });
+          }
+        }
         const dispatchTiming = timingRecord(dispatchStarted);
         const dispatchAccepted = assessment.accepted === true && assessment.evidenceAccepted === true;
         const artifact = Object.freeze({
@@ -4161,7 +4460,7 @@ export const runtimeBinding = {
           graphRef: GRAPH_REF,
           graphFunctionRef: GRAPH_FUNCTION_REF,
           edge: pluginInput.edge,
-          actor: process.env.ABG_TS_LIVE_AGENT ?? "claude",
+          actor: process.env.ABG_TS_LIVE_AGENT ?? "codex",
           vectorIndex: pluginInput.vectorIndex,
           stage: expectedStage,
           stagePlan: Object.freeze({
@@ -4226,7 +4525,7 @@ export const runtimeBinding = {
             })
           ),
           selected_worker_id: \`worker://odd_glc/software-build/\${SCENARIO.key}\`,
-          selected_backend: \`backend://\${process.env.ABG_TS_LIVE_AGENT ?? "claude"}\`,
+          selected_backend: \`backend://\${process.env.ABG_TS_LIVE_AGENT ?? "codex"}\`,
           role_id: "role://odd_glc/software-build/live-fp",
           assignment_source: \`policy://odd_glc/software-build/\${SCENARIO.key}\`,
           resolved_runtime_ref: \`runtime://odd_glc/software-build/\${SCENARIO.key}\`,
@@ -4287,7 +4586,7 @@ export const runtimeBinding = {
           pluginInput.instructionPromptManifest
         );
         const transport = await runAgentTransport({
-          contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "claude"),
+          contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
           prompt: pluginInput.instructionPromptManifest.renderedPrompt,
           responseJsonSchema: evaluateResponseJsonSchema(STAGE_PLAN[pluginInput.vectorIndex]),
           cwd: workspaceRoot,
@@ -4626,36 +4925,30 @@ async function runScenarioLive(scenario) {
       env: {
         ...process.env,
         CODEX_LIVE_FP: "1",
-        ABG_TS_LIVE_AGENT: process.env.ABG_TS_LIVE_AGENT ?? "claude",
+        ABG_TS_LIVE_AGENT: process.env.ABG_TS_LIVE_AGENT ?? "codex",
         ABG_TS_LIVE_TIMEOUT_MS: process.env.ABG_TS_LIVE_TIMEOUT_MS ?? "240000"
       }
     }
   );
   const durationMs = Date.now() - startedAt;
-  const startOutput = JSON.parse(start.stdout.trim());
+  const startOutput = parseCliStartOutput(start.stdout);
   const events = parseJsonLines(await readFile(startOutput.events_path, "utf8"));
   const artifactRoot = path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", scenario.key);
   const stageCount = Array.isArray(scenario.stagePlan) ? scenario.stagePlan.length : 2;
   const artifacts = [];
   const evaluatorReviews = [];
-  const evaluatorTraceResults = [];
+  const evaluatorTraceTimings = [];
   for (let index = 0; index < stageCount; index += 1) {
     artifacts.push(await readJson(path.join(artifactRoot, `${scenario.key}-vector-${index}-artifact.json`)));
     const evaluatorReview = await readJson(path.join(artifactRoot, `${scenario.key}-vector-${index}-evaluator-review.json`));
     evaluatorReviews.push(evaluatorReview);
-    evaluatorTraceResults.push(
+    evaluatorTraceTimings.push(
       typeof evaluatorReview.transport?.traceResultPath === "string"
-        ? await readJson(evaluatorReview.transport.traceResultPath)
+        ? await traceTimingFromResultPath(evaluatorReview.transport.traceResultPath)
         : null
     );
   }
-  const evaluatorTerminalResults = evaluatorTraceResults.map((traceResult) => {
-    if (typeof traceResult?.stdout !== "string") {
-      return null;
-    }
-    return parseJsonLines(traceResult.stdout).find((event) => event.type === "result") ?? null;
-  });
-  const vectorTimingReport = traversalTimingReport(events, artifacts);
+  const vectorTimingReport = await traversalTimingReport(events, artifacts);
   const proof = {
     kind: "odd_glc_software_build_overlay_live_proof",
     scenarioId: scenario.scenarioId,
@@ -4704,9 +4997,9 @@ async function runScenarioLive(scenario) {
       outputPath: entry.transport?.outputPath ?? null,
       status: entry.transport?.status ?? null,
       apiRetryCount: entry.transport?.apiRetryCount ?? null,
-      evaluatorTraceDurationMs: evaluatorTerminalResults[index]?.duration_ms ?? null,
-      evaluatorTraceApiDurationMs: evaluatorTerminalResults[index]?.duration_api_ms ?? null,
-      evaluatorTraceTurns: evaluatorTerminalResults[index]?.num_turns ?? null
+      evaluatorTraceDurationMs: evaluatorTraceTimings[index]?.durationMs ?? null,
+      evaluatorTraceApiDurationMs: evaluatorTraceTimings[index]?.apiDurationMs ?? null,
+      evaluatorTraceTurns: evaluatorTraceTimings[index]?.turns ?? null
     })),
     artifactSha256s: artifacts.map((artifact) => sha256Text(JSON.stringify(artifact)))
   };
@@ -4775,11 +5068,18 @@ for (const scenario of selectedScenarios()) {
       result.proof.vectorTimingReport.every((row) =>
         Number.isInteger(row.traversalDurationMs) &&
           row.traversalDurationMs >= 0 &&
-        Number.isInteger(row.dispatchDurationMs) &&
+          Number.isInteger(row.dispatchDurationMs) &&
           row.dispatchDurationMs >= 0 &&
-          typeof row.workerTraceDurationMs === "number" &&
-          row.workerTraceDurationMs >= 0 &&
-          row.executorProfile === result.proof.sandboxIdentity.requestedExecutorProfile
+          (
+            row.executorProfile === result.proof.sandboxIdentity.requestedExecutorProfile
+              ? typeof row.workerTraceDurationMs === "number" &&
+                row.workerTraceDurationMs >= 0 &&
+                typeof row.traceResultPath === "string" &&
+                row.traceResultPath.length > 0
+              : row.executorProfile === "deterministic-fd" &&
+                row.workerTraceDurationMs === null &&
+                row.traceResultPath === null
+          )
       ),
       true
     );
@@ -4800,8 +5100,11 @@ for (const scenario of selectedScenarios()) {
     if (result.proof.sandboxIdentity.terminalProofRequired === true) {
       assert.equal(
         result.proof.vectorTimingReport.every((row) =>
-          typeof row.terminalSessionId === "string" &&
-            row.terminalSessionId.length > 0
+          row.executorProfile === result.proof.sandboxIdentity.requestedExecutorProfile
+            ? typeof row.terminalSessionId === "string" &&
+              row.terminalSessionId.length > 0
+            : row.executorProfile === "deterministic-fd" &&
+              row.terminalSessionId === null
         ),
         true
       );
@@ -4816,7 +5119,12 @@ for (const scenario of selectedScenarios()) {
     assert.equal(
       result.artifacts.every((artifact) =>
         artifact.timing.timingAuthority === "abg_called_fp_dispatch_plugin_result_artifact" &&
-          /not odd_glc-owned traversal control/u.test(artifact.timing.timingScope)
+          (
+            artifact.transport.executorProfile === result.proof.sandboxIdentity.requestedExecutorProfile
+              ? /not odd_glc-owned traversal control/u.test(artifact.timing.timingScope)
+              : artifact.transport.executorProfile === "deterministic-fd" &&
+                /no F_P prompt was dispatched/u.test(artifact.timing.timingScope)
+          )
       ),
       true
     );
