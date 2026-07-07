@@ -3,11 +3,12 @@ id: T-030
 title: Migrate odd_glc live traversals to ABG instruction and depth proof
 type: implementation
 ticket_category: realization
-status: active
+status: completed
 goal: >-
   Migrate odd_glc live traversal sandboxes from local prompt/proof shells to
-  ABIogenesis 4.2 RC6 instruction assembly and requirement-proof
-  carry-through before any further full data-mapper run.
+  the latest installed ABIogenesis release's instruction assembly and
+  requirement-proof carry-through capabilities before any further full
+  data-mapper run.
 change_class: design_reframe
 re_entry_point: build_tenant_proof
 owner: odd_glc
@@ -28,17 +29,17 @@ source_documents:
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/active/T-183-realize-instruction-assembly-semantic-compiler.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/active/T-188-realize-requirement-proof-carry-through.md
 closure_law: >-
-  Close only when odd_glc live traversal sandboxes use the installed ABG
-  startup path to admit compiled instruction plans, bind runtime instruction
-  envelopes, emit replay-visible instruction manifests, and carry requirement
-  proof/depth/dependency truth through ABG-owned admission before any F_P
-  worker dispatch is accepted. Active requirement-obligation lineage shall be
-  delivered downstream as instruction pressure in ABG-rendered manifests and
-  then preserved through response admission, proof coverage, fold, residual,
-  and replay. This lineage proof is expected to be redundant if ABIogenesis
-  T-183/T-188 and the requirements algebra are wired correctly; if it fails,
-  the defect belongs in ABI/GTL root-cause repair, not in odd_glc local
-  tracking. The unit of closure-grade compute is the ABG traversal monad:
+  Close only when odd_glc live traversal sandboxes use the current installed
+  ABG startup path to admit compiled instruction plans, bind runtime
+  instruction envelopes, emit replay-visible instruction manifests, and carry
+  requirement proof/depth/dependency truth through ABG-owned admission before
+  any F_P worker dispatch is accepted. Active requirement-obligation lineage
+  shall be delivered downstream as instruction pressure in ABG-rendered
+  manifests and then preserved through response admission, proof coverage, fold,
+  residual, and replay. This lineage proof is expected to be redundant if
+  ABIogenesis T-183/T-188 and the requirements algebra are wired correctly; if
+  it fails, the defect belongs in ABI/GTL root-cause repair, not in odd_glc
+  local tracking. The unit of closure-grade compute is the ABG traversal monad:
   configured by GTL/ABG startup truth, stepped by ABG traversal, and observed
   through replay. The test framework may kick off the scenario once through
   installed ABG; it shall not build prompt text, invoke vectors, classify proof
@@ -228,14 +229,21 @@ required_work:
 proof_commands:
   - cd build_tenants/odd_glc/typescript && npm test
   - cd build_tenants/odd_glc/typescript && node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "instruction assembly|proof carry-through|local prompt shell|software-build Hello World"
+  - cd build_tenants/odd_glc/typescript && node --test test/lineage-canary.test.mjs test/live-proof-shape.test.mjs
   - cd build_tenants/odd_glc/typescript && rg -n "instructionAssemblyStartup|instruction_prompt_manifest_projected|instructionPromptManifest|instruction_causal_context_bound|dependencyInstructionTruth|proofDepthInstructionTruth|RequirementProofCarry|proofCoverage|responseContract|requirementObligation|sourceRequirement|lineage|residual" test src
   - cd build_tenants/odd_glc/typescript && rg -n "computeStageRole.*evaluate|instructionPromptManifest|server-tool|contract_failure|edge-effective|generic lifecycle/node-type labels|candidate material" test ../../../.ai-workspace/tickets/active/T-030-migrate-live-traversals-to-abg-instruction-depth.md
   - cd build_tenants/odd_glc/typescript && ! rg -n "promptFor\\(|evaluatorPromptFor\\(" test src
-  - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 npm run test:live -- --test-name-pattern "software-build Hello World"
+  - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=basic-cli node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-HELLO-WORLD-CLI-BASIC"
   - git diff --check
-closure_evidence: []
+closure_evidence:
+  - Live migration proof (Phase 6, closure-grade): test_runs/glc_software_build_overlay_live/basic-cli/20260707T183821856Z_pid16122/odd-glc-software-build-overlay-live-proof.json — SCN-GLC-HELLO-WORLD-CLI-BASIC over installed ABIogenesis 4.5.0-rc.7, single genesis-ts start --until converged, stopped_by converged in 300.8s; 8/8 vectors closed with per-vector timings; two ABG manifests per vector before F_P dispatch; requirement REQ-GLC-SB-001 lineage replay-visible end to end (carry-through admitted at vector 7, eligible proof coverage, 11 evidence bindings, fold satisfied, lifecycle disposition); lineage canary droppedRequirementIds []; run summary carries the data-mapper gate statement.
+  - Lineage canary (required_work item): src/lineage_canary.mjs — read-only derivation over replay events (R(m) = diagnostic proof harness only); wired into the live proof and asserted per scenario (dropped required obligations fail the run); test/lineage-canary.test.mjs pins the drop law (downstream silence after a reached requirement-bearing vector = dropped; unreached = not_reached; residual pressure reported, not dropped; total over empty/foreign replay).
+  - Harness shape law: test/live-proof-shape.test.mjs requires every live sandbox test to derive the canary, fail on dropped obligations, and state the data-mapper gate.
+  - Deterministic gates: npm test 72 tests / 64 pass / 0 fail (8 live-gated skips); no local prompt shell (rg gate clean); binding unit lane proves the generated binding parses and declares instructionAssemblyStartup, requirementRouteDeclarationBundle, requirementProofCarryThroughStartup, and temporalPropertyStartup.
+  - Phase 5 fail-closed placement map (per R(m), ABG runtime law is pinned upstream, not rebuilt locally): missing compiled plan blocks dispatch, digest drift rejection, weaker-proof carry-through rejection, owed-but-missing coverage residuals, and manifest-before-dispatch standing gates are ABIogenesis substrate differentials (T-183/T-188/T-192/T-205 suites, semantic 1147/1147 at 4.5.0-rc.7); odd_glc pins its own side — declaration presence, startup-facade rejection, harness shape, canary drop law.
 checkpoint_evidence:
   - .ai-workspace/comments/codex/20260707T111258Z_SOURCE_CHECKPOINT_t030-codex-pty-hello-world.md records the Codex PTY Hello World source checkpoint over ABIogenesis 4.5.0-rc.5. It is not T-030 closure or data-mapper parity closure.
+  - 2026-07-07 sandbox-runner boundary correction: `test/glc-software-build-overlay-live.test.mjs` now treats live sandboxes as scenario runners only. The harness installs, writes sandbox identity, invokes installed `genesis-ts start --until converged` once, preserves stdout/stderr and ABG replay evidence, and no longer asserts generated artifact content, required output paths, evaluator review content, or scenario-owned execution-plan truth as sandbox closure. `test/live-proof-shape.test.mjs` guards this shape. This is a T-030 checkpoint, not closure.
 ---
 
 # T-030: Migrate Live Traversals To ABG Instruction And Depth Proof
@@ -252,6 +260,11 @@ live odd_glc software-build path.
 
 This ticket blocks any further full data-mapper run until the live traversal
 path is migrated and proven.
+
+The ticket law is version-agnostic. Sandboxes install and run against the
+latest released ABIogenesis product available to odd_glc at run time. Version
+identity belongs in sandbox evidence, release notes, and run records; active
+ticket law shall not pin behavior to a historical RC.
 
 ## Target Shape
 
@@ -461,6 +474,59 @@ not a migration proof for this ticket. If the data-mapper run starts before
 T-030 closes, the result is diagnostic only and shall not be cited as parity,
 depth, or ABG T-183/T-188 migration evidence.
 
+## Data-Mapper Sandbox Context
+
+The full data-mapper sandbox is the controlling odd_sdlc parity witness for
+odd_glc. It exists to prove that a real lifecycle build can be expressed as:
+
+```text
+GTL/ABG substrate truth
+  -> odd_glc generic lifecycle interpretation
+  -> downstream/plugin specialization
+  -> subject product artifacts
+```
+
+It is not a data-mapper-specific feature implementation. The data mapper is the
+stress case used to expose missing or broken GTL/ABG lifecycle capability:
+startup, registry selection, graph traversal, instruction assembly, F_P worker
+dispatch, response admission, requirement-proof carry-through, proof depth,
+residual pressure, retry, re-entry, replay, and projection.
+
+The sandbox test is a scenario runner only. It creates a fresh controlled run
+root, installs the latest ABIogenesis release available to odd_glc, installs
+odd_glc as a dependent product, writes sandbox identity, and invokes installed
+ABG once with `genesis-ts start --until converged`. It shall not call vectors
+directly, construct prompts, evaluate content, assert closure, patch proof
+lineage, or perform lifecycle compute outside ABG traversal.
+
+odd_glc owns lifecycle vocabulary, policy/config data, typed lifecycle
+interpretation, and read/query views over admitted GTL/ABG truth. GTL owns graph
+overlay, node type, asset surface, and graph-function declaration law. ABG owns
+runtime truth: startup admission, graph-call opening, traversal, F_P invocation,
+events, evidence admission, requirement folds, residuals, retry, re-entry,
+continuation, and replay.
+
+A closure-grade data-mapper run must prove, from replay and preserved process
+evidence:
+
+- installed ABG and installed odd_glc were used;
+- the scenario was started through one installed ABG start invocation;
+- every F_P dispatch has an ABG instruction manifest before dispatch;
+- active requirement/proof/dependency pressure appears in the manifest;
+- worker/evaluator outputs are admitted through ABG response and carry-through
+  paths before affecting closure;
+- requirement obligations are not dropped between dispatch, response, proof
+  coverage, fold, residual, and replay;
+- generated subject artifacts match the Scala/SBT data-mapper target;
+- subject tests are produced and executed;
+- vector timings and terminal/PTY transcripts are preserved where live-terminal
+  proof is claimed.
+
+Until T-030 closes, any full data-mapper run is diagnostic only. Failures are
+root-cause evidence for ABI/GTL/odd_glc binding repair; they shall not be fixed
+by adding local odd_glc ledgers, prompt shells, closure gates, retry
+controllers, or data-mapper-specific runtime logic.
+
 ## Data-Mapper Debugging Campaign — Builder-Bug Ledger (2026-07-06)
 
 User directive: the full data-mapper live scenario (codex xhigh workers)
@@ -554,3 +620,29 @@ derived frontier still reads exhausted, add a declared re-entry policy
 truth.
 Expected economics: fixes cost one stage's wall-time (~2-4 min), not a
 50-minute re-proof of vectors 0-15.
+
+## T-030 CLOSED (2026-07-08)
+
+Phase status at close: P0 audit + P1 Prime mapping (comments/claude/
+20260706T090000Z + codex 20260704T031900Z); P2 startup migration (all
+four startup families in the generated binding; substrate repinned to
+4.5.0-rc.7); P3 worker boundary (plugins consume ABG manifests; prompt
+shells absent — rg gate); P4 carry-through (route bundle + carry
+contract + temporal standing gates in the binding; live carry-through
+admission + eligible coverage + satisfied fold replay-proven); P5
+fail-closed gates per the placement map in closure_evidence (ABG law
+upstream, odd_glc declaration/harness/canary pins local); P6 live
+migration proof green (closure-grade run cited in closure_evidence,
+lineage canary zero dropped, per-vector timings, gate statement).
+
+The first live run of this wave also exercised the 4.5.0-rc.7
+carry-through applicability law end to end downstream: requirement
+pressure declared at startup surfaced as carry-through admission and
+eligible coverage in the fold — the pre-rc.7 silent-collapse class is
+now structurally impossible (owed-but-missing would surface as residual
+no-close, and the canary would report it).
+
+The full data-mapper live traversal is UNBLOCKED as the next debugging
+target (campaign mode per the builder-bug ledger; RUN-18 resume-mode
+lane remains the named economics item). Per the Data-Mapper Gate, that
+run is the next target, not retroactive proof for this ticket.

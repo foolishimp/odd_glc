@@ -35,5 +35,40 @@ test("live tests declare single-start ABG traversal shape", async () => {
       /parseCliStartOutput/u,
       `${file} must extract ABG start summary from mixed terminal-safe output`
     );
+    assert.match(
+      source,
+      /scenario_runner_only/u,
+      `${file} must mark live sandbox tests as scenario runners, not content judges`
+    );
+    assert.doesNotMatch(
+      source,
+      /expectedExecutionPlan\s*:/u,
+      `${file} must not pin scenario-owned execution-plan truth in the sandbox harness`
+    );
+    assert.doesNotMatch(
+      source,
+      /liveArtifacts:\s*result\.artifacts/u,
+      `${file} must not feed generated artifact content into sandbox closure checks`
+    );
+    assert.doesNotMatch(
+      source,
+      /result\.artifacts/u,
+      `${file} must not assert generated artifact content in the sandbox runner`
+    );
+    assert.match(
+      source,
+      /requirementLineageCanary/u,
+      `${file} must derive the T-030 read-only requirement lineage canary from replay truth`
+    );
+    assert.match(
+      source,
+      /droppedRequirementIds/u,
+      `${file} must fail the run when the lineage canary reports dropped required obligations`
+    );
+    assert.match(
+      source,
+      /unlocks, but does not substitute for, the full data-mapper run/u,
+      `${file} must state the data-mapper gate in the run summary`
+    );
   }
 });
