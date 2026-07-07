@@ -3,7 +3,7 @@ id: T-030
 title: Migrate odd_glc live traversals to ABG instruction and depth proof
 type: implementation
 ticket_category: realization
-status: active
+status: completed
 goal: >-
   Migrate odd_glc live traversal sandboxes from local prompt/proof shells to
   the latest installed ABIogenesis release's instruction assembly and
@@ -665,3 +665,32 @@ obligation refs (not requirementId substring), the live assertion
 strengthened to fail on zero entering-prompt pressure for reached
 requirement-bearing vectors, and a fresh live proof. Data-mapper runs
 revert to DIAGNOSTIC-ONLY under the Data-Mapper Gate until re-close.
+
+## RE-CLOSED (2026-07-08)
+
+The reopen's falsified claim is now TRUE on the tree and proven live:
+
+- ROOT CAUSE FIXED UPSTREAM: ABIogenesis 4.5.0-rc.8 realizes
+  REQ-R-ABG3-REQUIREMENT-PROOF-CARRY-THROUGH-007 — the engine derives
+  per-vector requirement pressure from admitted route + carry-through
+  startup truth and binds it at every F_P instruction-bind site; pressure
+  renders into the prompt (abg.runtime.bound_refs) and surfaces
+  replay-visibly as requirementPressureRefs on the manifest carrier and
+  event under digest law. odd_glc repinned to rc.8.
+- MEASUREMENT CORRECTED: the canary reads the TYPED
+  requirementPressureRefs field (substring heuristic retired).
+- ASSERTION STRENGTHENED (the missing check): PRESENCE LAW —
+  pressureMissingRequirementIds must be empty; a reached span vector
+  whose pressure-capable manifests carry zero pressure for the
+  requirement FAILS the run. Mechanical presence only; worker adherence
+  remains F_P evaluator judgment (F_D/F_P boundary law). Inert on
+  pre-rc.8 replays and unreached vectors. Differentials pin all three.
+- LIVE PROOF (Phase 6 rerun): basic-cli over installed 4.5.0-rc.8,
+  converged; enteringPromptRefCounts [2] (was [0] at reopen);
+  pressureMissingRequirementIds []; droppedRequirementIds []; coverage
+  eligible; fold satisfied. Run:
+  test_runs/glc_software_build_overlay_live/basic-cli/20260707T234708597Z_pid74177/odd-glc-software-build-overlay-live-proof.json
+
+Data-mapper gate: UNBLOCKED again — successor T-031 owns the closure
+campaign under the user closure law (requirements met by code delivery
+proven by tests; exhaustive strongly-typed UAT proof).
