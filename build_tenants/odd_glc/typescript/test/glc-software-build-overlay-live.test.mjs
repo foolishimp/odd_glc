@@ -1120,6 +1120,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only the Scala/SBT build files and Scala main source files listed for this stage.",
           "Use the prior implementation_design and component_realization_qualification artifacts as authority.",
+          "ENVIRONMENTAL BINDING (campaign #12 class): project/build.properties must declare sbt.version=1.11.7 — the locally provisioned sbt launcher. Do NOT declare a version that requires network retrieval; the build runs offline against the local toolchain cache.",
           "build.sbt must define shared cdme-core plus the seven concern modules cdme-compiler, cdme-executor, cdme-adjoint, cdme-accounting, cdme-assurance, cdme-fidelity, and cdme-engine.",
           `Do not create an impossible type/dependency contract: if build.sbt keeps concern modules depending on cdme-core only, define shared cross-module DTOs (${DATA_MAPPER_SHARED_CORE_CONTRACT_TYPES.join(", ")}) in cdme-core and implement concern-module behavior against those cdme-core DTOs.`,
           "Use Scala 2.13, ScalaTest, and Apache Spark SQL where the admitted prior artifacts require DataFrame execution. Do not replace Spark/DataFrame execution with a hand-rolled in-memory substitute.",
@@ -1250,9 +1251,13 @@ const SCENARIOS = Object.freeze([
           "derive_code_surface",
           "derive_component_test_surface"
         ],
-        filesToProduce: ["test-execution-result.json"],
+        filesToProduce: [
+          "test-execution-result.json",
+          "build_tenants/scala_spark/project/build.properties"
+        ],
         instructions: [
           "EXECUTION-DEFAULT LAW: YOU re-run the suite after the repair; the framework executes nothing.",
+          "ENVIRONMENTAL BINDING (campaign #12 class): if sbt itself cannot start or a launcher version cannot be retrieved, rewrite build_tenants/scala_spark/project/build.properties to sbt.version=1.11.7 (the locally provisioned launcher) BEFORE running — this is toolchain binding, not test weakening. If the launcher already works, do not touch build.properties.",
           `Run sbt test yourself from cwd \"build_tenants/scala_spark\" (JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin when that path exists; toolchain binding, not test weakening).`,
           "Then rewrite test-execution-result.json with the TRUTHFUL repaired result: command \"sbt\", args [\"test\"], status (the integer exit status, field named exactly status), expectedTestPassCount 20, observedTestPassCount from the reports, expectedTestReportPaths, and assertedReturnValue \"data_mapper_full_sbt ok\".",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,

@@ -468,3 +468,22 @@ per kernel fix, Review D replay audit per citable run.
 - FIX: the reader accepts the field family {status|exitStatus|exitCode};
   both execution-stage contracts name the field exactly; the unit-lane
   fixture deliberately uses exitStatus to pin the alias.
+
+### Campaign ledger — BUG #3 (run 3, 2026-07-09)
+
+- RUN: resume of pid69405; vectors 16-19 advanced (truthful red
+  accepted, qualification, repair schedule, repair applied); blocked at
+  vector 20 (repaired execution): the worker ran sbt truthfully but
+  "sbt 1.10.7 could not be retrieved" — the worker-authored
+  build.properties declared a launcher version requiring network
+  retrieval; the local coursier cache provisions 1.11.7 only.
+- ROOT CAUSE (owner: odd_glc scenario data; campaign #12 environmental-
+  binding class): the build-files contract never declared the
+  provisioned sbt launcher version, and the v20 contract ("write only
+  test-execution-result.json") lawfully prevented the worker from
+  correcting build.properties itself.
+- FIX: build-files stage pins sbt.version=1.11.7 as an ENVIRONMENTAL
+  BINDING declaration; the repaired-execution stage gains a scoped
+  toolchain-binding permission (rewrite build.properties to the
+  provisioned launcher ONLY when the launcher itself cannot start) with
+  build.properties added to its filesToProduce.
