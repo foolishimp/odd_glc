@@ -843,6 +843,9 @@ const SCENARIOS = Object.freeze([
     // review B MEDIUM-1: F_D verification pins THESE, not worker claims
     expectedTestPassCount: 20,
     expectedTestReportPaths: DATA_MAPPER_SCALA_TEST_REPORTS,
+    // campaign BUG #5: report RESOLUTION is contract data too — a worker
+    // omitting cwd must not break verification of files that exist
+    expectedTestReportBase: "build_tenants/scala_spark",
     executionStage: "derive_repaired_test_execution_result_surface",
     artifactTypeRef: "odd_glc.type.software.data_mapping_implementation_bundle",
     requiredOutputPaths: [
@@ -3184,8 +3187,15 @@ export async function executePlannedScenario(workspaceRoot) {
     : Array.isArray(plan.expectedTestReportPaths)
       ? plan.expectedTestReportPaths
       : [];
+  // campaign BUG #5: when the scenario declares the report base, reports
+  // resolve from CONTRACT data — the worker's cwd claim is evidence, not
+  // the resolution authority (a missing cwd field made 8 existing
+  // reports read as missing).
+  const reportCwd = typeof SCENARIO.expectedTestReportBase === "string"
+    ? path.resolve(workspaceRoot, SCENARIO.expectedTestReportBase)
+    : cwd;
   const reportPassCounts = expectedTestReportPaths.length > 0
-    ? await xmlTestReportPassCount(cwd, expectedTestReportPaths)
+    ? await xmlTestReportPassCount(reportCwd, expectedTestReportPaths)
     : null;
   const observedPassCount = reportPassCounts === null
     ? nodeTestPassCount(result.stdout)
@@ -5560,8 +5570,9 @@ test("binding unit lane: the verify-only execution path runs — honest results 
   };
   const resultJson = (status) => JSON.stringify({
     // BUG #2 pin: the field family {status|exitStatus|exitCode} — this
-    // fixture deliberately uses exitStatus
-    command: "sbt", args: ["test"], cwd: reportBase, exitStatus: status,
+    // fixture deliberately uses exitStatus. BUG #5 pin: cwd deliberately
+    // OMITTED — the scenario's expectedTestReportBase drives resolution.
+    command: "sbt", args: ["test"], exitStatus: status,
     // the worker LIES about its own bar here — the scenario contract wins
     expectedTestPassCount: 1,
     expectedTestReportPaths: [DATA_MAPPER_SCALA_TEST_REPORTS[0]],

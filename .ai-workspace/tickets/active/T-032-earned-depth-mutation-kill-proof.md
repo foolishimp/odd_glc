@@ -507,3 +507,25 @@ per kernel fix, Review D replay audit per citable run.
   assertions, never delete tests, never change module structure),
   re-runs until green or truthful red; Scala main+test files enter its
   produce list.
+
+### Campaign ledger — BUG #5 (runs 5-6, 2026-07-09)
+
+- RUNS: the run-fix-run turn WORKED — the worker fixed compilation and
+  brought the suite to 21/22 green with all eight junitxml reports
+  emitting. But v20 kept rejecting with "none of the expected reports
+  were produced": the worker's latest result omitted the cwd field, and
+  report verification resolved paths from the instance root — 8
+  EXISTING reports read as missing, observed count 0.
+- ROOT CAUSE (owner: odd_glc binding): report RESOLUTION depended on a
+  worker-supplied claim (cwd) instead of contract data — the same class
+  as BUG #2 (underspecified worker-shape coupling).
+- FIX: scenario declares expectedTestReportBase
+  ("build_tenants/scala_spark"); verification resolves reports from
+  CONTRACT data; the worker's cwd remains evidence only. Unit pin: the
+  fixture now omits cwd deliberately.
+- HYGIENE NOTE (overseer error, recorded): while diagnosing, I ran sbt
+  directly in the live campaign workspace to reproduce the failure —
+  that run WROTE reports into the workspace (overseer-produced files in
+  a worker-evidence surface). The kernel evidence chain is unaffected
+  (closure requires worker-admitted payloads and identities), but
+  future diagnosis must copy the tree instead of executing in place.
