@@ -86,7 +86,18 @@ proof_commands:
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=data-mapper-full node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT"
   - git diff --check
 closure_evidence: []
-campaign_ledger: []
+campaign_ledger:
+  - 2026-07-08 TYPED-UAT DECLARATIONS LANDED - 8 per-CDME-concern
+    requirements as scenario data (REQ-CDME-CORE..ENGINE), each with
+    concern-specific positive AND negative expected evidence shapes,
+    5 depth classes (positive/negative/boundary/invariant/integration),
+    spans over the 4 creating+proving vectors; data-driven bundle +
+    per-concern carry entries in the generated binding (hello-world
+    fallback unchanged); spanned stages declare the depth-class union in
+    proof-depth truth. Binding differential pins it. Suite 75/67/0.
+  - 2026-07-08 SOAK RUN (rc.7, diagnostic) - first run past the v12
+    campaign wall; reached v24+ clean with repair loop and test
+    execution stages exercised live.
 ---
 
 # T-031: Close The Data-Mapper By Delivered Requirements Proven By Tests
