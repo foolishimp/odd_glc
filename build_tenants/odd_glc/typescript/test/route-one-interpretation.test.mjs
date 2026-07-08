@@ -382,6 +382,19 @@ test("validates the installed ABG requirements public query facade", async () =>
   }
 });
 
+test("substrate provenance is never hollow: commits and digests carry well-formed values", () => {
+  // T-031 campaign lesson: a repin once committed EMPTY commit/digest
+  // fields and the literal pin test passed because both sides agreed on
+  // emptiness. Format law makes hollow agreement impossible.
+  const s = ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate;
+  assert.match(s.sourceCommit, /^[0-9a-f]{40}$/u);
+  assert.match(s.snapshotCommit, /^[0-9a-f]{40}$/u);
+  assert.match(s.tarballSha256, /^[0-9a-f]{64}$/u);
+  assert.match(s.productToolchainManifestDigest, /^[0-9a-f]{64}$/u);
+  assert.match(s.releaseSnapshotManifestSha256, /^[0-9a-f]{64}$/u);
+  assert.match(s.packageVersion, /^\d+\.\d+\.\d+(-rc\.\d+)?$/u);
+});
+
 test("declares and verifies the consumed ABIogenesis substrate identity", async () => {
   const packageJson = await readInstalledPackageJson();
 
@@ -389,13 +402,13 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.consumerTenant, "build_tenants/odd_glc/typescript");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productId, "abiogenesis");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName, "@abiogenesis/typescript-tenant");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.5.0-rc.9");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.5.0-rc.9");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "aa44b25f3dde62f28b17f96dcb8b959b3db24baa0e5dacedf6dadb0c1fc032f4");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.5.0-rc.10");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.5.0-rc.10");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "a9ddc1a749d9187a43d4d40ec6598444e73672c5");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "aad21a40eae401543044cfee9257fc06c02bff18");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "fa5dceadf84fee1f483fb1c6c36221ac870a9059656b62e4b363942e967ff304");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "107c293a07987ee65b03e7baf75763303fd0d28297efb4722f4b96c28e898787");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "2f4f3e7d87fea228e8a518db05dfcee893e21efbf872a6a8633b1df82b9fb372");
   assert.equal(packageJson.name, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName);
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(

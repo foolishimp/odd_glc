@@ -95,6 +95,30 @@ campaign_ledger:
     per-concern carry entries in the generated binding (hello-world
     fallback unchanged); spanned stages declare the depth-class union in
     proof-depth truth. Binding differential pins it. Suite 75/67/0.
+  - 2026-07-08 BUG #2 (ABI requirements route, FIXED, rc.10) - the
+    multi-requirement coverage drop seam (the review-escrowed T-208
+    finding #3) went load-bearing at the proving edge: run 2 (rc.9,
+    20260708T002028069Z_pid81350) delivered ALL EIGHT eligible carry
+    admissions at v21, then all eight folds read no_close_preserved on
+    EMPTY sources - sourceTruthRefsByRequirementId dropped coverage refs
+    for requirements without per-requirement evidence bindings in
+    multi-requirement scope (and had been eating the synthesized
+    residuals at v4-v20 the same way). Fix: coverage-bearing requirements
+    always emit fold sources. Differential pins both branches
+    (eligible->satisfied; owed-missing->residual no-close) in
+    multi-requirement zero-binding shape. ABI 1152/1152; rc.10 cut +
+    artifact-verified; repinned. Run 2 otherwise proves the chain: span
+    folds at every boundary+interior close (BUG #1 fix live), pressure in
+    all four span prompts (v4/v14 verified 56 refs, 8/8 ids), 26/26
+    converged.
+  - 2026-07-08 REPIN-INTEGRITY CORRECTION - the rc.9 repin committed
+    HOLLOW provenance (empty sourceCommit/snapshotCommit/digests) via
+    silent shell interpolation, and the literal pin test passed because
+    both sides agreed on emptiness; a later scripted repin corrupted
+    seven files (empty-string replace) and was recovered from git + token
+    stripping. Corrections: repin now computed in one validated process
+    (format-asserted before write); NEW hollow-pin guard test enforces
+    well-formed commits/digests on the provenance carrier permanently.
   - 2026-07-08 BUG #1 (ABI span algebra, FIXED, rc.9) - multi-vector
     spans failed to cover their own BOUNDARY vectors: spanCoversEdge
     corroborated the whole-span endpoint nodes against every member edge,
