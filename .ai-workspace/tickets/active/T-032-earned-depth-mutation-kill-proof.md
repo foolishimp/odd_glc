@@ -53,30 +53,37 @@ non_closure_conditions:
   - The scenario compensates for a substrate gap (campaign law: builder
     bugs are fixed at their owner).
 required_work:
-  - "SCENARIO DATA: two new data-mapper stages — derive_depth_proof_map_surface
-    (after component tests: the worker declares depth-map.json binding every
-    required depth class per requirement to named tests) and
-    derive_mutation_kill_surface (after the proving edge: the worker authors
-    one mutant patch per declared negative/invariant shape; the plugin
-    applies, executes the declared plan, records red/green, restores)."
-  - "BINDING (odd_glc): earned-depth derivation — depth truth per requirement
-    computed from the admitted depth map + report XML test identities
-    (missing class -> typedDepthGapRefs; unknown test name -> typed gap);
-    generic mutation runner (patch, execute plan, capture report, restore,
-    verify restore digest); adversarial evidence refs attached to the
-    result artifacts so the producer resolves them against the admitted
-    ledger (the strength-ref pattern)."
-  - "ABI (expected small): producer resolves adversarialAttemptRefs /
-    counterexampleRefs against the admitted evidence ledger (extend the
-    deriveAdmittedStrengthRefSet pattern) so envelope adversarial truth is
-    ledger-resolved, not template-static; requiredAdversarialCheckRefs
-    populated per concern flows through existing admission. The coverage
-    projector already flags proof_strength_not_adversarially_verified and
-    blocks on adversarial_counterexample_found — no new gate law."
-  - "CANARY (read-only): per-requirement depth rows — declared classes,
-    earned classes, gap refs, mutants killed/survived — in the run summary."
-  - Campaign: iterate live runs, root-cause builder bugs at their owners,
-    ledger each with its fix, until closure per the law above.
+  - "ALLOCATION CORRECTION (user R(m) adjudication 2026-07-08): earned-depth
+    derivation and mutation-kill execution are GTL/ABG substrate work, not
+    odd_glc binding machinery. -034 already says ABG SHALL DERIVE depth
+    completeness; the apply-execute-restore-capture loop is a generic F_D
+    interior the T-205 handler family owns; adversarial admission is
+    -035/-036 law. odd_glc ships DECLARATIONS ONLY. Upstream ticket:
+    abiogenesis T-210 (inside-out: source carriers first)."
+  - "ABI (T-210, the substance): (1) admitted depth-map carrier — worker-
+    declared test->depth-class->requirement mapping admitted as evidence;
+    (2) earned-depth derivation per -034 — depth truth (declared classes,
+    typedDepthGapRefs, depthComplete) derived by ABG from the admitted map
+    plus executed-report identities (mechanical string presence), replacing
+    template self-declaration; (3) mutation-kill as declared F_D execution
+    through the existing handler machinery — apply declared patch artifact,
+    execute declared plan, capture report evidence, restore with digest
+    verification; kill/survive outcomes admitted; (4) adversarial refs
+    (adversarialAttemptRefs/counterexampleRefs) ledger-resolved in the
+    carry-through producer (the deriveAdmittedStrengthRefSet pattern).
+    Existing gates (-032/-034/-036, adversarial_counterexample_found,
+    proof_strength_not_adversarially_verified) consume it — no new gate
+    law."
+  - "SCENARIO DATA (odd_glc): two new data-mapper stages as declarations —
+    derive_depth_proof_map_surface (worker declares the depth map) and
+    derive_mutation_kill_surface (worker authors mutant patch artifacts per
+    declared negative/invariant shape); requiredAdversarialCheckRefs
+    populated per concern; execution/mutation plans as declared data."
+  - "CANARY (odd_glc, read-only): per-requirement depth rows — declared
+    classes, earned classes, gap refs, mutants killed/survived."
+  - Campaign: iterate live runs on the new substrate, root-cause builder
+    bugs at their owners, ledger each with its fix, until closure per the
+    law above.
 proof_commands:
   - cd build_tenants/odd_glc/typescript && npm test
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=data-mapper-full node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT"
@@ -117,3 +124,16 @@ classes covered, test identities present in reports, mutants applied/
 executed/restored, kill outcomes from suite exit truth. The substrate
 never parses Scala. Tool knowledge stays emergent: mutants are patch
 artifacts; the runner is generic apply-execute-restore-capture.
+
+## Allocation correction (user, 2026-07-08)
+
+"Isn't this GTL/ABG work?" — yes. The first draft of this ticket put
+earned-depth derivation and the mutation runner in the odd_glc binding;
+R(m) routes both upstream: depth adjudication is -033/-034 ABG law
+("ABG shall derive"), the apply-execute-restore loop is a generic F_D
+interior under the T-205 handler factoring, and adversarial admission is
+-035/-036. The binding self-declaring depth was the original defect;
+the binding self-adjudicating depth would repeat it one layer up. The
+odd_glc consumption rule decides the rest: a constructive function
+needed by multiple ODD domains is platform substrate. odd_glc keeps
+declarations, policy, and read-only interpretation.
