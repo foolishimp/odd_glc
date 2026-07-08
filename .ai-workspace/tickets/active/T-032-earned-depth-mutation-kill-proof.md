@@ -453,3 +453,18 @@ per kernel fix, Review D replay audit per citable run.
   boundary context produced truthful refusal over fabrication, exactly
   the anti-self-report behavior the constitution wants; the defect was
   ours (contradictory law), not the worker's.
+
+### Campaign ledger — BUG #2 (run 2, 2026-07-09)
+
+- RUN: resume of pid69405; vector 15 PASSED under the corrected
+  contract — the worker RAN sbt itself and recorded a TRUTHFUL red
+  result (exit 1, 0 passes: honest failing evidence, exactly the
+  behavior the law wants). Blocked at vector 16 (verify-only reader).
+- ROOT CAUSE (owner: odd_glc binding): the contract said "record the
+  integer exit status" without naming the FIELD; the worker chose
+  exitStatus, the reader demanded status, the truthful result was
+  rejected as malformed. The T-031 BUG #3 lesson (workers lawfully vary
+  envelope keys) applied to fields.
+- FIX: the reader accepts the field family {status|exitStatus|exitCode};
+  both execution-stage contracts name the field exactly; the unit-lane
+  fixture deliberately uses exitStatus to pin the alias.

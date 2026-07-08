@@ -1180,7 +1180,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "EXECUTION-DEFAULT LAW: YOU run the test suite inside this turn; the framework executes nothing.",
           `Run sbt test yourself from cwd \"build_tenants/scala_spark\". If ${DATA_MAPPER_SCALA_JAVA11_HOME} exists, export JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and prefix PATH with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${DATA_MAPPER_TOOLCHAIN_BIN} so Spark/Hadoop test execution uses a compatible JDK and the build toolchain resolves.`,
-          "Then write only test-execution-result.json recording the TRUTHFUL observed result: command \"sbt\", args [\"test\"], cwd \"build_tenants/scala_spark\", the integer exit status you observed, the env you set, and a stdout tail.",
+          "Then write only test-execution-result.json recording the TRUTHFUL observed result: command \"sbt\", args [\"test\"], cwd \"build_tenants/scala_spark\", status (the integer exit status you observed, in a field named exactly status), the env you set, and a stdout tail.",
           "expectedTestPassCount must be 20, matching the admitted ScalaTest test-case count across the eight expected suites; record observedTestPassCount from the XML reports your run produced.",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
           "assertedReturnValue must be \"data_mapper_full_sbt ok\".",
@@ -1254,7 +1254,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "EXECUTION-DEFAULT LAW: YOU re-run the suite after the repair; the framework executes nothing.",
           `Run sbt test yourself from cwd \"build_tenants/scala_spark\" (JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin when that path exists; toolchain binding, not test weakening).`,
-          "Then rewrite test-execution-result.json with the TRUTHFUL repaired result: command \"sbt\", args [\"test\"], the exit status you observed, expectedTestPassCount 20, observedTestPassCount from the reports, expectedTestReportPaths, and assertedReturnValue \"data_mapper_full_sbt ok\".",
+          "Then rewrite test-execution-result.json with the TRUTHFUL repaired result: command \"sbt\", args [\"test\"], status (the integer exit status, field named exactly status), expectedTestPassCount 20, observedTestPassCount from the reports, expectedTestReportPaths, and assertedReturnValue \"data_mapper_full_sbt ok\".",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
           "A failing repaired run is lawful evidence and routes another repair pass; never fabricate.",
           "Do not use node, node:test, package.json, JavaScript test files, or a command wrapper script."
@@ -3144,9 +3144,14 @@ export async function executePlannedScenario(workspaceRoot) {
   if (cwd !== workspaceRoot && !cwd.startsWith(workspaceRoot + path.sep)) {
     throw new Error("Execution result cwd escapes workspace: " + plan.cwd);
   }
-  const claimedStatus = Number.isInteger(plan.status) ? plan.status : null;
+  // CAMPAIGN BUG #2 (run 2, vector 16): the contract said "record the
+  // exit status" without naming the FIELD; the worker chose exitStatus.
+  // The shape FAMILY is {status|exitStatus|exitCode} — the T-031 BUG #3
+  // envelope-family lesson applied to fields.
+  const claimedStatus = [plan.status, plan.exitStatus, plan.exitCode]
+    .find((value) => Number.isInteger(value)) ?? null;
   if (claimedStatus === null) {
-    throw new Error("Execution result must record the integer exit status the worker observed");
+    throw new Error("Execution result must record the integer exit status the worker observed (field: status)");
   }
   // worker-reported env is evidence, not authority (review B HIGH-1 fix:
   // this binding was previously undeclared and the function could not run)
@@ -5546,7 +5551,9 @@ test("binding unit lane: the verify-only execution path runs — honest results 
     }
   };
   const resultJson = (status) => JSON.stringify({
-    command: "sbt", args: ["test"], cwd: reportBase, status,
+    // BUG #2 pin: the field family {status|exitStatus|exitCode} — this
+    // fixture deliberately uses exitStatus
+    command: "sbt", args: ["test"], cwd: reportBase, exitStatus: status,
     // the worker LIES about its own bar here — the scenario contract wins
     expectedTestPassCount: 1,
     expectedTestReportPaths: [DATA_MAPPER_SCALA_TEST_REPORTS[0]],
