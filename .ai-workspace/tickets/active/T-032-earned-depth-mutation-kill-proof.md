@@ -334,7 +334,20 @@ admission, rows admission, surrogate ingress, evidence scoping, -036
 list presence, provider spoofing, split pin) — the review is part of
 the stage, not an afterthought.
 
-- STAGE A (abiogenesis): typed mutationOutcomes payload — admitted at
+- STAGE A (abiogenesis): T-212 RIDES HERE (user reprice 2026-07-09:
+  the installer-driven repin is the delivery AND test vehicle for the
+  new bootstrap): the compressed constitutional bootstrap (three-layer
+  ownership, execution-default, earned depth, evidence provenance —
+  agent-addressed, compression-reviewed) lands in the installer source
+  with rc.15; the repin runs the INSTALLER against the odd_glc
+  WORKSPACE (refresh mode) so .abiogenesis/ and the injected
+  AGENTS.md/CLAUDE.md blocks are stamped by their owner (correcting the
+  rc.5-stale-provenance drift found 2026-07-09); hand edits confined to
+  non-installer surfaces (substrate.provenance.json, test pins, spec
+  refs, root dep). Stage D then IS the live test of the new context:
+  workers operate under the boundary-bearing bootstrap and the campaign
+  observes whether gate zero steers delivery shapes. Plus the kernel
+  gap: typed mutationOutcomes payload — admitted at
   the artifact ingress (depth-map pattern); KERNEL mints kill/survived
   evidence refs from admitted rows (killed = suite red AND
   restoreDigest == baselineDigest; mismatch rejects); worker-attached
@@ -345,6 +358,11 @@ the stage, not an afterthought.
   not resolve; spoofed provider attribution; tarball grep for the
   admission + minting surfaces; residual (worker-reported digests until
   kernel-witnessed) stated in the note, not silently claimed.
+  BOOTSTRAP probes: the STAMPED workspace AGENTS.md/CLAUDE.md contain
+  the four boundary blocks (content verification, not version-line);
+  workspace install-provenance packageVersion equals the pin; the
+  compression removal list is recorded; a hand-bumped version over
+  stale content is the named failure this check exists to catch.
 - STAGE B (odd_glc): D3 deletion — red conformance test first (no
   subject-toolchain execution outside worker turns), then delete plan
   executor / runForEvidence / sbt compile gate / framework evidence
