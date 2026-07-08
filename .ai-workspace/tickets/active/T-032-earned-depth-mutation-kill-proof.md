@@ -201,3 +201,21 @@ Design consequence (binding on T-032/T-210 realization):
   boundaries, frame-local publication, zoom frames, graph-span foldback,
   Godel checkpoints per T-205 phase law) is the lawful home; no new
   ontology.
+
+## The kernel law (user ratification, 2026-07-09)
+
+The governing statement for this ticket and all successor allocation:
+GTL provides declarative syntax; ABG interprets and provides the
+bulletproof OS kernel; odd_* provides domain knowledge — types,
+decomposition, vocabulary, policy. **odd_* products do NOT own systems
+functionality.** If it executes, admits, derives, or gates, it is
+kernel space (ABG). If it names domain meaning, it is userland
+declaration (odd_*). The allocation test is instant: syscall or config
+file?
+
+Consequence already ticketed: the live binding's residual mechanism
+(the plan executor that runs sbt inside the plugin, prompt-plan
+compilation, the evaluator invocation loop) is unlawful residency under
+this law — T-209 (standard-path adoption) deletes it by migrating those
+interiors onto the T-205 kernel handlers; T-210 builds the earned-depth
+and mutation-kill mechanism IN the kernel from day one.
