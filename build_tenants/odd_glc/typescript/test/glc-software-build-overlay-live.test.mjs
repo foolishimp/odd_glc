@@ -1158,7 +1158,7 @@ const SCENARIOS = Object.freeze([
           "Use the prior source artifact as the API authority. Tests must call only symbols, owners, return shapes, and method signatures that are visibly declared in the admitted Scala source excerpts.",
           "Do not invent convenience facades. For example, do not call CdmeEngine.run unless the source artifact declares object CdmeEngine with run; bind to the generated engine API that actually exists.",
           "If a source API returns Either[CompileError, X], tests must pattern-match or project that Either; do not treat a single CompileError as a collection.",
-          "This vector is immediately compile-gated with sbt Test/compile after materialization. A source/test API mismatch is a vector failure.",
+          "Run sbt Test/compile YOURSELF after writing the files and fix any test-surface mismatch before returning (execution-default law: the framework runs nothing). Report the compile outcome truthfully in your assessment. A source/test API mismatch is a vector failure.",
           "Each file must be a ScalaTest AnyFunSuite or AnyFlatSpec-style test compatible with ScalaTest 3.2.x.",
           "Each CDME module, including cdme-core, must have at least one nontrivial assertion against the module implementation or declared contract DTOs.",
           "COMPLETENESS OVER COVERAGE: every emitted file must be syntactically complete (all braces closed, compilable on its own). If the full response would be large, write SHORTER test bodies (two or three focused assertions per module) rather than long ones — a truncated file fails the compile gate; a short complete file passes.",
@@ -1169,16 +1169,15 @@ const SCENARIOS = Object.freeze([
       {
         stage: "prepare_test_execution_surface",
         requiredPriorStages: ["derive_code_surface", "derive_component_test_surface"],
-        filesToProduce: ["test-execution-plan.json"],
+        filesToProduce: ["test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
-          "test-execution-plan.json must set command to sbt.",
-          "cwd must be \"build_tenants/scala_spark\".",
-          "The args must be [\"test\"].",
-          `If ${DATA_MAPPER_SCALA_JAVA11_HOME} exists, include env with JAVA_HOME set to ${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${DATA_MAPPER_TOOLCHAIN_BIN} so Spark/Hadoop test execution uses a compatible JDK and the build toolchain resolves.`,
-          "expectedTestPassCount must be 20, matching the admitted ScalaTest test-case count across the eight expected suites.",
+          "EXECUTION-DEFAULT LAW: YOU run the test suite inside this turn; the framework executes nothing.",
+          `Run sbt test yourself from cwd \"build_tenants/scala_spark\". If ${DATA_MAPPER_SCALA_JAVA11_HOME} exists, export JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and prefix PATH with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${DATA_MAPPER_TOOLCHAIN_BIN} so Spark/Hadoop test execution uses a compatible JDK and the build toolchain resolves.`,
+          "Then write only test-execution-result.json recording the TRUTHFUL observed result: command \"sbt\", args [\"test\"], cwd \"build_tenants/scala_spark\", the integer exit status you observed, the env you set, and a stdout tail.",
+          "expectedTestPassCount must be 20, matching the admitted ScalaTest test-case count across the eight expected suites; record observedTestPassCount from the XML reports your run produced.",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
           "assertedReturnValue must be \"data_mapper_full_sbt ok\".",
+          "A FAILING run is lawful evidence — record it truthfully; never fabricate status, counts, or reports (the reports on disk are verified mechanically against your claims).",
           "Do not use node, node:test, package.json, or JavaScript test files."
         ]
       },
@@ -1191,7 +1190,7 @@ const SCENARIOS = Object.freeze([
         ],
         instructions: [
           "Produce no files.",
-          "Accept the execution-result surface if the declared sbt test command actually ran and recorded command status, planSatisfied, observedTestPassCount, expectedTestPassCount, expected report paths, and assertedReturnValue.",
+          "Accept the execution-result surface if the WORKER-EXECUTED sbt test run recorded command status, planSatisfied, observedTestPassCount, expectedTestPassCount, expected report paths, and assertedReturnValue — the worker ran the suite in its own turn (execution-default law) and the reports on disk corroborate the claims.",
           "Do not require planSatisfied=true to close this vector; a failed test run is valid execution-result evidence and must carry forward to qualification and repair instead of triggering same-vector retry.",
           "A passing result still requires sbt test exited 0, all eight expected SBT XML test reports exist with zero failures/errors, observedTestPassCount is at least 20, planSatisfied is true, and assertedReturnValue is \"data_mapper_full_sbt ok\"."
         ]
@@ -1243,13 +1242,13 @@ const SCENARIOS = Object.freeze([
           "derive_code_surface",
           "derive_component_test_surface"
         ],
-        filesToProduce: ["test-execution-plan.json"],
+        filesToProduce: ["test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
-          "Use the repair application, prior test execution plan, source, and tests as authority.",
-          "Preserve command \"sbt\", cwd \"build_tenants/scala_spark\", args [\"test\"], expectedTestPassCount 20, expectedTestReportPaths, and assertedReturnValue \"data_mapper_full_sbt ok\".",
-          `Set env.JAVA_HOME to ${DATA_MAPPER_SCALA_JAVA11_HOME} and prefix env.PATH with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin when that path exists; this is a toolchain binding repair, not a test weakening.`,
+          "EXECUTION-DEFAULT LAW: YOU re-run the suite after the repair; the framework executes nothing.",
+          `Run sbt test yourself from cwd \"build_tenants/scala_spark\" (JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin when that path exists; toolchain binding, not test weakening).`,
+          "Then rewrite test-execution-result.json with the TRUTHFUL repaired result: command \"sbt\", args [\"test\"], the exit status you observed, expectedTestPassCount 20, observedTestPassCount from the reports, expectedTestReportPaths, and assertedReturnValue \"data_mapper_full_sbt ok\".",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
+          "A failing repaired run is lawful evidence and routes another repair pass; never fabricate.",
           "Do not use node, node:test, package.json, JavaScript test files, or a command wrapper script."
         ]
       },
@@ -1263,7 +1262,7 @@ const SCENARIOS = Object.freeze([
         ],
         instructions: [
           "Produce no files.",
-          "Accept when the repaired declared sbt test command ACTUALLY RAN with full recorded evidence: command status, planSatisfied, observedTestPassCount, expectedTestPassCount, expected report paths, assertedReturnValue, and env evidence. TRUTHFUL FAILING evidence is an acceptable result-surface derivation: the consequence stage routes a failing repaired execution back to the code vector for another repair pass (re-entry law); do not reject solely because tests fail.",
+          "Accept when the repaired WORKER-EXECUTED sbt test run recorded full evidence: command status, planSatisfied, observedTestPassCount, expectedTestPassCount, expected report paths, assertedReturnValue, and env evidence. TRUTHFUL FAILING evidence is an acceptable result-surface derivation: the consequence stage routes a failing repaired execution back to the code vector for another repair pass (re-entry law); do not reject solely because tests fail.",
           "Reject only when the evidence itself is malformed or incomplete: the command did not actually run, statuses/counts are missing or non-numeric, report paths are undeclared, or env evidence is absent.",
           "A PASSING repaired result (exit 0, all eight SBT XML reports, zero failures/errors, observedTestPassCount >= 20, planSatisfied true, assertedReturnValue \"data_mapper_full_sbt ok\") advances toward qualification; state pass/fail plainly in the review."
         ]
@@ -1716,9 +1715,12 @@ test("data-mapper full parity scenario targets Scala/SBT tenant depth, not JavaS
   );
   const executionStage = scenario.stagePlan.find((stage) => stage.stage === "prepare_test_execution_surface");
   assert.ok(executionStage);
-  assert.equal(executionStage.filesToProduce.includes("test-execution-plan.json"), true);
+  // T-209 D3: the execution stage produces the worker-executed RESULT,
+  // never a plan for the framework to run
+  assert.equal(executionStage.filesToProduce.includes("test-execution-result.json"), true);
+  assert.equal(executionStage.filesToProduce.includes("test-execution-plan.json"), false);
   assert.equal(
-    executionStage.instructions.some((instruction) => /command to sbt/u.test(instruction)),
+    executionStage.instructions.some((instruction) => /YOU run the test suite inside this turn/u.test(instruction)),
     true
   );
   assert.equal(
@@ -3004,10 +3006,29 @@ export function normalizeExecutionPlanShape(planInput) {
   return Object.freeze({ plan, issue: null });
 }
 
+// T-209 D3 (execution-default law): the framework EXECUTES NOTHING.
+// The worker runs the declared toolchain inside its own turn and writes
+// test-execution-result.json — its typed execution claim. This function
+// is F_D verification over materialized evidence only: it reads the
+// worker's result file and cross-checks the XML test reports ON DISK
+// (existence, failures, counts — mechanical file reads, no spawning).
+// The worker-claimed exit status is a stated residual until the
+// substrate's typed execution-result payload carries it (Stage C/D).
+async function executionResultFor(workspaceRoot) {
+  try {
+    return JSON.parse(await readFile(path.join(workspaceRoot, "test-execution-result.json"), "utf8"));
+  } catch (error) {
+    if (error.code === "ENOENT") {
+      return null;
+    }
+    throw error;
+  }
+}
+
 async function executePlannedScenario(workspaceRoot) {
-  const normalized = normalizeExecutionPlanShape(await executionPlanFor(workspaceRoot));
+  const normalized = normalizeExecutionPlanShape(await executionResultFor(workspaceRoot));
   if (normalized.issue === "missing_plan") {
-    throw new Error("Missing test-execution-plan.json for planned scenario execution");
+    throw new Error("Missing test-execution-result.json: the worker must RUN the declared command in its turn and record the typed result (execution-default law; the framework does not execute)");
   }
   if (normalized.issue !== null) {
     throw new Error(normalized.issue);
@@ -3017,10 +3038,21 @@ async function executePlannedScenario(workspaceRoot) {
     ? path.resolve(workspaceRoot, plan.cwd)
     : workspaceRoot;
   if (cwd !== workspaceRoot && !cwd.startsWith(workspaceRoot + path.sep)) {
-    throw new Error("Execution plan cwd escapes workspace: " + plan.cwd);
+    throw new Error("Execution result cwd escapes workspace: " + plan.cwd);
   }
-  const envOverrides = validatedPlanEnv(plan);
-  const result = runSync(commandFromPlan(plan.command), plan.args, cwd, envOverrides);
+  const claimedStatus = Number.isInteger(plan.status) ? plan.status : null;
+  if (claimedStatus === null) {
+    throw new Error("Execution result must record the integer exit status the worker observed");
+  }
+  const result = Object.freeze({
+    command: plan.command,
+    args: plan.args,
+    cwd,
+    status: claimedStatus,
+    stdout: typeof plan.stdout === "string" ? plan.stdout : "",
+    stderr: typeof plan.stderr === "string" ? plan.stderr : "",
+    workerExecuted: true
+  });
   const expectedTestReportPaths = Array.isArray(plan.expectedTestReportPaths)
     ? plan.expectedTestReportPaths
     : [];
@@ -3530,45 +3562,16 @@ export function resolveRepairReentryTargetRow() {
 }
 
 function deterministicPostMaterializationValidationForStage(input) {
-  if (
-    SCENARIO.kind !== "data_mapper_full_scala_sbt_test" ||
-    input.stageSpec.stage !== "derive_component_test_surface"
-  ) {
-    return null;
-  }
-  const cwd = path.join(input.workspaceRoot, "build_tenants", "scala_spark");
-  const result = runSync("sbt", ["Test/compile"], cwd);
-  const errorLines = compileErrorLines(result.stdout);
-  const attribution = attributeCompileErrorLines(errorLines);
-  const mainSourceErrors = attribution.mainSourceErrors;
-  const testSurfaceErrors = attribution.testSurfaceErrors;
-  const accepted =
-    result.status === 0 ||
-    (mainSourceErrors.length > 0 && testSurfaceErrors.length === 0);
-  return Object.freeze({
-    kind: "post_materialization_validation",
-    stage: input.stageSpec.stage,
-    authority: "F_D total function over admitted source/test candidate files",
-    command: result.command,
-    args: result.args,
-    cwd: result.cwd,
-    status: result.status,
-    stdout: result.stdout,
-    stderr: result.stderr,
-    accepted,
-    issues: accepted
-      ? (result.status === 0
-          ? []
-          : [
-              "sbt Test/compile exited " + String(result.status) +
-                " with MAIN-SOURCE errors only — accepted as upstream-defect evidence for the repair stages",
-              ...mainSourceErrors.slice(0, 16)
-            ])
-      : [
-          "sbt Test/compile exited " + String(result.status),
-          ...errorLines.slice(0, 16)
-        ]
-  });
+  // T-209 D3 (governance ruling 2026-07-09): the framework compile gate
+  // is RETIRED — it spawned sbt Test/compile from the binding, which is
+  // execution wearing an F_D badge. The compile obligation moved into
+  // the WORKER'S turn (the test-surface stage instructions require the
+  // worker to run sbt Test/compile itself and report truthfully); the
+  // pure attribution surfaces (compileErrorLines,
+  // attributeCompileErrorLines) remain exported for evaluator use over
+  // worker-reported output.
+  void input;
+  return null;
 }
 
 function scalaTestClassSummariesFromAssessment(assessment) {
