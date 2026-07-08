@@ -66,6 +66,14 @@ admission, evidence, fold, residual, continuation, replay, or re-entry truth.
 
 ## Non-Owned Surfaces
 
+`odd_glc` owns no systems functionality. GTL provides declarative
+syntax; ABG interprets it and provides the runtime kernel — everything
+that executes, admits, derives, or gates. `odd_glc` provides domain
+knowledge: types, decomposition, vocabulary, policy data, calibration,
+and read-only interpretation. A surface in this product that executes
+plans, runs processes, derives truth, or adjudicates completeness is
+misallocated mechanism, not product realization.
+
 `odd_glc` shall not own or republish:
 
 - generic graph functions or graph-function catalogs;
@@ -99,6 +107,15 @@ When a required GTL/ABG capability is `missing`, `placeholder`, `test_only`,
 query path, the dependent lifecycle binding shall defer, block, or reprice.
 `odd_glc` shall not compensate with a local compatibility ledger, wrapper,
 fold, residual store, retry controller, or executor.
+
+Execution-bearing lifecycle edges default to typed F_P worker
+traversal: the declared edge contract names the worker as the executor
+of the built unit, test suite, or generation plan, and the typed
+execution-result asset it returns; deterministic mechanical checks and
+ABG admission make the result truth. `odd_glc` may declare that
+contract; it may not implement an execution loop. F_D-specific
+execution interiors arrive only through the substrate's ratified
+annealing path, never as product code.
 
 ## Lifecycle Surface Classification
 
