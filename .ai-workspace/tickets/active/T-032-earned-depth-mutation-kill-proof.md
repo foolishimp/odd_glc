@@ -219,3 +219,45 @@ compilation, the evaluator invocation loop) is unlawful residency under
 this law — T-209 (standard-path adoption) deletes it by migrating those
 interiors onto the T-205 kernel handlers; T-210 builds the earned-depth
 and mutation-kill mechanism IN the kernel from day one.
+
+## Execution-default law (user ratification, 2026-07-09): typed F_P generics first, F_D by annealing
+
+The composed-program F_D execution interior is an OPTIMISATION traversal,
+not the default. The default is the GENERIC TYPED F_P TRAVERSAL: agentic
+workers are incredibly capable when their boundary APIs are strong types
+— an edge DECLARES (typed input contract: built unit refs + plan; typed
+output contract: execution result surface) that the F_P worker runs the
+built unit / UAT tests / data generation / whatever the prior stages
+delivered, and returns the TYPED execution result, which then flows
+through evaluation and consequence as normal. Worker capability does the
+work; strong types make it safe; admission makes it true (results remain
+candidate material until F_D mechanical checks — report presence,
+digests — evaluation, and carry-through admit them).
+
+F_D-specific traversals are built LATER through OPTIMISATION INSPECTION:
+the T-206 abg shell tuner (backlog; the consciousness loop) consumes
+replay + per-configuration cost and PROPOSES annealing stable mechanical
+traversals to F_D interiors as declaration drafts, ratified under §13.1
+with admitted equivalence contracts. Anneal from evidence, never design
+F_D preemptively — premature F_D interiors are the drift the boundary
+law forbids, approached from the other side.
+
+Consequences:
+- The CURRENT graph shape (execution-result vectors) is already right;
+  the defect is only WHO executes: today the odd_glc binding's plan
+  executor runs sbt (userland systems code — kernel-law violation).
+  It deletes toward the TYPED F_P WORKER (scenario data change: the
+  stage declares the worker executes and returns the typed result),
+  not toward premature kernel handlers. T-209's migration target is
+  corrected accordingly.
+- The mutation-kill loop likewise defaults to a typed F_P traversal
+  (worker applies mutants, runs suite per mutant, restores, returns the
+  typed kill matrix), with restore verified by F_D digest checks and
+  the matrix admitted as adversarial evidence. Kernel F_D kill-loop
+  handlers become a T-206-proposed annealing when replay shows the
+  traversal is stable.
+- T-210's kernel scope narrows to what only the kernel may own:
+  depth-map carrier admission, -034 earned-depth derivation, map-derived
+  kill obligations (the Godel projection), adversarial ledger
+  resolution, and the gates. No new kernel execution machinery in this
+  wave.
