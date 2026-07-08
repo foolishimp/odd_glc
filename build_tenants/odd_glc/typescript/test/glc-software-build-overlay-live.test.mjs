@@ -1152,6 +1152,7 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "derive_component_test_surface",
+        workerExecutes: true,
         requiredPriorStages: [
           "derive_code_surface",
           "derive_test_design_surface",
@@ -1173,6 +1174,7 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "prepare_test_execution_surface",
+        workerExecutes: true,
         requiredPriorStages: ["derive_code_surface", "derive_component_test_surface"],
         filesToProduce: ["test-execution-result.json"],
         instructions: [
@@ -1241,6 +1243,7 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "prepare_repaired_test_execution_surface",
+        workerExecutes: true,
         requiredPriorStages: [
           "apply_component_repair_surface",
           "derive_component_repair_schedule_surface",
@@ -1302,6 +1305,7 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "derive_mutation_kill_surface",
+        workerExecutes: true,
         requiredPriorStages: ["derive_depth_proof_map_surface"],
         filesToProduce: ["mutation-outcomes.json"],
         instructions: [
@@ -3846,7 +3850,14 @@ function transformInstructionText(stageSpec) {
       ];
   return [
     "Return only one JSON object. Do not include markdown or commentary.",
-    "Do not request or use any external helper, tool, shell, command, or subagent.",
+    // CAMPAIGN BUG #1 (run 1, vector 15): the blanket no-tool preamble
+    // predates the execution-default law and contradicted the stage's
+    // "YOU run sbt test yourself" — the worker lawfully refused and the
+    // retry budget burned on an impossible contract. Execution-bearing
+    // stages now carry the execution-default preamble instead.
+    stageSpec.workerExecutes === true
+      ? "EXECUTION-DEFAULT LAW: this stage REQUIRES you to run the declared toolchain commands yourself inside this turn (shell/tool use is lawful and expected for exactly the commands the stage instructions declare). Do not use subagents; run nothing beyond the declared commands; record results truthfully."
+      : "Do not request or use any external helper, tool, shell, command, or subagent.",
     "Resolve this vector from the ABG-rendered instruction envelope, runtime bindings, admitted prior artifacts, typed node contract, and stage policy data.",
     "ABG owns registry startup, graph-function selection, graph-call opening, traversal events, prompt rendering, closure, and replay truth.",
     "odd_glc supplies GTL declaration data: the reusable software-build graph overlay, node types, and startup binding.",

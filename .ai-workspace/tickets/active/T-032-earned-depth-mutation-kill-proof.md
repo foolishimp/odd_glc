@@ -428,3 +428,28 @@ STAGE D RUN 1 LAUNCHED: CODEX_LIVE_FP=1 pty-terminal, timeout 3600000,
 scenario data-mapper-full, monitor on events.jsonl. Campaign law:
 root-cause at the owner, ledger every bug with its fix, rc cut + repin
 per kernel fix, Review D replay audit per citable run.
+
+### Campaign ledger — BUG #1 (run 1, 2026-07-09)
+
+- RUN: 20260708T201347425Z_pid69405; blocked at vector 15
+  (prepare_test_execution_surface), retry budget exhausted after 11
+  attempts; terminal_reached blocked.
+- OBSERVED: the worker REFUSED honestly every attempt: "the required
+  sbt test run was not performed under the explicit no-tool/no-command
+  instruction; fabricated status... would violate the stage truth
+  requirement."
+- ROOT CAUSE (owner: odd_glc binding declaration): the prompt shell's
+  blanket preamble "Do not request or use any external helper, tool,
+  shell, command, or subagent" predates the execution-default law and
+  contradicted the stage's "YOU run sbt test yourself." The worker
+  obeyed the stricter rule — CORRECT behavior; the contract was
+  impossible. (Transport verified sound: codex exec --full-auto,
+  cwd=workspace.)
+- FIX: execution-bearing stage overrides carry workerExecutes: true;
+  the preamble is conditional — execution-bearing stages get the
+  execution-default preamble (run exactly the declared commands, record
+  truthfully), all others keep the no-tool law.
+- NOTE: the refusal itself is a positive gate-zero datum — the T-212
+  boundary context produced truthful refusal over fabrication, exactly
+  the anti-self-report behavior the constitution wants; the defect was
+  ours (contradictory law), not the worker's.
