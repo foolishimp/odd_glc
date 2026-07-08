@@ -5,13 +5,13 @@
   "substrate": {
     "productId": "abiogenesis",
     "packageName": "@abiogenesis/typescript-tenant",
-    "packageVersion": "4.5.0-rc.15",
-    "releaseTag": "v4.5.0-rc.15",
-    "sourceCommit": "899427eadd28d01722e5409a3fc356d24d178c09",
-    "snapshotCommit": "acb5bd63233bbdbf265b66c521b883dfc51c0e54",
-    "tarballSha256": "503daa9558957a03b31bcfecc82c6c41ca6eeeb909d84fdf7aad92c1cc924bf6",
-    "productToolchainManifestDigest": "455fe1f69802f4f0e85fd42730d260120564c9aade6c27d5d7cde6658ca8ff75",
-    "releaseSnapshotManifestSha256": "0da8340cc797651e92cfd6f5ecfc1908a5589311b4db54a93e530351b83ebbce"
+    "packageVersion": "4.5.0-rc.16",
+    "releaseTag": "v4.5.0-rc.16",
+    "sourceCommit": "0ad4495c97c9a93085e5598639d559a7fc921448",
+    "snapshotCommit": "e30b3cf57a7ec45f40d5f577353d24fb515efe60",
+    "tarballSha256": "5b70fac21dc9d689423aa1f3640294309c75a84a90354c46a1fbb91badbbfaed",
+    "productToolchainManifestDigest": "7463304e75541f9d15b84c662fdb63e209a0c4e6f354f2e859e2e8ead44b0839",
+    "releaseSnapshotManifestSha256": "40042f22c0033ac1c7e9377208097b4f672e5e9cc686457d704f5fa7e1539ed2"
   },
   "publicSurfaces": {
     "gtlRequirements": "./gtl/requirements",
@@ -159,10 +159,10 @@
   },
   "proofScope": {
     "phase": "phase_12_generic_lifecycle_interpretation",
-    "claim": "The tenant is proven against installed ABIogenesis 4.5.0-rc.15 public query facades and committed digest-pinned ABI proof artifacts for the closed route, Hello World ladder, live non-closed route, requirement graph projection, span-lineage recursion truth, executive pressure facts, and ABG 4.2 canonical Hello World startup registry, instruction-manifest, causal-carry, traversal truth. The canonical Hello World startup artifact remains a historical ABG 4.2 proof input inherited by later release records. Committed proof artifacts are read-only ABI truth inputs. The synthetic non-closed route artifact is retained only as engine-mechanics regression input; the live non-closed route artifact is the proof for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
+    "claim": "The tenant is proven against installed ABIogenesis 4.5.0-rc.16 public query facades and committed digest-pinned ABI proof artifacts for the closed route, Hello World ladder, live non-closed route, requirement graph projection, span-lineage recursion truth, executive pressure facts, and ABG 4.2 canonical Hello World startup registry, instruction-manifest, causal-carry, traversal truth. The canonical Hello World startup artifact remains a historical ABG 4.2 proof input inherited by later release records. Committed proof artifacts are read-only ABI truth inputs. The synthetic non-closed route artifact is retained only as engine-mechanics regression input; the live non-closed route artifact is the proof for downstream non-closed lifecycle consumption. odd_glc consumes artifacts as read-only ABI truth and does not emit, mint, admit, bind, fold, residualize, execute, supervise processes, schedule branches, project fan-in, invoke F_P, route continuation, mutate STDO surfaces, or resolve disposition authority locally."
   },
   "sourceDocuments": [
-    "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.5.0-rc.15/release-snapshot-manifest.json",
+    "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.5.0-rc.16/release-snapshot-manifest.json",
     "build_tenants/common/design/adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md",
     "build_tenants/common/design/ODD_GLC_ABG42_TYPED_STARTUP_BINDING.md"
   ]

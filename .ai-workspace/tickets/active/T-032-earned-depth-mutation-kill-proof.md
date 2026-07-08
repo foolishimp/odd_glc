@@ -529,3 +529,20 @@ per kernel fix, Review D replay audit per citable run.
   a worker-evidence surface). The kernel evidence chain is unaffected
   (closure requires worker-admitted payloads and identities), but
   future diagnosis must copy the tree instead of executing in place.
+
+### Campaign ledger — BUG #6 (runs 5-7, 2026-07-09; SUBSTRATE owner)
+
+- RUNS: the run-fix-run worker fixed compilation and reported precisely:
+  "the sandbox denies SBT ForkTests ServerSocket binding before the
+  declared command can execute forked tests" (Spark Netty likewise).
+  16-21 tests passed only when transports could bind; the worker
+  lawfully REFUSED to weaken tests or fake results it could not run.
+- ROOT CAUSE (owner: abiogenesis transport contract): --full-auto
+  hardcoded a socket-denying sandbox; the execution-default law
+  requires workers to run toolchains whose test transports bind local
+  sockets. Same class as ABG_TS_CODEX_MODEL (runtime truth rule 11).
+- FIX: rc.16 — ABG_TS_CODEX_SANDBOX env ingress replaces --full-auto
+  with --sandbox <level> when set; pinned in the substrate transport
+  unit lane; artifact-verified; installer-driven repin (provenance
+  4.5.0-rc.16). Campaign resumes with
+  ABG_TS_CODEX_SANDBOX=danger-full-access (local proving machine).
