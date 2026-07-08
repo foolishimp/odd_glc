@@ -2968,12 +2968,16 @@ export function normalizeExecutionPlanShape(planInput) {
   if (plan === null || typeof plan !== "object") {
     return Object.freeze({ plan: null, issue: "missing_plan" });
   }
-  if (
-    plan.testExecution !== null &&
-    typeof plan.testExecution === "object" &&
-    !Array.isArray(plan.testExecution)
-  ) {
-    plan = Object.freeze({ ...plan, ...plan.testExecution });
+  // T-031 BUG #3 (#14 family): workers lawfully vary the envelope key —
+  // run-3 nested the invocation under "execution" and every v21 retry
+  // re-read the same durable artifact into the same rejection. The
+  // envelope FAMILY is {testExecution|execution|plan}: one object whose
+  // command/args spread over the outer plan.
+  for (const envelopeKey of ["testExecution", "execution", "plan"]) {
+    const envelope = plan[envelopeKey];
+    if (envelope !== null && typeof envelope === "object" && !Array.isArray(envelope)) {
+      plan = Object.freeze({ ...plan, ...envelope });
+    }
   }
   if (
     Array.isArray(plan.command) &&
@@ -5316,6 +5320,22 @@ test("binding unit lane: pure surfaces — plan shape family (#14), compile attr
   const binding = await import(pathToFileURL(bindingPath).href);
   const { normalizeExecutionPlanShape, attributeCompileErrorLines, resolveRepairReentryTargetRow } = binding;
   assert.equal(typeof normalizeExecutionPlanShape, "function");
+  // T-031 BUG #3 pin: run-3's live artifact — invocation nested under
+  // "execution" — must normalize, not dead-end the retry lane.
+  const run3Shape = normalizeExecutionPlanShape({
+    stage: "prepare_repaired_test_execution_surface",
+    execution: {
+      command: "sbt",
+      cwd: "build_tenants/scala_spark",
+      args: ["test"],
+      env: { JAVA_HOME: "/opt/java" }
+    },
+    expectedTestPassCount: 20
+  });
+  assert.equal(run3Shape.issue, null);
+  assert.equal(run3Shape.plan.command, "sbt");
+  assert.deepEqual([...run3Shape.plan.args], ["test"]);
+  assert.equal(run3Shape.plan.cwd, "build_tenants/scala_spark");
   // #14 shapes: flat, nested envelope, argv array, malformed, missing
   const flat = normalizeExecutionPlanShape({ command: "sbt", args: ["test"], env: {} });
   assert.equal(flat.issue, null);

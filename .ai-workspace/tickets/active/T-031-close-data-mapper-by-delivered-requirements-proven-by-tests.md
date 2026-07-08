@@ -95,6 +95,19 @@ campaign_ledger:
     per-concern carry entries in the generated binding (hello-world
     fallback unchanged); spanned stages declare the depth-class union in
     proof-depth truth. Binding differential pins it. Suite 75/67/0.
+  - 2026-07-08 BUG #3 (odd_glc binding, FIXED, no substrate change) -
+    run 3 (rc.10, 20260708T011208293Z_pid91823) died gap_stop
+    retry_exhausted at the v21 proving edge: the v20 worker nested the
+    invocation under an "execution" envelope key in
+    test-execution-plan.json; normalizeExecutionPlanShape (#14 family)
+    unwrapped only "testExecution", so every retry re-read the same
+    durable artifact into the same contract_failure BEFORE dispatch -
+    retry cannot repair a durable input (repair/re-entry class, made
+    moot here). Fix: the envelope family is {testExecution|execution|
+    plan}; run-3's exact artifact shape pinned in the binding unit lane.
+    Positive run-3 evidence: BUG #2 fix live (v4 residual folds carry
+    non-empty sources: synthesized residual + scoped closure), pressure
+    in span prompts, 21/26 clean closes. Suite 76/68/0.
   - 2026-07-08 BUG #2 (ABI requirements route, FIXED, rc.10) - the
     multi-requirement coverage drop seam (the review-escrowed T-208
     finding #3) went load-bearing at the proving edge: run 2 (rc.9,
