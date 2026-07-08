@@ -1260,6 +1260,13 @@ const SCENARIOS = Object.freeze([
           ...DATA_MAPPER_SCALA_MAIN_FILES,
           ...DATA_MAPPER_SCALA_TEST_FILES
         ],
+        // BUG #7: only the typed result is REQUIRED back; repair surfaces
+        // are allowed-to-write (the worker edits them on disk)
+        optionalFilesToProduce: [
+          "build_tenants/scala_spark/project/build.properties",
+          ...DATA_MAPPER_SCALA_MAIN_FILES,
+          ...DATA_MAPPER_SCALA_TEST_FILES
+        ],
         instructions: [
           "EXECUTION-DEFAULT LAW (run-fix-run): YOU own this repair turn end to end; the framework executes nothing.",
           "ENVIRONMENTAL BINDING (campaign #12 class): if sbt itself cannot start or a launcher version cannot be retrieved, rewrite build_tenants/scala_spark/project/build.properties to sbt.version=1.11.7 (the locally provisioned launcher) BEFORE running — this is toolchain binding, not test weakening. If the launcher already works, do not touch build.properties.",
@@ -3309,8 +3316,12 @@ async function materializeAssessmentFiles(workspaceRoot, stageSpec, assessment) 
     await writeText(absolutePath, content);
     written.push(absolutePath);
   }
+  // campaign BUG #7: under run-fix-run the worker edits repair surfaces
+  // ON DISK in its own turn; optionalFilesToProduce entries are
+  // allowed-to-write, never required-to-return.
+  const optional = new Set(stageSpec.optionalFilesToProduce ?? []);
   for (const required of allowed) {
-    if (!seen.has(required)) {
+    if (!seen.has(required) && !optional.has(required)) {
       issues.push(\`Missing required file for stage \${stageSpec.stage}: \${required}\`);
     }
   }

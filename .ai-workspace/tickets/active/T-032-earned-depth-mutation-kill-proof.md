@@ -546,3 +546,17 @@ per kernel fix, Review D replay audit per citable run.
   unit lane; artifact-verified; installer-driven repin (provenance
   4.5.0-rc.16). Campaign resumes with
   ABG_TS_CODEX_SANDBOX=danger-full-access (local proving machine).
+
+### Campaign ledger — BUG #7 (run 8, 2026-07-09) + THE SUITE IS GREEN
+
+- RUN 8 (rc.16, socket-capable sandbox): THE WORKER WENT GREEN — sbt
+  test exit 0, all eight reports, 22 passing tests, zero failures. The
+  execution-default loop closed its first full cycle: run, diagnose,
+  fix, re-run, truthful result.
+- Remaining block was bookkeeping: the materialization F_D check
+  demanded EVERY filesToProduce entry be returned as contentLines, but
+  the run-fix-run worker edits repair surfaces ON DISK (its lawful
+  turn) and returns only the typed result.
+- FIX (owner: odd_glc binding): optionalFilesToProduce — allowed-to-
+  write, never required-to-return; v20 requires back only
+  test-execution-result.json.
