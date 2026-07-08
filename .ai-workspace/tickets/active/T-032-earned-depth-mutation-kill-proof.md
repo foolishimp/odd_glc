@@ -1,9 +1,17 @@
 ---
 id: T-032
 title: Earned depth — declared depth classes adjudicated from delivered proof, with mutation-kill adversarial verification
-type: implementation
-ticket_category: realization
+type: feature
+ticket_category: ordinary
 status: active
+change_intent: >-
+  Make depth an earned, replay-derived fact of the data-mapper lifecycle
+  instead of a self-satisfied declaration, delivered through intermediate
+  typed node types and adjudicated by the substrate.
+intake_source: user depth review of the T-031 closure run (2026-07-08) +
+  design dialogue ratifications (2026-07-08/09)
+triaged_at: 2026-07-09
+updated_at: 2026-07-09
 goal: >-
   Depth stops being a self-satisfied declaration. Every declared depth class
   per CDME requirement is EARNED from delivered evidence — a worker-declared
@@ -84,6 +92,15 @@ required_work:
   - Campaign: iterate live runs on the new substrate, root-cause builder
     bugs at their owners, ledger each with its fix, until closure per the
     law above.
+  - "CONSTITUTIONAL REPRICING (triage outcome 3c, owed before this ticket
+    claims closure): the kernel law, execution-default law, and
+    topology-discovery law must be ratified into their constitutional
+    homes — abiogenesis PRODUCT.md (reflective boundary /
+    probabilistic-compute sections) and/or the requirement families, and
+    odd_glc PRODUCT.md where it sharpens Non-Owned Surfaces — via their
+    own product_reprice/requirement_reprice intake. Ticket prose does not
+    outrank live specification; normalization by repetition is the named
+    STDO failure mode."
 proof_commands:
   - cd build_tenants/odd_glc/typescript && npm test
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=data-mapper-full node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT"
@@ -93,6 +110,46 @@ campaign_ledger: []
 ---
 
 # T-032: Earned Depth — Mutation-Kill Proof
+
+## Intake Triage (the entry — performed, not asserted)
+
+1. SUBSTANTIVE? Yes: closure semantics of the data-mapper lifecycle
+   change (depth moves from declaration to derivation); new typed
+   delivery assets enter the product graph.
+2. AFFECTED BOUNDARY: three layers, split by the kernel law —
+   (a) ABIogenesis substrate (derivation, admission, gates);
+   (b) odd_glc declarations (node types, vectors, contracts, scenario
+   data); (c) constitutional surfaces (three ratified laws currently
+   living only in this ticket's prose).
+3. UPWARD-PROPAGATION WALK (first missing layer per boundary):
+   (a) SUBSTRATE: live requirements EXIST
+   (REQ-R-ABG3-REQUIREMENT-PROOF-CARRY-THROUGH-032/-033/-034/-035/-036:
+   depth completeness shall be DERIVED, adversarial verification is
+   admitted evidence). No design decision realizes them — depth truth is
+   plan-declared today. First missing layer = DESIGN =>
+   change_class design_reframe, re-entry at the ABI design surface.
+   That work is NOT this ticket: it is abiogenesis T-210 (opened with
+   its own triage).
+   (b) odd_glc: PRODUCT.md already grants node-type/overlay/policy
+   declaration authority; declaring two new lifecycle node types and
+   vectors is realization under existing product truth =>
+   change_class design_reframe scoped to the tenant proof surface —
+   THIS ticket.
+   (c) CONSTITUTIONAL: the kernel law ("odd_* owns no systems
+   functionality"), the execution-default law (typed F_P generics
+   first; F_D by T-206 annealing with equivalence contracts), and the
+   topology-discovery law (obligations derive from admitted
+   intermediate assets) are SHARED LAW stated in ticket prose. Ticket
+   prose is commentary, not constitution. First missing layer =
+   PRODUCT/REQUIREMENTS => a named repricing obligation, ticketed
+   upstream (see required_work), not silently normalized here.
+4. CHANGE CLASS (this ticket): design_reframe; re_entry_point:
+   build_tenant_proof. Downstream span that must stay consistent:
+   scenario declarations -> generated binding -> live proof suite ->
+   T-031-class closure evidence.
+5. RELEASE SCOPE: depends on ABI T-210 landing in an rc cut
+   (artifact-verified) before the campaign resumes; this ticket shall
+   not compensate downstream for substrate gaps (campaign law).
 
 ## The gap (found by user depth review of the T-031 closure run)
 
