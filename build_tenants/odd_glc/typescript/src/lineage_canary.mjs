@@ -241,12 +241,56 @@ export function deriveRequirementLineageCanary(input) {
       });
     });
 
+  // T-032 Stage C: per-requirement EARNED-DEPTH rows — read-only replay
+  // derivation over admitted depth maps and mutation outcomes (the
+  // canary measures; the kernel adjudicates).
+  const depthRowsByRequirement = new Map();
+  const mutationByRequirement = new Map();
+  for (const event of events) {
+    if (event.kind === "depth_proof_map_admitted" && event.accepted === true) {
+      for (const row of event.rows ?? []) {
+        const bucket = depthRowsByRequirement.get(row.requirementId) ?? new Map();
+        // a later admitted map replaces the requirement's rows (kernel law)
+        if (!bucket.__stamped || bucket.__stamped !== event.replayIdentity) {
+          bucket.clear();
+          bucket.__stamped = event.replayIdentity;
+        }
+        bucket.set(row.depthClassRef, (bucket.get(row.depthClassRef) ?? 0) + 1);
+        depthRowsByRequirement.set(row.requirementId, bucket);
+      }
+    }
+    if (event.kind === "mutation_outcomes_admitted" && event.accepted === true) {
+      for (const row of event.rows ?? []) {
+        const entry = mutationByRequirement.get(row.requirementId) ?? { killed: 0, survived: 0 };
+        if (row.suiteExit !== 0) {
+          entry.killed += 1;
+        } else {
+          entry.survived += 1;
+        }
+        mutationByRequirement.set(row.requirementId, entry);
+      }
+    }
+  }
+  const depth = [...new Set([...depthRowsByRequirement.keys(), ...mutationByRequirement.keys()])]
+    .sort()
+    .map((requirementId) => {
+      const classes = depthRowsByRequirement.get(requirementId);
+      const mutation = mutationByRequirement.get(requirementId) ?? { killed: 0, survived: 0 };
+      return Object.freeze({
+        requirementId,
+        declaredDepthClassRefs: classes ? Object.freeze([...classes.keys()].filter((key) => key !== "__stamped").sort()) : Object.freeze([]),
+        mutantsKilled: mutation.killed,
+        mutantsSurvived: mutation.survived
+      });
+    });
+
   return Object.freeze({
     kind: "odd_glc_requirement_lineage_canary",
     role: "diagnostic_proof_instrumentation_read_only",
     requirements: Object.freeze(requirements),
     droppedRequirementIds: Object.freeze(droppedRequirementIds.sort()),
     pressureMissingRequirementIds: Object.freeze(pressureMissingRequirementIds.sort()),
+    depth: Object.freeze(depth),
     vectors: Object.freeze(vectors)
   });
 }

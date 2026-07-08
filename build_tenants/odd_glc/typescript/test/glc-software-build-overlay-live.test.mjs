@@ -927,7 +927,9 @@ const SCENARIOS = Object.freeze([
       "derive_uat_testcases_surface",
       "derive_component_test_surface",
       "derive_test_execution_result_surface",
-      "derive_repaired_test_execution_result_surface"
+      "derive_repaired_test_execution_result_surface",
+      "derive_depth_proof_map_surface",
+      "derive_mutation_kill_surface"
     ],
     cdmeRequirementDepthClassRefs: [
       "depth-class://positive",
@@ -1282,13 +1284,45 @@ const SCENARIOS = Object.freeze([
         ]
       },
       {
+        stage: "derive_depth_proof_map_surface",
+        requiredPriorStages: [
+          "derive_component_test_surface",
+          "derive_repaired_test_execution_result_surface",
+          "qualify_repaired_component_test_execution_surface"
+        ],
+        filesToProduce: ["depth-proof-map.json"],
+        instructions: [
+          "EARNED DEPTH (T-032): write only depth-proof-map.json — your declared mapping of executed ScalaTest test identities to depth classes per CDME requirement. Depth truth is DERIVED from this map plus the executed reports; declaration equality closes nothing.",
+          'Shape: {"rows":[{"requirementId":"REQ-CDME-<CONCERN>","depthClassRef":"depth-class://<class>","testIdentityRefs":["<exact ScalaTest test name as it appears in the XML report>"]}]}.',
+          `The requirement ids are exactly: ${JSON.stringify(["REQ-CDME-CORE","REQ-CDME-TOPOLOGY","REQ-CDME-EXECUTOR","REQ-CDME-ADJOINT","REQ-CDME-ACCOUNTING","REQ-CDME-ASSURANCE","REQ-CDME-FIDELITY","REQ-CDME-ENGINE"])}.`,
+          "Every requirement needs at least one row for EVERY required depth class: depth-class://positive, depth-class://negative, depth-class://boundary, depth-class://invariant, depth-class://integration. A missing class is a typed gap that blocks closure.",
+          "Each testIdentityRefs entry must be the EXACT test name string from your executed suite (it is verified mechanically against the XML reports on disk; an identity absent from the reports earns nothing).",
+          "Use the test names your component/UAT suites actually executed in the repaired run. If a depth class lacks a real executed test, write the missing test FIRST at the earlier stages' contract — never invent an identity."
+        ]
+      },
+      {
+        stage: "derive_mutation_kill_surface",
+        requiredPriorStages: ["derive_depth_proof_map_surface"],
+        filesToProduce: ["mutation-outcomes.json"],
+        instructions: [
+          "ADVERSARIAL DEPTH (T-032): for EVERY depth-proof-map row whose depthClassRef is depth-class://negative or depth-class://invariant, author one mutant that the row's tests SHOULD kill, and prove it.",
+          "EXECUTION-DEFAULT LAW: YOU run the whole loop inside this turn; the framework executes nothing.",
+          "Per mutant: (1) record the target file's sha256 as baselineDigest (format sha256:<64 lowercase hex>, e.g. via shasum -a 256); (2) apply a minimal semantic mutation (invert the guard, drop the rejection branch, weaken the invariant); (3) run sbt test from build_tenants/scala_spark with the same env binding as the execution stage; a KILLED mutant means the suite went RED (non-zero exit); (4) RESTORE the original file exactly and record its sha256 as restoreDigest — restoreDigest must equal baselineDigest or the outcome is rejected; (5) record the row truthfully.",
+          'Then write only mutation-outcomes.json: {"rows":[{"requirementId":"REQ-CDME-<CONCERN>","mutantIdentity":"<short description of the mutation>","testIdentityRefs":["<the exact test names that killed it>"],"suiteExit":<the exit status you observed>,"baselineDigest":"sha256:<hex>","restoreDigest":"sha256:<hex>"}]}.',
+          "A SURVIVED mutant (suite stayed green, exit 0) is a counterexample: record it truthfully — it blocks closure and routes repair pressure to strengthen the tests. NEVER fabricate a kill; the kernel mints evidence only from admitted truthful rows.",
+          "Leave the workspace exactly as you found it (all mutations restored)."
+        ]
+      },
+      {
         stage: "derive_test_run_archive_surface",
         requiredPriorStages: [
           "derive_test_execution_result_surface",
           "qualify_component_test_execution_surface",
           "derive_component_repair_schedule_surface",
           "derive_repaired_test_execution_result_surface",
-          "qualify_repaired_component_test_execution_surface"
+          "qualify_repaired_component_test_execution_surface",
+          "derive_depth_proof_map_surface",
+          "derive_mutation_kill_surface"
         ],
         filesToProduce: ["archive/test-run-archive.md"],
         instructions: [
@@ -3033,6 +3067,55 @@ export async function executionResultFor(workspaceRoot) {
   }
 }
 
+// T-032 Stage C: worker-authored depth payloads are lifted from the
+// workspace onto the result artifact for KERNEL admission (data
+// plumbing, not evidence assembly — admission and the evidence mint
+// happen substrate-side). Test identities are forwarded as evidence
+// refs ONLY after mechanical corroboration against the executed XML
+// reports on disk: an identity absent from the reports is not
+// forwarded and earns nothing.
+export async function workerDepthPayloadsFor(workspaceRoot) {
+  const readJsonOrNull = async (rel) => {
+    try {
+      return JSON.parse(await readFile(path.join(workspaceRoot, rel), "utf8"));
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        return null;
+      }
+      throw error;
+    }
+  };
+  const depthProofMap = await readJsonOrNull("depth-proof-map.json");
+  const mutationOutcomes = await readJsonOrNull("mutation-outcomes.json");
+  let verifiedTestIdentityRefs = [];
+  if (depthProofMap !== null && Array.isArray(depthProofMap.rows)) {
+    const reportBase = path.join(workspaceRoot, "build_tenants", "scala_spark");
+    let corpus = "";
+    for (const rel of SCENARIO.expectedTestReportPaths ?? []) {
+      try {
+        corpus += await readFile(path.join(reportBase, rel), "utf8");
+      } catch (error) {
+        if (error.code !== "ENOENT") {
+          throw error;
+        }
+      }
+    }
+    const identities = new Set();
+    for (const row of depthProofMap.rows) {
+      const refs = Array.isArray(row?.testIdentityRefs) ? row.testIdentityRefs : [];
+      for (const identity of refs) {
+        if (typeof identity === "string" && identity.length > 0 && corpus.includes(identity)) {
+          identities.add(identity);
+        }
+      }
+    }
+    verifiedTestIdentityRefs = [...identities].sort().map(
+      (identity) => "test-identity://" + encodeURIComponent(identity)
+    );
+  }
+  return Object.freeze({ depthProofMap, mutationOutcomes, verifiedTestIdentityRefs });
+}
+
 export async function executePlannedScenario(workspaceRoot) {
   const normalized = normalizeExecutionPlanShape(await executionResultFor(workspaceRoot));
   if (normalized.issue === "missing_plan") {
@@ -4674,7 +4757,10 @@ export const runtimeBinding = {
         }
         const dispatchTiming = timingRecord(dispatchStarted);
         const dispatchAccepted = assessment.accepted === true && assessment.evidenceAccepted === true;
+        const depthPayloads = await workerDepthPayloadsFor(workspaceRoot);
         const artifact = Object.freeze({
+          ...(depthPayloads.depthProofMap === null ? {} : { depthProofMap: depthPayloads.depthProofMap }),
+          ...(depthPayloads.mutationOutcomes === null ? {} : { mutationOutcomes: depthPayloads.mutationOutcomes }),
           artifactKind: "odd_glc_software_build_overlay_live_artifact",
           scenarioId: SCENARIO.scenarioId,
           scenarioKind: SCENARIO.kind,
@@ -4742,7 +4828,8 @@ export const runtimeBinding = {
                 GRAPH_REF,
                 GRAPH_FUNCTION_REF,
                 T030_STRENGTH_REF,
-                ...expectedNodeTypes
+                ...expectedNodeTypes,
+                ...depthPayloads.verifiedTestIdentityRefs
               ]
             })
           ),
@@ -5466,6 +5553,44 @@ test("binding unit lane: the verify-only execution path runs — honest results 
   assert.equal(red.failingReportPaths.length > 0, true);
 });
 
+test("binding unit lane: depth payload lift — corroborated identities forward, unverified do not, payloads ride the artifact (T-032 Stage C)", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  assert.equal(typeof binding.workerDepthPayloadsFor, "function");
+  const caseRoot = path.join(path.dirname(bindingPath), "..", "depth-lift", timestampId());
+  await mkdir(caseRoot, { recursive: true });
+  // one executed report on disk containing ONLY the verified identity
+  const reportRel = DATA_MAPPER_SCALA_TEST_REPORTS[0];
+  const reportPath = path.join(caseRoot, "build_tenants", "scala_spark", reportRel);
+  await mkdir(path.dirname(reportPath), { recursive: true });
+  await writeFile(reportPath, '<testsuite tests="2" failures="0" errors="0"><testcase name="CoreContractsSpec rejects malformed row"/></testsuite>', "utf8");
+  await writeFile(path.join(caseRoot, "depth-proof-map.json"), JSON.stringify({
+    rows: [
+      { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://negative", testIdentityRefs: ["CoreContractsSpec rejects malformed row"] },
+      { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://positive", testIdentityRefs: ["FabricatedSpec never executed"] }
+    ]
+  }), "utf8");
+  await writeFile(path.join(caseRoot, "mutation-outcomes.json"), JSON.stringify({
+    rows: [{ requirementId: "REQ-CDME-CORE", mutantIdentity: "m1", testIdentityRefs: ["CoreContractsSpec rejects malformed row"], suiteExit: 1, baselineDigest: "sha256:" + "ab".repeat(32), restoreDigest: "sha256:" + "ab".repeat(32) }]
+  }), "utf8");
+  const payloads = await binding.workerDepthPayloadsFor(caseRoot);
+  assert.equal(payloads.depthProofMap.rows.length, 2);
+  assert.equal(payloads.mutationOutcomes.rows.length, 1);
+  // corroboration law: the identity IN the report forwards; the
+  // fabricated one does not
+  assert.deepEqual(payloads.verifiedTestIdentityRefs, [
+    "test-identity://" + encodeURIComponent("CoreContractsSpec rejects malformed row")
+  ]);
+  // absence is inert
+  const emptyRoot = path.join(caseRoot, "empty");
+  await mkdir(emptyRoot, { recursive: true });
+  const none = await binding.workerDepthPayloadsFor(emptyRoot);
+  assert.equal(none.depthProofMap, null);
+  assert.equal(none.mutationOutcomes, null);
+  assert.deepEqual(none.verifiedTestIdentityRefs, []);
+});
+
 test("binding unit lane: #10b expansion behavior, P1b durable re-entry state, P2a uncapped attribution", async (t) => {
   const bindingPath = globalThis.__bindingUnitPath;
   if (!bindingPath) return t.skip("generation test did not run");
@@ -5531,9 +5656,10 @@ test("binding unit lane T-031: typed CDME requirements declared — 8 concerns, 
     "REQ-CDME-FIDELITY", "REQ-CDME-TOPOLOGY"
   ]);
   // spans cover the CREATING vectors (uat testcases, component tests) and
-  // the PROVING vectors (execution + repaired execution) — 4 each
+  // the PROVING vectors (execution + repaired execution + depth map +
+  // mutation kill — T-032 Stage C) — 6 each
   for (const span of bundle.spans) {
-    assert.equal(span.vectorIndexes.length, 4);
+    assert.equal(span.vectorIndexes.length, 6);
   }
   const entries = runtimeBinding.requirementProofCarryThroughStartup.entries;
   assert.equal(entries.length, 8);
@@ -5545,9 +5671,10 @@ test("binding unit lane T-031: typed CDME requirements declared — 8 concerns, 
     ["evidence-shape://cdme/accounting/unbalanced-detected-negative"]);
   assert.equal(accounting.contract.requiredDepthClassRefs.length, 5);
   assert.equal(accounting.contract.requiredDepthClassRefs.includes("depth-class://invariant"), true);
-  // every entry produces coverage on the repaired-execution proving edge
+  // T-032 Stage C: every entry produces coverage on the MUTATION-KILL
+  // proving edge (the last span stage — depth is earned there)
   for (const entry of entries) {
-    assert.match(entry.edge, /repaired_test_execution_result/u);
+    assert.match(entry.edge, /mutation_kill/u);
   }
   // hello-world scenarios keep the single generic requirement (fallback)
   const basic = SCENARIOS.find((row) => row.key === "basic-cli");

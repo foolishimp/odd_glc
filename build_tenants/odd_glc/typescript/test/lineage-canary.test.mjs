@@ -224,3 +224,26 @@ test("T-030 presence law is inert on pre-rc.8 replays (field absent) and on unre
   });
   assert.deepEqual([...unreached.pressureMissingRequirementIds], []);
 });
+
+test("T-032 canary depth rows: admitted maps and mutation outcomes project per-requirement earned-depth measures; rejected events are ignored", () => {
+  const canary = deriveRequirementLineageCanary({
+    events: [
+      { kind: "depth_proof_map_admitted", accepted: true, replayIdentity: "r1", rows: [
+        { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://negative", testIdentityRefs: ["a"] },
+        { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://positive", testIdentityRefs: ["b"] }
+      ] },
+      { kind: "depth_proof_map_admitted", accepted: false, replayIdentity: "r2", rows: [
+        { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://boundary", testIdentityRefs: ["c"] }
+      ] },
+      { kind: "mutation_outcomes_admitted", accepted: true, rows: [
+        { requirementId: "REQ-CDME-CORE", mutantIdentity: "m1", testIdentityRefs: ["a"], suiteExit: 1, baselineDigest: "sha256:x", restoreDigest: "sha256:x" },
+        { requirementId: "REQ-CDME-CORE", mutantIdentity: "m2", testIdentityRefs: ["a"], suiteExit: 0, baselineDigest: "sha256:x", restoreDigest: "sha256:x" }
+      ] }
+    ]
+  });
+  assert.equal(canary.depth.length, 1);
+  assert.equal(canary.depth[0].requirementId, "REQ-CDME-CORE");
+  assert.deepEqual([...canary.depth[0].declaredDepthClassRefs], ["depth-class://negative", "depth-class://positive"]);
+  assert.equal(canary.depth[0].mutantsKilled, 1);
+  assert.equal(canary.depth[0].mutantsSurvived, 1);
+});
