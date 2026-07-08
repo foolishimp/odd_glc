@@ -487,3 +487,23 @@ per kernel fix, Review D replay audit per citable run.
   toolchain-binding permission (rewrite build.properties to the
   provisioned launcher ONLY when the launcher itself cannot start) with
   build.properties added to its filesToProduce.
+
+### Campaign ledger — BUG #4 (run 4, 2026-07-09)
+
+- RUN: resume of pid69405; v20 worker applied the lawful toolchain
+  binding (build.properties -> 1.11.7 on disk, launcher started) and
+  recorded truthful red — but ZERO reports: the build fails at COMPILE
+  (the v19 repair was authored blind, before the launcher worked).
+  Same-vector retries can never converge: the v20 contract forbade
+  touching Scala code, and retry exhaustion terminal-blocks rather than
+  re-entering the code vectors.
+- ROOT CAUSE (owner: odd_glc scenario data): the repaired-execution
+  contract assumed one blind upstream repair pass suffices; under
+  execution-default the repair-verify split across vectors starves the
+  fixer of execution feedback.
+- FIX (the execution-default vision verbatim): v20 becomes a
+  RUN-FIX-RUN worker turn — the worker runs the suite, reads its own
+  compile/test failures, applies minimal Scala fixes (never weaken
+  assertions, never delete tests, never change module structure),
+  re-runs until green or truthful red; Scala main+test files enter its
+  produce list.

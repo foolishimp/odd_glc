@@ -1253,11 +1253,14 @@ const SCENARIOS = Object.freeze([
         ],
         filesToProduce: [
           "test-execution-result.json",
-          "build_tenants/scala_spark/project/build.properties"
+          "build_tenants/scala_spark/project/build.properties",
+          ...DATA_MAPPER_SCALA_MAIN_FILES,
+          ...DATA_MAPPER_SCALA_TEST_FILES
         ],
         instructions: [
-          "EXECUTION-DEFAULT LAW: YOU re-run the suite after the repair; the framework executes nothing.",
+          "EXECUTION-DEFAULT LAW (run-fix-run): YOU own this repair turn end to end; the framework executes nothing.",
           "ENVIRONMENTAL BINDING (campaign #12 class): if sbt itself cannot start or a launcher version cannot be retrieved, rewrite build_tenants/scala_spark/project/build.properties to sbt.version=1.11.7 (the locally provisioned launcher) BEFORE running — this is toolchain binding, not test weakening. If the launcher already works, do not touch build.properties.",
+          "Run the suite, READ the compile/test failures yourself, apply minimal fixes to the Scala main sources (and test sources only for genuine test defects — NEVER weaken an assertion to pass, never delete a test, never change the declared module structure), and re-run until green or until you are certain the remaining red is truthful and you cannot lawfully fix it this turn.",
           `Run sbt test yourself from cwd \"build_tenants/scala_spark\" (JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and PATH prefixed with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin when that path exists; toolchain binding, not test weakening).`,
           "Then rewrite test-execution-result.json with the TRUTHFUL repaired result: command \"sbt\", args [\"test\"], status (the integer exit status, field named exactly status), expectedTestPassCount 20, observedTestPassCount from the reports, expectedTestReportPaths, and assertedReturnValue \"data_mapper_full_sbt ok\".",
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
