@@ -4372,6 +4372,13 @@ function cdmeCarryEntryFor(row) {
     requiredDepthClassRefs: depthClassRefs,
     fdStrengthCriterionRefs: [T030_STRENGTH_REF],
     requiredAdversarialCheckRefs: [],
+    // T-032 Stage C: negative and invariant rows of the ADMITTED depth
+    // map project kill obligations (rc.15 kernel derives them; the
+    // mutation stage's admitted outcomes prove them)
+    adversarialDepthClassRefs: [
+      "depth-class://negative",
+      "depth-class://invariant"
+    ],
     evidenceRoleRefs: ["evidence-role://odd_glc/software-build/realization"],
     outputCandidateKinds: ["candidate-kind://odd_glc/software-build/artifact"],
     admissionTargetKinds: ["admission-target://abg/payload"],

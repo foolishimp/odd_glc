@@ -577,6 +577,34 @@ export const ODD_GLC_SOFTWARE_BUILD_NODE_TYPES = deepFreeze([
     tags: ["odd_glc", "software_build", "archive", "test_run"]
   },
   {
+    typeRef: "odd_glc.type.software.depth_proof_map",
+    nodeName: "SoftwareDepthProofMap",
+    surface: "SoftwareDepthProofMapAsset",
+    schemaRef: "odd_glc.schema.software.depth_proof_map",
+    assetKind: "software_depth_proof_map",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.depth_proof_map"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "depth", "proof_map"]
+  },
+  {
+    typeRef: "odd_glc.type.software.mutation_kill_outcomes",
+    nodeName: "SoftwareMutationKillOutcomes",
+    surface: "SoftwareMutationKillOutcomesAsset",
+    schemaRef: "odd_glc.schema.software.mutation_kill_outcomes",
+    assetKind: "software_mutation_kill_outcomes",
+    baseTypeRefs: ["odd_glc.type.lifecycle_artifact"],
+    overlayRefs: [
+      ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF,
+      "software-build.role.mutation_kill_outcomes"
+    ],
+    markov: ["materialized"],
+    tags: ["odd_glc", "software_build", "depth", "mutation_kill"]
+  },
+  {
     typeRef: "odd_glc.type.software.release_depth_parity",
     nodeName: "SoftwareReleaseDepthParity",
     surface: "SoftwareReleaseDepthParityAsset",
@@ -1030,13 +1058,32 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     requiredNodeTypes: ["odd_glc.type.software.test_execution_result", "odd_glc.type.software.component_test_execution_qualification"]
   },
   {
-    stage: "derive_test_run_archive_surface",
-    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-test-run-archive-surface",
+    stage: "derive_depth_proof_map_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-depth-proof-map-surface",
     sourceTypeRef: "odd_glc.type.software.component_test_execution_qualification",
     sourceName: "FullLifecycleRepairedComponentTestExecutionQualificationInput",
+    targetTypeRef: "odd_glc.type.software.depth_proof_map",
+    targetName: "FullLifecycleDepthProofMapSurface",
+    requiredNodeTypes: ["odd_glc.type.software.component_test_execution_qualification", "odd_glc.type.software.depth_proof_map"]
+  },
+  {
+    stage: "derive_mutation_kill_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-mutation-kill-surface",
+    sourceTypeRef: "odd_glc.type.software.depth_proof_map",
+    sourceName: "FullLifecycleDepthProofMapSurfaceInput",
+    targetTypeRef: "odd_glc.type.software.mutation_kill_outcomes",
+    targetName: "FullLifecycleMutationKillOutcomesSurface",
+    executeBeforeAssessment: true,
+    requiredNodeTypes: ["odd_glc.type.software.depth_proof_map", "odd_glc.type.software.mutation_kill_outcomes", "odd_glc.type.evidence_binding_view"]
+  },
+  {
+    stage: "derive_test_run_archive_surface",
+    vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-test-run-archive-surface",
+    sourceTypeRef: "odd_glc.type.software.mutation_kill_outcomes",
+    sourceName: "FullLifecycleMutationKillOutcomesSurfaceInput",
     targetTypeRef: "odd_glc.type.software.test_run_archive",
     targetName: "FullLifecycleTestRunArchiveSurface",
-    requiredNodeTypes: ["odd_glc.type.software.component_test_execution_qualification", "odd_glc.type.software.test_run_archive"]
+    requiredNodeTypes: ["odd_glc.type.software.mutation_kill_outcomes", "odd_glc.type.software.test_run_archive"]
   },
   {
     stage: "derive_release_depth_parity_surface",
