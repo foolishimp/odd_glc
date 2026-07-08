@@ -137,3 +137,39 @@ the binding self-adjudicating depth would repeat it one layer up. The
 odd_glc consumption rule decides the rest: a constructive function
 needed by multiple ODD domains is platform substrate. odd_glc keeps
 declarations, policy, and read-only interpretation.
+
+## Ratified delivery design (user, 2026-07-08): intermediate delivery node types
+
+Depth is derived through NEW INTERMEDIATE DELIVERY NODE TYPES — first-
+class typed lifecycle assets on the graph, not side artifacts:
+
+- `node-type://odd_glc/software-build/depth_proof_map` — the depth map is
+  a DELIVERED ASSET: its vector (derive_depth_proof_map_surface, after
+  component tests) cannot close without the worker materializing the
+  typed map (test -> depth class -> requirement) against its declared
+  output contract. The CDME requirement spans extend over this node, so
+  the map is authored under the same engine-derived pressure as the tests
+  themselves.
+- `node-type://odd_glc/software-build/mutation_kill_evidence` — the kill
+  evidence is a DELIVERED ASSET: its vector (after the proving edge)
+  materializes worker-authored mutant patches, executes the declared plan
+  per mutant through the EXISTING declared-plan F_D execution machinery
+  (the same machinery v16/v21 already ride), and delivers the
+  kill/survive report as the typed asset. Restore verified by digest.
+
+Why this shape wins: every mechanism the session proved now applies to
+depth for free — node-type admission gates the asset shape; vectors give
+depth its own traversal visibility (timing, folds, evidence per close);
+requirement spans put pressure on the depth artifacts' authoring
+prompts; carry-through coverage and folds gate on their delivery; the
+canary reports them like any other link. Nothing new is bolted onto the
+producer; the graph delivers, and ABG derives.
+
+The R(m) split stands: odd_glc declares the two node types, vectors,
+output contracts, and mutation-plan data (declaration surfaces it
+lawfully owns per PRODUCT.md); ABG owns the -034 earned-depth derivation
+over the ADMITTED map asset + executed-report identities, the mutation
+execution as declared F_D interiors, and adversarial admission
+(-035/-036). Depth becomes a delivery obligation of the traversal and a
+derivation obligation of the substrate — never a self-declaration of the
+binding.
