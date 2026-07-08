@@ -400,3 +400,31 @@ the stage, not an afterthought.
   REVIEW E: closure-claims audit — every closure_law clause cited to
   replay evidence; non_closure_conditions each checked and negated;
   ticket wording vs proof claims reconciled (migration checklist law).
+
+## Campaign Entry (2026-07-09, autonomous run)
+
+Stages A-C complete with independent reviews closed at their gates:
+- A (abiogenesis rc.15): mutationOutcomes carrier + kernel evidence
+  mint; T-212 constitutional bootstrap stamped into this workspace by
+  the INSTALLER (provenance == pin). Review A: 5/5 claims confirmed;
+  hostile-object totality fixed+pinned; replay-log-auth residual on
+  T-211.
+- B (odd_glc): framework executes nothing — verify-only executor over
+  worker-written test-execution-result.json + on-disk XML reports; sbt
+  compile gate retired; signature-pinned conformance test. Review B
+  REFUTED two claims (never-executed rewrite ReferenceError; evadable
+  count-based conformance) — both fixed, 4-case unit pin drives the
+  generated binding, scenario contract overrides worker claims.
+- C (odd_glc): depth_proof_map + mutation_kill_outcomes node types +
+  stages in the GTL plan; spans extend to the mutation proving edge;
+  payload lift with EXACT-testcase-name corroboration (review C HIGH:
+  substring matching earned fake depth end to end — fixed+pinned);
+  map-or-residual law (CDME templates declare NO depth classes — the
+  -038 escape is dead per entry); hardened mutation contract; canary
+  depth rows with dedupe. Review C also verified the kernel flow end to
+  end against installed rc.15 (eligible/residual/blocked/raw-refs-dead).
+
+STAGE D RUN 1 LAUNCHED: CODEX_LIVE_FP=1 pty-terminal, timeout 3600000,
+scenario data-mapper-full, monitor on events.jsonl. Campaign law:
+root-cause at the owner, ledger every bug with its fix, rc cut + repin
+per kernel fix, Review D replay audit per citable run.
