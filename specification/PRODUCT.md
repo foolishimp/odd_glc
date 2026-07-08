@@ -165,7 +165,7 @@ phase flow, closure rules, retry behavior, or software-domain policy as
 `T-027` are active for the remaining typed-startup parity wave. The current
 source checkpoint has an active TypeScript tenant under
 `build_tenants/odd_glc/typescript/` that reads and interprets admitted GTL/ABG
-truth from the installed ABIogenesis `4.5.0-rc.13` substrate.
+truth from the installed ABIogenesis `4.5.0-rc.14` substrate.
 
 That tenant is not an odd_glc runtime. It does not emit runtime events, admit
 evidence, mint admitted refs, select graph functions, invoke actors, fold
