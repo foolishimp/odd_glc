@@ -318,3 +318,67 @@ Consequences:
   kill obligations (the Godel projection), adversarial ledger
   resolution, and the gates. No new kernel execution machinery in this
   wave.
+
+## Execution Plan (ratified 2026-07-09; stages gated by independent self review)
+
+REVIEW PROTOCOL (applies after EVERY stage, before its gate passes):
+an INDEPENDENT adversarial review in fresh context — a reviewer agent
+(or external codex review) that receives only the stage's claims and
+the repos, never this session's reasoning. Method is probe-based, not
+diff-reading: forge the inputs the stage claims to reject, run them,
+verify the artifact/tarball content where a release is claimed. Every
+finding is fixed at its owner and the reviewer's probe is pinned as a
+differential BEFORE the stage gate passes. Precedent: seven review
+waves on the T-210/T-197/T-209 work each found real HIGHs (kind-tag
+admission, rows admission, surrogate ingress, evidence scoping, -036
+list presence, provider spoofing, split pin) — the review is part of
+the stage, not an afterthought.
+
+- STAGE A (abiogenesis): typed mutationOutcomes payload — admitted at
+  the artifact ingress (depth-map pattern); KERNEL mints kill/survived
+  evidence refs from admitted rows (killed = suite red AND
+  restoreDigest == baselineDigest; mismatch rejects); worker-attached
+  raw kill/survived refs no longer resolve. rc.15 cut,
+  artifact-verified, repin.
+  REVIEW A: probes — forged outcome rows (digest mismatch, missing
+  suite exit, surrogate strings); raw worker-attached kill refs must
+  not resolve; spoofed provider attribution; tarball grep for the
+  admission + minting surfaces; residual (worker-reported digests until
+  kernel-witnessed) stated in the note, not silently claimed.
+- STAGE B (odd_glc): D3 deletion — red conformance test first (no
+  subject-toolchain execution outside worker turns), then delete plan
+  executor / runForEvidence / sbt compile gate / framework evidence
+  assembly; execution stages become typed F_P worker turns returning
+  typed execution results. Gate: conformance green, suite green, 11.5B
+  walk.
+  REVIEW B: probes — grep-level and require-level scan for surviving
+  spawn capability (including wrappers — proxy prohibition); a
+  harness-assembled execution result must fail admission; the deleted
+  paths must not be reachable via any exported seam; binding generates
+  and node --checks.
+- STAGE C (odd_glc): declarations — derive_depth_proof_map_surface +
+  derive_mutation_kill_surface stages; adversarialDepthClassRefs per
+  concern; canary depth rows. Gate: harnessed differentials (hollow map
+  residual, survived mutant blocked, earned path eligible).
+  REVIEW C: probes — declaration-only check (no code in scenario data
+  beyond declared instructions/contracts); a scenario missing the map
+  stage folds residual not eligible; canary rows derive from replay
+  only (read-only law); instruction text does not leak tool mechanics
+  into F_D surfaces.
+- STAGE D: the live proving campaign — monitor events.jsonl,
+  root-cause builder bugs at their owner, ledger each with its fix,
+  rc cut + repin per kernel fix, until the closure law holds (8/8
+  folds, every required class earned with test identities mechanically
+  present in reports, zero survived mutants, provenance-gated evidence,
+  canary clean). Mutation stage gets its own timeout budget.
+  REVIEW D (per citable run AND at campaign end): replay-derived audit
+  in fresh context — recompute the canary + coverage projections from
+  events.jsonl independently; verify no scenario compensation for
+  substrate gaps (non-closure condition); verify each ledgered bug's
+  differential exists upstream; verify the depth map's test identities
+  against the actual report XML files.
+- STAGE E: closure + record — T-032 closure evidence + campaign ledger
+  from replay; T-209 closes with the 11.5B audit; Phase 4 marked done.
+  REVIEW E: closure-claims audit — every closure_law clause cited to
+  replay evidence; non_closure_conditions each checked and negated;
+  ticket wording vs proof claims reconciled (migration checklist law).
