@@ -173,3 +173,31 @@ execution as declared F_D interiors, and adversarial admission
 (-035/-036). Depth becomes a delivery obligation of the traversal and a
 derivation obligation of the substrate — never a self-declaration of the
 binding.
+
+## Topology-discovery law (user, 2026-07-08): the Godel computation requirement
+
+The intermediate computation DISCOVERS the topology. The proof surface's
+shape is not knowable from the initial declarations: which mutants must
+exist depends on the delivered tests; which tests must exist depends on
+the delivered code; which depth rows are satisfiable depends on the
+delivered map. Static enumeration of obligations at startup is an
+attempt to prove completeness from inside the initial axiom set — the
+exact defect that made depthComplete hollow. Each intermediate delivery
+node EXTENDS the axiom set, and completeness is adjudicated against the
+extended system, never the initial one.
+
+Design consequence (binding on T-032/T-210 realization):
+- The mutation-kill obligation SET is not scenario data. It is DERIVED
+  by ABG from the ADMITTED depth-map asset: one kill obligation per
+  mapped negative/invariant row. Cardinality unknown at startup,
+  discovered at map admission — obligations mint from admitted
+  intermediate truth exactly as requirement pressure does.
+- The kill vector's contract is parameterized by the admitted map; its
+  fold gates on the DISCOVERED obligation set, not a declared count.
+- The recursion continues lawfully: a survived mutant is discovered
+  topology too — it projects a repair/re-entry obligation through the
+  existing foldback/re-entry machinery, not a static retry.
+- The engine's existing unfolding-topology machinery (refinement
+  boundaries, frame-local publication, zoom frames, graph-span foldback,
+  Godel checkpoints per T-205 phase law) is the lawful home; no new
+  ontology.
