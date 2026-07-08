@@ -3,7 +3,7 @@ id: T-031
 title: Close the data-mapper by delivered requirements proven by exhaustive typed UAT
 type: implementation
 ticket_category: realization
-status: active
+status: completed
 goal: >-
   Iterate and debug the full data-mapper live campaign until it closes BY
   actual delivery of requirements — requirements met by code delivery,
@@ -85,7 +85,12 @@ proof_commands:
   - cd build_tenants/odd_glc/typescript && npm test
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=data-mapper-full node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT"
   - git diff --check
-closure_evidence: []
+closure_evidence:
+  - "CLOSURE RUN (run 4, citable): test_runs/glc_software_build_overlay_live/data-mapper-full/20260708T014201296Z_pid83336 - installed ABIogenesis 4.5.0-rc.10, single genesis-ts start --until converged, 26/26 vectors closed in 29.5 min, harness proof green with presence law asserted."
+  - "REQUIREMENTS MET BY CODE DELIVERY PROVEN BY TESTS, per requirement from replay alone - for EVERY one of the 8 typed CDME requirements: pressure entered ALL FOUR span prompts (2 manifests each: transform + evaluate; 56 engine-derived refs per manifest); interim folds carried no_close_preserved with synthesized-residual sources (conservation) from the UAT-authoring close to the proving edge; the v21 worker delivered and executed; carry-through admitted ELIGIBLE coverage per concern; final folds ALL SATISFIED (replay Counter: satisfied x8)."
+  - "SUBJECT TESTS: 8 ScalaTest report XMLs across the 8 CDME modules, 18 tests, 0 failures/errors, executed by sbt through the declared execution plan; the 8 modules built from specification under typed requirement pressure."
+  - "CANARY: droppedRequirementIds [], pressureMissingRequirementIds [], enteringPromptRefCounts [2,2,2,2] per requirement."
+  - "NEGATIVE CONTROLS ACROSS THE CAMPAIGN: run 1 (rc.8) proved silence at spanned closes (BUG #1); run 2 (rc.9) proved eligible coverage dropped by the fold seam (BUG #2); run 3 (rc.10) proved the retry dead-end on a durable malformed-envelope artifact (BUG #3); run 4 proves the repaired chain end to end. Soak run (rc.7) pinned the uncitable baseline (entering [0])."
 campaign_ledger:
   - 2026-07-08 TYPED-UAT DECLARATIONS LANDED - 8 per-CDME-concern
     requirements as scenario data (REQ-CDME-CORE..ENGINE), each with
@@ -189,3 +194,30 @@ F_P owns every semantic judgment: does this test actually prove the
 invariant; is this negative case a real refutation. The substrate
 harnesses the LLM — it never replaces it. Any fix that makes F_D read
 Scala semantics is the #1 failure class and is non-closure here.
+
+## T-031 CLOSED (2026-07-08)
+
+The closure law is met in full, replay-derived, on run 4
+(20260708T014201296Z_pid83336, ABIogenesis 4.5.0-rc.10):
+
+requirements declared (8 typed CDME concerns, positive+negative shapes,
+5 depth classes) -> engine-derived pressure in the authoring prompts ->
+code + tests delivered by F_P workers -> sbt executed (18 subject tests
+green across 8 modules) -> eligible coverage admitted per concern ->
+ALL EIGHT requirement folds SATISFIED. Convergence was necessary but
+never sufficient; the folds are the closure fact.
+
+Campaign economics: 4 citable attempts + 1 soak; 3 builder bugs found
+live, each root-caused at its lawful owner (ABI span algebra rc.9, ABI
+route fold seam rc.10, odd_glc binding envelope family), each
+differentially pinned, zero scenario compensation, zero F_D drift into
+F_P judgment. The typed-UAT declarations (the user design: process
+pressure from the artifact being created, as a feature of strongly
+typed UAT requirements) were the instrument that exposed all three.
+
+Residuals on their owning surfaces: T-208 escrow (ABI commonization;
+finding #3 was consumed by BUG #2's fix), ABI installer valibot payload
+gap (repaired per install, unticketed upstream), evidence-binding
+attribution in multi-requirement scope (runtime evidence binds per-edge,
+not per-requirement - lawful today, named for the requirements-algebra
+board), 16x route-entry declaration re-emission (noise, not distortion).
