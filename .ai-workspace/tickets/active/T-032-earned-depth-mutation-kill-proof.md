@@ -585,3 +585,24 @@ per kernel fix, Review D replay audit per citable run.
   worker dispatch — nobody could write mutation-outcomes.json.
 - FIX (owner: odd_glc GTL declaration): flag removed; the mutation
   campaign is a worker turn per the execution-default law.
+
+### Campaign ledger — BUG #10 (run 11, 2026-07-09; KERNEL owner) + 16/16 KILLED
+
+- RUN 11: THE MUTATION CAMPAIGN CONVERGED — mutation_outcomes_admitted
+  accepted, 16 rows, 16 KILLED, ZERO SURVIVED, zero issues. The full
+  earned-depth delivery chain ran live: 48-row map admitted + verified
+  identities + admitted kill outcomes.
+- But all 8 folds were RESIDUAL: the carry event's own ADMISSION
+  rejected (missing_depth_obligation_class) — the envelope admission
+  still enforced declaration-equality depth law, rejecting declared []
+  (the map-or-residual design) BEFORE earned depth could derive;
+  coverage collapsed to owed-but-missing residual synthesis
+  (proof_obligation_gap / proof_strength_not_admitted artifacts of the
+  rejected-admission path).
+- ROOT CAUSE (owner: abiogenesis kernel): the T-210 migration left one
+  seam un-demoted — envelope depth-class declaration completeness as
+  ADMISSION law.
+- FIX: rc.17 — the admission check removed (declared classes are
+  template data; the projector's DERIVED truth owns depth closure);
+  mixed-law pin repriced per the migration checklist; artifact-verified;
+  installer repin.
