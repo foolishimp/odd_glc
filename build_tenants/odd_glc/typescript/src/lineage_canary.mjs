@@ -260,14 +260,12 @@ export function deriveRequirementLineageCanary(input) {
       }
     }
     if (event.kind === "mutation_outcomes_admitted" && event.accepted === true) {
+      // dedupe by mutant identity (the same outcomes file rides every
+      // later vector's artifact); the latest admitted row wins
       for (const row of event.rows ?? []) {
-        const entry = mutationByRequirement.get(row.requirementId) ?? { killed: 0, survived: 0 };
-        if (row.suiteExit !== 0) {
-          entry.killed += 1;
-        } else {
-          entry.survived += 1;
-        }
-        mutationByRequirement.set(row.requirementId, entry);
+        const byMutant = mutationByRequirement.get(row.requirementId) ?? new Map();
+        byMutant.set(row.mutantIdentity, row.suiteExit !== 0);
+        mutationByRequirement.set(row.requirementId, byMutant);
       }
     }
   }
@@ -275,12 +273,17 @@ export function deriveRequirementLineageCanary(input) {
     .sort()
     .map((requirementId) => {
       const classes = depthRowsByRequirement.get(requirementId);
-      const mutation = mutationByRequirement.get(requirementId) ?? { killed: 0, survived: 0 };
+      const byMutant = mutationByRequirement.get(requirementId) ?? new Map();
+      let killed = 0;
+      let survived = 0;
+      for (const wasKilled of byMutant.values()) {
+        if (wasKilled) { killed += 1; } else { survived += 1; }
+      }
       return Object.freeze({
         requirementId,
         declaredDepthClassRefs: classes ? Object.freeze([...classes.keys()].filter((key) => key !== "__stamped").sort()) : Object.freeze([]),
-        mutantsKilled: mutation.killed,
-        mutantsSurvived: mutation.survived
+        mutantsKilled: killed,
+        mutantsSurvived: survived
       });
     });
 

@@ -1307,7 +1307,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "ADVERSARIAL DEPTH (T-032): for EVERY depth-proof-map row whose depthClassRef is depth-class://negative or depth-class://invariant, author one mutant that the row's tests SHOULD kill, and prove it.",
           "EXECUTION-DEFAULT LAW: YOU run the whole loop inside this turn; the framework executes nothing.",
-          "Per mutant: (1) record the target file's sha256 as baselineDigest (format sha256:<64 lowercase hex>, e.g. via shasum -a 256); (2) apply a minimal semantic mutation (invert the guard, drop the rejection branch, weaken the invariant); (3) run sbt test from build_tenants/scala_spark with the same env binding as the execution stage; a KILLED mutant means the suite went RED (non-zero exit); (4) RESTORE the original file exactly and record its sha256 as restoreDigest — restoreDigest must equal baselineDigest or the outcome is rejected; (5) record the row truthfully.",
+          "Per mutant: (1) confirm the FULL suite is green first (a red baseline invalidates every kill claim); (2) record the sha256 of THE FILE YOU WILL MUTATE as baselineDigest (format sha256:<64 lowercase hex>, e.g. via shasum -a 256) and name that file path inside mutantIdentity; (3) apply a minimal SEMANTIC mutation to PRODUCTION code (invert the guard, drop the rejection branch, weaken the invariant) — never mutate a test file and never a comment; (4) run the FULL sbt test suite from build_tenants/scala_spark with the same env binding as the execution stage; a KILLED mutant means the suite went RED (non-zero exit); (5) read the XML reports from the mutant run and set testIdentityRefs to the test names that ACTUALLY FAILED (they must be tests from your depth map row — if different tests failed, record what actually happened); (6) RESTORE the original file exactly and record its sha256 as restoreDigest — restoreDigest must equal baselineDigest or the outcome is rejected; (7) record the row truthfully.",
           'Then write only mutation-outcomes.json: {"rows":[{"requirementId":"REQ-CDME-<CONCERN>","mutantIdentity":"<short description of the mutation>","testIdentityRefs":["<the exact test names that killed it>"],"suiteExit":<the exit status you observed>,"baselineDigest":"sha256:<hex>","restoreDigest":"sha256:<hex>"}]}.',
           "A SURVIVED mutant (suite stayed green, exit 0) is a counterexample: record it truthfully — it blocks closure and routes repair pressure to strengthen the tests. NEVER fabricate a kill; the kernel mints evidence only from admitted truthful rows.",
           "Leave the workspace exactly as you found it (all mutations restored)."
@@ -3090,21 +3090,30 @@ export async function workerDepthPayloadsFor(workspaceRoot) {
   let verifiedTestIdentityRefs = [];
   if (depthProofMap !== null && Array.isArray(depthProofMap.rows)) {
     const reportBase = path.join(workspaceRoot, "build_tenants", "scala_spark");
-    let corpus = "";
+    // review C HIGH: corroboration matches EXACT <testcase name="..."/>
+    // attribute values — raw substring matching let XML markup,
+    // attribute fragments, and substrings of other tests' names
+    // corroborate falsely and earn kernel depth end to end.
+    const executedNames = new Set();
     for (const rel of SCENARIO.expectedTestReportPaths ?? []) {
+      let contents;
       try {
-        corpus += await readFile(path.join(reportBase, rel), "utf8");
+        contents = await readFile(path.join(reportBase, rel), "utf8");
       } catch (error) {
         if (error.code !== "ENOENT") {
           throw error;
         }
+        continue;
+      }
+      for (const match of contents.matchAll(/<testcase[^>]*?\\sname="([^"]*)"/gu)) {
+        executedNames.add(match[1]);
       }
     }
     const identities = new Set();
     for (const row of depthProofMap.rows) {
       const refs = Array.isArray(row?.testIdentityRefs) ? row.testIdentityRefs : [];
       for (const identity of refs) {
-        if (typeof identity === "string" && identity.length > 0 && corpus.includes(identity)) {
+        if (typeof identity === "string" && identity.length > 0 && executedNames.has(identity)) {
           identities.add(identity);
         }
       }
@@ -4487,7 +4496,12 @@ function cdmeCarryEntryFor(row) {
       negativeEvidenceShapeRefs: [row.negativeShapeRef],
       proofStrengthRefs: ["proof-strength://odd_glc/software-build/execution"],
       depthPolicyRefs: ["proof-depth-policy://cdme/typed-uat"],
-      depthClassRefs,
+      // review C MEDIUM: declare NO depth classes — an unmapped
+      // requirement then has declared [] against 5 required classes and
+      // folds residual mechanically; only an ADMITTED depth map (earned
+      // truth) can close depth. The -038 transitional escape (empty or
+      // partial map -> plan-declared equality) is dead for CDME entries.
+      depthClassRefs: [],
       proofStrengthAdmissionRefs: [T030_STRENGTH_REF],
       fdStrengthCriterionRefs: [T030_STRENGTH_REF],
       adversarialAttemptRefs: [],
@@ -5580,6 +5594,21 @@ test("binding unit lane: depth payload lift — corroborated identities forward,
   // corroboration law: the identity IN the report forwards; the
   // fabricated one does not
   assert.deepEqual(payloads.verifiedTestIdentityRefs, [
+    "test-identity://" + encodeURIComponent("CoreContractsSpec rejects malformed row")
+  ]);
+  // review C HIGH pinned: markup, attribute fragments, classnames, and
+  // SUBSTRINGS of real test names never corroborate — only exact
+  // <testcase name> values do
+  await writeFile(path.join(caseRoot, "depth-proof-map.json"), JSON.stringify({
+    rows: [
+      { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://negative", testIdentityRefs: ["testsuite"] },
+      { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://boundary", testIdentityRefs: ['failures="0"'] },
+      { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://invariant", testIdentityRefs: ["rejects malformed row"] },
+      { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://integration", testIdentityRefs: ["CoreContractsSpec rejects malformed row"] }
+    ]
+  }), "utf8");
+  const adversarial = await binding.workerDepthPayloadsFor(caseRoot);
+  assert.deepEqual(adversarial.verifiedTestIdentityRefs, [
     "test-identity://" + encodeURIComponent("CoreContractsSpec rejects malformed row")
   ]);
   // absence is inert
