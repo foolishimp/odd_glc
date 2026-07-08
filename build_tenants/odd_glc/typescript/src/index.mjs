@@ -1073,7 +1073,9 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     sourceName: "FullLifecycleDepthProofMapSurfaceInput",
     targetTypeRef: "odd_glc.type.software.mutation_kill_outcomes",
     targetName: "FullLifecycleMutationKillOutcomesSurface",
-    executeBeforeAssessment: true,
+    // campaign BUG #9: executeBeforeAssessment means DETERMINISTIC
+    // assessment with NO worker dispatch in this binding — the mutation
+    // campaign is a WORKER TURN (execution-default law)
     requiredNodeTypes: ["odd_glc.type.software.depth_proof_map", "odd_glc.type.software.mutation_kill_outcomes", "odd_glc.type.evidence_binding_view"]
   },
   {

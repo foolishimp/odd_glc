@@ -572,3 +572,16 @@ per kernel fix, Review D replay audit per citable run.
   FAMILY (the BUG #2 class): {env.JAVA_HOME | toolchainBinding.javaHome}.
 - FIX: the assessment accepts the family; executePlannedScenario flows
   the worker's toolchainBinding claim through as evidence.
+
+### Campaign ledger — BUG #9 (run 10, 2026-07-09) + FIRST DEPTH MAP ADMITTED
+
+- RUN 10: vectors 21-23 CLOSED. THE FIRST LIVE DEPTH-PROOF MAP WAS
+  ADMITTED: accepted, zero issues, 48 rows — all 8 CDME requirements x
+  all 5 required classes (+ a volunteered semantic-adequacy class). The
+  Goedel projection discovers 16 kill obligations.
+- Blocked at v24: the GTL stage declaration carried
+  executeBeforeAssessment: true (copied from the execution stages), and
+  in this binding that flag means DETERMINISTIC F_D assessment with NO
+  worker dispatch — nobody could write mutation-outcomes.json.
+- FIX (owner: odd_glc GTL declaration): flag removed; the mutation
+  campaign is a worker turn per the execution-default law.
