@@ -3246,6 +3246,11 @@ export async function executePlannedScenario(workspaceRoot) {
     kind: SCENARIO.kind,
     stdout: expectedStdout ?? result.stdout,
     commands: [result],
+    // BUG #8: the worker's toolchain-binding claim flows through as
+    // evidence (field family with envOverrides)
+    toolchainBinding: plan.toolchainBinding !== null && typeof plan.toolchainBinding === "object"
+      ? Object.freeze({ ...plan.toolchainBinding })
+      : null,
     planSatisfied,
     expectedTestPassCount: expectedPassCount,
     observedTestPassCount: observedPassCount,
@@ -3530,8 +3535,15 @@ function deterministicExecutionAssessmentFor(input) {
     ? execution.executionIssues
       : [];
   const repairedExecutionStage = input.expectedStage === "derive_repaired_test_execution_result_surface";
+  // campaign BUG #8: JDK-binding evidence is a FIELD FAMILY — workers
+  // lawfully record it as env.JAVA_HOME or toolchainBinding.javaHome
+  const claimedJavaHome =
+    execution.envOverrides?.JAVA_HOME ??
+    execution.envOverrides?.javaHome ??
+    execution.toolchainBinding?.javaHome ??
+    null;
   const repairedEnvSatisfied = repairedExecutionStage !== true ||
-    execution.envOverrides?.JAVA_HOME === ${JSON.stringify(DATA_MAPPER_SCALA_JAVA11_HOME)};
+    claimedJavaHome === ${JSON.stringify(DATA_MAPPER_SCALA_JAVA11_HOME)};
   const accepted =
     commandStatuses.length > 0 &&
     commandStatuses.every((status) => Number.isInteger(status) || status === null) &&

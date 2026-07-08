@@ -560,3 +560,15 @@ per kernel fix, Review D replay audit per citable run.
 - FIX (owner: odd_glc binding): optionalFilesToProduce — allowed-to-
   write, never required-to-return; v20 requires back only
   test-execution-result.json.
+
+### Campaign ledger — BUG #8 (run 9, 2026-07-09)
+
+- RUN 9: vector 20 CLOSED (green suite verified end to end). Blocked at
+  v21: the F_D assessment demanded env evidence as envOverrides.JAVA_HOME
+  while the worker truthfully recorded toolchainBinding.javaHome —
+  everything else green (statuses [0], 22>=20, planSatisfied, no
+  issues).
+- ROOT CAUSE (owner: odd_glc binding): JDK-binding evidence is a FIELD
+  FAMILY (the BUG #2 class): {env.JAVA_HOME | toolchainBinding.javaHome}.
+- FIX: the assessment accepts the family; executePlannedScenario flows
+  the worker's toolchainBinding claim through as evidence.
