@@ -95,6 +95,21 @@ campaign_ledger:
     per-concern carry entries in the generated binding (hello-world
     fallback unchanged); spanned stages declare the depth-class union in
     proof-depth truth. Binding differential pins it. Suite 75/67/0.
+  - 2026-07-08 BUG #1 (ABI span algebra, FIXED, rc.9) - multi-vector
+    spans failed to cover their own BOUNDARY vectors: spanCoversEdge
+    corroborated the whole-span endpoint nodes against every member edge,
+    so only interior vectors matched; the requirement route emitted ZERO
+    fold truth at the creating and proving edges (gate-1 not_ready,
+    silently swallowed by the runner). Found live on the first typed-UAT
+    citable attempt (rc.8, run 20260708T000318273Z_pid76036) within five
+    vector closes: pressure entered v4 manifests (56 CDME refs) but v4
+    closed with no route facts. Reproduced deterministically (non-final
+    spanned close differential); fixed with endpoint-scoped corroboration
+    (source endpoint checked at the span's first vector, target at its
+    last; single-vector spans check both - T-162 drift protection
+    preserved exactly). ABI 1151/1151; rc.9 cut + artifact-verified;
+    repinned. The rc.8 citable attempt was killed at v10 (structurally
+    unable to fold at proving edges) - uncitable by its own law.
   - 2026-07-08 SOAK RUN CONVERGED (rc.7, diagnostic,
     20260707T231644565Z_pid33183) - FIRST FULL 26/26 convergence on the
     migrated T-030 path, 44.5 min, zero builder bugs; all 8 CDME modules
