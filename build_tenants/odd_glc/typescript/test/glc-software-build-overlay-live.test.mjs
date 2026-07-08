@@ -840,6 +840,9 @@ const SCENARIOS = Object.freeze([
     kind: "data_mapper_full_scala_sbt_test",
     expectedStdout: null,
     expectedReturnValue: "data_mapper_full_sbt ok",
+    // review B MEDIUM-1: F_D verification pins THESE, not worker claims
+    expectedTestPassCount: 20,
+    expectedTestReportPaths: DATA_MAPPER_SCALA_TEST_REPORTS,
     executionStage: "derive_repaired_test_execution_result_surface",
     artifactTypeRef: "odd_glc.type.software.data_mapping_implementation_bundle",
     requiredOutputPaths: [
@@ -2918,10 +2921,15 @@ async function xmlTestReportPassCount(cwd, reportPaths) {
       }));
       continue;
     }
-    const tests = Number.parseInt(contents.match(/\\stests="(\\d+)"/u)?.[1] ?? "0", 10);
-    const failures = Number.parseInt(contents.match(/\\sfailures="(\\d+)"/u)?.[1] ?? "0", 10);
-    const errors = Number.parseInt(contents.match(/\\serrors="(\\d+)"/u)?.[1] ?? "0", 10);
-    const skipped = Number.parseInt(contents.match(/\\sskipped="(\\d+)"/u)?.[1] ?? "0", 10);
+    // review B MEDIUM-2: SUM across every testsuite block in the file —
+    // a failing second suite must not hide behind a clean first match
+    const sumAttr = (name) =>
+      [...contents.matchAll(new RegExp("\\\\s" + name + '="(\\\\d+)"', "gu"))]
+        .reduce((total, match) => total + Number.parseInt(match[1], 10), 0);
+    const tests = sumAttr("tests");
+    const failures = sumAttr("failures");
+    const errors = sumAttr("errors");
+    const skipped = sumAttr("skipped");
     if (failures === 0 && errors === 0) {
       observedPassCount += Math.max(0, tests - skipped);
     }
@@ -3014,7 +3022,7 @@ export function normalizeExecutionPlanShape(planInput) {
 // (existence, failures, counts — mechanical file reads, no spawning).
 // The worker-claimed exit status is a stated residual until the
 // substrate's typed execution-result payload carries it (Stage C/D).
-async function executionResultFor(workspaceRoot) {
+export async function executionResultFor(workspaceRoot) {
   try {
     return JSON.parse(await readFile(path.join(workspaceRoot, "test-execution-result.json"), "utf8"));
   } catch (error) {
@@ -3025,7 +3033,7 @@ async function executionResultFor(workspaceRoot) {
   }
 }
 
-async function executePlannedScenario(workspaceRoot) {
+export async function executePlannedScenario(workspaceRoot) {
   const normalized = normalizeExecutionPlanShape(await executionResultFor(workspaceRoot));
   if (normalized.issue === "missing_plan") {
     throw new Error("Missing test-execution-result.json: the worker must RUN the declared command in its turn and record the typed result (execution-default law; the framework does not execute)");
@@ -3044,6 +3052,11 @@ async function executePlannedScenario(workspaceRoot) {
   if (claimedStatus === null) {
     throw new Error("Execution result must record the integer exit status the worker observed");
   }
+  // worker-reported env is evidence, not authority (review B HIGH-1 fix:
+  // this binding was previously undeclared and the function could not run)
+  const envOverrides = plan.env !== null && typeof plan.env === "object" && !Array.isArray(plan.env)
+    ? Object.freeze({ ...plan.env })
+    : Object.freeze({});
   const result = Object.freeze({
     command: plan.command,
     args: plan.args,
@@ -3053,19 +3066,28 @@ async function executePlannedScenario(workspaceRoot) {
     stderr: typeof plan.stderr === "string" ? plan.stderr : "",
     workerExecuted: true
   });
-  const expectedTestReportPaths = Array.isArray(plan.expectedTestReportPaths)
-    ? plan.expectedTestReportPaths
-    : [];
+  // review B MEDIUM-1: expectations are SCENARIO CONTRACT data where the
+  // scenario declares them — the worker cannot choose its own bar. The
+  // worker's declared values are accepted only when the scenario is
+  // silent (legacy planned lanes).
+  const expectedTestReportPaths = Array.isArray(SCENARIO.expectedTestReportPaths)
+    ? SCENARIO.expectedTestReportPaths
+    : Array.isArray(plan.expectedTestReportPaths)
+      ? plan.expectedTestReportPaths
+      : [];
   const reportPassCounts = expectedTestReportPaths.length > 0
     ? await xmlTestReportPassCount(cwd, expectedTestReportPaths)
     : null;
   const observedPassCount = reportPassCounts === null
     ? nodeTestPassCount(result.stdout)
     : reportPassCounts.observedPassCount;
-  if (!Number.isInteger(plan.expectedTestPassCount) || plan.expectedTestPassCount < 0) {
-    throw new Error("Execution plan must declare a non-negative integer expectedTestPassCount: " + JSON.stringify(plan));
+  const contractPassCount = Number.isInteger(SCENARIO.expectedTestPassCount)
+    ? SCENARIO.expectedTestPassCount
+    : null;
+  if (contractPassCount === null && (!Number.isInteger(plan.expectedTestPassCount) || plan.expectedTestPassCount < 0)) {
+    throw new Error("Execution result must declare a non-negative integer expectedTestPassCount: " + JSON.stringify(plan));
   }
-  const expectedPassCount = plan.expectedTestPassCount;
+  const expectedPassCount = contractPassCount ?? plan.expectedTestPassCount;
   const expectedStdout = typeof plan.expectedStdout === "string"
     ? plan.expectedStdout
     : null;
@@ -3074,7 +3096,8 @@ async function executePlannedScenario(workspaceRoot) {
     : typeof plan.expectedStdoutMatch === "string"
       ? [plan.expectedStdoutMatch]
       : [];
-  const passCountSatisfied = observedPassCount >= expectedPassCount;
+  const passCountSatisfied =
+    Number.isInteger(observedPassCount) && observedPassCount >= expectedPassCount;
   const stdoutSatisfied = expectedStdout === null || result.stdout === expectedStdout;
   const stdoutMatchSatisfied = expectedStdoutMatch.every((fragment) =>
     typeof fragment === "string" && result.stdout.includes(fragment)
@@ -3808,7 +3831,7 @@ function evaluateInstructionText(stageSpec) {
         ]),
     "- closeDisposition must be close for accepted vectors, retry for repairable same-vector defects, reprice for upstream-contract defects, or block for unrecoverable execution/proof failure.",
     "- The ABG prompt manifest must include a runtime payload binding for the candidate worker artifact.",
-    "- If the bound candidate payload includes candidateEvidence.postMaterializationValidation with accepted=true, treat that as ABG-called F_D post-materialization validation evidence for this candidate; do not require a second shell run or a separate evidence slot for the same compile gate.",
+    "- If the bound candidate payload includes candidateEvidence.the worker-reported compile outcome in its assessment, treat that as ABG-called F_D post-materialization validation evidence for this candidate; do not require a second shell run or a separate evidence slot for the same compile gate.",
     "",
     "Return exactly one JSON object with these fields:",
     "- reviewAccepted: boolean",
@@ -5377,6 +5400,63 @@ test("binding unit lane: pure surfaces — plan shape family (#14), compile attr
   assert.notEqual(target, null);
   assert.equal(target.index >= 0, true);
   assert.equal(typeof target.row.vectorId, "string");
+});
+
+test("binding unit lane: the verify-only execution path runs — honest results verify, fabrications fail, absence throws the law (review B HIGH-1 pin)", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  assert.equal(typeof binding.executePlannedScenario, "function");
+  const caseRoot = path.join(path.dirname(bindingPath), "..", "verify-only", timestampId());
+  // (a) missing result file: throws the execution-default law message
+  const missingRoot = path.join(caseRoot, "missing");
+  await mkdir(missingRoot, { recursive: true });
+  await assert.rejects(
+    () => binding.executePlannedScenario(missingRoot),
+    /worker must RUN the declared command in its turn/u
+  );
+  // the SCENARIO pins the eight report paths and the pass count — the
+  // worker-declared expectations are ignored where the contract speaks
+  const reportBase = "build_tenants/scala_spark";
+  const writeReports = async (root, failuresInFirst) => {
+    for (const [index, rel] of DATA_MAPPER_SCALA_TEST_REPORTS.entries()) {
+      const full = path.join(root, reportBase, rel);
+      await mkdir(path.dirname(full), { recursive: true });
+      const failures = index === 0 ? failuresInFirst : 0;
+      await writeFile(full, `<testsuite tests="3" failures="${failures}" errors="0" skipped="0"></testsuite>`, "utf8");
+    }
+  };
+  const resultJson = (status) => JSON.stringify({
+    command: "sbt", args: ["test"], cwd: reportBase, status,
+    // the worker LIES about its own bar here — the scenario contract wins
+    expectedTestPassCount: 1,
+    expectedTestReportPaths: [DATA_MAPPER_SCALA_TEST_REPORTS[0]],
+    assertedReturnValue: "data_mapper_full_sbt ok",
+    stdout: ""
+  });
+  // (b) honest run: all eight reports on disk, 24 >= 20 passes: verifies
+  const honestRoot = path.join(caseRoot, "honest");
+  await writeReports(honestRoot, 0);
+  await writeFile(path.join(honestRoot, "test-execution-result.json"), resultJson(0), "utf8");
+  const honest = await binding.executePlannedScenario(honestRoot);
+  assert.equal(honest.planSatisfied, true);
+  assert.equal(honest.observedTestPassCount >= 20, true);
+  assert.equal(honest.commands[0].workerExecuted, true);
+  // (c) fabricated claims with NO reports on disk: fails closed even
+  // though the worker declared a one-report bar for itself
+  const forgedRoot = path.join(caseRoot, "forged");
+  await mkdir(forgedRoot, { recursive: true });
+  await writeFile(path.join(forgedRoot, "test-execution-result.json"), resultJson(0), "utf8");
+  const forged = await binding.executePlannedScenario(forgedRoot);
+  assert.equal(forged.planSatisfied, false);
+  assert.equal(forged.missingReportPaths.length, DATA_MAPPER_SCALA_TEST_REPORTS.length);
+  // (d) a failing report on disk defeats a green claim
+  const redRoot = path.join(caseRoot, "red");
+  await writeReports(redRoot, 2);
+  await writeFile(path.join(redRoot, "test-execution-result.json"), resultJson(0), "utf8");
+  const red = await binding.executePlannedScenario(redRoot);
+  assert.equal(red.planSatisfied, false);
+  assert.equal(red.failingReportPaths.length > 0, true);
 });
 
 test("binding unit lane: #10b expansion behavior, P1b durable re-entry state, P2a uncapped attribution", async (t) => {
