@@ -854,6 +854,85 @@ const SCENARIOS = Object.freeze([
       "test/component/logical-data-model.test.mjs",
       "test/uat/logical-data-model.uat.test.mjs"
     ],
+    // T-031 STRONGLY TYPED UAT REQUIREMENTS (user closure law: requirements
+    // met by code delivery proven by tests). Each concern is a typed
+    // requirement: spans cover the CREATING vectors (pressure enters the
+    // prompts that author tests) and the PROVING vector (execution);
+    // positive AND negative expected evidence shapes make weaker-contract
+    // proof rejectable (-011/-012/-022); five depth classes make shallow
+    // coverage non-closing (-032). Folds carry residual pressure until the
+    // production edge proves them — conservation, not defect.
+    cdmeRequirements: [
+      {
+        requirementId: "REQ-CDME-CORE",
+        module: "cdme-core",
+        concern: "typed logical/physical mapping contract DTOs construct and validate",
+        positiveShapeRef: "evidence-shape://cdme/core/contract-construction-positive",
+        negativeShapeRef: "evidence-shape://cdme/core/invalid-contract-rejected-negative"
+      },
+      {
+        requirementId: "REQ-CDME-TOPOLOGY",
+        module: "cdme-compiler",
+        concern: "source-to-target mapping topology compiles with type checking",
+        positiveShapeRef: "evidence-shape://cdme/topology/compiles-positive",
+        negativeShapeRef: "evidence-shape://cdme/topology/type-mismatch-rejected-negative"
+      },
+      {
+        requirementId: "REQ-CDME-EXECUTOR",
+        module: "cdme-executor",
+        concern: "DataFrame transformation executes with error-sink capture",
+        positiveShapeRef: "evidence-shape://cdme/executor/transform-positive",
+        negativeShapeRef: "evidence-shape://cdme/executor/bad-row-to-error-sink-negative"
+      },
+      {
+        requirementId: "REQ-CDME-ADJOINT",
+        module: "cdme-adjoint",
+        concern: "adjoint lineage registers and inverts mapping metadata",
+        positiveShapeRef: "evidence-shape://cdme/adjoint/lineage-roundtrip-positive",
+        negativeShapeRef: "evidence-shape://cdme/adjoint/unregistered-lookup-rejected-negative"
+      },
+      {
+        requirementId: "REQ-CDME-ACCOUNTING",
+        module: "cdme-accounting",
+        concern: "accounting partitions balance and imbalances are detected",
+        positiveShapeRef: "evidence-shape://cdme/accounting/balanced-partitions-positive",
+        negativeShapeRef: "evidence-shape://cdme/accounting/unbalanced-detected-negative"
+      },
+      {
+        requirementId: "REQ-CDME-ASSURANCE",
+        module: "cdme-assurance",
+        concern: "data-quality assurance checks apply thresholds",
+        positiveShapeRef: "evidence-shape://cdme/assurance/threshold-pass-positive",
+        negativeShapeRef: "evidence-shape://cdme/assurance/threshold-breach-flagged-negative"
+      },
+      {
+        requirementId: "REQ-CDME-FIDELITY",
+        module: "cdme-fidelity",
+        concern: "fidelity reconciliation scores computed against source truth",
+        positiveShapeRef: "evidence-shape://cdme/fidelity/score-computed-positive",
+        negativeShapeRef: "evidence-shape://cdme/fidelity/divergence-scored-below-negative"
+      },
+      {
+        requirementId: "REQ-CDME-ENGINE",
+        module: "cdme-engine",
+        concern: "engine orchestrates compile-execute-account-assure end to end",
+        positiveShapeRef: "evidence-shape://cdme/engine/integration-run-positive",
+        negativeShapeRef: "evidence-shape://cdme/engine/failing-stage-halts-negative"
+      }
+    ],
+    cdmeRequirementSpanStages: [
+      "derive_uat_testcases_surface",
+      "derive_component_test_surface",
+      "derive_test_execution_result_surface",
+      "derive_repaired_test_execution_result_surface"
+    ],
+    cdmeRequirementDepthClassRefs: [
+      "depth-class://positive",
+      "depth-class://negative",
+      "depth-class://boundary",
+      "depth-class://invariant",
+      "depth-class://integration"
+    ],
     stagePlan: [
       {
         stage: "derive_intent_surface",
@@ -3922,23 +4001,32 @@ function dependencyInstructionTruthForStage(stage) {
   });
 }
 
+function depthClassRefsForStage(stage) {
+  const base = ["depth-class://positive", "depth-class://negative", "depth-class://semantic-adequacy"];
+  // T-031: stages spanned by typed CDME requirements declare the union of
+  // the concern depth classes — a shallow declared set is -032 non-closure.
+  const spanned = (SCENARIO.cdmeRequirements ?? null) !== null &&
+    (SCENARIO.cdmeRequirementSpanStages ?? []).includes(stage.stage);
+  return spanned
+    ? [...new Set([...base, ...SCENARIO.cdmeRequirementDepthClassRefs])]
+    : base;
+}
 function proofDepthInstructionTruthForStage(stage) {
+  const depthClassRefs = depthClassRefsForStage(stage);
   return constructDerivedProofDepthInstructionTruth({
     truthRef: "proof-depth-instruction-truth://odd_glc/software-build/" + SCENARIO.key + "/" + stage.stage,
     depthPolicyRef: "proof-depth-policy://odd_glc/software-build/" + SCENARIO.key,
     depthPolicyDigest: sha256Text(JSON.stringify({
       scenarioId: SCENARIO.scenarioId,
       stage: stage.stage,
-      requiredDepthClassRefs: ["depth-class://positive", "depth-class://negative", "depth-class://semantic-adequacy"]
+      requiredDepthClassRefs: depthClassRefs
     })),
     targetRefs: [stage.target.id, stage.targetTypeRef],
-    requiredDepthClassRefs: ["depth-class://positive", "depth-class://negative", "depth-class://semantic-adequacy"],
-    declaredDepthClassRefs: ["depth-class://positive", "depth-class://negative", "depth-class://semantic-adequacy"],
-    declaredDepthObligationRefs: [
-      "proof-obligation://odd_glc/software-build/" + stage.stage + "/positive",
-      "proof-obligation://odd_glc/software-build/" + stage.stage + "/negative",
-      "proof-obligation://odd_glc/software-build/" + stage.stage + "/semantic-adequacy"
-    ],
+    requiredDepthClassRefs: depthClassRefs,
+    declaredDepthClassRefs: depthClassRefs,
+    declaredDepthObligationRefs: depthClassRefs.map((depthClassRef) =>
+      "proof-obligation://odd_glc/software-build/" + stage.stage + "/" + depthClassRef.split("://")[1]
+    ),
     notApplicableDepthClassRefs: [],
     typedDepthGapRefs: [],
     proofStrengthAdmissionRefs: ["proof-strength-admission://odd_glc/software-build/" + stage.stage],
@@ -4036,8 +4124,14 @@ function acceptedReviewFor(input, review) {
     stageSpec.requiredNodeTypes.every((typeRef) => nodeTypesUsed.includes(typeRef));
 }
 
-// T-030 P4: requirement route + carry-through + standing temporal gates as
-// PRODUCT DATA consumed by ABG startup (rc.8 one-passthrough authority).
+// T-030 P4 + T-031: requirement route + carry-through + standing temporal
+// gates as PRODUCT DATA consumed by ABG startup. T-031 (user closure law:
+// requirements met by code delivery proven by tests): when the scenario
+// declares cdmeRequirements, the bundle is built data-driven — one TYPED
+// requirement per concern, spans over the CREATING and PROVING vectors so
+// engine-derived pressure enters the authoring prompts (-007) and folds
+// carry residual pressure until the production edge proves coverage.
+// Scenarios without cdmeRequirements keep the single generic requirement.
 const T030_REQUIREMENT_ID = "REQ-GLC-SB-001";
 const T030_STRENGTH_REF = "evidence-role://odd_glc/software-build/execution-evidence";
 const t030FinalStageIndex = STAGE_PLAN.length - 1;
@@ -4046,31 +4140,73 @@ const t030FinalStage = STAGE_PLAN[t030FinalStageIndex];
 const t030FinalVector =
   softwareBuildBootstrap.template.graph.vectors[t030FinalStageIndex];
 const t030SpanId = \`span://odd_glc/software-build/\${SCENARIO.key}/final-prove\`;
-const t030Bundle = declareBundle({
-  requirements: [
-    declareRequirement({
-      requirementId: T030_REQUIREMENT_ID,
-      termKind: "atom",
-      stableId: T030_REQUIREMENT_ID,
-      sourceRef: "specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md#software-build",
-      sourceDigest: "sha256:odd-glc-software-build-r1",
-      relationRefs: [],
-      spanRefs: [t030SpanId],
-      contextRefs: [],
-      evidencePolicyRefs: ["policy://odd_glc/software-build/evidence"]
+const CDME_REQUIREMENTS = SCENARIO.cdmeRequirements ?? null;
+function cdmeSpanVectorIndexes() {
+  const stageKeys = SCENARIO.cdmeRequirementSpanStages ?? [];
+  const indexes = STAGE_PLAN
+    .map((stage, index) => (stageKeys.includes(stage.stage) ? index : null))
+    .filter((index) => index !== null);
+  if (indexes.length !== stageKeys.length) {
+    throw new Error("cdmeRequirementSpanStages name unknown stages: " + JSON.stringify(stageKeys));
+  }
+  return indexes;
+}
+function cdmeSpanIdFor(row) {
+  return \`span://odd_glc/cdme/\${SCENARIO.key}/\${row.module}\`;
+}
+const t030Bundle = CDME_REQUIREMENTS === null
+  ? declareBundle({
+      requirements: [
+        declareRequirement({
+          requirementId: T030_REQUIREMENT_ID,
+          termKind: "atom",
+          stableId: T030_REQUIREMENT_ID,
+          sourceRef: "specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md#software-build",
+          sourceDigest: "sha256:odd-glc-software-build-r1",
+          relationRefs: [],
+          spanRefs: [t030SpanId],
+          contextRefs: [],
+          evidencePolicyRefs: ["policy://odd_glc/software-build/evidence"]
+        })
+      ],
+      spans: [
+        declareTraversalSpan({
+          spanId: t030SpanId,
+          graphFunctionRef: softwareBuildBootstrap.id,
+          graphVectorRefs: [t030FinalVector.id],
+          vectorIndexes: [t030FinalStageIndex],
+          sourceNodeRef: t030FinalVector.source[0].id,
+          targetNodeRef: t030FinalVector.target.id
+        })
+      ]
     })
-  ],
-  spans: [
-    declareTraversalSpan({
-      spanId: t030SpanId,
-      graphFunctionRef: softwareBuildBootstrap.id,
-      graphVectorRefs: [t030FinalVector.id],
-      vectorIndexes: [t030FinalStageIndex],
-      sourceNodeRef: t030FinalVector.source[0].id,
-      targetNodeRef: t030FinalVector.target.id
-    })
-  ]
-});
+  : declareBundle({
+      requirements: CDME_REQUIREMENTS.map((row) =>
+        declareRequirement({
+          requirementId: row.requirementId,
+          termKind: "atom",
+          stableId: row.requirementId,
+          sourceRef: "specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md#cdme-" + row.module,
+          sourceDigest: sha256Text("odd-glc-cdme-" + row.module + "-" + row.concern),
+          relationRefs: [],
+          spanRefs: [cdmeSpanIdFor(row)],
+          contextRefs: [],
+          evidencePolicyRefs: ["policy://odd_glc/software-build/evidence"]
+        })
+      ),
+      spans: CDME_REQUIREMENTS.map((row) => {
+        const vectorIndexes = cdmeSpanVectorIndexes();
+        const vectors = vectorIndexes.map((index) => softwareBuildBootstrap.template.graph.vectors[index]);
+        return declareTraversalSpan({
+          spanId: cdmeSpanIdFor(row),
+          graphFunctionRef: softwareBuildBootstrap.id,
+          graphVectorRefs: vectors.map((vector) => vector.id),
+          vectorIndexes,
+          sourceNodeRef: vectors[0].source[0].id,
+          targetNodeRef: vectors[vectors.length - 1].target.id
+        });
+      })
+    });
 const t030Table = constructRequirementProofCandidateClassificationTable({
   tableRef: "classification-table://odd_glc/software-build/live",
   sourceRef: "gtl-overlay://odd_glc/software-build",
@@ -4156,6 +4292,95 @@ const t030EnvelopeTemplate = {
   selectedCompositionDigest: "sha256:odd-glc-software-build-composition"
 };
 
+// T-031 per-concern carry entries: each typed requirement owes coverage
+// with its OWN positive/negative shapes and five depth classes; coverage
+// is produced on the PROVING edge (last span stage). Strength stays the
+// shared execution-evidence criterion (mechanical F_D class); semantic
+// adequacy is the F_P evaluator's judgment over the declared shapes.
+function cdmeCarryEntryFor(row) {
+  const depthClassRefs = SCENARIO.cdmeRequirementDepthClassRefs;
+  const obligationRef = "requirement-obligation://cdme/" + row.module;
+  const proofObligationRefs = [
+    "proof-obligation://cdme/" + row.module + "/execution",
+    "proof-obligation://cdme/" + row.module + "/positive-shape",
+    "proof-obligation://cdme/" + row.module + "/negative-shape"
+  ];
+  const shapeRefs = [row.positiveShapeRef, row.negativeShapeRef];
+  const spanStageKeys = SCENARIO.cdmeRequirementSpanStages;
+  const provingStageKey = spanStageKeys[spanStageKeys.length - 1];
+  const provingStage = STAGE_PLAN.find((stage) => stage.stage === provingStageKey);
+  const contract = constructRequirementProofCarryThroughContract({
+    contractRef: "plugin-proof-contract://cdme/" + row.module,
+    pluginRef: "plugin://odd_glc/software-build/live",
+    stageRole: "transform",
+    resultInterfaceRef: "result-interface://odd_glc/software-build/live",
+    responseContractRefs: ["response-contract://odd_glc/software-build/live"],
+    selectedCompositionRef: "composition://odd_glc/software-build/live",
+    selectedCompositionDigest: "sha256:odd-glc-software-build-composition",
+    fulfillmentBindings: [
+      constructGtlContractFulfillmentBinding({
+        bindingRef: "gtl-contract-fulfillment-binding://cdme/" + row.module,
+        obligationRef,
+        requirementRef: row.requirementId,
+        productRequirementRef: "product-requirement://cdme/" + row.module,
+        designObligationRef: "design-obligation://cdme/" + row.module,
+        componentRef: "component://cdme/" + row.module,
+        productTargetRef: "target://cdme/" + row.module,
+        outputSurfaceRef: "output-surface://cdme/" + row.module,
+        functionOrEntrypointRef: "function://cdme/" + row.module,
+        realizationEvidenceRefs: [OVERLAY_REF],
+        testOrExecutionEvidenceRefs: proofObligationRefs,
+        evaluatorFindingRef: "evaluator-finding://cdme/" + row.module,
+        authorityRefs: ["authority://odd_glc/software-build/live-fp"],
+        evidenceRefs: [OVERLAY_REF]
+      })
+    ],
+    proofPolicyRefs: ["proof-policy://cdme/typed-uat"],
+    expectedEvidenceShapeRefs: shapeRefs,
+    proofStrengthRefs: ["proof-strength://odd_glc/software-build/execution"],
+    depthPolicyRefs: ["proof-depth-policy://cdme/typed-uat"],
+    requiredDepthClassRefs: depthClassRefs,
+    fdStrengthCriterionRefs: [T030_STRENGTH_REF],
+    requiredAdversarialCheckRefs: [],
+    evidenceRoleRefs: ["evidence-role://odd_glc/software-build/realization"],
+    outputCandidateKinds: ["candidate-kind://odd_glc/software-build/artifact"],
+    admissionTargetKinds: ["admission-target://abg/payload"],
+    classificationTableRef: t030Table.tableRef,
+    classificationTableDigest: t030Table.tableDigest
+  });
+  return {
+    contract,
+    classificationTable: t030Table,
+    requirementIds: [row.requirementId],
+    envelopeTemplate: {
+      contractRef: contract.contractRef,
+      stageRole: "transform",
+      taskRole: "task-role://cdme/" + row.module + "/prove",
+      outputCandidateKind: "candidate-kind://odd_glc/software-build/artifact",
+      admissionTargetKind: "admission-target://abg/payload",
+      sourceRequirementObligationRefs: [obligationRef],
+      evidenceRoleRefs: ["evidence-role://odd_glc/software-build/realization"],
+      proofObligationRefs,
+      proofPolicyRefs: ["proof-policy://cdme/typed-uat"],
+      expectedEvidenceShapeRefs: shapeRefs,
+      positiveEvidenceShapeRefs: [row.positiveShapeRef],
+      negativeEvidenceShapeRefs: [row.negativeShapeRef],
+      proofStrengthRefs: ["proof-strength://odd_glc/software-build/execution"],
+      depthPolicyRefs: ["proof-depth-policy://cdme/typed-uat"],
+      depthClassRefs,
+      proofStrengthAdmissionRefs: [T030_STRENGTH_REF],
+      fdStrengthCriterionRefs: [T030_STRENGTH_REF],
+      adversarialAttemptRefs: [],
+      counterexampleRefs: [],
+      responseContractRef: "response-contract://odd_glc/software-build/live",
+      resultInterfaceRef: "result-interface://odd_glc/software-build/live",
+      selectedCompositionRef: "composition://odd_glc/software-build/live",
+      selectedCompositionDigest: "sha256:odd-glc-software-build-composition"
+    },
+    edge: edgeNameForStage(provingStage)
+  };
+}
+
 process.on("uncaughtException", (error) => {
   try {
     fsSyncAppend(\`uncaughtException: \${error?.stack ?? error}\`);
@@ -4191,15 +4416,17 @@ export const runtimeBinding = {
   instructionAssemblyStartup,
   requirementRouteDeclarationBundle: t030Bundle,
   requirementProofCarryThroughStartup: {
-    entries: [
-      {
-        contract: t030Contract,
-        classificationTable: t030Table,
-        requirementIds: [T030_REQUIREMENT_ID],
-        envelopeTemplate: t030EnvelopeTemplate,
-        edge: edgeNameForStage(t030FinalStage)
-      }
-    ]
+    entries: CDME_REQUIREMENTS === null
+      ? [
+          {
+            contract: t030Contract,
+            classificationTable: t030Table,
+            requirementIds: [T030_REQUIREMENT_ID],
+            envelopeTemplate: t030EnvelopeTemplate,
+            edge: edgeNameForStage(t030FinalStage)
+          }
+        ]
+      : CDME_REQUIREMENTS.map((row) => cdmeCarryEntryFor(row)),
   },
   temporalPropertyStartup: { rules: STANDING_GATE_TEMPORAL_PROPERTY_RULES },
   runId: \`run://odd_glc/software-build/\${SCENARIO.key}\`,
@@ -5170,4 +5397,49 @@ test("binding unit lane: #10b expansion behavior, P1b durable re-entry state, P2
   // and the re-entry ref format the engine's landing parses
   const target = resolveRepairReentryTargetRow();
   assert.match(`graph-reentry-point://realization/${target.index}`, /^graph-reentry-point:\/\/[^/]+\/[0-9]+$/);
+});
+
+test("binding unit lane T-031: typed CDME requirements declared — 8 concerns, creating+proving spans, per-concern shapes, 5 depth classes", async () => {
+  const scenario = SCENARIOS.find((row) => row.key === "data-mapper-full");
+  const unitRoot = path.join(liveRoot, "binding-unit", timestampId());
+  const workspaceRoot = path.join(unitRoot, "instance");
+  await mkdir(path.join(workspaceRoot, ".abiogenesis"), { recursive: true });
+  const bindingPath = await writeRuntimeBinding({
+    abgPackageRoot: defaultAbgPackageRoot,
+    oddGlcPackageRoot: tenantRoot,
+    scenario,
+    workspaceRoot
+  });
+  const { runtimeBinding } = await import(pathToFileURL(bindingPath).href);
+  const bundle = runtimeBinding.requirementRouteDeclarationBundle;
+  assert.equal(bundle.requirements.length, 8);
+  assert.equal(bundle.spans.length, 8);
+  const requirementIds = bundle.requirements.map((row) => row.requirementId).sort();
+  assert.deepEqual(requirementIds, [
+    "REQ-CDME-ACCOUNTING", "REQ-CDME-ADJOINT", "REQ-CDME-ASSURANCE",
+    "REQ-CDME-CORE", "REQ-CDME-ENGINE", "REQ-CDME-EXECUTOR",
+    "REQ-CDME-FIDELITY", "REQ-CDME-TOPOLOGY"
+  ]);
+  // spans cover the CREATING vectors (uat testcases, component tests) and
+  // the PROVING vectors (execution + repaired execution) — 4 each
+  for (const span of bundle.spans) {
+    assert.equal(span.vectorIndexes.length, 4);
+  }
+  const entries = runtimeBinding.requirementProofCarryThroughStartup.entries;
+  assert.equal(entries.length, 8);
+  const accounting = entries.find((entry) => entry.requirementIds[0] === "REQ-CDME-ACCOUNTING");
+  assert.ok(accounting);
+  assert.deepEqual([...accounting.envelopeTemplate.positiveEvidenceShapeRefs],
+    ["evidence-shape://cdme/accounting/balanced-partitions-positive"]);
+  assert.deepEqual([...accounting.envelopeTemplate.negativeEvidenceShapeRefs],
+    ["evidence-shape://cdme/accounting/unbalanced-detected-negative"]);
+  assert.equal(accounting.contract.requiredDepthClassRefs.length, 5);
+  assert.equal(accounting.contract.requiredDepthClassRefs.includes("depth-class://invariant"), true);
+  // every entry produces coverage on the repaired-execution proving edge
+  for (const entry of entries) {
+    assert.match(entry.edge, /repaired_test_execution_result/u);
+  }
+  // hello-world scenarios keep the single generic requirement (fallback)
+  const basic = SCENARIOS.find((row) => row.key === "basic-cli");
+  assert.equal(basic.cdmeRequirements, undefined);
 });
