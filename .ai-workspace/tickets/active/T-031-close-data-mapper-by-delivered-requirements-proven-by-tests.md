@@ -95,9 +95,13 @@ campaign_ledger:
     per-concern carry entries in the generated binding (hello-world
     fallback unchanged); spanned stages declare the depth-class union in
     proof-depth truth. Binding differential pins it. Suite 75/67/0.
-  - 2026-07-08 SOAK RUN (rc.7, diagnostic) - first run past the v12
-    campaign wall; reached v24+ clean with repair loop and test
-    execution stages exercised live.
+  - 2026-07-08 SOAK RUN CONVERGED (rc.7, diagnostic,
+    20260707T231644565Z_pid33183) - FIRST FULL 26/26 convergence on the
+    migrated T-030 path, 44.5 min, zero builder bugs; all 8 CDME modules
+    built with 8 subject test reports; repair loop + both execution
+    rounds live. Canary on its replay shows entering [0] - the rc.7
+    pressure gap visible in evidence, confirming the run is structurally
+    uncitable and the citable run must be rc.8 + typed-UAT.
 ---
 
 # T-031: Close The Data-Mapper By Delivered Requirements Proven By Tests
