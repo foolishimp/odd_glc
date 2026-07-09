@@ -402,13 +402,13 @@ test("declares and verifies the consumed ABIogenesis substrate identity", async 
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.consumerTenant, "build_tenants/odd_glc/typescript");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productId, "abiogenesis");
   assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName, "@abiogenesis/typescript-tenant");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.5.1");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.5.1");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "9d626942e609cfbfb87d75c25971dbb93fc019db");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "d8ec1a36bfe3581f385bca517a6844284f68fc3c");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "2f4ad32df23a33f1220ca5781e63f412411acb301a92eebb7f20d0a25dc06f06");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "939d31da4e5a9fdeee4f93e394e06736fec1f82d810c9bff78110e3f117d6c89");
-  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "ea02af9b1e02b036c92932cb04db32a8e0107f44c608d839f63421aa1af4fd59");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion, "4.6.0-rc.1");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseTag, "v4.6.0-rc.1");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.sourceCommit, "419c9f5cbb3cdbba1f2f962fd9d281f90a8aa2cc");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.snapshotCommit, "78bacbcd3ada739047cac41b8a1cf83ecea78de9");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.tarballSha256, "54b35f5872a1c0eb2a99988ef72e1d2570fd0562c9c0e55bd5b699c87e3a8acd");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.productToolchainManifestDigest, "99d1117b380e749367e40d7e513f961262bd3671d12f406e58e40599a99934d3");
+  assert.equal(ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.releaseSnapshotManifestSha256, "19d8c57e2c1eb6bca423cd427eeeafe579eb878679c3b68b7bad40669cec441d");
   assert.equal(packageJson.name, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageName);
   assert.equal(packageJson.version, ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion);
   assert.equal(

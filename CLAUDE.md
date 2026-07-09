@@ -1,7 +1,7 @@
 <!-- ABG_GTL_CONTEXT_START -->
 # Installed ABG/GTL Context Compression
 
-Version: 4.5.1
+Version: 4.6.0-rc.1
 Package: @abiogenesis/typescript-tenant
 
 This context is owned by the installed ABG/GTL product version. Refresh it with
