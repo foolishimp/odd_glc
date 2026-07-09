@@ -634,3 +634,35 @@ per kernel fix, Review D replay audit per citable run.
   anti-self-report constitution point, inverted).
 - FIX: the gate is demoted; the JDK claim is lawful optional evidence.
   The binding's real proof is the verified green suite itself.
+
+## CONVERGENCE (run 15, 2026-07-09) — the citable run
+
+RUN ROOT: test_runs/glc_software_build_overlay_live/data-mapper-full/
+20260708T231826492Z_pid8743 (FRESH workspace, rc.17 substrate end to
+end, no overseer pollution; the earlier pid69405 root is diagnostic
+history only).
+
+- ALL 28 vectors closed; terminal "all graph-function vectors are
+  closed by replay"; the live suite test PASSED (canary assertions
+  included).
+- ALL EIGHT requirement folds: coverage ELIGIBLE with accepted
+  admissions — depth truth DERIVED from the admitted 48-row depth map
+  (8 requirements x 5 required classes, identities corroborated
+  against the executed XML reports) per rc.17 law; declaration equality
+  played no part.
+- MUTATION-KILL: 16/16 mutants killed, ZERO SURVIVED, admitted
+  mutation outcomes with verified restore digests; kill obligations
+  discovered from the map's negative/invariant rows and proven by
+  KERNEL-MINTED evidence only.
+- Execution-default held throughout: every sbt run (suite, repairs,
+  16 mutant cycles) executed by WORKERS inside their turns; the
+  framework executed nothing (standing conformance test green).
+
+Campaign totals: 15 runs, 12 ledgered defects fixed at their owners
+(3 substrate: rc.16 sandbox ingress, rc.17 declaration-equality
+demotion, + rc.15 carriers proved; 9 declaration/binding), 3 mid-
+campaign substrate cuts consumed via installer-driven repins.
+
+GATES BEFORE CLOSURE: Review D-interim (post-gate change audit,
+running) + Review D-final (independent replay audit of this run) per
+the ratified execution plan.
