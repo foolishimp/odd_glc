@@ -3,7 +3,7 @@ id: T-032
 title: Earned depth — declared depth classes adjudicated from delivered proof, with mutation-kill adversarial verification
 type: feature
 ticket_category: ordinary
-status: active
+status: completed (2026-07-09)
 change_intent: >-
   Make depth an earned, replay-derived fact of the data-mapper lifecycle
   instead of a self-satisfied declaration, delivered through intermediate
@@ -694,3 +694,54 @@ RESIDUALS (recorded; 2 closed same-day):
    the constitutional F_D/F_P split (F_P owns semantic adequacy);
    the tightening lever is DECLARING more adversarial classes
    (e.g. boundary) in a future reprice, not new F_D gates.
+
+## Review D-final (2026-07-09) — independent replay audit: PASS
+
+All eight audit claims CONFIRMED by recomputation from events.jsonl and
+the workspace (no trust in summaries): 28/28 vectors closed with the
+converged terminal strictly last; 8/8 folds eligible with accepted
+admissions and EMPTY issue lists; ALL 48 depth-map identities verified
+verbatim as <testcase name> values in the executed XML reports (all
+green, in-window timestamps) with matching admitted test-identity
+evidence; 16/16 mutants killed (suiteExit 1, baseline==restore, spot-
+checked digests MATCH current files — restores real), zero survived
+refs anywhere; 74/74 worker invocations were codex --sandbox
+danger-full-access worker turns, the framework executed nothing;
+workspace hygiene confirmed (no pre-run artifacts); prompts contain
+only ANTI-compensation language; the independent canary corroborates
+(zero drops, zero missing pressure, 8x depth rows killed=2 survived=0).
+
+FINDINGS carried forward:
+- [Medium] test-identity REUSE across depth classes: 16 distinct test
+  names back the 48 rows (some tests witness 2-3 classes). The closure
+  law as ratified is met (identities mechanically present per class);
+  the stricter "distinct witness per class" reading is a future
+  requirement reprice — named as the tightening lever alongside
+  declaring more adversarial classes.
+- [Low] two mid-run retry exhaustions precede the converged terminal
+  (recovery via resume; the converged terminal is strictly last).
+- [Low] 4 surplus executed testcases uncited by the map (surplus, not
+  deficit).
+
+## CLOSURE (2026-07-09)
+
+The closure law is met in full on the citable run
+(20260708T231826492Z_pid8743, substrate 4.5.0-rc.17):
+(1) worker-declared depth map admitted as evidence, every required
+class carrying declared tests mechanically present in executed reports;
+(2) mutation-kill adversarial verification per negative/invariant row —
+16 worker-authored mutants applied, suites executed by the WORKER,
+killed (red), subjects restored with digest equality, kill evidence
+kernel-minted from admitted outcomes; (3) zero survived mutants (a
+survived mutant was proven to BLOCK in harnessed differentials and in
+campaign run 11's kernel behavior); (4) depth truth derived from the
+delivered map and reports — declaration equality demoted at every seam
+(rc.17). Non-closure conditions each negated: no declaration-equality
+closure; F_D consumed only admitted maps/report identities/exit truth;
+restores digest-verified; no tool names in binding mechanics (emergent
+via worker turns); no survived mutants or absent identities; scenario
+compensations: none (audited). Campaign: 15 runs, 12 ledgered defects
+fixed at owners, 3 substrate cuts (rc.15 carriers, rc.16 sandbox
+ingress, rc.17 declaration-equality demotion), every fix differentially
+pinned upstream. Independent reviews: D-interim (no HIGH findings) and
+D-final (PASS) recorded above.
