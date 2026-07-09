@@ -764,3 +764,17 @@ defect-owner partition and run accounting corrected (Low); frontmatter
 evidence fields populated (Low). Noted without action: runForEvidence
 survives lawfully as the substrate-CLI launcher (signature-pinned);
 the plan bullet's wording, not the closure, was imprecise.
+
+## Frozen-Law Validation Run (launched 2026-07-09, user probe)
+
+USER PROBE (correct): the citable run was resumed with law amendments
+between segments (#11 at v15, #12 at v21) — a MIXED-LAW traversal.
+Every fix landed in builder source through the full lawful path (no
+event or truth tampering; replay untouched), and the folds were all
+computed under final law at the proving edge — but the migration law
+("mixed old/new behavior is not closure evidence") cuts against citing
+a resumed run without qualification. RESOLUTION: a validation run under
+FROZEN law — fresh workspace, zero resumes, zero amendments, final
+rc.17 substrate + final declarations end to end. Outcome upgrades the
+closure record (converges from a cold start under final law) or reopens
+it honestly.
