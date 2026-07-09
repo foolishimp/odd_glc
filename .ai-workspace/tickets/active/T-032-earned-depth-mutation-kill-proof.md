@@ -666,3 +666,31 @@ campaign substrate cuts consumed via installer-driven repins.
 GATES BEFORE CLOSURE: Review D-interim (post-gate change audit,
 running) + Review D-final (independent replay audit of this run) per
 the ratified execution plan.
+
+## Review D-interim (2026-07-09) — delta audit of the 12 post-gate changes
+
+NO HIGH FINDINGS; all claims CONFIRMED by probe against the compiled
+substrate and the generated binding. Decisive check: the CDME campaign
+contract is the STRONGEST regime (declared [] vs 5 required — map-less
+or empty-map delivery folds residual mechanically; the -038 dodge is
+dead for every campaign entry). rc.17 moved the completeness check from
+admission-time to projection-time WITHOUT weakening it. The env-gate
+demotion (#12) was a dead no-op wired to prose. Write scope not
+weakened (optional list relaxes required-return only; the allowed-write
+set is unchanged; escape guards hold). Conformance test holds.
+
+RESIDUALS (recorded; 2 closed same-day):
+1. [Low, lawful] legacy hello-world contract remains -038 transitional
+   (declaration equality live there; no adversarial weight).
+2. [Low, CLOSED] conflicting status fields now resolve FAIL-CLOSED (any
+   failing integer claim wins over a green one).
+3. [Low, CLOSED] sandbox env value pinned single-token (no flag
+   smuggling).
+4. [Medium, BY DESIGN — stated plainly]: mechanical anti-triviality
+   defense (mutation kill) covers only the DECLARED adversarial classes
+   (negative, invariant). positive/boundary/integration close on
+   execution corroboration + F_P semantic-adequacy judgment — a
+   real-but-shallow padder is not mechanically caught there. This is
+   the constitutional F_D/F_P split (F_P owns semantic adequacy);
+   the tightening lever is DECLARING more adversarial classes
+   (e.g. boundary) in a future reprice, not new F_D gates.

@@ -3174,8 +3174,14 @@ export async function executePlannedScenario(workspaceRoot) {
   // exit status" without naming the FIELD; the worker chose exitStatus.
   // The shape FAMILY is {status|exitStatus|exitCode} — the T-031 BUG #3
   // envelope-family lesson applied to fields.
-  const claimedStatus = [plan.status, plan.exitStatus, plan.exitCode]
-    .find((value) => Number.isInteger(value)) ?? null;
+  // review D-interim residual #2 closed: conflicting status fields
+  // resolve FAIL-CLOSED — any integer field reporting failure wins over
+  // a green claim (self-contradictory evidence never resolves optimistically)
+  const statusClaims = [plan.status, plan.exitStatus, plan.exitCode]
+    .filter((value) => Number.isInteger(value));
+  const claimedStatus = statusClaims.length === 0
+    ? null
+    : (statusClaims.find((value) => value !== 0) ?? 0);
   if (claimedStatus === null) {
     throw new Error("Execution result must record the integer exit status the worker observed (field: status)");
   }
