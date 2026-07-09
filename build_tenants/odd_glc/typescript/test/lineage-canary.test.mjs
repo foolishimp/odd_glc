@@ -236,8 +236,8 @@ test("T-032 canary depth rows: admitted maps and mutation outcomes project per-r
         { requirementId: "REQ-CDME-CORE", depthClassRef: "depth-class://boundary", testIdentityRefs: ["c"] }
       ] },
       { kind: "mutation_outcomes_admitted", accepted: true, rows: [
-        { requirementId: "REQ-CDME-CORE", mutantIdentity: "m1", testIdentityRefs: ["a"], suiteExit: 1, baselineDigest: "sha256:x", restoreDigest: "sha256:x" },
-        { requirementId: "REQ-CDME-CORE", mutantIdentity: "m2", testIdentityRefs: ["a"], suiteExit: 0, baselineDigest: "sha256:x", restoreDigest: "sha256:x" }
+        { requirementId: "REQ-CDME-CORE", mutantIdentity: "m1", mutantCompiled: true, failedTestIdentityRefs: ["a"], suiteExit: 1, baselineDigest: "sha256:x", restoreDigest: "sha256:x" },
+        { requirementId: "REQ-CDME-CORE", mutantIdentity: "m2", mutantCompiled: true, failedTestIdentityRefs: [], suiteExit: 0, baselineDigest: "sha256:x", restoreDigest: "sha256:x" }
       ] }
     ]
   });

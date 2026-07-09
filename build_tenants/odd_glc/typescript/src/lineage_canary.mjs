@@ -264,7 +264,13 @@ export function deriveRequirementLineageCanary(input) {
       // later vector's artifact); the latest admitted row wins
       for (const row of event.rows ?? []) {
         const byMutant = mutationByRequirement.get(row.requirementId) ?? new Map();
-        byMutant.set(row.mutantIdentity, row.suiteExit !== 0);
+        // T-216 D1: killed = compiled AND named a test that actually
+        // failed (a compile-broken mutant is not a kill)
+        const killed =
+          row.mutantCompiled === true &&
+          Array.isArray(row.failedTestIdentityRefs) &&
+          row.failedTestIdentityRefs.length > 0;
+        byMutant.set(row.mutantIdentity, killed);
         mutationByRequirement.set(row.requirementId, byMutant);
       }
     }
