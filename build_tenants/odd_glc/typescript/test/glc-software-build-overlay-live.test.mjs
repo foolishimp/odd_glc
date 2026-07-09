@@ -2986,15 +2986,33 @@ async function xmlTestReportPassCount(cwd, reportPaths) {
       }));
       continue;
     }
-    // review B MEDIUM-2: SUM across every testsuite block in the file —
-    // a failing second suite must not hide behind a clean first match
-    const sumAttr = (name) =>
-      [...contents.matchAll(new RegExp("\\\\s" + name + '="(\\\\d+)"', "gu"))]
-        .reduce((total, match) => total + Number.parseInt(match[1], 10), 0);
-    const tests = sumAttr("tests");
-    const failures = sumAttr("failures");
-    const errors = sumAttr("errors");
-    const skipped = sumAttr("skipped");
+    // T-216 D3 (codeReview S8 HIGH): ELEMENT-SCOPED parse, not a
+    // whole-file attribute regex. The prior sumAttr summed tests="N"
+    // across CDATA, comments, and a <testsuites> aggregate wrapper
+    // (double-counting toward false-green). Count actual <testcase>
+    // elements and their <failure>/<error> children after stripping
+    // comments and CDATA. NOTE: this F_D verification is USERLAND
+    // MECHANISM (three-layer violation); its migration to a kernel
+    // report-verification surface is T-209's remaining scope — this fix
+    // closes the correctness defect in place.
+    const inert = contents
+      .replace(/<!--[\\s\\S]*?-->/gu, "")
+      .replace(/<!\\[CDATA\\[[\\s\\S]*?\\]\\]>/gu, "");
+    // each <testcase ...> ... </testcase> (or self-closed) is one test;
+    // it failed iff it contains a <failure or <error child element
+    const testcaseBlocks = [
+      ...inert.matchAll(/<testcase\\b[^>]*?(\\/>|>([\\s\\S]*?)<\\/testcase>)/gu)
+    ];
+    const tests = testcaseBlocks.length;
+    let failures = 0;
+    let errors = 0;
+    let skipped = 0;
+    for (const block of testcaseBlocks) {
+      const body = block[2] ?? "";
+      if (/<failure\\b/u.test(body)) { failures += 1; }
+      else if (/<error\\b/u.test(body)) { errors += 1; }
+      else if (/<skipped\\b/u.test(body)) { skipped += 1; }
+    }
     if (failures === 0 && errors === 0) {
       observedPassCount += Math.max(0, tests - skipped);
     }
@@ -5596,12 +5614,20 @@ test("binding unit lane: the verify-only execution path runs — honest results 
   // the SCENARIO pins the eight report paths and the pass count — the
   // worker-declared expectations are ignored where the contract speaks
   const reportBase = "build_tenants/scala_spark";
+  // T-216 D3: reports carry real <testcase> elements (the element-scoped
+  // parser counts elements, not attributes) — 3 cases each, the first N
+  // failing in the first report.
   const writeReports = async (root, failuresInFirst) => {
     for (const [index, rel] of DATA_MAPPER_SCALA_TEST_REPORTS.entries()) {
       const full = path.join(root, reportBase, rel);
       await mkdir(path.dirname(full), { recursive: true });
-      const failures = index === 0 ? failuresInFirst : 0;
-      await writeFile(full, `<testsuite tests="3" failures="${failures}" errors="0" skipped="0"></testsuite>`, "utf8");
+      const failCount = index === 0 ? failuresInFirst : 0;
+      const cases = [0, 1, 2].map((n) =>
+        n < failCount
+          ? `<testcase name="case-${index}-${n}"><failure message="x"/></testcase>`
+          : `<testcase name="case-${index}-${n}"/>`
+      ).join("");
+      await writeFile(full, `<testsuite name="suite-${index}">${cases}</testsuite>`, "utf8");
     }
   };
   const resultJson = (status) => JSON.stringify({
@@ -5638,6 +5664,25 @@ test("binding unit lane: the verify-only execution path runs — honest results 
   const red = await binding.executePlannedScenario(redRoot);
   assert.equal(red.planSatisfied, false);
   assert.equal(red.failingReportPaths.length > 0, true);
+  // (e) T-216 D3 (codeReview S8): CDATA/comment/aggregate-wrapper text
+  // must NOT inflate the count — element-scoped parse only. A report
+  // whose real cases are 3 but whose CDATA mentions tests="99" and which
+  // sits inside a <testsuites> wrapper must count as 3.
+  const s8Root = path.join(caseRoot, "s8");
+  for (const [index, rel] of DATA_MAPPER_SCALA_TEST_REPORTS.entries()) {
+    const full = path.join(s8Root, reportBase, rel);
+    await mkdir(path.dirname(full), { recursive: true });
+    await writeFile(full,
+      `<testsuites tests="99"><testsuite tests="99"><!-- tests="7" -->` +
+      `<testcase name="a-${index}"/><testcase name="b-${index}"/>` +
+      `<testcase name="c-${index}"><system-out><![CDATA[chatty tests="42" failures="9"]]></system-out></testcase>` +
+      `</testsuite></testsuites>`, "utf8");
+  }
+  await writeFile(path.join(s8Root, "test-execution-result.json"), resultJson(0), "utf8");
+  const s8 = await binding.executePlannedScenario(s8Root);
+  // 8 reports x 3 real cases = 24; never 99/42-inflated
+  assert.equal(s8.observedTestPassCount, 24);
+  assert.equal(s8.planSatisfied, true);
 });
 
 test("binding unit lane: depth payload lift — corroborated identities forward, unverified do not, payloads ride the artifact (T-032 Stage C)", async (t) => {
