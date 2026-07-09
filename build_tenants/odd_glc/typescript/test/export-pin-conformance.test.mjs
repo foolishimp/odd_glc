@@ -20,7 +20,7 @@ const THIS_FILE = "export-pin-conformance.test.mjs";
 // suite; pins must live in the always-on lane
 const EXCLUDED = new Set([THIS_FILE, "glc-software-build-overlay-live.test.mjs"]);
 
-test("T-214 export pin rule: every binding export is referenced by the unit lane", () => {
+test("T-214 export pin rule: every binding export is IMPORTED and USED by the unit lane", () => {
   const exportNames = Object.keys(binding);
   assert.ok(exportNames.length > 0, "the binding must export its surface");
 
@@ -30,18 +30,38 @@ test("T-214 export pin rule: every binding export is referenced by the unit lane
         (name.endsWith(".test.mjs") || name.endsWith(".mjs")) &&
         !EXCLUDED.has(name)
     )
-    .map((name) => readFileSync(path.join(testDir, name), "utf8"))
-    .join("\n");
+    .map((name) => readFileSync(path.join(testDir, name), "utf8"));
   const canarySource = readFileSync(
     path.join(testDir, "..", "src", "lineage_canary.mjs"),
     "utf8"
   );
-  const referenced = `${unitSources}\n${canarySource}`;
+  const sources = [...unitSources, canarySource];
 
-  const unpinned = exportNames.filter((name) => !referenced.includes(name));
+  // codex P2 strengthening: a bare text mention (comment, inert string)
+  // is not a pin. An export is pinned when some unit-lane source IMPORTS
+  // it from the binding (or the canary imports it) AND references it
+  // again beyond the import — an imported-then-used symbol is
+  // execution-bound the moment that test file runs.
+  const unpinned = exportNames.filter((name) => {
+    const namePattern = new RegExp(`\\b${name}\\b`, "gu");
+    return !sources.some((source) => {
+      const importBlocks = source.match(
+        /import\s*\{[^}]*\}\s*from\s*["'][^"']*(?:src\/index\.mjs|\.\.\/index\.mjs)["']/gu
+      ) ?? [];
+      const importedHere = importBlocks.some((block) => namePattern.test(block));
+      if (!importedHere) {
+        return false;
+      }
+      const outsideImports = source.replace(
+        /import\s*\{[^}]*\}\s*from\s*["'][^"']*["']/gu,
+        ""
+      );
+      return new RegExp(`\\b${name}\\b`, "u").test(outsideImports);
+    });
+  });
   assert.deepEqual(
     unpinned,
     [],
-    `binding exports without a unit-lane pin (add a test that drives each): ${unpinned.join(", ")}`
+    `binding exports without an imported-and-used unit-lane pin: ${unpinned.join(", ")}`
   );
 });
