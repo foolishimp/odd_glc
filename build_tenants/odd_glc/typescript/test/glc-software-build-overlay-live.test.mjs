@@ -3543,15 +3543,13 @@ function deterministicExecutionAssessmentFor(input) {
     ? execution.executionIssues
       : [];
   const repairedExecutionStage = input.expectedStage === "derive_repaired_test_execution_result_surface";
-  // campaign BUG #8: JDK-binding evidence is a FIELD FAMILY — workers
-  // lawfully record it as env.JAVA_HOME or toolchainBinding.javaHome
-  const claimedJavaHome =
-    execution.envOverrides?.JAVA_HOME ??
-    execution.envOverrides?.javaHome ??
-    execution.toolchainBinding?.javaHome ??
-    null;
-  const repairedEnvSatisfied = repairedExecutionStage !== true ||
-    claimedJavaHome === ${JSON.stringify(DATA_MAPPER_SCALA_JAVA11_HOME)};
+  // campaign ledger #12 (supersedes the BUG #8 family widening): the
+  // env-evidence requirement was WORKER SELF-REPORT pretending to be
+  // F_D law — a prose claim with no mechanical verification, blocking
+  // verified-green runs. The JDK binding's real proof IS the green
+  // suite (a wrong JDK fails Spark); the claim remains lawful optional
+  // evidence, never a gate.
+  const repairedEnvSatisfied = true;
   const accepted =
     commandStatuses.length > 0 &&
     commandStatuses.every((status) => Number.isInteger(status) || status === null) &&

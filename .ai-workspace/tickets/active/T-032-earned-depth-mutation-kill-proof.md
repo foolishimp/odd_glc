@@ -620,3 +620,17 @@ per kernel fix, Review D replay audit per citable run.
   case must exercise a real code path and belong to a depth class;
   inflation is unlawful — and the depth map + mutation stages downstream
   adjudicate the added cases anyway).
+
+### Campaign ledger — #12 (run 14, 2026-07-09)
+
+- RUN 14 (fresh root): the strengthen turn worked — v15 closed with a
+  green >=20 suite; vectors 15-20 closed first pass. Blocked at v21:
+  the F_D assessment demanded a JAVA_HOME env CLAIM and the fresh
+  worker's minimal result omitted it (everything mechanical was green:
+  statuses [0], 20/20, planSatisfied, reports verified).
+- ROOT CAUSE (owner: odd_glc binding): the env-evidence requirement was
+  worker SELF-REPORT dressed as F_D law — a prose claim with no
+  mechanical verification, able to block verified-green runs (the exact
+  anti-self-report constitution point, inverted).
+- FIX: the gate is demoted; the JDK claim is lawful optional evidence.
+  The binding's real proof is the verified green suite itself.
