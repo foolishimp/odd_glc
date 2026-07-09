@@ -843,6 +843,8 @@ const SCENARIOS = Object.freeze([
     // review B MEDIUM-1: F_D verification pins THESE, not worker claims
     expectedTestPassCount: 20,
     expectedTestReportPaths: DATA_MAPPER_SCALA_TEST_REPORTS,
+    // T-216 D7: sbt ForkTests + Spark Netty bind local sockets
+    requiresSocketSandbox: true,
     // campaign BUG #5: report RESOLUTION is contract data too — a worker
     // omitting cwd must not break verification of files that exist
     expectedTestReportBase: "build_tenants/scala_spark",
@@ -5197,6 +5199,20 @@ async function writeRuntimeBinding(input) {
 }
 
 async function runScenarioLive(scenario) {
+  // T-216 D7 (codex P2, standalone reproducibility): a scenario whose
+  // subject toolchain binds local sockets (sbt ForkTests, Spark Netty)
+  // requires an EXPLICIT sandbox capability — silently inheriting the
+  // substrate's --full-auto default denies sockets (campaign BUG #6).
+  // Fail fast if the capability is not declared, so the run is
+  // reproducible by construction rather than by ambient env.
+  if (scenario.requiresSocketSandbox === true) {
+    assert.equal(
+      typeof process.env.ABG_TS_CODEX_SANDBOX === "string" &&
+        process.env.ABG_TS_CODEX_SANDBOX.length > 0,
+      true,
+      `${scenario.scenarioId} binds local sockets and requires ABG_TS_CODEX_SANDBOX to be declared explicitly (e.g. danger-full-access) — the substrate default denies socket binding`
+    );
+  }
   const abgInstallRoot = process.env.ABG_TYPESCRIPT_TENANT_INSTALL_ROOT ?? defaultAbgInstallRoot;
   const abgPackageRoot = process.env.ABG_TYPESCRIPT_TENANT_ROOT ?? defaultAbgPackageRoot;
   const genesisCommand = path.join(abgInstallRoot, "bin", "genesis-ts");
