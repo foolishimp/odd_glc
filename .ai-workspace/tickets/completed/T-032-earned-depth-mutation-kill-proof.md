@@ -773,8 +773,14 @@ Every fix landed in builder source through the full lawful path (no
 event or truth tampering; replay untouched), and the folds were all
 computed under final law at the proving edge — but the migration law
 ("mixed old/new behavior is not closure evidence") cuts against citing
-a resumed run without qualification. RESOLUTION: a validation run under
-FROZEN law — fresh workspace, zero resumes, zero amendments, final
-rc.17 substrate + final declarations end to end. Outcome upgrades the
-closure record (converges from a cold start under final law) or reopens
-it honestly.
+a resumed run without qualification. RESOLUTION (repriced same day, user adjudication): the cold frozen-law
+run buys ZERO new diagnostics — every root cause is already fixed at
+its owner and pinned; every stage closed at least once under final law.
+The capability demonstration is DEFERRED INTO the Phase 6 release
+proving run, which is necessarily cold, frozen-law, and on the released
+artifact — one run serving both the release classification and the
+builder-capability claim. The launched redundant run was stopped early.
+T-032's closure stands as recorded: kernel capability proven by
+differentials + the campaign, with the mixed-law qualification stated;
+the cold-start builder-capability sentence belongs to the Foundation
+Release note, earned by its own run.
