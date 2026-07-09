@@ -105,8 +105,12 @@ proof_commands:
   - cd build_tenants/odd_glc/typescript && npm test
   - cd build_tenants/odd_glc/typescript && CODEX_LIVE_FP=1 ABG_TS_AGENT_EXECUTOR_PROFILE=pty-terminal ABG_TS_LIVE_TIMEOUT_MS=1200000 ODD_GLC_LIVE_SCENARIO=data-mapper-full node --test test/glc-software-build-overlay-live.test.mjs --test-name-pattern "SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT"
   - git diff --check
-closure_evidence: []
-campaign_ledger: []
+closure_evidence:
+  - citable run 20260708T231826492Z_pid8743 (events.jsonl, 5172 events; converged terminal last)
+  - 8x requirement_proof_carry_through_admitted eligible/accepted (ordinals 4774-4781)
+  - depth_proof_map_admitted final ordinal 5137 (48 rows); mutation_outcomes_admitted final 5138 (16 killed)
+  - Review D-interim (no HIGH) + Review D-final (PASS) + Review E (honest, corrections applied)
+campaign_ledger: 12 entries in body (BUG #1-#10, #11, #12) — owners and fixes named per entry
 ---
 
 # T-032: Earned Depth — Mutation-Kill Proof
@@ -732,16 +736,31 @@ class carrying declared tests mechanically present in executed reports;
 (2) mutation-kill adversarial verification per negative/invariant row —
 16 worker-authored mutants applied, suites executed by the WORKER,
 killed (red), subjects restored with digest equality, kill evidence
-kernel-minted from admitted outcomes; (3) zero survived mutants (a
-survived mutant was proven to BLOCK in harnessed differentials and in
-campaign run 11's kernel behavior); (4) depth truth derived from the
+kernel-minted from admitted outcomes; (3) zero survived mutants (the
+survived-mutant-BLOCKS gate is proven by the harnessed t188
+differential — adversarial_counterexample_found, status blocked; run
+11's blocking was the declaration-equality ADMISSION gate, a different
+seam — Review E correction); (4) depth truth derived from the
 delivered map and reports — declaration equality demoted at every seam
 (rc.17). Non-closure conditions each negated: no declaration-equality
 closure; F_D consumed only admitted maps/report identities/exit truth;
 restores digest-verified; no tool names in binding mechanics (emergent
 via worker turns); no survived mutants or absent identities; scenario
-compensations: none (audited). Campaign: 15 runs, 12 ledgered defects
-fixed at owners, 3 substrate cuts (rc.15 carriers, rc.16 sandbox
-ingress, rc.17 declaration-equality demotion), every fix differentially
-pinned upstream. Independent reviews: D-interim (no HIGH findings) and
+compensations: none (audited). Campaign: 13 replay-recorded run terminations across two roots (ledger
+numbering reached 15 with two unnumbered resumes), 12 ledgered defects
+fixed at owners (2 substrate-owned: #6 sandbox ingress, #10
+declaration-equality; 10 odd_glc-owned), 3 substrate cuts consumed
+(rc.15 carriers/Stage A, rc.16, rc.17), every fix differentially
+pinned upstream (Review E spot-verified). Independent reviews: D-interim (no HIGH findings) and
 D-final (PASS) recorded above.
+
+## Review E (2026-07-09) — closure-claims audit: HONEST AND COMPLETE
+
+Every closure_law clause independently re-evidenced from replay; every
+non_closure_condition concretely negated; ledger complete with
+verifiable upstream pins; T-209/GOALS bounded without overclaim.
+Corrections applied above per findings: run-11 citation fixed (Medium);
+defect-owner partition and run accounting corrected (Low); frontmatter
+evidence fields populated (Low). Noted without action: runForEvidence
+survives lawfully as the substrate-CLI launcher (signature-pinned);
+the plan bullet's wording, not the closure, was imprecise.
