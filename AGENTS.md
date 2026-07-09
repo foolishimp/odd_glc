@@ -117,7 +117,7 @@ and build tenant exist.
 <!-- ABG_GTL_CONTEXT_START -->
 # Installed ABG/GTL Context Compression
 
-Version: 4.5.0
+Version: 4.5.1
 Package: @abiogenesis/typescript-tenant
 
 This context is owned by the installed ABG/GTL product version. Refresh it with
