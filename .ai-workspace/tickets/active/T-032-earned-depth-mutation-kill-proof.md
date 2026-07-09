@@ -606,3 +606,17 @@ per kernel fix, Review D replay audit per citable run.
   template data; the projector's DERIVED truth owns depth closure);
   mixed-law pin repriced per the migration checklist; artifact-verified;
   installer repin.
+
+### Campaign ledger — #11 (run 13 fresh, 2026-07-09)
+
+- RUN 13 (the citable fresh run, rc.17, clean workspace): vectors 0-14
+  closed first pass; blocked at v15 — the suite went GREEN (exit 0) but
+  with 16 observed passes against the contract's 20-case floor: the
+  fresh worker authored a leaner suite upstream and v15 had no
+  authority to strengthen it (the BUG #4 structural trap on the
+  pre-repair execution stage).
+- FIX (owner: odd_glc scenario data): v15 gains scoped run-fix-run over
+  the declared test files with the STRENGTHEN-NEVER-PAD law (each added
+  case must exercise a real code path and belong to a depth class;
+  inflation is unlawful — and the depth map + mutation stages downstream
+  adjudicate the added cases anyway).

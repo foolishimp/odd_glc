@@ -1180,7 +1180,14 @@ const SCENARIOS = Object.freeze([
         stage: "prepare_test_execution_surface",
         workerExecutes: true,
         requiredPriorStages: ["derive_code_surface", "derive_component_test_surface"],
-        filesToProduce: ["test-execution-result.json"],
+        filesToProduce: [
+          "test-execution-result.json",
+          ...DATA_MAPPER_SCALA_TEST_FILES
+        ],
+        // campaign ledger #11: the contract's 20-case floor is depth law;
+        // when an upstream worker under-delivered cases, THIS turn may
+        // strengthen the suite (run-fix-run) — never pad
+        optionalFilesToProduce: [...DATA_MAPPER_SCALA_TEST_FILES],
         instructions: [
           "EXECUTION-DEFAULT LAW: YOU run the test suite inside this turn; the framework executes nothing.",
           `Run sbt test yourself from cwd \"build_tenants/scala_spark\". If ${DATA_MAPPER_SCALA_JAVA11_HOME} exists, export JAVA_HOME=${DATA_MAPPER_SCALA_JAVA11_HOME} and prefix PATH with ${DATA_MAPPER_SCALA_JAVA11_HOME}/bin:${DATA_MAPPER_TOOLCHAIN_BIN} so Spark/Hadoop test execution uses a compatible JDK and the build toolchain resolves.`,
@@ -1189,6 +1196,7 @@ const SCENARIOS = Object.freeze([
           `expectedTestReportPaths must equal ${JSON.stringify(DATA_MAPPER_SCALA_TEST_REPORTS)}.`,
           "assertedReturnValue must be \"data_mapper_full_sbt ok\".",
           "A FAILING run is lawful evidence — record it truthfully; never fabricate status, counts, or reports (the reports on disk are verified mechanically against your claims).",
+          "If the suite is green but observedTestPassCount is below the 20-case floor, the suite is TOO SHALLOW: add REAL test cases to the declared spec files — each new case must exercise a real code path and belong to a depth class (positive/negative/boundary/invariant/integration); trivial or duplicated assertions to inflate the count are unlawful. Re-run and record truthfully.",
           "Do not use node, node:test, package.json, or JavaScript test files."
         ]
       },
