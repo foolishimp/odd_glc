@@ -5495,16 +5495,21 @@ for (const scenario of selectedScenarios()) {
     if ((result.proof.eventCounts.requirement_route_fact_projected ?? 0) > 0) {
       assert.notEqual(canary.requirements.length, 0);
     }
-    assert.match(
+    assert.equal(
       result.proof.dataMapperGate,
       scenario.key === "data-mapper-full"
-        ? /IS the full data-mapper run/u
-        : /unlocks, but does not substitute for, the full data-mapper run/u
+        ? "this run IS the full data-mapper campaign: SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT executed end to end"
+        : "this run unlocks, but does not substitute for, the full data-mapper run"
     );
     assert.match(result.proof.postProcessRule, /preserve ABG replay\/process evidence only/u);
-    assert.equal(result.startOutput.event_kinds.includes("registry_entry_admitted"), true);
-    assert.equal(result.startOutput.event_kinds.includes("graph_function_selected"), true);
-    assert.equal(result.startOutput.event_kinds.includes("graph_call_opened"), true);
+    // Run truth is read from REPLAY (installed axiom), not from the CLI
+    // process summary: on an ODD_GLC_LIVE_RESUME over an already-closed
+    // frontier the re-invoked start admits nothing new, but the replayed
+    // log still carries the admission/selection/opening rows.
+    const replayKinds = new Set(result.events.map((event) => event.kind));
+    assert.equal(replayKinds.has("registry_entry_admitted"), true);
+    assert.equal(replayKinds.has("graph_function_selected"), true);
+    assert.equal(replayKinds.has("graph_call_opened"), true);
     assert.equal(Number.isInteger(result.proof.eventCounts.registry_entry_admitted), true);
     assert.equal(Number.isInteger(result.proof.eventCounts.graph_function_selected), true);
     assert.equal(Number.isInteger(result.proof.eventCounts.graph_call_opened), true);
