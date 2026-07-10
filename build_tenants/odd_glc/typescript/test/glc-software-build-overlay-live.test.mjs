@@ -5420,8 +5420,9 @@ async function runScenarioLive(scenario) {
     // and route to ABI/GTL root-cause repair; the canary is diagnostic
     // proof instrumentation, never an odd_glc responsibility surface.
     requirementLineageCanary: deriveRequirementLineageCanary({ events }),
-    dataMapperGate:
-      "this run unlocks, but does not substitute for, the full data-mapper run",
+    dataMapperGate: scenario.key === "data-mapper-full"
+      ? "this run IS the full data-mapper campaign: SCN-GLC-DATA-MAPPER-FULL-SCALA-SBT executed end to end"
+      : "this run unlocks, but does not substitute for, the full data-mapper run",
     sandboxRole: "scenario_runner_only",
     postProcessRule: "Sandbox live tests start the installed scenario and preserve ABG replay/process evidence only. Content depth, artifact adequacy, shallowness, and root-cause judgement are post-process review or active monitoring over replay truth, not sandbox-owned closure.",
     eventSequence: events.map((event, index) => Object.freeze({
@@ -5496,7 +5497,9 @@ for (const scenario of selectedScenarios()) {
     }
     assert.match(
       result.proof.dataMapperGate,
-      /unlocks, but does not substitute for, the full data-mapper run/u
+      scenario.key === "data-mapper-full"
+        ? /IS the full data-mapper run/u
+        : /unlocks, but does not substitute for, the full data-mapper run/u
     );
     assert.match(result.proof.postProcessRule, /preserve ABG replay\/process evidence only/u);
     assert.equal(result.startOutput.event_kinds.includes("registry_entry_admitted"), true);

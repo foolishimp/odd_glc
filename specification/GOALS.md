@@ -3,7 +3,7 @@
 **Status**: Active
 **Date**: 2026-07-07
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.5.1/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.2/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
@@ -23,7 +23,7 @@ registers, process shells, or controllers. It may require reproducing a
 selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
 by ABG.
 
-ABIogenesis `4.5.1` is the substrate under test for this wave. If the
+ABIogenesis `4.6.0-rc.2` is the substrate under test for this wave. If the
 selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
 startup, registry, graph-call, vector traversal, evidence, and replay truth,
 then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
