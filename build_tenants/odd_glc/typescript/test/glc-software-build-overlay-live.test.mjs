@@ -7,6 +7,7 @@ import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
+
 import {
   ABIOGENESIS_SUBSTRATE_PROVENANCE,
   ODD_GLC_DATA_MAPPING_COMPOSED_NODE_TYPES,
@@ -1878,7 +1879,8 @@ function runtimeBindingSource(input) {
   edge,
   graphFunctionForVector,
   runAgentTransport,
-  satisfiesNodeType
+  satisfiesNodeType,
+  verifyJUnitReportContents
 } from ${JSON.stringify(packageImport)};
 import {
   declareBundle,
@@ -2961,8 +2963,13 @@ function nodeTestPassCount(stdout) {
 }
 
 async function xmlTestReportPassCount(cwd, reportPaths) {
-  let observedPassCount = 0;
-  const reports = [];
+  // T-209/S2.3 ADOPTION (T-217 closure campaign, 2026-07-10): the local
+  // element-scoped parser — a self-documented three-layer violation —
+  // is DELETED; verification is the kernel's verifyJUnitReportContents
+  // (T-216 D3 surface, false-green differentials carried verbatim in
+  // the substrate). The binding keeps exactly its lawful half: path
+  // containment and workspace reads.
+  const contentRows = [];
   for (const reportPath of reportPaths) {
     if (typeof reportPath !== "string" || reportPath.length === 0) {
       throw new Error("Malformed expectedTestReportPaths entry: " + JSON.stringify(reportPath));
@@ -2971,56 +2978,21 @@ async function xmlTestReportPassCount(cwd, reportPaths) {
     if (absolutePath !== cwd && !absolutePath.startsWith(cwd + path.sep)) {
       throw new Error("Test report path escapes execution cwd: " + reportPath);
     }
-    let contents;
+    let content = null;
     try {
-      contents = await readFile(absolutePath, "utf8");
+      content = await readFile(absolutePath, "utf8");
     } catch (error) {
       if (error.code !== "ENOENT") {
         throw error;
       }
-      reports.push(Object.freeze({
-        reportPath,
-        missing: true,
-        tests: 0,
-        failures: 0,
-        errors: 0,
-        skipped: 0
-      }));
-      continue;
     }
-    // T-216 D3 (codeReview S8 HIGH): ELEMENT-SCOPED parse, not a
-    // whole-file attribute regex. The prior sumAttr summed tests="N"
-    // across CDATA, comments, and a <testsuites> aggregate wrapper
-    // (double-counting toward false-green). Count actual <testcase>
-    // elements and their <failure>/<error> children after stripping
-    // comments and CDATA. NOTE: this F_D verification is USERLAND
-    // MECHANISM (three-layer violation); its migration to a kernel
-    // report-verification surface is T-209's remaining scope — this fix
-    // closes the correctness defect in place.
-    const inert = contents
-      .replace(/<!--[\\s\\S]*?-->/gu, "")
-      .replace(/<!\\[CDATA\\[[\\s\\S]*?\\]\\]>/gu, "");
-    // each <testcase ...> ... </testcase> (or self-closed) is one test;
-    // it failed iff it contains a <failure or <error child element
-    const testcaseBlocks = [
-      ...inert.matchAll(/<testcase\\b[^>]*?(\\/>|>([\\s\\S]*?)<\\/testcase>)/gu)
-    ];
-    const tests = testcaseBlocks.length;
-    let failures = 0;
-    let errors = 0;
-    let skipped = 0;
-    for (const block of testcaseBlocks) {
-      const body = block[2] ?? "";
-      if (/<failure\\b/u.test(body)) { failures += 1; }
-      else if (/<error\\b/u.test(body)) { errors += 1; }
-      else if (/<skipped\\b/u.test(body)) { skipped += 1; }
-    }
-    if (failures === 0 && errors === 0) {
-      observedPassCount += Math.max(0, tests - skipped);
-    }
-    reports.push(Object.freeze({ reportPath, missing: false, tests, failures, errors, skipped }));
+    contentRows.push(Object.freeze({ reportPath, content }));
   }
-  return Object.freeze({ observedPassCount, reports: Object.freeze(reports) });
+  const verification = verifyJUnitReportContents(contentRows);
+  return Object.freeze({
+    observedPassCount: verification.observedPassCount,
+    reports: verification.rows
+  });
 }
 
 async function expectedPassCountFromExecutionPlan(workspaceRoot, fallback) {
