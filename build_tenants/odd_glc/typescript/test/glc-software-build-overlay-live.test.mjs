@@ -5364,6 +5364,25 @@ async function runScenarioLive(scenario) {
   await writeText(startStderrPath, start.stderr ?? "");
   const startOutput = parseCliStartOutput(start.stdout);
   const events = parseJsonLines(await readFile(startOutput.events_path, "utf8"));
+  // Campaign duration is REPLAY truth (codex P1, 2026-07-10): the wall
+  // span from the first admitted event to the FIRST converged terminal
+  // (decisive by admission ordinal — later terminals are resume
+  // re-attestations). The start-invocation duration is process truth
+  // only; on a degenerate resume it is seconds while the campaign was
+  // hours, so it must never occupy the operational timing surface.
+  const firstConvergedTerminal = events.reduce((decisive, event) => {
+    if (event.kind !== "terminal_reached" || event.terminalKind !== "converged") return decisive;
+    if (!Number.isFinite(event.eventAdmissionOrdinal)) return decisive;
+    if (decisive === null || event.eventAdmissionOrdinal < decisive.eventAdmissionOrdinal) return event;
+    return decisive;
+  }, null);
+  const campaignDurationMs =
+    events.length > 0 &&
+      Number.isFinite(events[0]?.eventTimeUnixMs) &&
+      firstConvergedTerminal !== null &&
+      Number.isFinite(firstConvergedTerminal.eventTimeUnixMs)
+      ? firstConvergedTerminal.eventTimeUnixMs - events[0].eventTimeUnixMs
+      : null;
   const eventCounts = Object.freeze(events.reduce((counts, event) => {
     const kind = typeof event.kind === "string" ? event.kind : "unknown";
     counts[kind] = (counts[kind] ?? 0) + 1;
@@ -5389,7 +5408,8 @@ async function runScenarioLive(scenario) {
     scenarioId: scenario.scenarioId,
     scenarioKind: scenario.kind,
     proofClass: scenario.proofClass,
-    durationMs,
+    startInvocationDurationMs: durationMs,
+    campaignDurationMs,
     substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate,
     startupConfigRef: ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.configRef,
     overlayRef: ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef,
@@ -5502,6 +5522,18 @@ for (const scenario of selectedScenarios()) {
         : "this run unlocks, but does not substitute for, the full data-mapper run"
     );
     assert.match(result.proof.postProcessRule, /preserve ABG replay\/process evidence only/u);
+    // codex P1 pin (2026-07-10): the operational timing surface is
+    // replay-derived and survives degenerate resumes; the invocation
+    // duration is a separate, process-scoped fact.
+    assert.equal(
+      Number.isFinite(result.proof.startInvocationDurationMs) &&
+        result.proof.startInvocationDurationMs >= 0,
+      true
+    );
+    assert.equal(
+      Number.isFinite(result.proof.campaignDurationMs) && result.proof.campaignDurationMs > 0,
+      true
+    );
     // Run truth is read from REPLAY (installed axiom), not from the CLI
     // process summary: on an ODD_GLC_LIVE_RESUME over an already-closed
     // frontier the re-invoked start admits nothing new, but the replayed
