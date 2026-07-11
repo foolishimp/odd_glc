@@ -237,14 +237,17 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
+        workerExecutes: true,
+        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
+          "Write test-execution-plan.json and test-execution-result.json only.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/hello-cli.test.mjs\", \"test/uat/hello-cli.uat.test.mjs\"].",
           "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\"."
+          "assertedReturnValue must be \"Hello, world!\".",
+          "EXECUTION-DEFAULT LAW: run node --test test/component/hello-cli.test.mjs test/uat/hello-cli.uat.test.mjs yourself inside this turn; the framework executes nothing.",
+          "Record the truthful observed command, args, integer status, stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, and env in test-execution-result.json."
         ]
       },
       {
@@ -1796,6 +1799,26 @@ test("data-mapper full parity scenario targets Scala/SBT tenant depth, not JavaS
   );
   assert.equal(
     executionStage.instructions.some((instruction) => /expectedTestReportPaths/u.test(instruction)),
+    true
+  );
+});
+
+test("T-035: basic CLI execution planning produces worker-executed evidence", () => {
+  const scenario = SCENARIOS.find((row) => row.key === "basic-cli");
+  assert.ok(scenario);
+  const executionStage = scenario.stagePlan.find(
+    (stage) => stage.stage === "test_execution_plan"
+  );
+  assert.ok(executionStage);
+  assert.equal(executionStage.workerExecutes, true);
+  assert.deepEqual(executionStage.filesToProduce, [
+    "test-execution-plan.json",
+    "test-execution-result.json"
+  ]);
+  assert.equal(
+    executionStage.instructions.some((instruction) =>
+      /run node --test .* yourself inside this turn/u.test(instruction)
+    ),
     true
   );
 });
@@ -5223,6 +5246,19 @@ async function runScenarioLive(scenario) {
   const toolchainRoot = path.join(runRoot, "toolchain");
   const oddGlcProductRoot = path.join(runRoot, "products", "odd_glc", ODD_GLC_INSTALL_VERSION);
   const oddGlcPackageRoot = path.join(oddGlcProductRoot, "lib", "node_modules", "@odd-glc", "route-one-typescript");
+  const oddGlcPackageTarball = process.env.ODD_GLC_PACKAGE_TARBALL === undefined
+    ? null
+    : path.resolve(process.env.ODD_GLC_PACKAGE_TARBALL);
+  const oddGlcPackageTarballSha256 = process.env.ODD_GLC_PACKAGE_TARBALL_SHA256 === undefined
+    ? null
+    : process.env.ODD_GLC_PACKAGE_TARBALL_SHA256.startsWith("sha256:")
+      ? process.env.ODD_GLC_PACKAGE_TARBALL_SHA256
+      : `sha256:${process.env.ODD_GLC_PACKAGE_TARBALL_SHA256}`;
+  if (oddGlcPackageTarball !== null) {
+    assert.equal(existsSync(oddGlcPackageTarball), true, `Missing odd_glc package tarball at ${oddGlcPackageTarball}`);
+    assert.equal(process.env.ODD_GLC_PACKAGE_VERSION ?? ODD_GLC_INSTALL_VERSION, ODD_GLC_INSTALL_VERSION);
+    assert.notEqual(oddGlcPackageTarballSha256, null, "packed live proof requires ODD_GLC_PACKAGE_TARBALL_SHA256");
+  }
   await mkdir(workspaceRoot, { recursive: true });
   const requestedExecutorProfile = process.env.ABG_TS_AGENT_EXECUTOR_PROFILE ?? "local-spawn";
   const sandboxIdentity = Object.freeze({
@@ -5246,6 +5282,9 @@ async function runScenarioLive(scenario) {
     oddGlcPackageRoot,
     oddGlcPackageName: ODD_GLC_INSTALL_PACKAGE_NAME,
     oddGlcPackageVersion: ODD_GLC_INSTALL_VERSION,
+    oddGlcInstallMode: oddGlcPackageTarball === null ? "source_snapshot" : "packed_artifact",
+    oddGlcPackageTarball,
+    oddGlcPackageTarballSha256,
     subjectWriteRoot: workspaceRoot,
     requestedExecutorProfile,
     terminalProofRequired: requestedExecutorProfile === "pty-terminal",
@@ -5279,9 +5318,16 @@ async function runScenarioLive(scenario) {
       runRoot,
       workspaceRoot,
       tenantRoot,
+      packageTarballPath: oddGlcPackageTarball,
+      packageTarballSha256: oddGlcPackageTarballSha256,
       substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
     });
     assert.equal(oddGlcInstall.packageRoot, oddGlcPackageRoot);
+    assert.equal(oddGlcInstall.manifest.installMode, sandboxIdentity.oddGlcInstallMode);
+    assert.equal(
+      oddGlcInstall.manifest.packageTarballSha256,
+      sandboxIdentity.oddGlcPackageTarballSha256
+    );
   } else {
     // P0 (codex): the resume path reconstructs the install record from
     // the durable manifests written at install time — proof assembly
@@ -5396,6 +5442,9 @@ async function runScenarioLive(scenario) {
     oddGlcInstallManifestPath: oddGlcInstall.manifestPath,
     oddGlcWorkspaceInstallManifestPath: oddGlcInstall.workspaceManifestPath,
     oddGlcPackageRoot: oddGlcInstall.packageRoot,
+    oddGlcInstallMode: oddGlcInstall.manifest.installMode,
+    oddGlcPackageTarball: oddGlcInstall.manifest.packageTarballPath,
+    oddGlcPackageTarballSha256: oddGlcInstall.manifest.packageTarballSha256,
     oddGlcInstallFileSha256s: oddGlcInstall.manifest.copiedFiles.map((file) => file.sha256),
     runtimeBindingPath,
     workspaceRoot,
@@ -5467,6 +5516,11 @@ for (const scenario of selectedScenarios()) {
     assert.equal(result.proof.sandboxIdentity.oddGlcPackageRoot, result.proof.oddGlcPackageRoot);
     assert.equal(result.proof.sandboxIdentity.oddGlcPackageName, ODD_GLC_INSTALL_PACKAGE_NAME);
     assert.equal(result.proof.sandboxIdentity.oddGlcPackageVersion, ODD_GLC_INSTALL_VERSION);
+    assert.equal(result.proof.oddGlcInstallMode, result.proof.sandboxIdentity.oddGlcInstallMode);
+    assert.equal(
+      result.proof.oddGlcPackageTarballSha256,
+      result.proof.sandboxIdentity.oddGlcPackageTarballSha256
+    );
     assert.equal(
       (await readFile(result.proof.runtimeBindingPath, "utf8")).includes(path.join(tenantRoot, "src", "index.mjs")),
       false
