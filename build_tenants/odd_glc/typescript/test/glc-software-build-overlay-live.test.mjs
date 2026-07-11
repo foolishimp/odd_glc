@@ -47,6 +47,10 @@ const defaultAbgPackageRoot = path.join(
 );
 const liveRoot = path.join(tenantRoot, "test_runs", "glc_software_build_overlay_live");
 
+function selectedAbgPackageRoot() {
+  return process.env.ABG_TYPESCRIPT_TENANT_ROOT ?? defaultAbgPackageRoot;
+}
+
 function withStageBootstrap(stagePlan, overrides) {
   const byStage = Array.isArray(overrides)
     ? new Map(overrides.map((override) => [override.stage, override]))
@@ -1837,7 +1841,7 @@ test("installs odd_glc into sandbox before generating ABG runtime binding", asyn
     substrate: ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate
   });
   const runtimeBindingPath = await writeRuntimeBinding({
-    abgPackageRoot: defaultAbgPackageRoot,
+    abgPackageRoot: selectedAbgPackageRoot(),
     oddGlcPackageRoot: oddGlcInstall.packageRoot,
     scenario,
     workspaceRoot
@@ -5214,7 +5218,7 @@ async function runScenarioLive(scenario) {
     );
   }
   const abgInstallRoot = process.env.ABG_TYPESCRIPT_TENANT_INSTALL_ROOT ?? defaultAbgInstallRoot;
-  const abgPackageRoot = process.env.ABG_TYPESCRIPT_TENANT_ROOT ?? defaultAbgPackageRoot;
+  const abgPackageRoot = selectedAbgPackageRoot();
   const genesisCommand = path.join(abgInstallRoot, "bin", "genesis-ts");
   assert.equal(existsSync(genesisCommand), true, `Missing installed genesis-ts at ${genesisCommand}`);
   assert.equal(existsSync(path.join(abgPackageRoot, "build", "semantic", "code", "src", "index.js")), true);
@@ -5604,7 +5608,7 @@ test("binding unit lane: generation fidelity — parses, no mangled templates, d
   const workspaceRoot = path.join(unitRoot, "instance");
   await mkdir(path.join(workspaceRoot, ".abiogenesis"), { recursive: true });
   const bindingPath = await writeRuntimeBinding({
-    abgPackageRoot: defaultAbgPackageRoot,
+    abgPackageRoot: selectedAbgPackageRoot(),
     oddGlcPackageRoot: tenantRoot,
     scenario,
     workspaceRoot
@@ -5885,7 +5889,7 @@ test("binding unit lane T-031: typed CDME requirements declared — 8 concerns, 
   const workspaceRoot = path.join(unitRoot, "instance");
   await mkdir(path.join(workspaceRoot, ".abiogenesis"), { recursive: true });
   const bindingPath = await writeRuntimeBinding({
-    abgPackageRoot: defaultAbgPackageRoot,
+    abgPackageRoot: selectedAbgPackageRoot(),
     oddGlcPackageRoot: tenantRoot,
     scenario,
     workspaceRoot
