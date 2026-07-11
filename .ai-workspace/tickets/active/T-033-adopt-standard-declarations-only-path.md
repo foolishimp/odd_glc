@@ -77,6 +77,33 @@ These are current intake and compatibility-binding facts, not the future
 closure install. rc.3 is a published release candidate, not a final ABG
 release, and `0.0.0` is not a tapped GLC product.
 
+## rc.3 Compatibility Checkpoint (2026-07-11)
+
+- The substrate repin landed at `c39c711`; the installed package, release
+  snapshot, locally installed tarball, product-toolchain manifest, and tracked
+  provenance all resolve `4.6.0-rc.3` with the published tarball SHA-256
+  `9cffb372c0dfc00983a5d0e882efbc3d0c3ac937a56f313000f35a4473358113`.
+- rc.3 requires every plugin contract to declare its driver requirement. The
+  current binding now declares its async dispatch/evaluator and synchronous
+  consequence implementations accurately at `d055a15`, with a focused pin.
+  The full deterministic suite passed `83/83`; eight live cases remained
+  env-gated.
+- A real Codex run of the current basic CLI software-build overlay at
+  `build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/basic-cli/20260711T032605253Z_pid4402`
+  admitted 735 events and closed all seven construction vectors. It then
+  stopped lawfully at the execution-result vector after the retry budget: the
+  binding requires worker-produced `test-execution-result.json`, while its
+  worker instruction still forbids command execution. No local executor or
+  compatibility wrapper was added.
+- The smaller canonical snapshot-installed GLC Hello World release gate did
+  converge on the same rc.3 tarball in abiogenesis run
+  `20260711T033113388Z_pid15724`, with two real worker dispatches, two response
+  admissions, causal carry, two closed vectors, and stdout `Hello, world!\n`.
+
+This checkpoint proves the rc.3 substrate and basic GLC live path. It also
+confirms that T-033 remains blocked on its named standard execution/result
+dependencies; it is not declarations-only migration or campaign closure.
+
 ## Algebra Ruling
 
 T-220's seven-term C algebra and host-indexed stage declarations are the
