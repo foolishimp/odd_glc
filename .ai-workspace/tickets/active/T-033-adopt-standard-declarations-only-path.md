@@ -71,11 +71,15 @@ Current intake identities:
 | rc.3 snapshot source commit | `5213301cdbfd35952badf19c27519caa9e7e6968` |
 | rc.3 snapshot publication commit | `f4f081f66ef8d3ce0c737ddb9d7530176711279a` |
 | pre-T-033 odd_glc baseline | `5564c1caa12518a2602e856c27e2abe07a7effe0` |
-| current odd_glc package | `@odd-glc/route-one-typescript@0.0.0` |
+| current odd_glc released package | `@odd-glc/route-one-typescript@0.1.0` |
+| odd_glc release tag | `v0.1.0` |
+| odd_glc release commit | `a878475e4609e2d74d3260eb36ee05c4657b1879` |
+| odd_glc tarball SHA-256 | `7e548f92ecd6b4442f9c9f1feb46dd2edd7e9610a7dae8706482fc65d80fa578` |
 
-These are current intake and compatibility-binding facts, not the future
+These are current predecessor and compatibility-binding facts, not the future
 closure install. rc.3 is a published release candidate, not a final ABG
-release, and `0.0.0` is not a tapped GLC product.
+release. odd_glc `0.1.0` is the tapped rc.3 predecessor product, not the
+future G_next product used to close this ticket.
 
 ## rc.3 Compatibility Checkpoint (2026-07-11)
 
@@ -103,6 +107,19 @@ release, and `0.0.0` is not a tapped GLC product.
 This checkpoint proves the rc.3 substrate and basic GLC live path. It also
 confirms that T-033 remains blocked on its named standard execution/result
 dependencies; it is not declarations-only migration or campaign closure.
+
+## 0.1.0 Predecessor Ruling (2026-07-11)
+
+odd_glc `0.1.0` is the immutable P4/rc.3 predecessor and G_boot input for this
+migration. Its release branch and annotated tag point to
+`a878475e4609e2d74d3260eb36ee05c4657b1879`; its tarball is pinned by SHA-256
+`7e548f92ecd6b4442f9c9f1feb46dd2edd7e9610a7dae8706482fc65d80fa578`.
+
+The fresh installed-product Basic CLI run `20260711T042644380Z_pid39224`
+converged over that tarball and exact ABG rc.3. It closes the 0.1 compatibility
+and install gate only. It is not G_next, satisfies none of T-033's five
+delivery phases, and does not substitute for the post-adoption full
+data-mapper campaign.
 
 ## Algebra Ruling
 

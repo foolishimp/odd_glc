@@ -34,3 +34,4 @@ Completed tickets:
 - `T-031-close-data-mapper-by-delivered-requirements-proven-by-tests.md`
 - `T-032-earned-depth-mutation-kill-proof.md`
 - `T-035-repair-rc3-basic-cli-execution-contract.md`
+- `T-036-cut-odd-glc-0-1-0.md`

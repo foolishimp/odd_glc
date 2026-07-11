@@ -3,8 +3,9 @@ id: T-036
 title: Cut odd_glc 0.1.0 against ABIogenesis 4.6.0-rc.3
 type: release
 ticket_category: release_qualification
-status: active
-execution_state: qualified_pending_release_refs
+status: completed
+execution_state: released
+completed_at: 2026-07-11
 goal: publish-first-odd-glc-product
 change_class: realization_refactor
 re_entry_point: release_candidate
@@ -19,8 +20,8 @@ implementation_authorization: >-
   are excluded.
 dependencies:
   - ABIogenesis 4.6.0-rc.3 immutable release candidate
-  - T-029 installed odd_glc sandbox proof
-  - T-035 basic CLI execution-contract repair
+  - completed T-029 installed odd_glc sandbox proof
+  - completed T-035 basic CLI execution-contract repair
 ---
 
 # T-036: Cut odd_glc 0.1.0
@@ -74,7 +75,7 @@ release branch, and release tag identify one accepted cut.
 
 ## Closure Evidence
 
-Qualification is complete; release refs are pending.
+Release qualification and publication are complete.
 
 - Source candidate: `70580b93166b1f9e33b7622512c2d5bd442469e2`.
 - Deterministic suite: 94 tests, 86 passed, 0 failed, 8 live-gated.
@@ -90,6 +91,12 @@ Qualification is complete; release refs are pending.
   converged after 602 events.
 - Preserved proof SHA-256:
   `9a8bbce08257db6a5b808e629ca7dce5a6f62a293d3f29309e169930228ddfe8`.
-
-This ticket remains active until `release/0.1.0` and annotated `v0.1.0` point
-to the release-assets commit and are verified on the remote.
+- Release commit: `a878475e4609e2d74d3260eb36ee05c4657b1879`.
+- Release branch: `release/0.1.0`.
+- Annotated release tag: `v0.1.0`.
+- The local branch, peeled local tag, remote branch, and peeled remote tag all
+  resolve the release commit.
+- Release manifest SHA-256:
+  `d8bbbd172cd011f68ae569f6c64bafb0e44eea002be2d55181270ae8de634eb1`.
+- Checksum-file SHA-256:
+  `fcc5a1d1f54d320acbb3103da7d506eb6e82d619b2a749f8bdc6331685a769cb`.
