@@ -3,14 +3,14 @@
 **Status**: Active
 **Date**: 2026-07-07
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.2/release-snapshot-manifest.json`
+`/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
 ## Current Goal
 
 Bring `odd_glc` to user-visible `odd_sdlc` lifecycle parity by proving a full
-data-mapper lifecycle over GTL/ABG 4.5 startup, registry, typed-node,
+data-mapper lifecycle over GTL/ABG 4.6 startup, registry, typed-node,
 traversal, evidence, fold, residual, and replay truth.
 
 Parity means:
@@ -23,7 +23,7 @@ registers, process shells, or controllers. It may require reproducing a
 selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
 by ABG.
 
-ABIogenesis `4.6.0-rc.2` is the substrate under test for this wave. If the
+ABIogenesis `4.6.0-rc.3` is the substrate under test for this wave. If the
 selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
 startup, registry, graph-call, vector traversal, evidence, and replay truth,
 then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
@@ -32,7 +32,7 @@ truth, local shells, or a product-owned traversal controller.
 
 Current migration gate: T-030 is the live traversal migration and proof lane.
 The next closure-grade data-mapper run must start from installed ABIogenesis
-`4.5.1`, consume ABG instruction assembly, requirement-proof
+`4.6.0-rc.3`, consume ABG instruction assembly, requirement-proof
 carry-through, HoG handler/program truth, and consequence re-entry through the
 real startup traversal path, then produce a live upstream
 `graph_reentry_applied` witness before convergence. Any run that bypasses

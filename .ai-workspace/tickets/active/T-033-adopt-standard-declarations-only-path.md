@@ -67,13 +67,15 @@ Current intake identities:
 | Surface | Identity |
 |---|---|
 | T-220 implementation baseline | `014448f` |
-| current ABG package version | `@abiogenesis/typescript-tenant@4.6.0-rc.2` |
-| rc.2 snapshot source commit | `5c312df71aecab0b388e6222879eed90e9e84c40` |
+| current ABG package version | `@abiogenesis/typescript-tenant@4.6.0-rc.3` |
+| rc.3 snapshot source commit | `5213301cdbfd35952badf19c27519caa9e7e6968` |
+| rc.3 snapshot publication commit | `f4f081f66ef8d3ce0c737ddb9d7530176711279a` |
 | pre-T-033 odd_glc baseline | `5564c1caa12518a2602e856c27e2abe07a7effe0` |
 | current odd_glc package | `@odd-glc/route-one-typescript@0.0.0` |
 
-These are intake facts, not the future closure install. There is no claim here
-that rc.2 is a final release or that `0.0.0` is a tapped GLC product.
+These are current intake and compatibility-binding facts, not the future
+closure install. rc.3 is a published release candidate, not a final ABG
+release, and `0.0.0` is not a tapped GLC product.
 
 ## Algebra Ruling
 
