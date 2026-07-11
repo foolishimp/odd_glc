@@ -3,7 +3,8 @@ id: T-035
 title: Repair the rc.3 basic CLI worker-execution contract
 type: bug
 ticket_category: realization_repair
-status: active
+status: completed
+completed_at: 2026-07-11
 goal: close-odd-glc-rc3-live-compatibility
 change_class: realization_refactor
 re_entry_point: build_tenant_proof
@@ -13,7 +14,7 @@ created_at: 2026-07-11
 governance_scope: STDO Method, ODD execution-default law
 source_documents:
   - specification/PRODUCT.md
-  - .ai-workspace/tickets/active/T-029-install-odd-glc-into-scenario-sandboxes.md
+  - .ai-workspace/tickets/completed/T-029-install-odd-glc-into-scenario-sandboxes.md
   - /Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-note.md
 ---
 
@@ -74,4 +75,15 @@ git diff --check
 
 ## Closure Evidence
 
-Pending.
+- Implementation candidate: `d5341ca`, with the clean-worktree ABG binding
+  correction at `70580b9`.
+- The deterministic T-035 pin proves the plan-stage worker is instructed to
+  execute the declared Node tests and produce both
+  `test-execution-plan.json` and `test-execution-result.json`.
+- Clean detached suite: 94 tests, 86 passed, 0 failed, 8 live-gated.
+- Installed-product run `20260711T042644380Z_pid39224` closed all eight
+  vectors. The plan-stage F_P worker executed the declared tests and returned
+  admitted plan/result artifacts; the following deterministic stage consumed
+  them without a framework-owned subject execution path.
+- The worker result records status 0, two passing tests, zero failures, and
+  exact `Hello, world!` behavior. Traversal stopped by `converged`.

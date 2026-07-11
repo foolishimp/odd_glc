@@ -29,3 +29,8 @@ Completed tickets:
 - `T-023-bind-overlays-and-library-entries-to-abg-startup.md`
 - `T-024-prove-glc-hello-world-over-abg-4-2-startup.md`
 - `T-028-refresh-generic-parity-matrix.md`
+- `T-029-install-odd-glc-into-scenario-sandboxes.md`
+- `T-030-migrate-live-traversals-to-abg-instruction-depth.md`
+- `T-031-close-data-mapper-by-delivered-requirements-proven-by-tests.md`
+- `T-032-earned-depth-mutation-kill-proof.md`
+- `T-035-repair-rc3-basic-cli-execution-contract.md`

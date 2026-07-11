@@ -4,6 +4,7 @@ title: Cut odd_glc 0.1.0 against ABIogenesis 4.6.0-rc.3
 type: release
 ticket_category: release_qualification
 status: active
+execution_state: qualified_pending_release_refs
 goal: publish-first-odd-glc-product
 change_class: realization_refactor
 re_entry_point: release_candidate
@@ -73,4 +74,22 @@ release branch, and release tag identify one accepted cut.
 
 ## Closure Evidence
 
-Pending.
+Qualification is complete; release refs are pending.
+
+- Source candidate: `70580b93166b1f9e33b7622512c2d5bd442469e2`.
+- Deterministic suite: 94 tests, 86 passed, 0 failed, 8 live-gated.
+- Exact package census: `README.md`, `package.json`, `src/index.d.ts`,
+  `src/index.mjs`, `src/substrate_provenance.mjs`, and
+  `substrate.provenance.json`.
+- Tarball: `odd-glc-route-one-typescript-0.1.0.tgz`, 24,972 bytes, SHA-256
+  `7e548f92ecd6b4442f9c9f1feb46dd2edd7e9610a7dae8706482fc65d80fa578`.
+- Packed install/import verified package `0.1.0` and exact ABG rc.3 peer and
+  provenance identities.
+- Live installed-product run `20260711T042644380Z_pid39224` used that exact
+  tarball, closed all eight vectors, passed two worker-executed Node tests, and
+  converged after 602 events.
+- Preserved proof SHA-256:
+  `9a8bbce08257db6a5b808e629ca7dce5a6f62a293d3f29309e169930228ddfe8`.
+
+This ticket remains active until `release/0.1.0` and annotated `v0.1.0` point
+to the release-assets commit and are verified on the remote.

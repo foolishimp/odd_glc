@@ -20,7 +20,7 @@ source_documents:
   - specification/GOALS.md
   - specification/PRODUCT.md
   - .ai-workspace/tickets/active/T-025-replay-scenario-ladder-as-typed-glc-declarations.md
-  - .ai-workspace/tickets/active/T-029-install-odd-glc-into-scenario-sandboxes.md
+  - .ai-workspace/tickets/completed/T-029-install-odd-glc-into-scenario-sandboxes.md
   - specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md
   - /Users/jim/src/apps/abiogenesis/specification/requirements/abg/REQ-R-ABG3-REQUIREMENTS-ALGEBRA.md
   - /Users/jim/src/apps/abiogenesis/specification/requirements/abg/REQ-R-ABG3-INSTRUCTION-ASSEMBLY.md

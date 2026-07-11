@@ -3,7 +3,8 @@ id: T-029
 title: Install odd_glc into scenario sandboxes
 type: implementation
 ticket_category: realization
-status: active
+status: completed
+completed_at: 2026-07-11
 goal: >-
   Make odd_glc live scenario sandboxes reproduce app consumption shape by
   installing ABG/GTL and an immutable odd_glc product snapshot into each
@@ -54,7 +55,13 @@ required_work:
 proof_commands:
   - cd build_tenants/odd_glc/typescript && npm test
   - git diff --check
-closure_evidence: []
+closure_evidence:
+  - source candidate `70580b93166b1f9e33b7622512c2d5bd442469e2`
+  - packed `@odd-glc/route-one-typescript@0.1.0` tarball SHA-256
+    `7e548f92ecd6b4442f9c9f1feb46dd2edd7e9610a7dae8706482fc65d80fa578`
+  - installed-product live run `20260711T042644380Z_pid39224`
+  - preserved live proof SHA-256
+    `9a8bbce08257db6a5b808e629ca7dce5a6f62a293d3f29309e169930228ddfe8`
 execution_record:
   - at: 2026-07-03
     status: implemented_not_closed
@@ -73,13 +80,30 @@ execution_record:
       - cd build_tenants/odd_glc/typescript && node --test test/glc-software-build-overlay-live.test.mjs test/glc-hello-world-sandbox-port.test.mjs
       - cd build_tenants/odd_glc/typescript && npm test
       - git diff --check
+  - at: 2026-07-11
+    status: completed
+    notes:
+      - The release run installed the exact `0.1.0` tarball with
+        `installMode: packed_artifact` and `sourceTenantRoot: null` into a
+        run-local product root.
+      - The generated ABG runtime binding imported that installed package and
+        did not name the mutable odd_glc source path.
+      - Installed ABIogenesis `4.6.0-rc.3` performed startup, graph selection,
+        traversal, worker invocation, replay, and convergence.
+      - The run closed all eight vectors and stopped by `converged` after 602
+        events.
+    verification:
+      - clean detached `npm test`: 94 tests, 86 pass, 0 fail, 8 live-gated
+      - exact six-file tarball install and public import
+      - `SCN-GLC-HELLO-WORLD-CLI-BASIC` live run `20260711T042644380Z_pid39224`
+      - `git diff --check`
 ---
 
 # T-029: Install odd_glc Into Scenario Sandboxes
 
-Current live scenario sandboxes install ABG/GTL, but then generate an ABG
-runtime binding that imports odd_glc directly from the mutable source tree.
-That does not reproduce how an app should consume odd_glc.
+The qualified live scenario sandbox installs both ABG/GTL and the immutable
+odd_glc package before generating the ABG runtime binding. The binding imports
+odd_glc from the run-local product root rather than the mutable source tree.
 
 The target sandbox shape is:
 
@@ -110,3 +134,6 @@ test_runs/<scenario>/<timestamp>/
 ABG/GTL remains the runtime substrate. The odd_glc install is a package/context
 snapshot that provides declaration data and read interpretation surfaces for
 ABG to consume.
+
+The preserved closure proof is
+`release_snapshots/odd-glc-route-one-typescript/0.1.0/qualification/odd-glc-basic-cli-live-proof.json`.

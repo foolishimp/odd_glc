@@ -32,7 +32,7 @@ source_documents:
   - specification/PRODUCT.md
   - .ai-workspace/tickets/completed/T-031-close-data-mapper-by-delivered-requirements-proven-by-tests.md
   - .ai-workspace/tickets/completed/T-032-earned-depth-mutation-kill-proof.md
-  - .ai-workspace/tickets/active/T-029-install-odd-glc-into-scenario-sandboxes.md
+  - .ai-workspace/tickets/completed/T-029-install-odd-glc-into-scenario-sandboxes.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-217-consciousness-wave-higher-order-regulation.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-220-close-typed-gtl-c-algebra-authoring-loop.md
 ---
