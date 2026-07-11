@@ -4629,7 +4629,10 @@ export const runtimeBinding = {
   workKey: \`wk://odd_glc/software-build/\${SCENARIO.key}\`,
   createPlugins: ({ workspaceRoot }) => {
     const fpDispatch = Object.freeze({
-      contract: defaultFpDispatchPlugin.contract,
+      contract: constructEnginePluginContract({
+        ...defaultFpDispatchPlugin.contract,
+        driverRequirement: "async_required"
+      }),
       dispatch: async (pluginInput) => {
         const dispatchStarted = timestampNow();
         const runRoot = path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", SCENARIO.key);
@@ -4946,10 +4949,11 @@ export const runtimeBinding = {
       }
     });
     const fpEvaluator = Object.freeze({
-      contract: {
+      contract: constructEnginePluginContract({
         ...defaultFpEvaluatorPlugin.contract,
-        ref: "plugin://odd_glc/software-build/live-fp-evaluator"
-      },
+        ref: "plugin://odd_glc/software-build/live-fp-evaluator",
+        driverRequirement: "async_required"
+      }),
       evaluate: async (pluginInput) => {
         const runRoot = path.join(workspaceRoot, ".ai-workspace", "glc-software-build-live", SCENARIO.key);
         await mkdir(runRoot, { recursive: true });
@@ -5077,7 +5081,8 @@ export const runtimeBinding = {
         pluginKind: "consequence_projection",
         authority: "effect_plugin",
         inputCarrier: "EnginePluginInput",
-        outputCarrier: "ConsequenceProjectionOutcome"
+        outputCarrier: "ConsequenceProjectionOutcome",
+        driverRequirement: "sync_compatible"
       }),
       project(input) {
         const reentryState = readRepairReentryState(workspaceRoot);
@@ -5562,6 +5567,17 @@ test("binding unit lane: generation fidelity — parses, no mangled templates, d
     assert.equal(source.includes(key), true, `missing declaration key ${key}`);
   }
   globalThis.__bindingUnitPath = bindingPath;
+});
+
+test("binding unit lane: rc.3 plugin driver requirements match their implementations", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  const workspaceRoot = path.dirname(path.dirname(bindingPath));
+  const plugins = binding.runtimeBinding.createPlugins({ workspaceRoot });
+  assert.equal(plugins.fpDispatch.contract.driverRequirement, "async_required");
+  assert.equal(plugins.fpEvaluator.contract.driverRequirement, "async_required");
+  assert.equal(plugins.consequenceProjection.contract.driverRequirement, "sync_compatible");
 });
 
 test("binding unit lane: pure surfaces — plan shape family (#14), compile attribution (#18b), re-entry target (F1)", async (t) => {
