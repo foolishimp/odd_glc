@@ -4,7 +4,7 @@ import { copyFile, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 export const ODD_GLC_INSTALL_PACKAGE_NAME = "@odd-glc/route-one-typescript";
-export const ODD_GLC_INSTALL_VERSION = "0.1.1-rc.1";
+export const ODD_GLC_INSTALL_VERSION = "0.1.1-rc.2";
 export const ODD_GLC_INSTALL_FILES = Object.freeze([
   "package.json",
   "README.md",

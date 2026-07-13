@@ -5738,7 +5738,7 @@ test("binding unit lane: generation fidelity — parses, no mangled templates, d
   globalThis.__bindingUnitPath = bindingPath;
 });
 
-test("binding unit lane: rc.3 plugin driver requirements match their implementations", async (t) => {
+test("binding unit lane: rc.5 plugin driver requirements match their implementations", async (t) => {
   const bindingPath = globalThis.__bindingUnitPath;
   if (!bindingPath) return t.skip("generation test did not run");
   const binding = await import(pathToFileURL(bindingPath).href);

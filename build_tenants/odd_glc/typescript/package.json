@@ -2,7 +2,7 @@
   "name": "@odd-glc/route-one-typescript",
   "private": true,
   "type": "module",
-  "version": "0.1.1-rc.1",
+  "version": "0.1.1-rc.2",
   "description": "Route-1 odd_glc read/query and policy interpretation over GTL/ABG.",
   "files": [
     "README.md",
@@ -18,7 +18,7 @@
     }
   },
   "peerDependencies": {
-    "@abiogenesis/typescript-tenant": "4.6.0-rc.3"
+    "@abiogenesis/typescript-tenant": "4.6.0-rc.5"
   },
   "peerDependenciesMeta": {
     "@abiogenesis/typescript-tenant": {
@@ -27,9 +27,9 @@
   },
   "oddGlcCompatibility": {
     "abiogenesisPackage": "@abiogenesis/typescript-tenant",
-    "abiogenesisVersion": "4.6.0-rc.3",
-    "abiogenesisReleaseTag": "v4.6.0-rc.3",
-    "abiogenesisTarballSha256": "9cffb372c0dfc00983a5d0e882efbc3d0c3ac937a56f313000f35a4473358113"
+    "abiogenesisVersion": "4.6.0-rc.5",
+    "abiogenesisReleaseTag": "v4.6.0-rc.5",
+    "abiogenesisTarballSha256": "d9c99382f2c5b787ebe48ce72c320616baeac9187863078332df18c0036853ea"
   },
   "scripts": {
     "test": "node --test test/*.test.mjs",

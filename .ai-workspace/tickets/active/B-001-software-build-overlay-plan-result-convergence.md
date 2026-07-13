@@ -95,4 +95,4 @@ Discovered, explicitly NOT absorbed (route per F_H ruling):
 ## Notes
 
 - ABG's runtime behaved correctly in all traces; this ticket must not move odd_glc policy into ABG core nor build a local traversal controller (AGENTS.md boundary rules).
-- Coordination: `substrate.provenance.json` + `oddGlcCompatibility` pin abg `4.6.0-rc.3` exactly (tarball sha). If sibling ABG ticket lands `v4.6.0-rc.4`, reprice the pin here in a separate compatibility commit within the 0.1.1 RC cycle.
+- Coordination: `substrate.provenance.json` + `oddGlcCompatibility` pin abg `4.6.0-rc.5` exactly (source, snapshot, tag, tarball, manifest, and installed-product digest). The paired `0.1.1-rc.2` cut must qualify this exact install before either successor tag is published.
