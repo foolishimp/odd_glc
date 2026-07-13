@@ -84,6 +84,8 @@ Two further scenario-contract defects found and fixed during closure:
 
 Run composition note (objective status, per closure law): runs 7/8/9 executed on identical convergence-law code; the two later amendments are scenario-local data (parallel-js instructions) and run-environment binding (rust-service). No single 6/6 process run was executed — rule whether one is required as the final witness before the 0.1.1 RC cut.
 
+**Witness record (2026-07-14, F_H-ordered).** Witness run 1 (single process at `v0.1.1-rc.1`): 5/6 — surfaced defect #7 (vector-0 casing slip `Hello, World!` admitted by the authoring evaluator, locked in by instruction-authority precedence, workspace split, no upstream re-entry, retry burn to block; 919s). Fixes: `b8a1fe0` (per-scenario pins — superseded), `b3c20f3` (canonicality audit: pin DERIVED at one site from the scenario's declared `expectedReturnValue`; hand literals removed). **Witness run 3 at `b3c20f3`: 6/6 green in one process, one environment** — CLI-BASIC 292s, JS-TENANT-TEST 317s, JS-SDLC-BOOTSTRAP 263s, RUST-CLI 308s, RUST-SERVICE 355s, PARALLEL-JS 311s; total ~31 min; env: `ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE=1 ABG_TS_CODEX_MODEL=gpt-5.5`, codex medium effort, `[sandbox_workspace_write] network_access = true`. The composed-evidence exclusion is retired; `0.1.1-rc.2` should carry this witness.
+
 Remaining open condition: corporate consumer reproduction converges on their external checkout (their claude-side rev-2 shape) — pending their refresh of `support/0.1.x` + `support/4.6.x`.
 
 Discovered, explicitly NOT absorbed (route per F_H ruling):
