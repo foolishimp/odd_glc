@@ -1,0 +1,117 @@
+{
+  "kind": "odd_glc_release_snapshot_manifest",
+  "schemaVersion": "1",
+  "releaseIdentity": "0.1.1-rc.1",
+  "package": {
+    "packageName": "@odd-glc/route-one-typescript",
+    "packageVersion": "0.1.1-rc.1",
+    "packagePrivate": true,
+    "registryPublished": false
+  },
+  "abgSubstrate": {
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "4.6.0-rc.3",
+    "releaseTag": "v4.6.0-rc.3",
+    "peerRange": "4.6.0-rc.3",
+    "sourceRef": "rc/4.6.0",
+    "sourceCommit": "5213301cdbfd35952badf19c27519caa9e7e6968",
+    "snapshotCommit": "f4f081f66ef8d3ce0c737ddb9d7530176711279a",
+    "snapshotRoot": "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3",
+    "manifestPath": "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-snapshot-manifest.json",
+    "tarballPath": "/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/abiogenesis-typescript-tenant-4.6.0-rc.3.tgz",
+    "tarballSha256": "9cffb372c0dfc00983a5d0e882efbc3d0c3ac937a56f313000f35a4473358113",
+    "releaseSnapshotManifestSha256": "941d9a00198914120db7d7a1f466f4b3e2efe0fbd9659a71540267ca0f899bf4",
+    "productToolchainManifestDigest": "92b3f94dd32bca9368a9511d823cc8b6e2eae75cd7168c9e901d3cbe8eadf07d"
+  },
+  "sourceRef": "rc/0.1.1",
+  "sourceCommit": "6a66dfab34078e11efd63e17b80f92ace0089344",
+  "sourceDirty": false,
+  "sourceStatusVerification": {
+    "worktree": "/Users/jim/src/apps/odd_glc-0.1-support",
+    "head": "6a66dfab34078e11efd63e17b80f92ace0089344",
+    "statusPorcelain": ""
+  },
+  "rcBranch": "rc/0.1.1",
+  "releaseBranch": null,
+  "releaseTag": "v0.1.1-rc.1",
+  "packageSourceRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript",
+  "snapshotRoot": "/Users/jim/src/apps/odd_glc-0.1-support/release_snapshots/odd-glc-route-one-typescript/0.1.1-rc.1",
+  "createdAt": "2026-07-13T10:10:54.167472+00:00",
+  "build": null,
+  "lint": null,
+  "tests": {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript",
+    "status": 0,
+    "substratePackageRoot": "/Users/jim/src/apps/.abg-toolchains/abiogenesis-typescript-tenant/products/abiogenesis/4.6.0-rc.3/lib/node_modules/@abiogenesis/typescript-tenant"
+  },
+  "testSummary": {
+    "tests": 95,
+    "pass": 87,
+    "fail": 0,
+    "skipped": 8,
+    "skipReason": "environment-gated live scenarios"
+  },
+  "pack": {
+    "command": [
+      "npm",
+      "pack",
+      "--pack-destination",
+      "/private/tmp/claude-501/-Users-jim/37575651-7a8c-45a4-9a0f-579308b52262/scratchpad/odd-glc-rc1-stage",
+      "--json"
+    ],
+    "cwd": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript",
+    "status": 0
+  },
+  "packSummary": {
+    "filename": "odd-glc-route-one-typescript-0.1.1-rc.1.tgz",
+    "packageSizeBytes": 25014,
+    "unpackedSizeBytes": 161098,
+    "npmShasum": "a50c67ca4666a579ba5800d2b40d5dd900c7cb0c",
+    "npmIntegrity": "sha512-/IP/oxDqZV24+44w5+FaVnhqvI8jBV1HyB9wtDbWhVjcUZuvsJAb69+w/Wbb+dpMcBcrDw/GfsCEldNLgEJLBA==",
+    "totalFiles": 6,
+    "files": [
+      "README.md",
+      "package.json",
+      "src/index.d.ts",
+      "src/index.mjs",
+      "src/substrate_provenance.mjs",
+      "substrate.provenance.json"
+    ]
+  },
+  "packedInstall": {
+    "status": 0,
+    "installMode": "packed_artifact",
+    "packageName": "@odd-glc/route-one-typescript",
+    "packageVersion": "0.1.1-rc.1",
+    "tarballSha256": "9f18993e161d8c09044c84dd505684a2969e13c469026c8b4408c701950542ff",
+    "publicImportPassed": true,
+    "peerDependency": "@abiogenesis/typescript-tenant@4.6.0-rc.3",
+    "substrateVersion": "4.6.0-rc.3"
+  },
+  "liveProof": {
+    "kind": "software_build_overlay_live_proof",
+    "relativePath": "qualification/odd-glc-basic-cli-live-proof.json",
+    "bytes": 925110,
+    "sha256": "017b58c5d76b9e8d761cb236885b10b50c9ce4fb042e2065a5256afab045b423",
+    "scenarioId": "SCN-GLC-HELLO-WORLD-CLI-BASIC",
+    "runId": "20260713T100445398Z_pid15974",
+    "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/basic-cli/20260713T100445398Z_pid15974"
+  },
+  "tarball": {
+    "kind": "package_tarball",
+    "relativePath": "odd-glc-route-one-typescript-0.1.1-rc.1.tgz",
+    "bytes": 25014,
+    "sha256": "9f18993e161d8c09044c84dd505684a2969e13c469026c8b4408c701950542ff"
+  },
+  "releaseNote": {
+    "kind": "release_note",
+    "relativePath": "release-note.md",
+    "bytes": 7056,
+    "sha256": "1ed72edc0dc029d0c0f34f52f357e94494f7ed90280918af3738a9027e021534"
+  },
+  "checksumFile": "checksums.sha256"
+}
