@@ -4845,6 +4845,12 @@ export const runtimeBinding = {
             contract: subjectExecutionTransportContract(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
             prompt: pluginInput.instructionPromptManifest.renderedPrompt,
             responseJsonSchema: transformResponseJsonSchema(stageSpec),
+            // B-001 downstream RCA: the stage's declared capability lane must
+            // reach the transport or a claude worker stays tool-less at
+            // execution-bearing stages (codex masks this — its contract
+            // grants tools independently of the lane). Evaluator dispatches
+            // stay closed-prompt: they judge, they do not execute.
+            lane: stageSpec.workerExecutes === true ? "worker_executes" : "closed_prompt_proof",
             cwd: workspaceRoot,
             archiveRoot: runRoot,
             label,
