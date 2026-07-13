@@ -274,6 +274,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only specification/project-conformance.md.",
           "Declare a JavaScript module plus node:test Hello World traversal.",
+          "The exported greeting is exactly \"Hello, world!\" (lowercase w); state that exact string verbatim in the conformance declaration.",
           "Name implementation design, source, test design, component test source, UAT test source, test execution plan, and test execution result as separate lifecycle surfaces."
         ]
       },
@@ -383,6 +384,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only specification/project-conformance.md.",
           "Declare the project pressure for a JavaScript Hello World software build traversal.",
+          "The exported greeting is exactly \"Hello, world!\" (lowercase w); state that exact string verbatim in the conformance declaration.",
           "Name the required downstream lifecycle surfaces: implementation design, source, test design, component test source, UAT test source, test execution plan, and test execution result.",
           "State that ABG owns startup admission, registry selection, graph-call opening, vector traversal, F_P dispatch, evidence admission, event emission, closure, and convergence.",
           "Do not write source, tests, package files, or execution plans in this vector."
@@ -668,6 +670,7 @@ const SCENARIOS = Object.freeze([
           "Write only specification/project-conformance.md.",
           "Declare a JavaScript Hello World product with parallel branch implementation pressure.",
           "The source surface must have a hello branch, a world branch, and a fan-in module that composes the greeting.",
+          "The composed greeting is exactly \"Hello, world!\" (lowercase w), from helloPart() \"Hello\" and worldPart() \"world\"; state those exact strings verbatim in the conformance declaration.",
           "The execution proof must prove branch behavior and composed behavior."
         ]
       },
