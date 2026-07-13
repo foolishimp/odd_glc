@@ -144,7 +144,30 @@ function fullLifecycleStagePlan(overrides) {
   return withStageBootstrap(ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN, overrides);
 }
 
+// B-001 defect #7 (witness run): the authoring vector is where a
+// probabilistic value slip becomes admitted constitutional truth —
+// instruction-authority precedence then locks it in downstream, and the sdlc
+// graph has no upstream re-entry, so the run blocks at execution. The
+// declared contract value is pinned into the authoring stage by DERIVATION
+// from the scenario's single declared field (seam closure: no per-scenario
+// literal copies). The declared re-entry route on the sdlc graph is the
+// canonical cure and stays routed to the main line.
+function withConformanceContractPin(stagePlan, expectedReturnValue) {
+  return Object.freeze(stagePlan.map((stage) =>
+    stage.stage === "conformance_project"
+      ? Object.freeze({
+          ...stage,
+          instructions: Object.freeze([
+            ...stage.instructions,
+            `The scenario's declared asserted return value is exactly ${JSON.stringify(expectedReturnValue)}; state that exact string verbatim in the conformance declaration and treat any variation, including letter case, as a contract violation.`
+          ])
+        })
+      : stage
+  ));
+}
+
 function sdlcComplianceScenario(input) {
+  const expectedReturnValue = input.expectedReturnValue ?? "Hello, world!";
   return Object.freeze({
     ...input,
     proofClass: "sdlc_graph_traversal_compliance",
@@ -152,13 +175,17 @@ function sdlcComplianceScenario(input) {
     materializedSurfaceCount: 7,
     manifestRequired: false,
     executeFromPlan: true,
-    expectedReturnValue: input.expectedReturnValue ?? "Hello, world!",
+    expectedReturnValue,
     requiredStageNames: SDLC_REQUIRED_STAGE_NAMES,
-    stagePlan: sdlcStagePlan(input.stagePlan)
+    stagePlan: withConformanceContractPin(
+      sdlcStagePlan(input.stagePlan),
+      expectedReturnValue
+    )
   });
 }
 
 function fullLifecycleComplianceScenario(input) {
+  const expectedReturnValue = input.expectedReturnValue ?? "data_mapper_full ok";
   return Object.freeze({
     ...input,
     proofClass: "full_lifecycle_graph_traversal_compliance",
@@ -167,9 +194,12 @@ function fullLifecycleComplianceScenario(input) {
     manifestRequired: false,
     executeFromPlan: true,
     executionStage: "derive_test_execution_result_surface",
-    expectedReturnValue: input.expectedReturnValue ?? "data_mapper_full ok",
+    expectedReturnValue,
     requiredStageNames: FULL_LIFECYCLE_REQUIRED_STAGE_NAMES,
-    stagePlan: fullLifecycleStagePlan(input.stagePlan)
+    stagePlan: withConformanceContractPin(
+      fullLifecycleStagePlan(input.stagePlan),
+      expectedReturnValue
+    )
   });
 }
 
@@ -274,7 +304,6 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only specification/project-conformance.md.",
           "Declare a JavaScript module plus node:test Hello World traversal.",
-          "The exported greeting is exactly \"Hello, world!\" (lowercase w); state that exact string verbatim in the conformance declaration.",
           "Name implementation design, source, test design, component test source, UAT test source, test execution plan, and test execution result as separate lifecycle surfaces."
         ]
       },
@@ -384,7 +413,6 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only specification/project-conformance.md.",
           "Declare the project pressure for a JavaScript Hello World software build traversal.",
-          "The exported greeting is exactly \"Hello, world!\" (lowercase w); state that exact string verbatim in the conformance declaration.",
           "Name the required downstream lifecycle surfaces: implementation design, source, test design, component test source, UAT test source, test execution plan, and test execution result.",
           "State that ABG owns startup admission, registry selection, graph-call opening, vector traversal, F_P dispatch, evidence admission, event emission, closure, and convergence.",
           "Do not write source, tests, package files, or execution plans in this vector."
@@ -670,7 +698,6 @@ const SCENARIOS = Object.freeze([
           "Write only specification/project-conformance.md.",
           "Declare a JavaScript Hello World product with parallel branch implementation pressure.",
           "The source surface must have a hello branch, a world branch, and a fan-in module that composes the greeting.",
-          "The composed greeting is exactly \"Hello, world!\" (lowercase w), from helloPart() \"Hello\" and worldPart() \"world\"; state those exact strings verbatim in the conformance declaration.",
           "The execution proof must prove branch behavior and composed behavior."
         ]
       },
