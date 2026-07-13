@@ -251,7 +251,7 @@ const SCENARIOS = Object.freeze([
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\".",
           "EXECUTION-DEFAULT LAW: run node --test test/component/hello-cli.test.mjs test/uat/hello-cli.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed command, args, integer status, stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, and env in test-execution-result.json."
+          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
         ]
       },
       {
@@ -327,14 +327,22 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
+        // B-001 (support/0.1.x): execution-default law propagated from the
+        // basic-cli/data-mapper T-035 shape — without workerExecutes and the
+        // result surface in the allowed paths, the executor's required
+        // test-execution-result.json is forbidden by this stage's own
+        // contract and the execution vector blocks deterministically.
+        workerExecutes: true,
+        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
+          "Write test-execution-plan.json and test-execution-result.json only.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
           "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\"."
+          "assertedReturnValue must be \"Hello, world!\".",
+          "EXECUTION-DEFAULT LAW: run node --test test/component/hello.test.mjs test/uat/hello.uat.test.mjs yourself inside this turn; the framework executes nothing.",
+          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
         ]
       },
       {
@@ -352,7 +360,6 @@ const SCENARIOS = Object.freeze([
     kind: "sdlc_js_full_node_test",
     expectedStdout: null,
     expectedReturnValue: "Hello, world!",
-    executeFromPlan: false,
     witness: {
       sourceProject: "odd_sdlc",
       runPath: "/Users/jim/src/apps/odd_sdlc/build_tenants/typescript/test_env/test_runs/scenario_t132_hello_world_js_live/20260624T185624005Z_pid20893",
@@ -439,15 +446,20 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
+        // B-001 (support/0.1.x): execution-default law propagated; the prior
+        // "Do not execute" wording predated the law and made the executor's
+        // required test-execution-result.json unproducible.
+        workerExecutes: true,
+        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
+          "Write test-execution-plan.json and test-execution-result.json only.",
           "Use the prior component_test_source and uat_test_source artifact summaries as the evidence source.",
           "The command must be node with args [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
           "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
           "assertedReturnValue must be \"Hello, world!\".",
-          "Do not execute the test in this vector."
+          "EXECUTION-DEFAULT LAW: run node --test test/component/hello.test.mjs test/uat/hello.uat.test.mjs yourself inside this turn; the framework executes nothing.",
+          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
         ]
       },
       {
@@ -527,14 +539,19 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
+        // B-001 (support/0.1.x): execution-default law propagated from the
+        // basic-cli T-035 shape.
+        workerExecutes: true,
+        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
+          "Write test-execution-plan.json and test-execution-result.json only.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/rust-cli.test.mjs\", \"test/uat/rust-cli.uat.test.mjs\"].",
           "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\"."
+          "assertedReturnValue must be \"Hello, world!\".",
+          "EXECUTION-DEFAULT LAW: run node --test test/component/rust-cli.test.mjs test/uat/rust-cli.uat.test.mjs yourself inside this turn; the framework executes nothing.",
+          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
         ]
       },
       {
@@ -613,14 +630,19 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
+        // B-001 (support/0.1.x): execution-default law propagated from the
+        // basic-cli T-035 shape.
+        workerExecutes: true,
+        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
+          "Write test-execution-plan.json and test-execution-result.json only.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/rust-service.test.mjs\", \"test/uat/rust-service.uat.test.mjs\"].",
           "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\"."
+          "assertedReturnValue must be \"Hello, world!\".",
+          "EXECUTION-DEFAULT LAW: run node --test test/component/rust-service.test.mjs test/uat/rust-service.uat.test.mjs yourself inside this turn; the framework executes nothing.",
+          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
         ]
       },
       {
@@ -701,14 +723,19 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
+        // B-001 (support/0.1.x): execution-default law propagated from the
+        // basic-cli T-035 shape.
+        workerExecutes: true,
+        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
         instructions: [
-          "Write only test-execution-plan.json.",
+          "Write test-execution-plan.json and test-execution-result.json only.",
           "The JSON command must be node.",
           "The args must be [\"--test\", \"test/component/parallel-branches.test.mjs\", \"test/uat/parallel-fanin.uat.test.mjs\"].",
           "expectedTestPassCount must be at least 3, matching the admitted branch and fan-in coverage floor.",
           "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\"."
+          "assertedReturnValue must be \"Hello, world!\".",
+          "EXECUTION-DEFAULT LAW: run node --test test/component/parallel-branches.test.mjs test/uat/parallel-fanin.uat.test.mjs yourself inside this turn; the framework executes nothing.",
+          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
         ]
       },
       {
@@ -3085,6 +3112,33 @@ export function normalizeExecutionPlanShape(planInput) {
       args: plan.command.slice(1)
     });
   }
+  // B-001 support/0.1.x (the field-family lesson again): the record
+  // instruction says "record the truthful observed ..." and workers lawfully
+  // choose observedCommand/observedArgs/observedStdout. The field FAMILY maps
+  // observed<X> onto the bare contract name when the bare name is absent.
+  for (const [bare, observed] of [
+    ["command", "observedCommand"],
+    ["args", "observedArgs"],
+    ["status", "observedStatus"],
+    ["stdout", "observedStdout"],
+    ["stderr", "observedStderr"]
+  ]) {
+    if (plan[bare] === undefined && plan[observed] !== undefined) {
+      plan = Object.freeze({ ...plan, [bare]: plan[observed] });
+    }
+  }
+  // B-001 support/0.1.x (the envelope-family lesson applied to captured
+  // streams): workers lawfully record stdout/stderr as one string or as an
+  // array of lines — the ecosystem's own contentLines convention. The F_D
+  // verifier consumed only the string form and coerced arrays to "", so an
+  // F_P-accepted honest result failed pass-count extraction and the
+  // plan/result boundary repair-looped to retry exhaustion.
+  for (const streamKey of ["stdout", "stderr"]) {
+    const value = plan[streamKey];
+    if (Array.isArray(value) && value.every((line) => typeof line === "string")) {
+      plan = Object.freeze({ ...plan, [streamKey]: value.join("\\n") });
+    }
+  }
   if (typeof plan.command !== "string" || !Array.isArray(plan.args)) {
     return Object.freeze({
       plan: null,
@@ -3420,6 +3474,27 @@ export function writeRepairReentryState(workspaceRoot, state) {
   const statePath = repairReentryStatePath(workspaceRoot);
   mkdirSync(path.dirname(statePath), { recursive: true });
   writeFileSync(statePath, JSON.stringify(state, null, 2) + "\\n", "utf8");
+}
+
+// B-001 support/0.1.x: the harness runs under node --test, and node's
+// recursive-test-context guard (NODE_TEST_CONTEXT) leaks into spawned
+// workers — the worker's own node --test run then SKIPS every test file,
+// so honest execution evidence is structurally unobtainable and convergence
+// degrades to whether the worker guesses the unset repair within budget.
+// Subject execution requires a clean environment: strip the runner context
+// at the transport seam through the contract's declared sanitization
+// prefixes (rc.3 mechanics; no fallback path).
+function subjectExecutionTransportContract(agentKey) {
+  const base = contractForKnownAgent(agentKey);
+  return Object.freeze({
+    ...base,
+    sanitizedEnvironmentPolicy: Object.freeze({
+      prefixes: Object.freeze([
+        ...base.sanitizedEnvironmentPolicy.prefixes,
+        "NODE_TEST"
+      ])
+    })
+  });
 }
 
 async function executeScenario(workspaceRoot) {
@@ -4737,7 +4812,7 @@ export const runtimeBinding = {
           transport = deterministicExecutionTransportFor({ accepted: assessment.accepted === true });
         } else {
           transport = await runAgentTransport({
-            contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
+            contract: subjectExecutionTransportContract(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
             prompt: pluginInput.instructionPromptManifest.renderedPrompt,
             responseJsonSchema: transformResponseJsonSchema(stageSpec),
             cwd: workspaceRoot,
@@ -5002,7 +5077,7 @@ export const runtimeBinding = {
           pluginInput.instructionPromptManifest
         );
         const transport = await runAgentTransport({
-          contract: contractForKnownAgent(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
+          contract: subjectExecutionTransportContract(process.env.ABG_TS_LIVE_AGENT ?? "codex"),
           prompt: pluginInput.instructionPromptManifest.renderedPrompt,
           responseJsonSchema: evaluateResponseJsonSchema(STAGE_PLAN[pluginInput.vectorIndex]),
           cwd: workspaceRoot,
@@ -5698,6 +5773,49 @@ test("binding unit lane: pure surfaces — plan shape family (#14), compile attr
   assert.notEqual(target, null);
   assert.equal(target.index >= 0, true);
   assert.equal(typeof target.row.vectorId, "string");
+});
+
+test("binding unit lane: captured-stream shape family — stdout/stderr arrays normalize to joined strings (B-001 plan/result convergence)", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  assert.equal(typeof binding.normalizeExecutionPlanShape, "function");
+  const normalized = binding.normalizeExecutionPlanShape({
+    command: "node",
+    args: ["--test", "test/component/hello.test.mjs"],
+    status: 0,
+    stdout: ["✔ case one", "ℹ tests 2", "ℹ pass 2", "ℹ fail 0"],
+    stderr: []
+  });
+  assert.equal(normalized.issue, null);
+  assert.equal(
+    normalized.plan.stdout,
+    "✔ case one\nℹ tests 2\nℹ pass 2\nℹ fail 0"
+  );
+  assert.equal(normalized.plan.stderr, "");
+  const mixed = binding.normalizeExecutionPlanShape({
+    command: "node",
+    args: [],
+    stdout: ["ok", 42]
+  });
+  assert.deepStrictEqual(mixed.plan.stdout, ["ok", 42]);
+
+  // observed<X> field family (live run 20260713T070653801Z: honest worker
+  // evidence with observedCommand/observedArgs threw "Malformed execution
+  // plan ... Got: {}" and retry-looped to block)
+  const observed = binding.normalizeExecutionPlanShape({
+    observedCommand: "node",
+    observedArgs: ["--test", "test/component/hello-cli.test.mjs"],
+    status: 0,
+    stdout: "ℹ pass 2\nℹ fail 0",
+    expectedTestPassCount: 2
+  });
+  assert.equal(observed.issue, null);
+  assert.equal(observed.plan.command, "node");
+  assert.deepStrictEqual(observed.plan.args, [
+    "--test",
+    "test/component/hello-cli.test.mjs"
+  ]);
 });
 
 test("binding unit lane: the verify-only execution path runs — honest results verify, fabrications fail, absence throws the law (review B HIGH-1 pin)", async (t) => {
