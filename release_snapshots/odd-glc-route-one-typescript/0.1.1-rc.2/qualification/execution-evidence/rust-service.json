@@ -1,0 +1,56 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "1",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+  "runId": "20260713T175233028Z_pid49318",
+  "mainProof": "qualification/odd-glc-rust-service-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/rust-service/rust-service-vector-6-transport.json",
+      "sha256": "930f881187380d006dc50a48b0d21ed6d5d959f7112fc7ed2b9653bcebcb90ca"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/rust-service/rust-service-vector-6-evaluator-transport.json",
+      "sha256": "896f89a337013044e24342a3b9bbf2593e0804877bcae1bf68d5c8115589701c"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "12c7b3e4d04a5524ae1dff7212b75b06f0a02b2ff47155057d7ecd4c92238f52"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 5,
+    "structuredEventCount": 25,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 20,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "subject": {
+    "command": "node",
+    "args": ["--test", "test/component/rust-service.test.mjs", "test/uat/rust-service.uat.test.mjs"],
+    "status": 0,
+    "expectedPassCount": 2,
+    "observedPassCount": 2,
+    "observedFailCount": 0,
+    "stdoutContains": "fail 0",
+    "assertedReturnValue": "Hello, world!"
+  },
+  "typedRetryCount": 1,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}

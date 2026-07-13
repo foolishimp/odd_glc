@@ -1,0 +1,56 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "1",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-JS-SDLC-BOOTSTRAP",
+  "runId": "20260713T174105820Z_pid49318",
+  "mainProof": "qualification/odd-glc-js-sdlc-bootstrap-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-sdlc-bootstrap/js-sdlc-bootstrap-vector-6-transport.json",
+      "sha256": "927a22d7e18ef0630e9b702c72ea3c6426015cc279facebca5ec9c09b11eca9c"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-sdlc-bootstrap/js-sdlc-bootstrap-vector-6-evaluator-transport.json",
+      "sha256": "3100a06c489bfa4f30ba36fa0cb78b03de8d8b145a655484cc6c1d8d94372182"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "ec6d7457e9d939b00f7d9fda9ca1d6d717ea75affb8b7192f38f3545e28fc105"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 8,
+    "structuredEventCount": 40,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 19,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "subject": {
+    "command": "node",
+    "args": ["--test", "test/component/hello.test.mjs", "test/uat/hello.uat.test.mjs"],
+    "status": 0,
+    "expectedPassCount": 8,
+    "observedPassCount": 8,
+    "observedFailCount": 0,
+    "stdoutContains": "fail 0",
+    "assertedReturnValue": "Hello, world!"
+  },
+  "typedRetryCount": 0,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}

@@ -1,0 +1,56 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "1",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+  "runId": "20260713T180156247Z_pid49318",
+  "mainProof": "qualification/odd-glc-parallel-js-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/parallel-js/parallel-js-vector-6-transport.json",
+      "sha256": "f34a520b52a83a6b1c813f420cf961f7ed25bd455837633ce3ac008cd107e0e0"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/parallel-js/parallel-js-vector-6-evaluator-transport.json",
+      "sha256": "6164e14c23c21f38230d20f7e0a68ee538ffbca25da99824deb2b122778b0bfc"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "e6c29067d2127303c82be82dbdb81a44ba1f4a0631c81b38320aa37f371f99f3"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 7,
+    "structuredEventCount": 40,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 25,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "subject": {
+    "command": "node",
+    "args": ["--test", "test/component/parallel-branches.test.mjs", "test/uat/parallel-fanin.uat.test.mjs"],
+    "status": 0,
+    "expectedPassCount": 9,
+    "observedPassCount": 9,
+    "observedFailCount": 0,
+    "stdoutContains": "fail 0",
+    "assertedReturnValue": "Hello, world!"
+  },
+  "typedRetryCount": 0,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}

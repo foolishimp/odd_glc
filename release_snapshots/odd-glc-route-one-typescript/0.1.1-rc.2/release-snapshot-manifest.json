@@ -1,0 +1,260 @@
+{
+  "kind": "odd_glc_release_snapshot_manifest",
+  "schemaVersion": "1",
+  "releaseIdentity": "0.1.1-rc.2",
+  "package": {
+    "packageName": "@odd-glc/route-one-typescript",
+    "packageVersion": "0.1.1-rc.2",
+    "packagePrivate": true,
+    "registryPublished": false
+  },
+  "abgSubstrate": {
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "4.6.0-rc.5",
+    "releaseTag": "v4.6.0-rc.5",
+    "peerRange": "4.6.0-rc.5",
+    "sourceRef": "rc/4.6.0",
+    "sourceCommit": "bab609ab353304324b939a4528371603eef0a05d",
+    "snapshotCommit": "8d43dc8968e3df16029e6201680a0301eda035f1",
+    "snapshotRoot": "/Users/jim/src/apps/abiogenesis-4.6-support/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.5",
+    "manifestPath": "/Users/jim/src/apps/abiogenesis-4.6-support/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.5/release-snapshot-manifest.json",
+    "tarballPath": "/Users/jim/src/apps/abiogenesis-4.6-support/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.5/abiogenesis-typescript-tenant-4.6.0-rc.5.tgz",
+    "tarballSha256": "d9c99382f2c5b787ebe48ce72c320616baeac9187863078332df18c0036853ea",
+    "releaseSnapshotManifestSha256": "39fd4bd30fc8647b66fe20af4e0e78e3d2327a7d519cad15e3f589eba0acb913",
+    "productToolchainManifestDigest": "7d21bdfd635056531fa998fd408ba434a7f5a3929fb99b7d405eccfae1977743"
+  },
+  "sourceRef": "rc/0.1.1",
+  "sourceCommit": "d32672077d25cb3302bf073ccaceabc66aeea692",
+  "sourceDirty": false,
+  "sourceStatusVerification": {
+    "worktree": "/Users/jim/src/apps/odd_glc-0.1-support",
+    "head": "d32672077d25cb3302bf073ccaceabc66aeea692",
+    "statusPorcelain": ""
+  },
+  "rcBranch": "rc/0.1.1",
+  "releaseBranch": null,
+  "releaseTag": "v0.1.1-rc.2",
+  "packageSourceRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript",
+  "snapshotRoot": "/Users/jim/src/apps/odd_glc-0.1-support/release_snapshots/odd-glc-route-one-typescript/0.1.1-rc.2",
+  "createdAt": "2026-07-13T18:11:09Z",
+  "build": null,
+  "lint": null,
+  "tests": {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript",
+    "status": 0,
+    "environment": {
+      "ABG_TYPESCRIPT_TENANT_INSTALL_ROOT": "/tmp/abg-toolchain-4.6.0-rc.5/products/abiogenesis/4.6.0-rc.5",
+      "ABG_TYPESCRIPT_TENANT_ROOT": "/tmp/abg-toolchain-4.6.0-rc.5/products/abiogenesis/4.6.0-rc.5/lib/node_modules/@abiogenesis/typescript-tenant"
+    }
+  },
+  "testSummary": {
+    "tests": 96,
+    "pass": 88,
+    "fail": 0,
+    "skipped": 8,
+    "skipReason": "environment-gated live scenarios"
+  },
+  "pack": {
+    "command": [
+      "npm",
+      "pack",
+      "--pack-destination",
+      "/tmp/glc-0.1.1-rc.2-candidate",
+      "--json"
+    ],
+    "cwd": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript",
+    "status": 0,
+    "freshPackByteIdentical": true
+  },
+  "packSummary": {
+    "filename": "odd-glc-route-one-typescript-0.1.1-rc.2.tgz",
+    "packageSizeBytes": 25024,
+    "unpackedSizeBytes": 161110,
+    "npmShasum": "363b942eb60356e04ebe14f80fc33ec7905cb690",
+    "npmIntegrity": "sha512-PlaKU/7lbR8hHIWFP+0THZM0IWBNeQxsLI55LH8d8XLIoOEe8FL5Vdj8IhvYnrlmFRgZivYH5CC35lpw08mhDA==",
+    "totalFiles": 6,
+    "files": [
+      "README.md",
+      "package.json",
+      "src/index.d.ts",
+      "src/index.mjs",
+      "src/substrate_provenance.mjs",
+      "substrate.provenance.json"
+    ]
+  },
+  "packedInstall": {
+    "status": 0,
+    "installMode": "packed_artifact",
+    "packageName": "@odd-glc/route-one-typescript",
+    "packageVersion": "0.1.1-rc.2",
+    "tarballSha256": "a06673be3e9a8e26fa9159fbc4dd33efee906a112345075a537854ecde4b2f19",
+    "publicImportPassed": true,
+    "peerDependency": "@abiogenesis/typescript-tenant@4.6.0-rc.5",
+    "substrateVersion": "4.6.0-rc.5"
+  },
+  "liveProof": {
+    "kind": "software_build_overlay_live_proof_set",
+    "proofClass": "single_process_exact_packed_pair",
+    "agentKey": "claude",
+    "modelBinding": {
+      "environmentKey": "ABG_TS_CLAUDE_APPEND_ARGS",
+      "argv": [
+        "--model",
+        "sonnet"
+      ],
+      "observedModel": "claude-sonnet-5"
+    },
+    "workerSandbox": "external",
+    "environment": {
+      "ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE": "1",
+      "ODD_GLC_LIVE_SCENARIO": "all",
+      "ABG_TS_LIVE_AGENT": "claude",
+      "ABG_TS_LIVE_TIMEOUT_MS": "240000",
+      "ABG_TS_CODEX_SANDBOX": "danger-full-access",
+      "ABG_TS_WORKER_SANDBOX": "external",
+      "ABG_TS_CLAUDE_APPEND_ARGS": "[\"--model\",\"sonnet\"]",
+      "ABG_TYPESCRIPT_TENANT_INSTALL_ROOT": "/tmp/abg-toolchain-4.6.0-rc.5/products/abiogenesis/4.6.0-rc.5",
+      "ABG_TYPESCRIPT_TENANT_ROOT": "/tmp/abg-toolchain-4.6.0-rc.5/products/abiogenesis/4.6.0-rc.5/lib/node_modules/@abiogenesis/typescript-tenant",
+      "ODD_GLC_PACKAGE_TARBALL": "/tmp/glc-0.1.1-rc.2-candidate/odd-glc-route-one-typescript-0.1.1-rc.2.tgz",
+      "ODD_GLC_PACKAGE_TARBALL_SHA256": "a06673be3e9a8e26fa9159fbc4dd33efee906a112345075a537854ecde4b2f19",
+      "ODD_GLC_PACKAGE_VERSION": "0.1.1-rc.2"
+    },
+    "processId": 49318,
+    "scenarioCount": 6,
+    "allConverged": true,
+    "testRunnerPass": 6,
+    "testRunnerFail": 0,
+    "processDurationMs": 2388098,
+    "externalAbgStartInvocationCountPerScenario": 1,
+    "executionLane": "worker_executes",
+    "evaluatorLane": "closed_prompt_proof",
+    "transportFailureClassCount": 0,
+    "command": [
+      "node",
+      "--test",
+      "--test-name-pattern=^runs SCN-GLC-HELLO-WORLD-",
+      "test/glc-software-build-overlay-live.test.mjs"
+    ],
+    "scenarios": [
+      {
+        "relativePath": "qualification/odd-glc-basic-cli-live-proof.json",
+        "bytes": 948346,
+        "sha256": "29b5fad32e6917d3d77348a157a590060bb0da85ade13176ea9b2928780e8645",
+        "scenarioId": "SCN-GLC-HELLO-WORLD-CLI-BASIC",
+        "runId": "20260713T172816930Z_pid49318",
+        "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/basic-cli/20260713T172816930Z_pid49318",
+        "startInvocationDurationMs": 384656,
+        "campaignDurationMs": 384505,
+        "executionToolCallCount": 9,
+        "typedRetryCount": 1,
+        "executionEvidence": {
+          "relativePath": "qualification/execution-evidence/basic-cli.json",
+          "bytes": 1940,
+          "sha256": "ea4beb93596b0d29ad1af2f5c7dc0fd03f7a6393171b6447952263d70357d6d4"
+        }
+      },
+      {
+        "relativePath": "qualification/odd-glc-js-tenant-test-live-proof.json",
+        "bytes": 952447,
+        "sha256": "cf100be5c972bed59a34f1e4dddabf2c285028029746e460e2e0e05de6fede9e",
+        "scenarioId": "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
+        "runId": "20260713T173443731Z_pid49318",
+        "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/js-tenant-test/20260713T173443731Z_pid49318",
+        "startInvocationDurationMs": 379835,
+        "campaignDurationMs": 379687,
+        "executionToolCallCount": 3,
+        "typedRetryCount": 1,
+        "executionEvidence": {
+          "relativePath": "qualification/execution-evidence/js-tenant-test.json",
+          "bytes": 1964,
+          "sha256": "15b12df9880db4513a506bcbd2d36035a9fb2025db8741633698f541f14692cc"
+        }
+      },
+      {
+        "relativePath": "qualification/odd-glc-js-sdlc-bootstrap-live-proof.json",
+        "bytes": 931644,
+        "sha256": "95c605d609a7d2854114821f929d577ca31fe0f1c858f98fc7800d67a2049392",
+        "scenarioId": "SCN-GLC-HELLO-WORLD-JS-SDLC-BOOTSTRAP",
+        "runId": "20260713T174105820Z_pid49318",
+        "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/js-sdlc-bootstrap/20260713T174105820Z_pid49318",
+        "startInvocationDurationMs": 283361,
+        "campaignDurationMs": 283211,
+        "executionToolCallCount": 8,
+        "typedRetryCount": 0,
+        "executionEvidence": {
+          "relativePath": "qualification/execution-evidence/js-sdlc-bootstrap.json",
+          "bytes": 1980,
+          "sha256": "2bec76c456a314ab12cac641b0c343d9e5300d756243384cabe20548ee4f8f69"
+        }
+      },
+      {
+        "relativePath": "qualification/odd-glc-rust-cli-live-proof.json",
+        "bytes": 947101,
+        "sha256": "785a32d04c14f9c0f2251b87f45120ca69d1e61f7ee888183a710a695914378f",
+        "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-CLI",
+        "runId": "20260713T174551357Z_pid49318",
+        "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-cli/20260713T174551357Z_pid49318",
+        "startInvocationDurationMs": 397132,
+        "campaignDurationMs": 396982,
+        "executionToolCallCount": 6,
+        "typedRetryCount": 1,
+        "executionEvidence": {
+          "relativePath": "qualification/execution-evidence/rust-cli.json",
+          "bytes": 1932,
+          "sha256": "e246b8cda2dc3fbedd9987ea223ae9d2234898b0e3b181793e1de8a501eeecf3"
+        }
+      },
+      {
+        "relativePath": "qualification/odd-glc-rust-service-live-proof.json",
+        "bytes": 950222,
+        "sha256": "5401fe6ba512bebf330cb93b457755237b46f0359cf0afe3ead90714ebf54467",
+        "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+        "runId": "20260713T175233028Z_pid49318",
+        "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/rust-service/20260713T175233028Z_pid49318",
+        "startInvocationDurationMs": 560399,
+        "campaignDurationMs": 560251,
+        "executionToolCallCount": 5,
+        "typedRetryCount": 1,
+        "executionEvidence": {
+          "relativePath": "qualification/execution-evidence/rust-service.json",
+          "bytes": 1964,
+          "sha256": "73dce371a47ce1fd394bb9634231c7a8cd3b8c46d3f5332d89d8722d3e45ac57"
+        }
+      },
+      {
+        "relativePath": "qualification/odd-glc-parallel-js-live-proof.json",
+        "bytes": 926954,
+        "sha256": "124d3f1cdc1732f8203b2bbe6244e2c5d5da6c1d30da0e2c09ea3cc436473524",
+        "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+        "runId": "20260713T180156247Z_pid49318",
+        "originalRunRoot": "/Users/jim/src/apps/odd_glc-0.1-support/build_tenants/odd_glc/typescript/test_runs/glc_software_build_overlay_live/parallel-js/20260713T180156247Z_pid49318",
+        "startInvocationDurationMs": 366543,
+        "campaignDurationMs": 366394,
+        "executionToolCallCount": 7,
+        "typedRetryCount": 0,
+        "executionEvidence": {
+          "relativePath": "qualification/execution-evidence/parallel-js.json",
+          "bytes": 1965,
+          "sha256": "4a1680f563151932ae3b5735f3ef15253c1347afa4cf383e272127c034ac125d"
+        }
+      }
+    ]
+  },
+  "tarball": {
+    "kind": "package_tarball",
+    "relativePath": "odd-glc-route-one-typescript-0.1.1-rc.2.tgz",
+    "bytes": 25024,
+    "sha256": "a06673be3e9a8e26fa9159fbc4dd33efee906a112345075a537854ecde4b2f19"
+  },
+  "releaseNote": {
+    "kind": "release_note",
+    "relativePath": "release-note.md",
+    "bytes": 5306,
+    "sha256": "93904a7b230a209252784fc85435d8edb83bae01acf5d72977b831de963c2c30"
+  },
+  "checksumFile": "checksums.sha256"
+}

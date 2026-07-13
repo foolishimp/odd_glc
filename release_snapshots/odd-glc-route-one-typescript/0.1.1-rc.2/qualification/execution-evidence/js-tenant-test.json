@@ -1,0 +1,56 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "1",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
+  "runId": "20260713T173443731Z_pid49318",
+  "mainProof": "qualification/odd-glc-js-tenant-test-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-tenant-test/js-tenant-test-vector-6-transport.json",
+      "sha256": "ba0d8ce03fd3b9c055904fa23f9e18782679ecbc7b326fc5c8403a1a46124efb"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-tenant-test/js-tenant-test-vector-6-evaluator-transport.json",
+      "sha256": "e03b8e582f115b6aa7f6dbb9a421a498bd22948d4d1c96dd2c2f35ea4c1fef8c"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "674755aa73bbd5e14ccd62575e5e643f111eab7d9e46de570d52f2f85b57605a"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 3,
+    "structuredEventCount": 17,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 25,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "subject": {
+    "command": "node",
+    "args": ["--test", "test/component/hello.test.mjs", "test/uat/hello.uat.test.mjs"],
+    "status": 0,
+    "expectedPassCount": 10,
+    "observedPassCount": 10,
+    "observedFailCount": 0,
+    "stdoutContains": "fail 0",
+    "assertedReturnValue": "Hello, world!"
+  },
+  "typedRetryCount": 1,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}
