@@ -16,7 +16,7 @@
 - re_entry_point: design surface (overlay stage node-type + closure contract), flowing to overlay declaration data, live-lane stagePlans, proof lanes
 - triaged_at: 2026-07-13
 - created_at: 2026-07-13
-- updated_at: 2026-07-13
+- updated_at: 2026-07-14
 - links: sibling ticket `abiogenesis-4.6-support/.ai-workspace/tickets/active/B-001-transport-contract-lane-tools-and-downstream-cli-configuration.md`
 
 ## Intake Triage (performed)
@@ -85,6 +85,8 @@ Two further scenario-contract defects found and fixed during closure:
 Run composition note (objective status, per closure law): runs 7/8/9 executed on identical convergence-law code; the two later amendments are scenario-local data (parallel-js instructions) and run-environment binding (rust-service). No single 6/6 process run was executed — rule whether one is required as the final witness before the 0.1.1 RC cut.
 
 **Witness record (2026-07-14, F_H-ordered).** Witness run 1 (single process at `v0.1.1-rc.1`): 5/6 — surfaced defect #7 (vector-0 casing slip `Hello, World!` admitted by the authoring evaluator, locked in by instruction-authority precedence, workspace split, no upstream re-entry, retry burn to block; 919s). Fixes: `b8a1fe0` (per-scenario pins — superseded), `b3c20f3` (canonicality audit: pin DERIVED at one site from the scenario's declared `expectedReturnValue`; hand literals removed). **Witness run 3 at `b3c20f3`: 6/6 green in one process, one environment** — CLI-BASIC 292s, JS-TENANT-TEST 317s, JS-SDLC-BOOTSTRAP 263s, RUST-CLI 308s, RUST-SERVICE 355s, PARALLEL-JS 311s; total ~31 min; env: `ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE=1 ABG_TS_CODEX_MODEL=gpt-5.5`, codex medium effort, `[sandbox_workspace_write] network_access = true`. The composed-evidence exclusion is retired; `0.1.1-rc.2` should carry this witness.
+
+**Witness run 4 (2026-07-14, exact packed rc.5/rc.2 pair, Claude Sonnet): stopped after 4/6 green.** RUST-SERVICE generated a lawful source implementation for the declared positive `/hello` contract, then its later UAT turn invented an undefined-route requirement absent from conformance, design, and source. The worker honestly executed that test and recorded status 1; ABG blocked and planned a same-vector retry, which cannot repair earlier source. This is scenario-contract ambiguity, not a transport or subject-source defect. The repair makes the existing contract explicit at conformance, design, test-design, and UAT surfaces: only `GET /hello` is declared; required negative depth rejects near-miss `/hello` bodies such as a missing newline or wrong case; tests must not invent other route semantics. No runtime, retry, closure, graph, or published-package behavior changes.
 
 Remaining open condition: corporate consumer reproduction converges on their external checkout (their claude-side rev-2 shape) — pending their refresh of `support/0.1.x` + `support/4.6.x`.
 

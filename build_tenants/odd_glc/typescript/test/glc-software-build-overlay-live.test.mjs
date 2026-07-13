@@ -607,7 +607,8 @@ const SCENARIOS = Object.freeze([
           "Write only specification/project-conformance.md.",
           "Declare a Rust service Hello World software-build traversal.",
           "The source surface must include src/service.rs.",
-          "The test source must compile the service with rustc, start it on 127.0.0.1 using a system-assigned port, send one HTTP request, and observe response body exactly \"Hello, world!\\n\"."
+          "The test source must compile the service with rustc, start it on 127.0.0.1 using a system-assigned port, send one HTTP GET to /hello, and observe response body exactly \"Hello, world!\\n\".",
+          "This scenario declares behavior only for GET /hello; behavior for every other request path is outside its contract."
         ]
       },
       {
@@ -617,7 +618,8 @@ const SCENARIOS = Object.freeze([
           "Write only design/implementation-design.md.",
           "Define a single-file Rust TCP HTTP service in src/service.rs.",
           "The service must accept one command-line argument: a port-file path.",
-          "It must bind 127.0.0.1:0, write the selected port to the port file, handle one HTTP request, return 200 OK with body \"Hello, world!\\n\", then exit cleanly."
+          "It must bind 127.0.0.1:0, write the selected port to the port file, handle one HTTP GET to /hello, return 200 OK with body \"Hello, world!\\n\", then exit cleanly.",
+          "Do not require routing behavior for request paths the conformance contract does not declare."
         ]
       },
       {
@@ -636,7 +638,8 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only design/test-design.md.",
           "Specify a component test and UAT test for compiling the Rust service, starting it, making a real HTTP request, and asserting status 200 and body exactly \"Hello, world!\\n\".",
-          "The tests must use a temporary port file and terminate only after the service exits."
+          "The tests must use a temporary port file and terminate only after the service exits.",
+          "For required negative coverage, prove the GET /hello body is not a near-miss such as a missing trailing newline or wrong case; do not add assertions for undefined or otherwise undeclared routes."
         ]
       },
       {
@@ -655,7 +658,9 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only test/uat/rust-service.uat.test.mjs.",
           "Use node:test and the same service-start/request pattern as the component test.",
-          "Assert the user-visible service contract: an HTTP GET to /hello returns 200 and body exactly \"Hello, world!\\n\"."
+          "Assert the user-visible service contract: an HTTP GET to /hello returns 200 and body exactly \"Hello, world!\\n\".",
+          "For required negative coverage, assert the GET /hello body is not a near-miss such as \"Hello, world!\" without its trailing newline or a wrong-case variant.",
+          "Do not add tests for undefined or otherwise undeclared routes; those behaviors are outside this scenario contract."
         ]
       },
       {
@@ -1879,6 +1884,29 @@ test("T-035: basic CLI execution planning produces worker-executed evidence", ()
   assert.equal(
     executionStage.instructions.some((instruction) =>
       /run node --test .* yourself inside this turn/u.test(instruction)
+    ),
+    true
+  );
+});
+
+test("B-001: rust-service UAT stays within the declared /hello contract", () => {
+  const scenario = SCENARIOS.find((row) => row.key === "rust-service");
+  assert.ok(scenario);
+  const uatStage = scenario.stagePlan.find(
+    (stage) => stage.stage === "uat_test_source"
+  );
+  assert.ok(uatStage);
+  assert.equal(
+    uatStage.instructions.some((instruction) =>
+      /required negative coverage.*trailing newline/u.test(instruction)
+    ),
+    true
+  );
+  assert.equal(
+    uatStage.instructions.some((instruction) =>
+      /Do not add tests for undefined or otherwise undeclared routes/u.test(
+        instruction
+      )
     ),
     true
   );
