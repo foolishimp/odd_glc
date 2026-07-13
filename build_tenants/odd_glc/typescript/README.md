@@ -6,8 +6,8 @@ This tenant implements the first `odd_glc` realization line:
 read/query and policy interpretation over ABIogenesis `4.6.0-rc.3` public
 GTL/ABG surfaces.
 
-The first immutable pre-1 package release is
-`@odd-glc/route-one-typescript@0.1.0`. It is exact-compatible with the
+The current support-line RC cut is
+`@odd-glc/route-one-typescript@0.1.1-rc.1` (0.1.1 RC cycle over the tapped `0.1.0`). It is exact-compatible with the
 ABIogenesis release candidate recorded in
 [substrate.provenance.json](substrate.provenance.json); it does not declare a
 general ABIogenesis version range.

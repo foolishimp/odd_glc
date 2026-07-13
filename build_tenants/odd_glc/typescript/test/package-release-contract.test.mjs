@@ -19,9 +19,9 @@ const packageJson = JSON.parse(
   await readFile(path.resolve(dirname, "../package.json"), "utf8")
 );
 
-test("0.1.0 package identity and public declarations bind the exact rc.3 substrate", () => {
+test("0.1.1-rc.1 package identity and public declarations bind the exact rc.3 substrate", () => {
   assert.equal(packageJson.name, "@odd-glc/route-one-typescript");
-  assert.equal(packageJson.version, "0.1.0");
+  assert.equal(packageJson.version, "0.1.1-rc.1");
   assert.equal(packageJson.private, true);
   assert.equal(ODD_GLC_STARTUP_BINDING.version, packageJson.version);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING.version, packageJson.version);
@@ -46,8 +46,8 @@ test("0.1.0 package identity and public declarations bind the exact rc.3 substra
   ]);
 });
 
-test("0.1.0 packed artifact installs and imports as the exact public product", async (t) => {
-  const root = await mkdtemp(path.join(os.tmpdir(), "odd-glc-0.1.0-pack-"));
+test("0.1.1-rc.1 packed artifact installs and imports as the exact public product", async (t) => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "odd-glc-0.1.1-rc.1-pack-"));
   t.after(async () => rm(root, { recursive: true, force: true }));
   const npmCommand = process.platform === "win32" ? "npm.cmd" : "npm";
   const packed = spawnSync(
@@ -89,11 +89,11 @@ test("0.1.0 packed artifact installs and imports as the exact public product", a
   const installedPackageJson = JSON.parse(
     await readFile(path.join(installed.packageRoot, "package.json"), "utf8")
   );
-  assert.equal(installedPackageJson.version, "0.1.0");
+  assert.equal(installedPackageJson.version, "0.1.1-rc.1");
   const publicPackage = await import(
     pathToFileURL(path.join(installed.packageRoot, "src/index.mjs")).href
   );
-  assert.equal(publicPackage.ODD_GLC_STARTUP_BINDING.version, "0.1.0");
+  assert.equal(publicPackage.ODD_GLC_STARTUP_BINDING.version, "0.1.1-rc.1");
   assert.equal(
     publicPackage.ABIOGENESIS_SUBSTRATE_PROVENANCE.substrate.packageVersion,
     "4.6.0-rc.3"
