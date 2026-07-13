@@ -707,7 +707,7 @@ const SCENARIOS = Object.freeze([
         instructions: [
           "Write only test/component/parallel-branches.test.mjs.",
           "Use node:test and node:assert/strict.",
-          "Import helloPart from ../../src/hello.mjs and worldPart from ../../src/world.mjs.",
+          "Import the named exports exactly as: import { helloPart } from \"../../src/hello.mjs\" and import { worldPart } from \"../../src/world.mjs\".",
           "Assert helloPart() returns \"Hello\" and worldPart() returns \"world\" in separate test() blocks."
         ]
       },

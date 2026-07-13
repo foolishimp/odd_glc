@@ -65,6 +65,31 @@ Third defect, promoted from follow-up candidate to in-ticket fix after it proved
 - proof_surface: `npm --prefix build_tenants/odd_glc/typescript test` (deterministic) + live lane `ODD_GLC_GTL_ABG_HELLO_WORLDS_LIVE=1` for the six scenarios; events.jsonl replay for the execution vector showing close (not repair) on first correct attempt.
 - non_closure_conditions: repair loop still triggerable by accepted correct evidence; any stagePlan still contradicts the executor's result-file requirement; `nodeTypesUsed` mixing admitted silently; fix lands by weakening the fabrication/negative gates; live green achieved only by editing the framework gates rather than the overlay/scenario contracts (live-gate precedence: fix framework/overlay law, never patch the scenario to pass).
 
+## Closure Evidence (2026-07-13)
+
+Live ladder green — all six scenarios, gpt-5.5 medium workers, installed abg 4.6.0-rc.3 substrate, final harness state:
+
+| Scenario | Run | Duration | Notes |
+|---|---|---|---|
+| CLI-BASIC | 7 | 190s | first-attempt convergence |
+| JS-TENANT-TEST | 7 | 234s | first-attempt convergence |
+| JS-SDLC-BOOTSTRAP | 7 | 175s | first-attempt convergence |
+| RUST-CLI | 7 | 205s | first-attempt convergence (cargo in worker turn) |
+| RUST-SERVICE | 8 | 259s | requires socket-capable worker sandbox (below) |
+| PARALLEL-JS | 9 | 190s | after fifth defect fix (instruction trap, below) |
+
+Two further scenario-contract defects found and fixed during closure:
+5. **PARALLEL-JS instruction trap**: component-test stage said "Import helloPart from ../../src/hello.mjs" without the named-export syntax phrasing the sibling scenarios carry — the literal reading is a default import against named exports (SyntaxError), reproduced identically in two independent runs; the evaluator, judging against the same text, accepted it. Fixed by pinning the exact named-import syntax.
+6. **RUST-SERVICE environment binding**: the codex `--full-auto` sandbox denies socket binds (documented campaign BUG #6 class); the service never publishes its port file and every honest attempt fails. Resolved by the declared install binding — either `ABG_TS_CODEX_SANDBOX` or codex `[sandbox_workspace_write] network_access = true` (empirically proven; keeps workspace-write protections). Socket-binding scenarios REQUIRE this binding in the run environment; the qualification-bundle doc must name it.
+
+Run composition note (objective status, per closure law): runs 7/8/9 executed on identical convergence-law code; the two later amendments are scenario-local data (parallel-js instructions) and run-environment binding (rust-service). No single 6/6 process run was executed — rule whether one is required as the final witness before the 0.1.1 RC cut.
+
+Remaining open condition: corporate consumer reproduction converges on their external checkout (their claude-side rev-2 shape) — pending their refresh of `support/0.1.x` + `support/4.6.x`.
+
+Discovered, explicitly NOT absorbed (route per F_H ruling):
+- sdlc hello-world graph lacks the execution→authoring re-entry stage the full-lifecycle (data-mapper) graph has: an upstream-vector code defect discovered at the execution vector is same-vector-unrepairable by contract (allowed paths) and burns the retry budget. Candidate: add the consequence/re-entry stage to the sdlc overlay, or accept block-and-restart for hello-worlds.
+- Capability-denial classification for core (ABG): typed `environment_capability_denied` disposition + install-level posture ladder + ledger-admitted self-escalation + discovered-capability caching, replacing burn-to-discover. Belongs to the core-absorption follow-up with the worker-evidence admission carrier.
+
 ## Notes
 
 - ABG's runtime behaved correctly in all traces; this ticket must not move odd_glc policy into ABG core nor build a local traversal controller (AGENTS.md boundary rules).
