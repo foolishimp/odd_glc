@@ -6,7 +6,7 @@ The first active build tenant is:
 
 | Tenant | Status | Scope |
 | --- | --- | --- |
-| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over installed ABIogenesis `4.6.0-rc.5` public GTL/ABG surfaces; current support candidate `0.1.1-rc.2`. |
+| `build_tenants/odd_glc/typescript/` | active | Route-1 read/query and policy interpretation over installed ABIogenesis `4.6.0-rc.5` public GTL/ABG surfaces; current support candidate `0.1.1-rc.3`. |
 
 The tenant was activated after requirements and ratified design defined:
 

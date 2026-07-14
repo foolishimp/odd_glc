@@ -7,7 +7,7 @@ read/query and policy interpretation over ABIogenesis `4.6.0-rc.5` public
 GTL/ABG surfaces.
 
 The current support-line RC cut is
-`@odd-glc/route-one-typescript@0.1.1-rc.2` (0.1.1 RC cycle over the tapped `0.1.0`). It is exact-compatible with the
+`@odd-glc/route-one-typescript@0.1.1-rc.3` (0.1.1 RC cycle over the tapped `0.1.0`). It is exact-compatible with the
 ABIogenesis release candidate recorded in
 [substrate.provenance.json](substrate.provenance.json); it does not declare a
 general ABIogenesis version range.
