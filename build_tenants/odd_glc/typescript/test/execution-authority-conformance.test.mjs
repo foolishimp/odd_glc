@@ -31,32 +31,17 @@ function observedSignatures(source) {
 }
 
 // THE PINNED SITE LIST (exact, shrinking-by-reprice only).
-// Framework self-invocation: run/runForEvidence(genesisCommand) launch
-// the SUBSTRATE CLI; process.execPath sites are node --check / node
-// subject runs in PRE-LAW legacy scenario executors (named below);
-// command-variable sites are the helper definitions' internal spawns
-// and the legacy planned executor helpers.
+// Framework self-invocation: run/runForEvidence(genesisCommand) launches
+// the SUBSTRATE CLI. The remaining command-variable sites are harness
+// helper definitions; the generated binding has no process-execution
+// capability. No scenario-specific subject executor remains.
 const PINNED = [
   "exec(",                       // JSDoc/word match inside comments only — kept pinned to detect real calls appearing
   "run(command",                 // harness helper definition body
   "run(genesisCommand",          // substrate CLI launch (lawful: running the kernel)
-  "runAsync(command",            // binding helper definition body
-  "runAsync(process.execPath",   // LEGACY parallel fan-in branches (pre-law, shrinking)
-  "runAsync(process.execPath",
   "runForEvidence(command",      // harness helper definition body
   "runForEvidence(genesisCommand", // substrate CLI launch
-  "runSync(\"cargo\"",           // LEGACY rust_cli executor (pre-law, shrinking)
-  "runSync(\"rustc\"",           // LEGACY rust_service compile (pre-law, shrinking)
-  "runSync(command",             // binding helper definition body
-  "runSync(process.execPath",    // LEGACY node_cli/parallel/logical lanes + node --check (pre-law, shrinking)
-  "runSync(process.execPath",
-  "runSync(process.execPath",
-  "runSync(process.execPath",
-  "runSync(process.execPath",
-  "spawn(binaryPath",            // LEGACY rust_service launch (pre-law, shrinking)
-  "spawn(command",               // binding runAsync definition internal
-  "spawnSync(command",           // helper definition internals (run/runForEvidence/runSync)
-  "spawnSync(command",
+  "spawnSync(command",           // helper definition internals (run/runForEvidence)
   "spawnSync(command",
   "spawnSync(process.execPath"   // node --check of the generated binding (framework self-check)
 ].sort();
@@ -78,16 +63,13 @@ test("the subject toolchain is never a spawn argument anywhere", () => {
       "u"
     );
     const match = liveSource.match(pattern);
-    if (tool === "cargo" || tool === "rustc") {
-      continue; // pre-law legacy sites pinned above by exact signature
-    }
     assert.equal(match, null, `framework spawn of ${tool} found: ${match?.[0] ?? ""}`);
   }
 });
 
 test("child_process reachability is pinned (any quote style, createRequire, dynamic import)", () => {
   const refs = [...liveSource.matchAll(/child_process/gu)].length;
-  assert.equal(refs, 7, `child_process references changed (${refs} != 7) — new process capability requires repricing this pin`);
+  assert.equal(refs, 6, `child_process references changed (${refs} != 6) — new process capability requires repricing this pin`);
   assert.equal(/createRequire\s*\([^)]*\)\s*\(\s*["']\s*(node:)?child_process/u.test(liveSource), false);
 });
 

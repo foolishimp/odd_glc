@@ -20,6 +20,7 @@ import {
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
   ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING,
+  ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT,
   interpretStartupRegistryState
 } from "../src/index.mjs";
 import { deriveRequirementLineageCanary } from "../src/lineage_canary.mjs";
@@ -55,10 +56,27 @@ function withStageBootstrap(stagePlan, overrides) {
   const byStage = Array.isArray(overrides)
     ? new Map(overrides.map((override) => [override.stage, override]))
     : new Map(Object.entries(overrides));
-  return Object.freeze(stagePlan.map((stage) => Object.freeze({
-    ...stage,
-    ...(byStage.get(stage.stage) ?? {})
-  })));
+  return Object.freeze(stagePlan.map((stage) => {
+    const override = byStage.get(stage.stage) ?? {};
+    const filesToProduce = [
+      ...(stage.filesToProduce ?? []),
+      ...(override.filesToProduce ?? [])
+    ];
+    const instructions = [
+      ...(stage.instructions ?? []),
+      ...(override.instructions ?? [])
+    ];
+    return Object.freeze({
+      ...stage,
+      ...override,
+      ...(filesToProduce.length === 0
+        ? {}
+        : { filesToProduce: Object.freeze([...new Set(filesToProduce)]) }),
+      ...(instructions.length === 0
+        ? {}
+        : { instructions: Object.freeze(instructions) })
+    });
+  }));
 }
 
 const SDLC_REQUIRED_STAGE_NAMES = Object.freeze(
@@ -168,6 +186,15 @@ function withConformanceContractPin(stagePlan, expectedReturnValue) {
 
 function sdlcComplianceScenario(input) {
   const expectedReturnValue = input.expectedReturnValue ?? "Hello, world!";
+  const testFiles = Object.freeze([...(input.testFiles ?? [])]);
+  if (testFiles.length === 0 || !Number.isInteger(input.expectedTestPassCount)) {
+    throw new TypeError(`SDLC scenario ${input.key} requires testFiles and expectedTestPassCount`);
+  }
+  const nodeTestProfile = ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.executionProfiles.nodeTest;
+  const expectedExecutionArgs = Object.freeze([
+    ...nodeTestProfile.argsBeforeTestFiles,
+    ...testFiles
+  ]);
   return Object.freeze({
     ...input,
     proofClass: "sdlc_graph_traversal_compliance",
@@ -176,6 +203,14 @@ function sdlcComplianceScenario(input) {
     manifestRequired: false,
     executeFromPlan: true,
     expectedReturnValue,
+    expectedExecutionCommand: nodeTestProfile.command,
+    expectedExecutionArgs,
+    expectedExecutionCwd: ".",
+    expectedStdoutMatch: Object.freeze([]),
+    expectedTestReportBase: ".",
+    expectedTestReportPaths: Object.freeze([
+      nodeTestProfile.reportPath
+    ]),
     requiredStageNames: SDLC_REQUIRED_STAGE_NAMES,
     stagePlan: withConformanceContractPin(
       sdlcStagePlan(input.stagePlan),
@@ -208,6 +243,8 @@ const SCENARIOS = Object.freeze([
     key: "basic-cli",
     scenarioId: "SCN-GLC-HELLO-WORLD-CLI-BASIC",
     kind: "node_cli",
+    testFiles: ["test/component/hello-cli.test.mjs", "test/uat/hello-cli.uat.test.mjs"],
+    expectedTestPassCount: 2,
     stagePlan: [
       {
         stage: "conformance_project",
@@ -269,34 +306,14 @@ const SCENARIOS = Object.freeze([
           "Assert the user-visible CLI output is exactly \"Hello, world!\\n\"."
         ]
       },
-      {
-        stage: "test_execution_plan",
-        workerExecutes: true,
-        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
-        instructions: [
-          "Write test-execution-plan.json and test-execution-result.json only.",
-          "The JSON command must be node.",
-          "The args must be [\"--test\", \"test/component/hello-cli.test.mjs\", \"test/uat/hello-cli.uat.test.mjs\"].",
-          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
-          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\".",
-          "EXECUTION-DEFAULT LAW: run node --test test/component/hello-cli.test.mjs test/uat/hello-cli.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
-        ]
-      },
-      {
-        stage: "test_execution_result",
-        instructions: [
-          "Produce no files.",
-          "Accept only if the execution plan command exited 0, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
-        ]
-      }
     ]
   }),
   sdlcComplianceScenario({
     key: "js-tenant-test",
     scenarioId: "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
     kind: "node_test",
+    testFiles: ["test/component/hello.test.mjs", "test/uat/hello.uat.test.mjs"],
+    expectedTestPassCount: 2,
     stagePlan: [
       {
         stage: "conformance_project",
@@ -355,39 +372,14 @@ const SCENARIOS = Object.freeze([
           "Assert the user-visible greeting contract is exactly \"Hello, world!\"."
         ]
       },
-      {
-        stage: "test_execution_plan",
-        // B-001 (support/0.1.x): execution-default law propagated from the
-        // basic-cli/data-mapper T-035 shape — without workerExecutes and the
-        // result surface in the allowed paths, the executor's required
-        // test-execution-result.json is forbidden by this stage's own
-        // contract and the execution vector blocks deterministically.
-        workerExecutes: true,
-        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
-        instructions: [
-          "Write test-execution-plan.json and test-execution-result.json only.",
-          "The JSON command must be node.",
-          "The args must be [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
-          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
-          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\".",
-          "EXECUTION-DEFAULT LAW: run node --test test/component/hello.test.mjs test/uat/hello.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
-        ]
-      },
-      {
-        stage: "test_execution_result",
-        instructions: [
-          "Produce no files.",
-          "Accept only if both component and UAT tests passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
-        ]
-      }
     ]
   }),
   sdlcComplianceScenario({
     key: "js-sdlc-bootstrap",
     scenarioId: "SCN-GLC-HELLO-WORLD-JS-SDLC-BOOTSTRAP",
     kind: "sdlc_js_full_node_test",
+    testFiles: ["test/component/hello.test.mjs", "test/uat/hello.uat.test.mjs"],
+    expectedTestPassCount: 2,
     expectedStdout: null,
     expectedReturnValue: "Hello, world!",
     witness: {
@@ -474,40 +466,14 @@ const SCENARIOS = Object.freeze([
           "Assert the user-visible greeting contract is exactly \"Hello, world!\"."
         ]
       },
-      {
-        stage: "test_execution_plan",
-        // B-001 (support/0.1.x): execution-default law propagated; the prior
-        // "Do not execute" wording predated the law and made the executor's
-        // required test-execution-result.json unproducible.
-        workerExecutes: true,
-        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
-        instructions: [
-          "Write test-execution-plan.json and test-execution-result.json only.",
-          "Use the prior component_test_source and uat_test_source artifact summaries as the evidence source.",
-          "The command must be node with args [\"--test\", \"test/component/hello.test.mjs\", \"test/uat/hello.uat.test.mjs\"].",
-          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
-          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\".",
-          "EXECUTION-DEFAULT LAW: run node --test test/component/hello.test.mjs test/uat/hello.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
-        ]
-      },
-      {
-        stage: "test_execution_result",
-        instructions: [
-          "Produce no files.",
-          "Judge the observed executionStatus, planSatisfied flag, observedTestPassCount, and stdout digest against the prior test_execution_plan.",
-          "Accept only if both component and UAT tests passed, planSatisfied is true, and observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount.",
-          "Do not reject solely because node:test uses a different TAP prefix glyph when the F_D pass-count check is satisfied."
-        ]
-      }
     ]
   }),
   sdlcComplianceScenario({
     key: "rust-cli",
     scenarioId: "SCN-GLC-HELLO-WORLD-RUST-CLI",
     kind: "rust_cli",
-    expectedStdout: "Hello, world!\n",
+    testFiles: ["test/component/rust-cli.test.mjs", "test/uat/rust-cli.uat.test.mjs"],
+    expectedTestPassCount: 2,
     stagePlan: [
       {
         stage: "conformance_project",
@@ -567,36 +533,14 @@ const SCENARIOS = Object.freeze([
           "Assert the user-visible Rust CLI output is exactly \"Hello, world!\\n\"."
         ]
       },
-      {
-        stage: "test_execution_plan",
-        // B-001 (support/0.1.x): execution-default law propagated from the
-        // basic-cli T-035 shape.
-        workerExecutes: true,
-        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
-        instructions: [
-          "Write test-execution-plan.json and test-execution-result.json only.",
-          "The JSON command must be node.",
-          "The args must be [\"--test\", \"test/component/rust-cli.test.mjs\", \"test/uat/rust-cli.uat.test.mjs\"].",
-          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
-          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\".",
-          "EXECUTION-DEFAULT LAW: run node --test test/component/rust-cli.test.mjs test/uat/rust-cli.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
-        ]
-      },
-      {
-        stage: "test_execution_result",
-        instructions: [
-          "Produce no files.",
-          "Accept only if the planned node:test command exited 0, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
-        ]
-      }
     ]
   }),
   sdlcComplianceScenario({
     key: "rust-service",
     scenarioId: "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
     kind: "rust_service",
+    testFiles: ["test/component/rust-service.test.mjs", "test/uat/rust-service.uat.test.mjs"],
+    expectedTestPassCount: 2,
     expectedStdout: null,
     expectedReturnValue: "Hello, world!",
     stagePlan: [
@@ -663,36 +607,14 @@ const SCENARIOS = Object.freeze([
           "Do not add tests for undefined or otherwise undeclared routes; those behaviors are outside this scenario contract."
         ]
       },
-      {
-        stage: "test_execution_plan",
-        // B-001 (support/0.1.x): execution-default law propagated from the
-        // basic-cli T-035 shape.
-        workerExecutes: true,
-        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
-        instructions: [
-          "Write test-execution-plan.json and test-execution-result.json only.",
-          "The JSON command must be node.",
-          "The args must be [\"--test\", \"test/component/rust-service.test.mjs\", \"test/uat/rust-service.uat.test.mjs\"].",
-          "expectedTestPassCount must be at least 2, matching the admitted component and UAT coverage floor.",
-          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\".",
-          "EXECUTION-DEFAULT LAW: run node --test test/component/rust-service.test.mjs test/uat/rust-service.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
-        ]
-      },
-      {
-        stage: "test_execution_result",
-        instructions: [
-          "Produce no files.",
-          "Accept only if both service tests passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
-        ]
-      }
     ]
   }),
   sdlcComplianceScenario({
     key: "parallel-js",
     scenarioId: "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
     kind: "parallel_js",
+    testFiles: ["test/component/parallel-branches.test.mjs", "test/uat/parallel-fanin.uat.test.mjs"],
+    expectedTestPassCount: 3,
     expectedStdout: null,
     expectedReturnValue: "Hello, world!",
     stagePlan: [
@@ -756,36 +678,14 @@ const SCENARIOS = Object.freeze([
           "Assert helloWorld() returns exactly \"Hello, world!\"."
         ]
       },
-      {
-        stage: "test_execution_plan",
-        // B-001 (support/0.1.x): execution-default law propagated from the
-        // basic-cli T-035 shape.
-        workerExecutes: true,
-        filesToProduce: ["test-execution-plan.json", "test-execution-result.json"],
-        instructions: [
-          "Write test-execution-plan.json and test-execution-result.json only.",
-          "The JSON command must be node.",
-          "The args must be [\"--test\", \"test/component/parallel-branches.test.mjs\", \"test/uat/parallel-fanin.uat.test.mjs\"].",
-          "expectedTestPassCount must be at least 3, matching the admitted branch and fan-in coverage floor.",
-          "expectedStdoutMatch must include stable zero-failure evidence such as fail 0; do not pin an exact pass-count fragment when the generated tests add depth coverage.",
-          "assertedReturnValue must be \"Hello, world!\".",
-          "EXECUTION-DEFAULT LAW: run node --test test/component/parallel-branches.test.mjs test/uat/parallel-fanin.uat.test.mjs yourself inside this turn; the framework executes nothing.",
-          "Record the truthful observed execution in test-execution-result.json using top-level fields named exactly: command, args, status (integer), stdout, stderr, expectedTestPassCount, expectedStdoutMatch, assertedReturnValue, cwd, env."
-        ]
-      },
-      {
-        stage: "test_execution_result",
-        instructions: [
-          "Produce no files.",
-          "Accept only if the branch and fan-in tests passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
-        ]
-      }
     ]
   }),
   sdlcComplianceScenario({
     key: "data-mapper-lite",
     scenarioId: "SCN-GLC-DATA-MAPPER-LITE-JS",
     kind: "data_mapper_lite_node_test",
+    testFiles: ["test/component/logical-data-model.test.mjs", "test/uat/logical-data-model.uat.test.mjs"],
+    expectedTestPassCount: 4,
     expectedStdout: null,
     expectedReturnValue: "data_mapper_lite ok",
     artifactTypeRef: "odd_glc.type.software.data_mapping_implementation_bundle",
@@ -875,19 +775,10 @@ const SCENARIOS = Object.freeze([
       },
       {
         stage: "test_execution_plan",
-        filesToProduce: ["test-execution-plan.json"],
         requiredNodeTypes: [
           "odd_glc.type.software.uat_test_source_surface",
           "odd_glc.type.software.mapper_build_config",
           "odd_glc.type.software.test_execution_plan"
-        ],
-        instructions: [
-          "Write only test-execution-plan.json.",
-          "The JSON command must be node.",
-          "The args must be [\"--test\", \"test/component/logical-data-model.test.mjs\", \"test/uat/logical-data-model.uat.test.mjs\"].",
-          "expectedTestPassCount is the minimum admitted test count expected from the component and UAT test source files.",
-          "expectedStdoutMatch must include stable pass/fail substrings proving zero failures.",
-          "assertedReturnValue must be \"data_mapper_lite ok\"."
         ]
       },
       {
@@ -896,10 +787,6 @@ const SCENARIOS = Object.freeze([
           "odd_glc.type.software.data_mapping_implementation_bundle",
           "odd_glc.type.software.test_execution_result",
           "odd_glc.type.evidence_binding_view"
-        ],
-        instructions: [
-          "Produce no files.",
-          "Accept only if the mapper test plan passed, observedTestPassCount is at least the prior test_execution_plan expectedTestPassCount, and planSatisfied is true."
         ]
       }
     ]
@@ -913,6 +800,9 @@ const SCENARIOS = Object.freeze([
     // review B MEDIUM-1: F_D verification pins THESE, not worker claims
     expectedTestPassCount: 20,
     expectedTestReportPaths: DATA_MAPPER_SCALA_TEST_REPORTS,
+    expectedExecutionCommand: "sbt",
+    expectedExecutionArgs: ["test"],
+    expectedExecutionCwd: "build_tenants/scala_spark",
     // T-216 D7: sbt ForkTests + Spark Netty bind local sockets
     requiresSocketSandbox: true,
     // campaign BUG #5: report RESOLUTION is contract data too — a worker
@@ -1869,24 +1759,208 @@ test("data-mapper full parity scenario targets Scala/SBT tenant depth, not JavaS
   );
 });
 
-test("T-035: basic CLI execution planning produces worker-executed evidence", () => {
-  const scenario = SCENARIOS.find((row) => row.key === "basic-cli");
-  assert.ok(scenario);
-  const executionStage = scenario.stagePlan.find(
-    (stage) => stage.stage === "test_execution_plan"
-  );
-  assert.ok(executionStage);
-  assert.equal(executionStage.workerExecutes, true);
-  assert.deepEqual(executionStage.filesToProduce, [
-    "test-execution-plan.json",
-    "test-execution-result.json"
+test("T-035: every SDLC scenario inherits one graph-owned typed execution contract", () => {
+  const scenarios = SCENARIOS.filter((row) => row.proofClass === "sdlc_graph_traversal_compliance");
+  assert.deepEqual(scenarios.map((scenario) => scenario.key).sort(), [
+    "basic-cli",
+    "data-mapper-lite",
+    "js-sdlc-bootstrap",
+    "js-tenant-test",
+    "parallel-js",
+    "rust-cli",
+    "rust-service"
   ]);
+  for (const scenario of scenarios) {
+    const executionStage = scenario.stagePlan.find(
+      (stage) => stage.stage === "test_execution_plan"
+    );
+    const resultStage = scenario.stagePlan.find(
+      (stage) => stage.stage === "test_execution_result"
+    );
+    assert.ok(executionStage, scenario.key);
+    assert.ok(resultStage, scenario.key);
+    assert.equal(scenario.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF);
+    assert.equal(executionStage.workerExecutes, true, scenario.key);
+    assert.equal(
+      executionStage.executionResultContractRef,
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef,
+      scenario.key
+    );
+    assert.equal(
+      resultStage.executionResultContractRef,
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef,
+      scenario.key
+    );
+    assert.equal(resultStage.passingResultRequired, true, scenario.key);
+    assert.deepEqual(executionStage.filesToProduce, [
+      "test-execution-plan.json",
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.resultPath
+    ]);
+    assert.equal(
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.requiredPlanFields.expectedTestPassCount,
+      "non_negative_integer"
+    );
+    assert.equal(
+      executionStage.instructions.some((instruction) =>
+        /stdout is provenance only and never count authority/u.test(instruction)
+      ),
+      true,
+      scenario.key
+    );
+    assert.deepEqual(
+      scenario.expectedExecutionArgs.slice(0, 3),
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.executionProfiles.nodeTest.argsBeforeTestFiles,
+      scenario.key
+    );
+    assert.deepEqual(scenario.expectedTestReportPaths, [
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.executionProfiles.nodeTest.reportPath
+    ]);
+    assert.equal(scenario.expectedStdout ?? null, null, scenario.key);
+    assert.deepEqual(scenario.expectedStdoutMatch, [], scenario.key);
+  }
+  const concurrent = scenarios.find((scenario) => scenario.key === "parallel-js");
+  assert.ok(concurrent);
+  assert.equal(concurrent.graphFunctionRef, ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF);
+  const repairableFullLifecycleConsumers = ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.filter(
+    (stage) => stage.executeBeforeAssessment === true
+  );
+  assert.equal(repairableFullLifecycleConsumers.length > 0, true);
   assert.equal(
-    executionStage.instructions.some((instruction) =>
-      /run node --test .* yourself inside this turn/u.test(instruction)
-    ),
+    repairableFullLifecycleConsumers.every((stage) => stage.passingResultRequired !== true),
     true
   );
+  const fullLifecycleProducers = ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN.filter(
+    (stage) => stage.workerExecutes === true
+  );
+  assert.equal(fullLifecycleProducers.length > 0, true);
+  assert.equal(
+    fullLifecycleProducers.every((stage) =>
+      stage.filesToProduce?.includes("test-execution-plan.json") !== true &&
+      stage.instructions?.every((instruction) => !/test-execution-plan\.json/u.test(instruction)) === true
+    ),
+    true,
+    "shared result production must not require full-lifecycle applications to rewrite their input plan"
+  );
+});
+
+test("T-035: the shared producer cannot demand the consumer F_D evidence early", async () => {
+  const scenario = SCENARIOS.find((row) => row.key === "basic-cli");
+  assert.ok(scenario);
+  const unitRoot = path.join(liveRoot, "producer-consumer-unit", timestampId());
+  const workspaceRoot = path.join(unitRoot, "instance");
+  await mkdir(path.join(workspaceRoot, ".abiogenesis"), { recursive: true });
+  const bindingPath = await writeRuntimeBinding({
+    abgPackageRoot: selectedAbgPackageRoot(),
+    oddGlcPackageRoot: tenantRoot,
+    scenario,
+    workspaceRoot
+  });
+  const binding = await import(pathToFileURL(bindingPath).href);
+  const plans = binding.runtimeBinding.instructionAssemblyStartup.compiledPromptPlans;
+  const reviewText = (stage) => {
+    const plan = plans.find((entry) =>
+      entry.planRef.endsWith(`/${stage}/evaluate`)
+    );
+    assert.ok(plan);
+    return plan.sectionDecisions.map((decision) => decision.text).join("\n");
+  };
+  const producerReview = reviewText("test_execution_plan");
+  const consumerReview = reviewText("test_execution_result");
+  const producerTransformPlan = plans.find((entry) =>
+    entry.planRef.endsWith("/test_execution_plan/transform")
+  );
+  assert.ok(producerTransformPlan);
+  const producerTransform = producerTransformPlan.sectionDecisions
+    .map((decision) => decision.text)
+    .join("\n");
+  assert.equal(
+    producerTransform.includes("exact field expectedTestPassCount"),
+    true
+  );
+  assert.equal(
+    producerReview.includes("The following test_execution_result vector is the sole F_D consumer"),
+    true
+  );
+  assert.equal(
+    producerReview.includes("Do not require the report in candidateEvidence.materializedFiles"),
+    true
+  );
+  assert.equal(
+    producerReview.includes("execution evidence satisfy the typed vector contract"),
+    false
+  );
+  assert.equal(
+    consumerReview.includes("execution evidence satisfy the typed vector contract"),
+    true
+  );
+  const resultStage = scenario.stagePlan.find((stage) => stage.stage === "test_execution_result");
+  assert.ok(resultStage);
+  const failingExecution = Object.freeze({
+    commands: Object.freeze([Object.freeze({ status: 0 })]),
+    planSatisfied: false,
+    observedTestPassCount: 1,
+    expectedTestPassCount: 2,
+    expectedTestReportPaths: Object.freeze(["test-execution-report.xml"]),
+    envOverrides: Object.freeze({}),
+    executionIssues: Object.freeze(["missing test report test-execution-report.xml"])
+  });
+  const blocked = binding.deterministicExecutionAssessmentFor({
+    expectedStage: resultStage.stage,
+    expectedNodeTypes: resultStage.requiredNodeTypes,
+    execution: failingExecution,
+    passingResultRequired: true
+  });
+  assert.equal(blocked.accepted, false);
+  const downstreamEvidence = binding.deterministicExecutionAssessmentFor({
+    expectedStage: "derive_test_execution_result_surface",
+    expectedNodeTypes: resultStage.requiredNodeTypes,
+    execution: failingExecution,
+    passingResultRequired: false
+  });
+  assert.equal(downstreamEvidence.accepted, true);
+  assert.equal(
+    binding.acceptedReviewFor(
+      {
+        vectorIndex: scenario.stagePlan.indexOf(resultStage),
+        attachedResultArtifact: {
+          stage: resultStage.stage,
+          vectorIndex: scenario.stagePlan.indexOf(resultStage),
+          assessment: {
+            accepted: true,
+            evidenceAccepted: true,
+            nodeTypesUsed: [...resultStage.requiredNodeTypes]
+          },
+          evidenceSummary: { planSatisfied: false },
+          postMaterializationValidation: null
+        }
+      },
+      { reviewAccepted: true, evidenceAccepted: true }
+    ),
+    false
+  );
+
+  const fullLifecycleScenario = SCENARIOS.find((row) => row.key === "data-mapper-full");
+  assert.ok(fullLifecycleScenario);
+  const fullLifecycleRoot = path.join(liveRoot, "producer-consumer-unit-full-lifecycle", timestampId());
+  const fullLifecycleWorkspace = path.join(fullLifecycleRoot, "instance");
+  await mkdir(path.join(fullLifecycleWorkspace, ".abiogenesis"), { recursive: true });
+  const fullLifecycleBindingPath = await writeRuntimeBinding({
+    abgPackageRoot: selectedAbgPackageRoot(),
+    oddGlcPackageRoot: tenantRoot,
+    scenario: fullLifecycleScenario,
+    workspaceRoot: fullLifecycleWorkspace
+  });
+  const fullLifecycleBinding = await import(pathToFileURL(fullLifecycleBindingPath).href);
+  const fullLifecyclePlan = fullLifecycleBinding.runtimeBinding.instructionAssemblyStartup.compiledPromptPlans.find(
+    (entry) => entry.planRef.endsWith("/prepare_test_execution_surface/transform")
+  );
+  assert.ok(fullLifecyclePlan);
+  const fullLifecycleTransform = fullLifecyclePlan.sectionDecisions
+    .map((decision) => decision.text)
+    .join("\n");
+  assert.equal(fullLifecycleTransform.includes("Allowed paths: test-execution-result.json"), true);
+  assert.equal(fullLifecycleTransform.includes("test-execution-plan.json records"), false);
+  assert.equal(fullLifecycleTransform.includes("test-execution-result.json records observed"), true);
 });
 
 test("B-001: rust-service UAT stays within the declared /hello contract", () => {
@@ -2016,12 +2090,12 @@ import {
   ODD_GLC_SOFTWARE_BUILD_GRAPH_FUNCTION_BINDINGS,
   ODD_GLC_SOFTWARE_BUILD_NODE_TYPES,
   ODD_GLC_SOFTWARE_BUILD_OVERLAY,
-  ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING
+  ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING,
+  ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT
 } from ${JSON.stringify(oddGlcImport)};
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
-import { spawn, spawnSync } from "node:child_process";
 import path from "node:path";
 
 const SCENARIO = Object.freeze(${JSON.stringify(input.scenario, null, 2)});
@@ -2520,6 +2594,9 @@ const stageRows = Object.freeze(STAGE_PLAN.map((stage, index) => {
     {
       assetSurface: {
         constructorInputAssetKinds,
+        outputContractRefs: stage.executionResultContractRef === undefined
+          ? []
+          : [stage.executionResultContractRef],
         renderedViewDigestPolicyRef: constructorInputAssetKinds.length === 0
           ? null
           : "policy://abg/instruction-causal/excerpt"
@@ -2993,87 +3070,6 @@ async function summarizeMaterializedFiles(workspaceRoot, filePaths) {
   return Object.freeze(summaries);
 }
 
-function validatedPlanEnv(plan) {
-  if (plan.env === undefined) {
-    return Object.freeze({});
-  }
-  if (plan.env === null || typeof plan.env !== "object" || Array.isArray(plan.env)) {
-    throw new Error("Execution plan env must be an object when present: " + JSON.stringify(plan.env));
-  }
-  const entries = Object.entries(plan.env);
-  for (const [key, value] of entries) {
-    if (typeof key !== "string" || key.length === 0 || typeof value !== "string") {
-      throw new Error("Execution plan env entries must be string:string: " + JSON.stringify(plan.env));
-    }
-  }
-  return Object.freeze(Object.fromEntries(entries));
-}
-
-// PURE (unit lane): Campaign bug #10/#10b — plan env values are
-// TEMPLATES; \${VAR} references expand against the provided base env
-// (JSON carries no shell expansion; a literal "\${PATH}" made sbt
-// unfindable and the SBT gate silent).
-export function expandEnvTemplates(envOverrides, baseEnv) {
-  const expanded = {};
-  for (const [key, value] of Object.entries(envOverrides ?? {})) {
-    expanded[key] = typeof value === "string"
-      ? value.replace(/\\$\\{([A-Za-z_][A-Za-z0-9_]*)\\}/g, (m, name) => baseEnv[name] ?? "")
-      : value;
-  }
-  return expanded;
-}
-
-function runSync(command, args, cwd, envOverrides = Object.freeze({})) {
-  const env = { ...process.env };
-  delete env.NODE_TEST_CONTEXT;
-  Object.assign(env, expandEnvTemplates(envOverrides, env));
-  // Campaign bug #11: spawnSync's 1MB default maxBuffer truncates
-  // long-running tool output (ENOBUFS -> status null, empty stdout);
-  // execution evidence needs the WHOLE stream, and a spawn-level error
-  // must be visible evidence, never a silent null.
-  const result = spawnSync(command, args, {
-    cwd,
-    encoding: "utf8",
-    env,
-    maxBuffer: 64 * 1024 * 1024
-  });
-  return Object.freeze({
-    command,
-    args,
-    cwd,
-    envOverrides,
-    status: result.status,
-    signal: result.signal ?? null,
-    error: result.error === undefined ? null : String(result.error),
-    stdout: result.stdout,
-    stderr: result.stderr
-  });
-}
-
-function runAsync(command, args, cwd) {
-  return new Promise((resolve, reject) => {
-    const env = { ...process.env };
-    delete env.NODE_TEST_CONTEXT;
-    const child = spawn(command, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"] });
-    let stdout = "";
-    let stderr = "";
-    child.stdout.on("data", (chunk) => { stdout += chunk.toString("utf8"); });
-    child.stderr.on("data", (chunk) => { stderr += chunk.toString("utf8"); });
-    child.on("error", reject);
-    child.on("close", (status, signal) => {
-      resolve(Object.freeze({ command, args, cwd, pid: child.pid, status, signal, stdout, stderr }));
-    });
-  });
-}
-
-function nodeTestPassCount(stdout) {
-  const match = stdout.match(/(?:^|\\n)\\u2139 pass (\\d+)(?:\\n|$)/u);
-  if (match === null) {
-    return null;
-  }
-  return Number.parseInt(match[1], 10);
-}
-
 async function xmlTestReportPassCount(cwd, reportPaths) {
   // T-209/S2.3 ADOPTION (T-217 closure campaign, 2026-07-10): the local
   // element-scoped parser — a self-documented three-layer violation —
@@ -3107,21 +3103,6 @@ async function xmlTestReportPassCount(cwd, reportPaths) {
   });
 }
 
-async function expectedPassCountFromExecutionPlan(workspaceRoot, fallback) {
-  const planPath = path.join(workspaceRoot, "test-execution-plan.json");
-  try {
-    const plan = JSON.parse(await readFile(planPath, "utf8"));
-    if (Number.isInteger(plan.expectedTestPassCount) && plan.expectedTestPassCount >= 0) {
-      return plan.expectedTestPassCount;
-    }
-  } catch (error) {
-    if (error.code !== "ENOENT") {
-      throw error;
-    }
-  }
-  return fallback;
-}
-
 async function executionPlanFor(workspaceRoot) {
   try {
     return JSON.parse(await readFile(path.join(workspaceRoot, "test-execution-plan.json"), "utf8"));
@@ -3131,13 +3112,6 @@ async function executionPlanFor(workspaceRoot) {
     }
     throw error;
   }
-}
-
-function commandFromPlan(command) {
-  if (command === "node") {
-    return process.execPath;
-  }
-  return command;
 }
 
 // PURE (unit lane): the plan reader's shape family — nested
@@ -3185,19 +3159,33 @@ export function normalizeExecutionPlanShape(planInput) {
       plan = Object.freeze({ ...plan, [bare]: plan[observed] });
     }
   }
-  // B-001 support/0.1.x (the envelope-family lesson applied to captured
-  // streams): workers lawfully record stdout/stderr as one string or as an
-  // array of lines — the ecosystem's own contentLines convention. The F_D
-  // verifier consumed only the string form and coerced arrays to "", so an
-  // F_P-accepted honest result failed pass-count extraction and the
-  // plan/result boundary repair-looped to retry exhaustion.
+  // Plan-only compatibility projection. Both fields are typed count floors;
+  // the canonical field wins when both exist, so contradictory plans still
+  // fail against the graph binding.
+  if (
+    plan.expectedTestPassCount === undefined &&
+    Number.isInteger(plan.minimumExpectedTests)
+  ) {
+    plan = Object.freeze({
+      ...plan,
+      expectedTestPassCount: plan.minimumExpectedTests
+    });
+  }
+  // Legacy expectation plans may carry captured streams as line arrays.
+  // Observed execution results bypass this compatibility projection and enter
+  // through the strict result decoder below.
   for (const streamKey of ["stdout", "stderr"]) {
     const value = plan[streamKey];
     if (Array.isArray(value) && value.every((line) => typeof line === "string")) {
       plan = Object.freeze({ ...plan, [streamKey]: value.join("\\n") });
     }
   }
-  if (typeof plan.command !== "string" || !Array.isArray(plan.args)) {
+  if (
+    typeof plan.command !== "string" ||
+    plan.command.length === 0 ||
+    !Array.isArray(plan.args) ||
+    !plan.args.every((arg) => typeof arg === "string")
+  ) {
     return Object.freeze({
       plan: null,
       issue:
@@ -3208,6 +3196,80 @@ export function normalizeExecutionPlanShape(planInput) {
     });
   }
   return Object.freeze({ plan, issue: null });
+}
+
+// The plan reader retains its historical projection family because plans are
+// expectation carriers. Observed execution truth is narrower: F_D admits only
+// the exact field names and native value shapes declared by the public result
+// contract before it corroborates them against the structured report.
+export function admitExecutionResultShape(resultInput) {
+  if (resultInput === null || typeof resultInput !== "object" || Array.isArray(resultInput)) {
+    return Object.freeze({ plan: null, issue: "missing_plan" });
+  }
+  if (
+    typeof resultInput.command !== "string" ||
+    resultInput.command.length === 0 ||
+    !Array.isArray(resultInput.args) ||
+    !resultInput.args.every((arg) => typeof arg === "string")
+  ) {
+    return Object.freeze({
+      plan: null,
+      issue: "Malformed execution plan: command must be a string and args an array of strings"
+    });
+  }
+  if (
+    typeof resultInput.cwd !== "string" ||
+    resultInput.cwd.length === 0 ||
+    path.isAbsolute(resultInput.cwd)
+  ) {
+    return Object.freeze({
+      plan: null,
+      issue: "Execution result must record cwd as a non-empty workspace-relative path"
+    });
+  }
+  if (typeof resultInput.stdout !== "string" || typeof resultInput.stderr !== "string") {
+    return Object.freeze({
+      plan: null,
+      issue: "Execution result must record stdout and stderr as strings"
+    });
+  }
+  if (
+    !Array.isArray(resultInput.expectedTestReportPaths) ||
+    resultInput.expectedTestReportPaths.length === 0 ||
+    !resultInput.expectedTestReportPaths.every((reportPath) =>
+      typeof reportPath === "string" && reportPath.length > 0
+    )
+  ) {
+    return Object.freeze({
+      plan: null,
+      issue: "Execution result must record expectedTestReportPaths as non-empty strings"
+    });
+  }
+  if (
+    typeof resultInput.assertedReturnValue !== "string" ||
+    resultInput.assertedReturnValue.length === 0
+  ) {
+    return Object.freeze({
+      plan: null,
+      issue: "Execution result must record assertedReturnValue as a non-empty string"
+    });
+  }
+  if (!Number.isInteger(resultInput.status) || resultInput.status < 0) {
+    return Object.freeze({
+      plan: null,
+      issue: "Execution result must record the non-negative integer exit status the worker observed (field: status)"
+    });
+  }
+  if (
+    !Number.isInteger(resultInput.observedTestPassCount) ||
+    resultInput.observedTestPassCount < 0
+  ) {
+    return Object.freeze({
+      plan: null,
+      issue: "Execution result must record observedTestPassCount as a non-negative integer"
+    });
+  }
+  return Object.freeze({ plan: Object.freeze({ ...resultInput }), issue: null });
 }
 
 // T-209 D3 (execution-default law): the framework EXECUTES NOTHING.
@@ -3288,19 +3350,24 @@ export async function workerDepthPayloadsFor(workspaceRoot) {
 }
 
 export async function executePlannedScenario(workspaceRoot) {
-  const normalized = normalizeExecutionPlanShape(await executionResultFor(workspaceRoot));
-  if (normalized.issue === "missing_plan") {
+  const admittedResult = admitExecutionResultShape(await executionResultFor(workspaceRoot));
+  if (admittedResult.issue === "missing_plan") {
     throw new Error("Missing test-execution-result.json: the worker must RUN the declared command in its turn and record the typed result (execution-default law; the framework does not execute)");
   }
-  if (normalized.issue !== null) {
-    throw new Error(normalized.issue);
+  if (admittedResult.issue !== null) {
+    throw new Error(admittedResult.issue);
   }
-  const plan = normalized.plan;
-  const cwd = typeof plan.cwd === "string" && plan.cwd.length > 0
-    ? path.resolve(workspaceRoot, plan.cwd)
+  const resultArtifact = admittedResult.plan;
+  const normalizedPlan = normalizeExecutionPlanShape(await executionPlanFor(workspaceRoot));
+  if (normalizedPlan.issue !== null && normalizedPlan.issue !== "missing_plan") {
+    throw new Error(normalizedPlan.issue);
+  }
+  const declaredPlan = normalizedPlan.plan;
+  const cwd = typeof resultArtifact.cwd === "string" && resultArtifact.cwd.length > 0
+    ? path.resolve(workspaceRoot, resultArtifact.cwd)
     : workspaceRoot;
   if (cwd !== workspaceRoot && !cwd.startsWith(workspaceRoot + path.sep)) {
-    throw new Error("Execution result cwd escapes workspace: " + plan.cwd);
+    throw new Error("Execution result cwd escapes workspace: " + resultArtifact.cwd);
   }
   // CAMPAIGN BUG #2 (run 2, vector 16): the contract said "record the
   // exit status" without naming the FIELD; the worker chose exitStatus.
@@ -3309,37 +3376,27 @@ export async function executePlannedScenario(workspaceRoot) {
   // review D-interim residual #2 closed: conflicting status fields
   // resolve FAIL-CLOSED — any integer field reporting failure wins over
   // a green claim (self-contradictory evidence never resolves optimistically)
-  const statusClaims = [plan.status, plan.exitStatus, plan.exitCode]
+  const statusClaims = [resultArtifact.status, resultArtifact.exitStatus, resultArtifact.exitCode]
     .filter((value) => Number.isInteger(value));
-  const claimedStatus = statusClaims.length === 0
-    ? null
-    : (statusClaims.find((value) => value !== 0) ?? 0);
-  if (claimedStatus === null) {
-    throw new Error("Execution result must record the integer exit status the worker observed (field: status)");
-  }
+  const claimedStatus = statusClaims.find((value) => value !== 0) ?? resultArtifact.status;
+  const observedPassCount = resultArtifact.observedTestPassCount;
   // worker-reported env is evidence, not authority (review B HIGH-1 fix:
   // this binding was previously undeclared and the function could not run)
-  const envOverrides = plan.env !== null && typeof plan.env === "object" && !Array.isArray(plan.env)
-    ? Object.freeze({ ...plan.env })
+  const envOverrides = resultArtifact.env !== null && typeof resultArtifact.env === "object" && !Array.isArray(resultArtifact.env)
+    ? Object.freeze({ ...resultArtifact.env })
     : Object.freeze({});
   const result = Object.freeze({
-    command: plan.command,
-    args: plan.args,
+    command: resultArtifact.command,
+    args: resultArtifact.args,
     cwd,
     status: claimedStatus,
-    stdout: typeof plan.stdout === "string" ? plan.stdout : "",
-    stderr: typeof plan.stderr === "string" ? plan.stderr : "",
+    stdout: resultArtifact.stdout,
+    stderr: resultArtifact.stderr,
     workerExecuted: true
   });
-  // review B MEDIUM-1: expectations are SCENARIO CONTRACT data where the
-  // scenario declares them — the worker cannot choose its own bar. The
-  // worker's declared values are accepted only when the scenario is
-  // silent (legacy planned lanes).
   const expectedTestReportPaths = Array.isArray(SCENARIO.expectedTestReportPaths)
     ? SCENARIO.expectedTestReportPaths
-    : Array.isArray(plan.expectedTestReportPaths)
-      ? plan.expectedTestReportPaths
-      : [];
+    : [];
   // campaign BUG #5: when the scenario declares the report base, reports
   // resolve from CONTRACT data — the worker's cwd claim is evidence, not
   // the resolution authority (a missing cwd field made 8 existing
@@ -3350,26 +3407,42 @@ export async function executePlannedScenario(workspaceRoot) {
   const reportPassCounts = expectedTestReportPaths.length > 0
     ? await xmlTestReportPassCount(reportCwd, expectedTestReportPaths)
     : null;
-  const observedPassCount = reportPassCounts === null
-    ? nodeTestPassCount(result.stdout)
-    : reportPassCounts.observedPassCount;
   const contractPassCount = Number.isInteger(SCENARIO.expectedTestPassCount)
     ? SCENARIO.expectedTestPassCount
     : null;
-  if (contractPassCount === null && (!Number.isInteger(plan.expectedTestPassCount) || plan.expectedTestPassCount < 0)) {
-    throw new Error("Execution result must declare a non-negative integer expectedTestPassCount: " + JSON.stringify(plan));
+  if (contractPassCount === null || contractPassCount < 0) {
+    throw new Error("Scenario binding must declare a non-negative integer expectedTestPassCount");
   }
-  const expectedPassCount = contractPassCount ?? plan.expectedTestPassCount;
-  const expectedStdout = typeof plan.expectedStdout === "string"
-    ? plan.expectedStdout
+  const expectedPassCount = contractPassCount;
+  const expectedStdout = typeof SCENARIO.expectedStdout === "string"
+    ? SCENARIO.expectedStdout
     : null;
-  const expectedStdoutMatch = Array.isArray(plan.expectedStdoutMatch)
-    ? plan.expectedStdoutMatch
-    : typeof plan.expectedStdoutMatch === "string"
-      ? [plan.expectedStdoutMatch]
-      : [];
+  const expectedStdoutMatch = Array.isArray(SCENARIO.expectedStdoutMatch)
+    ? SCENARIO.expectedStdoutMatch
+    : [];
+  const expectedCommand = SCENARIO.expectedExecutionCommand;
+  const expectedArgs = SCENARIO.expectedExecutionArgs;
+  const expectedCwd = path.resolve(workspaceRoot, SCENARIO.expectedExecutionCwd ?? ".");
+  const resultBindingSatisfied =
+    result.command === expectedCommand &&
+    JSON.stringify(result.args) === JSON.stringify(expectedArgs) &&
+    result.cwd === expectedCwd;
+  const planBindingSatisfied = declaredPlan === null || (
+    declaredPlan.command === expectedCommand &&
+    JSON.stringify(declaredPlan.args) === JSON.stringify(expectedArgs) &&
+    path.resolve(workspaceRoot, declaredPlan.cwd ?? ".") === expectedCwd &&
+    declaredPlan.expectedTestPassCount === expectedPassCount &&
+    JSON.stringify(declaredPlan.expectedTestReportPaths ?? []) === JSON.stringify(expectedTestReportPaths) &&
+    declaredPlan.assertedReturnValue === EXPECTED_ASSERTED_RETURN_VALUE
+  );
+  const resultReportRefsSatisfied =
+    JSON.stringify(resultArtifact.expectedTestReportPaths ?? []) === JSON.stringify(expectedTestReportPaths);
+  const assertedReturnValueSatisfied =
+    resultArtifact.assertedReturnValue === EXPECTED_ASSERTED_RETURN_VALUE;
   const passCountSatisfied =
     Number.isInteger(observedPassCount) && observedPassCount >= expectedPassCount;
+  const reportCountCorroborated =
+    reportPassCounts !== null && reportPassCounts.observedPassCount === observedPassCount;
   const stdoutSatisfied = expectedStdout === null || result.stdout === expectedStdout;
   const stdoutMatchSatisfied = expectedStdoutMatch.every((fragment) =>
     typeof fragment === "string" && result.stdout.includes(fragment)
@@ -3384,7 +3457,12 @@ export async function executePlannedScenario(workspaceRoot) {
   const reportPathsSatisfied = missingReportPaths.length === 0 && failingReportPaths.length === 0;
   const planSatisfied =
     result.status === 0 &&
+    resultBindingSatisfied &&
+    planBindingSatisfied &&
+    resultReportRefsSatisfied &&
+    assertedReturnValueSatisfied &&
     passCountSatisfied &&
+    reportCountCorroborated &&
     stdoutSatisfied &&
     stdoutMatchSatisfied &&
     reportPathsSatisfied;
@@ -3394,8 +3472,8 @@ export async function executePlannedScenario(workspaceRoot) {
     commands: [result],
     // BUG #8: the worker's toolchain-binding claim flows through as
     // evidence (field family with envOverrides)
-    toolchainBinding: plan.toolchainBinding !== null && typeof plan.toolchainBinding === "object"
-      ? Object.freeze({ ...plan.toolchainBinding })
+    toolchainBinding: resultArtifact.toolchainBinding !== null && typeof resultArtifact.toolchainBinding === "object"
+      ? Object.freeze({ ...resultArtifact.toolchainBinding })
       : null,
     planSatisfied,
     expectedTestPassCount: expectedPassCount,
@@ -3408,7 +3486,12 @@ export async function executePlannedScenario(workspaceRoot) {
     failingReportPaths: Object.freeze(failingReportPaths),
     executionIssues: Object.freeze([
       ...(result.status === 0 ? [] : ["command exited " + result.status]),
+      ...(resultBindingSatisfied ? [] : ["observed command, args, or cwd did not match the graph binding"]),
+      ...(planBindingSatisfied ? [] : ["test-execution-plan.json contradicted the graph binding"]),
+      ...(resultReportRefsSatisfied ? [] : ["execution result report paths contradicted the graph binding"]),
+      ...(assertedReturnValueSatisfied ? [] : ["execution result asserted return value contradicted the graph binding"]),
       ...(passCountSatisfied ? [] : ["observed pass count " + observedPassCount + " was below minimum expected " + expectedPassCount]),
+      ...(reportCountCorroborated ? [] : ["typed observed pass count " + observedPassCount + " did not equal structured report count " + String(reportPassCounts?.observedPassCount ?? null)]),
       ...(stdoutSatisfied ? [] : ["stdout did not equal expected stdout"]),
       ...(stdoutMatchSatisfied ? [] : ["stdout did not contain every expected fragment"]),
       ...(reportPathsSatisfied ? [] : [
@@ -3416,7 +3499,7 @@ export async function executePlannedScenario(workspaceRoot) {
         ...failingReportPaths.map((reportPath) => "failing test report " + reportPath)
       ])
     ]),
-    assertedReturnValue: plan.assertedReturnValue ?? EXPECTED_ASSERTED_RETURN_VALUE
+    assertedReturnValue: resultArtifact.assertedReturnValue
   });
 }
 
@@ -3482,24 +3565,6 @@ async function materializeAssessmentFiles(workspaceRoot, stageSpec, assessment) 
   });
 }
 
-async function waitForPortFile(portPath, timeoutMs) {
-  const startedAt = Date.now();
-  while (Date.now() - startedAt < timeoutMs) {
-    try {
-      const value = Number.parseInt(await readFile(portPath, "utf8"), 10);
-      if (Number.isInteger(value) && value > 0) {
-        return value;
-      }
-    } catch (error) {
-      if (error.code !== "ENOENT") {
-        throw error;
-      }
-    }
-    await new Promise((resolve) => setTimeout(resolve, 50));
-  }
-  throw new Error(\`Timed out waiting for service port file at \${portPath}\`);
-}
-
 // P1b (T-030 no-plugin-closure-state): re-entry pressure and budget are
 // DURABLE WORKSPACE TRUTH (one observed-state file), not plugin closure
 // state — a resume reads the same truth the crashed process wrote.
@@ -3556,123 +3621,10 @@ function subjectExecutionTransportContract(agentKey) {
 }
 
 async function executeScenario(workspaceRoot) {
-  if (SCENARIO.executeFromPlan === true) {
-    return executePlannedScenario(workspaceRoot);
+  if (SCENARIO.executeFromPlan !== true) {
+    throw new Error("Software-build execution must enter through the declared graph overlay plan/result edge");
   }
-  if (SCENARIO.kind === "node_cli") {
-    const result = runSync(process.execPath, ["generated/hello-world.mjs"], workspaceRoot);
-    if (result.status !== 0 || result.stdout !== "Hello, world!\\n") {
-      throw new Error(\`node_cli failed: \${JSON.stringify(result)}\`);
-    }
-    return Object.freeze({ kind: SCENARIO.kind, stdout: result.stdout, commands: [result] });
-  }
-  if (SCENARIO.kind === "node_test") {
-    const result = runSync(process.execPath, ["--test", "test/hello.test.mjs"], workspaceRoot);
-    if (result.status !== 0 || nodeTestPassCount(result.stdout) !== 1) {
-      throw new Error(\`node_test failed: \${JSON.stringify(result)}\`);
-    }
-    return Object.freeze({ kind: SCENARIO.kind, stdout: "Hello, world!\\n", commands: [result] });
-  }
-  if (SCENARIO.kind === "framework_smoke_min_fp_node_test" || SCENARIO.kind === "sdlc_js_full_node_test") {
-    const args = SCENARIO.kind === "sdlc_js_full_node_test"
-      ? ["--test", "test/component/hello.test.mjs", "test/uat/hello.uat.test.mjs"]
-      : ["--test", "test/hello.test.mjs"];
-    const result = runSync(process.execPath, args, workspaceRoot);
-    const plan = await executionPlanFor(workspaceRoot);
-    const expectedPassCount = Number.isInteger(plan?.expectedTestPassCount)
-      ? plan.expectedTestPassCount
-      : await expectedPassCountFromExecutionPlan(workspaceRoot, SCENARIO.kind === "sdlc_js_full_node_test" ? 2 : 1);
-    const observedPassCount = nodeTestPassCount(result.stdout);
-    if (result.status !== 0 || observedPassCount !== expectedPassCount) {
-      throw new Error(\`\${SCENARIO.kind} failed: \${JSON.stringify(result)}\`);
-    }
-    return Object.freeze({
-      kind: SCENARIO.kind,
-      stdout: result.stdout,
-      commands: [result],
-      planSatisfied: true,
-      expectedTestPassCount: expectedPassCount,
-      observedTestPassCount: observedPassCount,
-      expectedStdoutMatch: Object.freeze(
-        Array.isArray(plan?.expectedStdoutMatch)
-          ? plan.expectedStdoutMatch
-          : typeof plan?.expectedStdoutMatch === "string"
-            ? [plan.expectedStdoutMatch]
-            : []
-      ),
-      assertedReturnValue: plan?.assertedReturnValue ?? EXPECTED_ASSERTED_RETURN_VALUE
-    });
-  }
-  if (SCENARIO.kind === "rust_cli") {
-    const result = runSync("cargo", ["run", "--quiet"], workspaceRoot);
-    if (result.status !== 0 || result.stdout !== "Hello, world!\\n") {
-      throw new Error(\`rust_cli failed: \${JSON.stringify(result)}\`);
-    }
-    return Object.freeze({ kind: SCENARIO.kind, stdout: result.stdout, commands: [result] });
-  }
-  if (SCENARIO.kind === "rust_service") {
-    const serviceRoot = workspaceRoot;
-    const sourcePath = path.join(serviceRoot, "src", "service.rs");
-    const binaryPath = path.join(serviceRoot, "hello_service");
-    const portPath = path.join(serviceRoot, "service.port");
-    const compile = runSync("rustc", [sourcePath, "-o", binaryPath], serviceRoot);
-    if (compile.status !== 0) {
-      throw new Error(\`rust_service compile failed: \${JSON.stringify(compile)}\`);
-    }
-    const service = spawn(binaryPath, [portPath], { cwd: serviceRoot, stdio: ["ignore", "pipe", "pipe"] });
-    let serviceStdout = "";
-    let serviceStderr = "";
-    service.stdout.on("data", (chunk) => { serviceStdout += chunk.toString("utf8"); });
-    service.stderr.on("data", (chunk) => { serviceStderr += chunk.toString("utf8"); });
-    const serviceExit = new Promise((resolve) => {
-      service.on("close", (status, signal) => resolve({ status, signal }));
-    });
-    const port = await waitForPortFile(portPath, 10000);
-    const response = await fetch(\`http://127.0.0.1:\${port}/hello\`);
-    const body = await response.text();
-    const exit = await Promise.race([
-      serviceExit,
-      new Promise((resolve) => setTimeout(() => {
-        service.kill("SIGKILL");
-        resolve({ status: null, signal: "SIGKILL" });
-      }, 10000))
-    ]);
-    if (response.status !== 200 || body !== "Hello, world!\\n" || exit.status !== 0) {
-      throw new Error(\`rust_service failed: \${JSON.stringify({ status: response.status, body, exit, serviceStdout, serviceStderr })}\`);
-    }
-    return Object.freeze({
-      kind: SCENARIO.kind,
-      stdout: body,
-      commands: [compile, Object.freeze({ command: binaryPath, args: [portPath], cwd: serviceRoot, pid: service.pid, status: exit.status, signal: exit.signal, stdout: serviceStdout, stderr: serviceStderr })],
-      clientRequest: { status: response.status, body, url: \`http://127.0.0.1:\${port}/hello\` }
-    });
-  }
-  if (SCENARIO.kind === "parallel_js") {
-    const scriptRoot = path.join(workspaceRoot, "parallel");
-    const [hello, world] = await Promise.all([
-      runAsync(process.execPath, ["hello-branch.mjs"], scriptRoot),
-      runAsync(process.execPath, ["world-branch.mjs"], scriptRoot)
-    ]);
-    const fanIn = runSync(process.execPath, ["fan-in.mjs"], scriptRoot);
-    if (hello.status !== 0 || world.status !== 0 || fanIn.status !== 0 || fanIn.stdout !== "Hello, world!\\n") {
-      throw new Error(\`parallel_js failed: \${JSON.stringify({ hello, world, fanIn })}\`);
-    }
-    return Object.freeze({ kind: SCENARIO.kind, stdout: fanIn.stdout, commands: [hello, world, fanIn] });
-  }
-  if (SCENARIO.kind === "data_mapper_lite_node_test") {
-    const result = runSync(process.execPath, ["--test", "test/logical-data-model.test.mjs"], workspaceRoot);
-    const observedPassCount = nodeTestPassCount(result.stdout);
-    if (result.status !== 0 || observedPassCount !== 3) {
-      throw new Error(\`data_mapper_lite_node_test failed: \${JSON.stringify(result)}\`);
-    }
-    return Object.freeze({
-      kind: SCENARIO.kind,
-      stdout: EXPECTED_STDOUT,
-      commands: [result],
-      observedTestPassCount: observedPassCount
-    });
-  }
-  throw new Error(\`Unknown scenario kind \${SCENARIO.kind}\`);
+  return executePlannedScenario(workspaceRoot);
 }
 
 function evidenceSummaryFor(input) {
@@ -3692,7 +3644,7 @@ function evidenceSummaryFor(input) {
   });
 }
 
-function deterministicExecutionAssessmentFor(input) {
+export function deterministicExecutionAssessmentFor(input) {
   const execution = input.execution;
   if (execution === null) {
     throw new Error("deterministic execution assessment requires observed execution evidence");
@@ -3709,6 +3661,8 @@ function deterministicExecutionAssessmentFor(input) {
   // suite (a wrong JDK fails Spark); the claim remains lawful optional
   // evidence, never a gate.
   const repairedEnvSatisfied = true;
+  const passingResultSatisfied =
+    input.passingResultRequired !== true || execution.planSatisfied === true;
   const accepted =
     commandStatuses.length > 0 &&
     commandStatuses.every((status) => Number.isInteger(status) || status === null) &&
@@ -3716,7 +3670,8 @@ function deterministicExecutionAssessmentFor(input) {
     Number.isInteger(execution.observedTestPassCount) &&
     Number.isInteger(execution.expectedTestPassCount) &&
     Array.isArray(execution.expectedTestReportPaths) &&
-    repairedEnvSatisfied;
+    repairedEnvSatisfied &&
+    passingResultSatisfied;
   return Object.freeze({
     accepted,
     stage: input.expectedStage,
@@ -3735,8 +3690,10 @@ function deterministicExecutionAssessmentFor(input) {
 	          "envOverrides=" + JSON.stringify(execution.envOverrides ?? {}) + ".",
 	          "issues=" + JSON.stringify(issues) + "."
 	        ].join(" ")
-	      : [
-	          "F_D execution assessment blocked malformed subject execution evidence.",
+      : [
+          passingResultSatisfied !== true
+            ? "F_D execution assessment blocked failing evidence at a passing-result-required terminal vector."
+            : "F_D execution assessment blocked malformed subject execution evidence.",
 	          "Command statuses: " + JSON.stringify(commandStatuses) + ".",
 	          "observedTestPassCount=" + String(execution.observedTestPassCount) + ".",
 	          "expectedTestPassCount=" + String(execution.expectedTestPassCount) + ".",
@@ -4010,20 +3967,20 @@ const STAGE_FILE_INSTRUCTIONS = Object.freeze({
     "Assert helloWorld() returns exactly \\"Hello, world!\\"."
   ]),
   test_execution_plan: Object.freeze([
-    "Write only test-execution-plan.json.",
+    "Write test-execution-plan.json and test-execution-result.json only.",
     "Use the prior test_source artifact summary as the evidence source.",
-    "Include command, args, cwd, expectedStdout or expectedStdoutMatch, expectedTestPassCount, and assertedReturnValue.",
-    "expectedTestPassCount is the minimum admitted test count expected from the admitted test source.",
-    "For node:test output, expectedStdoutMatch must use stable substrings such as pass N and fail 0, not TAP prefix symbols.",
-    "Do not execute the test in this vector."
+    "The execution plan records the graph binding's expected command, args, cwd, count floor under the exact field expectedTestPassCount, report paths, and asserted return value.",
+    "The execution result records observed command, args, cwd, status, stdout, stderr, and observedTestPassCount.",
+    "Use the declared JUnit report as count and pass/fail evidence; stdout is provenance only.",
+    "Execute the test in this worker turn and record the result truthfully."
   ]),
   test_execution_result: Object.freeze([
     "Produce no files.",
     "Judge the observed executionStatus, planSatisfied flag, observedTestPassCount, and stdout digest against the prior test_execution_plan.",
-    "Accept this vector when the execution-result evidence is complete and replay-bound, even when the observed command failed.",
-    "Do not require planSatisfied=true to close the execution-result vector; a failed plan is valid execution evidence that must flow to qualification and repair.",
-    "Treat command success, planSatisfied=true, and observedTestPassCount >= expectedTestPassCount as the passing-result condition, not as the existence condition for the execution-result surface.",
-    "Do not reject solely because node:test uses a different TAP prefix glyph when the F_D pass-count check is satisfied."
+    "This is the terminal SDLC result vector: require planSatisfied=true to close it.",
+    "A failed plan remains typed blocked evidence; it cannot close this terminal vector.",
+    "Require command success, planSatisfied=true, and observedTestPassCount >= expectedTestPassCount.",
+    "Do not inspect TAP presentation text; the typed count and JUnit report are the only pass-count inputs."
   ])
 });
 
@@ -4051,7 +4008,7 @@ function transformInstructionText(stageSpec) {
         "",
         "This stage must produce files. Return them in files as path/contentLines objects.",
         "Allowed paths: " + allowedPaths.join(", ") + ".",
-        "Do not write outside those paths.",
+        "Do not return or directly author files outside those paths.",
         "Do not put raw multi-line text in a JSON string. Use contentLines: string[] for every file.",
         "Do not include markdown code fences inside contentLines."
       ]
@@ -4059,6 +4016,31 @@ function transformInstructionText(stageSpec) {
         "",
         "This stage must not produce files. Omit files or return an empty files array."
       ];
+  const executionArtifactInstructions = allowedPaths.includes("test-execution-plan.json")
+    ? [
+        "test-execution-plan.json records those expected values using the exact field expectedTestPassCount; test-execution-result.json records observed command, args, cwd, status, stdout, stderr, observedTestPassCount, expectedTestReportPaths, and assertedReturnValue."
+      ]
+    : [
+        "test-execution-result.json records observed command, args, cwd, status, stdout, stderr, observedTestPassCount, expectedTestReportPaths, and assertedReturnValue."
+      ];
+  const executionContractInstructions = stageSpec.executionResultContractRef ===
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef
+    ? [
+        "",
+        "Graph-owned test execution contract:",
+        "- contractRef: " + ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef,
+        "- command: " + SCENARIO.expectedExecutionCommand,
+        "- args: " + JSON.stringify(SCENARIO.expectedExecutionArgs),
+        "- cwd: " + SCENARIO.expectedExecutionCwd,
+        "- expectedTestPassCount: " + String(SCENARIO.expectedTestPassCount),
+        "- structured report paths: " + JSON.stringify(SCENARIO.expectedTestReportPaths),
+        "- asserted return value: " + JSON.stringify(EXPECTED_ASSERTED_RETURN_VALUE),
+        "The declared test command may additionally create exactly those structured report paths as toolchain output; do not return them as authored files unless they are also listed in Allowed paths.",
+        ...executionArtifactInstructions,
+        "observedTestPassCount is required and must be a non-negative integer. Derive it from the structured report, never from TAP summary prose.",
+        "Expected thresholds are graph-binding authority. A value repeated in the worker result does not replace or weaken them."
+      ]
+    : [];
   return [
     "Return only one JSON object. Do not include markdown or commentary.",
     // CAMPAIGN BUG #1 (run 1, vector 15): the blanket no-tool preamble
@@ -4094,6 +4076,7 @@ function transformInstructionText(stageSpec) {
     "",
     "Stage-specific instructions:",
     ...stageInstructionsFor(stageSpec).map((line) => "- " + line),
+    ...executionContractInstructions,
     "",
     "Required JSON:",
     "{",
@@ -4111,12 +4094,12 @@ function transformInstructionText(stageSpec) {
   ].join("\\n");
 }
 
-function stageCarriesExecution(stageSpec) {
+function stageConsumesExecutionEvidence(stageSpec) {
   return (
     stageSpec.deterministicExecution === true ||
     stageSpec.deterministicMaterialize === true ||
     stageSpec.postMaterializationValidation != null ||
-    /test_execution|execution_result/.test(stageSpec.stage)
+    stageSpec.executeBeforeAssessment === true
   );
 }
 
@@ -4137,8 +4120,15 @@ function evaluateInstructionText(stageSpec) {
     ...stageInstructionsFor(stageSpec).map((line) => "- " + line),
     "",
     "Review criteria:",
-    ...(stageCarriesExecution(stageSpec)
+    ...(stageConsumesExecutionEvidence(stageSpec)
       ? ["- reviewAccepted is true only if the candidate stage, vector index, node types, generated file paths, and execution evidence satisfy the typed vector contract."]
+      : stageSpec.workerExecutes === true &&
+          stageSpec.executionResultContractRef === ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef
+        ? [
+            "- This producer stage must return the declared typed plan/result files and truthful report references.",
+            "- The structured report is toolchain output held in the workspace, not an authored files entry. The following test_execution_result vector is the sole F_D consumer that mechanically verifies the report and typed observed count.",
+            "- Do not require the report in candidateEvidence.materializedFiles, postMaterializationValidation, or populated execution fields at this producer stage."
+          ]
       : [
           "- reviewAccepted is true only if the candidate stage, vector index, node types, generated file paths, and file content satisfy the typed vector contract.",
           "- This stage carries NO execution evidence by design: do not require postMaterializationValidation, executionStatus, compile results, or test results here; that evidence belongs to the later test-execution stages."
@@ -4300,7 +4290,7 @@ function derivedInstructionCarrierTruthForStage(stage) {
     kind: "derived_instruction_carrier_truth",
     sourceTypeRefs: [stage.sourceTypeRef],
     targetTypeRefs: [stage.targetTypeRef],
-    outputContractRefs: uniq(targetShape.assetSurface.outputContractRefs ?? []),
+    outputContractRefs: uniq(stage.target.assetSurface.outputContractRefs ?? []),
     proofRefs: uniq([
       ...(sourceShape.assetSurface.proofObligationRefs ?? []),
       ...(targetShape.assetSurface.proofObligationRefs ?? []),
@@ -4434,7 +4424,7 @@ function closeDispositionFromReview(review) {
   return review.reviewAccepted === true ? "close" : "retry";
 }
 
-function acceptedReviewFor(input, review) {
+export function acceptedReviewFor(input, review) {
   const artifact = input.attachedResultArtifact;
   const stageSpec = STAGE_PLAN[input.vectorIndex];
   if (artifact === null || artifact === undefined || stageSpec === undefined) {
@@ -4450,6 +4440,12 @@ function acceptedReviewFor(input, review) {
   if (
     stageSpec.executeBeforeAssessment === true &&
     typeof artifact.evidenceSummary?.planSatisfied !== "boolean"
+  ) {
+    return false;
+  }
+  if (
+    stageSpec.passingResultRequired === true &&
+    artifact.evidenceSummary?.planSatisfied !== true
   ) {
     return false;
   }
@@ -4847,7 +4843,8 @@ export const runtimeBinding = {
           assessment = deterministicExecutionAssessmentFor({
             expectedStage,
             expectedNodeTypes,
-            execution
+            execution,
+            passingResultRequired: stageSpec.passingResultRequired === true
           });
           // 4.5 re-entry law: a failing REPAIRED execution surfaces as
           // consequence pressure — the consequence stage lands the
@@ -5020,8 +5017,10 @@ export const runtimeBinding = {
             sourceTypeRef: stageSpec.sourceTypeRef,
             targetTypeRef: stageSpec.targetTypeRef,
             vectorId: stageSpec.vectorId,
+            executionResultContractRef: stageSpec.executionResultContractRef ?? null,
             filesToProduce: Object.freeze(stageSpec.filesToProduce ?? []),
-            executeBeforeAssessment: stageSpec.executeBeforeAssessment === true
+            executeBeforeAssessment: stageSpec.executeBeforeAssessment === true,
+            passingResultRequired: stageSpec.passingResultRequired === true
           }),
           candidateEvidence: candidateEvidenceSummaryFor({
             expectedStage,
@@ -5763,6 +5762,11 @@ test("binding unit lane: generation fidelity — parses, no mangled templates, d
   for (const key of ["abg.hog_program_catalog", "abg.hog_program_ladder", "abg.consequence.allowed_traversal_families"]) {
     assert.equal(source.includes(key), true, `missing declaration key ${key}`);
   }
+  assert.equal(
+    source.includes("The declared test command may additionally create exactly those structured report paths as toolchain output"),
+    true
+  );
+  assert.equal(source.includes("Do not write outside those paths."), false);
   globalThis.__bindingUnitPath = bindingPath;
 });
 
@@ -5775,6 +5779,37 @@ test("binding unit lane: rc.5 plugin driver requirements match their implementat
   assert.equal(plugins.fpDispatch.contract.driverRequirement, "async_required");
   assert.equal(plugins.fpEvaluator.contract.driverRequirement, "async_required");
   assert.equal(plugins.consequenceProjection.contract.driverRequirement, "sync_compatible");
+});
+
+test("binding unit lane: the admitted graph carries the execution-result contract on its target nodes", async (t) => {
+  const bindingPath = globalThis.__bindingUnitPath;
+  if (!bindingPath) return t.skip("generation test did not run");
+  const binding = await import(pathToFileURL(bindingPath).href);
+  const carriers = [];
+  const visited = new WeakSet();
+  const visit = (value) => {
+    if (value === null || typeof value !== "object" || visited.has(value)) return;
+    visited.add(value);
+    if (
+      Array.isArray(value.assetSurface?.outputContractRefs) &&
+      value.assetSurface.outputContractRefs.includes(
+        ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef
+      )
+    ) {
+      carriers.push(value);
+    }
+    for (const child of Array.isArray(value) ? value : Object.values(value)) visit(child);
+  };
+  visit(binding.runtimeBinding.module);
+  assert.deepEqual(
+    [...new Set(carriers.map((carrier) => carrier.name))].sort(),
+    [
+      "FullLifecycleRepairedTestExecutionPlanSurface",
+      "FullLifecycleRepairedTestExecutionResultSurface",
+      "FullLifecycleTestExecutionPlanSurface",
+      "FullLifecycleTestExecutionResultSurface"
+    ]
+  );
 });
 
 test("binding unit lane: pure surfaces — plan shape family (#14), compile attribution (#18b), re-entry target (F1)", async (t) => {
@@ -5880,6 +5915,19 @@ test("binding unit lane: captured-stream shape family — stdout/stderr arrays n
     "--test",
     "test/component/hello-cli.test.mjs"
   ]);
+  const countAlias = binding.normalizeExecutionPlanShape({
+    command: "node",
+    args: ["--test"],
+    minimumExpectedTests: 2
+  });
+  assert.equal(countAlias.plan.expectedTestPassCount, 2);
+  const canonicalCount = binding.normalizeExecutionPlanShape({
+    command: "node",
+    args: ["--test"],
+    expectedTestPassCount: 3,
+    minimumExpectedTests: 2
+  });
+  assert.equal(canonicalCount.plan.expectedTestPassCount, 3);
 });
 
 test("binding unit lane: the verify-only execution path runs — honest results verify, fabrications fail, absence throws the law (review B HIGH-1 pin)", async (t) => {
@@ -5887,6 +5935,7 @@ test("binding unit lane: the verify-only execution path runs — honest results 
   if (!bindingPath) return t.skip("generation test did not run");
   const binding = await import(pathToFileURL(bindingPath).href);
   assert.equal(typeof binding.executePlannedScenario, "function");
+  assert.equal(typeof binding.admitExecutionResultShape, "function");
   const caseRoot = path.join(path.dirname(bindingPath), "..", "verify-only", timestampId());
   // (a) missing result file: throws the execution-default law message
   const missingRoot = path.join(caseRoot, "missing");
@@ -5914,24 +5963,69 @@ test("binding unit lane: the verify-only execution path runs — honest results 
       await writeFile(full, `<testsuite name="suite-${index}">${cases}</testsuite>`, "utf8");
     }
   };
-  const resultJson = (status) => JSON.stringify({
-    // BUG #2 pin: the field family {status|exitStatus|exitCode} — this
-    // fixture deliberately uses exitStatus. BUG #5 pin: cwd deliberately
-    // OMITTED — the scenario's expectedTestReportBase drives resolution.
-    command: "sbt", args: ["test"], exitStatus: status,
+  const resultObject = (status, overrides = {}) => ({
+    command: "sbt",
+    args: ["test"],
+    cwd: reportBase,
+    status,
+    observedTestPassCount: 24,
     // the worker LIES about its own bar here — the scenario contract wins
     expectedTestPassCount: 1,
-    expectedTestReportPaths: [DATA_MAPPER_SCALA_TEST_REPORTS[0]],
+    expectedTestReportPaths: [...DATA_MAPPER_SCALA_TEST_REPORTS],
     assertedReturnValue: "data_mapper_full_sbt ok",
-    stdout: ""
+    stdout: "All checks completed; summary formatting is intentionally not TAP.\n",
+    stderr: "",
+    ...overrides
   });
+  const resultJson = (status, overrides) => JSON.stringify(resultObject(status, overrides));
+  for (const [name, mutate, expectedError] of [
+    ["count-missing", (value) => { delete value.observedTestPassCount; }, /observedTestPassCount as a non-negative integer/u],
+    ["count-string", (value) => { value.observedTestPassCount = "24"; }, /observedTestPassCount as a non-negative integer/u],
+    ["count-fractional", (value) => { value.observedTestPassCount = 23.5; }, /observedTestPassCount as a non-negative integer/u],
+    ["count-negative", (value) => { value.observedTestPassCount = -1; }, /observedTestPassCount as a non-negative integer/u],
+    ["args-member", (value) => { value.args = [1]; }, /command must be a string and args an array of strings/u],
+    ["cwd-missing", (value) => { delete value.cwd; }, /cwd as a non-empty workspace-relative path/u],
+    ["cwd-absolute", (value) => { value.cwd = "/tmp/worker-selected"; }, /cwd as a non-empty workspace-relative path/u],
+    ["status-negative", (value) => { value.status = -1; }, /non-negative integer exit status/u],
+    ["stdout-object", (value) => { value.stdout = {}; }, /stdout and stderr as strings/u],
+    ["stdout-array", (value) => { value.stdout = ["provenance line"]; }, /stdout and stderr as strings/u],
+    ["observed-alias-only", (value) => {
+      value.observedCommand = value.command;
+      value.observedArgs = value.args;
+      value.observedStatus = value.status;
+      value.observedStdout = value.stdout;
+      value.observedStderr = value.stderr;
+      delete value.command;
+      delete value.args;
+      delete value.status;
+      delete value.stdout;
+      delete value.stderr;
+    }, /command must be a string and args an array of strings/u],
+    ["report-paths-empty", (value) => { value.expectedTestReportPaths = []; }, /expectedTestReportPaths as non-empty strings/u],
+    ["return-empty", (value) => { value.assertedReturnValue = ""; }, /assertedReturnValue as a non-empty string/u]
+  ]) {
+    const malformedRoot = path.join(caseRoot, "malformed-" + name);
+    await mkdir(malformedRoot, { recursive: true });
+    const malformed = resultObject(0);
+    mutate(malformed);
+    await writeFile(
+      path.join(malformedRoot, "test-execution-result.json"),
+      JSON.stringify(malformed),
+      "utf8"
+    );
+    await assert.rejects(
+      () => binding.executePlannedScenario(malformedRoot),
+      expectedError,
+      name
+    );
+  }
   // (b) honest run: all eight reports on disk, 24 >= 20 passes: verifies
   const honestRoot = path.join(caseRoot, "honest");
   await writeReports(honestRoot, 0);
   await writeFile(path.join(honestRoot, "test-execution-result.json"), resultJson(0), "utf8");
   const honest = await binding.executePlannedScenario(honestRoot);
   assert.equal(honest.planSatisfied, true);
-  assert.equal(honest.observedTestPassCount >= 20, true);
+  assert.equal(honest.observedTestPassCount, 24);
   assert.equal(honest.commands[0].workerExecuted, true);
   // (c) fabricated claims with NO reports on disk: fails closed even
   // though the worker declared a one-report bar for itself
@@ -5948,7 +6042,21 @@ test("binding unit lane: the verify-only execution path runs — honest results 
   const red = await binding.executePlannedScenario(redRoot);
   assert.equal(red.planSatisfied, false);
   assert.equal(red.failingReportPaths.length > 0, true);
-  // (e) T-216 D3 (codeReview S8): CDATA/comment/aggregate-wrapper text
+  // (e) a well-typed but uncorroborated count cannot close the graph edge.
+  const mismatchedRoot = path.join(caseRoot, "mismatched-count");
+  await writeReports(mismatchedRoot, 0);
+  await writeFile(
+    path.join(mismatchedRoot, "test-execution-result.json"),
+    resultJson(0, { observedTestPassCount: 23 }),
+    "utf8"
+  );
+  const mismatched = await binding.executePlannedScenario(mismatchedRoot);
+  assert.equal(mismatched.planSatisfied, false);
+  assert.equal(
+    mismatched.executionIssues.some((issue) => /structured report count 24/u.test(issue)),
+    true
+  );
+  // (f) T-216 D3 (codeReview S8): CDATA/comment/aggregate-wrapper text
   // must NOT inflate the count — element-scoped parse only. A report
   // whose real cases are 3 but whose CDATA mentions tests="99" and which
   // sits inside a <testsuites> wrapper must count as 3.
@@ -6022,26 +6130,16 @@ test("binding unit lane: depth payload lift — corroborated identities forward,
   assert.deepEqual(none.verifiedTestIdentityRefs, []);
 });
 
-test("binding unit lane: #10b expansion behavior, P1b durable re-entry state, P2a uncapped attribution", async (t) => {
+test("binding unit lane: P1b durable re-entry state and P2a uncapped attribution", async (t) => {
   const bindingPath = globalThis.__bindingUnitPath;
   if (!bindingPath) return t.skip("generation test did not run");
   const binding = await import(pathToFileURL(bindingPath).href);
   const {
-    expandEnvTemplates,
     attributeCompileErrorLines,
     readRepairReentryState,
     writeRepairReentryState,
     resolveRepairReentryTargetRow
   } = binding;
-  // #10b BEHAVIOR: templates expand against the BASE env, unknown -> ""
-  const expanded = expandEnvTemplates(
-    { PATH: "/opt/j11/bin:${PATH}", JAVA_HOME: "/opt/j11", RAW: 7, MISSING: "${NOT_A_VAR}" },
-    { PATH: "/usr/bin" }
-  );
-  assert.equal(expanded.PATH, "/opt/j11/bin:/usr/bin");
-  assert.equal(expanded.JAVA_HOME, "/opt/j11");
-  assert.equal(expanded.RAW, 7);
-  assert.equal(expanded.MISSING, "");
   // P2a: a test-source error BEYOND the old 16-line cap still blocks
   const manyMain = Array.from({ length: 20 }, (unused, index) =>
     `[error] /w/build_tenants/scala_spark/m${index}/src/main/scala/M${index}.scala:1:1: bad`);

@@ -27,6 +27,7 @@ import {
   ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
   ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN,
   ODD_GLC_SOFTWARE_BUILD_STARTUP_BINDING,
+  ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT,
   ODD_GLC_STARTUP_BINDING,
   REQUIRED_ROUTE_ONE_SURFACES,
   defineLifecycleNodeTypeDeclarations,
@@ -285,6 +286,42 @@ test("defines reusable software-build overlay as a GTL overlay graph declaration
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphRef, "graph://odd_glc/software-build-lifecycle");
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.scope, "reusable_software_build_lifecycle");
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.rule, "gtl_overlay_graph_declaration_over_gtl_abg_truth");
+  assert.equal(
+    ODD_GLC_SOFTWARE_BUILD_OVERLAY.testExecutionResultContractRef,
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef
+  );
+  assert.deepEqual(
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.requiredObservationFields,
+    {
+      command: "non_empty_string",
+      args: "string_array",
+      cwd: "workspace_relative_path",
+      status: "non_negative_integer",
+      stdout: "string",
+      stderr: "string",
+      observedTestPassCount: "non_negative_integer"
+    }
+  );
+  assert.equal(
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.structuredReport.pathAuthority,
+    "graph_binding"
+  );
+  assert.deepEqual(
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.executionProfiles.nodeTest,
+    {
+      command: "node",
+      reportPath: "test-execution-report.xml",
+      argsBeforeTestFiles: [
+        "--test",
+        "--test-reporter=junit",
+        "--test-reporter-destination=test-execution-report.xml"
+      ]
+    }
+  );
+  assert.equal(
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.authorityRule,
+    "expected values come from the graph binding; observed values come from the worker result and are corroborated by the structured report"
+  );
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.overlayRef.includes("hello-world"), false);
   assert.equal(ODD_GLC_SOFTWARE_BUILD_OVERLAY.graphFunctionRefs.length, 6);
   assert.equal(

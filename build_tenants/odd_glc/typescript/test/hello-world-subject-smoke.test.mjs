@@ -351,7 +351,6 @@ test("executes SCN-GLC-HELLO-WORLD-JS-TENANT-TEST as subject smoke in a scratch 
   const interpreted = await assertClosedInterpretation(proof.artifact, scenarioId);
 
   assert.equal(execution.status, 0);
-  assert.equal(execution.stdout.includes("pass 1"), true);
 
   const summaryPath = await writeSubjectSmokeSummary(subjectSmoke, {
     artifactSha256: proof.artifactSha256,

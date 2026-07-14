@@ -113,6 +113,45 @@ export interface OddGlcGraphFunctionBindingEntry {
   readonly reuseGate?: "bind_existing_abg_catalog_entry_when_equivalent_exists";
 }
 
+export interface OddGlcSoftwareTestExecutionResultContract {
+  readonly kind: "odd_glc_software_test_execution_result_contract";
+  readonly contractRef: string;
+  readonly resultPath: "test-execution-result.json";
+  readonly requiredObservationFields: {
+    readonly command: "non_empty_string";
+    readonly args: "string_array";
+    readonly cwd: "workspace_relative_path";
+    readonly status: "non_negative_integer";
+    readonly stdout: "string";
+    readonly stderr: "string";
+    readonly observedTestPassCount: "non_negative_integer";
+  };
+  readonly requiredBindingWitnessFields: {
+    readonly expectedTestReportPaths: "string_array";
+    readonly assertedReturnValue: "non_empty_string";
+  };
+  readonly requiredPlanFields: {
+    readonly command: "non_empty_string";
+    readonly args: "string_array";
+    readonly cwd: "workspace_relative_path";
+    readonly expectedTestPassCount: "non_negative_integer";
+    readonly expectedTestReportPaths: "string_array";
+    readonly assertedReturnValue: "non_empty_string";
+  };
+  readonly structuredReport: {
+    readonly format: "junit_xml";
+    readonly pathAuthority: "graph_binding";
+  };
+  readonly executionProfiles: {
+    readonly nodeTest: {
+      readonly command: "node";
+      readonly reportPath: "test-execution-report.xml";
+      readonly argsBeforeTestFiles: readonly string[];
+    };
+  };
+  readonly authorityRule: string;
+}
+
 export interface OddGlcSoftwareBuildStagePlanEntry {
   readonly stage: string;
   readonly vectorId: string;
@@ -122,6 +161,11 @@ export interface OddGlcSoftwareBuildStagePlanEntry {
   readonly targetName: string;
   readonly requiredNodeTypes: readonly string[];
   readonly executeBeforeAssessment?: boolean;
+  readonly workerExecutes?: boolean;
+  readonly filesToProduce?: readonly string[];
+  readonly instructions?: readonly string[];
+  readonly executionResultContractRef?: string;
+  readonly passingResultRequired?: boolean;
 }
 
 export interface OddGlcSoftwareBuildOverlay {
@@ -132,6 +176,7 @@ export interface OddGlcSoftwareBuildOverlay {
   readonly ownerRef: "product://odd_glc";
   readonly scope: "reusable_software_build_lifecycle";
   readonly rule: "gtl_overlay_graph_declaration_over_gtl_abg_truth";
+  readonly testExecutionResultContractRef: string;
   readonly graphFunctionRefs: readonly string[];
   readonly graphVectorRefs: readonly string[];
   readonly publicStartTargets: readonly string[];
@@ -426,6 +471,7 @@ export declare const REQUIRED_GTL_DECLARATION_FACADE_SLOTS: Readonly<Record<stri
 export declare const FORBIDDEN_ABG_STARTUP_AUTHORITIES: readonly string[];
 export declare const ODD_GLC_LIFECYCLE_PROGRAM_OVERLAY_REF: string;
 export declare const ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF: string;
+export declare const ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT: OddGlcSoftwareTestExecutionResultContract;
 export declare const ODD_GLC_FP_SEMANTIC_POLICY_REF: string;
 export declare const ODD_GLC_FH_HUMAN_DECISION_POLICY_REF: string;
 export declare const REQUIRED_ROUTE_ONE_SURFACES: readonly string[];

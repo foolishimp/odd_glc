@@ -65,6 +65,76 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY_REF = "overlay://odd_glc/software-bu
 export const ODD_GLC_FP_SEMANTIC_POLICY_REF = "policy://odd_glc/fp-semantic-judgment";
 export const ODD_GLC_FH_HUMAN_DECISION_POLICY_REF = "policy://odd_glc/fh-human-decision";
 
+export const ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT = deepFreeze({
+  kind: "odd_glc_software_test_execution_result_contract",
+  contractRef: "contract://odd_glc/software/test-execution-result/v1",
+  resultPath: "test-execution-result.json",
+  requiredObservationFields: {
+    command: "non_empty_string",
+    args: "string_array",
+    cwd: "workspace_relative_path",
+    status: "non_negative_integer",
+    stdout: "string",
+    stderr: "string",
+    observedTestPassCount: "non_negative_integer"
+  },
+  requiredBindingWitnessFields: {
+    expectedTestReportPaths: "string_array",
+    assertedReturnValue: "non_empty_string"
+  },
+  requiredPlanFields: {
+    command: "non_empty_string",
+    args: "string_array",
+    cwd: "workspace_relative_path",
+    expectedTestPassCount: "non_negative_integer",
+    expectedTestReportPaths: "string_array",
+    assertedReturnValue: "non_empty_string"
+  },
+  structuredReport: {
+    format: "junit_xml",
+    pathAuthority: "graph_binding"
+  },
+  executionProfiles: {
+    nodeTest: {
+      command: "node",
+      reportPath: "test-execution-report.xml",
+      argsBeforeTestFiles: [
+        "--test",
+        "--test-reporter=junit",
+        "--test-reporter-destination=test-execution-report.xml"
+      ]
+    }
+  },
+  authorityRule: "expected values come from the graph binding; observed values come from the worker result and are corroborated by the structured report"
+});
+
+const TEST_EXECUTION_RESULT_PRODUCER_BINDING = deepFreeze({
+  workerExecutes: true,
+  filesToProduce: [ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.resultPath],
+  executionResultContractRef: ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef,
+  instructions: [
+    "Execute the declared test command inside this worker turn; the framework executes nothing.",
+    "Record observedTestPassCount as a non-negative integer in test-execution-result.json; stdout is provenance only and never count authority.",
+    "Produce the declared JUnit XML report so F_D can corroborate the typed observed count mechanically."
+  ]
+});
+
+const SDLC_TEST_EXECUTION_RESULT_PRODUCER_BINDING = deepFreeze({
+  ...TEST_EXECUTION_RESULT_PRODUCER_BINDING,
+  filesToProduce: [
+    "test-execution-plan.json",
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.resultPath
+  ],
+  instructions: [
+    ...TEST_EXECUTION_RESULT_PRODUCER_BINDING.instructions,
+    "Record the graph count floor in test-execution-plan.json under the exact field expectedTestPassCount."
+  ]
+});
+
+const TEST_EXECUTION_RESULT_CONSUMER_BINDING = deepFreeze({
+  executionResultContractRef: ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef
+});
+
 export const REQUIRED_ROUTE_ONE_SURFACES = Object.freeze([
   "LifeCycleWorksiteAsset",
   "LifecycleContextAsset",
@@ -820,6 +890,7 @@ export const ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN = deepFreeze([
     ]
   },
   {
+    ...SDLC_TEST_EXECUTION_RESULT_PRODUCER_BINDING,
     stage: "test_execution_plan",
     vectorId: "graph-vector://odd_glc/software-build/sdlc/test-execution-plan",
     sourceTypeRef: "odd_glc.type.software.uat_test_source_surface",
@@ -832,6 +903,8 @@ export const ODD_GLC_SOFTWARE_BUILD_SDLC_STAGE_PLAN = deepFreeze([
     ]
   },
   {
+    ...TEST_EXECUTION_RESULT_CONSUMER_BINDING,
+    passingResultRequired: true,
     stage: "test_execution_result",
     vectorId: "graph-vector://odd_glc/software-build/sdlc/test-execution-result",
     sourceTypeRef: "odd_glc.type.software.test_execution_plan",
@@ -984,6 +1057,7 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     requiredNodeTypes: ["odd_glc.type.software.test_design_surface", "odd_glc.type.software.component_test_source_surface"]
   },
   {
+    ...TEST_EXECUTION_RESULT_PRODUCER_BINDING,
     stage: "prepare_test_execution_surface",
     vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/prepare-test-execution-surface",
     sourceTypeRef: "odd_glc.type.software.component_test_source_surface",
@@ -993,6 +1067,7 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     requiredNodeTypes: ["odd_glc.type.software.component_test_source_surface", "odd_glc.type.software.test_execution_plan"]
   },
   {
+    ...TEST_EXECUTION_RESULT_CONSUMER_BINDING,
     stage: "derive_test_execution_result_surface",
     vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-test-execution-result-surface",
     sourceTypeRef: "odd_glc.type.software.test_execution_plan",
@@ -1030,6 +1105,7 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     requiredNodeTypes: ["odd_glc.type.software.component_repair_schedule", "odd_glc.type.software.component_repair_application"]
   },
   {
+    ...TEST_EXECUTION_RESULT_PRODUCER_BINDING,
     stage: "prepare_repaired_test_execution_surface",
     vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/prepare-repaired-test-execution-surface",
     sourceTypeRef: "odd_glc.type.software.component_repair_application",
@@ -1039,6 +1115,7 @@ export const ODD_GLC_SOFTWARE_BUILD_FULL_LIFECYCLE_STAGE_PLAN = deepFreeze([
     requiredNodeTypes: ["odd_glc.type.software.component_repair_application", "odd_glc.type.software.test_execution_plan"]
   },
   {
+    ...TEST_EXECUTION_RESULT_CONSUMER_BINDING,
     stage: "derive_repaired_test_execution_result_surface",
     vectorId: "graph-vector://odd_glc/software-build/full-lifecycle/derive-repaired-test-execution-result-surface",
     sourceTypeRef: "odd_glc.type.software.test_execution_plan",
@@ -1301,6 +1378,7 @@ export const ODD_GLC_SOFTWARE_BUILD_OVERLAY = deepFreeze({
   ownerRef: "product://odd_glc",
   scope: "reusable_software_build_lifecycle",
   rule: "gtl_overlay_graph_declaration_over_gtl_abg_truth",
+  testExecutionResultContractRef: ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef,
   graphFunctionRefs: [
     "graph-function://odd_glc/software-build/bootstrap-worksite",
     ODD_GLC_SOFTWARE_BUILD_SDLC_GRAPH_FUNCTION_REF,
