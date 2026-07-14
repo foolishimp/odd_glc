@@ -1,0 +1,95 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "2",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+  "runId": "20260714T201728366Z_pid60603",
+  "mainProof": "qualification/odd-glc-rust-service-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/rust-service/rust-service-vector-6-transport.json",
+      "sha256": "a9bddacae9bd07ac8722a4c0e2c811078aa19fade947eaefc1c882b51e3e0bd5"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/rust-service/rust-service-vector-6-evaluator-transport.json",
+      "sha256": "b3bf300c7101ecf4f141c7fc5b5c7529569e588454d8f878ac955ca6ce2a753f"
+    },
+    "producerArtifact": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/rust-service/rust-service-vector-6-artifact.json",
+      "sha256": "579ee54cd9587c2d5c0e2946ae9eac5d72e862f791fbbddfc0b3a5b9e41815ff"
+    },
+    "executionAssessment": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/rust-service/rust-service-vector-7-artifact.json",
+      "sha256": "5f101d3fb680810223555c55da63ea1c439527b22fd2effa90dc05ec1846a446"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "314fa57897a0943c40296bd897ef84e7dc6feae6784a2f039ae4fad49b785e0f"
+    },
+    "structuredTestReport": {
+      "runRelativePath": "instance/test-execution-report.xml",
+      "sha256": "f76a662a7e750666f7071bda1fbcca68943579d6c5dd4afadb1f43c86c7aed57"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 6,
+    "structuredEventCount": 37,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false,
+    "toolsArgValue": null
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 29,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "producerAdmission": {
+    "kind": "odd_glc_execution_result_shape_validation",
+    "status": 0,
+    "accepted": true,
+    "issueCount": 0
+  },
+  "subject": {
+    "contractRef": "contract://odd_glc/software/test-execution-result/v1",
+    "command": "node",
+    "args": [
+      "--test",
+      "--test-reporter=junit",
+      "--test-reporter-destination=test-execution-report.xml",
+      "test/component/rust-service.test.mjs",
+      "test/uat/rust-service.uat.test.mjs"
+    ],
+    "status": 0,
+    "expectedTestPassCount": 2,
+    "observedTestPassCount": 2,
+    "expectedTestReportPaths": [
+      "test-execution-report.xml"
+    ],
+    "structuredReport": {
+      "reportPath": "test-execution-report.xml",
+      "missing": false,
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f76a662a7e750666f7071bda1fbcca68943579d6c5dd4afadb1f43c86c7aed57"
+    },
+    "planSatisfied": true,
+    "assertedReturnValue": "Hello, world!",
+    "stdoutSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "authoredResultMatchesAssessment": true
+  },
+  "typedRetryCount": 0,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}

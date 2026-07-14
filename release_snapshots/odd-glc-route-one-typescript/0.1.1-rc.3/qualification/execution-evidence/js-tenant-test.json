@@ -1,0 +1,95 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "2",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
+  "runId": "20260714T194919195Z_pid60603",
+  "mainProof": "qualification/odd-glc-js-tenant-test-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-tenant-test/js-tenant-test-vector-6-transport.json",
+      "sha256": "2c0458038b9f25b0f81665b070e1dd09a7298e0ed2e539ead8af2cc108cd6953"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-tenant-test/js-tenant-test-vector-6-evaluator-transport.json",
+      "sha256": "1a92e6a4abdb5154f6786d88afdc2b6d49ae491c377ed3f152e2ddca037d06fb"
+    },
+    "producerArtifact": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-tenant-test/js-tenant-test-vector-6-artifact.json",
+      "sha256": "a0b8cabc39633baeec03f301ac1ceeb92f16d1ab777b7c8bbe6e2b8de1c0b368"
+    },
+    "executionAssessment": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/js-tenant-test/js-tenant-test-vector-7-artifact.json",
+      "sha256": "e22e67f3f0cdf94cc081b562eef08c0ee810c6aefa92ce572b43d52a06598bfc"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "af37279f20af80f89a82bd8a4905bb3e547bbf271868a5814973476ed3eceb4c"
+    },
+    "structuredTestReport": {
+      "runRelativePath": "instance/test-execution-report.xml",
+      "sha256": "800f8cfacf2f355996fc965b050f159e61108b81815b01dd42422b345c67df82"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 6,
+    "structuredEventCount": 41,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false,
+    "toolsArgValue": null
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 28,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "producerAdmission": {
+    "kind": "odd_glc_execution_result_shape_validation",
+    "status": 0,
+    "accepted": true,
+    "issueCount": 0
+  },
+  "subject": {
+    "contractRef": "contract://odd_glc/software/test-execution-result/v1",
+    "command": "node",
+    "args": [
+      "--test",
+      "--test-reporter=junit",
+      "--test-reporter-destination=test-execution-report.xml",
+      "test/component/hello.test.mjs",
+      "test/uat/hello.uat.test.mjs"
+    ],
+    "status": 0,
+    "expectedTestPassCount": 2,
+    "observedTestPassCount": 6,
+    "expectedTestReportPaths": [
+      "test-execution-report.xml"
+    ],
+    "structuredReport": {
+      "reportPath": "test-execution-report.xml",
+      "missing": false,
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "800f8cfacf2f355996fc965b050f159e61108b81815b01dd42422b345c67df82"
+    },
+    "planSatisfied": true,
+    "assertedReturnValue": "Hello, world!",
+    "stdoutSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "authoredResultMatchesAssessment": true
+  },
+  "typedRetryCount": 1,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}

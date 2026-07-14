@@ -1,0 +1,95 @@
+{
+  "kind": "odd_glc_execution_lane_evidence",
+  "schemaVersion": "2",
+  "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+  "runId": "20260714T203019461Z_pid60603",
+  "mainProof": "qualification/odd-glc-parallel-js-live-proof.json",
+  "sourceRecords": {
+    "workerTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/parallel-js/parallel-js-vector-6-transport.json",
+      "sha256": "f065edb0ae82f78112f1273002065f1719ba108b823e3945854d5ff3ca51af25"
+    },
+    "evaluatorTransport": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/parallel-js/parallel-js-vector-6-evaluator-transport.json",
+      "sha256": "37489f5b3cf78c59265c5964e692d54090e95bff23a8dba5355d56c0703b2805"
+    },
+    "producerArtifact": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/parallel-js/parallel-js-vector-6-artifact.json",
+      "sha256": "f79c51b9a04df79af491b8d24fe35e13d5f47d45f3bdee6b880246cf3b7bfc1d"
+    },
+    "executionAssessment": {
+      "runRelativePath": "instance/.ai-workspace/glc-software-build-live/parallel-js/parallel-js-vector-7-artifact.json",
+      "sha256": "f10c8b9e2a19ce7b284cfe1b41332424f110addcb0cbf5e4e3b1a8226fd89102"
+    },
+    "testExecutionResult": {
+      "runRelativePath": "instance/test-execution-result.json",
+      "sha256": "05125af7614b5f01dff8e6290bed261aef0f1919a0180d2c20baf558d2e31f74"
+    },
+    "structuredTestReport": {
+      "runRelativePath": "instance/test-execution-report.xml",
+      "sha256": "35066f73031fb744a4fd98a9af52e3e63ef84fa62a396fa139987393e3a78d7a"
+    }
+  },
+  "worker": {
+    "agentKey": "claude",
+    "lane": "worker_executes",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 6,
+    "structuredEventCount": 36,
+    "safeModeArgPresent": false,
+    "toolsArgPresent": false,
+    "toolsArgValue": null
+  },
+  "evaluator": {
+    "agentKey": "claude",
+    "lane": "closed_prompt_proof",
+    "status": 0,
+    "outcomeKind": "exited",
+    "failureClass": null,
+    "toolCallCount": 0,
+    "structuredEventCount": 26,
+    "safeModeArgPresent": true,
+    "toolsArgPresent": true,
+    "toolsArgValue": ""
+  },
+  "producerAdmission": {
+    "kind": "odd_glc_execution_result_shape_validation",
+    "status": 0,
+    "accepted": true,
+    "issueCount": 0
+  },
+  "subject": {
+    "contractRef": "contract://odd_glc/software/test-execution-result/v1",
+    "command": "node",
+    "args": [
+      "--test",
+      "--test-reporter=junit",
+      "--test-reporter-destination=test-execution-report.xml",
+      "test/component/parallel-branches.test.mjs",
+      "test/uat/parallel-fanin.uat.test.mjs"
+    ],
+    "status": 0,
+    "expectedTestPassCount": 3,
+    "observedTestPassCount": 3,
+    "expectedTestReportPaths": [
+      "test-execution-report.xml"
+    ],
+    "structuredReport": {
+      "reportPath": "test-execution-report.xml",
+      "missing": false,
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "35066f73031fb744a4fd98a9af52e3e63ef84fa62a396fa139987393e3a78d7a"
+    },
+    "planSatisfied": true,
+    "assertedReturnValue": "Hello, world!",
+    "stdoutSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "authoredResultMatchesAssessment": true
+  },
+  "typedRetryCount": 0,
+  "privacyBoundary": "Normalized release evidence only; raw agent transcripts and session metadata are not published."
+}
