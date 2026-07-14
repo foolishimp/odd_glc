@@ -73,7 +73,7 @@ test("child_process reachability is pinned (any quote style, createRequire, dyna
   assert.equal(/createRequire\s*\([^)]*\)\s*\(\s*["']\s*(node:)?child_process/u.test(liveSource), false);
 });
 
-test("the execution-result path is verify-only and the compile gate is retired", () => {
+test("the execution-result path is verify-only and producer validation is shape-only", () => {
   const executor = liveSource.slice(
     liveSource.indexOf("export async function executePlannedScenario"),
     liveSource.indexOf("async function materializeScenario")
@@ -86,7 +86,8 @@ test("the execution-result path is verify-only and the compile gate is retired",
     liveSource.indexOf("function deterministicPostMaterializationValidationForStage"),
     liveSource.indexOf("function scalaTestClassSummariesFromAssessment")
   );
-  assert.match(gate, /return null;/u);
+  assert.match(gate, /admitExecutionResultShape/u);
+  assert.equal(/verifyJUnitReportContents/u.test(gate), false);
   assert.equal(/\b(?:runSync|spawnSync|spawn|execSync)\s*\(/u.test(gate), false);
 });
 

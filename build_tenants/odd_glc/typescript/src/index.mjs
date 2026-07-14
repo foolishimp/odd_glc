@@ -114,6 +114,7 @@ const TEST_EXECUTION_RESULT_PRODUCER_BINDING = deepFreeze({
   executionResultContractRef: ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef,
   instructions: [
     "Execute the declared test command inside this worker turn; the framework executes nothing.",
+    "Record the process exit code under the exact field status as a non-negative integer; do not use passed/failed strings or substitute exitStatus/exitCode.",
     "Record observedTestPassCount as a non-negative integer in test-execution-result.json; stdout is provenance only and never count authority.",
     "Produce the declared JUnit XML report so F_D can corroborate the typed observed count mechanically."
   ]

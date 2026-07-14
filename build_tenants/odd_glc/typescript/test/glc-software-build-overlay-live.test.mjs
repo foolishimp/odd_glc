@@ -1878,11 +1878,15 @@ test("T-035: the shared producer cannot demand the consumer F_D evidence early",
     true
   );
   assert.equal(
+    producerTransform.includes("exact field status as a non-negative integer"),
+    true
+  );
+  assert.equal(
     producerReview.includes("The following test_execution_result vector is the sole F_D consumer"),
     true
   );
   assert.equal(
-    producerReview.includes("Do not require the report in candidateEvidence.materializedFiles"),
+    producerReview.includes("Do not require the report, count corroboration, plan equality, or planSatisfied"),
     true
   );
   assert.equal(
@@ -1961,6 +1965,51 @@ test("T-035: the shared producer cannot demand the consumer F_D evidence early",
   assert.equal(fullLifecycleTransform.includes("Allowed paths: test-execution-result.json"), true);
   assert.equal(fullLifecycleTransform.includes("test-execution-plan.json records"), false);
   assert.equal(fullLifecycleTransform.includes("test-execution-result.json records observed"), true);
+
+  const producerStage = scenario.stagePlan.find((stage) => stage.stage === "test_execution_plan");
+  assert.ok(producerStage);
+  const shapeWorkspace = path.join(liveRoot, "producer-result-shape-unit", timestampId());
+  await mkdir(shapeWorkspace, { recursive: true });
+  const resultPath = path.join(
+    shapeWorkspace,
+    ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.resultPath
+  );
+  const validResult = {
+    command: scenario.expectedExecutionCommand,
+    args: [...scenario.expectedExecutionArgs],
+    cwd: scenario.expectedExecutionCwd,
+    status: 0,
+    stdout: "",
+    stderr: "",
+    observedTestPassCount: scenario.expectedTestPassCount,
+    expectedTestReportPaths: [...scenario.expectedTestReportPaths],
+    assertedReturnValue: scenario.expectedReturnValue
+  };
+  await writeText(resultPath, JSON.stringify({
+    ...validResult,
+    status: "passed",
+    exitStatus: 0
+  }));
+  const malformedShape = binding.deterministicPostMaterializationValidationForStage({
+    workspaceRoot: shapeWorkspace,
+    stageSpec: producerStage,
+    materializedFiles: [resultPath]
+  });
+  assert.equal(malformedShape.accepted, false);
+  assert.match(malformedShape.issues.join("\n"), /non-negative integer exit status/u);
+
+  await writeText(resultPath, JSON.stringify(validResult));
+  const admittedShape = binding.deterministicPostMaterializationValidationForStage({
+    workspaceRoot: shapeWorkspace,
+    stageSpec: producerStage,
+    materializedFiles: [resultPath]
+  });
+  assert.equal(admittedShape.accepted, true);
+  assert.equal(
+    existsSync(path.join(shapeWorkspace, "test-execution-report.xml")),
+    false,
+    "producer shape admission must not pull JUnit verification forward"
+  );
 });
 
 test("B-001: rust-service UAT stays within the declared /hello contract", () => {
@@ -3369,13 +3418,10 @@ export async function executePlannedScenario(workspaceRoot) {
   if (cwd !== workspaceRoot && !cwd.startsWith(workspaceRoot + path.sep)) {
     throw new Error("Execution result cwd escapes workspace: " + resultArtifact.cwd);
   }
-  // CAMPAIGN BUG #2 (run 2, vector 16): the contract said "record the
-  // exit status" without naming the FIELD; the worker chose exitStatus.
-  // The shape FAMILY is {status|exitStatus|exitCode} — the T-031 BUG #3
-  // envelope-family lesson applied to fields.
-  // review D-interim residual #2 closed: conflicting status fields
-  // resolve FAIL-CLOSED — any integer field reporting failure wins over
-  // a green claim (self-contradictory evidence never resolves optimistically)
+  // The public result contract requires the native integer field status.
+  // Optional integer exitStatus/exitCode fields are conflict claims only:
+  // they cannot substitute for status, and any reported failure wins over a
+  // green claim (self-contradictory evidence never resolves optimistically).
   const statusClaims = [resultArtifact.status, resultArtifact.exitStatus, resultArtifact.exitCode]
     .filter((value) => Number.isInteger(value));
   const claimedStatus = statusClaims.find((value) => value !== 0) ?? resultArtifact.status;
@@ -3848,7 +3894,7 @@ export function resolveRepairReentryTargetRow() {
   return Object.freeze({ index, row });
 }
 
-function deterministicPostMaterializationValidationForStage(input) {
+export function deterministicPostMaterializationValidationForStage(input) {
   // T-209 D3 (governance ruling 2026-07-09): the framework compile gate
   // is RETIRED — it spawned sbt Test/compile from the binding, which is
   // execution wearing an F_D badge. The compile obligation moved into
@@ -3856,9 +3902,45 @@ function deterministicPostMaterializationValidationForStage(input) {
   // worker to run sbt Test/compile itself and report truthfully); the
   // pure attribution surfaces (compileErrorLines,
   // attributeCompileErrorLines) remain exported for evaluator use over
-  // worker-reported output.
-  void input;
-  return null;
+  // worker-reported output. Schema admission of an F_P result is different:
+  // it is a total F_D check over finite materialized JSON and must run at the
+  // producer so a malformed result can be regenerated there.
+  const resultPath = ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.resultPath;
+  if (
+    input.stageSpec?.executionResultContractRef !==
+      ODD_GLC_SOFTWARE_TEST_EXECUTION_RESULT_CONTRACT.contractRef ||
+    !Array.isArray(input.stageSpec.filesToProduce) ||
+    !input.stageSpec.filesToProduce.includes(resultPath)
+  ) {
+    return null;
+  }
+
+  let issue = null;
+  let resultInput = null;
+  try {
+    resultInput = JSON.parse(readFileSync(path.join(input.workspaceRoot, resultPath), "utf8"));
+  } catch (error) {
+    issue = error?.code === "ENOENT"
+      ? "Missing " + resultPath
+      : "Malformed " + resultPath + " JSON: " + String(error?.message ?? error).slice(0, 200);
+  }
+  if (issue === null) {
+    issue = admitExecutionResultShape(resultInput).issue;
+  }
+  const accepted = issue === null;
+  return Object.freeze({
+    kind: "odd_glc_execution_result_shape_validation",
+    stage: input.stageSpec.stage,
+    authority: "F_D schema admission over the materialized worker result; report verification remains on the consumer vector",
+    command: "admit_execution_result_shape",
+    args: Object.freeze([resultPath]),
+    cwd: input.workspaceRoot,
+    status: accepted ? 0 : 1,
+    accepted,
+    stdout: "",
+    stderr: "",
+    issues: Object.freeze(accepted ? [] : [issue])
+  });
 }
 
 function scalaTestClassSummariesFromAssessment(assessment) {
@@ -4127,7 +4209,8 @@ function evaluateInstructionText(stageSpec) {
         ? [
             "- This producer stage must return the declared typed plan/result files and truthful report references.",
             "- The structured report is toolchain output held in the workspace, not an authored files entry. The following test_execution_result vector is the sole F_D consumer that mechanically verifies the report and typed observed count.",
-            "- Do not require the report in candidateEvidence.materializedFiles, postMaterializationValidation, or populated execution fields at this producer stage."
+            "- candidateEvidence.postMaterializationValidation may admit only the native JSON field shapes of test-execution-result.json at this producer stage.",
+            "- Do not require the report, count corroboration, plan equality, or planSatisfied in candidateEvidence.materializedFiles, postMaterializationValidation, or populated execution fields at this producer stage."
           ]
       : [
           "- reviewAccepted is true only if the candidate stage, vector index, node types, generated file paths, and file content satisfy the typed vector contract.",
