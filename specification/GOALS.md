@@ -1,7 +1,7 @@
 # odd_glc Goals
 
 **Status**: Active
-**Date**: 2026-07-07
+**Date**: 2026-08-17
 **Derived From**: `.ai-workspace/context/project_bootstrap.md`,
 `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-snapshot-manifest.json`
 
@@ -9,38 +9,142 @@ Goals define the current bounded work-wave for `odd_glc`.
 
 ## Current Goal
 
-Bring `odd_glc` to user-visible `odd_sdlc` lifecycle parity by proving a full
-data-mapper lifecycle over GTL/ABG 4.6 startup, registry, typed-node,
-traversal, evidence, fold, residual, and replay truth.
+Deliver `W2-ODD-GLC-PROGRAM-ONLY-HELLO`: one source-independent odd_glc 0.2
+development candidate supplies exactly one immutable GTL Program publication
+as data: its Program record, odd_glc-owned GraphFunction definition/topology,
+and only the required declarative contracts, policies, overlays, and package
+metadata to an installed ABIogenesis
+5.0 partial development Product. This is a Program-only sentinel, not the
+odd_glc MVP reserved for `SCN-GLC-HELLO-WORLD-MINIMAL`.
 
-Parity means:
+```text
+odd_glc Program data
+  -> ABIogenesis Product install/workspace/catalog
+  -> start selects the odd_glc-owned GraphFunction
+  -> HoG traverses its graph topology
+  -> ABI-owned standard Hello leaf Implementation
+  -> ABG runtime truth
+  -> exact result and fresh replay
+```
 
-`GTL/ABG substrate truth -> odd_glc generic lifecycle interpretation -> downstream/plugin specialization`
+odd_glc supplies no executable TypeScript Product-semantics provider,
+evaluator, implementation binding, leaf Implementation, semantic
+implementation, lifecycle interpreter, dispatcher, event writer, raw-event
+walker, evidence binder, fold, residualizer, controller, compatibility path,
+or ABI mechanism. The current `abi5_program`
+provider/leaf/`no_disposition` candidate is superseded diagnostic evidence and
+is deleted or excluded rather than adapted.
 
-It does not mean porting or reproducing `odd_sdlc` source code, `Sdlc*`
-carriers, local phase-flow controllers, local ledgers, retry loops, closure
-registers, process shells, or controllers. It may require reproducing a
-selected `odd_sdlc` witness graph traversal shape as GTL graph vectors consumed
-by ABG.
+The one deterministic Catalog contains canonical GraphFunctions published by
+installed Products and libraries. The odd_glc-owned GraphFunction composes the
+catalogued ABI-owned Hello capability through exact dependencies. The current
+same-publication validation and implementation lookup is the defect: it
+collapses the Catalog into a publication-local table. Product/Validator
+resolves the complete Program/GraphFunction closure through the ready
+Catalog/View, installed ProductSet, resolved lock, dependencies,
+compatibility, provenance, collision, and ambiguity law. Program,
+GraphFunction, contract, evaluator, customization, fibre, binding, and
+Implementation owners remain separate in the immutable derived execution
+projection. Absent, ambiguous, missing-dependency, incompatible/provenance,
+and owner-contract/binding mismatch remain distinct typed refusals.
 
-ABIogenesis `4.6.0-rc.3` is the substrate under test for this wave. If the
-selected `odd_sdlc` witness traversal cannot be expressed and run as GTL/ABG
-startup, registry, graph-call, vector traversal, evidence, and replay truth,
-then the substrate is incomplete for `odd_glc` parity. `odd_glc` shall record
-the gap and block or reprice upstream; it shall not compensate with local
-truth, local shells, or a product-owned traversal controller.
+The odd_glc publication may declare external Product-semantics, contract,
+evaluator, binding, and Implementation references as immutable data, but it
+supplies none of those providers. ABIogenesis
+`ProductExecutionResolutionPort.resolve` resolves the odd_glc Program and
+GraphFunction owner separately from every referenced semantic owner through
+Catalog/View, ProductSet, lock, compatibility, and provenance, then loads each
+callable from its exact admitted owner install. This replaces the live
+same-install relation at `ModulePublication.productSemanticsBinding`,
+`loadInstalledProductSemantics`, and `applyRunInvoke`; Public may not reuse the
+odd_glc install for every loader or special-case its ABI.
 
-Current migration gate: T-030 is the live traversal migration and proof lane.
-The next closure-grade data-mapper run must start from installed ABIogenesis
-`4.6.0-rc.3`, consume ABG instruction assembly, requirement-proof
-carry-through, HoG handler/program truth, and consequence re-entry through the
-real startup traversal path, then produce a live upstream
-`graph_reentry_applied` witness before convergence. Any run that bypasses
-those capabilities, starts from an older installed substrate, or completes
-without the re-entry witness is diagnostic only and shall not close
-data-mapper parity.
+Public structurally admits the run request, selects `run.invoke#start`, calls
+the concrete Product resolution port and selected concrete owner ports, then
+projects. The odd_glc GraphFunction owner supplies declarative topology;
+contract/evaluator/customization owners supply declared relations; primitive
+base GraphFunctions resolve to exact owner-local Implementations/ports; ABG
+revalidates/admits the tuple and prefix; and HoG traverses the resolved
+GraphFunction closure. Executable leaves are Implementations/owner ports, not
+another GraphFunction kind. Public owns no semantic or owner-selection
+algorithm. No second catalog, runtime, execution-basis registry, or adapter is
+permitted. Downstream Products may compose and customize declared extension
+points but may not mutate or silently override base definitions. Consensus is
+the architectural falsifier: it must remain one GraphFunction whose declared
+composition disappears when that publication is removed, with no
+consensus-specific ABG, HoG, or Public branch.
 
-## Active Plan
+The installed result is compared with an immutable odd_glc 0.1 plus
+ABIogenesis 4.6.0-rc.3 run in a separate clean process and workspace. The two
+runs share no runtime, carrier translation, compatibility facade, or source
+import. Both raw observations are persisted unchanged. The 4.6 run retains its
+genuine subject-execution stdout `Hello, world!\n`; the 5.0 run retains the
+existing typed `hello_world_output` with `message: "Hello World"` in its
+canonical JSON CLI receipt. The comparator reduces them only to
+source-independent installed execution, one top-level start, minimal Hello
+operation succeeded, one terminal result, expected version-local greeting,
+fresh-process replay agreement, and absence of legacy/private paths. It may
+not rewrite either raw observation. ABIogenesis 4.6 `converged` versus 5.0
+`closed_success` remain version-local authenticated evidence. The 5.0 run
+proves selection of the odd_glc-owned GraphFunction plus the exact ABI-owned
+Hello leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
+bindings, greeting punctuation, and transport forms remain version-local.
+Hello World is steel-thread shorthand, not Product parity.
+
+This goal does not claim `SCN-GLC-HELLO-WORLD-MINIMAL` lifecycle closure.
+Requirements, instruction assembly, F_P, evidence binding, assurance fold,
+residuals, lifecycle disposition, retry, continuation, fan-out, service,
+data-mapper, One Surface, and Consensus remain deferred.
+
+## Current Plan
+
+1. Hold implementation until the reviewed ABIogenesis D17/D18 candidate is
+   checkpointed and this plan is accepted; neither action reopens Wave 1.
+2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
+3. Publish one data-only odd_glc Program candidate whose odd_glc-owned
+   GraphFunction topology references the installed ABI Hello leaf capability.
+4. Install and run one CLI episode chain with exactly one start, then replay
+   from another process. Mechanically prove SDK/schema/catalog equality to the
+   same 18/56 family without a second semantic execution.
+5. Freeze the source-independent package census, receipts, and normalized
+   differential for cold review and Executive disposition.
+
+The traced path consumes twelve definitions:
+`workspace.create#clean`, `workspace.open#open`, `product.verify#verify`,
+`product.resolve#resolve`, `product.install#install`, `workspace.bind#bind`,
+`catalog.admit#admit`, `catalog.view#allowlist`, `run.invoke#start`,
+`project.read#run_status`, `project.read#run_result`, and
+`project.read#run_replay`. The trace, not the count, governs. ABIogenesis 5.0p
+packages its one exact 18/56 family; unused definitions are outside this
+sentinel's evidence claim, not absent or replaced by a partial roster.
+
+Package constructability still covers the entire family before this sentinel
+runs: every one of the 56 definitions has a concrete runtime-callable owner
+closure; the installed tarball contains every required owner module, runtime
+dependency, schema, and static catalog row; and one installed exact-set probe
+loads/resolves all 56 from packed bytes. This mechanical probe does not invoke
+all 56 behaviors. Scenario qualification remains the twelve-key path above.
+
+The odd_glc 0.2 package closes only when its production census contains
+declarative GTL publication data and no executable evaluator/provider,
+Product-semantics provider, implementation binding, leaf Implementation,
+dispatcher, event name/writer, raw-event walker, evidence binder, fold,
+residualizer, controller, ABI private import, or source-tree dependency.
+Proof is proportional: one sunny path, one fresh-process replay, that negative
+census, and seam negatives only for absent/ambiguous catalogued GraphFunction
+or dependency, missing/wrong dependency or owner,
+absent/ambiguous/wrong-owner executable binding, and replay divergence. One
+installed owner-load probe proves each selected semantic callable came from
+its resolved owner install.
+
+## Current Ticket
+
+- `T-041`: Program-only sentinel and installed differential.
+
+## Deferred Full-Lifecycle Plan
+
+The following prior plan is retained as later-wave backlog. It does not select
+current work and cannot enlarge the Program-only sentinel retroactively.
 
 1. Keep the active software-build overlay generic.
    - Use `ODD_GLC_SOFTWARE_BUILD_OVERLAY` as the reusable GTL overlay graph.
@@ -126,7 +230,7 @@ data-mapper parity.
      pty-terminal`, a non-null `terminalSessionId`, and a preserved terminal
      transcript. `local-spawn` live-worker runs are not live-terminal proofs.
 
-## Active Tickets
+## Deferred Full-Lifecycle Tickets
 
 - `T-025`: typed scenario ladder and data_mapper witness preparation over the
   reusable software-build overlay.
