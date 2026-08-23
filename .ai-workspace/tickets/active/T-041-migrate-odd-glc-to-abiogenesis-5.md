@@ -5,7 +5,7 @@
 - type: feature
 - ticket_category: implementation_migration
 - status: active
-- execution_state: proof_assurance_design_reframe_v4_proposed_review_pending
+- execution_state: ratified_v4_repaired_proof_required_before_candidate_transplant_or_freeze
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
@@ -18,7 +18,7 @@
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
 - current_change_class: design_reframe
-- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-proof-assurance-reframe
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-proof-assurance-reframe
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
 - governing_library: >-
@@ -57,12 +57,14 @@
     dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
   - specification/PRODUCT.md
   - >-
-    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (admitted v3
-    predecessor: proposal commit 96f223f36062fc88b961ba7f98e534141ab42c84,
-    tree 4ce7395754f2a0ed926d0c927528a3b2263964ae, admission status commit
-    236a08603cbfd7bb31ab0319053f36b46718b549; proposed proof-assurance v4 is a
-    direct child of that status commit and awaits fresh exact-tree review and
-    Executive/F_H acceptance)
+    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (current ratified
+    proof-assurance v4 frozen as exact proposal commit
+    e40895ffff403fd27686aaddf19dd11285fda0a2, tree
+    8f2c832a74b0a55a73ded92679a48a34453d0344, full-index binary patch SHA-256
+    dd8230c1e13df0e0544ee7698319c5bfe323944dbfe1278930dc683a2ea4a7a8;
+    direct parent 236a08603cbfd7bb31ab0319053f36b46718b549; fresh independent
+    Max exact-tree disposition ACCEPT with A/B/C/D all zero and Executive/F_H
+    acceptance on 2026-08-24)
   - exact ABIogenesis v5.0.0-dev.286 public Product boundary
 - delegated_authority: >-
     Realize and prove the bounded Program-only sentinel from the named clean
@@ -76,8 +78,8 @@
 - acceptance_roles:
     product_authority: direct_F_H
     adjudicator: Executive_F_H
-    independent_review: pending_on_exact_v4_proposal_tree
-    checkpoint_administration: blocked_pending_v4_external_acceptance
+    independent_review: satisfied_on_exact_v4_proposal_tree
+    checkpoint_administration: authorized_after_repaired_proof_passes_exact_v4_gates
 - predecessor_tickets:
   - T-033
   - T-038
@@ -90,19 +92,18 @@
 - admitted_v3_design_reframe_gates:
   - fresh independent Max exact-tree review disposition ACCEPT with A/B/C/D all zero for commit 96f223f36062fc88b961ba7f98e534141ab42c84, tree 4ce7395754f2a0ed926d0c927528a3b2263964ae
   - Executive/F_H accepted those exact v3 bytes on 2026-08-24
-- proposed_v4_design_reframe_admission_gates:
-  - fresh independent Max exact-tree review of the frozen v4 proposal commit and tree
-  - Executive/F_H acceptance of those exact v4 bytes
+- ratified_v4_design_reframe_gates:
+  - fresh independent Max exact-tree review disposition ACCEPT with A/B/C/D all zero for commit e40895ffff403fd27686aaddf19dd11285fda0a2, tree 8f2c832a74b0a55a73ded92679a48a34453d0344
+  - Executive/F_H accepted those exact v4 bytes on 2026-08-24
 - realization_dependencies:
-  - both proposed v4 design-reframe admission gates satisfied before candidate freeze or authority transplant
+  - repaired descendants of all four rejected proof-donor blobs pass every exact v4 gate before realization candidate transplant or freeze
   - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
   - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
   - immutable v0.1.0 predecessor receipt for the bounded differential
 
-## Proposed Proof-Assurance Reframe Routing
+## Ratified Proof-Assurance Reframe Routing
 
-The admitted predecessor is the evidence-driven v3 `design_reframe` frozen as
-exact proposal commit
+The admitted v3 predecessor is frozen as exact proposal commit
 `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
 `4ce7395754f2a0ed926d0c927528a3b2263964ae`. Its exact lineage is status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
@@ -111,30 +112,31 @@ exact proposal commit
 `96f223f36062fc88b961ba7f98e534141ab42c84`. Fresh independent Max exact-tree
 review returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted those
 same bytes on 2026-08-24 through status commit
-`236a08603cbfd7bb31ab0319053f36b46718b549`.
+`236a08603cbfd7bb31ab0319053f36b46718b549`. End-to-end proof inspection then
+re-entered assurance design only. The accepted v4 correction is exact proposal
+commit `e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
+`8f2c832a74b0a55a73ded92679a48a34453d0344`, direct parent
+`236a08603cbfd7bb31ab0319053f36b46718b549`. Fresh independent Max exact-tree
+review returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted those
+exact v4 bytes on 2026-08-24. This status-only child records that external
+disposition; v4 did not self-accept.
 
-End-to-end proof inspection re-entered assurance design only. This v4 proposal
-is one direct child of exact admitted commit
-`236a08603cbfd7bb31ab0319053f36b46718b549`; it awaits fresh independent
-exact-tree review and Executive/F_H acceptance and does not self-accept.
-
-The proposed reframe keeps the ABI and odd_glc identities, exact five-member
+The ratified reframe keeps the ABI and odd_glc identities, exact five-member
 zero-code archive, cross-owner declaration/Implementation relation, Hello
 semantics, installed execution DAG, and predecessor conservation unchanged.
-Diagnostic end-to-end work may continue, but its authority bytes may not be
-transplanted and no candidate may freeze before both v4 admission gates pass.
-The ticket, synthetic ABI fixture, dirty checkout, rejected `abi5_program`
-source, diagnostic result, and prior candidate tests cannot fill or revise a
-frozen field or substitute for proof.
+The four old proof-donor blobs remain rejected. A realization candidate may be
+transplanted or frozen only after repaired descendants of all four pass every
+exact v4 gate. The ticket, synthetic ABI fixture, dirty checkout, rejected
+`abi5_program` source, diagnostic result, and prior candidate tests cannot fill
+or revise a frozen field or substitute for proof.
 
 ## Operative Wave 2 Target
 
 This section supersedes the broader migration targets and Increment 01-05
 candidates below for execution. Those sections remain historical and
 later-wave evidence only.
-The Product target and eight-native/four-receipt relation remain admitted and
-unchanged. The v4 assurance clauses in this section are proposals until both
-v4 admission gates pass.
+The Product target, eight-native/four-receipt relation, and v4 assurance clauses
+are ratified and current.
 This is a Program-only sentinel. The odd_glc Product term `MVP` remains
 reserved for `SCN-GLC-HELLO-WORLD-MINIMAL`, which this ticket does not close.
 "Hello World" is the minimal end-to-end steel-thread shorthand. A Hello World
@@ -426,11 +428,10 @@ Wave 2 gate.
 
 ### Execution order
 
-1. Continue diagnostic end-to-end repair only. Do not transplant v4 authority
-   or freeze a realization candidate before fresh independent exact-tree review
-   and Executive/F_H acceptance. Reject construction unless the ABI tarball
-   matches the pinned `v5.0.0-dev.286` SHA-256, and extract bootstrap from those
-   same bytes.
+1. Repair all four rejected proof-donor blobs. Do not transplant or freeze a
+   realization candidate until their repaired descendants pass every exact v4
+   gate. Reject construction unless the ABI tarball matches the pinned
+   `v5.0.0-dev.286` SHA-256, and extract bootstrap from those same bytes.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
 3. Prove structural equality to the exact 18/56 family, classify all 56 under
    exact own-property law as 39 callable and the exact 17 absent, and prove the
@@ -442,9 +443,9 @@ Wave 2 gate.
    and prove SDK/schema/catalog equality mechanically.
 6. Satisfy bridge provenance, closed module-graph, owner-load, raw-byte,
    predecessor-basis, event-log, exact tar-header, and create-only fail-closed
-   acceptance gates. Only after v4 admission, freeze both raw receipt sets,
-   package censuses, and the normalized differential for cold review and
-   Executive disposition.
+   acceptance gates. Only after all four repaired proof blobs pass, freeze both
+   raw receipt sets, package censuses, and the normalized differential for cold
+   review and Executive disposition.
 
 Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private

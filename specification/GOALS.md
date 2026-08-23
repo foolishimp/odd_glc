@@ -1,11 +1,12 @@
 # odd_glc Goals
 
 **Status**: Active
-**Reconciliation status**: Proposed evidence-driven proof-assurance
-`design_reframe` v4, a direct child of admitted status commit
-`236a08603cbfd7bb31ab0319053f36b46718b549`; fresh independent exact-tree
-review and Executive/F_H acceptance are pending, and no realization candidate
-may freeze from this proposal
+**Reconciliation status**: Accepted evidence-driven proof-assurance
+`design_reframe` v4; exact proposal commit
+`e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
+`8f2c832a74b0a55a73ded92679a48a34453d0344`, independently reviewed by Max
+with disposition ACCEPT (A/B/C/D all zero) and accepted by Executive/F_H on
+2026-08-24
 **Date**: 2026-08-24
 **Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
 2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
@@ -41,10 +42,9 @@ data-mapper, One Surface, and Consensus remain deferred.
 
 ## Downstream Routing And Selected Constraints
 
-T-041 routes this goal. The admitted v3 `design_reframe` at status commit
-`236a08603cbfd7bb31ab0319053f36b46718b549` is the predecessor record.
-End-to-end evidence re-entered only its assurance design: the proposed v4 in
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` preserves the selected
+T-041 routes this goal. The ratified v4 proof-assurance `design_reframe` in
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` is current design
+authority. It preserves the selected
 `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
 ABIogenesis tag `v5.0.0-dev.286`, commit
 `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
@@ -124,15 +124,17 @@ leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
 bindings, greeting punctuation, and transport forms remain version-local.
 Hello World is steel-thread shorthand, not Product parity.
 
-This v4 reframe is a proposal, not self-accepted authority. Diagnostic
-end-to-end work may continue, but its authority bytes may not be transplanted
-and no realization candidate may freeze until fresh independent exact-tree
-review and Executive/F_H acceptance. A diagnostic result does not satisfy a
-proof gate or expand the design.
+The exact v4 reframe is admitted. This status-only child records independent
+Max ACCEPT (A/B/C/D all zero) and Executive/F_H acceptance of the exact
+proposal bytes; neither the proposal nor diagnostic execution self-accepted
+them. A realization candidate may be transplanted or frozen only after repaired
+descendants of all four rejected proof-donor blobs pass every exact v4 gate. A
+diagnostic result does not satisfy a proof gate or expand the accepted design.
 
 ### Selected Execution Plan
 
-1. Hold candidate freeze; reject even diagnostic execution unless the exact
+1. Hold candidate transplant and freeze until all four repaired proof blobs
+   pass the exact v4 gates; reject even diagnostic execution unless the exact
    ABI tarball matches its pinned SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
 3. Publish one exact five-member, zero-code odd_glc Program candidate whose
@@ -178,7 +180,7 @@ T-287 S2 bootstrap successor. That successor remains unselected and unpinned;
 using it requires fresh tag, commit, tree, package, and tarball admission plus
 a new design reframe. It is not a T-041 candidate claim or closure gate.
 
-The proposed proof contract is fail-closed. Bootstrap and generated bridges
+The ratified proof contract is fail-closed. Bootstrap and generated bridges
 come from the same exact hashed ABI tarball; the bridges report actual
 `import.meta.resolve` URLs for every ABI public export and the odd publication,
 and their realpaths remain inside installed roots and outside checkouts,

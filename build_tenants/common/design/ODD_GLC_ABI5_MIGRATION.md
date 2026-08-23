@@ -1,11 +1,13 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Proposed T-041 evidence-driven proof-assurance `design_reframe` v4,
-direct child of admitted status commit
-`236a08603cbfd7bb31ab0319053f36b46718b549`; awaiting fresh independent
-exact-tree review and Executive/F_H acceptance; realization candidate freeze
-is not authorized; full lifecycle migration deferred
+**Status**: Active ratified T-041 evidence-driven proof-assurance
+`design_reframe` v4; exact proposal commit
+`e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
+`8f2c832a74b0a55a73ded92679a48a34453d0344`, independently reviewed ACCEPT
+with A/B/C/D all zero and accepted by Executive/F_H on 2026-08-24;
+realization candidate transplant/freeze requires all four repaired proof blobs
+to pass the exact v4 gates; full lifecycle migration deferred
 **Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
 **Construction Basis**: direct-F_H-adopted authority-conserving,
 entity-centric, event-sourced functional reactive domain modeling method;
@@ -18,7 +20,7 @@ resolved through `specification/GOVERNANCE.md`
 `@abiogenesis/typescript-tenant@4.6.0-rc.3`
 **Development substrate**: `@abiogenesis/typescript-tenant@5.0.0-dev.286`
 
-## Proposed T-041 Proof-Assurance Reframe
+## Ratified T-041 Proof-Assurance Reframe
 
 The `specification/GOVERNANCE.md` exact-tree record admits the predecessor
 design at status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`.
@@ -36,19 +38,21 @@ from its installed export locators. The admitted v3 correction is a
 `236a08603cbfd7bb31ab0319053f36b46718b549`. Subsequent end-to-end proof
 inspection found assurance overclaims in its ABI5 terminal vocabulary,
 negative minimum, locator census, provenance, and fail-closed acceptance
-boundary. This evidence-driven v4 proposal is a direct child of exact admitted
-commit `236a08603cbfd7bb31ab0319053f36b46718b549`. It changes no Intent, Product
-meaning, requirement, frozen identity, five-member Product, owner relation,
-eight-native/four-receipt split, or Hello outcome.
+boundary. The accepted evidence-driven v4 correction is frozen as exact
+proposal commit `e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
+`8f2c832a74b0a55a73ded92679a48a34453d0344`, and is a direct child of exact
+admitted commit `236a08603cbfd7bb31ab0319053f36b46718b549`. It changes no
+Intent, Product meaning, requirement, frozen identity, five-member Product,
+owner relation, eight-native/four-receipt split, or Hello outcome.
 
-Fresh independent Max exact-tree review returned ACCEPT with A/B/C/D all zero
-for v3, and Executive/F_H explicitly accepted those same bytes on 2026-08-24.
-That admission is predecessor history, not acceptance of this descendant.
-Diagnostic end-to-end work may continue, but v4 does not self-accept: its
-authority bytes may not be transplanted and no realization candidate may
-freeze until fresh independent exact-tree review and Executive/F_H acceptance
-of the exact v4 bytes. The pre-pin Wave 2 draft and rejected candidate records
-below remain design history only.
+Fresh independent Max exact-tree review of v4 returned ACCEPT with A/B/C/D all
+zero, and Executive/F_H explicitly accepted those exact bytes on 2026-08-24.
+The reframe is current design authority. This status-only child records that
+external admission; neither the proposal nor diagnostic execution self-accepted
+it. The four old proof-donor blobs remain rejected. A realization candidate may
+be transplanted or frozen only after repaired descendants of all four pass the
+exact v4 gates. The pre-pin Wave 2 draft and rejected candidate records below
+remain design history only.
 
 The selected subject is a governed, separately versioned and installable
 data-only GTL Product. It is not an application, runtime, controller, semantic
@@ -186,7 +190,7 @@ The minimum realization/proof path set is:
 The first five rows are the complete frozen Product-data set and remain
 accepted without byte or semantic change. The last four rows are realization
 proof donors only. Their existing bytes are rejected as acceptance evidence
-until they satisfy this proposal's repaired proof contract; no donor result may
+until repaired descendants satisfy the ratified v4 proof contract; no donor result may
 be inherited as green.
 
 Existing `src/abi5_program.mjs`, declaration, and focused test candidates are
@@ -631,40 +635,43 @@ RC/final publication, or compatibility across 4.6 and 5.0 carriers.
 Permanently removing future read-only lifecycle interpretation would require a
 separate Product reprice; the zero-code sentinel does not make that decision.
 
-The admitted v3 genealogy is exact: accepted status commit
+The ratified reframe genealogy is exact: accepted status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
 `2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` -> refusal-enum repair
 `c4f521f22bc35717565ce6b2607e69df25115129` -> accepted v3 proposal commit
 `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
 `4ce7395754f2a0ed926d0c927528a3b2263964ae` -> admission status commit
-`236a08603cbfd7bb31ab0319053f36b46718b549`. This proposed v4 commit is one
-direct child of exact `236a08603cbfd7bb31ab0319053f36b46718b549` and changes
-only `specification/GOALS.md`, this design, and T-041 routing. It changes no
-Product semantics, requirement, identity, source, package data, proof code,
+`236a08603cbfd7bb31ab0319053f36b46718b549` -> accepted v4 proposal commit
+`e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
+`8f2c832a74b0a55a73ded92679a48a34453d0344`. The v4 proposal's direct parent
+is exact `236a08603cbfd7bb31ab0319053f36b46718b549` and its cumulative change is
+limited to `specification/GOALS.md`, this design, and T-041 routing. It changes
+no Product semantics, requirement, identity, source, package data, proof code,
 test, or ABI bytes.
 
-The v3 admission topology is complete: fresh independent Max review of its
+The v4 admission topology is complete: fresh independent Max review of its
 exact tree returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted
-those bytes on 2026-08-24. V4 re-enters only assurance design and awaits a new
-independent exact-tree review and Executive/F_H acceptance. This proposal does
-not treat its own commit or diagnostic execution as acceptance; realization
-transplant and candidate freeze remain unauthorized.
+those bytes on 2026-08-24. This status-only child records that external
+disposition without treating its own commit or diagnostic execution as
+acceptance. V4 is current design authority. Realization candidate transplant
+and freeze are authorized only after repaired descendants of all four rejected
+proof-donor blobs pass every exact v4 gate.
 
-If this reframe is admitted, the first realization gate remains availability
-of exact ABI tarball bytes at the frozen digest. The five frozen Product blobs
-are already accepted and unaffected; the four named donor proof blobs must be
-repaired and satisfy the exact proof contract before any realization cut can
-be accepted. No code, package, build, test, migration closure, RC, final
-release, or tag movement is credited by this document alone.
+With this reframe admitted, the first realization gate remains availability of
+exact ABI tarball bytes at the frozen digest. The five frozen Product blobs are
+accepted and unaffected. The four named old donor proof blobs remain rejected;
+their repaired descendants must satisfy the exact proof contract before any
+realization candidate may be transplanted, frozen, or accepted. No code,
+package, build, test, migration closure, RC, final release, or tag movement is
+credited by this document alone.
 
 ## Superseded Pre-Pin Wave 2 Draft
 
 The following section predates the exact immutable substrate and odd_glc
 identity freeze. It is retained as non-authoritative design history. The
-proposed proof-assurance reframe above defines every claimed v4 difference for
-exact-tree review. Words such as “accepted” inside this preserved history
-report former assumptions; they do not admit this proposal or override its
-status.
+ratified proof-assurance reframe above governs every v4 difference. Words such
+as “accepted” inside this preserved history report former assumptions; they do
+not override current design.
 
 The current design subject is `W2-ODD-GLC-PROGRAM-ONLY-HELLO`. "Hello World"
 is the minimal end-to-end scenario shorthand. A Hello World `GraphFunction`
@@ -738,7 +745,7 @@ Its closed refusal code enum is `absent`, `ambiguous`, `missing_dependency`,
 `incompatible_or_unproven`, and `wrong_owner`; its stage enum is `catalog`,
 `declaration_closure`, `dependency`, `implementation`, and `semantics`. This
 superseded draft did not distinguish constructable code/stage pairs; the
-proposed six-row cone and activated D capsule above do.
+ratified six-row cone and activated D capsule above do.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -803,7 +810,7 @@ project.read#run_result
 project.read#run_replay
 ```
 
-That traversal claim is historical and nonoperative. The proposed reframe
+That traversal claim is historical and nonoperative. The ratified reframe
 above separates eight native installed-public owner stages from four
 receipt-derived Public DefinitionCalls. ABIogenesis `v5.0.0-dev.286` publishes
 one structural 18-operation/56-definition family; T-041 classifies all 56
@@ -907,7 +914,7 @@ remaining Public family are outside the causal set.
    its SHA-256 is
    `4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41`.
 2. Freeze the installed 0.1/4.6.0-rc.3 baseline observation.
-3. Historical step withdrawn: do not claim all 56 callable. The proposed
+3. Historical step withdrawn: do not claim all 56 callable. The ratified
    proof establishes structural 18/56 identity, applies exact own-property law
    to all 56 locators, records exactly 39 callable and the exact 17 absent, and
    proves the selected twelve are a subset of the 39.
@@ -916,8 +923,8 @@ remaining Public family are outside the causal set.
    result through fresh replay; prove SDK/schema/catalog equality mechanically.
 6. Freeze both receipts and their normalized semantic equality for cold review.
 
-The historical negative wording is nonoperative. After v4 admission, the
-current six-row cone above governs candidate closure; the activated D
+The historical negative wording is nonoperative. The current six-row cone
+above governs candidate closure; the activated D
 hardening capsule retains the
 additional Product Environment, declaration-closure, Implementation, and
 semantic-owner variants until their pre-RC, expanded-qualification, or exact
