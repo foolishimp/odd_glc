@@ -23,9 +23,14 @@ design at status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`.
 End-to-end construction against its exact ABI substrate falsified two proof
 assumptions: the first eight steel-thread stages cannot be invoked as lawful
 DefinitionCalls, and the published 18/56 family is not whole-family callable
-from its installed export locators. This direct-child proposal is a
-`design_reframe`. It changes no Intent, Product meaning, requirement, frozen
-identity, five-member Product, owner relation, or Hello outcome.
+from its installed export locators. This cumulative v3 proposal is a
+`design_reframe` with exact lineage
+`7a8f0898538b87b0a2975015d05a2fdcd0c9b805` ->
+`2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` ->
+`c4f521f22bc35717565ce6b2607e69df25115129` -> this proposal tree. Its direct
+parent is `c4f521f22bc35717565ce6b2607e69df25115129`. It changes no Intent,
+Product meaning, requirement, frozen identity, five-member Product, owner
+relation, or Hello outcome.
 
 This proposal is not self-accepted. It becomes implementation authority only
 after independent review of its exact tree and explicit Executive/F_H
@@ -454,6 +459,35 @@ Repair of either capsule finding belongs to an exact future ABI successor;
 odd_glc may not supply the missing bindings, grant authority, or substitute
 transport.
 
+#### Exact bounded negative frame
+
+This frame is bound to exact `v5.0.0-dev.286` installed behavior and source at
+`build_tenants/abiogenesis/typescript/code/src/product/environment.ts`,
+`product/execution_resolution.ts`,
+`public/installed_definition_call_transport.ts`, and
+`abg/project_read_definition_bindings.ts`. `code@stage` below is a
+Product-execution-resolution refusal. The Product-resolution cases invoke
+installed `./product::ProductExecutionResolutionPort.resolve` directly; they
+do not forge pre-binding grants or claim DefinitionCall traversal.
+
+| Falsifier | Exact layer | Required observable outcome |
+|---|---|---|
+| declared dependency ambiguity or incompatibility | installed `./product::ProductEnvironmentPort.resolve`, before execution resolution | Environment refusal `ambiguous_dependency` or `incompatible_dependency` |
+| required declaration exists only outside dependency reachability | installed `./product::ProductExecutionResolutionPort.resolve` | `missing_dependency@declaration_closure` |
+| admitted-install set does not prove the exact Catalog readiness candidates | same installed Product port | `incompatible_or_unproven@dependency` |
+| Implementation descriptor/set is absent or duplicated | same installed Product port | `absent@implementation` or `ambiguous@implementation` |
+| resolved Implementation owner cannot load its packaged descriptor/callable | same installed Product port | `wrong_owner@implementation` |
+| semantic owner is absent or ambiguous | declaration closure inside the same installed Product port | `wrong_owner@declaration_closure` or `ambiguous@declaration_closure` |
+| uniquely resolved semantic provider fails owner-local load or binding match | same installed Product port after closure | `wrong_owner@semantics` |
+| top-level acquisition crosses the embedded acquisition, or only one copy is tampered | installed Public transport, before owner execution | transport refusal `acquisition_mismatch`; no `DefinitionHostReceipt` |
+| both acquisition copies match one stale or tampered owner-issued handoff | installed transport reaches the read owner | transport result with `DefinitionHostReceipt.exitCode` 70 and failure `resource_acquisition`/`acquisition_refused` |
+| owner-entering read resource assertion is malformed | installed transport reaches the read owner | transport result with receipt exit 70 and failure `resource_admission`/`invalid_resource_assertion` |
+| `projectionBasis` is stale against the acquired durable prefix | read owner executes | transport result with receipt exit 1 and owner refusal `projection_basis_mismatch` |
+
+No gate expands the raw enums into unconstructable code/stage cross-products;
+only the table rows govern. Projection/result inequality is a proof failure,
+not a typed `replay_divergence` refusal; no such code exists.
+
 Minimum assurance is:
 
 1. an exact archive/member/digest/manifest and prohibited-code census;
@@ -462,13 +496,7 @@ Minimum assurance is:
    effects, admission, and owner separation asserted;
 3. the exact four-receipt installed Public DefinitionCall trace with one start,
    plus mechanical callable-locator existence for the twelve selected keys;
-4. selected Product-resolution seam refusals preserve an exact code from
-   `absent`, `ambiguous`, `missing_dependency`, `incompatible_or_unproven`,
-   and `wrong_owner` plus an exact stage from `catalog`,
-   `declaration_closure`, `dependency`, `implementation`, and `semantics`;
-   replay acquisition crossing separately refuses as installed transport
-   `acquisition_mismatch` or the corresponding
-   `resource_acquisition`/`acquisition_refused` owner fault;
+4. the exact bounded negative frame above, without cross-product expansion;
 5. fresh-process status/result/replay equality and zero appended read bytes;
 6. a source-blind/private-import census over packed modules and loaded module
    refs; and
@@ -508,11 +536,14 @@ RC/final publication, or compatibility across 4.6 and 5.0 carriers.
 Permanently removing future read-only lifecycle interpretation would require a
 separate Product reprice; the zero-code sentinel does not make that decision.
 
-The reframe proposal subject is one direct-child Git commit over accepted
-status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`. It changes only
-`specification/GOALS.md`, this design, and T-041 routing. It changes no Product
-semantics, requirement, identity, source, package data, proof code, test, or
-ABI bytes.
+The reframe proposal genealogy is exact: accepted status commit
+`7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
+`2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` -> refusal-enum repair
+`c4f521f22bc35717565ce6b2607e69df25115129` -> this v3 proposal. The v3
+proposal's direct parent is `c4f521f22bc35717565ce6b2607e69df25115129`.
+The cumulative proposal changes only `specification/GOALS.md`, this design,
+and T-041 routing. It changes no Product semantics, requirement, identity,
+source, package data, proof code, test, or ABI bytes.
 
 The reframe admission topology is atomic: freeze one exact proposal commit and
 tree; review that tree independently; obtain explicit Executive/F_H acceptance
@@ -606,7 +637,9 @@ Implementation owners remain separate in one derived immutable execution
 projection. That projection is not another catalog, registry, or authority.
 Its closed refusal code enum is `absent`, `ambiguous`, `missing_dependency`,
 `incompatible_or_unproven`, and `wrong_owner`; its stage enum is `catalog`,
-`declaration_closure`, `dependency`, `implementation`, and `semantics`.
+`declaration_closure`, `dependency`, `implementation`, and `semantics`. This
+superseded draft did not distinguish constructable code/stage pairs; the
+operative bounded negative frame above does.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -621,8 +654,9 @@ contains the provider. `loadInstalledProductSemantics` consumes the resolved
 binding and exact owner install. `applyRunInvoke` no longer threads the odd_glc
 Program publication/install into every loader. Public passes Program selection
 to the Product port and neither selects owners nor special-cases an ABI.
-Post-parse semantic-binding refusals preserve `ambiguous` or `wrong_owner`
-with stage `semantics`.
+Semantic-owner absence or ambiguity is refused during declaration closure.
+After unique owner resolution, only provider load/binding mismatch is
+`wrong_owner@semantics`.
 
 The Catalog permits immutable base GraphFunctions and Implementations bundled
 by ABIogenesis/ABG, downstream GraphFunction compositions, compatible
@@ -652,8 +686,8 @@ or Public production branch may remain reachable.
 
 ### Exact installed boundary
 
-The Wave 2 consumer path traverses these definitions in the one packaged 18/56
-family:
+The superseded draft described all twelve stage labels as traversed
+definitions in one packaged 18/56 family:
 
 ```text
 workspace.create#clean
@@ -670,21 +704,17 @@ project.read#run_result
 project.read#run_replay
 ```
 
-The path trace is authoritative; its twelve-key count is only a projection.
-ABIogenesis `v5.0.0-dev.286` packages the one exact 18-operation/56-key Public family.
-Wave 2 qualifies only these consumed rows. Unused rows are outside this
-evidence claim, not absent, stubbed, translated, or represented by a second
-partial roster/catalog/API. The packed path contains no `RootPublicInvocation`,
+That traversal claim is historical and nonoperative. The operative reframe
+above separates eight native installed-public owner stages from four
+receipt-derived Public DefinitionCalls. ABIogenesis `v5.0.0-dev.286` publishes
+one structural 18-operation/56-definition family; T-041 resolves only the
+selected twelve installed callable locators and retains the exact 17-locator
+substrate capsule. The former all-56 callable-closure/load requirement is
+withdrawn, and no whole-family callable or behavioral claim remains.
+
+The packed selected path still contains no `RootPublicInvocation`,
 `legacyRequest`, compatibility facade, second Public family, source-tree
 dependency, or process-local run/read truth.
-
-Package constructability remains whole-family: all 56 definitions have
-concrete runtime-callable owner closures; the installed tarball contains the
-entire 18/56 family plus every owner module, runtime dependency, schema, and
-static catalog row required to resolve it; and one installed exact-set probe
-loads/resolves all 56 closures from packed bytes. This is mechanical
-constructability only. Behavioral and scenario qualification remains the
-twelve-key sentinel above.
 
 Execution uses one installed CLI episode chain with exactly one
 `run.invoke#start`. SDK, schema, catalog, and CLI projections are mechanically
@@ -774,30 +804,30 @@ remaining Public family are outside the causal set.
    its SHA-256 is
    `4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41`.
 2. Freeze the installed 0.1/4.6.0-rc.3 baseline observation.
-3. Prove the ABIogenesis tarball contains every owner closure, dependency,
-   schema, and static row and mechanically load/resolve the exact 56.
+3. Historical step withdrawn: do not load/resolve all 56. The operative proof
+   establishes structural 18/56 identity, resolves the selected twelve
+   callable locators, and retains the exact 17-locator nonclaim.
 4. Package the odd_glc declarative Program and prove its negative census.
 5. Execute one installed CLI episode chain with one start and reconstruct its
    result through fresh replay; prove SDK/schema/catalog equality mechanically.
 6. Freeze both receipts and their normalized semantic equality for cold review.
 
-Closure proof is one installed sunny path, one fresh-process replay, the
-package/source/private negative census, and selected Product-resolution seam
-negatives asserting the exact fixed refusal code and stage. Replay acquisition
-crossing separately asserts installed transport `acquisition_mismatch` or the
-corresponding `resource_acquisition`/`acquisition_refused` owner fault. One
-installed owner-load probe proves each selected semantic callable came from
-its resolved owner install. Lifecycle, F_P, exhaustive matrices, and broader
-odd_glc scenarios remain outside this design.
+The historical negative wording is nonoperative. The operative bounded frame
+above governs the constructable Product-port, Environment, transport,
+DefinitionFault, and owner-refusal cases. One installed owner-load probe proves
+each selected semantic callable came from its resolved owner install.
+Lifecycle, F_P, exhaustive matrices, and broader odd_glc scenarios remain
+outside this design.
 
 Later odd_glc tests may discover missing ABIogenesis capabilities for later
 waves. They cannot enlarge this accepted causal set retroactively.
 
 Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private
-imports, process-local truth, stubbed 18/56 bindings, an unresolved or
-wrong-owner semantic callable, or test-side rewriting of either raw
-observation. Missing exact owner meaning requires upstream re-entry.
+imports, process-local truth, a missing/stubbed selected-twelve binding, an
+unresolved or wrong-owner semantic callable, or test-side rewriting of either
+raw observation. The 17 unselected missing locators remain governed by the
+operative capsule. Missing exact owner meaning requires upstream re-entry.
 
 ## Deferred Full-Migration Design
 

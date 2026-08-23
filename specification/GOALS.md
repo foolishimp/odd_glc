@@ -67,10 +67,19 @@ closure through the ready Catalog/View, installed ProductSet, resolved lock, dep
 compatibility, provenance, collision, and ambiguity law. Program,
 GraphFunction, contract, evaluator, customization, fibre, binding, and
 Implementation owners remain separate in the immutable derived execution
-projection. Product execution resolution preserves the exact refusal codes
-`absent`, `ambiguous`, `missing_dependency`, `incompatible_or_unproven`, and
-`wrong_owner`, with stages `catalog`, `declaration_closure`, `dependency`,
-`implementation`, and `semantics`.
+projection. Declared dependency ambiguity or incompatibility stops earlier in
+installed `./product` Environment resolution as `ambiguous_dependency` or
+`incompatible_dependency`. Selected Product-resolution negatives call
+installed `./product::ProductExecutionResolutionPort.resolve` directly:
+missing reachability is `missing_dependency@declaration_closure`; an unproved
+install set is `incompatible_or_unproven@dependency`; absent or duplicate
+Implementation descriptors are `absent@implementation` or
+`ambiguous@implementation`; and a
+nonloadable Implementation owner is `wrong_owner@implementation`. Semantic-owner
+absence or ambiguity stops in declaration closure as
+`wrong_owner@declaration_closure` or `ambiguous@declaration_closure`; only a
+uniquely resolved provider
+load or binding mismatch is `wrong_owner@semantics`.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -171,12 +180,16 @@ Product-semantics provider, implementation binding, leaf Implementation,
 dispatcher, event name/writer, raw-event walker, evidence binder, fold,
 residualizer, controller, ABI private import, or source-tree dependency.
 Proof is proportional: one sunny path, one fresh-process replay, that negative
-census, and selected Product-resolution seam negatives asserting the exact
-refusal code and stage above. Replay acquisition crossing is separate: the
-installed transport refuses `acquisition_mismatch`, or owner entry returns the
-corresponding `resource_acquisition`/`acquisition_refused` fault. One installed
-owner-load probe proves each selected semantic callable came from its resolved
-owner install.
+census, and only the constructable Product-resolution seam negatives above.
+Read falsifiers stay layer-exact: crossed top-level/embedded acquisition or a
+one-copy tamper is transport refusal `acquisition_mismatch`; a matching stale
+or tampered owner-issued handoff returns a transport result whose receipt exits
+70 with `resource_acquisition`/`acquisition_refused`; a malformed resource
+assertion exits 70 with `resource_admission`/`invalid_resource_assertion`; and
+a stale `projectionBasis` is owner refusal `projection_basis_mismatch` with
+receipt exit 1. There is no `replay_divergence` code. One installed owner-load
+probe proves each selected semantic callable came from its resolved owner
+install.
 
 ### Selected Routing Ticket
 

@@ -88,7 +88,7 @@
   - independent exact-tree review disposition ACCEPT
   - Executive/F_H accepted the exact proposal tree on 2026-08-24
 - design_reframe_admission_gates:
-  - independent exact-tree review of the frozen direct-child proposal commit
+  - independent exact-tree review of the frozen v3 proposal whose direct parent is c4f521f22bc35717565ce6b2607e69df25115129
   - explicit Executive/F_H acceptance of that exact proposal tree
 - realization_dependencies:
   - accepted exact-tree admission of the evidence-driven design reframe before candidate freeze
@@ -101,8 +101,13 @@
 The accepted implementation authority is the design admitted at status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`. End-to-end construction
 falsified its twelve-DefinitionCall and whole-56 callable-closure assumptions.
-This ticket therefore routes a direct-child `design_reframe` proposal at
+This ticket therefore routes a cumulative `design_reframe` proposal at
 `build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-evidence-reframe`.
+Its exact lineage is status commit
+`7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
+`2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` -> refusal-enum repair
+`c4f521f22bc35717565ce6b2607e69df25115129` -> this v3 proposal; the v3
+proposal's direct parent is `c4f521f22bc35717565ce6b2607e69df25115129`.
 The proposal keeps the ABI and odd_glc identities, exact five-member zero-code
 archive, cross-owner declaration/Implementation relation, Hello semantics,
 installed execution DAG, and predecessor conservation unchanged.
@@ -168,10 +173,17 @@ Program and composed GraphFunction owner is odd_glc; referenced base
 GraphFunction, contract, evaluator, and Implementation owners may be ABI
 dependencies.
 
-Product execution resolution preserves the exact refusal codes `absent`,
-`ambiguous`, `missing_dependency`, `incompatible_or_unproven`, and
-`wrong_owner`, with stages `catalog`, `declaration_closure`, `dependency`,
-`implementation`, and `semantics`. Public
+Declared dependency ambiguity or incompatibility stops earlier through
+installed `./product::ProductEnvironmentPort.resolve` as Environment refusal
+`ambiguous_dependency` or `incompatible_dependency`. Selected execution
+resolution negatives call installed
+`./product::ProductExecutionResolutionPort.resolve` directly. Constructable
+outcomes are `missing_dependency@declaration_closure`,
+`incompatible_or_unproven@dependency`, `absent@implementation`,
+`ambiguous@implementation`, `wrong_owner@implementation`, semantic-owner absence
+or ambiguity as `wrong_owner@declaration_closure` or
+`ambiguous@declaration_closure`, and uniquely resolved provider load/binding
+mismatch as `wrong_owner@semantics`. Public
 structurally admits the run request, selects `run.invoke#start`, calls the
 concrete Product resolution port and selected concrete owner ports, then
 projects. Product/Validator resolves and validates the Catalog closure; each
@@ -195,8 +207,8 @@ install. `ModulePublication.productSemanticsBinding` becomes an external
 owner/binding coordinate, `loadInstalledProductSemantics` consumes that
 resolved binding and owner install, and `applyRunInvoke` stops threading the
 odd_glc Program install into every loader. Public passes Program selection but
-does not select owners or special-case an ABI. Post-parse semantic-binding
-refusals preserve `ambiguous` or `wrong_owner` with stage `semantics`.
+does not select owners or special-case an ABI. No negative gate expands the
+raw enums beyond the constructable pairs above.
 
 The Catalog supports immutable ABIogenesis/ABG-bundled base GraphFunctions,
 downstream GraphFunction compositions, compatible owner-local
@@ -322,13 +334,17 @@ existence proof only. Broader tests become later-wave gap discovery and cannot
 expand this ticket retroactively.
 
 Closure proof is one installed sunny path, one fresh-process replay, the
-package/source/private negative census, and selected Product-resolution seam
-negatives asserting the exact fixed refusal code and stage. Replay acquisition
-crossing separately asserts installed transport `acquisition_mismatch` or the
-corresponding `resource_acquisition`/`acquisition_refused` owner fault. One
-installed owner-load probe proves each selected semantic callable came from
-its resolved owner install. No exhaustive matrix or broader odd_glc scenario
-is a Wave 2 gate.
+package/source/private negative census, and only the constructable direct
+installed Product-port negatives above. Read falsifiers distinguish: crossed
+top-level/embedded acquisition or one-copy tamper -> transport refusal
+`acquisition_mismatch`; matching stale/tampered owner-issued handoff ->
+transport result receipt exit 70 with
+`resource_acquisition`/`acquisition_refused`; malformed resource assertion ->
+receipt exit 70 with `resource_admission`/`invalid_resource_assertion`; stale
+`projectionBasis` -> owner refusal `projection_basis_mismatch` with receipt
+exit 1. There is no `replay_divergence` code. One installed owner-load probe
+proves each selected semantic callable came from its resolved owner install.
+No exhaustive matrix or broader odd_glc scenario is a Wave 2 gate.
 
 ### Execution order
 
