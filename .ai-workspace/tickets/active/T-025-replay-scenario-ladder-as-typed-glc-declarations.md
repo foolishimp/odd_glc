@@ -4,6 +4,8 @@ title: Replay scenario ladder as typed GLC declarations
 type: proof
 ticket_category: implementation
 status: active
+execution_state: deferred_until_T041_then_abi5_goal_and_design_reprice
+updated_at: 2026-08-24
 goal: >-
   Re-express the selected odd_sdlc full data-mapper witness as typed odd_glc
   GTL declarations and ABG-started runs, with the Hello World ladder retained
@@ -15,7 +17,7 @@ priority: medium
 created_at: 2026-07-01
 governance_scope: STDO Method, ODD Method, generic lifecycle scenario coverage
 source_documents:
-  - .ai-workspace/tickets/active/T-030-migrate-live-traversals-to-abg-instruction-depth.md
+  - .ai-workspace/tickets/completed/T-030-migrate-live-traversals-to-abg-instruction-depth.md
   - .ai-workspace/tickets/completed/T-024-prove-glc-hello-world-over-abg-4-2-startup.md
   - .ai-workspace/tickets/completed/T-008-govern-hello-world-scenario-ladder.md
   - .ai-workspace/tickets/completed/T-010-prove-js-tenant-test-hello-world-ladder-rung.md

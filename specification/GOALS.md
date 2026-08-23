@@ -1,20 +1,23 @@
 # odd_glc Goals
 
 **Status**: Active
-**Date**: 2026-08-17
-**Derived From**: `.ai-workspace/context/project_bootstrap.md`,
+**Reconciliation status**: Proposed exact-tree update pending the Governance gate
+**Date**: 2026-08-24
+**Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
+2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
+predecessor tag `v0.1.0`; and predecessor manifest
 `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-snapshot-manifest.json`
 
 Goals define the current bounded work-wave for `odd_glc`.
 
 ## Current Goal
 
-Deliver `W2-ODD-GLC-PROGRAM-ONLY-HELLO`: one source-independent odd_glc 0.2
+Deliver `W2-ODD-GLC-PROGRAM-ONLY-HELLO`: one source-independent odd_glc
 development candidate supplies exactly one immutable GTL Program publication
 as data: its Program record, odd_glc-owned GraphFunction definition/topology,
 and only the required declarative contracts, policies, overlays, and package
-metadata to an installed ABIogenesis
-5.0 partial development Product. This is a Program-only sentinel, not the
+metadata to one immutable installed ABIogenesis 5 development Product.
+This is a Program-only sentinel, not the
 odd_glc MVP reserved for `SCN-GLC-HELLO-WORLD-MINIMAL`.
 
 ```text
@@ -27,6 +30,25 @@ odd_glc Program data
   -> exact result and fresh replay
 ```
 
+This goal does not claim `SCN-GLC-HELLO-WORLD-MINIMAL` lifecycle closure.
+Requirements, instruction assembly, F_P, evidence binding, assurance fold,
+residuals, lifecycle disposition, retry, continuation, fan-out, service,
+data-mapper, One Surface, and Consensus remain deferred.
+
+## Downstream Routing And Selected Constraints
+
+T-041 routes this goal. The proposed
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` design candidate
+selects `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
+ABIogenesis tag `v5.0.0-dev.286`, commit
+`3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
+`a399045de5d752b92c084b5b38b358aa2d1c63aa`, package
+`@abiogenesis/typescript-tenant@5.0.0-dev.286`, and tarball SHA-256
+`4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41`.
+Those downstream coordinates constrain realization only if the exact-tree
+admission gate in `specification/GOVERNANCE.md` accepts that design. Neither
+the ticket, design, nor ABI development Product derives or enlarges this goal.
+
 odd_glc supplies no executable TypeScript Product-semantics provider,
 evaluator, implementation binding, leaf Implementation, semantic
 implementation, lifecycle interpreter, dispatcher, event writer, raw-event
@@ -37,11 +59,9 @@ is deleted or excluded rather than adapted.
 
 The one deterministic Catalog contains canonical GraphFunctions published by
 installed Products and libraries. The odd_glc-owned GraphFunction composes the
-catalogued ABI-owned Hello capability through exact dependencies. The current
-same-publication validation and implementation lookup is the defect: it
-collapses the Catalog into a publication-local table. Product/Validator
-resolves the complete Program/GraphFunction closure through the ready
-Catalog/View, installed ProductSet, resolved lock, dependencies,
+catalogued ABI-owned Hello capability through exact dependencies. Exact
+ABIogenesis `v5.0.0-dev.286` resolves the complete Program/GraphFunction
+closure through the ready Catalog/View, installed ProductSet, resolved lock, dependencies,
 compatibility, provenance, collision, and ambiguity law. Program,
 GraphFunction, contract, evaluator, customization, fibre, binding, and
 Implementation owners remain separate in the immutable derived execution
@@ -91,18 +111,14 @@ Hello leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
 bindings, greeting punctuation, and transport forms remain version-local.
 Hello World is steel-thread shorthand, not Product parity.
 
-This goal does not claim `SCN-GLC-HELLO-WORLD-MINIMAL` lifecycle closure.
-Requirements, instruction assembly, F_P, evidence binding, assurance fold,
-residuals, lifecycle disposition, retry, continuation, fan-out, service,
-data-mapper, One Surface, and Consensus remain deferred.
+### Selected Execution Plan
 
-## Current Plan
-
-1. Hold implementation until the reviewed ABIogenesis D17/D18 candidate is
-   checkpointed and this plan is accepted; neither action reopens Wave 1.
+1. Hold implementation until the proposed T-041 design is accepted and the exact
+   ABI tarball matches its pinned SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
-3. Publish one data-only odd_glc Program candidate whose odd_glc-owned
-   GraphFunction topology references the installed ABI Hello leaf capability.
+3. Publish one exact five-member, zero-code odd_glc Program candidate whose
+   odd_glc-owned GraphFunction topology references the installed ABI Hello leaf
+   capability.
 4. Install and run one CLI episode chain with exactly one start, then replay
    from another process. Mechanically prove SDK/schema/catalog equality to the
    same 18/56 family without a second semantic execution.
@@ -114,9 +130,10 @@ The traced path consumes twelve definitions:
 `product.resolve#resolve`, `product.install#install`, `workspace.bind#bind`,
 `catalog.admit#admit`, `catalog.view#allowlist`, `run.invoke#start`,
 `project.read#run_status`, `project.read#run_result`, and
-`project.read#run_replay`. The trace, not the count, governs. ABIogenesis 5.0p
-packages its one exact 18/56 family; unused definitions are outside this
-sentinel's evidence claim, not absent or replaced by a partial roster.
+`project.read#run_replay`. The trace, not the count, governs. ABIogenesis
+`v5.0.0-dev.286` packages its one exact 18/56 family; unused definitions are
+outside this sentinel's evidence claim, not absent or replaced by a partial
+roster.
 
 Package constructability still covers the entire family before this sentinel
 runs: every one of the 56 definitions has a concrete runtime-callable owner
@@ -125,8 +142,8 @@ dependency, schema, and static catalog row; and one installed exact-set probe
 loads/resolves all 56 from packed bytes. This mechanical probe does not invoke
 all 56 behaviors. Scenario qualification remains the twelve-key path above.
 
-The odd_glc 0.2 package closes only when its production census contains
-declarative GTL publication data and no executable evaluator/provider,
+The odd_glc `0.2.0-dev.1` package closes only when its production census
+contains declarative GTL publication data and no executable evaluator/provider,
 Product-semantics provider, implementation binding, leaf Implementation,
 dispatcher, event name/writer, raw-event walker, evidence binder, fold,
 residualizer, controller, ABI private import, or source-tree dependency.
@@ -137,14 +154,15 @@ absent/ambiguous/wrong-owner executable binding, and replay divergence. One
 installed owner-load probe proves each selected semantic callable came from
 its resolved owner install.
 
-## Current Ticket
+### Selected Routing Ticket
 
 - `T-041`: Program-only sentinel and installed differential.
 
 ## Deferred Full-Lifecycle Plan
 
-The following prior plan is retained as later-wave backlog. It does not select
-current work and cannot enlarge the Program-only sentinel retroactively.
+The following prior plan is retained as later-wave planning evidence. It does
+not select current work and cannot enlarge the Program-only sentinel
+retroactively.
 
 1. Keep the active software-build overlay generic.
    - Use `ODD_GLC_SOFTWARE_BUILD_OVERLAY` as the reusable GTL overlay graph.
@@ -232,21 +250,24 @@ current work and cannot enlarge the Program-only sentinel retroactively.
 
 ## Deferred Full-Lifecycle Tickets
 
-- `T-025`: typed scenario ladder and data_mapper witness preparation over the
-  reusable software-build overlay.
-- `T-030`: migration of odd_glc live traversal sandboxes to ABG T-183
-  instruction assembly and T-188 requirement-proof carry-through before any
-  further full data-mapper run.
-- `T-029`: install-shaped scenario sandboxes so ABG/GTL and odd_glc are both
-  consumed as installed products before ABG traversal starts.
-- `T-026`: non-closed, re-entry, blocked, and reprice interpretation over
-  typed glc startup.
-- `T-027`: recursive any-scale lifecycle composition over ABG frame, span,
-  foldback, re-entry, node-type, and registry truth.
+The ordered post-Hello queue remains active but is execution-deferred until
+T-041 closes and a separate ABI5 goal-and-design reprice admits the broader
+wave. It does not enlarge T-041:
+
+1. `T-025`: typed scenario ladder and data_mapper witness preparation over the
+   reusable software-build overlay;
+2. `T-026`: non-closed, re-entry, blocked, and reprice interpretation over
+   typed glc startup; then
+3. `T-027`: recursive any-scale lifecycle composition over ABG frame, span,
+   foldback, re-entry, node-type, and registry truth.
+
+T-029 and T-030 are completed predecessor evidence, not members of this active
+deferred queue.
 
 ## T-025 Working Plan
 
-T-025 now carries the active data_mapper parity control surface:
+T-025 retains the later-wave data_mapper parity control surface. It supplies no
+execution authority before the post-T-041 goal-and-design reprice:
 
 - extended witness matrix with artifact ownership;
 - node-type checklist for lifecycle and data-mapping nodes;

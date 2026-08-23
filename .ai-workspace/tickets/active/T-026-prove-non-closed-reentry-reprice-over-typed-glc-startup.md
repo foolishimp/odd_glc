@@ -4,6 +4,8 @@ title: Prove non-closed re-entry and reprice over typed GLC startup
 type: proof
 ticket_category: implementation
 status: active
+execution_state: deferred_until_T041_then_abi5_goal_and_design_reprice
+updated_at: 2026-08-24
 goal: >-
   Re-prove continuation, residual pressure, re-entry, blocked, and reprice
   interpretation over odd_glc typed declarations consumed by ABG startup.

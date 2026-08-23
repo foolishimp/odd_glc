@@ -33,5 +33,7 @@ Completed tickets:
 - `T-030-migrate-live-traversals-to-abg-instruction-depth.md`
 - `T-031-close-data-mapper-by-delivered-requirements-proven-by-tests.md`
 - `T-032-earned-depth-mutation-kill-proof.md`
+- `T-033-adopt-standard-declarations-only-path.md` — superseded by T-041.
 - `T-035-repair-rc3-basic-cli-execution-contract.md`
 - `T-036-cut-odd-glc-0-1-0.md`
+- `T-038-realize-standard-declarations-only-path.md` — superseded by T-041.

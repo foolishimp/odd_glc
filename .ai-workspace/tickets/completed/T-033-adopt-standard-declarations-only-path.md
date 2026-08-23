@@ -3,8 +3,9 @@ id: T-033
 title: Design adoption of the ABG standard declarations-only data-mapper path
 type: feature
 ticket_category: ordinary
-status: active
-execution_state: queued_after_abiogenesis_T226_and_T179_design
+status: completed
+execution_state: terminal_superseded
+disposition: superseded
 goal: >-
   Ratify the nothing-lost declarations-only migration design and exact proof
   contract that T-038 will realize over the accepted ABIogenesis interfaces.
@@ -17,7 +18,12 @@ re_entry_point: build_tenant_design
 owner: odd_glc
 priority: critical
 created_at: 2026-07-11
-updated_at: 2026-07-11
+updated_at: 2026-08-24
+superseded_by: T-041
+completed_at: 2026-08-24
+terminal_reason: >-
+  The direct F_H T-041 goal reprice supersedes this broader declarations-only
+  design route with the bounded Program-only ABI5 migration scope.
 triaged_at: 2026-07-11
 build_tenant: typescript
 source_ticket: abiogenesis T-218
@@ -25,8 +31,8 @@ target_candidate_identity: digest-bound G5 source candidate; release version rem
 target_release_line: 0.2
 governance_scope: STDO Method, ODD Method, declarations-only law, typed GTL C algebra
 implementation_authority: >-
-  None. T-033 may change ratified design only. T-038 owns realization,
-  candidate freeze, deterministic/live proof, and campaign closure after this design closes.
+  None. T-041 supersedes this ticket for current migration design and
+  realization. This file is historical evidence only.
 dependencies:
   - completed abiogenesis T-220 typed GTL C algebra and semantic admission
   - abiogenesis T-226 complete C/runtime design
@@ -38,12 +44,17 @@ source_documents:
   - .ai-workspace/tickets/completed/T-029-install-odd-glc-into-scenario-sandboxes.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-217-consciousness-wave-higher-order-regulation.md
   - /Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/completed/T-220-close-typed-gtl-c-algebra-authoring-loop.md
-realization_successor: .ai-workspace/tickets/backlog/T-038-realize-standard-declarations-only-path.md
+realization_successor: .ai-workspace/tickets/completed/T-038-realize-standard-declarations-only-path.md
 ---
 
 # T-033: Design The Standard Declarations-Only Data-Mapper Path
 
 ## Intake
+
+**Supersession notice**: T-041 is the sole active migration authority. This
+ticket's declarations-only direction remains historical input, but its upstream
+ticket identities, full data-mapper scope, and T-038 handoff do not govern the
+selected Program-only sentinel.
 
 This ticket owns the downstream migration design formerly carried as a
 cross-repo tail of abiogenesis T-217. T-038 owns adoption and the fresh
@@ -243,5 +254,5 @@ and independent design self-review are required. Runtime tests are T-038 proof.
 
 ## Closure Evidence
 
-None. T-033 is active and queued for the exact ABIogenesis designs. T-038 is
-the only realization and campaign successor.
+None. T-033 is terminal and `superseded_by: T-041`. It credits no
+implementation, campaign, or release closure.
