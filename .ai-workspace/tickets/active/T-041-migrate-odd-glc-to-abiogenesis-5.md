@@ -1,25 +1,29 @@
 # T-041 Migrate odd_glc To ABIogenesis 5.0
 
 - id: T-041
-- title: deliver one Program-only odd_glc Hello sentinel over ABIogenesis 5.0p
+- title: deliver one data-only odd_glc Hello sentinel over exact ABIogenesis v5.0.0-dev.286
 - type: feature
 - ticket_category: implementation_migration
 - status: active
-- execution_state: implementation_planning
+- execution_state: proposed_design_pending_exact_tree_acceptance
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
-- pen_holder: unassigned
 - build_tenant: typescript
 - change_intent: >-
     Publish one immutable odd_glc Program publication, including its
     odd_glc-owned GraphFunction topology and required declarative dependencies,
-    then prove ABIogenesis 5.0p executes its ABI-owned Hello leaf binding.
+    then prove exact ABIogenesis v5.0.0-dev.286 executes its ABI-owned Hello
+    leaf binding from real installed odd_glc Product bytes.
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
+- current_change_class: design_reframe
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-design-completion
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
-- governing_library: installed ABIogenesis 5.0p GTL/Public/HoG/ABG path
+- governing_library: >-
+    installed @abiogenesis/typescript-tenant@5.0.0-dev.286 public
+    Product/GTL/Validator/HoG/ABG/Public exports
 - affected_boundary: >-
     one immutable Program publication data package, its exact installed
     ABIogenesis consumer map, one separate-version differential runner, and
@@ -28,53 +32,82 @@
 - predecessor_release_tag: v0.1.0
 - predecessor_substrate: '@abiogenesis/typescript-tenant@4.6.0-rc.3'
 - target_release_line: 0.2
-- target_substrate: exact source-independent ABIogenesis 5.0 partial development Product
-- target_candidate_identity: digest-bound Program-only odd_glc development candidate; no RC or final version assigned
+- target_substrate: >-
+    ABIogenesis tag v5.0.0-dev.286, commit
+    3014f12571c12f97f85dfe54ca4da28e7dfee3ea, tree
+    a399045de5d752b92c084b5b38b358aa2d1c63aa, package tarball SHA-256
+    4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41
+- target_candidate_identity: >-
+    @odd-glc/route-one-typescript@0.2.0-dev.1,
+    product://odd_glc/route-one-typescript@0.2.0-dev.1; development candidate
+    only, with no RC or final version assigned
 - intake_source: direct F_H request after ABIogenesis 5.0 Product-definition
   stabilization
 - triaged_at: 2026-08-17
 - created_at: 2026-08-04
-- updated_at: 2026-08-17
+- updated_at: 2026-08-24
 - selected_execution_basis:
-  - specification/GOVERNANCE.md (STDO 2.3.0)
-  - specification/GOVERNANCE.md (adopted local code-building method,
-    source SHA-256 dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
+  - specification/GOVERNANCE.md (immutable STDO v2.3.0 selection)
+  - >-
+    specification/GOVERNANCE.md (direct-F_H-adopted
+    authority-conserving, entity-centric, event-sourced functional reactive
+    domain modeling method; source
+    20260802T032426Z_MANIFESTO_driving_ai_authored_coding_from_programming_basics.md;
+    source commit 1f6a86074bf995763b4caff286422b5b1501374b; source SHA-256
+    dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
   - specification/PRODUCT.md
-  - accepted ABIogenesis 5.0 public Product boundary
+  - >-
+    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (proposed exact-tree
+    design candidate; operative only after Executive/F_H exact-tree acceptance)
+  - exact ABIogenesis v5.0.0-dev.286 public Product boundary
 - delegated_authority: >-
-    Realize and prove the bounded Program-only sentinel on odd_glc main; no
-    provider, implementation, lifecycle interpretation, ABI mechanism,
-    Product expansion, release publication, or compatibility authority is
-    delegated.
+    After exact-tree design acceptance, realize and prove the bounded
+    Program-only sentinel from the named clean predecessor; no provider,
+    implementation, lifecycle interpretation, ABI mechanism, Product
+    expansion, release publication, or compatibility authority is delegated.
 - re_entry_conditions: >-
     Re-enter Product or requirements for changed lifecycle meaning; accepted
     design for a changed semantic or authority relation; and F_H for any need
     to introduce a compatibility path, second branch line, or release action.
-- consensus_instantiation:
-    product_authority: Jim
-    fh_proxy_and_executive_adjudicator: /root
-    implementation_worker: /root/t041_worker_xhigh
-    reviewer_a: unassigned_until_candidate_freeze
-    reviewer_b: unassigned_until_candidate_freeze
-    status_reporter: /root
-    append_log_maintainer: /root
-    checkpoint_administrator_after_acceptance: /root
+- acceptance_roles:
+    product_authority: direct_F_H
+    adjudicator: Executive_F_H
+    independent_review: required_on_one_exact_tree
+    checkpoint_administration: after_acceptance_only
 - predecessor_tickets:
   - T-033
   - T-038
-- successor_release_tickets:
+- non_authorized_release_routes:
   - T-039
   - T-037
 - admission_dependencies:
-  - reviewed D17/D18 candidate awaiting mandatory checkpoint before implementation
-  - exact ABIogenesis 5.0p Program admission, odd_glc GraphFunction traversal, and ABI Hello leaf execution
-  - exact final-form Public/SDK/CLI consumer trace named below
-  - exact installable source-independent ABIogenesis 5.0p candidate
+  - independent review of one immutable exact Git tree
+  - explicit Executive/F_H acceptance of that same tree
+  - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
+  - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
+  - immutable v0.1.0 predecessor receipt for the bounded differential
 
-## Operative Wave 2 Target
+## Proposed Design-Completion Routing
 
-This section supersedes the broader migration targets and Increment 01-05
-candidates below for current execution. Those sections remain historical and
+The proposed implementation authority is
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-design-completion`.
+It freezes the ABI tag/commit/tree/tarball and public exports; odd_glc package,
+Product, module, Program, start, GraphFunction, graph, node, manifest, Catalog,
+and provenance identities; the exact five-member zero-code archive; the
+cross-owner declaration and implementation relation; the installed execution
+DAG; the twelve-key sentinel; proof/nonclaims; and predecessor conservation.
+
+This ticket routes that design only after the exact-tree admission gate in
+`specification/GOVERNANCE.md` holds. It does not authorize the ticket,
+synthetic ABI fixture, dirty checkout, rejected `abi5_program` source, or prior
+candidate tests to fill or revise any frozen field. The present cut is a
+`design_reframe`, not a Product or requirements reprice.
+
+## Proposed Operative Wave 2 Target
+
+If the exact-tree admission gate holds, this section supersedes the broader
+migration targets and Increment 01-05 candidates below for execution. Until
+then it is proposed design routing. Those sections remain historical and
 later-wave evidence only.
 This is a Program-only sentinel. The odd_glc Product term `MVP` remains
 reserved for `SCN-GLC-HELLO-WORLD-MINIMAL`, which this ticket does not close.
@@ -84,7 +117,7 @@ runtime category.
 
 ```text
 one immutable odd_glc Program publication as declarative data
-  -> installed ABIogenesis 5.0p Product/workspace/catalog
+  -> installed ABIogenesis v5.0.0-dev.286 Product/workspace/catalog
   -> start selects the odd_glc-owned GraphFunction
   -> HoG traverses its topology through one Effect fold
   -> ABI-owned deterministic Hello leaf Implementation
@@ -111,11 +144,11 @@ Calculus, replay, result projection, SDK, and CLI.
 ### Generic GraphFunction-library resolution
 
 The Catalog is the one deterministic registry of canonical GraphFunctions
-published by installed Products/libraries. Product/Validator resolves an
-admitted Program composition through the exact ready Catalog/View, installed
-ProductSet, resolved lock, dependency, compatibility, provenance, collision,
-and ambiguity law. The current same-publication lookup is the defect; it
-collapses this Catalog into a publication-local table.
+published by installed Products/libraries. In exact ABIogenesis
+`v5.0.0-dev.286`, Product/Validator resolves an admitted Program composition
+through the ready Catalog/View, installed ProductSet, resolved lock,
+dependency, compatibility, provenance, collision, and ambiguity law without a
+same-publication shortcut.
 
 The derived immutable execution projection carries Program, GraphFunction,
 contract, evaluator, customization, fibre, and Implementation owners
@@ -183,10 +216,11 @@ project.read#run_result
 project.read#run_replay
 ```
 
-The trace, not its twelve-key count, governs. ABIogenesis 5.0p packages its one
-exact 18-operation/56-key Public family. Wave 2 qualifies only these consumed
-definitions. Unused rows are outside this evidence claim, not absent, stubbed,
-replaced, or placed in a second partial roster/catalog/API.
+The trace, not its twelve-key count, governs. Exact ABIogenesis
+`v5.0.0-dev.286` packages its one 18-operation/56-key Public family. Wave 2
+qualifies only these consumed definitions. Unused rows are outside this
+evidence claim, not absent, stubbed, replaced, or placed in a second partial
+roster/catalog/API.
 
 Package constructability is whole-family before behavioral qualification:
 all 56 definitions have concrete runtime-callable owner closures; the installed
@@ -204,7 +238,7 @@ semantic path or issue another start.
 ### Installed differential
 
 Run immutable odd_glc 0.1/ABIogenesis 4.6.0-rc.3 and the Program-only odd_glc
-0.2/ABIogenesis 5.0p candidate independently in clean processes and
+`0.2.0-dev.1`/ABIogenesis `v5.0.0-dev.286` candidate independently in clean processes and
 workspaces. No carrier translation or shared runtime is permitted. Both raw
 observations are persisted unchanged. The 4.6 run retains its genuine
 subject-execution stdout `Hello, world!\n`; the 5.0 run retains the existing
@@ -225,33 +259,19 @@ The existing native ABI Hello Program, GraphFunction, leaf/judgment
 receipt remain unchanged. No formatter, new base operator, or alternate CLI
 mode is introduced.
 
-### ABI implementation boundary consumed by this ticket
+### Exact ABI substrate boundary consumed by this ticket
 
-T-287 owns the implementation. Its bounded chain is:
+ABIogenesis tag `v5.0.0-dev.286` already contains the public cross-publication
+chain: Catalog admission, transitive declaration validation, implementation
+resolution, `ProductExecutionResolutionPort.resolve`, installed owner loading,
+Public `run.invoke#start`, HoG traversal, ABG/Event Calculus, and project-read
+replay. T-041 changes no ABI source and imports no private ABI module.
 
-1. `product/catalog.ts` constructs/selects one ReadyCatalog/View across all
-   installed publications.
-2. `validator/validation.ts::validateProgram` validates the transitive
-   GraphFunction and declaration closure against that Catalog rather than the
-   Program publication alone.
-3. `product/implementation_resolution.ts::resolveImplementationSet` resolves
-   each executable leaf through its exact owner publication, binding,
-   descriptor, dependency, compatibility, and provenance.
-4. The planned ABI-owned
-   `product/execution_resolution.ts::ProductExecutionResolutionPort.resolve`
-   composes those pure results into the immutable owner-separated execution
-   projection. It resolves `ModulePublication.productSemanticsBinding` and
-   every external executable reference to an exact owner install before
-   calling `product/semantics.ts::loadInstalledProductSemantics`.
-5. `public/operations.ts::applyRunInvoke` only admits, selects
-   `run.invoke#start`, calls that Product port and exact owner ports, then
-   projects. It removes the current same-install threading of the Program
-   publication/install into semantic loaders.
-
-The deletion boundary is the same-publication join, Public-local owner
-selection, the diagnostic odd_glc provider/evaluator/binding/leaf candidate,
-and every packed legacy/fallback path. The native ABI Hello chain, Catalog,
-HoG fold, ABG/Event Calculus/replay, and singular 18/56 family remain.
+The tag's synthetic ST-1 test proves that the Program/GraphFunction owner can be
+an additional installed Product while semantics and Hello Implementation owner
+remain the ABI Product. That is substrate evidence only. T-041 still must pack
+the frozen real odd_glc identity and reproduce the public install/catalog/run/
+replay relation from source-blind installed bytes.
 
 ### Closure and exclusions
 
@@ -278,12 +298,12 @@ is a Wave 2 gate.
 
 ### Execution order
 
-1. Hold implementation until the reviewed D17/D18 candidate is checkpointed
-   and this plan is accepted; this does not reopen Wave 1.
+1. Hold implementation until this exact design candidate is accepted and the
+   ABI tarball matches the pinned `v5.0.0-dev.286` SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
-3. Prove the ABIogenesis tarball contains every owner closure, dependency,
+3. Prove the exact ABIogenesis tarball contains every owner closure, dependency,
    schema, and static row and mechanically load/resolve the exact 56.
-4. Pack the one data-only odd_glc 0.2 Program candidate.
+4. Pack the exact five-member data-only odd_glc `0.2.0-dev.1` Program candidate.
 5. Execute one installed CLI episode chain with exactly one start and replay it
    from another process; prove SDK/schema/catalog equality mechanically.
 6. Freeze both receipts, package censuses, and the normalized differential for
@@ -293,8 +313,8 @@ Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private
 imports, process-local truth, stubbed 18/56 bindings, an unresolved or
 wrong-owner semantic callable, or test-side rewriting of either raw
-observation. Missing exact owner meaning returns to T-287/F_H; it does not
-authorize odd_glc to fill the gap.
+observation. Missing exact owner meaning stops T-041 and requires upstream
+re-entry; it does not authorize odd_glc to fill the gap.
 
 ## Deferred Full-Migration Record
 

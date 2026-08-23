@@ -1,15 +1,471 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Active Program-only Wave 2 design; full lifecycle migration deferred
-**Method Basis**: `specification/GOVERNANCE.md` (STDO 2.3.0)
-**Construction Basis**: adopted authority-conserving, entity-centric,
-event-sourced functional reactive domain modeling method
+**Status**: Proposed exact-tree T-041 Program-only design; not yet admitted
+**Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
+**Construction Basis**: direct-F_H-adopted authority-conserving,
+entity-centric, event-sourced functional reactive domain modeling method;
+source `20260802T032426Z_MANIFESTO_driving_ai_authored_coding_from_programming_basics.md`,
+commit `1f6a86074bf995763b4caff286422b5b1501374b`, SHA-256
+`dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153`;
+resolved through `specification/GOVERNANCE.md`
 **Product Basis**: `specification/PRODUCT.md`
 **Predecessor**: `@odd-glc/route-one-typescript@0.1.0` on
 `@abiogenesis/typescript-tenant@4.6.0-rc.3`
+**Development substrate**: `@abiogenesis/typescript-tenant@5.0.0-dev.286`
 
-## Superseding Wave 2 Decision
+## Proposed T-041 Design Completion
+
+If and only if the exact-tree gate in `specification/GOVERNANCE.md` holds,
+this section becomes the complete implementation authority for T-041 and
+supersedes the pre-pin Wave 2 draft and rejected candidate records below.
+Until then it is a proposed design candidate and cannot authorize code. Those
+records remain design history only. This cut is a `design_reframe` after the
+already-selected goal re-entry. It changes no Intent, Product meaning, or
+requirement.
+
+The selected subject is a governed, separately versioned and installable
+data-only GTL Product. It is not an application, runtime, controller, semantic
+provider, or executable implementation package. The bounded sentinel proves
+one cross-owner execution relation while preserving, but not implementing or
+closing, the broader Product-owned read-only lifecycle interpretation.
+
+### Exact immutable bases
+
+| Basis | Exact identity | Use and limit |
+|---|---|---|
+| design predecessor | odd_glc commit `96b5a9c2e109cb584f943f79997ac213d069f411`, tree `591004a2ecb5e3cefbc8e70b547f0c4f5fd202e9` | clean design-completion subject; not Product bytes |
+| released predecessor | annotated tag `v0.1.0`, commit `a878475e4609e2d74d3260eb36ee05c4657b1879` | immutable 0.1/ABI 4.6 comparison Product; never rewritten |
+| ABI development Product | annotated tag `v5.0.0-dev.286`, commit `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree `a399045de5d752b92c084b5b38b358aa2d1c63aa` | exact builder/runtime substrate for this development candidate |
+| ABI package | `@abiogenesis/typescript-tenant@5.0.0-dev.286` | installed from immutable packed bytes |
+| ABI tarball | SHA-256 `4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41` | mandatory byte gate before odd_glc construction or proof |
+| ABI Product id | `product://abiogenesis/typescript-tenant@5.0.0-dev.286` | exact declared dependency and runtime owner |
+
+The ABI tag annotation calls this a Wave 2 development cut and explicitly says
+it is not an RC or release. T-041 may use it to build and prove an odd_glc
+development candidate. Neither repository may relabel that evidence as an ABI
+release, odd_glc RC, final Product, or release-successor closure.
+
+The exact package export map is:
+
+| Export key | Package specifier | T-041 role |
+|---|---|---|
+| `.` | `@abiogenesis/typescript-tenant` | aggregate public declarations only when an exact subpath is not available |
+| `./product` | `@abiogenesis/typescript-tenant/product` | verify, resolve, install, workspace, Catalog, manifest/digest, and `ProductExecutionResolutionPort.resolve` |
+| `./abg` | `@abiogenesis/typescript-tenant/abg` | ABG owner operations and `ABG_PROJECT_READ_DEFINITION_BINDINGS` |
+| `./gtl` | `@abiogenesis/typescript-tenant/gtl` | public GTL carriers/constructors, `modulePublication`, `C`, `cCarrier`, and ABI Hello identities |
+| `./hog` | `@abiogenesis/typescript-tenant/hog` | public HoG traversal relation reached through the admitted execution path |
+| `./public` | `@abiogenesis/typescript-tenant/public` | installed definition-call and CLI transport boundary |
+| `./validator` | `@abiogenesis/typescript-tenant/validator` | raw admission and whole-publication/Program validation |
+
+No odd_glc source or proof imports below these exports, from a source-checkout
+path, from a built-tree absolute path, or from `test_env`; none is a Product
+dependency or runtime authority.
+The exact selected definition-binding owners are
+`WORKSPACE_DEFINITION_BINDINGS`,
+`PRODUCT_VERIFICATION_DEFINITION_BINDINGS`,
+`PRODUCT_ENVIRONMENT_DEFINITION_BINDINGS`,
+`PRODUCT_INSTALL_DEFINITION_BINDINGS`, `CATALOG_DEFINITION_BINDINGS`,
+`RUN_DEFINITION_BINDINGS`, and `ABG_PROJECT_READ_DEFINITION_BINDINGS`.
+
+### Frozen odd_glc development identity
+
+These coordinates are constants for this T-041 development candidate. A
+change is a design re-entry, not an implementation convenience.
+
+| Coordinate | Exact value |
+|---|---|
+| package name | `@odd-glc/route-one-typescript` |
+| package version | `0.2.0-dev.1` |
+| tarball name | `odd-glc-route-one-typescript-0.2.0-dev.1.tgz` |
+| Product id | `product://odd_glc/route-one-typescript@0.2.0-dev.1` |
+| publisher namespace | `odd_glc` |
+| module ref | `module://odd_glc/conformance/program-only-hello@5` |
+| module version | `5.0.0` |
+| Program ref | `program://odd_glc/conformance/program-only-hello@5` |
+| start ref | `start://odd_glc/conformance/program-only-hello@5` |
+| GraphFunction ref | `graph-function://odd_glc/conformance/program-only-hello@5` |
+| graph ref | `graph://odd_glc/conformance/program-only-hello@5` |
+| node ref | `node://odd_glc/conformance/program-only-hello/abi-hello@5` |
+| arm id | `arm://odd_glc/conformance/program-only-hello/abi-f-d@5` |
+| descriptor ref | `descriptor://odd_glc/route-one-typescript@0.2.0-dev.1` |
+| contribution-manifest ref | `contribution-manifest://odd_glc/route-one-typescript@0.2.0-dev.1` |
+| provenance ref | `provenance://odd_glc/route-one-typescript@0.2.0-dev.1` |
+| public-contract Catalog id | `catalog://odd_glc/public-contracts@0.2.0-dev.1` |
+| compatibility ref | `compatibility://abiogenesis/major/5` |
+
+Artifact, Product-content, Product-manifest, publication, contribution-manifest,
+Catalog, capability-graph, and individual-member digests are derived only from
+the exact real-packed bytes. They are proof outputs and must not be guessed or
+copied from the synthetic ABI fixture.
+
+### Exact five-member Product inventory
+
+The packed odd_glc tarball contains exactly these files, including npm's
+`package/` archive prefix and no sixth member:
+
+| Packed member | Required content |
+|---|---|
+| `package/build/publication.json` | one immutable publication-data body |
+| `package/contracts/capabilities/capability-definition-graph.json` | canonical empty capability-definition graph |
+| `package/contracts/public-contract-catalog.schema.json` | canonical empty public-contract Catalog schema |
+| `package/package.json` | package identity, JSON publication export, and exact file allowlist |
+| `package/product-toolchain-manifest.json` | Product identity, contribution, dependency, compatibility, locator, Catalog, capability, and provenance declarations |
+
+`package.json` has `type: "module"`, exports only `./publication` to
+`./build/publication.json`, and permits only `build`, `contracts`, and
+`product-toolchain-manifest.json`. The archive contains no `.js`, `.mjs`,
+`.cjs`, `.d.ts`, `.d.mts`, or `.d.cts` member, executable, `bin`, lifecycle
+interpreter, provider, evaluator, binding, controller, or runtime dependency.
+Its content-digest locator order is exactly:
+
+1. `contracts/public-contract-catalog.schema.json`
+2. `build/publication.json`
+3. `package.json`
+
+The capability graph is bound by its dedicated manifest coordinate and asset
+locator. The manifest itself binds the complete Product and is not smuggled
+into the payload locator list.
+
+The public-contract Catalog has `schemaVersion: "5.0.0"`,
+`catalogVersion: "5.0.0"`, the frozen Catalog id, the schema path above, and
+`rows: []`; its schema body is exactly JSON Schema draft 2020-12 with
+`type: "object"`. The capability asset is the canonical public
+`constructCapabilityDefinitionGraph([])` result, and the manifest has
+`declaredCapabilityRefs: []`. All coordinate and content digests are calculated
+with the exact installed ABI Product public functions.
+
+The real pack root is
+`build_tenants/odd_glc/typescript/product/`. It contains exactly the five
+relative paths represented in the archive table. This dedicated root prevents
+npm's automatic README inclusion and keeps the released 0.1 source/tests out of
+the development Product without deleting them. `npm pack --ignore-scripts`
+runs against that root only. No generated staging directory or copied ABI
+fixture may substitute for these tracked odd_glc Product inputs.
+
+The minimum realization/proof path set is:
+
+| Path | Disposition |
+|---|---|
+| `build_tenants/odd_glc/typescript/product/package.json` | add frozen package descriptor |
+| `build_tenants/odd_glc/typescript/product/build/publication.json` | add frozen odd-owned Program/GF publication data |
+| `build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json` | add canonical empty graph |
+| `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json` | add canonical empty Catalog schema |
+| `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json` | add digest-bound Product/dependency/contribution manifest |
+| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | add real-pack census, digest, manifest, schema, and prohibited-code proof |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | add public-only two-Product verify/resolve/install/bind/Catalog/start/ABG proof and seam negatives |
+| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | add source-blind installed status/result/replay reader used only by proof |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | add immutable 0.1 versus real-packed 0.2 semantic reduction |
+
+Existing `src/abi5_program.mjs`, declaration, and focused test candidates are
+not in this clean subject and must not be copied. Existing 0.1 source and proof
+files need no semantic edit for the smallest steel thread; they remain outside
+the dedicated 0.2 Product root and may participate only as immutable
+predecessor evidence. If a future cut deletes or changes their Product-owned
+read-only interpretation, it must first re-enter Product authority.
+
+### Publication and cross-owner relation
+
+The odd_glc publication owns exactly one `gtl_program`, one `graph_function`,
+one graph with one `c_locus` node, and one `graph_function` contribution. Its
+`contracts`, `evaluators`, `rules`, `implementationBindings`, and
+`closureContracts` arrays are empty. The contribution is owned by the frozen
+odd_glc Product id, belongs to the frozen Program, requires that Program for
+readiness, and carries the major-5 compatibility ref.
+
+The packed `publication.json` is the immutable authored data body. It omits
+`kind`, `moduleVersion`, `artifactDigest`, `productContentDigest`, and
+`productManifestDigest`, because those identities do not exist until the real
+artifact is verified. After install, public `gtl.modulePublication` adds
+`kind: "module_publication"`, `moduleVersion: "5.0.0"`, and the exact verified
+artifact/content/manifest digests. It also adds exactly
+`[artifactDigest, productManifestDigest]` as the contribution's
+`provenanceRefs`. Test code may perform this pure materialization from installed
+JSON and verified Product values; neither an odd_glc package callable nor a
+test-supplied identity may do so.
+
+The Program starts and contains only the odd_glc GraphFunction, uses root mode
+`direct` and compute regime `F_D`, and refers to ABI's
+`contract://abiogenesis/conformance/hello-closure@5`. The one odd_glc graph
+node is an ordinary `C.of` term with `stageRole: "result"`, `fibre: "F_D"`,
+`vectorIndex: 0`, `resultBearing: true`, and the frozen odd_glc node and arm
+coordinates. Its carrier, requirement, judgment, effect, and closure relations
+are the exact ABI-owned declarations:
+
+```text
+Program
+  kind = gtl_program
+  version = 5.0.0
+  moduleRef = frozen odd_glc module
+  starts = [{ frozen startRef, frozen graphFunctionRef }]
+  callableMembership = [frozen graphFunctionRef]
+  closureContractRef = ABI hello run closure
+  policies = {
+    abg.root_mode: direct,
+    abg.compute_regime: F_D,
+    abg.default_start_ref: frozen startRef
+  }
+
+GraphFunction
+  kind = graph_function
+  name = frozen odd_glc GraphFunction ref
+  version = 5.0.0
+  environment.requires = [ABI hello input contract]
+  environment.provides = [ABI hello output contract]
+  environment.carries = [ABI hello input contract, ABI hello output contract]
+  inputs = [ABI hello input contract]
+  outputs = [ABI hello output contract]
+  template.kind = inline_graph
+  template.graphRef = frozen odd_glc graph
+  template.startNodeRef = frozen odd_glc node
+  template.terminalNodeRefs = [frozen odd_glc node]
+  template.nodes = [the one C.of locus below]
+  template.edges = []
+  template.applications = []
+  effects = [ABI hello effect declaration]
+  declarations = {
+    abg.compute_regime: F_D,
+    abg.closure_contract: ABI hello run closure,
+    abg.child_closure_contract: ABI hello child closure,
+    abg.evidence_contract: ABI hello evidence contract,
+    abg.judgment_contract: ABI hello judgment contract,
+    abg.judgment_predicate: ABI hello judgment predicate,
+    abg.transition_contract: ABI hello transition contract
+  }
+  tags = [odd_glc, program-only, abi-owned-f-d-hello]
+
+C.of locus
+  input = cCarrier(ABI hello input contract)
+  output = cCarrier(ABI hello output contract)
+  programLocusRef = frozen odd_glc node
+  stageRole = result
+  fibre = F_D
+  armId = frozen odd_glc arm
+  compositionRef = null
+  vectorIndex = 0
+  judgmentPredicateRef = ABI hello judgment predicate
+  resultBearing = true
+  requirement.kind = executable_leaf_requirement
+  requirement implementation/input/output/evidence/failure/refusal/judgment
+    refs = exact ABI Hello refs below
+```
+
+| Relation | Exact ABI-owned coordinate |
+|---|---|
+| input contract | `contract://abiogenesis/conformance/hello-input@5` |
+| output contract | `contract://abiogenesis/conformance/hello-output@5` |
+| evidence contract | `contract://abiogenesis/conformance/hello-evidence@5` |
+| failure contract | `contract://abiogenesis/conformance/hello-failure@5` |
+| refusal contract | `contract://abiogenesis/conformance/hello-refusal@5` |
+| judgment contract | `contract://abiogenesis/conformance/hello-judgment@5` |
+| transition contract | `contract://abiogenesis/conformance/hello-transition@5` |
+| judgment predicate | `predicate://abiogenesis/conformance/hello-world-result@5` |
+| implementation binding | `implementation-binding://abiogenesis/conformance/hello-world-fd@5` |
+| leaf Implementation | `implementation://abiogenesis/conformance/hello-world-fd@5` |
+| run closure | `contract://abiogenesis/conformance/hello-closure@5` |
+| child closure | `contract://abiogenesis/conformance/hello-child-closure@5` |
+| effect declaration | `effect://abiogenesis/conformance/emit-hello-output@5` |
+
+The publication's external Product-semantics binding is exactly
+`product-semantics://abiogenesis/conformance@5`, package
+`@abiogenesis/typescript-tenant@5.0.0-dev.286`, module
+`build/code/src/product/builtin_semantics.js`, symbol
+`ABI5_PRODUCT_SEMANTICS`. This coordinate is declarative data. It does not
+place that module in odd_glc or authorize odd_glc to load it from source.
+
+ABI's referenced Hello implementation binding resolves to package
+`@abiogenesis/typescript-tenant@5.0.0-dev.286`, module
+`build/code/src/implementation/hello_world.js`, symbol `realizeHelloWorld`,
+compute regime `F_D`, and the exact input/output/failure/refusal contracts in
+the table above. The binding and callable remain ABI Product members; odd_glc
+publishes only their references.
+
+The Product manifest declares one `requires` dependency on exact ABI Product
+`product://abiogenesis/typescript-tenant@5.0.0-dev.286`, package version
+`5.0.0-dev.286`, compatibility `compatibility://abiogenesis/major/5`, required
+contracts `abg.contract.gtl.root-declaration` and
+`abg.schema.public-operation-invocation`, and required capabilities
+`abg.capability.catalog.invoke-graph-function@5` and
+`abg.capability.gtl.declare@5`. It declares no odd_glc capability.
+
+Ownership must remain separately observable after resolution:
+
+```text
+Program owner = odd_glc Product
+GraphFunction owner = odd_glc Product
+semantics owner = exact ABI Product
+input/output/closure/requirement owner = exact ABI Product
+Implementation owner = exact ABI Product
+execution/events/Event Calculus/replay owner = ABG
+proof interpretation owner = odd_glc
+```
+
+### Exact installed steel thread
+
+The implementation DAG is linear until proof branches:
+
+| Order | Entity/relation | Input dependency | Required output | Stop condition |
+|---|---|---|---|---|
+| 1 | acquire ABI Product | exact tag coordinates above | tarball whose SHA-256 equals the frozen digest | missing or different bytes |
+| 2 | author odd_glc Product data | frozen identities and ABI public contracts | exact five source members | any executable or inferred coordinate |
+| 3 | canonicalize and pack | exact source members plus ABI public digest/manifest functions | one real tarball and derived digest ledger | archive census differs |
+| 4 | verify and resolve Products | exact ABI and odd_glc tarballs | two verified Products and one two-row resolved lock | source/private fallback or undeclared dependency |
+| 5 | install and bind | verified Products and lock | two distinct admitted installs, one ProductSet, one workspace binding | co-located/fabricated install truth |
+| 6 | admit publication and Catalog | installed odd_glc JSON materialized through public GTL plus exact ABI publication | one ready Catalog/View containing the odd GraphFunction | test-private fixture or same-publication shortcut |
+| 7 | admit and start | `hello_world_input` with `subject: "World"` | one admitted odd Program/GraphFunction resolution and exactly one `run.invoke#start` | wrong/ambiguous owner or second start |
+| 8 | execute and close | owner-separated resolution | ABI `realizeHelloWorld`, ABG events, one terminal result `hello_world_output` with `message: "Hello World"` | any odd executable/runtime event authority |
+| 9 | read and replay | durable terminal prefix | ABG-owned status/result/replay projections equal in a fresh process with zero read-time appended bytes | process-local truth or replay divergence |
+| 10 | project and compare | immutable 0.1 and 0.2 raw receipts | odd_glc test-only interpretation and bounded differential | rewriting version-local evidence |
+
+The admitted definition trace is exactly:
+
+```text
+workspace.create#clean
+workspace.open#open
+product.verify#verify
+product.resolve#resolve
+product.install#install
+workspace.bind#bind
+catalog.admit#admit
+catalog.view#allowlist
+run.invoke#start
+project.read#run_status
+project.read#run_result
+project.read#run_replay
+```
+
+This twelve-key sentinel is the odd_glc consumption projection of ABI's one
+18-operation/56-key family. It is not a second roster and does not qualify the
+44 unconsumed keys. Exactly one semantic start occurs; SDK, Catalog, schema,
+CLI, result, and replay observations are projections or equality checks over
+that same execution.
+
+The differential is semantic steel-thread equality, not carrier, event, or
+Product parity. It retains both raw observations and derives only this exact
+shared projection:
+
+```text
+sourceIndependentInstalledExecution = true
+topLevelStartCount                 = 1
+minimalHelloOperationSucceeded     = true
+terminalResultCount                = 1
+versionLocalGreetingExpected       = true
+freshProcessReplayAgreement        = true
+sourceOrPrivateImport              = false
+legacyFallback                     = false
+```
+
+The immutable 0.1 observation retains real stdout `Hello, world!\n` and its
+version-local `converged` truth. The 0.2 observation retains the ABI5 canonical
+JSON receipt, typed `hello_world_output` with `message: "Hello World"`, and its
+version-local `closed_success` truth. Program, GraphFunction, event, digest,
+status-vocabulary, punctuation, and transport identities are authenticated
+inside each version and are not compared across versions. The ABI5 observation
+additionally proves odd Program/GraphFunction ownership and ABI
+semantics/Implementation ownership.
+
+### Evidence status and proof boundary
+
+ABI tag `v5.0.0-dev.286` contains
+`test_env/tests/t287-st1-installed-cross-owner-hello.test.mjs`. Its ST-1 setup
+installs `additionalProducts: [oddGlc]`, proves two distinct Product installs,
+asserts that the Program and GraphFunction owner is odd_glc while semantics and
+Implementation owners are ABI, executes the ABI F_D Hello leaf, closes through
+ABG, and proves terminal status/result/replay in a fresh process. It also
+asserts the five-member zero-code tar census.
+
+That evidence establishes substrate sufficiency for this exact design. It is
+not odd_glc closure evidence: its package name, version, Product id, and GTL ids
+are synthetic; its builder and installed-publication loader are
+`test_env/support/developer-mini-product.mjs::prepareOddGlcDataProduct`; and it
+does not pack this source project, conserve the released
+odd_glc predecessor, or produce the T-041 differential. No source, fixture, or
+test is copied from it. The implementation must reconstruct the relation from
+the public contracts above and prove it with real odd_glc packed bytes.
+
+Substrate ruling: `v5.0.0-dev.286` exposes every ABI relation required by this
+development sentinel; no ABI source change or missing public surface blocks
+T-041. The first material gap is downstream: the clean odd_glc subject has no
+real five-member `0.2.0-dev.1` Product, derived manifest/digests, or
+source-blind installed proof. ABI release qualification is a later delivery
+dependency, not a missing sentinel API.
+
+Minimum assurance is:
+
+1. an exact archive/member/digest/manifest and prohibited-code census;
+2. public validation plus verify/resolve/install/bind/Catalog admission of both
+   real tarballs, with dependency and owner separation asserted;
+3. the exact twelve-key single-start sunny path;
+4. absent, ambiguous, missing-dependency, incompatible/provenance,
+   wrong-owner semantics, wrong-owner binding, and replay-divergence refusals;
+5. fresh-process status/result/replay equality and zero appended read bytes;
+6. a source-blind/private-import census over packed modules and loaded module
+   refs; and
+7. an immutable 0.1/4.6 versus 0.2/dev.286 differential that retains both raw
+   receipts and compares only the frozen semantic reduction.
+
+No test-private ABI import, mutable ABI checkout, local semantics provider,
+local implementation binding, local leaf, local event resource, local fold,
+local replay store, or test-side result fabrication can satisfy a proof row.
+
+### Delivery conservation and nonclaims
+
+The construction subject begins from clean commit
+`96b5a9c2e109cb584f943f79997ac213d069f411`. The released `v0.1.0` tag, its
+commit, release snapshot, tarball, and ABI 4.6 proof inputs remain byte-for-byte
+unchanged. Existing tag targets remain fixed: `v0.1.0` at
+`a878475e4609e2d74d3260eb36ee05c4657b1879`, `v0.1.1-rc.1` at
+`005461e081908721aff292243ea570710b0e1d6d`, `v0.1.1-rc.2` at
+`d3338aa26b1e94392e59a9979b09b0b381e7dca0`, and `v0.1.1-rc.3` at
+`181732349cb452b3c8b603bd487787a928983864`. The selected 0.2
+development package may exclude predecessor source/runtime files from its
+allowlist without deleting the broader Product-owned declarative vocabulary,
+policy, read/query, or proof-interpretation meaning from the source project.
+
+A failed construction candidate is archived as an exact source commit/tree,
+package digest/census, proof ledger, and rejection reason before a clean
+successor subject is selected. Dirty checkout state, untracked code, test
+fixtures, and comments are never candidate provenance. No branch, tag, release,
+or remote movement is part of T-041 design completion.
+
+This design does not claim the odd_glc MVP, a complete lifecycle Program,
+read/query/proof interpretation delivery, instruction assembly, F_P/F_H,
+assurance fold, residuals, continuation, re-entry, Consensus, data-mapper
+parity, the full 18/56 ABI family, ABI release qualification, odd_glc RC/final
+publication, or compatibility across 4.6 and 5.0 carriers. Permanently removing
+future read-only lifecycle interpretation would require a separate Product
+reprice; the zero-code sentinel does not make that decision.
+
+The design admission subject is one identical Git tree containing only the
+bounded governance/design completion and ticket routing: Governance, Goals,
+T-041, this design and its index, the T-025/T-026/T-027 deferred queue, and the
+completed supersession disposition of T-033/T-038. It changes no Product
+semantics, requirement, source, package data, proof code, test, or ABI bytes.
+
+The target admission topology is atomic: freeze one exact tree; review that
+same tree independently; obtain explicit Executive/F_H acceptance of that
+tree; commit the identical tree unchanged on the named predecessor; then
+record commit/tree disposition outside that tree and not as a self-acceptance
+claim in its commit message. This authored cut is frozen as a **proposed**
+commit before external acceptance. It therefore remains non-operative; a
+later status-only admission or external exact-tree disposition must record the
+transition. No wording here retroactively turns the proposal into a ratified
+design.
+
+After design admission, the first realization gate is availability of exact
+ABI tarball bytes at the frozen digest. No executable test is a prerequisite
+to authoring the first Product-data cut; the four named future proof paths
+above must exist before that cut can be accepted. No code, package, build,
+test, migration closure, RC, final release, or tag movement is credited by
+this document alone.
+
+## Superseded Pre-Pin Wave 2 Draft
+
+The following section predates the exact immutable substrate and odd_glc
+identity freeze. It is retained as non-authoritative design history. If the
+proposed completion above is admitted, it governs every difference. Words such
+as “accepted” inside this preserved history report former assumptions; they do
+not admit the current candidate.
 
 The current design subject is `W2-ODD-GLC-PROGRAM-ONLY-HELLO`. "Hello World"
 is the minimal end-to-end scenario shorthand. A Hello World `GraphFunction`
@@ -27,7 +483,7 @@ design does not close.
 
 ```text
 odd_glc Program data
-  -> ABIogenesis 5.0p raw admission and validation
+  -> exact ABIogenesis v5.0.0-dev.286 raw admission and validation
   -> Product verify -> resolve -> install -> workspace bind
   -> eventless catalog admit -> allowlist
   -> Program start selects the odd_glc-owned GraphFunction
@@ -71,9 +527,9 @@ installed Product/library GraphFunction publications
   -> any admitted Program composition
 ```
 
-The current same-publication validation and implementation lookup is the
-implementation defect: it treats the Catalog as a publication-local table.
-Product/Validator must resolve the complete Program closure through the exact
+The pre-pin candidate treated same-publication validation and implementation
+lookup as an implementation defect. Exact `v5.0.0-dev.286` supersedes that
+observation: Product/Validator resolves the complete Program closure through the exact
 ReadyCatalog/View, installed ProductSet, resolved lock, dependencies,
 compatibility, provenance, collision, and ambiguity law. Program,
 GraphFunction, contract, evaluator, customization, fibre, binding, and
@@ -145,7 +601,7 @@ project.read#run_replay
 ```
 
 The path trace is authoritative; its twelve-key count is only a projection.
-ABIogenesis 5.0p packages the one exact 18-operation/56-key Public family.
+ABIogenesis `v5.0.0-dev.286` packages the one exact 18-operation/56-key Public family.
 Wave 2 qualifies only these consumed rows. Unused rows are outside this
 evidence claim, not absent, stubbed, translated, or represented by a second
 partial roster/catalog/API. The packed path contains no `RootPublicInvocation`,
@@ -170,7 +626,8 @@ second semantic path or issue another start.
 Two independent installations execute the same narrow observation:
 
 1. immutable odd_glc 0.1 with ABIogenesis 4.6.0-rc.3; and
-2. the Program-only odd_glc 0.2 candidate with exact ABIogenesis 5.0p.
+2. the Program-only odd_glc `0.2.0-dev.1` candidate with exact ABIogenesis
+   `v5.0.0-dev.286`.
 
 They use separate clean processes and workspaces and share no runtime or
 translation. Both unmodified raw observations are persisted. The 4.6
@@ -218,9 +675,9 @@ The ABIogenesis implementation is confined to the existing owner chain:
 3. `product/implementation_resolution.ts::resolveImplementationSet` resolves
    every reachable executable leaf through its exact owner publication,
    binding, descriptor, dependency, compatibility, and provenance.
-4. The planned
+4. The exported
    `product/execution_resolution.ts::ProductExecutionResolutionPort.resolve`
-   composes those pure results into the immutable owner-separated execution
+   in exact `v5.0.0-dev.286` composes those pure results into the immutable owner-separated execution
    projection. It resolves `ModulePublication.productSemanticsBinding` and
    every other external executable reference to an exact owner install before
    calling `product/semantics.ts::loadInstalledProductSemantics`.
@@ -243,8 +700,9 @@ remaining Public family are outside the causal set.
 
 ### Construction and acceptance
 
-1. Checkpoint the reviewed ABIogenesis D17/D18 candidate without changing its
-   accepted function chain; neither action reopens Wave 1.
+1. Acquire the exact ABIogenesis `v5.0.0-dev.286` tarball and reject it unless
+   its SHA-256 is
+   `4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41`.
 2. Freeze the installed 0.1/4.6.0-rc.3 baseline observation.
 3. Prove the ABIogenesis tarball contains every owner closure, dependency,
    schema, and static row and mechanically load/resolve the exact 56.
@@ -268,7 +726,7 @@ Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private
 imports, process-local truth, stubbed 18/56 bindings, an unresolved or
 wrong-owner semantic callable, or test-side rewriting of either raw
-observation. Missing exact owner meaning returns to T-287/F_H.
+observation. Missing exact owner meaning requires upstream re-entry.
 
 ## Deferred Full-Migration Design
 

@@ -4,6 +4,8 @@ title: Prove recursive any-scale lifecycle composition
 type: proof
 ticket_category: implementation
 status: active
+execution_state: deferred_until_T041_then_abi5_goal_and_design_reprice
+updated_at: 2026-08-24
 goal: >-
   Prove nested lifecycle interpretation over ABG frame, span, foldback,
   re-entry, node-type, and registry truth for program/project/task/branch

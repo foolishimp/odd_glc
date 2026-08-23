@@ -3,7 +3,9 @@ id: T-038
 title: Realize the ABG standard declarations-only path and re-prove data mapper
 type: feature
 ticket_category: implementation_migration
-status: backlog
+status: completed
+execution_state: terminal_superseded
+disposition: superseded
 goal: Deliver the declarations-only G5 source candidate for ABIogenesis GOAL-035
 change_intent: >-
   Replace the live data-mapper binding's executable product-local dispatch,
@@ -16,7 +18,12 @@ owner: odd_glc
 priority: critical
 triaged_at: 2026-07-11
 created_at: 2026-07-11
-updated_at: 2026-07-11
+updated_at: 2026-08-24
+superseded_by: T-041
+completed_at: 2026-08-24
+terminal_reason: >-
+  The direct F_H T-041 goal reprice supersedes this broader declarations-only
+  realization route with the bounded Program-only ABI5 migration scope.
 source_ticket: T-033
 build_tenant: typescript
 admission_condition: T-033 and abiogenesis T-223, T-227, T-228, and T-234 are completed and current
@@ -38,7 +45,7 @@ dependencies:
   - exact self-hosted R5/I1 candidate from completed abiogenesis T-234
 authority_refs:
   - specification/PRODUCT.md
-  - .ai-workspace/tickets/active/T-033-adopt-standard-declarations-only-path.md
+  - .ai-workspace/tickets/completed/T-033-adopt-standard-declarations-only-path.md
   - /Users/jim/src/apps/abiogenesis/specification/PRODUCT.md
   - /Users/jim/src/apps/abiogenesis/specification/requirements/product/REQ-P-CATALOG.md
   - /Users/jim/src/apps/abiogenesis/specification/requirements/abg/REQ-R-ABG3-PAYLOAD.md
@@ -51,6 +58,10 @@ target_release_line: 0.2
 ---
 
 # T-038: Realize The Standard Declarations-Only Data-Mapper Path
+
+**Supersession notice**: T-041 is the sole active migration authority. This
+ticket remains historical full-migration evidence and supplies no realization,
+candidate, proof, or release authority to the bounded Program-only sentinel.
 
 ## Target Truth
 

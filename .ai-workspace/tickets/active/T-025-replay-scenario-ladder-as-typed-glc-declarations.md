@@ -4,6 +4,8 @@ title: Replay scenario ladder as typed GLC declarations
 type: proof
 ticket_category: implementation
 status: active
+execution_state: deferred_until_T041_then_abi5_goal_and_design_reprice
+updated_at: 2026-08-24
 goal: >-
   Re-express the selected odd_sdlc full data-mapper witness as typed odd_glc
   GTL declarations and ABG-started runs, with the Hello World ladder retained
