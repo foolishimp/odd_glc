@@ -121,6 +121,222 @@ function rawBytesEvidence(bytes) {
   });
 }
 
+function parseExactJsonlRecord(bytes, label) {
+  assert.equal(Buffer.isBuffer(bytes), true, `${label} bytes`);
+  const text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  assert.equal(text.endsWith("\n"), true, `${label} newline terminator`);
+  const line = text.slice(0, -1);
+  assert.notEqual(line.length, 0, `${label} nonempty record`);
+  assert.equal(/[\r\n]/u.test(line), false, `${label} single record`);
+  const value = JSON.parse(line);
+  assert.equal(text, `${JSON.stringify(value)}\n`, `${label} exact JSONL`);
+  return Object.freeze({ line, value });
+}
+
+const MODULE_GRAPH_PARSER_SOURCE = [
+  "import { createHash } from 'node:crypto';",
+  "import { readFile, realpath } from 'node:fs/promises';",
+  "import path from 'node:path';",
+  "import vm from 'node:vm';",
+  "import { fileURLToPath, pathToFileURL } from 'node:url';",
+  "const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');",
+  "const raw = (bytes) => ({ encoding: 'base64', bytes: bytes.toString('base64'), byteLength: bytes.length, sha256: 'sha256:' + sha256(bytes) });",
+  "async function canonical(input) {",
+  "  if (input.startsWith('node:')) return input;",
+  "  const parsed = new URL(input);",
+  "  if (parsed.protocol !== 'file:') throw new TypeError('unresolved non-file module URL ' + input);",
+  "  const suffix = parsed.search + parsed.hash;",
+  "  parsed.search = ''; parsed.hash = '';",
+  "  return pathToFileURL(await realpath(fileURLToPath(parsed))).href + suffix;",
+  "}",
+  "const requestedSeeds = JSON.parse(process.argv[2]);",
+  "const seeds = [];",
+  "for (const seed of requestedSeeds) seeds.push({ kind: seed.kind, moduleURL: await canonical(seed.moduleURL) });",
+  "const pending = seeds.map(({ moduleURL }) => moduleURL);",
+  "const nodeMap = new Map(); const edges = [];",
+  "while (pending.length > 0) {",
+  "  const moduleURL = pending.shift();",
+  "  if (nodeMap.has(moduleURL)) continue;",
+  "  if (moduleURL.startsWith('node:')) { nodeMap.set(moduleURL, { moduleURL, mediaType: 'runtime_builtin', source: null, staticRequestCount: 0 }); continue; }",
+  "  const sourceURL = new URL(moduleURL); sourceURL.search = ''; sourceURL.hash = '';",
+  "  const bytes = await readFile(sourceURL);",
+  "  const extension = path.extname(fileURLToPath(sourceURL));",
+  "  let requests = []; let mediaType;",
+  "  if (extension === '.json') mediaType = 'json_module';",
+  "  else if (extension === '.js' || extension === '.mjs') {",
+  "    mediaType = 'javascript_module';",
+  "    requests = new vm.SourceTextModule(bytes.toString('utf8'), { identifier: moduleURL }).moduleRequests;",
+  "  } else throw new TypeError('unparsed module media type ' + moduleURL);",
+  "  nodeMap.set(moduleURL, { moduleURL, mediaType, source: raw(bytes), staticRequestCount: requests.length });",
+  "  for (const request of requests) {",
+  "    const toModuleURL = await canonical(import.meta.resolve(request.specifier, moduleURL));",
+  "    edges.push({ fromModuleURL: moduleURL, specifier: request.specifier, attributes: request.attributes, phase: request.phase, toModuleURL });",
+  "    pending.push(toModuleURL);",
+  "  }",
+  "}",
+  "const nodes = [...nodeMap.values()].sort((a, b) => a.moduleURL.localeCompare(b.moduleURL));",
+  "edges.sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));",
+  "process.stdout.write(JSON.stringify({ kind: 'closed_static_module_graph', schemaVersion: '1', parser: 'node:vm.SourceTextModule+import.meta.resolve', seeds, nodes, edges, unresolvedEdges: [] }));",
+].join("\n");
+
+function assertRawBytesEvidence(evidence) {
+  assert.deepEqual(Object.keys(evidence).sort(), [
+    "byteLength", "bytes", "encoding", "sha256",
+  ]);
+  assert.equal(evidence.encoding, "base64");
+  const bytes = Buffer.from(evidence.bytes, evidence.encoding);
+  assert.equal(bytes.length, evidence.byteLength);
+  assert.equal(`sha256:${sha256Hex(bytes)}`, evidence.sha256);
+  return bytes;
+}
+
+async function closedModuleGraphEvidence({
+  seeds,
+  generatedModuleURLs,
+  installedRoots,
+  parserSeedKind,
+}) {
+  assert.equal(typeof parserSeedKind, "string");
+  const parserRoot = await mkdtemp(
+    path.join(os.tmpdir(), "odd-glc-t041-module-graph-parser-"),
+  );
+  const parserPath = path.join(parserRoot, "parser.mjs");
+  const parserSourceBytes = Buffer.from(MODULE_GRAPH_PARSER_SOURCE);
+  await writeFile(parserPath, parserSourceBytes);
+  const parserModuleURL = pathToFileURL(await realpath(parserPath)).href;
+  const evidenceSeeds = [
+    Object.freeze({
+      kind: parserSeedKind,
+      moduleURL: parserModuleURL,
+    }),
+    ...seeds,
+  ];
+  const evidenceGeneratedModuleURLs = [
+    parserModuleURL,
+    ...generatedModuleURLs,
+  ];
+  try {
+    const { stdout, stderr } = await execFileAsync(
+      process.execPath,
+      [
+        "--experimental-vm-modules",
+        "--experimental-import-meta-resolve",
+        "--no-warnings",
+        parserPath,
+        JSON.stringify(evidenceSeeds),
+      ],
+      { maxBuffer: 100 * 1024 * 1024 },
+    );
+    assert.equal(stderr, "");
+    const parsed = JSON.parse(stdout);
+    assert.deepEqual(Object.keys(parsed).sort(), [
+      "edges", "kind", "nodes", "parser", "schemaVersion", "seeds",
+      "unresolvedEdges",
+    ]);
+    assert.equal(parsed.kind, "closed_static_module_graph");
+    assert.equal(parsed.schemaVersion, "1");
+    assert.equal(parsed.parser, "node:vm.SourceTextModule+import.meta.resolve");
+    assert.deepEqual(parsed.unresolvedEdges, []);
+    assert.deepEqual(
+      parsed.seeds.map(({ kind }) => kind),
+      evidenceSeeds.map(({ kind }) => kind),
+    );
+    const canonicalInstalledRoots = await Promise.all(
+      installedRoots.map(realpath),
+    );
+    const canonicalSourceRoot = await realpath(SOURCE_ROOT);
+    for (const installedRoot of canonicalInstalledRoots) {
+      const relativeToSource = path.relative(canonicalSourceRoot, installedRoot);
+      assert.equal(
+        relativeToSource === ".." ||
+          relativeToSource.startsWith(`..${path.sep}`),
+        true,
+        `${installedRoot} must be outside the odd_glc source checkout`,
+      );
+    }
+    const canonicalGeneratedPaths = await Promise.all(
+      evidenceGeneratedModuleURLs.map(
+        async (moduleURL) => realpath(fileURLToPath(moduleURL)),
+      ),
+    );
+    const nodeURLs = new Set(parsed.nodes.map(({ moduleURL }) => moduleURL));
+    assert.equal(nodeURLs.size, parsed.nodes.length);
+    for (const seed of parsed.seeds) {
+      assert.equal(nodeURLs.has(seed.moduleURL), true);
+    }
+    const parserNode = parsed.nodes.find(
+      ({ moduleURL }) => moduleURL === parserModuleURL,
+    );
+    assert.ok(parserNode, "generated module graph parser node");
+    assert.equal(parserNode.mediaType, "javascript_module");
+    assert.equal(parserNode.staticRequestCount, 5);
+    assert.deepEqual(assertRawBytesEvidence(parserNode.source), parserSourceBytes);
+    const parserEdges = parsed.edges
+      .filter(({ fromModuleURL }) => fromModuleURL === parserModuleURL)
+      .map(({ specifier, toModuleURL }) => [specifier, toModuleURL])
+      .sort((left, right) => left[0].localeCompare(right[0]));
+    assert.deepEqual(parserEdges, [
+      ["node:crypto", "node:crypto"],
+      ["node:fs/promises", "node:fs/promises"],
+      ["node:path", "node:path"],
+      ["node:url", "node:url"],
+      ["node:vm", "node:vm"],
+    ]);
+    const forbiddenSegments = Object.freeze([
+      ["test", "env"].join("_"),
+      "private",
+    ]);
+    for (const node of parsed.nodes) {
+      if (node.mediaType === "runtime_builtin") {
+        assert.equal(node.moduleURL.startsWith("node:"), true);
+        assert.equal(node.source, null);
+        continue;
+      }
+      assert.equal(node.moduleURL.startsWith("file:"), true);
+      assertRawBytesEvidence(node.source);
+      const modulePath = await realpath(fileURLToPath(node.moduleURL));
+      if (canonicalGeneratedPaths.includes(modulePath)) continue;
+      const containingRoot = canonicalInstalledRoots.find((installedRoot) => {
+        const relative = path.relative(installedRoot, modulePath);
+        return !path.isAbsolute(relative) &&
+          relative !== ".." && !relative.startsWith(`..${path.sep}`);
+      });
+      assert.ok(
+        containingRoot,
+        `module escaped installed roots: ${node.moduleURL}`,
+      );
+      const relativeSegments = path.relative(containingRoot, modulePath)
+        .split(path.sep);
+      assert.equal(
+        forbiddenSegments.some((segment) => relativeSegments.includes(segment)),
+        false,
+        node.moduleURL,
+      );
+    }
+    for (const edge of parsed.edges) {
+      assert.equal(nodeURLs.has(edge.fromModuleURL), true);
+      assert.equal(nodeURLs.has(edge.toModuleURL), true);
+      assert.equal(typeof edge.specifier, "string");
+      assert.equal(typeof edge.attributes, "object");
+      assert.equal(edge.phase, "evaluation");
+    }
+    return Object.freeze({
+      ...parsed,
+      boundaries: Object.freeze({
+        generatedModuleURLs: Object.freeze(parsed.seeds
+          .filter(({ moduleURL }) => canonicalGeneratedPaths.includes(
+            fileURLToPath(moduleURL),
+          )).map(({ moduleURL }) => moduleURL)),
+        installedRootURLs: Object.freeze(canonicalInstalledRoots.map(
+          (installedRoot) => pathToFileURL(installedRoot).href,
+        )),
+      }),
+    });
+  } finally {
+    await rm(parserRoot, { recursive: true, force: true });
+  }
+}
+
 async function exactProductGitBasis() {
   const relativeRoot = path.relative(SOURCE_ROOT, PRODUCT_ROOT)
     .split(path.sep).join(path.posix.sep);
@@ -246,7 +462,7 @@ function nativeChildEvidence(product, {
   });
 }
 
-async function loadAbiPublic(packageRoot) {
+async function loadAbiPublic(packageRoot, { identity, includeCliRoot }) {
   const packageJson = JSON.parse(
     await readFile(path.join(packageRoot, "package.json"), "utf8"),
   );
@@ -266,21 +482,23 @@ async function loadAbiPublic(packageRoot) {
     path.join(consumerRoot, ".odd-glc-t041-abi-public-bridge-"),
   );
   const bridgePath = path.join(bridgeRoot, "bridge.mjs");
+  const bridgeSource = [
+    ...ABI_PUBLIC_SUBPATHS.map(({ key, specifier }) =>
+      `export * as ${key} from ${JSON.stringify(specifier)};`),
+    `export const resolvedPublicSubpathURLs = Object.freeze({${ABI_PUBLIC_SUBPATHS.map(
+      ({ packageExportPath, specifier }) =>
+        `${JSON.stringify(packageExportPath)}: import.meta.resolve(${JSON.stringify(specifier)})`,
+    ).join(",")}});`,
+    "",
+  ].join("\n");
   await writeFile(
     bridgePath,
-    [
-      ...ABI_PUBLIC_SUBPATHS.map(({ key, specifier }) =>
-        `export * as ${key} from ${JSON.stringify(specifier)};`),
-      `export const resolvedPublicSubpathURLs = Object.freeze({${ABI_PUBLIC_SUBPATHS.map(
-        ({ packageExportPath, specifier }) =>
-          `${JSON.stringify(packageExportPath)}: import.meta.resolve(${JSON.stringify(specifier)})`,
-      ).join(",")}});`,
-      "",
-    ].join("\n"),
+    bridgeSource,
   );
   try {
+    const bridgeImportURL = `${pathToFileURL(bridgePath).href}?public=${Date.now()}`;
     const loaded = await import(
-      `${pathToFileURL(bridgePath).href}?public=${Date.now()}`
+      bridgeImportURL
     );
     const publicModuleRefs = Object.fromEntries(
       ABI_PUBLIC_SUBPATHS.map(({ key, packageExportPath }) => [
@@ -288,11 +506,38 @@ async function loadAbiPublic(packageRoot) {
         loaded.resolvedPublicSubpathURLs[packageExportPath],
       ]),
     );
+    const graphSeeds = [
+      Object.freeze({
+        kind: `${identity}_generated_abi_bridge`,
+        moduleURL: bridgeImportURL,
+      }),
+      ...ABI_PUBLIC_SUBPATHS.map(({ key }) => Object.freeze({
+        kind: `${identity}_abi_public_export_${key}`,
+        moduleURL: publicModuleRefs[key],
+      })),
+    ];
+    if (includeCliRoot) {
+      const cliModulePath = await realpath(path.join(
+        packageRoot,
+        packageJson.bin["abg.cli"],
+      ));
+      graphSeeds.push(Object.freeze({
+        kind: "execution_abi_cli_transport_root",
+        moduleURL: pathToFileURL(cliModulePath).href,
+      }));
+    }
+    const moduleGraphEvidence = await closedModuleGraphEvidence({
+      seeds: graphSeeds,
+      generatedModuleURLs: [bridgeImportURL],
+      installedRoots: [packageRoot],
+      parserSeedKind: `${identity}_generated_module_graph_parser`,
+    });
     return {
       ...loaded,
       consumerRoot,
       packageJson,
       publicModuleRefs,
+      moduleGraphEvidence,
     };
   } finally {
     await rm(bridgeRoot, { recursive: true, force: true });
@@ -348,7 +593,7 @@ async function assertPublicModuleRefsWithinPackage(loaded, packageRoot) {
   return Object.freeze(evidence);
 }
 
-async function loadReturnedInstalledOwnerExport({ install, binding }) {
+async function loadReturnedInstalledOwnerExport({ install, binding, graphIdentity }) {
   assert.equal(binding.packageName, install.packageName);
   assert.equal(binding.packageVersion, install.packageVersion);
   assert.equal(path.isAbsolute(binding.modulePath), false);
@@ -361,6 +606,15 @@ async function loadReturnedInstalledOwnerExport({ install, binding }) {
   const moduleURL = pathToFileURL(modulePath).href;
   const namespace = await import(moduleURL);
   assert.equal(Object.hasOwn(namespace, binding.namedSymbol), true);
+  const moduleGraphEvidence = await closedModuleGraphEvidence({
+    seeds: [Object.freeze({
+      kind: `returned_${graphIdentity}_dynamic_owner`,
+      moduleURL,
+    })],
+    generatedModuleURLs: [],
+    installedRoots: [installedRoot],
+    parserSeedKind: `returned_${graphIdentity}_generated_module_graph_parser`,
+  });
   return Object.freeze({
     value: namespace[binding.namedSymbol],
     evidence: Object.freeze({
@@ -372,6 +626,7 @@ async function loadReturnedInstalledOwnerExport({ install, binding }) {
       modulePath: binding.modulePath,
       moduleURL,
       namedSymbol: binding.namedSymbol,
+      moduleGraphEvidence,
       containedInReturnedInstalledRoot: true,
       returnedExportPresent: true,
     }),
@@ -394,16 +649,18 @@ async function loadOddPublicationData(installedRoot) {
     path.join(consumerRoot, ".odd-glc-t041-odd-public-bridge-"),
   );
   const bridgePath = path.join(bridgeRoot, "bridge.mjs");
+  const bridgeSource = [
+    `export { default as publication } from "${ODD.packageName}/publication" with { type: "json" };`,
+    `export const publicationURL = import.meta.resolve("${ODD.packageName}/publication");`,
+    "",
+  ].join("\n");
   await writeFile(
     bridgePath,
-    [
-      `export { default as publication } from "${ODD.packageName}/publication" with { type: "json" };`,
-      `export const publicationURL = import.meta.resolve("${ODD.packageName}/publication");`,
-      "",
-    ].join("\n"),
+    bridgeSource,
   );
   try {
-    const loaded = await import(`${pathToFileURL(bridgePath).href}?odd=${Date.now()}`);
+    const bridgeImportURL = `${pathToFileURL(bridgePath).href}?odd=${Date.now()}`;
+    const loaded = await import(bridgeImportURL);
     const installedPackageRoot = await realpath(installedRoot);
     try {
       await execFileAsync(
@@ -419,8 +676,25 @@ async function loadOddPublicationData(installedRoot) {
     assert.equal(path.isAbsolute(relative), false);
     assert.equal(relative === ".." || relative.startsWith(`..${path.sep}`), false);
     assert.equal(relative.split(path.sep).join(path.posix.sep), "build/publication.json");
+    const moduleGraphEvidence = await closedModuleGraphEvidence({
+      seeds: [
+        Object.freeze({
+          kind: "execution_generated_odd_publication_bridge",
+          moduleURL: bridgeImportURL,
+        }),
+        Object.freeze({
+          kind: "execution_odd_json_publication_terminal",
+          moduleURL: loaded.publicationURL,
+        }),
+      ],
+      generatedModuleURLs: [bridgeImportURL],
+      installedRoots: [installedRoot],
+      parserSeedKind:
+        "execution_generated_odd_publication_module_graph_parser",
+    });
     return Object.freeze({
       publication: structuredClone(loaded.publication),
+      moduleGraphEvidence,
       moduleEvidence: Object.freeze({
         packageExportPath: "./publication",
         resolvedURL: loaded.publicationURL,
@@ -881,32 +1155,44 @@ async function executeInstalledCli({
 }) {
   const requestPath = path.join(scratch, `${identity}.jsonl`);
   const cliPath = path.join(installedRoot, packageJson.bin["abg.cli"]);
-  const rawRequestLine = JSON.stringify({
+  const request = Object.freeze({
     kind: "abg_cli_transport_request",
     schemaVersion: SCHEMA_VERSION,
     acquisition,
     invocation: call,
   });
-  await writeFile(requestPath, `${rawRequestLine}\n`);
+  const requestBytes = Buffer.from(`${JSON.stringify(request)}\n`);
+  await writeFile(requestPath, requestBytes);
   let execution;
   try {
     execution = await execFileAsync(
       process.execPath,
       [cliPath, "--jsonl", requestPath],
-      { cwd: scratch, env: {}, maxBuffer: 20 * 1024 * 1024 },
+      {
+        cwd: scratch,
+        encoding: "buffer",
+        env: {},
+        maxBuffer: 20 * 1024 * 1024,
+      },
     );
     assert.equal(expectedExitCode, 0, `${identity} CLI exit`);
   } catch (error) {
     assert.equal(error.code, expectedExitCode, `${identity} CLI exit`);
     execution = error;
   }
-  assert.equal(execution.stderr, "");
-  const lines = execution.stdout.trim().split(/\r?\n/u);
-  assert.equal(lines.length, 1);
+  assert.equal(Buffer.isBuffer(execution.stderr), true, `${identity} stderr`);
+  assert.equal(execution.stderr.length, 0, `${identity} empty stderr`);
+  const outputBytes = execution.stdout;
+  const outputRecord = parseExactJsonlRecord(
+    outputBytes,
+    `${identity} stdout`,
+  );
   return Object.freeze({
-    outcome: JSON.parse(lines[0]),
-    rawRequestLine,
-    rawJsonLine: lines[0],
+    outcome: outputRecord.value,
+    rawJsonLine: outputRecord.line,
+    input: rawBytesEvidence(requestBytes),
+    output: rawBytesEvidence(outputBytes),
+    transportModuleURL: pathToFileURL(await realpath(cliPath)).href,
   });
 }
 
@@ -919,7 +1205,17 @@ async function runInstalledCli({
   rawJsonLines,
   rawExchanges,
 }) {
-  const { outcome, rawRequestLine, rawJsonLine } = await executeInstalledCli({
+  const eventLogRef =
+    call.resources.eventResource.closeHandoff.prefix.eventLogRef;
+  const eventLogPath = fileURLToPath(eventLogRef);
+  const beforeEventLogBytes = await readFile(eventLogPath);
+  const {
+    outcome,
+    rawJsonLine,
+    input,
+    output,
+    transportModuleURL,
+  } = await executeInstalledCli({
     scratch,
     installedRoot,
     packageJson,
@@ -931,6 +1227,7 @@ async function runInstalledCli({
     }),
     expectedExitCode: 0,
   });
+  const afterEventLogBytes = await readFile(eventLogPath);
   rawJsonLines.push(rawJsonLine);
   assert.equal(outcome.kind, "installed_definition_call_transport_result");
   assert.equal(outcome.receipt.kind, "definition_host_receipt");
@@ -938,12 +1235,42 @@ async function runInstalledCli({
   assert.equal(outcome.receipt.failure, null);
   rawExchanges.push(Object.freeze({
     definitionKey: structuredClone(outcome.receipt.definitionKey),
-    input: rawBytesEvidence(Buffer.from(`${rawRequestLine}\n`)),
-    output: rawBytesEvidence(Buffer.from(`${rawJsonLine}\n`)),
+    input,
+    output,
     ownerOutput: structuredClone(outcome.receipt.ownerOutput),
     resources: structuredClone(outcome.receipt.resources),
+    transportModuleURL,
+    eventLog: Object.freeze({
+      eventLogRef,
+      before: rawBytesEvidence(beforeEventLogBytes),
+      after: rawBytesEvidence(afterEventLogBytes),
+      appendedByteLength:
+        afterEventLogBytes.length - beforeEventLogBytes.length,
+    }),
   }));
   return outcome.receipt;
+}
+
+function parseTypedArchiveHeaders(verboseListing) {
+  const expected = EXACT_PRODUCT_FILES
+    .map((member) => Object.freeze({
+      path: `package/${member}`,
+      type: "regular_file",
+    }))
+    .sort((left, right) => left.path.localeCompare(right.path));
+  const lines = verboseListing.split(/\r?\n/u).filter((line) => line.length > 0);
+  assert.equal(lines.length, expected.length, "tar verbose row count");
+  const rows = lines.map((line) => {
+    const fields = line.trim().split(/\s+/u);
+    assert.ok(fields.length >= 6, `unparsed tar verbose row: ${line}`);
+    const mode = fields[0];
+    const archivePath = fields.at(-1);
+    assert.match(mode, /^[-dlcbps][rwxStT-]{9}(?:[+@.]?)?$/u);
+    assert.equal(mode[0], "-", `${archivePath} must be a regular-file tar header`);
+    return Object.freeze({ path: archivePath, type: "regular_file" });
+  }).sort((left, right) => left.path.localeCompare(right.path));
+  assert.deepEqual(rows, expected, "npm tar headers must be exactly five regular files");
+  return Object.freeze(rows);
 }
 
 async function packOddProduct(scratch) {
@@ -961,19 +1288,15 @@ async function packOddProduct(scratch) {
   assert.equal(sha256Hex(await readFile(artifactPath)), ODD_TARBALL_SHA256);
   const { stdout: tarHeaders, stderr: tarStderr } = await execFileAsync(
     "tar",
-    ["-tzf", artifactPath],
+    ["-tvzf", artifactPath],
     { maxBuffer: 20 * 1024 * 1024 },
   );
   assert.equal(tarStderr, "");
-  const actualArchiveHeaders = tarHeaders.trim().split(/\r?\n/u).sort();
-  assert.deepEqual(
-    actualArchiveHeaders,
-    EXACT_PRODUCT_FILES.map((member) => `package/${member}`).sort(),
-    "actual npm tar headers must contain no sixth Product member",
-  );
+  const typedArchiveHeaders = parseTypedArchiveHeaders(tarHeaders);
   return Object.freeze({
     artifactPath,
-    archiveMembers: Object.freeze(actualArchiveHeaders),
+    archiveMembers: Object.freeze(typedArchiveHeaders.map(({ path: member }) => member)),
+    typedArchiveHeaders,
   });
 }
 
@@ -986,7 +1309,10 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   const scratch = await mkdtemp(path.join(os.tmpdir(), "odd-glc-t041-sunny-"));
   t.after(async () => rm(scratch, { recursive: true, force: true }));
   const bootstrapRoot = await extractExactAbiTarball(abiArtifactPath, scratch);
-  const bootstrap = await loadAbiPublic(bootstrapRoot);
+  const bootstrap = await loadAbiPublic(bootstrapRoot, {
+    identity: "bootstrap",
+    includeCliRoot: false,
+  });
   const bootstrapModuleEvidence = await assertPublicModuleRefsWithinPackage(
     bootstrap,
     bootstrapRoot,
@@ -1181,7 +1507,10 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     }),
   ];
 
-  const installed = await loadAbiPublic(abiInstall.installedRoot);
+  const installed = await loadAbiPublic(abiInstall.installedRoot, {
+    identity: "execution",
+    includeCliRoot: true,
+  });
   const { product, abg, gtl, validator, public: installedPublic } = installed;
   const executionModuleEvidence = await assertPublicModuleRefsWithinPackage(
     installed,
@@ -1532,6 +1861,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   const semanticsOwnerLoad = await loadReturnedInstalledOwnerExport({
     install: semanticsOwnerInstall,
     binding: semanticsBinding,
+    graphIdentity: "semantics",
   });
   assert.equal(semanticsOwnerLoad.value, resolution.productSemantics);
   assert.equal(semanticsOwnerLoad.value.kind, "product_semantics_provider");
@@ -1557,28 +1887,42 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   const implementationOwnerLoad = await loadReturnedInstalledOwnerExport({
     install: implementationOwnerInstall,
     binding: implementationDescriptor,
+    graphIdentity: "implementation",
   });
   assert.equal(typeof implementationOwnerLoad.value, "function");
   const returnedOwnerLoadEvidence = Object.freeze({
     semantics: semanticsOwnerLoad.evidence,
     implementation: implementationOwnerLoad.evidence,
   });
+  const absentAllowlist = catalogView.allowlist.filter(
+    (handle) => handle !== ODD.graphFunctionRef,
+  );
+  assert.deepEqual(catalogView.allowlist, [ODD.graphFunctionRef]);
+  assert.deepEqual(absentAllowlist, []);
+  const removedCatalogHandles = catalogView.allowlist.filter(
+    (handle) => !absentAllowlist.includes(handle),
+  );
+  assert.deepEqual(removedCatalogHandles, [ODD.graphFunctionRef]);
+  const absentCatalogView = catalogViewCallsite.callable(catalog, absentAllowlist);
+  assert.equal(absentCatalogView.kind, "graph_function_catalog_view");
+  assert.equal(absentCatalogView.catalogBasisDigest, catalog.basisDigest);
+  assert.deepEqual(absentCatalogView.allowlist, []);
+  assert.deepEqual(absentCatalogView.entries, []);
   const absentSelection = await product.ProductExecutionResolutionPort.resolve({
     catalog,
-    catalogView,
+    catalogView: absentCatalogView,
     admittedInstalls,
     verifyInstallAdmission: (install) =>
       abg.hasAdmittedProductInstall(artifactTruth, install),
     programRef: ODD.programRef,
-    selection: Object.freeze({
-      kind: "direct",
-      catalogHandle:
-        "graph-function://odd_glc/conformance/absent-selection@5",
-    }),
+    selection: sunnySelection,
   });
   assert.equal(absentSelection.kind, "product_execution_resolution_refusal");
   assert.equal(absentSelection.code, "absent");
   assert.equal(absentSelection.stage, "catalog");
+  const selectedCatalogHandle = resolution.resolution.graphFunctionRef;
+  assert.equal(selectedCatalogHandle, ODD.graphFunctionRef);
+  assert.equal(selectedCatalogHandle, removedCatalogHandles[0]);
   const unprovedDependency =
     await product.ProductExecutionResolutionPort.resolve({
       catalog,
@@ -1598,6 +1942,9 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   const resolutionBoundaryObservations = Object.freeze([
     Object.freeze({
       identity: "absent_selected_graph_function",
+      selectedCatalogHandle,
+      removedCatalogHandles: Object.freeze([...removedCatalogHandles]),
+      resultingAllowlist: Object.freeze([...absentCatalogView.allowlist]),
       code: absentSelection.code,
       stage: absentSelection.stage,
     }),
@@ -2126,27 +2473,31 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       identity: "crossed_top_level_and_embedded_handoff",
       transportCode: crossedAcquisition.outcome.code,
       receipt: false,
-      rawJsonLine: crossedAcquisition.rawJsonLine,
+      input: crossedAcquisition.input,
+      output: crossedAcquisition.output,
     }),
     Object.freeze({
       identity: "matching_stale_owner_issued_handoff",
       exitCode: staleResource.outcome.receipt.exitCode,
       faultStage: staleResource.outcome.receipt.failure.fault.stage,
       faultCode: staleResource.outcome.receipt.failure.fault.code,
-      rawJsonLine: staleResource.rawJsonLine,
+      input: staleResource.input,
+      output: staleResource.output,
     }),
     Object.freeze({
       identity: "malformed_resource_assertion",
       exitCode: malformedResource.outcome.receipt.exitCode,
       faultStage: malformedResource.outcome.receipt.failure.fault.stage,
       faultCode: malformedResource.outcome.receipt.failure.fault.code,
-      rawJsonLine: malformedResource.rawJsonLine,
+      input: malformedResource.input,
+      output: malformedResource.output,
     }),
     Object.freeze({
       identity: "stale_projection_basis",
       exitCode: staleProjection.outcome.receipt.exitCode,
       refusalCode: staleProjection.outcome.receipt.ownerOutput.value.code,
-      rawJsonLine: staleProjection.rawJsonLine,
+      input: staleProjection.input,
+      output: staleProjection.output,
     }),
   ]);
   const transportedDefinitionKeys = [startReceipt, ...readReceipts].map(
@@ -2179,6 +2530,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     }),
     archive: Object.freeze({
       members: oddPack.archiveMembers,
+      typedHeaders: oddPack.typedArchiveHeaders,
       tarball: rawBytesEvidence(await readFile(oddPack.artifactPath)),
       executableOrDeclarationMemberCount: oddPack.archiveMembers.filter(
         (member) => /\.(?:[cm]?js|d\.[cm]?ts)$/u.test(member),
@@ -2192,6 +2544,11 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       bootstrap: structuredClone(bootstrapModuleEvidence),
       execution: structuredClone(executionModuleEvidence),
       oddPublication: structuredClone(oddPublicationLoad.moduleEvidence),
+    }),
+    moduleGraphEvidence: Object.freeze({
+      bootstrap: structuredClone(bootstrap.moduleGraphEvidence),
+      execution: structuredClone(installed.moduleGraphEvidence),
+      oddPublication: structuredClone(oddPublicationLoad.moduleGraphEvidence),
     }),
     publicFamily: structuredClone(publicFamilyEvidence),
     ownership: Object.freeze({
@@ -2260,7 +2617,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     transportedDefinitionKeys,
     resolutionBoundaryObservations,
     transportBoundaryObservations: transportBoundaryObservations.map(
-      ({ rawJsonLine: _rawJsonLine, ...observation }) => observation,
+      ({ input: _input, output: _output, ...observation }) => observation,
     ),
   }));
 });

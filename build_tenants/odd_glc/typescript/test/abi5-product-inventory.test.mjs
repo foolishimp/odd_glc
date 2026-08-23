@@ -17,6 +17,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const TEST_ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PRODUCT_ROOT = path.resolve(TEST_ROOT, "../product");
+const SOURCE_ROOT = path.resolve(TEST_ROOT, "../../../..");
 const REQUIRED_ABI_TARBALL_SHA256 =
   "4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41";
 const ZERO_DIGEST = `sha256:${"0".repeat(64)}`;
@@ -82,6 +83,154 @@ function requireSuccessful(command, args, options = {}) {
   return result.stdout;
 }
 
+const MODULE_GRAPH_PARSER_SOURCE = [
+  "import { createHash } from 'node:crypto';",
+  "import { readFile, realpath } from 'node:fs/promises';",
+  "import path from 'node:path';",
+  "import vm from 'node:vm';",
+  "import { fileURLToPath, pathToFileURL } from 'node:url';",
+  "const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');",
+  "const raw = (bytes) => ({ encoding: 'base64', bytes: bytes.toString('base64'), byteLength: bytes.length, sha256: 'sha256:' + sha256(bytes) });",
+  "async function canonical(input) { if (input.startsWith('node:')) return input; const parsed = new URL(input); if (parsed.protocol !== 'file:') throw new TypeError('unresolved non-file module URL ' + input); const suffix = parsed.search + parsed.hash; parsed.search = ''; parsed.hash = ''; return pathToFileURL(await realpath(fileURLToPath(parsed))).href + suffix; }",
+  "const requestedSeeds = JSON.parse(process.argv[2]); const seeds = [];",
+  "for (const seed of requestedSeeds) seeds.push({ kind: seed.kind, moduleURL: await canonical(seed.moduleURL) });",
+  "const pending = seeds.map(({ moduleURL }) => moduleURL); const nodeMap = new Map(); const edges = [];",
+  "while (pending.length > 0) { const moduleURL = pending.shift(); if (nodeMap.has(moduleURL)) continue; if (moduleURL.startsWith('node:')) { nodeMap.set(moduleURL, { moduleURL, mediaType: 'runtime_builtin', source: null, staticRequestCount: 0 }); continue; } const sourceURL = new URL(moduleURL); sourceURL.search = ''; sourceURL.hash = ''; const bytes = await readFile(sourceURL); const extension = path.extname(fileURLToPath(sourceURL)); let requests = []; let mediaType; if (extension === '.json') mediaType = 'json_module'; else if (extension === '.js' || extension === '.mjs') { mediaType = 'javascript_module'; requests = new vm.SourceTextModule(bytes.toString('utf8'), { identifier: moduleURL }).moduleRequests; } else throw new TypeError('unparsed module media type ' + moduleURL); nodeMap.set(moduleURL, { moduleURL, mediaType, source: raw(bytes), staticRequestCount: requests.length }); for (const request of requests) { const toModuleURL = await canonical(import.meta.resolve(request.specifier, moduleURL)); edges.push({ fromModuleURL: moduleURL, specifier: request.specifier, attributes: request.attributes, phase: request.phase, toModuleURL }); pending.push(toModuleURL); } }",
+  "const nodes = [...nodeMap.values()].sort((a, b) => a.moduleURL.localeCompare(b.moduleURL)); edges.sort((a, b) => JSON.stringify(a).localeCompare(JSON.stringify(b)));",
+  "process.stdout.write(JSON.stringify({ kind: 'closed_static_module_graph', schemaVersion: '1', parser: 'node:vm.SourceTextModule+import.meta.resolve', seeds, nodes, edges, unresolvedEdges: [] }));",
+].join("\n");
+
+async function inventoryModuleGraph({ seeds, bridgeURL, installedRoot }) {
+  const parserRoot = await mkdtemp(
+    path.join(os.tmpdir(), "odd-glc-t041-inventory-parser-"),
+  );
+  const parserPath = path.join(parserRoot, "parser.mjs");
+  const parserSourceBytes = Buffer.from(MODULE_GRAPH_PARSER_SOURCE);
+  await writeFile(parserPath, parserSourceBytes);
+  const parserModuleURL = pathToFileURL(await realpath(parserPath)).href;
+  const evidenceSeeds = [
+    Object.freeze({
+      kind: "inventory_generated_module_graph_parser",
+      moduleURL: parserModuleURL,
+    }),
+    ...seeds,
+  ];
+  try {
+    const parsed = spawnSync(
+      process.execPath,
+      [
+        "--experimental-vm-modules",
+        "--experimental-import-meta-resolve",
+        "--no-warnings",
+        parserPath,
+        JSON.stringify(evidenceSeeds),
+      ],
+      { encoding: "utf8", maxBuffer: 100 * 1024 * 1024 },
+    );
+    assert.equal(parsed.error, undefined, parsed.error?.message);
+    assert.equal(parsed.status, 0, parsed.stderr);
+    const graph = JSON.parse(parsed.stdout);
+    assert.deepEqual(graph.unresolvedEdges, []);
+    assert.deepEqual(
+      graph.seeds.map(({ kind }) => kind),
+      evidenceSeeds.map(({ kind }) => kind),
+    );
+    const canonicalInstalledRoot = await realpath(installedRoot);
+    const canonicalBridgePath = await realpath(fileURLToPath(bridgeURL));
+    const canonicalSourceRoot = await realpath(SOURCE_ROOT);
+    const installedRelativeToSource = path.relative(
+      canonicalSourceRoot,
+      canonicalInstalledRoot,
+    );
+    assert.equal(
+      installedRelativeToSource === ".." ||
+        installedRelativeToSource.startsWith(`..${path.sep}`),
+      true,
+    );
+    const canonicalGeneratedPaths = [
+      fileURLToPath(parserModuleURL),
+      canonicalBridgePath,
+    ];
+    const nodeURLs = new Set(graph.nodes.map(({ moduleURL }) => moduleURL));
+    assert.equal(nodeURLs.size, graph.nodes.length);
+    for (const seed of graph.seeds) {
+      assert.equal(nodeURLs.has(seed.moduleURL), true);
+    }
+    const parserNode = graph.nodes.find(
+      ({ moduleURL }) => moduleURL === parserModuleURL,
+    );
+    assert.ok(parserNode, "generated module graph parser node");
+    assert.equal(parserNode.mediaType, "javascript_module");
+    assert.equal(parserNode.staticRequestCount, 5);
+    const retainedParserSource = Buffer.from(
+      parserNode.source.bytes,
+      parserNode.source.encoding,
+    );
+    assert.deepEqual(retainedParserSource, parserSourceBytes);
+    assert.equal(retainedParserSource.length, parserNode.source.byteLength);
+    assert.equal(
+      `sha256:${sha256Hex(retainedParserSource)}`,
+      parserNode.source.sha256,
+    );
+    assert.deepEqual(
+      graph.edges
+        .filter(({ fromModuleURL }) => fromModuleURL === parserModuleURL)
+        .map(({ specifier, toModuleURL }) => [specifier, toModuleURL])
+        .sort((left, right) => left[0].localeCompare(right[0])),
+      [
+        ["node:crypto", "node:crypto"],
+        ["node:fs/promises", "node:fs/promises"],
+        ["node:path", "node:path"],
+        ["node:url", "node:url"],
+        ["node:vm", "node:vm"],
+      ],
+    );
+    const forbiddenSegments = [["test", "env"].join("_"), "private"];
+    for (const node of graph.nodes) {
+      if (node.mediaType === "runtime_builtin") {
+        assert.equal(node.source, null);
+        continue;
+      }
+      const sourceBytes = Buffer.from(node.source.bytes, node.source.encoding);
+      assert.equal(sourceBytes.length, node.source.byteLength);
+      assert.equal(`sha256:${sha256Hex(sourceBytes)}`, node.source.sha256);
+      const modulePath = await realpath(fileURLToPath(node.moduleURL));
+      if (canonicalGeneratedPaths.includes(modulePath)) continue;
+      const relative = path.relative(canonicalInstalledRoot, modulePath);
+      assert.equal(path.isAbsolute(relative), false);
+      assert.equal(
+        relative === ".." || relative.startsWith(`..${path.sep}`),
+        false,
+      );
+      assert.equal(
+        forbiddenSegments.some((segment) =>
+          relative.split(path.sep).includes(segment)),
+        false,
+      );
+    }
+    for (const edge of graph.edges) {
+      assert.equal(nodeURLs.has(edge.fromModuleURL), true);
+      assert.equal(nodeURLs.has(edge.toModuleURL), true);
+      assert.equal(typeof edge.attributes, "object");
+      assert.equal(edge.phase, "evaluation");
+    }
+    return Object.freeze({
+      ...graph,
+      boundaries: Object.freeze({
+        generatedModuleURLs: Object.freeze([
+          parserModuleURL,
+          graph.seeds[1].moduleURL,
+        ]),
+        installedRootURLs: Object.freeze([
+          pathToFileURL(canonicalInstalledRoot).href,
+        ]),
+      }),
+    });
+  } finally {
+    await rm(parserRoot, { recursive: true, force: true });
+  }
+}
+
 async function extractExactAbiTarball(tarballPath, scratchRoot) {
   assert.equal(path.isAbsolute(tarballPath), true, "ABI tarball path must be absolute");
   const bytes = await readFile(tarballPath);
@@ -131,21 +280,37 @@ async function loadInstalledAbiPublic(packageRoot) {
     path.join(path.dirname(nodeModulesRoot), ".odd-glc-t041-public-bridge-"),
   );
   const bridgePath = path.join(bridgeRoot, "bridge.mjs");
+  const bridgeSource = [
+    ...ABI_PUBLIC_SUBPATHS.map(({ key, specifier }) =>
+      `export * as ${key} from ${JSON.stringify(specifier)};`),
+    `export const resolvedPublicSubpathURLs = Object.freeze({${ABI_PUBLIC_SUBPATHS.map(
+      ({ packageExportPath, specifier }) =>
+        `${JSON.stringify(packageExportPath)}: import.meta.resolve(${JSON.stringify(specifier)})`,
+    ).join(",")}});`,
+    "",
+  ].join("\n");
   await writeFile(
     bridgePath,
-    [
-      ...ABI_PUBLIC_SUBPATHS.map(({ key, specifier }) =>
-        `export * as ${key} from ${JSON.stringify(specifier)};`),
-      `export const resolvedPublicSubpathURLs = Object.freeze({${ABI_PUBLIC_SUBPATHS.map(
-        ({ packageExportPath, specifier }) =>
-          `${JSON.stringify(packageExportPath)}: import.meta.resolve(${JSON.stringify(specifier)})`,
-      ).join(",")}});`,
-      "",
-    ].join("\n"),
+    bridgeSource,
   );
+  const bridgeURL = `${pathToFileURL(bridgePath).href}?basis=${Date.now()}`;
   const publicModules = await import(
-    `${pathToFileURL(bridgePath).href}?basis=${Date.now()}`
+    bridgeURL
   );
+  const moduleGraphEvidence = await inventoryModuleGraph({
+    seeds: [
+      Object.freeze({
+        kind: "inventory_generated_abi_bridge",
+        moduleURL: bridgeURL,
+      }),
+      ...ABI_PUBLIC_SUBPATHS.map(({ key, packageExportPath }) => Object.freeze({
+        kind: `inventory_abi_public_export_${key}`,
+        moduleURL: publicModules.resolvedPublicSubpathURLs[packageExportPath],
+      })),
+    ],
+    bridgeURL,
+    installedRoot: packageRoot,
+  });
   await rm(bridgeRoot, { recursive: true, force: true });
   const installedRoot = await realpath(packageRoot);
   const publicModuleEvidence = [];
@@ -179,6 +344,7 @@ async function loadInstalledAbiPublic(packageRoot) {
     product: publicModules.product,
     gtl: publicModules.gtl,
     validator: publicModules.validator,
+    moduleGraphEvidence,
     publicModuleEvidence: Object.freeze(publicModuleEvidence),
   };
 }
@@ -500,6 +666,28 @@ function packProduct(destination) {
   return { summary, tarballPath: path.join(destination, summary.filename) };
 }
 
+function parseTypedArchiveHeaders(verboseListing) {
+  const expected = EXACT_PRODUCT_FILES
+    .map((member) => Object.freeze({
+      path: `package/${member}`,
+      type: "regular_file",
+    }))
+    .sort((left, right) => left.path.localeCompare(right.path));
+  const lines = verboseListing.split(/\r?\n/u).filter((line) => line.length > 0);
+  assert.equal(lines.length, expected.length, "tar verbose row count");
+  const rows = lines.map((line) => {
+    const fields = line.trim().split(/\s+/u);
+    assert.ok(fields.length >= 6, `unparsed tar verbose row: ${line}`);
+    const mode = fields[0];
+    const archivePath = fields.at(-1);
+    assert.match(mode, /^[-dlcbps][rwxStT-]{9}(?:[+@.]?)?$/u);
+    assert.equal(mode[0], "-", `${archivePath} must be a regular-file tar header`);
+    return Object.freeze({ path: archivePath, type: "regular_file" });
+  }).sort((left, right) => left.path.localeCompare(right.path));
+  assert.deepEqual(rows, expected, "npm tar headers must be exactly five regular files");
+  return Object.freeze(rows);
+}
+
 async function inspectExactProduct(abi, derived) {
   const { product, gtl } = abi;
   assert.deepEqual(await relativeFiles(PRODUCT_ROOT), EXACT_PRODUCT_FILES);
@@ -626,6 +814,7 @@ test("ABI5 Product inventory is exact, data-only, and double-pack deterministic"
     t.after(async () => rm(root, { recursive: true, force: true }));
     const abi = await requireExactAbiBasis(root);
     assert.equal(abi.publicModuleEvidence.length, ABI_PUBLIC_SUBPATHS.length);
+    assert.equal(abi.moduleGraphEvidence.unresolvedEdges.length, 0);
     const derived = await deriveProduct(abi);
     const initialSnapshot = await productSnapshot();
     const manifest = await inspectExactProduct(abi, derived);
@@ -644,12 +833,8 @@ test("ABI5 Product inventory is exact, data-only, and double-pack deterministic"
     assert.equal(first.summary.version, PRODUCT.packageVersion);
     const firstBytes = await readFile(first.tarballPath);
     const secondBytes = await readFile(second.tarballPath);
-    const archiveHeaders = requireSuccessful("tar", ["-tzf", first.tarballPath])
-      .trim().split(/\r?\n/u).sort();
-    assert.deepEqual(
-      archiveHeaders,
-      EXACT_PRODUCT_FILES.map((member) => `package/${member}`).sort(),
-      "actual npm tar headers must contain exactly the five Product members",
+    parseTypedArchiveHeaders(
+      requireSuccessful("tar", ["-tvzf", first.tarballPath]),
     );
     assert.deepEqual(firstBytes, secondBytes);
     assert.equal(

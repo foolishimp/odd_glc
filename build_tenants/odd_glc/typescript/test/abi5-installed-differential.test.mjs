@@ -1,15 +1,16 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { createHash } from "node:crypto";
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, realpath, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 import { isDeepStrictEqual, promisify } from "node:util";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const execFileAsync = promisify(execFile);
 const TEST_ROOT = path.dirname(fileURLToPath(import.meta.url));
+const SOURCE_ROOT = path.resolve(TEST_ROOT, "../../../..");
 const CROSS_OWNER_TEST = path.join(
   TEST_ROOT,
   "abi5-installed-cross-owner-hello.test.mjs",
@@ -121,9 +122,80 @@ const DIGESTS = Object.freeze({
   predecessorLiveProof:
     "9a8bbce08257db6a5b808e629ca7dce5a6f62a293d3f29309e169930228ddfe8",
 });
+const MODULE_GRAPH_PARSER_SOURCES = Object.freeze({
+  crossOwner: Object.freeze({
+    byteLength: 2685,
+    sha256:
+      "sha256:7f66a6fca4940d116eef9f365754e40fefd704dd49d17d248a1e193631ad94db",
+  }),
+  freshReader: Object.freeze({
+    byteLength: 2657,
+    sha256:
+      "sha256:cda4561e1cc5322feb5149099a77bac7d8d0929e877161be877cdead109a994c",
+  }),
+});
+const SOURCE_CENSUS_PARSER_SOURCE = Object.freeze({
+  byteLength: 374,
+  sha256:
+    "sha256:59275156d59852755dffb5a5b31480794b150f4149f28bfeaf119390c6d65e25",
+});
+const PREDECESSOR_GIT_OBJECTS = Object.freeze([
+  Object.freeze({
+    evidenceKey: "oddProductTarball",
+    repository: "odd_glc",
+    tag: "v0.1.0",
+    tagCommit: "a878475e4609e2d74d3260eb36ee05c4657b1879",
+    repositoryPath:
+      "release_snapshots/odd-glc-route-one-typescript/0.1.0/odd-glc-route-one-typescript-0.1.0.tgz",
+    blobId: "6be7a24b19327db73de9b1e2293c31c326bc308d",
+  }),
+  Object.freeze({
+    evidenceKey: "oddReleaseManifest",
+    repository: "odd_glc",
+    tag: "v0.1.0",
+    tagCommit: "a878475e4609e2d74d3260eb36ee05c4657b1879",
+    repositoryPath:
+      "release_snapshots/odd-glc-route-one-typescript/0.1.0/release-snapshot-manifest.json",
+    blobId: "69c25985b3fc1fbfb14505ad2cda0d213694eae8",
+  }),
+  Object.freeze({
+    evidenceKey: "installedLiveProof",
+    repository: "odd_glc",
+    tag: "v0.1.0",
+    tagCommit: "a878475e4609e2d74d3260eb36ee05c4657b1879",
+    repositoryPath:
+      "release_snapshots/odd-glc-route-one-typescript/0.1.0/qualification/odd-glc-basic-cli-live-proof.json",
+    blobId: "8385ce95de21148706a37301bae530ebbb5c3f9a",
+  }),
+  Object.freeze({
+    evidenceKey: "abiTarball",
+    repository: "abiogenesis",
+    tag: "v4.6.0-rc.3",
+    tagCommit: "f4f081f66ef8d3ce0c737ddb9d7530176711279a",
+    repositoryPath:
+      "release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/abiogenesis-typescript-tenant-4.6.0-rc.3.tgz",
+    blobId: "22bb1ce593f9fed533cec50afbf7af4fe30a0fe8",
+  }),
+  Object.freeze({
+    evidenceKey: "abiReleaseManifest",
+    repository: "abiogenesis",
+    tag: "v4.6.0-rc.3",
+    tagCommit: "f4f081f66ef8d3ce0c737ddb9d7530176711279a",
+    repositoryPath:
+      "release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-snapshot-manifest.json",
+    blobId: "6b99656573b5082d14fadfeb42dbe6e61d3617f8",
+  }),
+]);
 
 function sha256Hex(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
+}
+
+function gitBlobId(bytes) {
+  return createHash("sha1")
+    .update(Buffer.from(`blob ${bytes.length}\0`))
+    .update(bytes)
+    .digest("hex");
 }
 
 async function readExactJson(root, relativePath, expectedDigest) {
@@ -160,6 +232,157 @@ function assertRawBytesEvidence(evidence, expectedBytes = null) {
   return bytes;
 }
 
+function parseExactRawJsonlEvidence(evidence, label) {
+  const bytes = assertRawBytesEvidence(evidence);
+  const text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  assert.equal(text.endsWith("\n"), true, `${label} newline terminator`);
+  const line = text.slice(0, -1);
+  assert.notEqual(line.length, 0, `${label} nonempty record`);
+  assert.equal(/[\r\n]/u.test(line), false, `${label} single record`);
+  const value = JSON.parse(line);
+  assert.equal(text, `${JSON.stringify(value)}\n`, `${label} exact JSONL`);
+  return Object.freeze({ bytes, line, value });
+}
+
+function modulePathFromURL(moduleURL) {
+  const parsed = new URL(moduleURL);
+  parsed.search = "";
+  parsed.hash = "";
+  return path.normalize(fileURLToPath(parsed));
+}
+
+function assertClosedModuleGraphEvidence(
+  graph,
+  expectedSeedKinds,
+  expectedGeneratedSeedKinds,
+  expectedParserSource,
+  label,
+) {
+  assertExactKeys(graph, [
+    "boundaries", "edges", "kind", "nodes", "parser", "schemaVersion",
+    "seeds", "unresolvedEdges",
+  ], `${label} graph keyset`);
+  assert.equal(graph.kind, "closed_static_module_graph");
+  assert.equal(graph.schemaVersion, "1");
+  assert.equal(graph.parser, "node:vm.SourceTextModule+import.meta.resolve");
+  assert.deepEqual(graph.unresolvedEdges, []);
+  assert.deepEqual(graph.seeds.map(({ kind }) => kind), expectedSeedKinds);
+  assertExactKeys(graph.boundaries, [
+    "generatedModuleURLs", "installedRootURLs",
+  ], `${label} graph boundaries`);
+  const generatedPaths = graph.boundaries.generatedModuleURLs.map(modulePathFromURL);
+  const installedRootPaths = graph.boundaries.installedRootURLs.map(modulePathFromURL);
+  for (const installedRootPath of installedRootPaths) {
+    const relativeToSource = path.relative(SOURCE_ROOT, installedRootPath);
+    assert.equal(
+      relativeToSource === ".." ||
+        relativeToSource.startsWith(`..${path.sep}`),
+      true,
+      `${label} installed root escaped into source checkout`,
+    );
+  }
+  const nodeURLs = new Set(graph.nodes.map(({ moduleURL }) => moduleURL));
+  assert.equal(nodeURLs.size, graph.nodes.length, `${label} unique nodes`);
+  for (const seed of graph.seeds) assert.equal(nodeURLs.has(seed.moduleURL), true);
+  assert.deepEqual(
+    graph.boundaries.generatedModuleURLs,
+    expectedGeneratedSeedKinds.map((kind) => {
+      const seed = graph.seeds.find((candidate) => candidate.kind === kind);
+      assert.ok(seed, `${label} generated boundary seed ${kind}`);
+      assert.equal(nodeURLs.has(seed.moduleURL), true);
+      return seed.moduleURL;
+    }),
+    `${label} exact generated boundary roster`,
+  );
+  const parserSeeds = graph.seeds.filter(
+    ({ kind }) => kind.endsWith("_generated_module_graph_parser"),
+  );
+  assert.equal(parserSeeds.length, 1, `${label} parser seed`);
+  const [parserSeed] = parserSeeds;
+  assert.equal(
+    graph.boundaries.generatedModuleURLs.includes(parserSeed.moduleURL),
+    true,
+    `${label} generated parser boundary`,
+  );
+  const forbiddenSegments = [["test", "env"].join("_"), "private"];
+  const outgoingCounts = new Map();
+  for (const edge of graph.edges) {
+    assertExactKeys(edge, [
+      "attributes", "fromModuleURL", "phase", "specifier", "toModuleURL",
+    ], `${label} static edge`);
+    assert.equal(nodeURLs.has(edge.fromModuleURL), true);
+    assert.equal(nodeURLs.has(edge.toModuleURL), true);
+    assert.equal(typeof edge.specifier, "string");
+    assert.equal(typeof edge.attributes, "object");
+    assert.equal(edge.phase, "evaluation");
+    outgoingCounts.set(
+      edge.fromModuleURL,
+      (outgoingCounts.get(edge.fromModuleURL) ?? 0) + 1,
+    );
+  }
+  for (const node of graph.nodes) {
+    assertExactKeys(node, [
+      "mediaType", "moduleURL", "source", "staticRequestCount",
+    ], `${label} module node`);
+    assert.equal(
+      node.staticRequestCount,
+      outgoingCounts.get(node.moduleURL) ?? 0,
+      `${label} unresolved static request at ${node.moduleURL}`,
+    );
+    if (node.mediaType === "runtime_builtin") {
+      assert.equal(node.moduleURL.startsWith("node:"), true);
+      assert.equal(node.source, null);
+      continue;
+    }
+    assert.equal(
+      node.mediaType === "javascript_module" || node.mediaType === "json_module",
+      true,
+    );
+    assertRawBytesEvidence(node.source);
+    const modulePath = modulePathFromURL(node.moduleURL);
+    if (generatedPaths.includes(modulePath)) continue;
+    const containingRoot = installedRootPaths.find((installedRootPath) => {
+      const relative = path.relative(installedRootPath, modulePath);
+      return !path.isAbsolute(relative) &&
+        relative !== ".." && !relative.startsWith(`..${path.sep}`);
+    });
+    assert.ok(containingRoot, `${label} module escaped admitted roots: ${node.moduleURL}`);
+    const relativeSegments = path.relative(containingRoot, modulePath).split(path.sep);
+    assert.equal(
+      forbiddenSegments.some((segment) => relativeSegments.includes(segment)),
+      false,
+      `${label} forbidden installed module path`,
+    );
+  }
+  const parserNode = graph.nodes.find(
+    ({ moduleURL }) => moduleURL === parserSeed.moduleURL,
+  );
+  assert.ok(parserNode, `${label} parser node`);
+  assert.equal(parserNode.mediaType, "javascript_module");
+  assert.equal(parserNode.staticRequestCount, 5);
+  assert.equal(parserNode.source.byteLength, expectedParserSource.byteLength);
+  assert.equal(parserNode.source.sha256, expectedParserSource.sha256);
+  assert.equal(
+    assertRawBytesEvidence(parserNode.source).length,
+    expectedParserSource.byteLength,
+  );
+  assert.deepEqual(
+    graph.edges
+      .filter(({ fromModuleURL }) => fromModuleURL === parserSeed.moduleURL)
+      .map(({ specifier, toModuleURL }) => [specifier, toModuleURL])
+      .sort((left, right) => left[0].localeCompare(right[0])),
+    [
+      ["node:crypto", "node:crypto"],
+      ["node:fs/promises", "node:fs/promises"],
+      ["node:path", "node:path"],
+      ["node:url", "node:url"],
+      ["node:vm", "node:vm"],
+    ],
+    `${label} parser static edges`,
+  );
+  return graph;
+}
+
 function assertExactKeys(value, expected, label) {
   assert.deepEqual(Object.keys(value).sort(), [...expected].sort(), label);
 }
@@ -169,29 +392,58 @@ async function parseStaticModuleGraph(filePaths) {
     `import { readFile } from "node:fs/promises";`,
     `import vm from "node:vm";`,
     `const rows = [];`,
-    `for (const filePath of process.argv.slice(1)) {`,
+    `for (const filePath of process.argv.slice(2)) {`,
     `  const source = await readFile(filePath, "utf8");`,
     `  const module = new vm.SourceTextModule(source, { identifier: filePath });`,
-    `  rows.push({ filePath, moduleRequests: module.moduleRequests.map((row) => row.specifier) });`,
+    `  rows.push({ filePath, moduleRequests: module.moduleRequests });`,
     `}`,
     `process.stdout.write(JSON.stringify(rows));`,
   ].join("\n");
-  const { stdout, stderr } = await execFileAsync(
-    process.execPath,
-    [
-      "--experimental-vm-modules",
-      "--no-warnings",
-      "--input-type=module",
-      "--eval",
-      parserSource,
-      ...filePaths,
-    ],
-    { maxBuffer: 20 * 1024 * 1024 },
+  const parserRoot = await mkdtemp(
+    path.join(os.tmpdir(), "odd-glc-t041-source-census-parser-"),
   );
-  assert.equal(stderr, "");
-  const rows = JSON.parse(stdout);
-  assert.deepEqual(rows.map(({ filePath }) => filePath), filePaths);
-  return rows;
+  const parserPath = path.join(parserRoot, "parser.mjs");
+  const parserSourceBytes = Buffer.from(parserSource);
+  await writeFile(parserPath, parserSourceBytes);
+  const parserModuleURL = pathToFileURL(await realpath(parserPath)).href;
+  const parsedFilePaths = [parserPath, ...filePaths];
+  try {
+    const { stdout, stderr } = await execFileAsync(
+      process.execPath,
+      [
+        "--experimental-vm-modules",
+        "--no-warnings",
+        parserPath,
+        ...parsedFilePaths,
+      ],
+      { maxBuffer: 20 * 1024 * 1024 },
+    );
+    assert.equal(stderr, "");
+    const rows = JSON.parse(stdout);
+    assert.deepEqual(rows.map(({ filePath }) => filePath), parsedFilePaths);
+    assert.deepEqual(await readFile(parserPath), parserSourceBytes);
+    const [parserRow, ...proofRows] = rows;
+    assert.deepEqual(
+      parserRow.moduleRequests.map(({ specifier }) => specifier).sort(),
+      ["node:fs/promises", "node:vm"],
+    );
+    assert.equal(
+      parserRow.moduleRequests.every((request) =>
+        request.phase === "evaluation" &&
+        typeof request.attributes === "object"),
+      true,
+    );
+    return Object.freeze({
+      parser: Object.freeze({
+        moduleURL: parserModuleURL,
+        source: rawBytesEvidence(parserSourceBytes),
+        parsedStaticModuleRequests: Object.freeze(parserRow.moduleRequests),
+      }),
+      proofRows: Object.freeze(proofRows),
+    });
+  } finally {
+    await rm(parserRoot, { recursive: true, force: true });
+  }
 }
 
 async function sourceBlindCensus() {
@@ -204,14 +456,40 @@ async function sourceBlindCensus() {
   ]);
   const filePaths = PROOF_FILES.map((relativePath) =>
     path.join(TEST_ROOT, relativePath));
-  const parsedModules = await parseStaticModuleGraph(filePaths);
+  const parsedGraph = await parseStaticModuleGraph(filePaths);
+  const parsedModules = parsedGraph.proofRows;
   const files = [];
-  const edges = [];
+  const parserSourceBytes = assertRawBytesEvidence(parsedGraph.parser.source);
+  assert.equal(parserSourceBytes.length, SOURCE_CENSUS_PARSER_SOURCE.byteLength);
+  assert.equal(
+    parsedGraph.parser.source.sha256,
+    SOURCE_CENSUS_PARSER_SOURCE.sha256,
+  );
+  const parserEdges = parsedGraph.parser.parsedStaticModuleRequests.map(
+    (request) => Object.freeze({
+      fromModuleURL: parsedGraph.parser.moduleURL,
+      specifier: request.specifier,
+      attributes: Object.freeze(request.attributes),
+      phase: request.phase,
+      toModuleURL: request.specifier,
+      kind: "static_import",
+    }),
+  );
+  assert.deepEqual(
+    parserEdges.map(({ specifier, toModuleURL }) => [specifier, toModuleURL])
+      .sort((left, right) => left[0].localeCompare(right[0])),
+    [
+      ["node:fs/promises", "node:fs/promises"],
+      ["node:vm", "node:vm"],
+    ],
+  );
+  const edges = [...parserEdges];
   for (const [index, relativePath] of PROOF_FILES.entries()) {
     const bytes = await readFile(filePaths[index]);
     const source = bytes.toString("utf8");
-    const specifiers = parsedModules[index].moduleRequests;
-    assert.equal(specifiers.length > 0, true, relativePath);
+    const moduleRequests = parsedModules[index].moduleRequests;
+    const specifiers = moduleRequests.map(({ specifier }) => specifier);
+    assert.equal(moduleRequests.length > 0, true, relativePath);
     assert.equal(
       specifiers.every((specifier) => specifier.startsWith("node:")),
       true,
@@ -220,28 +498,75 @@ async function sourceBlindCensus() {
     const prohibitedTokenHits = prohibitedTokens.filter((token) =>
       source.includes(token));
     assert.deepEqual(prohibitedTokenHits, [], relativePath);
-    edges.push(...specifiers.map((specifier) => Object.freeze({
-      from: relativePath,
-      to: specifier,
+    edges.push(...moduleRequests.map((request) => Object.freeze({
+      fromModuleURL: relativePath,
+      specifier: request.specifier,
+      attributes: Object.freeze(request.attributes),
+      phase: request.phase,
+      toModuleURL: request.specifier,
       kind: "static_import",
     })));
     files.push(Object.freeze({
       relativePath,
-      sha256: sha256Hex(bytes),
-      parsedStaticModuleRequests: Object.freeze(specifiers),
+      source: rawBytesEvidence(bytes),
+      parsedStaticModuleRequests: Object.freeze(moduleRequests),
       prohibitedTokenHits: Object.freeze(prohibitedTokenHits),
     }));
   }
-  const builtins = [...new Set(edges.map(({ to }) => to))].sort();
+  const builtins = [...new Set(edges.map(({ toModuleURL }) => toModuleURL))].sort();
+  assert.equal(edges.every((edge) =>
+    edge.toModuleURL.startsWith("node:") &&
+    edge.phase === "evaluation" &&
+    typeof edge.attributes === "object"), true);
+  const staticModuleGraph = Object.freeze({
+    parser: "node:vm.SourceTextModule",
+    parserEntrypoint: parsedGraph.parser,
+    seeds: Object.freeze([
+      Object.freeze({
+        kind: "source_census_generated_module_graph_parser",
+        moduleURL: parsedGraph.parser.moduleURL,
+      }),
+      ...PROOF_FILES.map((relativePath) => Object.freeze({
+        kind: "checked_in_proof_entrypoint",
+        moduleURL: relativePath,
+      })),
+    ]),
+    sourceNodes: Object.freeze([
+      parsedGraph.parser.moduleURL,
+      ...PROOF_FILES,
+    ]),
+    terminalBuiltinNodes: Object.freeze(builtins),
+    edges: Object.freeze(edges),
+    unresolvedEdges: Object.freeze([]),
+    boundaries: Object.freeze({
+      generatedModuleURLs: Object.freeze([parsedGraph.parser.moduleURL]),
+      checkedInProofRootURL: pathToFileURL(TEST_ROOT).href,
+    }),
+    closed: true,
+  });
+  assert.equal(staticModuleGraph.seeds.length, 5);
+  assert.equal(staticModuleGraph.sourceNodes.length, 5);
+  assert.deepEqual(
+    staticModuleGraph.boundaries.generatedModuleURLs,
+    [staticModuleGraph.parserEntrypoint.moduleURL],
+  );
+  assert.equal(
+    staticModuleGraph.seeds[0].moduleURL,
+    staticModuleGraph.parserEntrypoint.moduleURL,
+  );
+  assert.equal(
+    staticModuleGraph.edges.filter(({ fromModuleURL }) =>
+      fromModuleURL === staticModuleGraph.parserEntrypoint.moduleURL).length,
+    2,
+  );
+  assert.deepEqual(
+    staticModuleGraph.parserEntrypoint.parsedStaticModuleRequests.map(
+      ({ specifier }) => specifier).sort(),
+    ["node:fs/promises", "node:vm"],
+  );
   return Object.freeze({
     files: Object.freeze(files),
-    staticModuleGraph: Object.freeze({
-      parser: "node:vm.SourceTextModule",
-      sourceNodes: Object.freeze([...PROOF_FILES]),
-      terminalBuiltinNodes: Object.freeze(builtins),
-      edges: Object.freeze(edges),
-      closed: true,
-    }),
+    staticModuleGraph,
     sourceOrPrivateImport: false,
     prohibitedCompatibilitySurface: false,
   });
@@ -363,7 +688,8 @@ function projectPredecessor({ receipt, releaseManifest, abiReleaseManifest, live
 function projectCandidate(rawObservation, sourceCensus) {
   assertExactKeys(rawObservation, [
     "kind", "schemaVersion", "basis", "archive",
-    "installedPublicModuleRefs", "installedPublicModuleEvidence", "publicFamily",
+    "installedPublicModuleRefs", "installedPublicModuleEvidence",
+    "moduleGraphEvidence", "publicFamily",
     "ownership", "nativeOwnerStageObservations", "transportedDefinitionKeys",
     "transportedJsonLines", "transportedRawExchanges",
     "resolutionBoundaryObservations", "transportBoundaryObservations",
@@ -401,7 +727,17 @@ function projectCandidate(rawObservation, sourceCensus) {
       ({ repositoryPath, sha256 }) => [repositoryPath, sha256])),
     PRODUCT_SHA256,
   );
+  assertExactKeys(rawObservation.archive, [
+    "executableOrDeclarationMemberCount", "members", "tarball", "typedHeaders",
+  ], "candidate archive evidence keyset");
   assert.deepEqual(rawObservation.archive.members, ARCHIVE_MEMBERS);
+  assert.deepEqual(
+    rawObservation.archive.typedHeaders,
+    ARCHIVE_MEMBERS.map((archivePath) => ({
+      path: archivePath,
+      type: "regular_file",
+    })),
+  );
   assert.equal(
     assertRawBytesEvidence(rawObservation.archive.tarball).length,
     2230,
@@ -437,6 +773,71 @@ function projectCandidate(rawObservation, sourceCensus) {
       row.packageRelativeTarget !== ".." &&
       !row.packageRelativeTarget.startsWith("../")),
     true,
+  );
+  assertExactKeys(rawObservation.moduleGraphEvidence, [
+    "bootstrap", "execution", "oddPublication",
+  ], "runtime module graph roster");
+  const publicKeys = ["root", "abg", "gtl", "hog", "product", "public", "validator"];
+  const bootstrapGraph = assertClosedModuleGraphEvidence(
+    rawObservation.moduleGraphEvidence.bootstrap,
+    [
+      "bootstrap_generated_module_graph_parser",
+      "bootstrap_generated_abi_bridge",
+      ...publicKeys.map((key) => `bootstrap_abi_public_export_${key}`),
+    ],
+    [
+      "bootstrap_generated_module_graph_parser",
+      "bootstrap_generated_abi_bridge",
+    ],
+    MODULE_GRAPH_PARSER_SOURCES.crossOwner,
+    "bootstrap ABI",
+  );
+  const executionGraph = assertClosedModuleGraphEvidence(
+    rawObservation.moduleGraphEvidence.execution,
+    [
+      "execution_generated_module_graph_parser",
+      "execution_generated_abi_bridge",
+      ...publicKeys.map((key) => `execution_abi_public_export_${key}`),
+      "execution_abi_cli_transport_root",
+    ],
+    [
+      "execution_generated_module_graph_parser",
+      "execution_generated_abi_bridge",
+    ],
+    MODULE_GRAPH_PARSER_SOURCES.crossOwner,
+    "execution ABI",
+  );
+  const oddPublicationGraph = assertClosedModuleGraphEvidence(
+    rawObservation.moduleGraphEvidence.oddPublication,
+    [
+      "execution_generated_odd_publication_module_graph_parser",
+      "execution_generated_odd_publication_bridge",
+      "execution_odd_json_publication_terminal",
+    ],
+    [
+      "execution_generated_odd_publication_module_graph_parser",
+      "execution_generated_odd_publication_bridge",
+    ],
+    MODULE_GRAPH_PARSER_SOURCES.crossOwner,
+    "installed odd publication",
+  );
+  for (const [identity, graph, rows] of [
+    ["bootstrap", bootstrapGraph, rawObservation.installedPublicModuleEvidence.bootstrap],
+    ["execution", executionGraph, rawObservation.installedPublicModuleEvidence.execution],
+  ]) {
+    for (const key of publicKeys) {
+      const graphSeed = graph.seeds.find(
+        ({ kind }) => kind === `${identity}_abi_public_export_${key}`,
+      );
+      const moduleRow = rows.find(({ namespace }) => namespace === key);
+      assert.equal(graphSeed.moduleURL, moduleRow.realModuleURL);
+    }
+  }
+  assert.equal(
+    oddPublicationGraph.seeds.find(
+      ({ kind }) => kind === "execution_odd_json_publication_terminal",
+    ).moduleURL,
+    rawObservation.installedPublicModuleEvidence.oddPublication.realModuleURL,
   );
   assert.equal(rawObservation.publicFamily.operationCount, 18);
   assert.equal(rawObservation.publicFamily.definitionCount, 56);
@@ -510,6 +911,12 @@ function projectCandidate(rawObservation, sourceCensus) {
   assert.deepEqual(rawObservation.resolutionBoundaryObservations, [
     {
       identity: "absent_selected_graph_function",
+      selectedCatalogHandle:
+        "graph-function://odd_glc/conformance/program-only-hello@5",
+      removedCatalogHandles: [
+        "graph-function://odd_glc/conformance/program-only-hello@5",
+      ],
+      resultingAllowlist: [],
       code: "absent",
       stage: "catalog",
     },
@@ -519,38 +926,107 @@ function projectCandidate(rawObservation, sourceCensus) {
       stage: "dependency",
     },
   ]);
+  const expectedTransportBoundaryObservations = [
+    {
+      identity: "crossed_top_level_and_embedded_handoff",
+      transportCode: "acquisition_mismatch",
+      receipt: false,
+    },
+    {
+      identity: "matching_stale_owner_issued_handoff",
+      exitCode: 70,
+      faultStage: "resource_acquisition",
+      faultCode: "acquisition_refused",
+    },
+    {
+      identity: "malformed_resource_assertion",
+      exitCode: 70,
+      faultStage: "resource_admission",
+      faultCode: "invalid_resource_assertion",
+    },
+    {
+      identity: "stale_projection_basis",
+      exitCode: 1,
+      refusalCode: "projection_basis_mismatch",
+    },
+  ];
+  const negativeRequestRefs = [
+    "public-request://odd-glc/t041/run_status",
+    "public-request://odd-glc/t041/run_status",
+    "public-request://odd-glc/t041/run_status",
+    "public-request://odd-glc/t041/stale-projection-basis",
+  ];
+  assert.equal(rawObservation.transportBoundaryObservations.length, 4);
+  const authenticatedTransportBoundaryObservations =
+    rawObservation.transportBoundaryObservations.map((observation, index) => {
+      const expected = expectedTransportBoundaryObservations[index];
+      assertExactKeys(observation, [
+        ...Object.keys(expected), "input", "output",
+      ], `negative CLI exchange ${index}`);
+      const { input, output, ...summary } = observation;
+      assert.deepEqual(summary, expected);
+      const inputRecord = parseExactRawJsonlEvidence(
+        input,
+        `negative CLI input ${index}`,
+      );
+      const outputRecord = parseExactRawJsonlEvidence(
+        output,
+        `negative CLI output ${index}`,
+      );
+      assertExactKeys(inputRecord.value, [
+        "acquisition", "invocation", "kind", "schemaVersion",
+      ], `negative CLI request ${index}`);
+      assert.equal(inputRecord.value.kind, "abg_cli_transport_request");
+      assert.equal(inputRecord.value.schemaVersion, "5.0.0");
+      assert.equal(inputRecord.value.acquisition.kind, "reopen");
+      assert.deepEqual(
+        inputRecord.value.invocation.invocation.definitionKey,
+        TRANSPORTED_DEFINITION_KEYS[1],
+      );
+      assert.equal(
+        inputRecord.value.invocation.invocation.requestRef,
+        negativeRequestRefs[index],
+      );
+      const outcome = outputRecord.value;
+      let derived;
+      if (index === 0) {
+        assert.equal(
+          outcome.kind,
+          "installed_definition_call_transport_refusal",
+        );
+        derived = {
+          identity: expected.identity,
+          transportCode: outcome.code,
+          receipt: Object.hasOwn(outcome, "receipt"),
+        };
+      } else if (index === 1 || index === 2) {
+        assert.equal(
+          outcome.kind,
+          "installed_definition_call_transport_result",
+        );
+        derived = {
+          identity: expected.identity,
+          exitCode: outcome.receipt.exitCode,
+          faultStage: outcome.receipt.failure.fault.stage,
+          faultCode: outcome.receipt.failure.fault.code,
+        };
+      } else {
+        assert.equal(
+          outcome.kind,
+          "installed_definition_call_transport_result",
+        );
+        derived = {
+          identity: expected.identity,
+          exitCode: outcome.receipt.exitCode,
+          refusalCode: outcome.receipt.ownerOutput.value.code,
+        };
+      }
+      assert.deepEqual(derived, expected);
+      return summary;
+    });
   assert.deepEqual(
-    rawObservation.transportBoundaryObservations.map(
-      ({ rawJsonLine, ...observation }) => {
-        assert.equal(typeof rawJsonLine, "string");
-        assert.doesNotThrow(() => JSON.parse(rawJsonLine));
-        return observation;
-      },
-    ),
-    [
-      {
-        identity: "crossed_top_level_and_embedded_handoff",
-        transportCode: "acquisition_mismatch",
-        receipt: false,
-      },
-      {
-        identity: "matching_stale_owner_issued_handoff",
-        exitCode: 70,
-        faultStage: "resource_acquisition",
-        faultCode: "acquisition_refused",
-      },
-      {
-        identity: "malformed_resource_assertion",
-        exitCode: 70,
-        faultStage: "resource_admission",
-        faultCode: "invalid_resource_assertion",
-      },
-      {
-        identity: "stale_projection_basis",
-        exitCode: 1,
-        refusalCode: "projection_basis_mismatch",
-      },
-    ],
+    authenticatedTransportBoundaryObservations,
+    expectedTransportBoundaryObservations,
   );
   assert.equal(rawObservation.transportedJsonLines.length, 4);
   const outcomes = rawObservation.transportedJsonLines.map((line) =>
@@ -568,16 +1044,56 @@ function projectCandidate(rawObservation, sourceCensus) {
     TRANSPORTED_DEFINITION_KEYS,
   );
   assert.equal(rawObservation.transportedRawExchanges.length, 4);
+  const mainCallEventLogs = [];
   for (const [index, exchange] of
     rawObservation.transportedRawExchanges.entries()) {
+    assertExactKeys(exchange, [
+      "definitionKey", "eventLog", "input", "output", "ownerOutput", "resources",
+      "transportModuleURL",
+    ], `main Public call exchange ${index}`);
     assert.deepEqual(exchange.definitionKey, TRANSPORTED_DEFINITION_KEYS[index]);
-    const rawInput = assertRawBytesEvidence(exchange.input).toString("utf8");
-    const rawOutput = assertRawBytesEvidence(exchange.output).toString("utf8");
-    assert.equal(rawInput.endsWith("\n"), true);
-    assert.equal(rawOutput, `${rawObservation.transportedJsonLines[index]}\n`);
+    const inputRecord = parseExactRawJsonlEvidence(
+      exchange.input,
+      `main Public call input ${index}`,
+    );
+    const outputRecord = parseExactRawJsonlEvidence(
+      exchange.output,
+      `main Public call output ${index}`,
+    );
+    assertExactKeys(inputRecord.value, [
+      "acquisition", "invocation", "kind", "schemaVersion",
+    ], `main Public call request ${index}`);
+    assert.equal(inputRecord.value.kind, "abg_cli_transport_request");
+    assert.equal(inputRecord.value.schemaVersion, "5.0.0");
+    assert.equal(inputRecord.value.acquisition.kind, "reopen");
+    assert.deepEqual(
+      inputRecord.value.invocation.invocation.definitionKey,
+      TRANSPORTED_DEFINITION_KEYS[index],
+    );
+    assert.equal(outputRecord.line, rawObservation.transportedJsonLines[index]);
+    assert.deepEqual(outputRecord.value, outcomes[index]);
     assert.deepEqual(exchange.ownerOutput, outcomes[index].receipt.ownerOutput);
     assert.deepEqual(exchange.resources, outcomes[index].receipt.resources);
+    assertExactKeys(exchange.eventLog, [
+      "after", "appendedByteLength", "before", "eventLogRef",
+    ], `main Public call event log ${index}`);
+    const before = assertRawBytesEvidence(exchange.eventLog.before);
+    const after = assertRawBytesEvidence(exchange.eventLog.after);
+    assert.equal(
+      exchange.eventLog.appendedByteLength,
+      after.length - before.length,
+    );
+    mainCallEventLogs.push({ before, after });
   }
+  const transportCliSeed = executionGraph.seeds.find(
+    ({ kind }) => kind === "execution_abi_cli_transport_root",
+  );
+  assert.equal(
+    rawObservation.transportedRawExchanges.every(
+      ({ transportModuleURL }) => transportModuleURL === transportCliSeed.moduleURL,
+    ),
+    true,
+  );
   const [startOutcome, ...readOutcomes] = outcomes;
   assert.equal(startOutcome.receipt.ownerOutput.outcomeKind, "result");
   assert.equal(startOutcome.receipt.ownerOutput.value.disposition, "completed");
@@ -595,10 +1111,45 @@ function projectCandidate(rawObservation, sourceCensus) {
   );
   const fresh = JSON.parse(rawObservation.freshProcessStdout);
   assert.equal(fresh.kind, "odd_glc_abi5_fresh_process_read_result");
+  const freshGraph = assertClosedModuleGraphEvidence(
+    fresh.moduleGraphEvidence,
+    [
+      "fresh_reader_generated_module_graph_parser",
+      "fresh_reader_generated_bridge",
+      "fresh_reader_abi_public_root",
+    ],
+    [
+      "fresh_reader_generated_module_graph_parser",
+      "fresh_reader_generated_bridge",
+    ],
+    MODULE_GRAPH_PARSER_SOURCES.freshReader,
+    "fresh reader",
+  );
+  assert.equal(
+    freshGraph.seeds.find(
+      ({ kind }) => kind === "fresh_reader_abi_public_root",
+    ).moduleURL,
+    fresh.publicRealModuleRef,
+  );
   assert.equal(fresh.receipts.length, 3);
+  assert.equal(fresh.readEventLogObservations.length, 3);
+  const freshCallEventLogs = [];
   for (const [index, receipt] of fresh.receipts.entries()) {
     assert.deepEqual(receipt.ownerOutput, readOutcomes[index].receipt.ownerOutput);
     assert.deepEqual(receipt.resources, readOutcomes[index].receipt.resources);
+    const observation = fresh.readEventLogObservations[index];
+    assertExactKeys(observation, [
+      "after", "appendedByteLength", "before", "definitionKey", "eventLogRef",
+    ], `fresh Public read event log ${index}`);
+    assert.deepEqual(
+      observation.definitionKey,
+      TRANSPORTED_DEFINITION_KEYS[index + 1],
+    );
+    const before = assertRawBytesEvidence(observation.before);
+    const after = assertRawBytesEvidence(observation.after);
+    assert.equal(observation.appendedByteLength, 0);
+    assert.deepEqual(after, before);
+    freshCallEventLogs.push({ before, after });
   }
   const preStartBytes = assertRawBytesEvidence(
     rawObservation.runtimeEventLog.preStart,
@@ -611,6 +1162,32 @@ function projectCandidate(rawObservation, sourceCensus) {
   );
   assert.equal(postStartBytes.length > preStartBytes.length, true);
   assert.deepEqual(postReadBytes, postStartBytes);
+  assert.equal(
+    rawObservation.transportedRawExchanges.every(
+      ({ eventLog }) => eventLog.eventLogRef === rawObservation.runtimeEventLog.eventLogRef,
+    ),
+    true,
+  );
+  assert.equal(
+    fresh.readEventLogObservations.every(
+      ({ eventLogRef }) => eventLogRef === rawObservation.runtimeEventLog.eventLogRef,
+    ),
+    true,
+  );
+  assert.deepEqual(mainCallEventLogs[0].before, preStartBytes);
+  assert.deepEqual(mainCallEventLogs[0].after, postStartBytes);
+  assert.equal(
+    rawObservation.transportedRawExchanges[0].eventLog.appendedByteLength,
+    postStartBytes.length - preStartBytes.length,
+  );
+  for (const observation of mainCallEventLogs.slice(1)) {
+    assert.deepEqual(observation.before, postStartBytes);
+    assert.deepEqual(observation.after, postStartBytes);
+  }
+  for (const observation of freshCallEventLogs) {
+    assert.deepEqual(observation.before, postStartBytes);
+    assert.deepEqual(observation.after, postStartBytes);
+  }
   assert.equal(fresh.eventLogObservation.appendedByteLength, 0);
   assert.deepEqual(
     assertRawBytesEvidence(fresh.eventLogObservation.before),
@@ -660,6 +1237,22 @@ function projectCandidate(rawObservation, sourceCensus) {
     assert.equal(row.returnedExportPresent, true);
     assert.equal(typeof row.moduleURL, "string", kind);
     assert.equal(typeof row.namedSymbol, "string", kind);
+    const ownerGraph = assertClosedModuleGraphEvidence(
+      row.moduleGraphEvidence,
+      [
+        `returned_${kind}_generated_module_graph_parser`,
+        `returned_${kind}_dynamic_owner`,
+      ],
+      [`returned_${kind}_generated_module_graph_parser`],
+      MODULE_GRAPH_PARSER_SOURCES.crossOwner,
+      `returned ${kind} owner`,
+    );
+    assert.equal(
+      ownerGraph.seeds.find(
+        ({ kind: seedKind }) => seedKind === `returned_${kind}_dynamic_owner`,
+      ).moduleURL,
+      row.moduleURL,
+    );
   }
   const candidateRawText = JSON.stringify(rawObservation);
   const carriesPredecessorRuntime =
@@ -822,6 +1415,25 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
   assert.deepEqual(predecessorProjection, SHARED_PROJECTION);
   assert.deepEqual(candidateProjection, SHARED_PROJECTION);
 
+  const predecessorGitBytes = Object.freeze({
+    oddProductTarball: odd01TarballBytes,
+    oddReleaseManifest: odd01Release.bytes,
+    installedLiveProof: predecessorLiveProof.bytes,
+    abiTarball: abi46TarballBytes,
+    abiReleaseManifest: abi46Release.bytes,
+  });
+  const immutablePredecessorGitBasis = Object.freeze(
+    PREDECESSOR_GIT_OBJECTS.map((coordinate) => {
+      const bytes = predecessorGitBytes[coordinate.evidenceKey];
+      assert.ok(Buffer.isBuffer(bytes), coordinate.evidenceKey);
+      assert.equal(gitBlobId(bytes), coordinate.blobId, coordinate.repositoryPath);
+      return Object.freeze({
+        ...coordinate,
+        source: rawBytesEvidence(bytes),
+      });
+    }),
+  );
+
   const rawByteLedger = Object.freeze({
     predecessor: Object.freeze({
       oddProductTarball: rawBytesEvidence(odd01TarballBytes),
@@ -861,6 +1473,7 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
     kind: "odd_glc_t041_installed_differential_receipt",
     schemaVersion: "1",
     immutableBasisDigests: DIGESTS,
+    immutablePredecessorGitBasis,
     predecessorRaw: Object.freeze({
       receipt: predecessorReceipt.value,
       releaseManifest: odd01Release.value,
