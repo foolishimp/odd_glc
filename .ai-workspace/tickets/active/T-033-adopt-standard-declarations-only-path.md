@@ -3,8 +3,8 @@ id: T-033
 title: Design adoption of the ABG standard declarations-only data-mapper path
 type: feature
 ticket_category: ordinary
-status: active
-execution_state: queued_after_abiogenesis_T226_and_T179_design
+status: superseded
+execution_state: superseded_by_T041
 goal: >-
   Ratify the nothing-lost declarations-only migration design and exact proof
   contract that T-038 will realize over the accepted ABIogenesis interfaces.
@@ -18,6 +18,8 @@ owner: odd_glc
 priority: critical
 created_at: 2026-07-11
 updated_at: 2026-07-11
+superseded_at: 2026-08-04
+superseded_by: T-041
 triaged_at: 2026-07-11
 build_tenant: typescript
 source_ticket: abiogenesis T-218
@@ -25,8 +27,8 @@ target_candidate_identity: digest-bound G5 source candidate; release version rem
 target_release_line: 0.2
 governance_scope: STDO Method, ODD Method, declarations-only law, typed GTL C algebra
 implementation_authority: >-
-  None. T-033 may change ratified design only. T-038 owns realization,
-  candidate freeze, deterministic/live proof, and campaign closure after this design closes.
+  None. T-041 supersedes this ticket as the sole ABIogenesis 5.0 migration
+  authority. This ticket remains predecessor evidence only.
 dependencies:
   - completed abiogenesis T-220 typed GTL C algebra and semantic admission
   - abiogenesis T-226 complete C/runtime design

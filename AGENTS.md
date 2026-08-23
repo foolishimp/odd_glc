@@ -12,21 +12,38 @@ meaning.
 Read these surfaces before substantive work:
 
 1. `README.md`
-2. `.ai-workspace/context/project_bootstrap.md`
-3. `specification/GOALS.md`
-4. `specification/INTENT.md`
-5. `specification/PRODUCT.md`
-6. `specification/requirements/`
-7. ratified design surfaces under `build_tenants/`
+2. `specification/GOVERNANCE.md`
+3. `.ai-workspace/context/project_bootstrap.md`
+4. `specification/GOALS.md`
+5. `specification/INTENT.md`
+6. `specification/PRODUCT.md`
+7. `specification/requirements/`
+8. ratified design surfaces under `build_tenants/`
 
-Use the upstream shared methodology source at:
+This repo selects the complete immutable STDO `v2.3.0` distribution at commit
+`b2c64047e01d9d582243a25af587ac772233a4ea`, with standards aggregate
+`014ead42a96412f51a172a8158e42fdfe1447a0af5e4f70a79cf8a020129630c`.
+`specification/GOVERNANCE.md` is the project-owned selection and application
+frame. Read upstream members from that exact tag, for example:
 
-- `/Users/jim/src/apps/specification_methodology/specification/standards/SPEC_METHOD.md`
-- `/Users/jim/src/apps/specification_methodology/specification/standards/ODD_METHOD.md`
-- `/Users/jim/src/apps/specification_methodology/specification/standards/WRITING_GUIDE.md`
+```sh
+git -C /Users/jim/src/apps/specification_methodology show \
+  v2.3.0:specification/standards/SPEC_METHOD.md
+```
+
+Do not treat the mutable methodology checkout or a mixed set of standard
+members as governing authority.
 
 ## Authority Rules
 
+- Apply the selected STDO `2.3.0` laws through
+  `specification/GOVERNANCE.md`, including complete transformation admission,
+  bounded causal closure, reconstruction-sufficient design, computational
+  role/disposition, and bounded agentic-construction law.
+- During code building, also apply the exact local construction method adopted
+  in `specification/GOVERNANCE.md`. Trace every edited function from entity and
+  lifecycle through owner, common-library relation, lawful technology, input
+  authority, output carrier, prohibited state/calls, and direct consumers.
 - `specification/` defines `WHAT`.
 - `build_tenants/` and ratified design define `HOW`.
 - `.ai-workspace/context/project_bootstrap.md` is the initial context capture and

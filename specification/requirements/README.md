@@ -4,8 +4,8 @@ Project-specific requirement families live in this folder.
 
 Use these method surfaces as governing references:
 
-- `/Users/jim/src/apps/specification_methodology/specification/standards/SPEC_METHOD.md`
-- `/Users/jim/src/apps/specification_methodology/specification/standards/ODD_METHOD.md`
+- `../GOVERNANCE.md`, which selects the complete immutable STDO `v2.3.0`
+  distribution and governs exact upstream member access
 
 ## Rules
 

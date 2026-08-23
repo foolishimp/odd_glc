@@ -3,7 +3,8 @@ id: T-038
 title: Realize the ABG standard declarations-only path and re-prove data mapper
 type: feature
 ticket_category: implementation_migration
-status: backlog
+status: superseded
+execution_state: superseded_by_T041
 goal: Deliver the declarations-only G5 source candidate for ABIogenesis GOAL-035
 change_intent: >-
   Replace the live data-mapper binding's executable product-local dispatch,
@@ -17,9 +18,11 @@ priority: critical
 triaged_at: 2026-07-11
 created_at: 2026-07-11
 updated_at: 2026-07-11
+superseded_at: 2026-08-04
+superseded_by: T-041
 source_ticket: T-033
 build_tenant: typescript
-admission_condition: T-033 and abiogenesis T-223, T-227, T-228, and T-234 are completed and current
+admission_condition: superseded; T-041 owns the current ABIogenesis 5.0 migration
 migration_strategy: inside_out_hard_break
 library_usage: consume
 governing_library: ABIogenesis T-227/T-228 declared C, result, materialization, assessment, consequence, catalog, and replay surfaces
