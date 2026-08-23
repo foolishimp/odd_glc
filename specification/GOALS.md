@@ -1,11 +1,11 @@
 # odd_glc Goals
 
 **Status**: Active
-**Reconciliation status**: Accepted evidence-driven `design_reframe`; exact
-proposal commit `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
-`4ce7395754f2a0ed926d0c927528a3b2263964ae`, independently reviewed by Max
-with disposition ACCEPT (A/B/C/D all zero) and accepted by Executive/F_H on
-2026-08-24
+**Reconciliation status**: Proposed evidence-driven proof-assurance
+`design_reframe` v4, a direct child of admitted status commit
+`236a08603cbfd7bb31ab0319053f36b46718b549`; fresh independent exact-tree
+review and Executive/F_H acceptance are pending, and no realization candidate
+may freeze from this proposal
 **Date**: 2026-08-24
 **Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
 2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
@@ -41,9 +41,10 @@ data-mapper, One Surface, and Consensus remain deferred.
 
 ## Downstream Routing And Selected Constraints
 
-T-041 routes this goal. The accepted evidence-driven `design_reframe` in
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` is current
-implementation authority. It preserves the selected
+T-041 routes this goal. The admitted v3 `design_reframe` at status commit
+`236a08603cbfd7bb31ab0319053f36b46718b549` is the predecessor record.
+End-to-end evidence re-entered only its assurance design: the proposed v4 in
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` preserves the selected
 `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
 ABIogenesis tag `v5.0.0-dev.286`, commit
 `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
@@ -69,19 +70,13 @@ closure through the ready Catalog/View, installed ProductSet, resolved lock, dep
 compatibility, provenance, collision, and ambiguity law. Program,
 GraphFunction, contract, evaluator, customization, fibre, binding, and
 Implementation owners remain separate in the immutable derived execution
-projection. Declared dependency ambiguity or incompatibility stops earlier in
-installed `./product` Environment resolution as `ambiguous_dependency` or
-`incompatible_dependency`. Selected Product-resolution negatives call
-installed `./product::ProductExecutionResolutionPort.resolve` directly:
-missing reachability is `missing_dependency@declaration_closure`; an unproved
-install set is `incompatible_or_unproven@dependency`; absent or duplicate
-Implementation descriptors are `absent@implementation` or
-`ambiguous@implementation`; and a
-nonloadable Implementation owner is `wrong_owner@implementation`. Semantic-owner
-absence or ambiguity stops in declaration closure as
-`wrong_owner@declaration_closure` or `ambiguous@declaration_closure`; only a
-uniquely resolved provider
-load or binding mismatch is `wrong_owner@semantics`.
+projection. The current minimum Product-resolution cone is selected
+GraphFunction removal as `absent@catalog` and an authentic admitted-roster
+mismatch as `incompatible_or_unproven@dependency`. The exact Environment,
+declaration-closure, Implementation, and semantics-owner variants remain
+source-authenticated reference law in the activated D hardening capsule; they
+are required before pre-RC or expanded qualification, or when their exact seam
+changes, and may never be silently closed.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -119,22 +114,26 @@ canonical JSON CLI receipt. The comparator reduces them only to
 source-independent installed execution, one top-level start, minimal Hello
 operation succeeded, one terminal result, expected version-local greeting,
 fresh-process replay agreement, and absence of legacy/private paths. It may
-not rewrite either raw observation. ABIogenesis 4.6 `converged` versus 5.0
-`closed_success` remain version-local authenticated evidence. The 5.0 run
-proves selection of the odd_glc-owned GraphFunction plus the exact ABI-owned
-Hello leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
+not rewrite either raw observation. ABIogenesis 4.6 retains its version-local
+`converged` observation. Exact ABI5 raw evidence is runtime status `closed`,
+the `run.invoke#start` receipt owner disposition `completed`, exactly one
+terminal result, and no failure. The shared eight-field reduction has no
+status field and derives no replacement status label. The 5.0 run proves
+selection of the odd_glc-owned GraphFunction plus the exact ABI-owned Hello
+leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
 bindings, greeting punctuation, and transport forms remain version-local.
 Hello World is steel-thread shorthand, not Product parity.
 
-The exact reframe is admitted. Its accepted authority bytes may be
-transplanted into the realization lineage, and a realization candidate may
-freeze under the exact eight-native/four-receipt proof law after the remaining
-selected execution gates pass. A diagnostic result does not satisfy a proof
-gate or expand the accepted design.
+This v4 reframe is a proposal, not self-accepted authority. Diagnostic
+end-to-end work may continue, but its authority bytes may not be transplanted
+and no realization candidate may freeze until fresh independent exact-tree
+review and Executive/F_H acceptance. A diagnostic result does not satisfy a
+proof gate or expand the design.
 
 ### Selected Execution Plan
 
-1. Hold implementation until the exact ABI tarball matches its pinned SHA-256.
+1. Hold candidate freeze; reject even diagnostic execution unless the exact
+   ABI tarball matches its pinned SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
 3. Publish one exact five-member, zero-code odd_glc Program candidate whose
    odd_glc-owned GraphFunction topology references the installed ABI Hello leaf
@@ -164,8 +163,10 @@ The installed Public DefinitionCall trace is exactly
 trace evidence. Exactly one semantic start occurs.
 
 The exact package publishes one structural 18-operation/56-definition family.
-T-041 proves that structural identity and selected-stage callable availability.
-It makes no whole-56 callable-closure or behavioral claim. The activated
+T-041 inspects all 56 locators under exact own-property law: exactly 39 resolve
+to installed callables and exactly 17 are absent, with the selected twelve a
+subset of the 39. This is not a whole-56 callable-closure or behavioral claim.
+The activated
 `capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-substrate` records 17
 unselected definitions whose installed callable locators are absent: five
 `interaction.respond`, two `product.materialize`, one
@@ -177,22 +178,58 @@ T-287 S2 bootstrap successor. That successor remains unselected and unpinned;
 using it requires fresh tag, commit, tree, package, and tarball admission plus
 a new design reframe. It is not a T-041 candidate claim or closure gate.
 
+The proposed proof contract is fail-closed. Bootstrap and generated bridges
+come from the same exact hashed ABI tarball; the bridges report actual
+`import.meta.resolve` URLs for every ABI public export and the odd publication,
+and their realpaths remain inside installed roots and outside checkouts,
+`test_env`, and private paths. A closed module-graph/static-import census, not
+regex or token matching, accounts for every proof entrypoint and imported
+module. Each native owner row retains the resolved method URL/path, canonical
+request/output digests, exact child calls, dependencies, resources, effects,
+admission, and predecessor/successor references; install and bind retain their
+composite relations, and no native row is relabelled as a receipt. Selected
+semantics and Implementation owner-load probes derive from returned public
+resolution data and prove the installed owner path and callable symbol.
+
+Proof retains exact raw input/output bytes, byte lengths, and SHA-256 digests.
+The 0.1 predecessor basis binds the immutable tag, commit, Git blobs, and
+digests rather than trusting an external parsed body. Each fresh Public receipt
+proves exact `definitionKey` equality and binds pre/post event-log bytes and
+digests. Tar proof is an exact header-level census of the five members whose
+paths are prefixed by `package/`. The acceptance entrypoint fails on any missing environment,
+input, or output and must create, never reuse, both raw and differential
+receipts; no skip path may report green.
+
+The five frozen Product blobs enumerated by the migration design remain
+accepted and unaffected by this assurance reframe. Its four named proof blobs
+are donor evidence rejected pending repair and cannot qualify a candidate.
+
 The odd_glc `0.2.0-dev.1` package closes only when its production census
 contains declarative GTL publication data and no executable evaluator/provider,
 Product-semantics provider, implementation binding, leaf Implementation,
 dispatcher, event name/writer, raw-event walker, evidence binder, fold,
 residualizer, controller, ABI private import, or source-tree dependency.
 Proof is proportional: one sunny path, one fresh-process replay, that negative
-census, and only the constructable Product-resolution seam negatives above.
-Read falsifiers stay layer-exact: crossed top-level/embedded acquisition or a
-one-copy tamper is transport refusal `acquisition_mismatch`; a matching stale
-or tampered owner-issued handoff returns a transport result whose receipt exits
-70 with `resource_acquisition`/`acquisition_refused`; a malformed resource
-assertion exits 70 with `resource_admission`/`invalid_resource_assertion`; and
-a stale `projectionBasis` is owner refusal `projection_basis_mismatch` with
-receipt exit 1. There is no `replay_divergence` code. One installed owner-load
-probe proves each selected semantic callable came from its resolved owner
-install.
+census, and exactly six current falsifiers. Selected GraphFunction removal is
+`absent@catalog`; authentic admitted-roster mismatch is
+`incompatible_or_unproven@dependency`; crossed top-level/embedded acquisition
+or a one-copy tamper is transport refusal `acquisition_mismatch` with no
+receipt; a matching stale or tampered owner-issued handoff returns a receipt
+exiting 70 with `resource_acquisition`/`acquisition_refused`; a malformed
+resource assertion exits 70 with
+`resource_admission`/`invalid_resource_assertion`; and stale
+`projectionBasis` is owner refusal `projection_basis_mismatch` with receipt
+exit 1. There is no `replay_divergence` code.
+
+The activated D capsule
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-product-resolution-hardening`
+retains the other exact, real Product-resolution variants. Deferring them is an
+explicit E2E-first tradeoff, not a cut corner: the complete installed Hello
+composition gives higher-value Product information first, while additional
+authentic Product variants would otherwise turn the current steel thread into
+local hardening churn. The capsule is registered debt with pre-RC,
+expanded-qualification, and exact-seam-change triggers; it may not disappear
+without proof and disposition.
 
 ### Selected Routing Ticket
 

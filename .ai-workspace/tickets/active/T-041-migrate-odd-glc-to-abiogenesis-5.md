@@ -5,7 +5,7 @@
 - type: feature
 - ticket_category: implementation_migration
 - status: active
-- execution_state: ratified_design_reframe_transplant_and_realization_authorized
+- execution_state: proof_assurance_design_reframe_v4_proposed_review_pending
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
@@ -18,7 +18,7 @@
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
 - current_change_class: design_reframe
-- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-evidence-reframe
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-proof-assurance-reframe
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
 - governing_library: >-
@@ -57,13 +57,12 @@
     dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
   - specification/PRODUCT.md
   - >-
-    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (current ratified
-    evidence reframe frozen as exact proposal commit
-    96f223f36062fc88b961ba7f98e534141ab42c84, tree
-    4ce7395754f2a0ed926d0c927528a3b2263964ae, full-index binary patch SHA-256
-    e1c5ce2153be99b78c44b96e8b52ca7c9279281f18c785d10982a2eeff7dabd5;
-    fresh independent Max exact-tree disposition ACCEPT with A/B/C/D all zero
-    and Executive/F_H acceptance on 2026-08-24)
+    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (admitted v3
+    predecessor: proposal commit 96f223f36062fc88b961ba7f98e534141ab42c84,
+    tree 4ce7395754f2a0ed926d0c927528a3b2263964ae, admission status commit
+    236a08603cbfd7bb31ab0319053f36b46718b549; proposed proof-assurance v4 is a
+    direct child of that status commit and awaits fresh exact-tree review and
+    Executive/F_H acceptance)
   - exact ABIogenesis v5.0.0-dev.286 public Product boundary
 - delegated_authority: >-
     Realize and prove the bounded Program-only sentinel from the named clean
@@ -77,8 +76,8 @@
 - acceptance_roles:
     product_authority: direct_F_H
     adjudicator: Executive_F_H
-    independent_review: satisfied_on_exact_v3_proposal_tree
-    checkpoint_administration: authorized_after_external_acceptance
+    independent_review: pending_on_exact_v4_proposal_tree
+    checkpoint_administration: blocked_pending_v4_external_acceptance
 - predecessor_tickets:
   - T-033
   - T-038
@@ -88,18 +87,22 @@
 - predecessor_design_admission_gates:
   - independent exact-tree review disposition ACCEPT
   - Executive/F_H accepted the exact proposal tree on 2026-08-24
-- design_reframe_admission_gates:
+- admitted_v3_design_reframe_gates:
   - fresh independent Max exact-tree review disposition ACCEPT with A/B/C/D all zero for commit 96f223f36062fc88b961ba7f98e534141ab42c84, tree 4ce7395754f2a0ed926d0c927528a3b2263964ae
   - Executive/F_H accepted those exact v3 bytes on 2026-08-24
+- proposed_v4_design_reframe_admission_gates:
+  - fresh independent Max exact-tree review of the frozen v4 proposal commit and tree
+  - Executive/F_H acceptance of those exact v4 bytes
 - realization_dependencies:
+  - both proposed v4 design-reframe admission gates satisfied before candidate freeze or authority transplant
   - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
   - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
   - immutable v0.1.0 predecessor receipt for the bounded differential
 
-## Ratified Evidence-Reframe Routing
+## Proposed Proof-Assurance Reframe Routing
 
-The current implementation authority is the evidence-driven `design_reframe`
-frozen as exact proposal commit
+The admitted predecessor is the evidence-driven v3 `design_reframe` frozen as
+exact proposal commit
 `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
 `4ce7395754f2a0ed926d0c927528a3b2263964ae`. Its exact lineage is status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
@@ -107,23 +110,31 @@ frozen as exact proposal commit
 `c4f521f22bc35717565ce6b2607e69df25115129` -> accepted v3 proposal
 `96f223f36062fc88b961ba7f98e534141ab42c84`. Fresh independent Max exact-tree
 review returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted those
-same bytes on 2026-08-24. This ticket records that external disposition; it
-does not self-accept.
+same bytes on 2026-08-24 through status commit
+`236a08603cbfd7bb31ab0319053f36b46718b549`.
 
-The accepted reframe keeps the ABI and odd_glc identities, exact five-member
+End-to-end proof inspection re-entered assurance design only. This v4 proposal
+is one direct child of exact admitted commit
+`236a08603cbfd7bb31ab0319053f36b46718b549`; it awaits fresh independent
+exact-tree review and Executive/F_H acceptance and does not self-accept.
+
+The proposed reframe keeps the ABI and odd_glc identities, exact five-member
 zero-code archive, cross-owner declaration/Implementation relation, Hello
 semantics, installed execution DAG, and predecessor conservation unchanged.
-Its authority bytes may be transplanted into the realization lineage, and a
-candidate may freeze under the exact eight-native/four-receipt proof law after
-the remaining execution gates pass. The ticket, synthetic ABI fixture, dirty
-checkout, rejected `abi5_program` source, diagnostic result, and prior
-candidate tests cannot fill or revise a frozen field or substitute for proof.
+Diagnostic end-to-end work may continue, but its authority bytes may not be
+transplanted and no candidate may freeze before both v4 admission gates pass.
+The ticket, synthetic ABI fixture, dirty checkout, rejected `abi5_program`
+source, diagnostic result, and prior candidate tests cannot fill or revise a
+frozen field or substitute for proof.
 
 ## Operative Wave 2 Target
 
 This section supersedes the broader migration targets and Increment 01-05
 candidates below for execution. Those sections remain historical and
 later-wave evidence only.
+The Product target and eight-native/four-receipt relation remain admitted and
+unchanged. The v4 assurance clauses in this section are proposals until both
+v4 admission gates pass.
 This is a Program-only sentinel. The odd_glc Product term `MVP` remains
 reserved for `SCN-GLC-HELLO-WORLD-MINIMAL`, which this ticket does not close.
 "Hello World" is the minimal end-to-end steel-thread shorthand. A Hello World
@@ -172,17 +183,15 @@ Program and composed GraphFunction owner is odd_glc; referenced base
 GraphFunction, contract, evaluator, and Implementation owners may be ABI
 dependencies.
 
-Declared dependency ambiguity or incompatibility stops earlier through
-installed `./product::ProductEnvironmentPort.resolve` as Environment refusal
-`ambiguous_dependency` or `incompatible_dependency`. Selected execution
-resolution negatives call installed
-`./product::ProductExecutionResolutionPort.resolve` directly. Constructable
-outcomes are `missing_dependency@declaration_closure`,
-`incompatible_or_unproven@dependency`, `absent@implementation`,
-`ambiguous@implementation`, `wrong_owner@implementation`, semantic-owner absence
-or ambiguity as `wrong_owner@declaration_closure` or
-`ambiguous@declaration_closure`, and uniquely resolved provider load/binding
-mismatch as `wrong_owner@semantics`. Public
+The current minimum Product-resolution cone is selected GraphFunction removal
+as `absent@catalog` and authentic admitted-roster mismatch as
+`incompatible_or_unproven@dependency`, both through installed
+`./product::ProductExecutionResolutionPort.resolve`. Exact Environment
+ambiguity/incompatibility, missing declaration reachability, Implementation
+absence/duplication/nonloadable-owner, semantic-owner absence/ambiguity, and
+resolved provider load/binding mismatch remain authenticated source law in
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-product-resolution-hardening`.
+They are activated D assurance debt, not current candidate minimum. Public
 structurally admits the run request, selects `run.invoke#start`, calls the
 concrete Product resolution port and selected concrete owner ports, then
 projects. Product/Validator resolves and validates the Catalog closure; each
@@ -207,7 +216,7 @@ owner/binding coordinate, `loadInstalledProductSemantics` consumes that
 resolved binding and owner install, and `applyRunInvoke` stops threading the
 odd_glc Program install into every loader. Public passes Program selection but
 does not select owners or special-case an ABI. No negative gate expands the
-raw enums beyond the constructable pairs above.
+raw enums beyond the exact current and deferred rows in the migration design.
 
 The Catalog supports immutable ABIogenesis/ABG-bundled base GraphFunctions,
 downstream GraphFunction compositions, compatible owner-local
@@ -259,8 +268,10 @@ projections may prove equality without executing a second semantic path.
 
 Exact ABIogenesis `v5.0.0-dev.286` publishes one structural
 18-operation/56-definition Public family. T-041 proves that family identity
-and mechanically resolves the twelve selected callable locators. It makes no
-whole-family callable-closure or behavioral claim. The activated
+and applies exact own-property law to all 56 installed locators: exactly 39
+are callable and the exact 17 are absent. The twelve selected locators are a
+subset of the 39. This makes no whole-family callable-closure or behavioral
+claim. The activated
 `capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-substrate` records 17
 unselected missing installed callable locators: five `interaction.respond`,
 two `product.materialize`, `project.read#release_evidence`, one
@@ -289,12 +300,16 @@ JSON CLI receipt. The comparator reduces them only to source-independent
 installed execution, one top-level start, minimal Hello operation succeeded,
 one terminal result, expected version-local greeting, fresh-process replay
 agreement, no source/private import, and no legacy fallback. It may not
-rewrite either raw observation. ABIogenesis 4.6 `converged` versus 5.0
-`closed_success` are authenticated version-local evidence. The 5.0 run proves
-selection of the odd_glc-owned GraphFunction plus the exact ABI-owned Hello
-leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
-bindings, punctuation, and transport forms are not compared across versions.
-This is a steel-thread comparison, not Product parity.
+rewrite either raw observation. ABIogenesis 4.6 retains its version-local
+`converged` observation. Exact ABI5 raw evidence is runtime status `closed`,
+the `run.invoke#start` receipt owner disposition `completed`, exactly one
+terminal result, and no failure. No derived local status label is authenticated
+ABI vocabulary, and the shared eight-field reduction has no status field. The
+5.0 run proves selection of the odd_glc-owned GraphFunction plus the exact
+ABI-owned Hello leaf binding. Raw IDs, digests, events, Programs,
+GraphFunctions, leaf bindings, punctuation, and transport forms are not
+compared across versions. This is a steel-thread comparison, not Product
+parity.
 
 The existing native ABI Hello Program, GraphFunction, leaf/judgment
 (`subject: "World"` to typed `message: "Hello World"`), and canonical JSON CLI
@@ -316,6 +331,57 @@ substrate evidence only. T-041 still must pack the frozen real odd_glc identity
 and reproduce the installed owner-stage plus Public start/read relation from
 source-blind installed bytes.
 
+### Frozen Product and proof-donor disposition
+
+These five frozen Product blobs remain accepted and are unaffected by v4:
+
+- `build_tenants/odd_glc/typescript/product/package.json`;
+- `build_tenants/odd_glc/typescript/product/build/publication.json`;
+- `build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json`;
+- `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json`; and
+- `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json`.
+
+These four realization proof blobs are donors rejected pending repair and
+cannot qualify or freeze a candidate:
+
+- `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs`;
+- `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs`;
+- `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs`; and
+- `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs`.
+
+### Proof-assurance contract
+
+Acceptance is fail-closed under the exact contract in the migration design:
+
+1. Extract the proof bootstrap from the same exact ABI tarball whose SHA-256 is
+   pinned by this ticket. Generated bridges emit actual `import.meta.resolve`
+   URLs for every exact ABI public export and the odd publication. Resolved
+   realpaths must be contained under installed roots and outside source
+   checkouts, `test_env`, and private paths.
+2. Produce a closed module-graph/static-import census from module-aware parser
+   or loader evidence. Regex, token, filename, or expected-string scans do not
+   prove closure.
+3. Inspect all 56 locators with exact own-property law and retain the exact
+   39-callable/17-absent census, with the selected twelve proved inside the 39.
+4. For each of the eight native rows retain actual resolved method URL/path,
+   canonical request/output digests, exact child calls, dependencies,
+   resources, effects, admission, and predecessor/successor references.
+   Install and bind retain their composite relations. Native rows are never
+   receipts.
+5. Derive the selected semantics and Implementation owner-load probes from
+   returned public resolution data, then prove the resolved installed owner
+   path and callable symbol.
+6. Retain exact raw input/output bytes, byte lengths, and SHA-256. Bind the
+   predecessor basis to immutable tag, commit, consumed Git blobs, and digests,
+   not an external parsed body alone. For each fresh Public call, prove receipt
+   `definitionKey` equality and retain pre/post event-log bytes, lengths, and
+   digests.
+7. Census exact tar headers, including path and type, against the five regular
+   files with `package/`-prefixed paths. The acceptance entrypoint fails on a
+   missing environment value, input, or output; it creates rather than reuses
+   raw and differential receipts. No missing-prerequisite or existing-output
+   path may skip to green.
+
 ### Closure and exclusions
 
 The odd_glc 0.2 production package contains declarative Program publication
@@ -333,36 +399,52 @@ existence proof only. Broader tests become later-wave gap discovery and cannot
 expand this ticket retroactively.
 
 Closure proof is one installed sunny path, one fresh-process replay, the
-package/source/private negative census, and only the constructable direct
-installed Product-port negatives above. Read falsifiers distinguish: crossed
-top-level/embedded acquisition or one-copy tamper -> transport refusal
-`acquisition_mismatch`; matching stale/tampered owner-issued handoff ->
-transport result receipt exit 70 with
-`resource_acquisition`/`acquisition_refused`; malformed resource assertion ->
-receipt exit 70 with `resource_admission`/`invalid_resource_assertion`; stale
-`projectionBasis` -> owner refusal `projection_basis_mismatch` with receipt
-exit 1. There is no `replay_divergence` code. One installed owner-load probe
-proves each selected semantic callable came from its resolved owner install.
-No exhaustive matrix or broader odd_glc scenario is a Wave 2 gate.
+package/source/private negative census, and exactly six current falsifiers:
+
+1. selected GraphFunction removal -> `absent@catalog`;
+2. authentic admitted-roster mismatch ->
+   `incompatible_or_unproven@dependency`;
+3. crossed top-level/embedded acquisition or one-copy tamper -> transport
+   refusal `acquisition_mismatch` with no receipt;
+4. matching stale/tampered owner-issued handoff -> transport result receipt
+   exit 70 with `resource_acquisition`/`acquisition_refused`;
+5. malformed resource assertion -> receipt exit 70 with
+   `resource_admission`/`invalid_resource_assertion`; and
+6. stale `projectionBasis` -> owner refusal `projection_basis_mismatch` with
+   receipt exit 1.
+
+There is no `replay_divergence` code. The activated D capsule retains exact
+Environment ambiguity/incompatibility, missing dependency reachability,
+Implementation absence/duplication/nonloadable owner, semantic-owner
+absence/ambiguity, and resolved-provider wrong-owner variants. Those real
+Product variants are required before pre-RC or expanded qualification, or when
+their exact seam changes; they may never be silently closed. This is registered
+debt, not a cut corner: E2E composition yields higher Product information
+first, while constructing all authentic variants now would cause local
+hardening churn. No exhaustive matrix or broader odd_glc scenario is a current
+Wave 2 gate.
 
 ### Execution order
 
-1. Transplant the accepted authority bytes and proceed with realization;
-   freeze a candidate only under the exact eight-native/four-receipt proof law
-   after its proof gates pass. Reject construction unless the ABI tarball
-   matches the pinned `v5.0.0-dev.286` SHA-256.
+1. Continue diagnostic end-to-end repair only. Do not transplant v4 authority
+   or freeze a realization candidate before fresh independent exact-tree review
+   and Executive/F_H acceptance. Reject construction unless the ABI tarball
+   matches the pinned `v5.0.0-dev.286` SHA-256, and extract bootstrap from those
+   same bytes.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
-3. Prove structural equality to the exact 18/56 family, mechanically
-   load/resolve the twelve selected callable locators, and retain the activated
-   substrate capsule as the bounded nonclaim for the 17 unselected missing
-   locators.
+3. Prove structural equality to the exact 18/56 family, classify all 56 under
+   exact own-property law as 39 callable and the exact 17 absent, and prove the
+   selected twelve are inside the 39. Retain the activated substrate capsule.
 4. Pack the exact five-member data-only odd_glc `0.2.0-dev.1` Program candidate.
-5. Execute the eight installed-public owner stages, then one installed Public
-   episode chain with exactly one start and receipt-derived status/result/replay
-   keys; replay it from another process and prove SDK/schema/catalog equality
-   mechanically.
-6. Freeze both receipts, package censuses, and the normalized differential for
-   cold review and Executive disposition.
+5. Execute the eight installed-public owner stages with the native-row evidence
+   contract, then one installed Public episode chain with exactly one start and
+   fresh receipt-derived status/result/replay keys. Replay from another process
+   and prove SDK/schema/catalog equality mechanically.
+6. Satisfy bridge provenance, closed module-graph, owner-load, raw-byte,
+   predecessor-basis, event-log, exact tar-header, and create-only fail-closed
+   acceptance gates. Only after v4 admission, freeze both raw receipt sets,
+   package censuses, and the normalized differential for cold review and
+   Executive disposition.
 
 Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private

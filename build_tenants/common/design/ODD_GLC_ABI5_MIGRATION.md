@@ -1,11 +1,11 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Active ratified T-041 evidence-driven `design_reframe`; exact
-proposal commit `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
-`4ce7395754f2a0ed926d0c927528a3b2263964ae`, independently reviewed ACCEPT
-with A/B/C/D all zero and accepted by Executive/F_H on 2026-08-24; full
-lifecycle migration deferred
+**Status**: Proposed T-041 evidence-driven proof-assurance `design_reframe` v4,
+direct child of admitted status commit
+`236a08603cbfd7bb31ab0319053f36b46718b549`; awaiting fresh independent
+exact-tree review and Executive/F_H acceptance; realization candidate freeze
+is not authorized; full lifecycle migration deferred
 **Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
 **Construction Basis**: direct-F_H-adopted authority-conserving,
 entity-centric, event-sourced functional reactive domain modeling method;
@@ -18,32 +18,37 @@ resolved through `specification/GOVERNANCE.md`
 `@abiogenesis/typescript-tenant@4.6.0-rc.3`
 **Development substrate**: `@abiogenesis/typescript-tenant@5.0.0-dev.286`
 
-## Ratified T-041 Evidence Reframe
+## Proposed T-041 Proof-Assurance Reframe
 
 The `specification/GOVERNANCE.md` exact-tree record admits the predecessor
 design at status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`.
 End-to-end construction against its exact ABI substrate falsified two proof
 assumptions: the first eight steel-thread stages cannot be invoked as lawful
 DefinitionCalls, and the published 18/56 family is not whole-family callable
-from its installed export locators. The accepted v3 correction is a
+from its installed export locators. The admitted v3 correction is a
 `design_reframe` frozen as exact proposal commit
 `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
 `4ce7395754f2a0ed926d0c927528a3b2263964ae`, with lineage
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` ->
 `2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` ->
 `c4f521f22bc35717565ce6b2607e69df25115129` ->
-`96f223f36062fc88b961ba7f98e534141ab42c84`. It changes no Intent, Product
+`96f223f36062fc88b961ba7f98e534141ab42c84`, then admitted by status commit
+`236a08603cbfd7bb31ab0319053f36b46718b549`. Subsequent end-to-end proof
+inspection found assurance overclaims in its ABI5 terminal vocabulary,
+negative minimum, locator census, provenance, and fail-closed acceptance
+boundary. This evidence-driven v4 proposal is a direct child of exact admitted
+commit `236a08603cbfd7bb31ab0319053f36b46718b549`. It changes no Intent, Product
 meaning, requirement, frozen identity, five-member Product, owner relation,
-or Hello outcome.
+eight-native/four-receipt split, or Hello outcome.
 
-Fresh independent Max exact-tree review returned ACCEPT with A/B/C/D all zero,
-and Executive/F_H explicitly accepted those same bytes on 2026-08-24. The
-reframe is current implementation authority. This status-only child records
-that external admission; neither the proposal nor diagnostic execution
-self-accepted it. Its authority bytes may be transplanted into the realization
-lineage, and a candidate may freeze under the exact eight-native/four-receipt
-proof law after the remaining gates pass. The pre-pin Wave 2 draft and
-rejected candidate records below remain design history only.
+Fresh independent Max exact-tree review returned ACCEPT with A/B/C/D all zero
+for v3, and Executive/F_H explicitly accepted those same bytes on 2026-08-24.
+That admission is predecessor history, not acceptance of this descendant.
+Diagnostic end-to-end work may continue, but v4 does not self-accept: its
+authority bytes may not be transplanted and no realization candidate may
+freeze until fresh independent exact-tree review and Executive/F_H acceptance
+of the exact v4 bytes. The pre-pin Wave 2 draft and rejected candidate records
+below remain design history only.
 
 The selected subject is a governed, separately versioned and installable
 data-only GTL Product. It is not an application, runtime, controller, semantic
@@ -168,15 +173,21 @@ The minimum realization/proof path set is:
 
 | Path | Disposition |
 |---|---|
-| `build_tenants/odd_glc/typescript/product/package.json` | add frozen package descriptor |
-| `build_tenants/odd_glc/typescript/product/build/publication.json` | add frozen odd-owned Program/GF publication data |
-| `build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json` | add canonical empty graph |
-| `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json` | add canonical empty Catalog schema |
-| `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json` | add digest-bound Product/dependency/contribution manifest |
-| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | add real-pack census, digest, manifest, schema, and prohibited-code proof |
-| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | add installed-public owner-stage two-Product setup, four-call Public transport, cross-owner Hello/ABG proof, and seam negatives |
-| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | add source-blind installed status/result/replay reader used only by proof |
-| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | add immutable 0.1 versus real-packed 0.2 semantic reduction |
+| `build_tenants/odd_glc/typescript/product/package.json` | accepted frozen Product blob; unaffected by v4 |
+| `build_tenants/odd_glc/typescript/product/build/publication.json` | accepted frozen Product blob; unaffected by v4 |
+| `build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json` | accepted frozen Product blob; unaffected by v4 |
+| `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json` | accepted frozen Product blob; unaffected by v4 |
+| `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json` | accepted frozen Product blob; unaffected by v4 |
+| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
+
+The first five rows are the complete frozen Product-data set and remain
+accepted without byte or semantic change. The last four rows are realization
+proof donors only. Their existing bytes are rejected as acceptance evidence
+until they satisfy this proposal's repaired proof contract; no donor result may
+be inherited as green.
 
 Existing `src/abi5_program.mjs`, declaration, and focused test candidates are
 not in this clean subject and must not be copied. Existing 0.1 source and proof
@@ -403,12 +414,15 @@ legacyFallback                     = false
 
 The immutable 0.1 observation retains real stdout `Hello, world!\n` and its
 version-local `converged` truth. The 0.2 observation retains the ABI5 canonical
-JSON receipt, typed `hello_world_output` with `message: "Hello World"`, and its
-version-local `closed_success` truth. Program, GraphFunction, event, digest,
-status-vocabulary, punctuation, and transport identities are authenticated
-inside each version and are not compared across versions. The ABI5 observation
-additionally proves odd Program/GraphFunction ownership and ABI
-semantics/Implementation ownership.
+JSON receipt, typed `hello_world_output` with `message: "Hello World"`, runtime
+status `closed`, `run.invoke#start` receipt owner disposition `completed`,
+exactly one terminal result, and no failure. Those are the exact raw ABI5
+observations; no derived local status label is authenticated ABI vocabulary.
+The shared eight-field reduction above has no status field. Program,
+GraphFunction, event, digest, status vocabulary, punctuation, and transport
+identities are authenticated inside each version and are not compared across
+versions. The ABI5 observation additionally proves odd Program/GraphFunction
+ownership and ABI semantics/Implementation ownership.
 
 ### Evidence status and proof boundary
 
@@ -441,9 +455,10 @@ coordinates in the immutable-bases table above:
    public owner relations but cannot lawfully traverse DefinitionCalls because
    the only grant constructor requires an existing workspace binding and does
    not admit their operation families.
-2. `INSTALLED_CALLABLE_LOCATOR_17`: the package publishes the structural
-   18-operation/56-definition family, but 17 unselected definitions have no
-   resolvable installed callable locator:
+2. `INSTALLED_CALLABLE_LOCATOR_17`: an exact own-property census over every one
+   of the 56 published locators yields exactly 39 installed callable own
+   properties and exactly 17 absent locators. No inherited member, fallback,
+   token match, or expected label counts. The 17 absent definitions are:
    `interaction.respond#select`, `interaction.respond#approve`,
    `interaction.respond#reject`, `interaction.respond#assess`,
    `interaction.respond#answer_escalation`,
@@ -456,18 +471,19 @@ coordinates in the immutable-bases table above:
    `witness.admit#run-stopped`.
 
 None of the 17 missing locators belongs to the twelve-stage sentinel. The exact
-selected twelve definition locators remain a bounded mechanical existence
-probe. The 17 definition rows remain members of the structural family; their
-installed export/member locators do not resolve. The other 44 definitions
-remain outside T-041 behavior qualification, and this design makes no whole-56
-callable-closure or behavioral claim.
+selected twelve definition locators are a subset of the 39 callable own
+properties and remain a bounded mechanical existence probe. The 17 definition
+rows remain members of the structural family; their installed export/member
+locators do not resolve. The 27 unselected callable definitions plus the 17
+absent definitions remain outside T-041 behavior qualification. This design
+makes no whole-56 callable-closure or behavioral claim.
 Repair of either capsule finding belongs to an exact future ABI successor;
 odd_glc may not supply the missing bindings, grant authority, or substitute
 transport.
 
-#### Exact bounded negative frame
+#### Current T-041 minimum negative cone
 
-This frame is bound to exact `v5.0.0-dev.286` installed behavior and source at
+This cone is bound to exact `v5.0.0-dev.286` installed behavior and source at
 `build_tenants/abiogenesis/typescript/code/src/product/environment.ts`,
 `product/execution_resolution.ts`,
 `public/installed_definition_call_transport.ts`, and
@@ -478,21 +494,93 @@ do not forge pre-binding grants or claim DefinitionCall traversal.
 
 | Falsifier | Exact layer | Required observable outcome |
 |---|---|---|
-| declared dependency ambiguity or incompatibility | installed `./product::ProductEnvironmentPort.resolve`, before execution resolution | Environment refusal `ambiguous_dependency` or `incompatible_dependency` |
-| required declaration exists only outside dependency reachability | installed `./product::ProductExecutionResolutionPort.resolve` | `missing_dependency@declaration_closure` |
-| admitted-install set does not prove the exact Catalog readiness candidates | same installed Product port | `incompatible_or_unproven@dependency` |
-| Implementation descriptor/set is absent or duplicated | same installed Product port | `absent@implementation` or `ambiguous@implementation` |
-| resolved Implementation owner cannot load its packaged descriptor/callable | same installed Product port | `wrong_owner@implementation` |
-| semantic owner is absent or ambiguous | declaration closure inside the same installed Product port | `wrong_owner@declaration_closure` or `ambiguous@declaration_closure` |
-| uniquely resolved semantic provider fails owner-local load or binding match | same installed Product port after closure | `wrong_owner@semantics` |
+| selected GraphFunction is removed from the admitted Catalog | installed `./product::ProductExecutionResolutionPort.resolve` | `absent@catalog` |
+| authentic admitted roster no longer proves the selected dependency/install set | same installed Product port | `incompatible_or_unproven@dependency` |
 | top-level acquisition crosses the embedded acquisition, or only one copy is tampered | installed Public transport, before owner execution | transport refusal `acquisition_mismatch`; no `DefinitionHostReceipt` |
 | both acquisition copies match one stale or tampered owner-issued handoff | installed transport reaches the read owner | transport result with `DefinitionHostReceipt.exitCode` 70 and failure `resource_acquisition`/`acquisition_refused` |
 | owner-entering read resource assertion is malformed | installed transport reaches the read owner | transport result with receipt exit 70 and failure `resource_admission`/`invalid_resource_assertion` |
 | `projectionBasis` is stale against the acquired durable prefix | read owner executes | transport result with receipt exit 1 and owner refusal `projection_basis_mismatch` |
 
-No gate expands the raw enums into unconstructable code/stage cross-products;
-only the table rows govern. Projection/result inequality is a proof failure,
-not a typed `replay_divergence` refusal; no such code exists.
+These six behaviors are authentic, already-green diagnostic observations and
+the complete current minimum. Because the donor proof blobs are rejected, the
+repaired acceptance proof must reproduce them under the contract below. No gate
+expands the raw enums into unconstructable code/stage cross-products.
+Projection/result inequality is a proof failure, not a typed
+`replay_divergence` refusal; no such code exists.
+
+#### Activated D Product-resolution hardening capsule
+
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-product-resolution-hardening`
+retains exact installed-source reference law for these additional real Product
+variants:
+
+| Deferred falsifier | Exact layer | Authenticated outcome |
+|---|---|---|
+| declared dependency ambiguity or incompatibility | installed `./product::ProductEnvironmentPort.resolve`, before execution resolution | `ambiguous_dependency` or `incompatible_dependency` |
+| required declaration exists only outside dependency reachability | installed `./product::ProductExecutionResolutionPort.resolve` | `missing_dependency@declaration_closure` |
+| Implementation descriptor/set is absent or duplicated | same installed Product port | `absent@implementation` or `ambiguous@implementation` |
+| resolved Implementation owner cannot load its packaged descriptor/callable | same installed Product port | `wrong_owner@implementation` |
+| semantic owner is absent or ambiguous | declaration closure inside the same installed Product port | `wrong_owner@declaration_closure` or `ambiguous@declaration_closure` |
+| uniquely resolved semantic provider fails owner-local load or binding match | same installed Product port after closure | `wrong_owner@semantics` |
+
+These rows are category D deferred assurance, not current candidate closure.
+They become mandatory before pre-RC or expanded qualification, or when an exact
+change touches Environment resolution, declaration reachability,
+Implementation descriptor/owner loading, or semantic provider owner/binding.
+They may never be silently closed. This is an explicit E2E-first disposition,
+not a cut corner: completing the real installed composition first yields higher
+Product-level information, while constructing every additional authentic
+Product variant now would displace that steel thread with local hardening churn.
+The debt, triggers, exact codes, and owner layers remain registered here.
+
+#### Current proof-assurance contract
+
+The acceptance proof is fail-closed and satisfies all of these conditions:
+
+1. The bootstrap is extracted from the same exact ABI tarball whose bytes match
+   the frozen SHA-256. No checkout, separately built package, fixture, or second
+   tarball may supply bootstrap code or authority.
+2. Generated bridges emit the actual `import.meta.resolve` URL for every export
+   in the exact ABI public map above and for
+   `@odd-glc/route-one-typescript/publication`. The corresponding realpaths are
+   contained under the two installed package roots and outside every source
+   checkout, `test_env`, and private path.
+3. A closed module-graph/static-import census accounts for every proof
+   entrypoint, module URL, and static import edge. Every imported node is in the
+   graph and every node's static imports are enumerated by module-aware parsing
+   or loader evidence; regex, token, filename, and expected-string scans do not
+   establish closure.
+4. The exact own-property locator census classifies all 56 published locators
+   as exactly 39 callable and the exact 17 absent listed above. Every path
+   segment and final member must be an own property; inherited and fallback
+   resolution are failures. The twelve selected locators are proved to be a
+   subset of the 39.
+5. Every one of the eight native owner-stage rows retains its actual resolved
+   method URL/path, canonical request and output digests, exact child calls,
+   dependencies, resources, effects, admission, and predecessor/successor
+   references. Install retains its materialize/admit composite relation and
+   bind its construct/admit composite relation. Native rows are never receipts
+   and their stage labels are never presented as receipt-derived trace.
+6. The selected semantics and Implementation owner-load probe starts from the
+   returned public Product-resolution data, follows the resolved installed
+   owner path, and proves the exact callable symbol. A guessed owner, expected
+   path, or test-provided binding fails.
+7. Every raw execution input and output is retained byte-for-byte with byte
+   length and SHA-256. The predecessor basis binds immutable tag `v0.1.0`, its
+   exact commit, the consumed Git blob identities, and their byte digests; an
+   external parsed body alone is not predecessor evidence.
+8. Each fresh Public call retains its receipt and proves exact
+   `DefinitionHostReceipt.definitionKey` equality. The proof also retains the
+   exact pre-call and post-call event-log bytes, byte lengths, and digests, so
+   exactly one start and zero read-time append are byte-observable.
+9. Tar proof uses the archive headers, including path and type, and requires
+   exact equality to the five regular-file members with `package/`-prefixed
+   paths. Normalized filenames or a body-only file list cannot hide another
+   header.
+10. The acceptance entrypoint fails on a missing required environment value,
+    input receipt, or output destination. It creates, never reuses or
+    overwrites, both the raw receipt set and the differential receipt. Existing
+    output or any missing prerequisite is failure; no skip path reports green.
 
 Minimum assurance is:
 
@@ -502,7 +590,8 @@ Minimum assurance is:
    effects, admission, and owner separation asserted;
 3. the exact four-receipt installed Public DefinitionCall trace with one start,
    plus mechanical callable-locator existence for the twelve selected keys;
-4. the exact bounded negative frame above, without cross-product expansion;
+4. the exact six-row current negative cone above, without cross-product
+   expansion;
 5. fresh-process status/result/replay equality and zero appended read bytes;
 6. a source-blind/private-import census over packed modules and loaded module
    refs; and
@@ -542,39 +631,40 @@ RC/final publication, or compatibility across 4.6 and 5.0 carriers.
 Permanently removing future read-only lifecycle interpretation would require a
 separate Product reprice; the zero-code sentinel does not make that decision.
 
-The accepted reframe genealogy is exact: accepted status commit
+The admitted v3 genealogy is exact: accepted status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
 `2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` -> refusal-enum repair
 `c4f521f22bc35717565ce6b2607e69df25115129` -> accepted v3 proposal commit
 `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
-`4ce7395754f2a0ed926d0c927528a3b2263964ae`. The v3 proposal's direct parent
-is `c4f521f22bc35717565ce6b2607e69df25115129`. The cumulative proposal changes
+`4ce7395754f2a0ed926d0c927528a3b2263964ae` -> admission status commit
+`236a08603cbfd7bb31ab0319053f36b46718b549`. This proposed v4 commit is one
+direct child of exact `236a08603cbfd7bb31ab0319053f36b46718b549` and changes
 only `specification/GOALS.md`, this design, and T-041 routing. It changes no
 Product semantics, requirement, identity, source, package data, proof code,
 test, or ABI bytes.
 
-The reframe admission topology is complete: fresh independent Max review of
-the exact v3 tree returned ACCEPT with A/B/C/D all zero, and Executive/F_H
-accepted those bytes on 2026-08-24. This status-only child records that
-external disposition without treating its own commit or diagnostic execution
-as acceptance. Realization transplant and candidate freeze are authorized
-under the exact eight-native/four-receipt proof law and the remaining
-immutable-substrate and proof gates.
+The v3 admission topology is complete: fresh independent Max review of its
+exact tree returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted
+those bytes on 2026-08-24. V4 re-enters only assurance design and awaits a new
+independent exact-tree review and Executive/F_H acceptance. This proposal does
+not treat its own commit or diagnostic execution as acceptance; realization
+transplant and candidate freeze remain unauthorized.
 
-With this reframe admitted, the first realization gate remains availability
-of exact ABI tarball bytes at the frozen digest. No executable test is a
-prerequisite to authoring the first Product-data cut; the four named future
-proof paths above must exist before that cut can be accepted. No code, package,
-build, test, migration closure, RC, final release, or tag movement is credited
-by this document alone.
+If this reframe is admitted, the first realization gate remains availability
+of exact ABI tarball bytes at the frozen digest. The five frozen Product blobs
+are already accepted and unaffected; the four named donor proof blobs must be
+repaired and satisfy the exact proof contract before any realization cut can
+be accepted. No code, package, build, test, migration closure, RC, final
+release, or tag movement is credited by this document alone.
 
 ## Superseded Pre-Pin Wave 2 Draft
 
 The following section predates the exact immutable substrate and odd_glc
 identity freeze. It is retained as non-authoritative design history. The
-ratified evidence reframe above governs every difference. Words such as
-“accepted” inside this preserved history report former assumptions; they do
-not override the current design.
+proposed proof-assurance reframe above defines every claimed v4 difference for
+exact-tree review. Words such as “accepted” inside this preserved history
+report former assumptions; they do not admit this proposal or override its
+status.
 
 The current design subject is `W2-ODD-GLC-PROGRAM-ONLY-HELLO`. "Hello World"
 is the minimal end-to-end scenario shorthand. A Hello World `GraphFunction`
@@ -648,7 +738,7 @@ Its closed refusal code enum is `absent`, `ambiguous`, `missing_dependency`,
 `incompatible_or_unproven`, and `wrong_owner`; its stage enum is `catalog`,
 `declaration_closure`, `dependency`, `implementation`, and `semantics`. This
 superseded draft did not distinguish constructable code/stage pairs; the
-operative bounded negative frame above does.
+proposed six-row cone and activated D capsule above do.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -713,13 +803,14 @@ project.read#run_result
 project.read#run_replay
 ```
 
-That traversal claim is historical and nonoperative. The operative reframe
+That traversal claim is historical and nonoperative. The proposed reframe
 above separates eight native installed-public owner stages from four
 receipt-derived Public DefinitionCalls. ABIogenesis `v5.0.0-dev.286` publishes
-one structural 18-operation/56-definition family; T-041 resolves only the
-selected twelve installed callable locators and retains the exact 17-locator
-substrate capsule. The former all-56 callable-closure/load requirement is
-withdrawn, and no whole-family callable or behavioral claim remains.
+one structural 18-operation/56-definition family; T-041 classifies all 56
+locators under exact own-property law as 39 callable and the exact 17 absent,
+proves the selected twelve are inside the 39, and retains the substrate
+capsule. The former all-56 callable-closure/load requirement is withdrawn, and
+no whole-family callable or behavioral claim remains.
 
 The packed selected path still contains no `RootPublicInvocation`,
 `legacyRequest`, compatibility facade, second Public family, source-tree
@@ -758,12 +849,15 @@ legacyFallback                     = false
 
 Each installation independently authenticates its raw identifiers, digests,
 events, provenance, Program, and GraphFunction selection. ABIogenesis 4.6
-`converged` versus 5.0 `closed_success` remain version-local evidence and are
-not compared. The 5.0 evidence separately authenticates the odd_glc-owned
-GraphFunction and its exact ABI-owned Hello leaf binding. The comparator may
-reduce the two raw observations to the fields above; it may not rewrite
-either. Greeting punctuation and transport form are not parity fields. Hello
-World is steel-thread shorthand, not Product parity.
+retains its version-local `converged` observation. ABIogenesis 5 raw evidence is
+runtime status `closed`, `run.invoke#start` receipt owner disposition
+`completed`, exactly one terminal result, and no failure. No derived local
+status label is authenticated ABI vocabulary, and the shared eight-field
+reduction has no status field. The 5.0 evidence separately authenticates the
+odd_glc-owned GraphFunction and its exact ABI-owned Hello leaf binding. The
+comparator may reduce the two raw observations to the fields above; it may not
+rewrite either. Greeting punctuation and transport form are not parity fields.
+Hello World is steel-thread shorthand, not Product parity.
 
 The existing native ABI Hello Program, GraphFunction, leaf/judgment
 (`subject: "World"` to typed `message: "Hello World"`), and canonical JSON CLI
@@ -813,30 +907,34 @@ remaining Public family are outside the causal set.
    its SHA-256 is
    `4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41`.
 2. Freeze the installed 0.1/4.6.0-rc.3 baseline observation.
-3. Historical step withdrawn: do not load/resolve all 56. The operative proof
-   establishes structural 18/56 identity, resolves the selected twelve
-   callable locators, and retains the exact 17-locator nonclaim.
+3. Historical step withdrawn: do not claim all 56 callable. The proposed
+   proof establishes structural 18/56 identity, applies exact own-property law
+   to all 56 locators, records exactly 39 callable and the exact 17 absent, and
+   proves the selected twelve are a subset of the 39.
 4. Package the odd_glc declarative Program and prove its negative census.
 5. Execute one installed CLI episode chain with one start and reconstruct its
    result through fresh replay; prove SDK/schema/catalog equality mechanically.
 6. Freeze both receipts and their normalized semantic equality for cold review.
 
-The historical negative wording is nonoperative. The operative bounded frame
-above governs the constructable Product-port, Environment, transport,
-DefinitionFault, and owner-refusal cases. One installed owner-load probe proves
-each selected semantic callable came from its resolved owner install.
+The historical negative wording is nonoperative. After v4 admission, the
+current six-row cone above governs candidate closure; the activated D
+hardening capsule retains the
+additional Product Environment, declaration-closure, Implementation, and
+semantic-owner variants until their pre-RC, expanded-qualification, or exact
+change trigger. The installed owner-load probe derives each selected semantic
+callable from returned public resolution data and its resolved owner install.
 Lifecycle, F_P, exhaustive matrices, and broader odd_glc scenarios remain
 outside this design.
 
 Later odd_glc tests may discover missing ABIogenesis capabilities for later
-waves. They cannot enlarge this accepted causal set retroactively.
+waves. They cannot enlarge this bounded causal set retroactively.
 
 Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private
 imports, process-local truth, a missing/stubbed selected-twelve binding, an
 unresolved or wrong-owner semantic callable, or test-side rewriting of either
 raw observation. The 17 unselected missing locators remain governed by the
-operative capsule. Missing exact owner meaning requires upstream re-entry.
+substrate capsule. Missing exact owner meaning requires upstream re-entry.
 
 ## Deferred Full-Migration Design
 
