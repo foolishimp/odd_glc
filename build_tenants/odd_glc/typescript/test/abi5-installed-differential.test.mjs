@@ -295,7 +295,7 @@ function assertClosedModuleGraphEvidence(
     `${label} exact generated boundary roster`,
   );
   const parserSeeds = graph.seeds.filter(
-    ({ kind }) => kind.endsWith("_generated_module_graph_parser"),
+    ({ kind }) => kind.endsWith("_module_graph_parser"),
   );
   assert.equal(parserSeeds.length, 1, `${label} parser seed`);
   const [parserSeed] = parserSeeds;
