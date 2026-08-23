@@ -324,7 +324,7 @@ The implementation DAG is linear until proof branches:
 | 6 | admit publication and Catalog | installed odd_glc JSON materialized through public GTL plus exact ABI publication | one ready Catalog/View containing the odd GraphFunction | test-private fixture or same-publication shortcut |
 | 7 | admit and start | `hello_world_input` with `subject: "World"` | one admitted odd Program/GraphFunction resolution and exactly one `run.invoke#start` | wrong/ambiguous owner or second start |
 | 8 | execute and close | owner-separated resolution | ABI `realizeHelloWorld`, ABG events, one terminal result `hello_world_output` with `message: "Hello World"` | any odd executable/runtime event authority |
-| 9 | read and replay | durable terminal prefix | ABG-owned status/result/replay projections equal in a fresh process with zero read-time appended bytes | process-local truth or replay divergence |
+| 9 | read and replay | durable terminal prefix | ABG-owned status/result/replay projections equal in a fresh process with zero read-time appended bytes | process-local truth or projection/reconstruction inequality, which is a proof failure rather than a typed refusal |
 | 10 | project and compare | immutable 0.1 and 0.2 raw receipts | odd_glc test-only interpretation and bounded differential | rewriting version-local evidence |
 
 The steel thread has eight installed-public owner stages followed by four
@@ -462,8 +462,13 @@ Minimum assurance is:
    effects, admission, and owner separation asserted;
 3. the exact four-receipt installed Public DefinitionCall trace with one start,
    plus mechanical callable-locator existence for the twelve selected keys;
-4. absent, ambiguous, missing-dependency, incompatible/provenance,
-   wrong-owner semantics, wrong-owner binding, and replay-divergence refusals;
+4. selected Product-resolution seam refusals preserve an exact code from
+   `absent`, `ambiguous`, `missing_dependency`, `incompatible_or_unproven`,
+   and `wrong_owner` plus an exact stage from `catalog`,
+   `declaration_closure`, `dependency`, `implementation`, and `semantics`;
+   replay acquisition crossing separately refuses as installed transport
+   `acquisition_mismatch` or the corresponding
+   `resource_acquisition`/`acquisition_refused` owner fault;
 5. fresh-process status/result/replay equality and zero appended read bytes;
 6. a source-blind/private-import census over packed modules and loaded module
    refs; and
@@ -599,8 +604,9 @@ compatibility, provenance, collision, and ambiguity law. Program,
 GraphFunction, contract, evaluator, customization, fibre, binding, and
 Implementation owners remain separate in one derived immutable execution
 projection. That projection is not another catalog, registry, or authority.
-Its closed refusals are `absent`, `ambiguous`, `missing_dependency`,
-`incompatible_or_provenance`, and `owner_contract_or_binding_mismatch`.
+Its closed refusal code enum is `absent`, `ambiguous`, `missing_dependency`,
+`incompatible_or_unproven`, and `wrong_owner`; its stage enum is `catalog`,
+`declaration_closure`, `dependency`, `implementation`, and `semantics`.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -615,8 +621,8 @@ contains the provider. `loadInstalledProductSemantics` consumes the resolved
 binding and exact owner install. `applyRunInvoke` no longer threads the odd_glc
 Program publication/install into every loader. Public passes Program selection
 to the Product port and neither selects owners nor special-cases an ABI.
-Post-parse refusals distinguish absent, ambiguous, and wrong-owner semantic
-bindings.
+Post-parse semantic-binding refusals preserve `ambiguous` or `wrong_owner`
+with stage `semantics`.
 
 The Catalog permits immutable base GraphFunctions and Implementations bundled
 by ABIogenesis/ABG, downstream GraphFunction compositions, compatible
@@ -776,9 +782,10 @@ remaining Public family are outside the causal set.
 6. Freeze both receipts and their normalized semantic equality for cold review.
 
 Closure proof is one installed sunny path, one fresh-process replay, the
-package/source/private negative census, and seam negatives only for
-absent/ambiguous catalogued GraphFunction/dependency, missing/wrong dependency or owner,
-absent/ambiguous/wrong-owner executable binding, and replay divergence. One
+package/source/private negative census, and selected Product-resolution seam
+negatives asserting the exact fixed refusal code and stage. Replay acquisition
+crossing separately asserts installed transport `acquisition_mismatch` or the
+corresponding `resource_acquisition`/`acquisition_refused` owner fault. One
 installed owner-load probe proves each selected semantic callable came from
 its resolved owner install. Lifecycle, F_P, exhaustive matrices, and broader
 odd_glc scenarios remain outside this design.

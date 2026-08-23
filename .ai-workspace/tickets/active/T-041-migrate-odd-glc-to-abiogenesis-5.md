@@ -168,8 +168,10 @@ Program and composed GraphFunction owner is odd_glc; referenced base
 GraphFunction, contract, evaluator, and Implementation owners may be ABI
 dependencies.
 
-Typed refusals distinguish `absent`, `ambiguous`, `missing_dependency`,
-`incompatible_or_provenance`, and `owner_contract_or_binding_mismatch`. Public
+Product execution resolution preserves the exact refusal codes `absent`,
+`ambiguous`, `missing_dependency`, `incompatible_or_unproven`, and
+`wrong_owner`, with stages `catalog`, `declaration_closure`, `dependency`,
+`implementation`, and `semantics`. Public
 structurally admits the run request, selects `run.invoke#start`, calls the
 concrete Product resolution port and selected concrete owner ports, then
 projects. Product/Validator resolves and validates the Catalog closure; each
@@ -193,8 +195,8 @@ install. `ModulePublication.productSemanticsBinding` becomes an external
 owner/binding coordinate, `loadInstalledProductSemantics` consumes that
 resolved binding and owner install, and `applyRunInvoke` stops threading the
 odd_glc Program install into every loader. Public passes Program selection but
-does not select owners or special-case an ABI. Post-parse refusals distinguish
-an absent, ambiguous, or wrong-owner semantic binding.
+does not select owners or special-case an ABI. Post-parse semantic-binding
+refusals preserve `ambiguous` or `wrong_owner` with stage `semantics`.
 
 The Catalog supports immutable ABIogenesis/ABG-bundled base GraphFunctions,
 downstream GraphFunction compositions, compatible owner-local
@@ -320,9 +322,10 @@ existence proof only. Broader tests become later-wave gap discovery and cannot
 expand this ticket retroactively.
 
 Closure proof is one installed sunny path, one fresh-process replay, the
-package/source/private negative census, and seam negatives only for
-absent/ambiguous catalogued GraphFunction/dependency, missing/wrong dependency or owner,
-absent/ambiguous/wrong-owner executable binding, and replay divergence. One
+package/source/private negative census, and selected Product-resolution seam
+negatives asserting the exact fixed refusal code and stage. Replay acquisition
+crossing separately asserts installed transport `acquisition_mismatch` or the
+corresponding `resource_acquisition`/`acquisition_refused` owner fault. One
 installed owner-load probe proves each selected semantic callable came from
 its resolved owner install. No exhaustive matrix or broader odd_glc scenario
 is a Wave 2 gate.

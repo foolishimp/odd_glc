@@ -67,8 +67,10 @@ closure through the ready Catalog/View, installed ProductSet, resolved lock, dep
 compatibility, provenance, collision, and ambiguity law. Program,
 GraphFunction, contract, evaluator, customization, fibre, binding, and
 Implementation owners remain separate in the immutable derived execution
-projection. Absent, ambiguous, missing-dependency, incompatible/provenance,
-and owner-contract/binding mismatch remain distinct typed refusals.
+projection. Product execution resolution preserves the exact refusal codes
+`absent`, `ambiguous`, `missing_dependency`, `incompatible_or_unproven`, and
+`wrong_owner`, with stages `catalog`, `declaration_closure`, `dependency`,
+`implementation`, and `semantics`.
 
 The odd_glc publication may declare external Product-semantics, contract,
 evaluator, binding, and Implementation references as immutable data, but it
@@ -169,11 +171,12 @@ Product-semantics provider, implementation binding, leaf Implementation,
 dispatcher, event name/writer, raw-event walker, evidence binder, fold,
 residualizer, controller, ABI private import, or source-tree dependency.
 Proof is proportional: one sunny path, one fresh-process replay, that negative
-census, and seam negatives only for absent/ambiguous catalogued GraphFunction
-or dependency, missing/wrong dependency or owner,
-absent/ambiguous/wrong-owner executable binding, and replay divergence. One
-installed owner-load probe proves each selected semantic callable came from
-its resolved owner install.
+census, and selected Product-resolution seam negatives asserting the exact
+refusal code and stage above. Replay acquisition crossing is separate: the
+installed transport refuses `acquisition_mismatch`, or owner entry returns the
+corresponding `resource_acquisition`/`acquisition_refused` fault. One installed
+owner-load probe proves each selected semantic callable came from its resolved
+owner install.
 
 ### Selected Routing Ticket
 
