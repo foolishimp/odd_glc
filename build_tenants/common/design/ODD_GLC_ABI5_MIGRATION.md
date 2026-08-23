@@ -1,9 +1,11 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Proposed evidence-driven reframe of the accepted T-041 Program-only
-design; not operative until exact-tree independent review and Executive/F_H
-acceptance; full lifecycle migration deferred
+**Status**: Active ratified T-041 evidence-driven `design_reframe`; exact
+proposal commit `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
+`4ce7395754f2a0ed926d0c927528a3b2263964ae`, independently reviewed ACCEPT
+with A/B/C/D all zero and accepted by Executive/F_H on 2026-08-24; full
+lifecycle migration deferred
 **Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
 **Construction Basis**: direct-F_H-adopted authority-conserving,
 entity-centric, event-sourced functional reactive domain modeling method;
@@ -16,28 +18,32 @@ resolved through `specification/GOVERNANCE.md`
 `@abiogenesis/typescript-tenant@4.6.0-rc.3`
 **Development substrate**: `@abiogenesis/typescript-tenant@5.0.0-dev.286`
 
-## Proposed T-041 Evidence Reframe
+## Ratified T-041 Evidence Reframe
 
 The `specification/GOVERNANCE.md` exact-tree record admits the predecessor
 design at status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`.
 End-to-end construction against its exact ABI substrate falsified two proof
 assumptions: the first eight steel-thread stages cannot be invoked as lawful
 DefinitionCalls, and the published 18/56 family is not whole-family callable
-from its installed export locators. This cumulative v3 proposal is a
-`design_reframe` with exact lineage
+from its installed export locators. The accepted v3 correction is a
+`design_reframe` frozen as exact proposal commit
+`96f223f36062fc88b961ba7f98e534141ab42c84`, tree
+`4ce7395754f2a0ed926d0c927528a3b2263964ae`, with lineage
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` ->
 `2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` ->
-`c4f521f22bc35717565ce6b2607e69df25115129` -> this proposal tree. Its direct
-parent is `c4f521f22bc35717565ce6b2607e69df25115129`. It changes no Intent,
-Product meaning, requirement, frozen identity, five-member Product, owner
-relation, or Hello outcome.
+`c4f521f22bc35717565ce6b2607e69df25115129` ->
+`96f223f36062fc88b961ba7f98e534141ab42c84`. It changes no Intent, Product
+meaning, requirement, frozen identity, five-member Product, owner relation,
+or Hello outcome.
 
-This proposal is not self-accepted. It becomes implementation authority only
-after independent review of its exact tree and explicit Executive/F_H
-acceptance. Diagnostic Hello execution may continue against the narrowed
-steel thread, but no implementation candidate may freeze or claim acceptance
-until those gates admit this reframe. The pre-pin Wave 2 draft and rejected
-candidate records below remain design history only.
+Fresh independent Max exact-tree review returned ACCEPT with A/B/C/D all zero,
+and Executive/F_H explicitly accepted those same bytes on 2026-08-24. The
+reframe is current implementation authority. This status-only child records
+that external admission; neither the proposal nor diagnostic execution
+self-accepted it. Its authority bytes may be transplanted into the realization
+lineage, and a candidate may freeze under the exact eight-native/four-receipt
+proof law after the remaining gates pass. The pre-pin Wave 2 draft and
+rejected candidate records below remain design history only.
 
 The selected subject is a governed, separately versioned and installable
 data-only GTL Product. It is not an application, runtime, controller, semantic
@@ -536,22 +542,26 @@ RC/final publication, or compatibility across 4.6 and 5.0 carriers.
 Permanently removing future read-only lifecycle interpretation would require a
 separate Product reprice; the zero-code sentinel does not make that decision.
 
-The reframe proposal genealogy is exact: accepted status commit
+The accepted reframe genealogy is exact: accepted status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
 `2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` -> refusal-enum repair
-`c4f521f22bc35717565ce6b2607e69df25115129` -> this v3 proposal. The v3
-proposal's direct parent is `c4f521f22bc35717565ce6b2607e69df25115129`.
-The cumulative proposal changes only `specification/GOALS.md`, this design,
-and T-041 routing. It changes no Product semantics, requirement, identity,
-source, package data, proof code, test, or ABI bytes.
+`c4f521f22bc35717565ce6b2607e69df25115129` -> accepted v3 proposal commit
+`96f223f36062fc88b961ba7f98e534141ab42c84`, tree
+`4ce7395754f2a0ed926d0c927528a3b2263964ae`. The v3 proposal's direct parent
+is `c4f521f22bc35717565ce6b2607e69df25115129`. The cumulative proposal changes
+only `specification/GOALS.md`, this design, and T-041 routing. It changes no
+Product semantics, requirement, identity, source, package data, proof code,
+test, or ABI bytes.
 
-The reframe admission topology is atomic: freeze one exact proposal commit and
-tree; review that tree independently; obtain explicit Executive/F_H acceptance
-of those bytes; then record the acceptance without treating the proposal's own
-commit message or diagnostic execution as self-acceptance. Until that occurs,
-the implementation candidate cannot freeze, close, publish, or move a ref.
+The reframe admission topology is complete: fresh independent Max review of
+the exact v3 tree returned ACCEPT with A/B/C/D all zero, and Executive/F_H
+accepted those bytes on 2026-08-24. This status-only child records that
+external disposition without treating its own commit or diagnostic execution
+as acceptance. Realization transplant and candidate freeze are authorized
+under the exact eight-native/four-receipt proof law and the remaining
+immutable-substrate and proof gates.
 
-After this reframe is admitted, the first realization gate remains availability
+With this reframe admitted, the first realization gate remains availability
 of exact ABI tarball bytes at the frozen digest. No executable test is a
 prerequisite to authoring the first Product-data cut; the four named future
 proof paths above must exist before that cut can be accepted. No code, package,
@@ -562,10 +572,9 @@ by this document alone.
 
 The following section predates the exact immutable substrate and odd_glc
 identity freeze. It is retained as non-authoritative design history. The
-accepted predecessor design governs until this proposal is admitted; after
-admission, the proposed evidence reframe above governs every difference. Words
-such as “accepted” inside this preserved history report former assumptions;
-they do not override the current design.
+ratified evidence reframe above governs every difference. Words such as
+“accepted” inside this preserved history report former assumptions; they do
+not override the current design.
 
 The current design subject is `W2-ODD-GLC-PROGRAM-ONLY-HELLO`. "Hello World"
 is the minimal end-to-end scenario shorthand. A Hello World `GraphFunction`

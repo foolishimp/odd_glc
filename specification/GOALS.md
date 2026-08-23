@@ -1,9 +1,11 @@
 # odd_glc Goals
 
 **Status**: Active
-**Reconciliation status**: Evidence-driven `design_reframe` proposal over the
-accepted 2026-08-24 exact-tree record; not operative until independent
-exact-tree review and Executive/F_H acceptance
+**Reconciliation status**: Accepted evidence-driven `design_reframe`; exact
+proposal commit `96f223f36062fc88b961ba7f98e534141ab42c84`, tree
+`4ce7395754f2a0ed926d0c927528a3b2263964ae`, independently reviewed by Max
+with disposition ACCEPT (A/B/C/D all zero) and accepted by Executive/F_H on
+2026-08-24
 **Date**: 2026-08-24
 **Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
 2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
@@ -39,10 +41,10 @@ data-mapper, One Surface, and Consensus remain deferred.
 
 ## Downstream Routing And Selected Constraints
 
-T-041 routes this goal. The accepted predecessor design is re-entered by the
-pending evidence-driven proposal in
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md`. The proposal preserves
-the selected `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
+T-041 routes this goal. The accepted evidence-driven `design_reframe` in
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` is current
+implementation authority. It preserves the selected
+`@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
 ABIogenesis tag `v5.0.0-dev.286`, commit
 `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
 `a399045de5d752b92c084b5b38b358aa2d1c63aa`, package
@@ -124,10 +126,11 @@ Hello leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
 bindings, greeting punctuation, and transport forms remain version-local.
 Hello World is steel-thread shorthand, not Product parity.
 
-Diagnostic execution of the selected Hello outcome may continue while this
-reframe is reviewed. A diagnostic result cannot admit the proposal, and no
-implementation candidate may freeze until independent review and
-Executive/F_H acceptance bind the exact reframe tree.
+The exact reframe is admitted. Its accepted authority bytes may be
+transplanted into the realization lineage, and a realization candidate may
+freeze under the exact eight-native/four-receipt proof law after the remaining
+selected execution gates pass. A diagnostic result does not satisfy a proof
+gate or expand the accepted design.
 
 ### Selected Execution Plan
 

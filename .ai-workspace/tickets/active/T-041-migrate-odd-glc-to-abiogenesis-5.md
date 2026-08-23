@@ -5,7 +5,7 @@
 - type: feature
 - ticket_category: implementation_migration
 - status: active
-- execution_state: evidence_driven_design_reframe_awaiting_exact_tree_review
+- execution_state: ratified_design_reframe_transplant_and_realization_authorized
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
@@ -18,7 +18,7 @@
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
 - current_change_class: design_reframe
-- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-evidence-reframe
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-evidence-reframe
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
 - governing_library: >-
@@ -57,12 +57,13 @@
     dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
   - specification/PRODUCT.md
   - >-
-    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (accepted predecessor
-    design admitted from exact proposal commit
-    22824d04c0ff8fce42425fa9649686cf616e635a, tree
-    b4e7cce91862dd2054fbb5bcd8fc80d1e10c3335, full-index binary patch SHA-256
-    86e8bf2b02e23e1752ed54c821db6c1e39643228fe4eeb5240d0494f32324751;
-    two proof assumptions now re-entered by evidence and pending replacement)
+    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (current ratified
+    evidence reframe frozen as exact proposal commit
+    96f223f36062fc88b961ba7f98e534141ab42c84, tree
+    4ce7395754f2a0ed926d0c927528a3b2263964ae, full-index binary patch SHA-256
+    e1c5ce2153be99b78c44b96e8b52ca7c9279281f18c785d10982a2eeff7dabd5;
+    fresh independent Max exact-tree disposition ACCEPT with A/B/C/D all zero
+    and Executive/F_H acceptance on 2026-08-24)
   - exact ABIogenesis v5.0.0-dev.286 public Product boundary
 - delegated_authority: >-
     Realize and prove the bounded Program-only sentinel from the named clean
@@ -76,8 +77,8 @@
 - acceptance_roles:
     product_authority: direct_F_H
     adjudicator: Executive_F_H
-    independent_review: pending_on_design_reframe_proposal_tree
-    checkpoint_administration: after_design_reframe_acceptance_only
+    independent_review: satisfied_on_exact_v3_proposal_tree
+    checkpoint_administration: authorized_after_external_acceptance
 - predecessor_tickets:
   - T-033
   - T-038
@@ -88,37 +89,35 @@
   - independent exact-tree review disposition ACCEPT
   - Executive/F_H accepted the exact proposal tree on 2026-08-24
 - design_reframe_admission_gates:
-  - independent exact-tree review of the frozen v3 proposal whose direct parent is c4f521f22bc35717565ce6b2607e69df25115129
-  - explicit Executive/F_H acceptance of that exact proposal tree
+  - fresh independent Max exact-tree review disposition ACCEPT with A/B/C/D all zero for commit 96f223f36062fc88b961ba7f98e534141ab42c84, tree 4ce7395754f2a0ed926d0c927528a3b2263964ae
+  - Executive/F_H accepted those exact v3 bytes on 2026-08-24
 - realization_dependencies:
-  - accepted exact-tree admission of the evidence-driven design reframe before candidate freeze
   - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
   - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
   - immutable v0.1.0 predecessor receipt for the bounded differential
 
-## Proposed Evidence-Reframe Routing
+## Ratified Evidence-Reframe Routing
 
-The accepted implementation authority is the design admitted at status commit
-`7a8f0898538b87b0a2975015d05a2fdcd0c9b805`. End-to-end construction
-falsified its twelve-DefinitionCall and whole-56 callable-closure assumptions.
-This ticket therefore routes a cumulative `design_reframe` proposal at
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-evidence-reframe`.
-Its exact lineage is status commit
+The current implementation authority is the evidence-driven `design_reframe`
+frozen as exact proposal commit
+`96f223f36062fc88b961ba7f98e534141ab42c84`, tree
+`4ce7395754f2a0ed926d0c927528a3b2263964ae`. Its exact lineage is status commit
 `7a8f0898538b87b0a2975015d05a2fdcd0c9b805` -> substrate-evidence proposal
 `2ac4891c1ee2ab5bce94d7f2f29d3e75bfee4a00` -> refusal-enum repair
-`c4f521f22bc35717565ce6b2607e69df25115129` -> this v3 proposal; the v3
-proposal's direct parent is `c4f521f22bc35717565ce6b2607e69df25115129`.
-The proposal keeps the ABI and odd_glc identities, exact five-member zero-code
-archive, cross-owner declaration/Implementation relation, Hello semantics,
-installed execution DAG, and predecessor conservation unchanged.
+`c4f521f22bc35717565ce6b2607e69df25115129` -> accepted v3 proposal
+`96f223f36062fc88b961ba7f98e534141ab42c84`. Fresh independent Max exact-tree
+review returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted those
+same bytes on 2026-08-24. This ticket records that external disposition; it
+does not self-accept.
 
-The proposed reframe is not self-accepted. Diagnostic Hello execution may
-continue because it tests the selected end-to-end outcome, but its result does
-not admit this design. The implementation candidate cannot freeze until an
-independent reviewer evaluates the exact proposal tree and Executive/F_H
-accepts those same bytes. The ticket, synthetic ABI fixture, dirty checkout,
-rejected `abi5_program` source, diagnostic result, and prior candidate tests
-cannot fill or revise any frozen field or waive those gates.
+The accepted reframe keeps the ABI and odd_glc identities, exact five-member
+zero-code archive, cross-owner declaration/Implementation relation, Hello
+semantics, installed execution DAG, and predecessor conservation unchanged.
+Its authority bytes may be transplanted into the realization lineage, and a
+candidate may freeze under the exact eight-native/four-receipt proof law after
+the remaining execution gates pass. The ticket, synthetic ABI fixture, dirty
+checkout, rejected `abi5_program` source, diagnostic result, and prior
+candidate tests cannot fill or revise a frozen field or substitute for proof.
 
 ## Operative Wave 2 Target
 
@@ -348,10 +347,10 @@ No exhaustive matrix or broader odd_glc scenario is a Wave 2 gate.
 
 ### Execution order
 
-1. Diagnostic Hello execution may continue, but hold candidate freeze until
-   this exact design-reframe proposal is independently reviewed and
-   Executive/F_H accepted; reject construction unless the ABI tarball matches
-   the pinned `v5.0.0-dev.286` SHA-256.
+1. Transplant the accepted authority bytes and proceed with realization;
+   freeze a candidate only under the exact eight-native/four-receipt proof law
+   after its proof gates pass. Reject construction unless the ABI tarball
+   matches the pinned `v5.0.0-dev.286` SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
 3. Prove structural equality to the exact 18/56 family, mechanically
    load/resolve the twelve selected callable locators, and retain the activated
