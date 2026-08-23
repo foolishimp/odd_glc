@@ -37,3 +37,6 @@ Completed tickets:
 - `T-035-repair-rc3-basic-cli-execution-contract.md`
 - `T-036-cut-odd-glc-0-1-0.md`
 - `T-038-realize-standard-declarations-only-path.md` — superseded by T-041.
+- `T-041-migrate-odd-glc-to-abiogenesis-5.md` — accepted bounded data-only
+  Program sentinel over ABIogenesis `v5.0.0-dev.286`; no RC or successor wave
+  authorized.

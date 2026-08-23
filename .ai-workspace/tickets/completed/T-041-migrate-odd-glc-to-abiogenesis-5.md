@@ -4,8 +4,8 @@
 - title: deliver one data-only odd_glc Hello sentinel over exact ABIogenesis v5.0.0-dev.286
 - type: feature
 - ticket_category: implementation_migration
-- status: active
-- execution_state: ratified_v4_repaired_proof_required_before_candidate_transplant_or_freeze
+- status: completed
+- execution_state: completed_exact_realization_candidate_accepted
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
@@ -17,8 +17,8 @@
     leaf binding from real installed odd_glc Product bytes.
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
-- current_change_class: design_reframe
-- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-proof-assurance-reframe
+- current_change_class: realization_refactor
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#t-041-realization-admission-and-closure-record
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
 - governing_library: >-
@@ -78,8 +78,8 @@
 - acceptance_roles:
     product_authority: direct_F_H
     adjudicator: Executive_F_H
-    independent_review: satisfied_on_exact_v4_proposal_tree
-    checkpoint_administration: authorized_after_repaired_proof_passes_exact_v4_gates
+    independent_review: satisfied_on_exact_realization_candidate_tree
+    checkpoint_administration: exact_realization_candidate_accepted_and_ticket_completed
 - predecessor_tickets:
   - T-033
   - T-038
@@ -95,11 +95,64 @@
 - ratified_v4_design_reframe_gates:
   - fresh independent Max exact-tree review disposition ACCEPT with A/B/C/D all zero for commit e40895ffff403fd27686aaddf19dd11285fda0a2, tree 8f2c832a74b0a55a73ded92679a48a34453d0344
   - Executive/F_H accepted those exact v4 bytes on 2026-08-24
+- realization_dependencies_status: satisfied_on_exact_r3_and_candidate_c
 - realization_dependencies:
   - repaired descendants of all four rejected proof-donor blobs pass every exact v4 gate before realization candidate transplant or freeze
   - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
   - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
   - immutable v0.1.0 predecessor receipt for the bounded differential
+
+## Closure Record
+
+T-041 is completed by exact realization candidate
+`1286a59606737fb934ebc076f5bbb72506fa9652`, tree
+`a713f47b183840049b10790a29b8c26fd04643c7`, direct parent
+`b1b881ba4baee915de89fc094491faaa2261fb3d`. The ordinary
+parent-to-candidate patch SHA-256 is
+`909a8019feac3d8c6291c3522acc2b70cbf3ee2577fb19e80534367d161450c1`;
+the full-index binary patch SHA-256 is
+`c0d04b1f993c4017051997e05d755a37309b132bcfc2477d0c08d65fc1d07444`.
+The patch adds exactly the admitted five Product blobs and four repaired proof
+blobs.
+
+Proof ran before transplant at exact R3 commit
+`49c39528065ce98bf9c9787fd070783dfbfe93dd`, tree
+`0c6f9967feab9319b4b573c2a2e5bf3daf9b3ce5`, direct parent
+`8a7f96a096356bbb538222215493fd40d180323b`. Candidate C contains these exact
+R3 proof Git blobs:
+
+| Proof path | Git blob |
+|---|---|
+| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | `c94a7950e4f80ebc2fd2626780e16d80c3bb3871` |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | `a877dc7d46267060c7724a1421d982b480af40de` |
+| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | `a40190014e18f97dc4ff8455592dadc7938752e1` |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | `616726d97214417eb46ad3b3222e2a70586a0236` |
+
+The retained outputs are bound independently of filesystem location:
+
+| Output name | Bytes | SHA-256 |
+|---|---:|---|
+| `candidate-raw.json` | 112,497,247 | `8e2d1754d86f1ae5b107a11799e7344f41b16605dfd2704fa4bcc2d37abb66a4` |
+| `differential.json` | 389,748,630 | `38f34c3a540bb7ffe8cc17adb4fa18b49cf02bc2116713e3ab295d8fed8adebe` |
+
+The exact R3 inventory result was 1 pass, 0 fail, 0 skip. The exact full
+differential result was 2 pass, 0 fail, 0 skip in 403.555 seconds. The long E2E
+is R3-headed under the ratified proof-before-transplant contract. No C-headed
+long E2E run is claimed or required because C retains the exact four proved Git
+blobs in the clean admitted-authority topology.
+
+Independent cold review of exact C returned ACCEPT, no stop-first finding, and
+A/B/C/D all zero, with delivery safe for the bounded T-041 development
+sentinel. A second review accepted the realization and required this later
+status-only closure child. Executive/F_H accepted exact C and authorized T-041
+closure on 2026-08-24.
+
+Completion preserves the full v4 exclusion set. In particular,
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-product-resolution-hardening`
+remains registered category D debt with its pre-RC,
+expanded-qualification, and exact-seam-change triggers. No RC, final release,
+tag movement, broader lifecycle closure, T-025 selection, or successor-wave
+execution is authorized.
 
 ## Ratified Proof-Assurance Reframe Routing
 
@@ -124,11 +177,11 @@ disposition; v4 did not self-accept.
 The ratified reframe keeps the ABI and odd_glc identities, exact five-member
 zero-code archive, cross-owner declaration/Implementation relation, Hello
 semantics, installed execution DAG, and predecessor conservation unchanged.
-The four old proof-donor blobs remain rejected. A realization candidate may be
-transplanted or frozen only after repaired descendants of all four pass every
-exact v4 gate. The ticket, synthetic ABI fixture, dirty checkout, rejected
-`abi5_program` source, diagnostic result, and prior candidate tests cannot fill
-or revise a frozen field or substitute for proof.
+The four old proof-donor blobs remain rejected. Their exact repaired R3
+descendants passed every v4 gate before transplant and are the proof blobs in
+the admitted candidate. The ticket, synthetic ABI fixture, dirty checkout,
+rejected `abi5_program` source, diagnostic result, and prior candidate tests
+did not fill or revise a frozen field or substitute for proof.
 
 ## Operative Wave 2 Target
 
@@ -329,9 +382,9 @@ The tag's synthetic ST-1 test proves that the Program/GraphFunction owner can be
 an additional installed Product while semantics and Hello Implementation owner
 remain the ABI Product. Its setup uses direct owner relations for the first
 eight stages; it does not prove their DefinitionCall traversal. That is
-substrate evidence only. T-041 still must pack the frozen real odd_glc identity
-and reproduce the installed owner-stage plus Public start/read relation from
-source-blind installed bytes.
+substrate evidence only. The completed T-041 proof separately packed the frozen
+real odd_glc identity and reproduced the installed owner-stage plus Public
+start/read relation from source-blind installed bytes.
 
 ### Frozen Product and proof-donor disposition
 
@@ -343,8 +396,9 @@ These five frozen Product blobs remain accepted and are unaffected by v4:
 - `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json`; and
 - `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json`.
 
-These four realization proof blobs are donors rejected pending repair and
-cannot qualify or freeze a candidate:
+The old versions of these four realization proof blobs are rejected donors;
+their repaired R3 descendants are accepted only through the exact closure
+record above:
 
 - `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs`;
 - `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs`;
@@ -426,7 +480,10 @@ first, while constructing all authentic variants now would cause local
 hardening churn. No exhaustive matrix or broader odd_glc scenario is a current
 Wave 2 gate.
 
-### Execution order
+### Completed execution order
+
+The exact R3 and candidate subjects satisfied this ordered gate without
+changing its limits:
 
 1. Repair all four rejected proof-donor blobs. Do not transplant or freeze a
    realization candidate until their repaired descendants pass every exact v4
@@ -471,8 +528,9 @@ meaning.
 
 T-033 and T-038 are superseded predecessor design and migration evidence. Their
 declarations-only direction is retained, but their old ABIogenesis ticket and
-interface identities do not govern this migration. T-041 is the sole active
-migration authority.
+interface identities do not govern this migration. T-041 was the sole
+migration authority for the completed bounded sentinel; no successor migration
+authority is selected.
 
 T-039 and T-037 remain the RC and final-release successors. They must be
 repriced to the exact T-041 candidate and released ABIogenesis 5.0 identities
@@ -695,9 +753,11 @@ Freeze and record:
 This ticket creates a source candidate. It does not assign an RC or final
 odd_glc version and does not claim ABIogenesis 5.0 release authority.
 
-## Closure Law
+## Superseded Full-Migration Closure Law
 
-T-041 closes only when:
+The following pre-reframe closure law belongs only to this deferred historical
+record. It does not govern or reopen the completed bounded Program-only
+sentinel:
 
 - the design gate is accepted against exact ABIogenesis 5.0 public contracts;
 - all producer, consumer, projection, install, and proof census rows have one
@@ -714,7 +774,7 @@ T-041 closes only when:
 - an authority-first review finds no rival execution, event, currentness,
   catalog, continuation, closure, or release subject.
 
-## Non-Closure Conditions
+## Superseded Full-Migration Non-Closure Conditions
 
 - T-033 or T-038 wording, old upstream ticket identities, or 0.1 fixtures
   substitute for current accepted ABIogenesis contracts.

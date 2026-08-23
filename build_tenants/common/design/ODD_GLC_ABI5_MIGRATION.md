@@ -1,13 +1,12 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Active ratified T-041 evidence-driven proof-assurance
-`design_reframe` v4; exact proposal commit
-`e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
-`8f2c832a74b0a55a73ded92679a48a34453d0344`, independently reviewed ACCEPT
-with A/B/C/D all zero and accepted by Executive/F_H on 2026-08-24;
-realization candidate transplant/freeze requires all four repaired proof blobs
-to pass the exact v4 gates; full lifecycle migration deferred
+**Status**: Ratified T-041 evidence-driven proof-assurance `design_reframe` v4;
+bounded realization candidate
+`1286a59606737fb934ebc076f5bbb72506fa9652`, tree
+`a713f47b183840049b10790a29b8c26fd04643c7`, independently reviewed ACCEPT
+with A/B/C/D all zero and accepted by Executive/F_H on 2026-08-24; T-041
+completed; full lifecycle migration deferred
 **Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
 **Construction Basis**: direct-F_H-adopted authority-conserving,
 entity-centric, event-sourced functional reactive domain modeling method;
@@ -47,18 +46,68 @@ owner relation, eight-native/four-receipt split, or Hello outcome.
 
 Fresh independent Max exact-tree review of v4 returned ACCEPT with A/B/C/D all
 zero, and Executive/F_H explicitly accepted those exact bytes on 2026-08-24.
-The reframe is current design authority. This status-only child records that
-external admission; neither the proposal nor diagnostic execution self-accepted
-it. The four old proof-donor blobs remain rejected. A realization candidate may
-be transplanted or frozen only after repaired descendants of all four pass the
-exact v4 gates. The pre-pin Wave 2 draft and rejected candidate records below
-remain design history only.
+The reframe is current design authority. The four old proof-donor blobs remain
+rejected. Repaired descendants of all four passed the exact v4 gates at proof
+commit `49c39528065ce98bf9c9787fd070783dfbfe93dd` before transplant. The exact
+repaired proof blobs were then transplanted into the clean realization
+candidate admitted below. The pre-pin Wave 2 draft and rejected candidate
+records below remain design history only.
 
 The selected subject is a governed, separately versioned and installable
 data-only GTL Product. It is not an application, runtime, controller, semantic
 provider, or executable implementation package. The bounded sentinel proves
 one cross-owner execution relation while preserving, but not implementing or
 closing, the broader Product-owned read-only lifecycle interpretation.
+
+### T-041 realization admission and closure record
+
+The proof-before-transplant subject is exact commit
+`49c39528065ce98bf9c9787fd070783dfbfe93dd`, tree
+`0c6f9967feab9319b4b573c2a2e5bf3daf9b3ce5`, direct parent
+`8a7f96a096356bbb538222215493fd40d180323b`. Its repaired proof blobs are:
+
+| Proof path | Git blob |
+|---|---|
+| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | `c94a7950e4f80ebc2fd2626780e16d80c3bb3871` |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | `a877dc7d46267060c7724a1421d982b480af40de` |
+| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | `a40190014e18f97dc4ff8455592dadc7938752e1` |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | `616726d97214417eb46ad3b3222e2a70586a0236` |
+
+The retained R3 proof outputs have path-independent identities:
+
+| Output name | Bytes | SHA-256 |
+|---|---:|---|
+| `candidate-raw.json` | 112,497,247 | `8e2d1754d86f1ae5b107a11799e7344f41b16605dfd2704fa4bcc2d37abb66a4` |
+| `differential.json` | 389,748,630 | `38f34c3a540bb7ffe8cc17adb4fa18b49cf02bc2116713e3ab295d8fed8adebe` |
+
+The exact R3 inventory result is 1 pass, 0 fail, 0 skip. The exact full
+differential result is 2 pass, 0 fail, 0 skip in 403.555 seconds. These outputs
+bind the source-independent raw and normalized differential proof to R3.
+
+The admitted realization is exact commit
+`1286a59606737fb934ebc076f5bbb72506fa9652`, tree
+`a713f47b183840049b10790a29b8c26fd04643c7`, direct parent
+`b1b881ba4baee915de89fc094491faaa2261fb3d`. Its ordinary parent-to-candidate
+patch SHA-256 is
+`909a8019feac3d8c6291c3522acc2b70cbf3ee2577fb19e80534367d161450c1`;
+its full-index binary patch SHA-256 is
+`c0d04b1f993c4017051997e05d755a37309b132bcfc2477d0c08d65fc1d07444`.
+The candidate contains the exact four R3 proof Git blobs above plus the five
+previously accepted Product blobs, and no other change.
+
+Independent cold review of that exact candidate returned ACCEPT, no stop-first
+finding, and A/B/C/D all zero; the delivery disposition was safe for the
+bounded T-041 development sentinel. A second review accepted the realization
+and required this later status-only closure child. Executive/F_H accepted the
+exact candidate and authorized T-041 closure on 2026-08-24.
+
+The long E2E proof is intentionally R3-headed under the ratified
+proof-before-transplant relation. No C-headed long E2E run is claimed or
+required: exact Git-blob equality conserves the reviewed proof bytes while the
+clean direct-child candidate conserves admitted v4 authority. This closure
+does not enlarge the sentinel. The activated D Product-resolution hardening
+capsule, substrate capsule, and every nonclaim in this design remain open and
+unchanged.
 
 ### Exact immutable bases
 
@@ -182,16 +231,16 @@ The minimum realization/proof path set is:
 | `build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json` | accepted frozen Product blob; unaffected by v4 |
 | `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json` | accepted frozen Product blob; unaffected by v4 |
 | `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json` | accepted frozen Product blob; unaffected by v4 |
-| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
-| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
-| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
-| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | donor proof blob rejected pending v4 proof repair; cannot qualify a candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | accepted repaired R3 proof blob transplanted unchanged into the admitted candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | accepted repaired R3 proof blob transplanted unchanged into the admitted candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | accepted repaired R3 proof blob transplanted unchanged into the admitted candidate |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | accepted repaired R3 proof blob transplanted unchanged into the admitted candidate |
 
 The first five rows are the complete frozen Product-data set and remain
-accepted without byte or semantic change. The last four rows are realization
-proof donors only. Their existing bytes are rejected as acceptance evidence
-until repaired descendants satisfy the ratified v4 proof contract; no donor result may
-be inherited as green.
+accepted without byte or semantic change. The last four rows are the repaired
+R3 descendants, not the rejected donor bytes. They satisfied the ratified v4
+proof contract before exact-blob transplant; no rejected donor result was
+inherited as green.
 
 Existing `src/abi5_program.mjs`, declaration, and focused test candidates are
 not in this clean subject and must not be copied. Existing 0.1 source and proof
@@ -651,19 +700,19 @@ test, or ABI bytes.
 
 The v4 admission topology is complete: fresh independent Max review of its
 exact tree returned ACCEPT with A/B/C/D all zero, and Executive/F_H accepted
-those bytes on 2026-08-24. This status-only child records that external
-disposition without treating its own commit or diagnostic execution as
-acceptance. V4 is current design authority. Realization candidate transplant
-and freeze are authorized only after repaired descendants of all four rejected
-proof-donor blobs pass every exact v4 gate.
+those bytes on 2026-08-24. V4 is current design authority. Exact R3 then
+satisfied its proof-before-transplant gates, and exact candidate
+`1286a59606737fb934ebc076f5bbb72506fa9652` conserved the accepted five Product
+blobs and the four repaired R3 proof blobs. Independent review and
+Executive/F_H accepted that realization as recorded above.
 
-With this reframe admitted, the first realization gate remains availability of
-exact ABI tarball bytes at the frozen digest. The five frozen Product blobs are
-accepted and unaffected. The four named old donor proof blobs remain rejected;
-their repaired descendants must satisfy the exact proof contract before any
-realization candidate may be transplanted, frozen, or accepted. No code,
-package, build, test, migration closure, RC, final release, or tag movement is
-credited by this document alone.
+The first realization gate was satisfied with exact ABI tarball bytes at the
+frozen digest. The five frozen Product blobs remain accepted and unaffected.
+The four named old donor proof blobs remain rejected; only their exact repaired
+R3 descendants carry the accepted proof. This status-only closure credits the
+bounded development candidate and T-041 completion. It does not credit an RC,
+final release, ABI release qualification, tag movement, broader Product
+closure, or any activated D-capsule row.
 
 ## Superseded Pre-Pin Wave 2 Draft
 

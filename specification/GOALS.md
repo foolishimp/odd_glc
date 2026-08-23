@@ -1,23 +1,23 @@
 # odd_glc Goals
 
-**Status**: Active
-**Reconciliation status**: Accepted evidence-driven proof-assurance
-`design_reframe` v4; exact proposal commit
-`e40895ffff403fd27686aaddf19dd11285fda0a2`, tree
-`8f2c832a74b0a55a73ded92679a48a34453d0344`, independently reviewed by Max
-with disposition ACCEPT (A/B/C/D all zero) and accepted by Executive/F_H on
-2026-08-24
+**Status**: T-041 bounded wave completed; no successor goal selected
+**Reconciliation status**: Exact realization candidate
+`1286a59606737fb934ebc076f5bbb72506fa9652`, tree
+`a713f47b183840049b10790a29b8c26fd04643c7`, independently reviewed ACCEPT
+with A/B/C/D all zero and accepted by Executive/F_H on 2026-08-24
 **Date**: 2026-08-24
 **Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
 2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
 predecessor tag `v0.1.0`; and predecessor manifest
 `/Users/jim/src/apps/abiogenesis/release_snapshots/abiogenesis-typescript-tenant/4.6.0-rc.3/release-snapshot-manifest.json`
 
-Goals define the current bounded work-wave for `odd_glc`.
+Goals record the completed bounded T-041 work-wave for `odd_glc`. A separate
+goal-and-design reprice is required before any successor wave begins.
 
 ## Current Goal
 
-Deliver `W2-ODD-GLC-PROGRAM-ONLY-HELLO`: one source-independent odd_glc
+No successor goal is selected. The completed goal was
+`W2-ODD-GLC-PROGRAM-ONLY-HELLO`: one source-independent odd_glc
 development candidate supplies exactly one immutable GTL Program publication
 as data: its Program record, odd_glc-owned GraphFunction definition/topology,
 and only the required declarative contracts, policies, overlays, and package
@@ -42,9 +42,9 @@ data-mapper, One Surface, and Consensus remain deferred.
 
 ## Downstream Routing And Selected Constraints
 
-T-041 routes this goal. The ratified v4 proof-assurance `design_reframe` in
+T-041 completed this goal. The ratified v4 proof-assurance `design_reframe` in
 `build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` is current design
-authority. It preserves the selected
+authority for the accepted realization. It preserves the selected
 `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
 ABIogenesis tag `v5.0.0-dev.286`, commit
 `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
@@ -124,14 +124,35 @@ leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
 bindings, greeting punctuation, and transport forms remain version-local.
 Hello World is steel-thread shorthand, not Product parity.
 
-The exact v4 reframe is admitted. This status-only child records independent
-Max ACCEPT (A/B/C/D all zero) and Executive/F_H acceptance of the exact
-proposal bytes; neither the proposal nor diagnostic execution self-accepted
-them. A realization candidate may be transplanted or frozen only after repaired
-descendants of all four rejected proof-donor blobs pass every exact v4 gate. A
-diagnostic result does not satisfy a proof gate or expand the accepted design.
+The exact v4 reframe is admitted. Repaired proof commit
+`49c39528065ce98bf9c9787fd070783dfbfe93dd` passed the exact v4 proof gates
+before its four proof blobs were transplanted unchanged into exact realization
+candidate `1286a59606737fb934ebc076f5bbb72506fa9652`. Independent cold review of
+that candidate returned ACCEPT with A/B/C/D all zero, and Executive/F_H
+accepted the exact candidate on 2026-08-24. No diagnostic result expanded the
+accepted design.
 
-### Selected Execution Plan
+### T-041 Closure
+
+The accepted candidate is a direct child of admitted v4 status commit
+`b1b881ba4baee915de89fc094491faaa2261fb3d`. Its exact tree is
+`a713f47b183840049b10790a29b8c26fd04643c7`. The retained proof outputs are
+identified independently of their filesystem location as
+`candidate-raw.json`, 112,497,247 bytes, SHA-256
+`8e2d1754d86f1ae5b107a11799e7344f41b16605dfd2704fa4bcc2d37abb66a4`, and
+`differential.json`, 389,748,630 bytes, SHA-256
+`38f34c3a540bb7ffe8cc17adb4fa18b49cf02bc2116713e3ab295d8fed8adebe`.
+The R3-headed inventory passed 1/1 with zero failures or skips; the full
+differential passed 2/2 with zero failures or skips in 403.555 seconds.
+
+The ratified proof-before-transplant relation requires no second long E2E run
+headed by the clean candidate, and none is claimed. The candidate binds the
+same four repaired proof Git blobs and the accepted five Product blobs in a
+clean direct-child topology. The activated D Product-resolution hardening
+capsule and every v4 nonclaim remain open. T-041 completion selects or
+authorizes no successor ticket.
+
+### Completed Execution Plan
 
 1. Hold candidate transplant and freeze until all four repaired proof blobs
    pass the exact v4 gates; reject even diagnostic execution unless the exact
@@ -203,8 +224,9 @@ input, or output and must create, never reuse, both raw and differential
 receipts; no skip path may report green.
 
 The five frozen Product blobs enumerated by the migration design remain
-accepted and unaffected by this assurance reframe. Its four named proof blobs
-are donor evidence rejected pending repair and cannot qualify a candidate.
+accepted and unaffected by this assurance reframe. The four old donor blobs
+remain rejected; their repaired R3 descendants passed the exact gates and are
+the exact proof blobs in the accepted candidate.
 
 The odd_glc `0.2.0-dev.1` package closes only when its production census
 contains declarative GTL publication data and no executable evaluator/provider,
@@ -235,7 +257,7 @@ without proof and disposition.
 
 ### Selected Routing Ticket
 
-- `T-041`: Program-only sentinel and installed differential.
+- `T-041`: completed Program-only sentinel and installed differential.
 
 ## Deferred Full-Lifecycle Plan
 
@@ -329,9 +351,9 @@ retroactively.
 
 ## Deferred Full-Lifecycle Tickets
 
-The ordered post-Hello queue remains active but is execution-deferred until
-T-041 closes and a separate ABI5 goal-and-design reprice admits the broader
-wave. It does not enlarge T-041:
+The ordered post-Hello queue remains active but execution-deferred. T-041 is
+closed; a separate ABI5 goal-and-design reprice has not selected or admitted
+the broader wave. The queue does not enlarge T-041 or authorize execution:
 
 1. `T-025`: typed scenario ladder and data_mapper witness preparation over the
    reusable software-build overlay;
@@ -443,10 +465,10 @@ only after GTL/ABG admits or projects the relevant truth.
 
 ## Completed Checkpoint
 
-`T-001` through `T-024` and `T-028` are completed source work. They established
-the product boundary, ABIogenesis substrate pin, lifecycle program overlay,
-typed lifecycle node model, startup binding, first ABG startup
-proof, and generic parity matrix.
+`T-001` through `T-024`, `T-028`, and `T-041` are completed source work. They
+established the product boundary, ABIogenesis substrate pin, lifecycle program
+overlay, typed lifecycle node model, startup binding, first ABG startup proof,
+generic parity matrix, and the bounded ABI5 Program-only Hello sentinel.
 
 Those completed tickets remain trace records for what has been earned. This
-goals file names the current wave and is the active planning surface.
+goals file records the completed wave; it does not select the next one.
