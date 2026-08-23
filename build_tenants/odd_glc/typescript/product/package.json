@@ -1,0 +1,13 @@
+{
+  "name": "@odd-glc/route-one-typescript",
+  "version": "0.2.0-dev.1",
+  "type": "module",
+  "exports": {
+    "./publication": "./build/publication.json"
+  },
+  "files": [
+    "build",
+    "contracts",
+    "product-toolchain-manifest.json"
+  ]
+}
