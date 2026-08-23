@@ -242,7 +242,7 @@ async function closedModuleGraphEvidence({
       evidenceSeeds.map(({ kind }) => kind),
     );
     const canonicalInstalledRoots = await Promise.all(
-      installedRoots.map(realpath),
+      installedRoots.map((installedRoot) => realpath(installedRoot)),
     );
     const canonicalSourceRoot = await realpath(SOURCE_ROOT);
     for (const installedRoot of canonicalInstalledRoots) {
