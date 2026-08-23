@@ -2299,7 +2299,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   const { stdout: freshStdout, stderr: freshStderr } = await execFileAsync(
     process.execPath,
     [FRESH_READ_WORKER, freshRequestPath],
-    { cwd: scratch, env: {}, maxBuffer: 20 * 1024 * 1024 },
+    { cwd: scratch, env: {}, maxBuffer: 100 * 1024 * 1024 },
   );
   assert.equal(freshStderr, "");
   const fresh = JSON.parse(freshStdout);
