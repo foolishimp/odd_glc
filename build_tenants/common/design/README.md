@@ -8,16 +8,12 @@ tenant after the tenant registry activates it.
 
 ## Active Decisions
 
-- [ADR-001 route-1 GTL/ABG lifecycle consumption](adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
-
-## Proposed Decisions Awaiting Exact-Tree Acceptance
-
 - `ODD_GLC_ABI5_MIGRATION` —
   [ABIogenesis 5 data-only Product migration](ODD_GLC_ABI5_MIGRATION.md):
-  proposed T-041 design over exact ABIogenesis `v5.0.0-dev.286`; it becomes an
-  active ratified Program-only design only after the Executive/F_H exact-tree
-  gate in `specification/GOVERNANCE.md` holds. Broader lifecycle migration is
-  deferred.
+  active ratified T-041 Program-only design over exact ABIogenesis
+  `v5.0.0-dev.286`, admitted through the exact-tree record in
+  `specification/GOVERNANCE.md`; broader lifecycle migration is deferred.
+- [ADR-001 route-1 GTL/ABG lifecycle consumption](adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
 
 ## Preserved Predecessor And Deferred Evidence
 
@@ -26,4 +22,4 @@ tenant after the tenant registry activates it.
 - [dense odd_sdlc feature parity table](ODD_GLC_ODD_SDLC_FEATURE_PARITY_TABLE.md)
 
 These surfaces preserve released 0.1 or deferred full-lifecycle reasoning. They
-do not override or enlarge the proposed T-041 design if it is admitted.
+do not override or enlarge the active ratified T-041 design.

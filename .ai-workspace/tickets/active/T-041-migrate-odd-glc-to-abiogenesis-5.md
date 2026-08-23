@@ -5,7 +5,7 @@
 - type: feature
 - ticket_category: implementation_migration
 - status: active
-- execution_state: proposed_design_pending_exact_tree_acceptance
+- execution_state: ratified_design_awaiting_clean_realization
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
@@ -18,7 +18,7 @@
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
 - current_change_class: design_reframe
-- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-design-completion
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-design-completion
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
 - governing_library: >-
@@ -57,14 +57,17 @@
     dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
   - specification/PRODUCT.md
   - >-
-    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (proposed exact-tree
-    design candidate; operative only after Executive/F_H exact-tree acceptance)
+    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (active ratified
+    design admitted from exact proposal commit
+    22824d04c0ff8fce42425fa9649686cf616e635a, tree
+    b4e7cce91862dd2054fbb5bcd8fc80d1e10c3335, full-index binary patch SHA-256
+    86e8bf2b02e23e1752ed54c821db6c1e39643228fe4eeb5240d0494f32324751)
   - exact ABIogenesis v5.0.0-dev.286 public Product boundary
 - delegated_authority: >-
-    After exact-tree design acceptance, realize and prove the bounded
-    Program-only sentinel from the named clean predecessor; no provider,
-    implementation, lifecycle interpretation, ABI mechanism, Product
-    expansion, release publication, or compatibility authority is delegated.
+    Realize and prove the bounded Program-only sentinel from the named clean
+    predecessor; no provider, implementation, lifecycle interpretation, ABI
+    mechanism, Product expansion, release publication, or compatibility
+    authority is delegated.
 - re_entry_conditions: >-
     Re-enter Product or requirements for changed lifecycle meaning; accepted
     design for a changed semantic or authority relation; and F_H for any need
@@ -72,7 +75,7 @@
 - acceptance_roles:
     product_authority: direct_F_H
     adjudicator: Executive_F_H
-    independent_review: required_on_one_exact_tree
+    independent_review: satisfied_on_accepted_proposal_tree
     checkpoint_administration: after_acceptance_only
 - predecessor_tickets:
   - T-033
@@ -80,34 +83,34 @@
 - non_authorized_release_routes:
   - T-039
   - T-037
-- admission_dependencies:
-  - independent review of one immutable exact Git tree
-  - explicit Executive/F_H acceptance of that same tree
+- satisfied_admission_gates:
+  - independent exact-tree review disposition ACCEPT
+  - Executive/F_H accepted the exact proposal tree on 2026-08-24
+- realization_dependencies:
   - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
   - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
   - immutable v0.1.0 predecessor receipt for the bounded differential
 
-## Proposed Design-Completion Routing
+## Ratified Design-Completion Routing
 
-The proposed implementation authority is
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-design-completion`.
+The active implementation authority is
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-design-completion`.
 It freezes the ABI tag/commit/tree/tarball and public exports; odd_glc package,
 Product, module, Program, start, GraphFunction, graph, node, manifest, Catalog,
 and provenance identities; the exact five-member zero-code archive; the
 cross-owner declaration and implementation relation; the installed execution
 DAG; the twelve-key sentinel; proof/nonclaims; and predecessor conservation.
 
-This ticket routes that design only after the exact-tree admission gate in
-`specification/GOVERNANCE.md` holds. It does not authorize the ticket,
+This ticket routes that accepted design through the exact-tree admission
+record in `specification/GOVERNANCE.md`. It does not authorize the ticket,
 synthetic ABI fixture, dirty checkout, rejected `abi5_program` source, or prior
 candidate tests to fill or revise any frozen field. The present cut is a
 `design_reframe`, not a Product or requirements reprice.
 
-## Proposed Operative Wave 2 Target
+## Operative Wave 2 Target
 
-If the exact-tree admission gate holds, this section supersedes the broader
-migration targets and Increment 01-05 candidates below for execution. Until
-then it is proposed design routing. Those sections remain historical and
+This section supersedes the broader migration targets and Increment 01-05
+candidates below for execution. Those sections remain historical and
 later-wave evidence only.
 This is a Program-only sentinel. The odd_glc Product term `MVP` remains
 reserved for `SCN-GLC-HELLO-WORLD-MINIMAL`, which this ticket does not close.

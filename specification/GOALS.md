@@ -1,7 +1,8 @@
 # odd_glc Goals
 
 **Status**: Active
-**Reconciliation status**: Proposed exact-tree update pending the Governance gate
+**Reconciliation status**: Admitted by the `specification/GOVERNANCE.md`
+exact-tree record on 2026-08-24
 **Date**: 2026-08-24
 **Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
 2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
@@ -37,17 +38,16 @@ data-mapper, One Surface, and Consensus remain deferred.
 
 ## Downstream Routing And Selected Constraints
 
-T-041 routes this goal. The proposed
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` design candidate
+T-041 routes this goal. The active ratified
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` design
 selects `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
 ABIogenesis tag `v5.0.0-dev.286`, commit
 `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
 `a399045de5d752b92c084b5b38b358aa2d1c63aa`, package
 `@abiogenesis/typescript-tenant@5.0.0-dev.286`, and tarball SHA-256
 `4fc3130cef9fda3171bb28aafffa71775328745721e305172fce9d04c9fdfe41`.
-Those downstream coordinates constrain realization only if the exact-tree
-admission gate in `specification/GOVERNANCE.md` accepts that design. Neither
-the ticket, design, nor ABI development Product derives or enlarges this goal.
+Those admitted downstream coordinates constrain realization. Neither the
+ticket, design, nor ABI development Product derives or enlarges this goal.
 
 odd_glc supplies no executable TypeScript Product-semantics provider,
 evaluator, implementation binding, leaf Implementation, semantic
@@ -113,8 +113,7 @@ Hello World is steel-thread shorthand, not Product parity.
 
 ### Selected Execution Plan
 
-1. Hold implementation until the proposed T-041 design is accepted and the exact
-   ABI tarball matches its pinned SHA-256.
+1. Hold implementation until the exact ABI tarball matches its pinned SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
 3. Publish one exact five-member, zero-code odd_glc Program candidate whose
    odd_glc-owned GraphFunction topology references the installed ABI Hello leaf

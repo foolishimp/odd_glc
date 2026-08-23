@@ -1,7 +1,6 @@
 # odd_glc Governance
 
-**Status**: Proposed exact-tree governance candidate; not yet admitted
-**Target status**: Ratified method selection only after the exact-tree gate below
+**Status**: Ratified method selection
 **Effective scope**: current `odd_glc` source-project work
 **Selected method Product**: STDO `2.3.0`
 
@@ -163,10 +162,10 @@ decision.
 
 ## Exact-Tree Admission Gate
 
-This document and the T-041 design in the same candidate tree are proposals;
-their wording does not admit or ratify that tree. They become operative only
-if one immutable candidate tree, with direct parent
-`96b5a9c2e109cb584f943f79997ac213d069f411`, satisfies every condition below:
+The accepted Governance and T-041 design proposal was governed by this gate.
+Its wording did not admit or ratify itself. It became operative only after one
+immutable candidate tree, with direct parent
+`96b5a9c2e109cb584f943f79997ac213d069f411`, satisfied every condition below:
 
 1. the complete candidate tree is frozen and identified by its Git tree hash;
 2. independent reviewers assess that same tree without amendment;
@@ -184,12 +183,29 @@ Content changes after review create a new tree and restart the gate. Agent
 identity, dirty-checkout state, and uncommitted-candidate identity are not
 durable admission coordinates.
 
+## Admission Record
+
+| Coordinate | Exact value |
+|---|---|
+| accepted proposal commit | `22824d04c0ff8fce42425fa9649686cf616e635a` |
+| accepted proposal tree | `b4e7cce91862dd2054fbb5bcd8fc80d1e10c3335` |
+| proposal direct parent | `96b5a9c2e109cb584f943f79997ac213d069f411` |
+| proposal full-index binary patch SHA-256 | `86e8bf2b02e23e1752ed54c821db6c1e39643228fe4eeb5240d0494f32324751` |
+| independent exact-tree review | `ACCEPT` |
+| Executive/F_H acceptance date | `2026-08-24` |
+| disposition | exact proposal admitted; Governance ratified and T-041 design active |
+
+Executive/F_H accepted the exact proposal only after independent review of
+that same tree. This status-only child records that external disposition. It
+does not alter or re-accept the proposal's mechanics, identities, queues,
+Product meaning, requirements, code, tests, package data, or proof nonclaims.
+
 ## T-041 Instantiation
 
 T-041 entered through direct F_H `goal_reprice`; its design-completion cut is a
 bounded `design_reframe`. It does not change `INTENT`, Product meaning, or an
-active requirement. If admitted, the selected zero-code Program-only Hello
-sentinel proves one install/catalog/execution/replay seam. It does not delete or close the
+active requirement. The admitted zero-code Program-only Hello sentinel proves
+one install/catalog/execution/replay seam. It does not delete or close the
 broader Product-owned read-only lifecycle interpretation described by
 `specification/PRODUCT.md`.
 

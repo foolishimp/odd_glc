@@ -1,7 +1,7 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Proposed exact-tree T-041 Program-only design; not yet admitted
+**Status**: Active ratified T-041 Program-only design; full lifecycle migration deferred
 **Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
 **Construction Basis**: direct-F_H-adopted authority-conserving,
 entity-centric, event-sourced functional reactive domain modeling method;
@@ -14,15 +14,13 @@ resolved through `specification/GOVERNANCE.md`
 `@abiogenesis/typescript-tenant@4.6.0-rc.3`
 **Development substrate**: `@abiogenesis/typescript-tenant@5.0.0-dev.286`
 
-## Proposed T-041 Design Completion
+## Ratified T-041 Design Completion
 
-If and only if the exact-tree gate in `specification/GOVERNANCE.md` holds,
-this section becomes the complete implementation authority for T-041 and
-supersedes the pre-pin Wave 2 draft and rejected candidate records below.
-Until then it is a proposed design candidate and cannot authorize code. Those
-records remain design history only. This cut is a `design_reframe` after the
-already-selected goal re-entry. It changes no Intent, Product meaning, or
-requirement.
+The exact-tree admission record in `specification/GOVERNANCE.md` makes this
+section the complete implementation authority for T-041. It supersedes the
+pre-pin Wave 2 draft and rejected candidate records below. Those records
+remain design history only. This cut is a `design_reframe` after the already-
+selected goal re-entry. It changes no Intent, Product meaning, or requirement.
 
 The selected subject is a governed, separately versioned and installable
 data-only GTL Product. It is not an application, runtime, controller, semantic
@@ -446,14 +444,15 @@ The target admission topology is atomic: freeze one exact tree; review that
 same tree independently; obtain explicit Executive/F_H acceptance of that
 tree; commit the identical tree unchanged on the named predecessor; then
 record commit/tree disposition outside that tree and not as a self-acceptance
-claim in its commit message. This authored cut is frozen as a **proposed**
-commit before external acceptance. It therefore remains non-operative; a
-later status-only admission or external exact-tree disposition must record the
-transition. No wording here retroactively turns the proposal into a ratified
-design.
+claim in its commit message. The accepted proposal was frozen as a proposed
+commit before external acceptance and remained non-operative at that point.
+The Governance admission record binds the later independent review and
+Executive/F_H acceptance to those exact bytes; this status-only child records
+the transition without changing design mechanics or self-accepting its own
+tree.
 
-After design admission, the first realization gate is availability of exact
-ABI tarball bytes at the frozen digest. No executable test is a prerequisite
+With design admission recorded, the first realization gate is availability of
+exact ABI tarball bytes at the frozen digest. No executable test is a prerequisite
 to authoring the first Product-data cut; the four named future proof paths
 above must exist before that cut can be accepted. No code, package, build,
 test, migration closure, RC, final release, or tag movement is credited by
@@ -462,10 +461,10 @@ this document alone.
 ## Superseded Pre-Pin Wave 2 Draft
 
 The following section predates the exact immutable substrate and odd_glc
-identity freeze. It is retained as non-authoritative design history. If the
-proposed completion above is admitted, it governs every difference. Words such
-as “accepted” inside this preserved history report former assumptions; they do
-not admit the current candidate.
+identity freeze. It is retained as non-authoritative design history. The
+ratified completion above governs every difference. Words such as “accepted”
+inside this preserved history report former assumptions; they do not override
+the current design.
 
 The current design subject is `W2-ODD-GLC-PROGRAM-ONLY-HELLO`. "Hello World"
 is the minimal end-to-end scenario shorthand. A Hello World `GraphFunction`
