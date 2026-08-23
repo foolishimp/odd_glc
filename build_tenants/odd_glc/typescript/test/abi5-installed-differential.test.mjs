@@ -21,12 +21,64 @@ const PROOF_FILES = Object.freeze([
   "abi5-installed-differential.test.mjs",
 ]);
 const ARCHIVE_MEMBERS = Object.freeze([
-  "build/publication.json",
-  "contracts/capabilities/capability-definition-graph.json",
-  "contracts/public-contract-catalog.schema.json",
-  "package.json",
-  "product-toolchain-manifest.json",
+  "package/build/publication.json",
+  "package/contracts/capabilities/capability-definition-graph.json",
+  "package/contracts/public-contract-catalog.schema.json",
+  "package/package.json",
+  "package/product-toolchain-manifest.json",
 ]);
+const ABI_PUBLIC_EXPORT_PATHS = Object.freeze([
+  ".",
+  "./abg",
+  "./gtl",
+  "./hog",
+  "./product",
+  "./public",
+  "./validator",
+]);
+const ABSENT_PUBLIC_CALLABLE_KEYS = Object.freeze([
+  "abg.operation.interaction.respond#answer_escalation",
+  "abg.operation.interaction.respond#approve",
+  "abg.operation.interaction.respond#assess",
+  "abg.operation.interaction.respond#reject",
+  "abg.operation.interaction.respond#select",
+  "abg.operation.product.materialize#configuration",
+  "abg.operation.product.materialize#context_bootstrap",
+  "abg.operation.project.read#release_evidence",
+  "abg.operation.result.assess#assess",
+  "abg.operation.run.continue#current_intent",
+  "abg.operation.run.continue#selected_action",
+  "abg.operation.witness.admit#attest",
+  "abg.operation.witness.admit#hygiene-stamp",
+  "abg.operation.witness.admit#intake",
+  "abg.operation.witness.admit#reprice",
+  "abg.operation.witness.admit#run-resumed",
+  "abg.operation.witness.admit#run-stopped",
+]);
+const PRODUCT_BLOBS = Object.freeze({
+  "build_tenants/odd_glc/typescript/product/build/publication.json":
+    "3669af8fcf038b5648a814fa213f563f62ccd592",
+  "build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json":
+    "c26a33f123bc4eca4ef4032c9c1658f4305477ba",
+  "build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json":
+    "72d93bd0f09152af6955a9f618ae89bc31b7bacb",
+  "build_tenants/odd_glc/typescript/product/package.json":
+    "c3ee1c472c2f6aa42cf112e202fb0311b73e7a15",
+  "build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json":
+    "ba2e02ce56f92a3e2524537b30b239b4a9e00df5",
+});
+const PRODUCT_SHA256 = Object.freeze({
+  "build_tenants/odd_glc/typescript/product/build/publication.json":
+    "1803fed3bd31e39642107afd1209ff2349ae402ed7125ffcaeafd4d78578b42c",
+  "build_tenants/odd_glc/typescript/product/contracts/capabilities/capability-definition-graph.json":
+    "f664ed939704a5573a2f5151eccb86532c777eda6d5b927454f65ca839363bd0",
+  "build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json":
+    "61e568843e73d95da3e018d7fb42c3dc4524ac1ed199efff6e84b902ad277deb",
+  "build_tenants/odd_glc/typescript/product/package.json":
+    "73d038fccebbf19ab12639b9d93b8555996efe7468111ca8b45eb8b611c4d919",
+  "build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json":
+    "c09897a8e7dd9d8ac8214464e825ea9ff4e7fefd73b6430a3af96693a1ce9cd5",
+});
 const NATIVE_OWNER_METHODS = Object.freeze([
   "./product::WorkspaceOperationPort.create",
   "./product::WorkspaceOperationPort.open",
@@ -79,23 +131,67 @@ async function readExactJson(root, relativePath, expectedDigest) {
   assert.equal(sha256Hex(bytes), expectedDigest, relativePath);
   return Object.freeze({
     bytes,
+    raw: rawBytesEvidence(bytes),
     value: JSON.parse(bytes),
   });
 }
 
-function importSpecifiers(source) {
-  const specifiers = [];
-  for (const declaration of source.match(/^import\b[\s\S]*?;$/gmu) ?? []) {
-    const match = declaration.match(
-      /(?:from\s+)?["']([^"']+)["']\s*;$/u,
-    );
-    assert.ok(match, declaration);
-    specifiers.push(match[1]);
-  }
-  for (const match of source.matchAll(/\bimport\(\s*["']([^"']+)["']\s*\)/gu)) {
-    specifiers.push(match[1]);
-  }
-  return specifiers;
+function rawBytesEvidence(bytes) {
+  return Object.freeze({
+    encoding: "base64",
+    bytes: bytes.toString("base64"),
+    byteLength: bytes.length,
+    sha256: `sha256:${sha256Hex(bytes)}`,
+  });
+}
+
+function assertRawBytesEvidence(evidence, expectedBytes = null) {
+  assert.deepEqual(Object.keys(evidence).sort(), [
+    "byteLength",
+    "bytes",
+    "encoding",
+    "sha256",
+  ]);
+  assert.equal(evidence.encoding, "base64");
+  const bytes = Buffer.from(evidence.bytes, evidence.encoding);
+  assert.equal(bytes.length, evidence.byteLength);
+  assert.equal(`sha256:${sha256Hex(bytes)}`, evidence.sha256);
+  if (expectedBytes !== null) assert.deepEqual(bytes, expectedBytes);
+  return bytes;
+}
+
+function assertExactKeys(value, expected, label) {
+  assert.deepEqual(Object.keys(value).sort(), [...expected].sort(), label);
+}
+
+async function parseStaticModuleGraph(filePaths) {
+  const parserSource = [
+    `import { readFile } from "node:fs/promises";`,
+    `import vm from "node:vm";`,
+    `const rows = [];`,
+    `for (const filePath of process.argv.slice(1)) {`,
+    `  const source = await readFile(filePath, "utf8");`,
+    `  const module = new vm.SourceTextModule(source, { identifier: filePath });`,
+    `  rows.push({ filePath, moduleRequests: module.moduleRequests.map((row) => row.specifier) });`,
+    `}`,
+    `process.stdout.write(JSON.stringify(rows));`,
+  ].join("\n");
+  const { stdout, stderr } = await execFileAsync(
+    process.execPath,
+    [
+      "--experimental-vm-modules",
+      "--no-warnings",
+      "--input-type=module",
+      "--eval",
+      parserSource,
+      ...filePaths,
+    ],
+    { maxBuffer: 20 * 1024 * 1024 },
+  );
+  assert.equal(stderr, "");
+  const rows = JSON.parse(stdout);
+  assert.deepEqual(rows.map(({ filePath }) => filePath), filePaths);
+  return rows;
 }
 
 async function sourceBlindCensus() {
@@ -106,11 +202,15 @@ async function sourceBlindCensus() {
     ["Root", "Public", "Invocation"].join(""),
     ["legacy", "Request"].join(""),
   ]);
+  const filePaths = PROOF_FILES.map((relativePath) =>
+    path.join(TEST_ROOT, relativePath));
+  const parsedModules = await parseStaticModuleGraph(filePaths);
   const files = [];
-  for (const relativePath of PROOF_FILES) {
-    const bytes = await readFile(path.join(TEST_ROOT, relativePath));
+  const edges = [];
+  for (const [index, relativePath] of PROOF_FILES.entries()) {
+    const bytes = await readFile(filePaths[index]);
     const source = bytes.toString("utf8");
-    const specifiers = importSpecifiers(source);
+    const specifiers = parsedModules[index].moduleRequests;
     assert.equal(specifiers.length > 0, true, relativePath);
     assert.equal(
       specifiers.every((specifier) => specifier.startsWith("node:")),
@@ -120,21 +220,59 @@ async function sourceBlindCensus() {
     const prohibitedTokenHits = prohibitedTokens.filter((token) =>
       source.includes(token));
     assert.deepEqual(prohibitedTokenHits, [], relativePath);
+    edges.push(...specifiers.map((specifier) => Object.freeze({
+      from: relativePath,
+      to: specifier,
+      kind: "static_import",
+    })));
     files.push(Object.freeze({
       relativePath,
       sha256: sha256Hex(bytes),
-      importSpecifiers: Object.freeze(specifiers),
+      parsedStaticModuleRequests: Object.freeze(specifiers),
       prohibitedTokenHits: Object.freeze(prohibitedTokenHits),
     }));
   }
+  const builtins = [...new Set(edges.map(({ to }) => to))].sort();
   return Object.freeze({
     files: Object.freeze(files),
+    staticModuleGraph: Object.freeze({
+      parser: "node:vm.SourceTextModule",
+      sourceNodes: Object.freeze([...PROOF_FILES]),
+      terminalBuiltinNodes: Object.freeze(builtins),
+      edges: Object.freeze(edges),
+      closed: true,
+    }),
     sourceOrPrivateImport: false,
     prohibitedCompatibilitySurface: false,
   });
 }
 
-function projectPredecessor({ receipt, releaseManifest, liveProof }) {
+let sourceCensusPromise = null;
+
+function qualifiedSourceBlindCensus() {
+  sourceCensusPromise ??= sourceBlindCensus();
+  return sourceCensusPromise;
+}
+
+async function assertCreateOnlyDestination(destination, label) {
+  assert.ok(destination, `${label} is required`);
+  assert.equal(path.isAbsolute(destination), true, `${label} must be absolute`);
+  try {
+    await readFile(destination);
+    assert.fail(`${label} must not already exist`);
+  } catch (error) {
+    assert.equal(error.code, "ENOENT", `${label} must be create-only`);
+  }
+}
+
+function projectPredecessor({ receipt, releaseManifest, abiReleaseManifest, liveProof }) {
+  assertExactKeys(receipt, [
+    "kind", "schemaVersion", "basis", "rawEvidence", "observation", "nonclaims",
+  ], "predecessor receipt keyset");
+  assertExactKeys(receipt.basis, [
+    "oddGlcTag", "oddGlcCommit", "oddGlcPackage", "oddGlcTarballSha256",
+    "abiTag", "abiPackage", "abiTarballSha256",
+  ], "predecessor basis keyset");
   assert.equal(receipt.kind, "t041_immutable_predecessor_receipt");
   assert.equal(receipt.schemaVersion, "1");
   assert.deepEqual(receipt.basis, {
@@ -147,7 +285,23 @@ function projectPredecessor({ receipt, releaseManifest, liveProof }) {
     abiTarballSha256: DIGESTS.abi46Tarball,
   });
   assert.equal(releaseManifest.releaseIdentity, "0.1.0");
+  assert.equal(releaseManifest.releaseTag, "v0.1.0");
+  assert.equal(releaseManifest.sourceCommit, "70580b93166b1f9e33b7622512c2d5bd442469e2");
+  assert.equal(releaseManifest.sourceRef, "main");
+  assert.equal(releaseManifest.sourceDirty, false);
   assert.equal(releaseManifest.tarball.sha256, DIGESTS.odd01Tarball);
+  assert.equal(releaseManifest.tarball.bytes, 24972);
+  assert.equal(abiReleaseManifest.releaseIdentity, "4.6.0-rc.3");
+  assert.equal(Object.hasOwn(abiReleaseManifest, "releaseTag"), false);
+  assert.equal(abiReleaseManifest.rcBranch, "rc/4.6.0");
+  assert.equal(abiReleaseManifest.sourceRef, "rc/4.6.0");
+  assert.equal(
+    abiReleaseManifest.sourceCommit,
+    "5213301cdbfd35952badf19c27519caa9e7e6968",
+  );
+  assert.equal(abiReleaseManifest.sourceDirty, false);
+  assert.equal(abiReleaseManifest.tarball.sha256, DIGESTS.abi46Tarball);
+  assert.equal(abiReleaseManifest.tarball.bytes, 1196854);
   assert.equal(releaseManifest.packedInstall.status, 0);
   assert.equal(releaseManifest.packedInstall.installMode, "packed_artifact");
   assert.equal(releaseManifest.packedInstall.packageVersion, "0.1.0");
@@ -207,9 +361,22 @@ function projectPredecessor({ receipt, releaseManifest, liveProof }) {
 }
 
 function projectCandidate(rawObservation, sourceCensus) {
+  assertExactKeys(rawObservation, [
+    "kind", "schemaVersion", "basis", "archive",
+    "installedPublicModuleRefs", "installedPublicModuleEvidence", "publicFamily",
+    "ownership", "nativeOwnerStageObservations", "transportedDefinitionKeys",
+    "transportedJsonLines", "transportedRawExchanges",
+    "resolutionBoundaryObservations", "transportBoundaryObservations",
+    "freshProcessStdout", "runtimeEventLog", "authenticatedRuntimeObservation",
+  ], "candidate raw observation keyset");
   assert.equal(rawObservation.kind, "odd_glc_abi5_installed_raw_observation");
   assert.equal(rawObservation.schemaVersion, "1");
-  assert.deepEqual(rawObservation.basis, {
+  assertExactKeys(rawObservation.basis, [
+    "abiPackage", "abiProductId", "abiTarballSha256", "oddPackage",
+    "oddProductId", "oddTarballSha256", "productGit",
+  ], "candidate basis keyset");
+  const { productGit, ...candidatePackageBasis } = rawObservation.basis;
+  assert.deepEqual(candidatePackageBasis, {
     abiPackage: "@abiogenesis/typescript-tenant@5.0.0-dev.286",
     abiProductId: "product://abiogenesis/typescript-tenant@5.0.0-dev.286",
     abiTarballSha256: DIGESTS.abi5Tarball,
@@ -218,17 +385,54 @@ function projectCandidate(rawObservation, sourceCensus) {
     oddTarballSha256:
       "deb2e92f9944caca76cb5f7b8f4d2df99a6bddd41c8eb103c731ba7f50076f4c",
   });
+  assert.match(productGit.headCommit, /^[0-9a-f]{40}$/u);
+  assert.equal(
+    productGit.admittedImplementationDonor,
+    "6af27f0eae673cd1fbdb97c861f97803dbe920bf",
+  );
+  assert.equal(productGit.productBlobs.length, 5);
+  assert.deepEqual(
+    Object.fromEntries(productGit.productBlobs.map(
+      ({ repositoryPath, blobId }) => [repositoryPath, blobId])),
+    PRODUCT_BLOBS,
+  );
+  assert.deepEqual(
+    Object.fromEntries(productGit.productBlobs.map(
+      ({ repositoryPath, sha256 }) => [repositoryPath, sha256])),
+    PRODUCT_SHA256,
+  );
   assert.deepEqual(rawObservation.archive.members, ARCHIVE_MEMBERS);
+  assert.equal(
+    assertRawBytesEvidence(rawObservation.archive.tarball).length,
+    2230,
+  );
+  assert.equal(
+    rawObservation.archive.tarball.sha256,
+    "sha256:deb2e92f9944caca76cb5f7b8f4d2df99a6bddd41c8eb103c731ba7f50076f4c",
+  );
   assert.equal(rawObservation.archive.executableOrDeclarationMemberCount, 0);
   const moduleEvidence = [
     ...rawObservation.installedPublicModuleEvidence.bootstrap,
     ...rawObservation.installedPublicModuleEvidence.execution,
+    rawObservation.installedPublicModuleEvidence.oddPublication,
   ];
-  assert.equal(moduleEvidence.length, 10);
+  assert.equal(moduleEvidence.length, 15);
+  assert.deepEqual(
+    rawObservation.installedPublicModuleEvidence.bootstrap.map(
+      ({ packageExportPath }) => packageExportPath),
+    ABI_PUBLIC_EXPORT_PATHS,
+  );
+  assert.deepEqual(
+    rawObservation.installedPublicModuleEvidence.execution.map(
+      ({ packageExportPath }) => packageExportPath),
+    ABI_PUBLIC_EXPORT_PATHS,
+  );
   assert.equal(
     moduleEvidence.every((row) =>
       row.containedInInstalledPackage === true &&
-      row.packageExportPath === `./${row.namespace}` &&
+      row.outsideEverySourceCheckout === true &&
+      typeof row.resolvedURL === "string" &&
+      typeof row.realModuleURL === "string" &&
       !path.posix.isAbsolute(row.packageRelativeTarget) &&
       row.packageRelativeTarget !== ".." &&
       !row.packageRelativeTarget.startsWith("../")),
@@ -236,16 +440,68 @@ function projectCandidate(rawObservation, sourceCensus) {
   );
   assert.equal(rawObservation.publicFamily.operationCount, 18);
   assert.equal(rawObservation.publicFamily.definitionCount, 56);
-  assert.equal(rawObservation.publicFamily.consumedDefinitionKeys.length, 12);
-  assert.equal(
-    rawObservation.publicFamily.callableQualificationScope,
-    "consumed_12_only",
+  assert.equal(rawObservation.publicFamily.callableCount, 39);
+  assert.equal(rawObservation.publicFamily.absentCount, 17);
+  assert.deepEqual(
+    rawObservation.publicFamily.absentDefinitionKeys,
+    [...ABSENT_PUBLIC_CALLABLE_KEYS].sort(),
   );
-  assert.equal(rawObservation.publicFamily.unconsumedCallableClosure, "not_claimed");
+  assert.equal(rawObservation.publicFamily.selectedDefinitionKeys.length, 12);
+  assert.equal(rawObservation.publicFamily.rows.length, 56);
+  assert.equal(
+    rawObservation.publicFamily.rows.every((row) =>
+      row.schemaIdentityExact === true &&
+      row.projectionIdentityExact === true &&
+      row.verifiedCatalogIdentityExact === true &&
+      typeof row.sdkCoordinate === "string"),
+    true,
+  );
   assert.deepEqual(
     rawObservation.nativeOwnerStageObservations.map(({ ownerMethod }) =>
       ownerMethod),
     NATIVE_OWNER_METHODS,
+  );
+  assert.deepEqual(
+    rawObservation.nativeOwnerStageObservations.map(({ childCalls }) =>
+      childCalls.length),
+    [1, 1, 2, 1, 4, 2, 1, 1],
+  );
+  for (const stage of rawObservation.nativeOwnerStageObservations) {
+    assert.equal(stage.evidenceKind, "native_owner_stage_observation");
+    assert.equal(stage.receipt, false);
+    for (const child of stage.childCalls) {
+      assert.match(child.canonicalRequestDigest, /^sha256:[0-9a-f]{64}$/u);
+      assert.match(child.canonicalOutputDigest, /^sha256:[0-9a-f]{64}$/u);
+      assert.equal(typeof child.callsite.resolvedModuleURL, "string");
+      assert.equal(
+        Object.values(rawObservation.installedPublicModuleRefs.bootstrap)
+          .concat(Object.values(rawObservation.installedPublicModuleRefs.execution))
+          .includes(child.callsite.resolvedModuleURL),
+        true,
+      );
+      assert.equal(Array.isArray(child.dependencyCoordinates), true);
+      assert.equal(Array.isArray(child.resourceCoordinates), true);
+      assert.equal(Array.isArray(child.effectCoordinates), true);
+      assert.equal(
+        child.callsite.packageExportPath === "./product" ||
+          child.callsite.packageExportPath === "./abg",
+        true,
+      );
+    }
+  }
+  assert.equal(
+    rawObservation.nativeOwnerStageObservations[4].childCalls.slice(2)
+      .every((child) =>
+        child.callsite.namedExport === "admitProductInstall" &&
+        child.admissionCoordinate !== null &&
+        child.predecessorPrefix !== null &&
+        child.successorPrefix !== null),
+    true,
+  );
+  assert.deepEqual(
+    rawObservation.nativeOwnerStageObservations[5].childCalls.map(
+      ({ callsite }) => callsite.namedExport),
+    ["constructWorkspaceBinding", "admitWorkspaceBinding"],
   );
   assert.deepEqual(
     rawObservation.transportedDefinitionKeys,
@@ -311,6 +567,17 @@ function projectCandidate(rawObservation, sourceCensus) {
     outcomes.map(({ receipt }) => receipt.definitionKey),
     TRANSPORTED_DEFINITION_KEYS,
   );
+  assert.equal(rawObservation.transportedRawExchanges.length, 4);
+  for (const [index, exchange] of
+    rawObservation.transportedRawExchanges.entries()) {
+    assert.deepEqual(exchange.definitionKey, TRANSPORTED_DEFINITION_KEYS[index]);
+    const rawInput = assertRawBytesEvidence(exchange.input).toString("utf8");
+    const rawOutput = assertRawBytesEvidence(exchange.output).toString("utf8");
+    assert.equal(rawInput.endsWith("\n"), true);
+    assert.equal(rawOutput, `${rawObservation.transportedJsonLines[index]}\n`);
+    assert.deepEqual(exchange.ownerOutput, outcomes[index].receipt.ownerOutput);
+    assert.deepEqual(exchange.resources, outcomes[index].receipt.resources);
+  }
   const [startOutcome, ...readOutcomes] = outcomes;
   assert.equal(startOutcome.receipt.ownerOutput.outcomeKind, "result");
   assert.equal(startOutcome.receipt.ownerOutput.value.disposition, "completed");
@@ -333,23 +600,46 @@ function projectCandidate(rawObservation, sourceCensus) {
     assert.deepEqual(receipt.ownerOutput, readOutcomes[index].receipt.ownerOutput);
     assert.deepEqual(receipt.resources, readOutcomes[index].receipt.resources);
   }
-  const runtimeBytes = Buffer.from(rawObservation.runtimeEventLog.jsonl);
-  assert.equal(runtimeBytes.length, rawObservation.runtimeEventLog.byteLength);
-  assert.equal(
-    `sha256:${sha256Hex(runtimeBytes)}`,
-    rawObservation.runtimeEventLog.sha256,
+  const preStartBytes = assertRawBytesEvidence(
+    rawObservation.runtimeEventLog.preStart,
+  );
+  const postStartBytes = assertRawBytesEvidence(
+    rawObservation.runtimeEventLog.postStart,
+  );
+  const postReadBytes = assertRawBytesEvidence(
+    rawObservation.runtimeEventLog.postRead,
+  );
+  assert.equal(postStartBytes.length > preStartBytes.length, true);
+  assert.deepEqual(postReadBytes, postStartBytes);
+  assert.equal(fresh.eventLogObservation.appendedByteLength, 0);
+  assert.deepEqual(
+    assertRawBytesEvidence(fresh.eventLogObservation.before),
+    postStartBytes,
+  );
+  assert.deepEqual(
+    assertRawBytesEvidence(fresh.eventLogObservation.after),
+    postStartBytes,
   );
   assert.deepEqual(rawObservation.authenticatedRuntimeObservation.admittedResult, {
     kind: "hello_world_output",
     schemaVersion: "5.0.0",
     message: "Hello World",
   });
+  assert.equal(
+    rawObservation.authenticatedRuntimeObservation.startDisposition,
+    "completed",
+  );
+  assert.equal(
+    rawObservation.authenticatedRuntimeObservation.runtimeStatus,
+    "closed",
+  );
   assert.equal(rawObservation.authenticatedRuntimeObservation.runClosedCount, 1);
   assert.equal(
     rawObservation.authenticatedRuntimeObservation.readTimeAppendedBytes,
     0,
   );
-  assert.deepEqual(rawObservation.ownership, {
+  const { returnedOwnerLoadEvidence, ...ownership } = rawObservation.ownership;
+  assert.deepEqual(ownership, {
     programRef: "program://odd_glc/conformance/program-only-hello@5",
     graphFunctionRef:
       "graph-function://odd_glc/conformance/program-only-hello@5",
@@ -362,6 +652,15 @@ function projectCandidate(rawObservation, sourceCensus) {
     implementationOwnerProductId:
       "product://abiogenesis/typescript-tenant@5.0.0-dev.286",
   });
+  for (const [kind, row] of Object.entries(returnedOwnerLoadEvidence)) {
+    assert.equal(row.productId, "product://abiogenesis/typescript-tenant@5.0.0-dev.286");
+    assert.equal(row.packageName, "@abiogenesis/typescript-tenant");
+    assert.equal(row.packageVersion, "5.0.0-dev.286");
+    assert.equal(row.containedInReturnedInstalledRoot, true);
+    assert.equal(row.returnedExportPresent, true);
+    assert.equal(typeof row.moduleURL, "string", kind);
+    assert.equal(typeof row.namedSymbol, "string", kind);
+  }
   const candidateRawText = JSON.stringify(rawObservation);
   const carriesPredecessorRuntime =
     candidateRawText.includes("@odd-glc/route-one-typescript@0.1.0") ||
@@ -398,32 +697,40 @@ function projectCandidate(rawObservation, sourceCensus) {
 }
 
 test("ABI5 proof paths are source-blind and private-import free", async () => {
-  await sourceBlindCensus();
+  await qualifiedSourceBlindCensus();
 });
 
 test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen semantic projection", async (t) => {
-  const bootstrapRoot = process.env.ODD_GLC_T041_ABI_PACKAGE_ROOT;
   const abi5Tarball = process.env.ODD_GLC_T041_ABI_TARBALL;
   const baselineRoot = process.env.ODD_GLC_T041_BASELINE_ROOT;
-  if (!bootstrapRoot || !abi5Tarball || !baselineRoot) {
-    t.skip("exact ABI5 install/tarball and immutable 0.1/ABI4.6 baseline are required");
-    return;
-  }
-  assert.equal(sha256Hex(await readFile(abi5Tarball)), DIGESTS.abi5Tarball);
-  assert.equal(
-    sha256Hex(await readFile(path.join(
-      baselineRoot,
-      "odd-glc-route-one-typescript-0.1.0.tgz",
-    ))),
-    DIGESTS.odd01Tarball,
+  const candidateRawPath =
+    process.env.ODD_GLC_T041_CANDIDATE_RAW_RECEIPT_PATH;
+  const receiptPath = process.env.ODD_GLC_T041_DIFFERENTIAL_RECEIPT_PATH;
+  assert.ok(abi5Tarball, "ODD_GLC_T041_ABI_TARBALL is required");
+  assert.ok(baselineRoot, "ODD_GLC_T041_BASELINE_ROOT is required");
+  assert.equal(path.isAbsolute(abi5Tarball), true);
+  assert.equal(path.isAbsolute(baselineRoot), true);
+  await assertCreateOnlyDestination(
+    candidateRawPath,
+    "ODD_GLC_T041_CANDIDATE_RAW_RECEIPT_PATH",
   );
-  assert.equal(
-    sha256Hex(await readFile(path.join(
-      baselineRoot,
-      "abiogenesis-typescript-tenant-4.6.0-rc.3.tgz",
-    ))),
-    DIGESTS.abi46Tarball,
+  await assertCreateOnlyDestination(
+    receiptPath,
+    "ODD_GLC_T041_DIFFERENTIAL_RECEIPT_PATH",
   );
+  assert.notEqual(candidateRawPath, receiptPath);
+  const abi5TarballBytes = await readFile(abi5Tarball);
+  assert.equal(sha256Hex(abi5TarballBytes), DIGESTS.abi5Tarball);
+  const odd01TarballBytes = await readFile(path.join(
+    baselineRoot,
+    "odd-glc-route-one-typescript-0.1.0.tgz",
+  ));
+  assert.equal(sha256Hex(odd01TarballBytes), DIGESTS.odd01Tarball);
+  const abi46TarballBytes = await readFile(path.join(
+    baselineRoot,
+    "abiogenesis-typescript-tenant-4.6.0-rc.3.tgz",
+  ));
+  assert.equal(sha256Hex(abi46TarballBytes), DIGESTS.abi46Tarball);
   const predecessorReceipt = await readExactJson(
     baselineRoot,
     "baseline-receipt.json",
@@ -444,18 +751,45 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
     "odd-glc-basic-cli-live-proof.json",
     DIGESTS.predecessorLiveProof,
   );
+  assertExactKeys(odd01Release.value, [
+    "abgSubstrate", "build", "checksumFile", "createdAt", "kind", "lint",
+    "liveProof", "pack", "packSummary", "package", "packageSourceRoot",
+    "packedInstall", "rcBranch", "releaseBranch", "releaseIdentity",
+    "releaseNote", "releaseTag", "schemaVersion", "snapshotRoot",
+    "sourceCommit", "sourceDirty", "sourceRef", "sourceStatusVerification",
+    "tarball", "testSummary", "tests",
+  ], "odd 0.1 release manifest keyset");
+  assertExactKeys(abi46Release.value, [
+    "build", "checksumFile", "createdAt", "kind", "lint", "pack",
+    "packSummary", "package", "packageSourceRoot", "rcBranch",
+    "releaseIdentity", "releaseNote", "snapshotRoot", "sourceCommit",
+    "sourceDirty", "sourceRef", "tarball", "testSummary", "tests",
+  ], "ABI 4.6 release manifest keyset");
+  assertExactKeys(predecessorLiveProof.value, [
+    "abgInvocationShape", "campaignDurationMs", "dataMapperGate", "eventCounts",
+    "eventLogSha256", "eventSequence", "externalAbgStartInvocationCount",
+    "graphFunctionRef", "graphRef", "kind", "oddGlcInstallFileSha256s",
+    "oddGlcInstallManifestPath", "oddGlcInstallMode", "oddGlcPackageRoot",
+    "oddGlcPackageTarball", "oddGlcPackageTarballSha256",
+    "oddGlcWorkspaceInstallManifestPath", "overlayRef", "postProcessRule",
+    "proofClass", "requirementLineageCanary", "runtimeBindingPath",
+    "sandboxIdentity", "sandboxRole", "scenarioId", "scenarioKind",
+    "startInvocationDurationMs", "startOutput", "startProcess", "startupConfigRef",
+    "substrate", "terminalEvents", "workspaceRoot",
+  ], "predecessor live proof keyset");
   assert.equal(abi46Release.value.releaseIdentity, "4.6.0-rc.3");
   assert.equal(abi46Release.value.tarball.sha256, DIGESTS.abi46Tarball);
 
   const scratch = await mkdtemp(path.join(os.tmpdir(), "odd-glc-t041-diff-"));
   t.after(async () => rm(scratch, { recursive: true, force: true }));
-  const candidateRawPath =
-    process.env.ODD_GLC_T041_CANDIDATE_RAW_RECEIPT_PATH ??
-      path.join(scratch, "abi5-raw-observation.json");
-  assert.equal(path.isAbsolute(candidateRawPath), true);
+  const obsoleteBootstrapEnvironmentKey = [
+    "ODD_GLC_T041_ABI",
+    "PACKAGE_ROOT",
+  ].join("_");
   const childEnvironment = {
-    ...process.env,
-    ODD_GLC_T041_ABI_PACKAGE_ROOT: bootstrapRoot,
+    ...Object.fromEntries(Object.entries(process.env).filter(
+      ([key]) => key !== obsoleteBootstrapEnvironmentKey,
+    )),
     ODD_GLC_T041_ABI_TARBALL: abi5Tarball,
     ODD_GLC_T041_RAW_RECEIPT_PATH: candidateRawPath,
   };
@@ -477,16 +811,52 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
   );
   const candidateRawBytes = await readFile(candidateRawPath);
   const candidateRaw = JSON.parse(candidateRawBytes);
-  const sourceCensus = await sourceBlindCensus();
+  const sourceCensus = await qualifiedSourceBlindCensus();
   const predecessorProjection = projectPredecessor({
     receipt: predecessorReceipt.value,
     releaseManifest: odd01Release.value,
+    abiReleaseManifest: abi46Release.value,
     liveProof: predecessorLiveProof.value,
   });
   const candidateProjection = projectCandidate(candidateRaw, sourceCensus);
   assert.deepEqual(predecessorProjection, SHARED_PROJECTION);
   assert.deepEqual(candidateProjection, SHARED_PROJECTION);
 
+  const rawByteLedger = Object.freeze({
+    predecessor: Object.freeze({
+      oddProductTarball: rawBytesEvidence(odd01TarballBytes),
+      abiTarball: rawBytesEvidence(abi46TarballBytes),
+      immutableReceipt: predecessorReceipt.raw,
+      oddReleaseManifest: odd01Release.raw,
+      abiReleaseManifest: abi46Release.raw,
+      installedLiveProof: predecessorLiveProof.raw,
+    }),
+    candidate: Object.freeze({
+      abiTarball: rawBytesEvidence(abi5TarballBytes),
+      oddProductTarball: candidateRaw.archive.tarball,
+      installedObservation: rawBytesEvidence(candidateRawBytes),
+      testProcessStdout: rawBytesEvidence(Buffer.from(stdout)),
+      testProcessStderr: rawBytesEvidence(Buffer.from(stderr)),
+      freshProcessStdout: rawBytesEvidence(
+        Buffer.from(candidateRaw.freshProcessStdout),
+      ),
+      transportExchanges: candidateRaw.transportedRawExchanges,
+      eventLog: candidateRaw.runtimeEventLog,
+    }),
+  });
+  assert.equal(
+    assertRawBytesEvidence(rawByteLedger.predecessor.oddProductTarball).length,
+    odd01TarballBytes.length,
+  );
+  assert.equal(
+    assertRawBytesEvidence(rawByteLedger.predecessor.abiTarball).length,
+    abi46TarballBytes.length,
+  );
+  assert.equal(
+    assertRawBytesEvidence(rawByteLedger.candidate.abiTarball).length,
+    abi5TarballBytes.length,
+  );
+  assertRawBytesEvidence(rawByteLedger.candidate.installedObservation, candidateRawBytes);
   const differentialReceipt = Object.freeze({
     kind: "odd_glc_t041_installed_differential_receipt",
     schemaVersion: "1",
@@ -498,6 +868,7 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
       installedLiveProof: predecessorLiveProof.value,
     }),
     candidateRaw,
+    rawByteLedger,
     sourceCensus,
     versionLocalObservations: Object.freeze({
       predecessor: Object.freeze({
@@ -507,7 +878,10 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
       }),
       candidate: Object.freeze({
         greeting: candidateRaw.authenticatedRuntimeObservation.admittedResult,
-        terminalStatus: "closed_success",
+        runtimeStatus:
+          candidateRaw.authenticatedRuntimeObservation.runtimeStatus,
+        startDisposition:
+          candidateRaw.authenticatedRuntimeObservation.startDisposition,
       }),
     }),
     semanticReduction: Object.freeze({
@@ -519,16 +893,12 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
       "event parity",
       "Product parity",
       "ABI 4.6 to ABI 5 compatibility",
-      "unconsumed ABI5 Public-family callable closure",
+      "all-56 ABI5 Public-family callable closure",
     ]),
   });
-  const receiptPath = process.env.ODD_GLC_T041_DIFFERENTIAL_RECEIPT_PATH;
-  if (receiptPath) {
-    assert.equal(path.isAbsolute(receiptPath), true);
-    await writeFile(receiptPath, `${JSON.stringify(differentialReceipt)}\n`, {
-      flag: "wx",
-    });
-  }
+  const differentialBytes = Buffer.from(`${JSON.stringify(differentialReceipt)}\n`);
+  await writeFile(receiptPath, differentialBytes, { flag: "wx" });
+  assert.deepEqual(await readFile(receiptPath), differentialBytes);
   t.diagnostic(JSON.stringify({
     predecessorTarballSha256: DIGESTS.odd01Tarball,
     candidateTarballSha256: candidateRaw.basis.oddTarballSha256,
@@ -537,5 +907,7 @@ test("installed 0.1/ABI4.6 and real-packed 0.2/ABI5 reduce only to the frozen se
     candidateVersionLocal: differentialReceipt.versionLocalObservations.candidate,
     semanticReduction: candidateProjection,
     candidateRawSha256: sha256Hex(candidateRawBytes),
+    differentialByteLength: differentialBytes.length,
+    differentialSha256: sha256Hex(differentialBytes),
   }));
 });

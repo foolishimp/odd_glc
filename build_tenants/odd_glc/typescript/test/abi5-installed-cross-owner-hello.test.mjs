@@ -18,6 +18,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const execFileAsync = promisify(execFile);
 const TEST_ROOT = path.dirname(fileURLToPath(import.meta.url));
 const PRODUCT_ROOT = path.resolve(TEST_ROOT, "../product");
+const SOURCE_ROOT = path.resolve(TEST_ROOT, "../../../..");
 const FRESH_READ_WORKER = path.join(
   TEST_ROOT,
   "abi5-fresh-process-read-worker.mjs",
@@ -32,6 +33,16 @@ const ABI = Object.freeze({
   packageVersion: "5.0.0-dev.286",
   productId: "product://abiogenesis/typescript-tenant@5.0.0-dev.286",
 });
+const ABI_PUBLIC_SUBPATHS = Object.freeze([
+  Object.freeze({ key: "root", packageExportPath: ".", specifier: ABI.packageName }),
+  ...["abg", "gtl", "hog", "product", "public", "validator"].map(
+    (key) => Object.freeze({
+      key,
+      packageExportPath: `./${key}`,
+      specifier: `${ABI.packageName}/${key}`,
+    }),
+  ),
+]);
 const ODD = Object.freeze({
   packageName: "@odd-glc/route-one-typescript",
   packageVersion: "0.2.0-dev.1",
@@ -70,9 +81,107 @@ const CONSUMED_DEFINITION_KEYS = Object.freeze([
   ["abg.operation.project.read", "run_result"],
   ["abg.operation.project.read", "run_replay"],
 ]);
+const ABSENT_PUBLIC_CALLABLE_KEYS = Object.freeze([
+  "abg.operation.interaction.respond#answer_escalation",
+  "abg.operation.interaction.respond#approve",
+  "abg.operation.interaction.respond#assess",
+  "abg.operation.interaction.respond#reject",
+  "abg.operation.interaction.respond#select",
+  "abg.operation.product.materialize#configuration",
+  "abg.operation.product.materialize#context_bootstrap",
+  "abg.operation.project.read#release_evidence",
+  "abg.operation.result.assess#assess",
+  "abg.operation.run.continue#current_intent",
+  "abg.operation.run.continue#selected_action",
+  "abg.operation.witness.admit#attest",
+  "abg.operation.witness.admit#hygiene-stamp",
+  "abg.operation.witness.admit#intake",
+  "abg.operation.witness.admit#reprice",
+  "abg.operation.witness.admit#run-resumed",
+  "abg.operation.witness.admit#run-stopped",
+]);
+const EXACT_PRODUCT_FILES = Object.freeze([
+  "build/publication.json",
+  "contracts/capabilities/capability-definition-graph.json",
+  "contracts/public-contract-catalog.schema.json",
+  "package.json",
+  "product-toolchain-manifest.json",
+]);
 
 function sha256Hex(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
+}
+
+function rawBytesEvidence(bytes) {
+  return Object.freeze({
+    encoding: "base64",
+    bytes: bytes.toString("base64"),
+    byteLength: bytes.length,
+    sha256: `sha256:${sha256Hex(bytes)}`,
+  });
+}
+
+async function exactProductGitBasis() {
+  const relativeRoot = path.relative(SOURCE_ROOT, PRODUCT_ROOT)
+    .split(path.sep).join(path.posix.sep);
+  const { stdout: headStdout } = await execFileAsync(
+    "git",
+    ["-C", SOURCE_ROOT, "rev-parse", "HEAD"],
+  );
+  const headCommit = headStdout.trim();
+  const admittedImplementationDonor =
+    "6af27f0eae673cd1fbdb97c861f97803dbe920bf";
+  await execFileAsync(
+    "git",
+    ["-C", SOURCE_ROOT, "merge-base", "--is-ancestor", admittedImplementationDonor, headCommit],
+  );
+  const productBlobs = [];
+  for (const relativeProductPath of EXACT_PRODUCT_FILES) {
+    const repositoryPath = `${relativeRoot}/${relativeProductPath}`;
+    const [{ stdout: committed }, { stdout: working }] = await Promise.all([
+      execFileAsync("git", ["-C", SOURCE_ROOT, "rev-parse", `HEAD:${repositoryPath}`]),
+      execFileAsync("git", ["-C", SOURCE_ROOT, "hash-object", repositoryPath]),
+    ]);
+    assert.equal(working.trim(), committed.trim(), repositoryPath);
+    productBlobs.push(Object.freeze({
+      repositoryPath,
+      blobId: committed.trim(),
+      sha256: sha256Hex(await readFile(path.join(SOURCE_ROOT, repositoryPath))),
+    }));
+  }
+  return Object.freeze({
+    headCommit,
+    admittedImplementationDonor,
+    productBlobs: Object.freeze(productBlobs),
+  });
+}
+
+async function extractExactAbiTarball(tarballPath, scratch) {
+  assert.ok(tarballPath, "ODD_GLC_T041_ABI_TARBALL is required");
+  assert.equal(path.isAbsolute(tarballPath), true, "ABI tarball path must be absolute");
+  assert.equal(sha256Hex(await readFile(tarballPath)), ABI_TARBALL_SHA256);
+  const consumerRoot = path.join(scratch, "abi-bootstrap-consumer");
+  const packageRoot = path.join(
+    consumerRoot,
+    "node_modules",
+    "@abiogenesis",
+    "typescript-tenant",
+  );
+  await mkdir(packageRoot, { recursive: true });
+  const { stderr } = await execFileAsync(
+    "tar",
+    ["-xzf", tarballPath, "--strip-components=1", "-C", packageRoot],
+    { maxBuffer: 20 * 1024 * 1024 },
+  );
+  assert.equal(stderr, "");
+  const canonicalRoot = await realpath(packageRoot);
+  try {
+    await execFileAsync("git", ["-C", canonicalRoot, "rev-parse", "--show-toplevel"]);
+    assert.fail("tarball bootstrap must be outside every source checkout");
+  } catch (error) {
+    assert.notEqual(error.code, undefined);
+  }
+  return canonicalRoot;
 }
 
 function verificationIdentity(manifest, artifactDigest, product) {
@@ -86,15 +195,69 @@ function verificationIdentity(manifest, artifactDigest, product) {
   };
 }
 
+function resolvePublicCallsite(loaded, packageExportPath, namedExport, memberPath = []) {
+  const subpath = ABI_PUBLIC_SUBPATHS.find(
+    (candidate) => candidate.packageExportPath === packageExportPath,
+  );
+  assert.ok(subpath, packageExportPath);
+  let callable = loaded[subpath.key];
+  assert.equal(Object.hasOwn(callable, namedExport), true, namedExport);
+  callable = callable[namedExport];
+  for (const member of memberPath) {
+    assert.ok(callable !== null && ["object", "function"].includes(typeof callable));
+    assert.equal(Object.hasOwn(callable, member), true, member);
+    callable = callable[member];
+  }
+  assert.equal(typeof callable, "function");
+  return Object.freeze({
+    callable,
+    evidence: Object.freeze({
+      packageName: ABI.packageName,
+      packageVersion: ABI.packageVersion,
+      packageExportPath,
+      resolvedModuleURL: loaded.publicModuleRefs[subpath.key],
+      namedExport,
+      memberPath: Object.freeze([...memberPath]),
+    }),
+  });
+}
+
+function nativeChildEvidence(product, {
+  callsite,
+  request,
+  output,
+  dependencyCoordinates = [],
+  resourceCoordinates = [],
+  effectCoordinates = [],
+  admissionCoordinate = null,
+  predecessorPrefix = null,
+  successorPrefix = null,
+}) {
+  return Object.freeze({
+    callsite: structuredClone(callsite.evidence),
+    canonicalRequestDigest: product.sha256Canonical(request),
+    canonicalOutputDigest: product.sha256Canonical(output),
+    dependencyCoordinates: structuredClone(dependencyCoordinates),
+    resourceCoordinates: structuredClone(resourceCoordinates),
+    effectCoordinates: structuredClone(effectCoordinates),
+    admissionCoordinate: structuredClone(admissionCoordinate),
+    predecessorPrefix: structuredClone(predecessorPrefix),
+    successorPrefix: structuredClone(successorPrefix),
+  });
+}
+
 async function loadAbiPublic(packageRoot) {
   const packageJson = JSON.parse(
     await readFile(path.join(packageRoot, "package.json"), "utf8"),
   );
   assert.equal(packageJson.name, ABI.packageName);
   assert.equal(packageJson.version, ABI.packageVersion);
-  const namespaces = ["product", "abg", "gtl", "public", "validator"];
-  for (const namespace of namespaces) {
-    assert.equal(typeof packageJson.exports?.[`./${namespace}`]?.import, "string");
+  for (const { packageExportPath } of ABI_PUBLIC_SUBPATHS) {
+    assert.equal(
+      typeof packageJson.exports?.[packageExportPath]?.import,
+      "string",
+      packageExportPath,
+    );
   }
   const nodeModulesRoot = path.resolve(packageRoot, "../..");
   assert.equal(path.basename(nodeModulesRoot), "node_modules");
@@ -105,23 +268,26 @@ async function loadAbiPublic(packageRoot) {
   const bridgePath = path.join(bridgeRoot, "bridge.mjs");
   await writeFile(
     bridgePath,
-    `${namespaces.map((namespace) =>
-      `export * as ${namespace} from "${ABI.packageName}/${namespace}";`
-    ).join("\n")}\n`,
+    [
+      ...ABI_PUBLIC_SUBPATHS.map(({ key, specifier }) =>
+        `export * as ${key} from ${JSON.stringify(specifier)};`),
+      `export const resolvedPublicSubpathURLs = Object.freeze({${ABI_PUBLIC_SUBPATHS.map(
+        ({ packageExportPath, specifier }) =>
+          `${JSON.stringify(packageExportPath)}: import.meta.resolve(${JSON.stringify(specifier)})`,
+      ).join(",")}});`,
+      "",
+    ].join("\n"),
   );
   try {
     const loaded = await import(
       `${pathToFileURL(bridgePath).href}?public=${Date.now()}`
     );
-    const publicModuleRefs = Object.fromEntries(await Promise.all(
-      namespaces.map(async (namespace) => [
-        namespace,
-        pathToFileURL(await realpath(path.join(
-          packageRoot,
-          packageJson.exports[`./${namespace}`].import,
-        ))).href,
+    const publicModuleRefs = Object.fromEntries(
+      ABI_PUBLIC_SUBPATHS.map(({ key, packageExportPath }) => [
+        key,
+        loaded.resolvedPublicSubpathURLs[packageExportPath],
       ]),
-    ));
+    );
     return {
       ...loaded,
       consumerRoot,
@@ -135,33 +301,81 @@ async function loadAbiPublic(packageRoot) {
 
 async function assertPublicModuleRefsWithinPackage(loaded, packageRoot) {
   const installedRoot = await realpath(packageRoot);
+  const sourceRoot = await realpath(SOURCE_ROOT);
+  const relativeToOddSource = path.relative(sourceRoot, installedRoot);
+  assert.equal(
+    relativeToOddSource === ".." || relativeToOddSource.startsWith(`..${path.sep}`),
+    true,
+  );
+  try {
+    await execFileAsync("git", ["-C", installedRoot, "rev-parse", "--show-toplevel"]);
+    assert.fail("installed ABI root must be outside every source checkout");
+  } catch (error) {
+    assert.notEqual(error.code, undefined);
+  }
   const evidence = [];
-  for (const [namespace, moduleRef] of Object.entries(loaded.publicModuleRefs)) {
-    const modulePath = fileURLToPath(moduleRef);
+  for (const { key, packageExportPath } of ABI_PUBLIC_SUBPATHS) {
+    const resolvedURL = loaded.publicModuleRefs[key];
+    const modulePath = await realpath(fileURLToPath(resolvedURL));
     const relative = path.relative(installedRoot, modulePath);
-    assert.equal(path.isAbsolute(relative), false, namespace);
+    assert.equal(path.isAbsolute(relative), false, packageExportPath);
     assert.equal(
       relative === ".." || relative.startsWith(`..${path.sep}`),
       false,
-      namespace,
+      packageExportPath,
     );
+    const relativeSegments = relative.split(path.sep);
+    assert.equal(relativeSegments.includes(["test", "env"].join("_")), false);
+    assert.equal(relativeSegments.includes("private"), false);
     assert.equal(
-      moduleRef,
+      pathToFileURL(modulePath).href,
       pathToFileURL(await realpath(path.join(
         packageRoot,
-        loaded.packageJson.exports[`./${namespace}`].import,
+        loaded.packageJson.exports[packageExportPath].import,
       ))).href,
-      namespace,
+      packageExportPath,
     );
     evidence.push(Object.freeze({
-      namespace,
-      packageExportPath: `./${namespace}`,
+      namespace: key,
+      packageExportPath,
       packageRelativeTarget: relative.split(path.sep).join(path.posix.sep),
-      moduleRef,
+      resolvedURL,
+      realModuleURL: pathToFileURL(modulePath).href,
       containedInInstalledPackage: true,
+      outsideEverySourceCheckout: true,
     }));
   }
   return Object.freeze(evidence);
+}
+
+async function loadReturnedInstalledOwnerExport({ install, binding }) {
+  assert.equal(binding.packageName, install.packageName);
+  assert.equal(binding.packageVersion, install.packageVersion);
+  assert.equal(path.isAbsolute(binding.modulePath), false);
+  const installedRoot = await realpath(install.installedRoot);
+  const modulePath = await realpath(path.join(installedRoot, binding.modulePath));
+  const relative = path.relative(installedRoot, modulePath);
+  assert.equal(path.isAbsolute(relative), false);
+  assert.equal(relative === ".." || relative.startsWith(`..${path.sep}`), false);
+  assert.equal(relative.split(path.sep).join(path.posix.sep), binding.modulePath);
+  const moduleURL = pathToFileURL(modulePath).href;
+  const namespace = await import(moduleURL);
+  assert.equal(Object.hasOwn(namespace, binding.namedSymbol), true);
+  return Object.freeze({
+    value: namespace[binding.namedSymbol],
+    evidence: Object.freeze({
+      productId: install.productId,
+      installId: install.installId,
+      installedRoot,
+      packageName: binding.packageName,
+      packageVersion: binding.packageVersion,
+      modulePath: binding.modulePath,
+      moduleURL,
+      namedSymbol: binding.namedSymbol,
+      containedInReturnedInstalledRoot: true,
+      returnedExportPresent: true,
+    }),
+  });
 }
 
 async function loadOddPublicationData(installedRoot) {
@@ -182,11 +396,40 @@ async function loadOddPublicationData(installedRoot) {
   const bridgePath = path.join(bridgeRoot, "bridge.mjs");
   await writeFile(
     bridgePath,
-    `export { default as publication } from "${ODD.packageName}/publication" with { type: "json" };\n`,
+    [
+      `export { default as publication } from "${ODD.packageName}/publication" with { type: "json" };`,
+      `export const publicationURL = import.meta.resolve("${ODD.packageName}/publication");`,
+      "",
+    ].join("\n"),
   );
   try {
     const loaded = await import(`${pathToFileURL(bridgePath).href}?odd=${Date.now()}`);
-    return structuredClone(loaded.publication);
+    const installedPackageRoot = await realpath(installedRoot);
+    try {
+      await execFileAsync(
+        "git",
+        ["-C", installedPackageRoot, "rev-parse", "--show-toplevel"],
+      );
+      assert.fail("installed odd Product must be outside every source checkout");
+    } catch (error) {
+      assert.notEqual(error.code, undefined);
+    }
+    const publicationPath = await realpath(fileURLToPath(loaded.publicationURL));
+    const relative = path.relative(installedPackageRoot, publicationPath);
+    assert.equal(path.isAbsolute(relative), false);
+    assert.equal(relative === ".." || relative.startsWith(`..${path.sep}`), false);
+    assert.equal(relative.split(path.sep).join(path.posix.sep), "build/publication.json");
+    return Object.freeze({
+      publication: structuredClone(loaded.publication),
+      moduleEvidence: Object.freeze({
+        packageExportPath: "./publication",
+        resolvedURL: loaded.publicationURL,
+        realModuleURL: pathToFileURL(publicationPath).href,
+        packageRelativeTarget: "build/publication.json",
+        containedInInstalledPackage: true,
+        outsideEverySourceCheckout: true,
+      }),
+    });
   } finally {
     await rm(bridgeRoot, { recursive: true, force: true });
   }
@@ -333,6 +576,144 @@ function ownerPacketProjection(definition) {
       cliCoordinate: definition.cliCoordinate,
       adapterExitMap: definition.adapterExitMap,
     }),
+  });
+}
+
+function definitionKeyString({ operationId, memberKey }) {
+  return `${operationId}#${memberKey}`;
+}
+
+function ownPropertyCallable(ownerModules, locator) {
+  if (!Object.hasOwn(ownerModules, locator.packageExportPath)) return null;
+  let current = ownerModules[locator.packageExportPath];
+  if (
+    (typeof current !== "object" && typeof current !== "function") ||
+    current === null ||
+    !Object.hasOwn(current, locator.namedExport)
+  ) return null;
+  current = current[locator.namedExport];
+  for (const member of locator.memberPath) {
+    if (
+      (typeof current !== "object" && typeof current !== "function") ||
+      current === null ||
+      !Object.hasOwn(current, member)
+    ) return null;
+    current = current[member];
+  }
+  return typeof current === "function" ? current : null;
+}
+
+function assertFullPublicFamilyClosure({
+  installedPublic,
+  coordinates,
+  ownerModules,
+  product,
+}) {
+  const family = installedPublic.PUBLIC_FUNCTION_DEFINITION_FAMILY.definitions;
+  assert.equal(family.length, 56);
+  const definitionKeys = family.map(({ definitionKey }) =>
+    definitionKeyString(definitionKey));
+  assert.equal(new Set(definitionKeys).size, 56);
+  const rows = [];
+  let sharedCatalogDigest = null;
+  for (const definition of family) {
+    const { operationId, memberKey } = definition.definitionKey;
+    const operationProjection = exact(
+      installedPublic.PUBLIC_OPERATION_CONTRACT_PROJECTIONS,
+      (candidate) => candidate.operationId === operationId,
+      `${operationId} public projection`,
+    );
+    const memberProjection = exact(
+      operationProjection.definitions,
+      (candidate) => candidate.definitionKey.memberKey === memberKey,
+      `${definitionKeyString(definition.definitionKey)} public projection`,
+    );
+    assert.deepEqual(
+      memberProjection.executionBindingSpecification,
+      definition.executionBindingSpecification,
+    );
+    const schemaSet = installedPublic.PUBLIC_OPERATION_SCHEMAS[operationId]?.[memberKey];
+    assert.ok(schemaSet, `${definitionKeyString(definition.definitionKey)} schema set`);
+    assert.equal(schemaSet.request, definition.requestContract.schema);
+    assert.equal(schemaSet.result, definition.resultContract.schema);
+    assert.equal(schemaSet.refusal, definition.refusalContract.schema);
+    assert.equal(
+      schemaSet.nonTerminal,
+      definition.nonTerminalContract?.schema ?? null,
+    );
+    const operationCoordinates = exact(
+      coordinates.operations,
+      (candidate) => candidate.operationId === operationId,
+      `${operationId} verified coordinate`,
+    );
+    const memberCoordinates = exact(
+      operationCoordinates.members,
+      (candidate) => candidate.memberKey === memberKey,
+      `${definitionKeyString(definition.definitionKey)} verified coordinate`,
+    );
+    for (const [coordinateKey, selectorSlot, contract, projected] of [
+      ["request", "request", definition.requestContract, memberProjection.requestContract],
+      ["result", "result", definition.resultContract, memberProjection.resultContract],
+      ["refusal", "refusal", definition.refusalContract, memberProjection.refusalContract],
+      ["nonTerminal", "non_terminal", definition.nonTerminalContract, memberProjection.nonTerminalContract],
+    ]) {
+      const coordinate = memberCoordinates.slots[coordinateKey];
+      if (contract === null) {
+        assert.equal(projected, null);
+        assert.equal(coordinate, null);
+        continue;
+      }
+      assert.ok(projected);
+      assert.ok(coordinate);
+      assert.deepEqual(projected.identity.definitionKey, definition.definitionKey);
+      assert.equal(projected.identity.contractId, contract.contractId);
+      assert.equal(coordinate.flatRow.contractId, operationProjection.operationId);
+      assert.deepEqual(coordinate.nestedSelector.definitionKey, definition.definitionKey);
+      assert.equal(coordinate.nestedSelector.slot, selectorSlot);
+      assert.equal(coordinate.nestedSelector.definitionRef, projected.definitionRef);
+      const catalogDigest = product.sha256Canonical(coordinate.contractCatalog);
+      sharedCatalogDigest ??= catalogDigest;
+      assert.equal(catalogDigest, sharedCatalogDigest);
+    }
+    const locator = definition.executionBindingSpecification.callable;
+    rows.push(Object.freeze({
+      definitionKey: structuredClone(definition.definitionKey),
+      sdkCoordinate: definition.sdkCoordinate,
+      callableLocator: structuredClone(locator),
+      callable: ownPropertyCallable(ownerModules, locator) !== null,
+      schemaIdentityExact: true,
+      projectionIdentityExact: true,
+      verifiedCatalogIdentityExact: true,
+    }));
+  }
+  const absent = rows
+    .filter((row) => !row.callable)
+    .map((row) => definitionKeyString(row.definitionKey))
+    .sort();
+  assert.equal(rows.filter((row) => row.callable).length, 39);
+  assert.deepEqual(absent, [...ABSENT_PUBLIC_CALLABLE_KEYS].sort());
+  const selectedKeys = new Set(CONSUMED_DEFINITION_KEYS.map(
+    ([operationId, memberKey]) => `${operationId}#${memberKey}`,
+  ));
+  assert.equal(selectedKeys.size, 12);
+  assert.equal(
+    rows.filter((row) => selectedKeys.has(definitionKeyString(row.definitionKey)))
+      .every((row) => row.callable),
+    true,
+  );
+  return Object.freeze({
+    familyRef: installedPublic.PUBLIC_FUNCTION_DEFINITION_FAMILY.familyRef,
+    familyDigest: installedPublic.PUBLIC_FUNCTION_DEFINITION_FAMILY.familyDigest,
+    keySetDigest: installedPublic.PUBLIC_FUNCTION_DEFINITION_FAMILY.keySetDigest,
+    operationCount: new Set(family.map(({ definitionKey }) =>
+      definitionKey.operationId)).size,
+    definitionCount: family.length,
+    callableCount: 39,
+    absentCount: absent.length,
+    absentDefinitionKeys: Object.freeze(absent),
+    selectedDefinitionKeys: Object.freeze([...selectedKeys].sort()),
+    sharedVerifiedContractCatalogDigest: sharedCatalogDigest,
+    rows: Object.freeze(rows),
   });
 }
 
@@ -500,12 +881,13 @@ async function executeInstalledCli({
 }) {
   const requestPath = path.join(scratch, `${identity}.jsonl`);
   const cliPath = path.join(installedRoot, packageJson.bin["abg.cli"]);
-  await writeFile(requestPath, `${JSON.stringify({
+  const rawRequestLine = JSON.stringify({
     kind: "abg_cli_transport_request",
     schemaVersion: SCHEMA_VERSION,
     acquisition,
     invocation: call,
-  })}\n`);
+  });
+  await writeFile(requestPath, `${rawRequestLine}\n`);
   let execution;
   try {
     execution = await execFileAsync(
@@ -523,6 +905,7 @@ async function executeInstalledCli({
   assert.equal(lines.length, 1);
   return Object.freeze({
     outcome: JSON.parse(lines[0]),
+    rawRequestLine,
     rawJsonLine: lines[0],
   });
 }
@@ -534,8 +917,9 @@ async function runInstalledCli({
   identity,
   call,
   rawJsonLines,
+  rawExchanges,
 }) {
-  const { outcome, rawJsonLine } = await executeInstalledCli({
+  const { outcome, rawRequestLine, rawJsonLine } = await executeInstalledCli({
     scratch,
     installedRoot,
     packageJson,
@@ -552,6 +936,13 @@ async function runInstalledCli({
   assert.equal(outcome.receipt.kind, "definition_host_receipt");
   assert.equal(outcome.receipt.exitCode, 0, JSON.stringify(outcome.receipt));
   assert.equal(outcome.receipt.failure, null);
+  rawExchanges.push(Object.freeze({
+    definitionKey: structuredClone(outcome.receipt.definitionKey),
+    input: rawBytesEvidence(Buffer.from(`${rawRequestLine}\n`)),
+    output: rawBytesEvidence(Buffer.from(`${rawJsonLine}\n`)),
+    ownerOutput: structuredClone(outcome.receipt.ownerOutput),
+    resources: structuredClone(outcome.receipt.resources),
+  }));
   return outcome.receipt;
 }
 
@@ -565,59 +956,85 @@ async function packOddProduct(scratch) {
   );
   assert.equal(stderr, "");
   const [summary] = JSON.parse(stdout);
-  assert.deepEqual(summary.files.map((entry) => entry.path).sort(), [
-    "build/publication.json",
-    "contracts/capabilities/capability-definition-graph.json",
-    "contracts/public-contract-catalog.schema.json",
-    "package.json",
-    "product-toolchain-manifest.json",
-  ]);
+  assert.deepEqual(summary.files.map((entry) => entry.path).sort(), EXACT_PRODUCT_FILES);
   const artifactPath = path.join(destination, summary.filename);
   assert.equal(sha256Hex(await readFile(artifactPath)), ODD_TARBALL_SHA256);
+  const { stdout: tarHeaders, stderr: tarStderr } = await execFileAsync(
+    "tar",
+    ["-tzf", artifactPath],
+    { maxBuffer: 20 * 1024 * 1024 },
+  );
+  assert.equal(tarStderr, "");
+  const actualArchiveHeaders = tarHeaders.trim().split(/\r?\n/u).sort();
+  assert.deepEqual(
+    actualArchiveHeaders,
+    EXACT_PRODUCT_FILES.map((member) => `package/${member}`).sort(),
+    "actual npm tar headers must contain no sixth Product member",
+  );
   return Object.freeze({
     artifactPath,
-    archiveMembers: Object.freeze(summary.files.map((entry) => entry.path).sort()),
+    archiveMembers: Object.freeze(actualArchiveHeaders),
   });
 }
 
 test("ABI5 executes the installed odd_glc Product through cross-owner Hello", async (t) => {
-  const bootstrapRoot = process.env.ODD_GLC_T041_ABI_PACKAGE_ROOT;
   const abiArtifactPath = process.env.ODD_GLC_T041_ABI_TARBALL;
-  if (!bootstrapRoot || !abiArtifactPath) {
-    t.skip("exact installed ABI dev.286 package and tarball are required");
-    return;
-  }
-  assert.equal(sha256Hex(await readFile(abiArtifactPath)), ABI_TARBALL_SHA256);
+  assert.ok(abiArtifactPath, "ODD_GLC_T041_ABI_TARBALL is required");
+  const rawReceiptPath = process.env.ODD_GLC_T041_RAW_RECEIPT_PATH;
+  assert.ok(rawReceiptPath, "ODD_GLC_T041_RAW_RECEIPT_PATH is required");
+  assert.equal(path.isAbsolute(rawReceiptPath), true);
+  const scratch = await mkdtemp(path.join(os.tmpdir(), "odd-glc-t041-sunny-"));
+  t.after(async () => rm(scratch, { recursive: true, force: true }));
+  const bootstrapRoot = await extractExactAbiTarball(abiArtifactPath, scratch);
   const bootstrap = await loadAbiPublic(bootstrapRoot);
   const bootstrapModuleEvidence = await assertPublicModuleRefsWithinPackage(
     bootstrap,
     bootstrapRoot,
   );
-  const scratch = await mkdtemp(path.join(os.tmpdir(), "odd-glc-t041-sunny-"));
-  t.after(async () => rm(scratch, { recursive: true, force: true }));
   const nativeStageObservations = [];
-  const observeNativeStage = (ownerMethod, evidence) => {
+  const observeNativeStage = (ownerMethod, childCalls) => {
+    assert.equal(Array.isArray(childCalls), true);
+    assert.equal(childCalls.length > 0, true);
     nativeStageObservations.push(Object.freeze({
       ownerMethod,
-      evidence: structuredClone(evidence),
+      evidenceKind: "native_owner_stage_observation",
+      receipt: false,
+      childCalls: Object.freeze([...childCalls]),
     }));
   };
 
   const workspaceRoot = path.join(scratch, "workspace");
-  const created = await bootstrap.product.WorkspaceOperationPort.create({
+  const createCallsite = resolvePublicCallsite(
+    bootstrap,
+    "./product",
+    "WorkspaceOperationPort",
+    ["create"],
+  );
+  const createRequest = Object.freeze({
     kind: "workspace_create_packet",
     schemaVersion: SCHEMA_VERSION,
     memberKey: "clean",
     targetRoot: workspaceRoot,
     scaffoldPolicy: "none",
   });
+  const created = await createCallsite.callable(createRequest);
   assert.equal(created.disposition, "created", JSON.stringify(created));
-  observeNativeStage("./product::WorkspaceOperationPort.create", {
-    disposition: created.disposition,
-    creationManifestRef: created.creationManifestRef,
-    creationManifestDigest: created.creationManifestDigest,
-  });
-  const opened = await bootstrap.product.WorkspaceOperationPort.open({
+  observeNativeStage("./product::WorkspaceOperationPort.create", [
+    nativeChildEvidence(bootstrap.product, {
+      callsite: createCallsite,
+      request: createRequest,
+      output: created,
+      resourceCoordinates: [created.creationManifestRef],
+      effectCoordinates: [created.creationManifestDigest],
+    }),
+  ]);
+  const openCallsite = resolvePublicCallsite(
+    bootstrap,
+    "./product",
+    "WorkspaceOperationPort",
+    ["open"],
+  );
+  const openRequest = Object.freeze({
     kind: "workspace_open_packet",
     schemaVersion: SCHEMA_VERSION,
     memberKey: "open",
@@ -625,12 +1042,21 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     expectedWorkspaceAuthorityRef: created.workspaceAuthorityRef,
     expectedWorkspaceAuthorityDigest: created.workspaceAuthorityDigest,
   });
+  const opened = await openCallsite.callable(openRequest);
   assert.equal(opened.disposition, "unbound", JSON.stringify(opened));
-  observeNativeStage("./product::WorkspaceOperationPort.open", {
-    disposition: opened.disposition,
-    workspaceRef: opened.workspaceRef,
-    workspaceDigest: opened.workspaceDigest,
-  });
+  observeNativeStage("./product::WorkspaceOperationPort.open", [
+    nativeChildEvidence(bootstrap.product, {
+      callsite: openCallsite,
+      request: openRequest,
+      output: opened,
+      dependencyCoordinates: [
+        created.workspaceAuthorityRef,
+        created.workspaceAuthorityDigest,
+      ],
+      resourceCoordinates: [opened.workspaceRef],
+      effectCoordinates: [opened.workspaceDigest],
+    }),
+  ]);
 
   const oddPack = await packOddProduct(scratch);
   const oddArtifactPath = oddPack.artifactPath;
@@ -642,7 +1068,12 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   );
   const abiArtifactDigest = `sha256:${ABI_TARBALL_SHA256}`;
   const oddArtifactDigest = `sha256:${ODD_TARBALL_SHA256}`;
-  const verifiedAbi = await bootstrap.product.verifyProduct({
+  const verifyCallsite = resolvePublicCallsite(
+    bootstrap,
+    "./product",
+    "verifyProduct",
+  );
+  const verifyAbiRequest = Object.freeze({
     artifactPath: abiArtifactPath,
     artifactRef: path.basename(abiArtifactPath),
     ...verificationIdentity(
@@ -651,8 +1082,9 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       bootstrap.product,
     ),
   });
+  const verifiedAbi = await verifyCallsite.callable(verifyAbiRequest);
   assert.equal(verifiedAbi.disposition, "verified", JSON.stringify(verifiedAbi));
-  const verifiedOdd = await bootstrap.product.verifyProduct({
+  const verifyOddRequest = Object.freeze({
     artifactPath: oddArtifactPath,
     artifactRef: path.basename(oddArtifactPath),
     ...verificationIdentity(
@@ -661,49 +1093,93 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       bootstrap.product,
     ),
   });
+  const verifiedOdd = await verifyCallsite.callable(verifyOddRequest);
   assert.equal(verifiedOdd.disposition, "verified", JSON.stringify(verifiedOdd));
   assert.equal(verifiedAbi.productId, ABI.productId);
   assert.equal(verifiedOdd.productId, ODD.productId);
-  observeNativeStage("./product::verifyProduct", {
-    dispositions: [verifiedAbi.disposition, verifiedOdd.disposition],
-    artifactDigests: [verifiedAbi.artifactDigest, verifiedOdd.artifactDigest],
-    productIds: [verifiedAbi.productId, verifiedOdd.productId],
-  });
+  observeNativeStage("./product::verifyProduct", [
+    nativeChildEvidence(bootstrap.product, {
+      callsite: verifyCallsite,
+      request: verifyAbiRequest,
+      output: verifiedAbi,
+      dependencyCoordinates: [abiArtifactDigest],
+      resourceCoordinates: [abiArtifactPath],
+      effectCoordinates: [verifiedAbi.verificationRef, verifiedAbi.verificationDigest],
+    }),
+    nativeChildEvidence(bootstrap.product, {
+      callsite: verifyCallsite,
+      request: verifyOddRequest,
+      output: verifiedOdd,
+      dependencyCoordinates: [oddArtifactDigest],
+      resourceCoordinates: [oddArtifactPath],
+      effectCoordinates: [verifiedOdd.verificationRef, verifiedOdd.verificationDigest],
+    }),
+  ]);
 
   const verifiedProducts = Object.freeze([verifiedAbi, verifiedOdd]);
-  const lock = bootstrap.product.constructResolvedProductLock(verifiedProducts);
+  const resolveCallsite = resolvePublicCallsite(
+    bootstrap,
+    "./product",
+    "constructResolvedProductLock",
+  );
+  const lock = resolveCallsite.callable(verifiedProducts);
   assert.equal(lock.kind, "resolved_product_lock", JSON.stringify(lock));
   assert.equal(lock.rows.length, 2);
   assert.equal(lock.dependencyEdges.length, 1);
   assert.equal(lock.dependencyEdges[0].fromProductId, ODD.productId);
   assert.equal(lock.dependencyEdges[0].toProductId, ABI.productId);
-  observeNativeStage("./product::constructResolvedProductLock", {
-    lockId: lock.lockId,
-    lockDigest: lock.lockDigest,
-    rowCount: lock.rows.length,
-  });
+  observeNativeStage("./product::constructResolvedProductLock", [
+    nativeChildEvidence(bootstrap.product, {
+      callsite: resolveCallsite,
+      request: verifiedProducts,
+      output: lock,
+      dependencyCoordinates: lock.dependencyEdges,
+      effectCoordinates: [lock.lockId, lock.lockDigest],
+    }),
+  ]);
 
   const abiConsumerRoot = path.join(scratch, "abi-consumer");
   const oddConsumerRoot = path.join(scratch, "odd-consumer");
-  const abiInstall = await bootstrap.product.installProduct({
+  const installCallsite = resolvePublicCallsite(
+    bootstrap,
+    "./product",
+    "installProduct",
+  );
+  const installAbiRequest = Object.freeze({
     artifactPath: abiArtifactPath,
     targetRoot: abiConsumerRoot,
     verifiedArtifact: verifiedAbi,
     resolvedLock: lock,
   });
+  const abiInstall = await installCallsite.callable(installAbiRequest);
   assert.equal(abiInstall.disposition, "materialized", JSON.stringify(abiInstall));
-  const oddInstall = await bootstrap.product.installProduct({
+  const installOddRequest = Object.freeze({
     artifactPath: oddArtifactPath,
     targetRoot: oddConsumerRoot,
     verifiedArtifact: verifiedOdd,
     resolvedLock: lock,
   });
+  const oddInstall = await installCallsite.callable(installOddRequest);
   assert.equal(oddInstall.disposition, "materialized", JSON.stringify(oddInstall));
   assert.notEqual(abiInstall.installedRoot, oddInstall.installedRoot);
-  observeNativeStage("./product::installProduct", {
-    installIds: [abiInstall.installId, oddInstall.installId],
-    installedRoots: [abiInstall.installedRoot, oddInstall.installedRoot],
-  });
+  const installNativeChildren = [
+    nativeChildEvidence(bootstrap.product, {
+      callsite: installCallsite,
+      request: installAbiRequest,
+      output: abiInstall,
+      dependencyCoordinates: [lock.lockId, lock.lockDigest],
+      resourceCoordinates: [abiArtifactPath, abiInstall.installedRoot],
+      effectCoordinates: [abiInstall.installId, abiInstall.productContentDigest],
+    }),
+    nativeChildEvidence(bootstrap.product, {
+      callsite: installCallsite,
+      request: installOddRequest,
+      output: oddInstall,
+      dependencyCoordinates: [lock.lockId, lock.lockDigest],
+      resourceCoordinates: [oddArtifactPath, oddInstall.installedRoot],
+      effectCoordinates: [oddInstall.installId, oddInstall.productContentDigest],
+    }),
+  ];
 
   const installed = await loadAbiPublic(abiInstall.installedRoot);
   const { product, abg, gtl, validator, public: installedPublic } = installed;
@@ -723,17 +1199,12 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     "./abg": abg,
     "./validator": validator,
   });
-  for (const [operationId, memberKey] of CONSUMED_DEFINITION_KEYS) {
-    const definition = definitionFor(installedPublic, operationId, memberKey);
-    const locator = definition.executionBindingSpecification.callable;
-    let callable = ownerModules[locator.packageExportPath]?.[locator.namedExport];
-    for (const member of locator.memberPath) callable = callable?.[member];
-    assert.equal(
-      typeof callable,
-      "function",
-      `${operationId}#${memberKey}`,
-    );
-  }
+  const publicFamilyEvidence = assertFullPublicFamilyClosure({
+    installedPublic,
+    coordinates: verifiedAbi.definitionContractCoordinates,
+    ownerModules,
+    product,
+  });
 
   const acquired = abg.createNewEmptyAppendSink({
     kind: "new_empty_append_sink_request",
@@ -747,28 +1218,50 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   let prefix = acquired.prefix;
   const admittedInstalls = [];
   let abiOnlyArtifactTruth = null;
+  const admitInstallCallsite = resolvePublicCallsite(
+    installed,
+    "./abg",
+    "admitProductInstall",
+  );
   for (const [index, candidate] of installs.entries()) {
-    const admission = abg.admitProductInstall(
+    const installAdmissionBasis = Object.freeze({
+      ...publicOperationBasis(
+        product,
+        "abg.operation.product.install",
+        "install",
+        candidate.installId,
+        candidate.productContentDigest,
+        `invocation://odd-glc/t041/install-${index}`,
+      ),
+      predecessorPrefix: prefix,
+    });
+    const admission = admitInstallCallsite.callable(
       openStore,
       candidate,
-      {
-        ...publicOperationBasis(
-          product,
-          "abg.operation.product.install",
-          "install",
-          candidate.installId,
-          candidate.productContentDigest,
-          `invocation://odd-glc/t041/install-${index}`,
-        ),
-        predecessorPrefix: prefix,
-      },
+      installAdmissionBasis,
       lock,
     );
     assert.equal(admission.kind, "artifact_owner_result", JSON.stringify(admission));
+    installNativeChildren.push(nativeChildEvidence(product, {
+      callsite: admitInstallCallsite,
+      request: Object.freeze({
+        install: candidate,
+        operationBasis: installAdmissionBasis,
+        resolvedLock: lock,
+      }),
+      output: admission,
+      dependencyCoordinates: [lock.lockId, lock.lockDigest],
+      resourceCoordinates: [candidate.installId, acquired.prefix.eventLogRef],
+      effectCoordinates: [admission.value.admissionEventRef],
+      admissionCoordinate: admission.value.admissionEventRef,
+      predecessorPrefix: prefix,
+      successorPrefix: admission.successorPrefix,
+    }));
     admittedInstalls.push(admission.value);
     if (index === 0) abiOnlyArtifactTruth = admission.artifactTruth;
     prefix = admission.successorPrefix;
   }
+  observeNativeStage("./product::installProduct", installNativeChildren);
   assert.ok(abiOnlyArtifactTruth);
   const productSet = product.constructProductSet(admittedInstalls, lock);
   assert.equal(productSet.kind, "product_set", JSON.stringify(productSet));
@@ -785,35 +1278,47 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     authorityManifestDigest: product.sha256Canonical(authorityManifest),
   });
   assert.equal(workspaceAuthority.kind, "workspace_authority_basis");
-  const bindingCandidate = product.constructWorkspaceBinding(
+  const constructBindingCallsite = resolvePublicCallsite(
+    installed,
+    "./product",
+    "constructWorkspaceBinding",
+  );
+  const bindingPaths = Object.freeze({
+    toolchainRoot: abiConsumerRoot,
+    productRoot: oddInstall.installedRoot,
+    eventLogRoot: path.join(workspaceRoot, ".ai-workspace/events"),
+    runtimeStateRoot: path.join(workspaceRoot, ".ai-workspace/runtime"),
+    projectionRoot: path.join(workspaceRoot, ".ai-workspace/projections"),
+    archiveRoot: path.join(workspaceRoot, ".ai-workspace/archive"),
+  });
+  const bindingCandidate = constructBindingCallsite.callable(
     workspaceAuthority,
     productSet,
     lock,
-    {
-      toolchainRoot: abiConsumerRoot,
-      productRoot: oddInstall.installedRoot,
-      eventLogRoot: path.join(workspaceRoot, ".ai-workspace/events"),
-      runtimeStateRoot: path.join(workspaceRoot, ".ai-workspace/runtime"),
-      projectionRoot: path.join(workspaceRoot, ".ai-workspace/projections"),
-      archiveRoot: path.join(workspaceRoot, ".ai-workspace/archive"),
-    },
+    bindingPaths,
   );
   assert.equal(bindingCandidate.kind, "workspace_binding_candidate");
-  const bindingAdmission = abg.admitWorkspaceBinding(
+  const bindAdmissionCallsite = resolvePublicCallsite(
+    installed,
+    "./abg",
+    "admitWorkspaceBinding",
+  );
+  const bindingOperationBasis = Object.freeze({
+    ...publicOperationBasis(
+      product,
+      "abg.operation.workspace.bind",
+      "bind",
+      bindingCandidate.bindingId,
+      bindingCandidate.bindingDigest,
+      "invocation://odd-glc/t041/workspace-bind",
+      admittedInstalls.map((install) => install.admissionEventRef),
+    ),
+    predecessorPrefix: prefix,
+  });
+  const bindingAdmission = bindAdmissionCallsite.callable(
     openStore,
     bindingCandidate,
-    {
-      ...publicOperationBasis(
-        product,
-        "abg.operation.workspace.bind",
-        "bind",
-        bindingCandidate.bindingId,
-        bindingCandidate.bindingDigest,
-        "invocation://odd-glc/t041/workspace-bind",
-        admittedInstalls.map((install) => install.admissionEventRef),
-      ),
-      predecessorPrefix: prefix,
-    },
+    bindingOperationBasis,
     workspaceAuthority,
   );
   assert.equal(
@@ -829,11 +1334,36 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       abg.hasAdmittedProductInstall(artifactTruth, install)),
     true,
   );
-  observeNativeStage("./abg::admitWorkspaceBinding", {
-    bindingId: workspaceBinding.bindingId,
-    bindingDigest: workspaceBinding.bindingDigest,
-    admissionEventRef: workspaceBinding.admissionEventRef,
-  });
+  observeNativeStage("./abg::admitWorkspaceBinding", [
+    nativeChildEvidence(product, {
+      callsite: constructBindingCallsite,
+      request: Object.freeze({
+        workspaceAuthority,
+        productSet,
+        resolvedLock: lock,
+        paths: bindingPaths,
+      }),
+      output: bindingCandidate,
+      dependencyCoordinates: [productSet.productSetId, lock.lockId],
+      resourceCoordinates: Object.values(bindingPaths),
+      effectCoordinates: [bindingCandidate.bindingId, bindingCandidate.bindingDigest],
+    }),
+    nativeChildEvidence(product, {
+      callsite: bindAdmissionCallsite,
+      request: Object.freeze({
+        bindingCandidate,
+        operationBasis: bindingOperationBasis,
+        workspaceAuthority,
+      }),
+      output: bindingAdmission,
+      dependencyCoordinates: admittedInstalls.map((install) => install.installId),
+      resourceCoordinates: [acquired.prefix.eventLogRef],
+      effectCoordinates: [workspaceBinding.admissionEventRef],
+      admissionCoordinate: workspaceBinding.admissionEventRef,
+      predecessorPrefix: prefix,
+      successorPrefix: bindingAdmission.successorPrefix,
+    }),
+  ]);
 
   const abiPublication = gtl.constructHelloWorldModulePublication({
     productId: verifiedAbi.productId,
@@ -843,7 +1373,8 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     packageName: verifiedAbi.packageName,
     packageVersion: verifiedAbi.packageVersion,
   });
-  const oddData = await loadOddPublicationData(oddInstall.installedRoot);
+  const oddPublicationLoad = await loadOddPublicationData(oddInstall.installedRoot);
+  const oddData = oddPublicationLoad.publication;
   const oddPublication = gtl.modulePublication({
     kind: "module_publication",
     moduleVersion: SCHEMA_VERSION,
@@ -901,36 +1432,61 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       "program_validation",
     );
   }
-  const catalog = product.admitGraphFunctionCatalog({
+  const catalogAdmitCallsite = resolvePublicCallsite(
+    installed,
+    "./product",
+    "admitGraphFunctionCatalog",
+  );
+  const catalogAdmitRequest = Object.freeze({
     workspaceBinding: bindingCandidate,
     resolvedLock: lock,
     verifiedProducts,
     installedProducts: installs,
     publications,
   });
+  const catalog = catalogAdmitCallsite.callable(catalogAdmitRequest);
   assert.equal(catalog.kind, "graph_function_catalog", JSON.stringify(catalog));
   assert.equal(
     catalog.rowDispositions.find((row) => row.handle === ODD.graphFunctionRef)
       ?.disposition,
     "admitted",
   );
-  observeNativeStage("./product::admitGraphFunctionCatalog", {
-    basisDigest: catalog.basisDigest,
-    oddDisposition: catalog.rowDispositions.find(
-      (row) => row.handle === ODD.graphFunctionRef,
-    ).disposition,
-  });
-  const catalogView = product.narrowGraphFunctionCatalog(
+  observeNativeStage("./product::admitGraphFunctionCatalog", [
+    nativeChildEvidence(product, {
+      callsite: catalogAdmitCallsite,
+      request: catalogAdmitRequest,
+      output: catalog,
+      dependencyCoordinates: [lock.lockId, workspaceBinding.bindingId],
+      resourceCoordinates: publications.map((publication) => publication.moduleRef),
+      effectCoordinates: [catalog.basisDigest],
+      admissionCoordinate: catalog.basisDigest,
+    }),
+  ]);
+  const catalogViewCallsite = resolvePublicCallsite(
+    installed,
+    "./product",
+    "narrowGraphFunctionCatalog",
+  );
+  const catalogViewRequest = Object.freeze({
     catalog,
-    [ODD.graphFunctionRef],
+    allowlist: Object.freeze([ODD.graphFunctionRef]),
+  });
+  const catalogView = catalogViewCallsite.callable(
+    catalog,
+    catalogViewRequest.allowlist,
   );
   assert.equal(catalogView.kind, "graph_function_catalog_view");
   assert.deepEqual(catalogView.allowlist, [ODD.graphFunctionRef]);
   assert.equal(catalogView.entries.length, 1);
-  observeNativeStage("./product::narrowGraphFunctionCatalog", {
-    viewDigest: catalogView.viewDigest,
-    allowlist: catalogView.allowlist,
-  });
+  observeNativeStage("./product::narrowGraphFunctionCatalog", [
+    nativeChildEvidence(product, {
+      callsite: catalogViewCallsite,
+      request: catalogViewRequest,
+      output: catalogView,
+      dependencyCoordinates: [catalog.basisDigest],
+      effectCoordinates: [catalogView.viewDigest],
+    }),
+  ]);
 
   const sunnySelection = Object.freeze({
     kind: "start",
@@ -965,6 +1521,48 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     ODD.productId,
   );
   assert.equal(resolution.implementationSetCandidate.rows[0].computeRegime, "F_D");
+  const semanticsBinding = resolution.programPublication.productSemanticsBinding;
+  const semanticsOwnerInstall = exact(
+    resolution.ownerInstalls,
+    (install) =>
+      install.installId === resolution.declarationClosure.semanticsOwner.installId &&
+      install.productId === resolution.declarationClosure.semanticsOwner.productId,
+    "returned semantics owner install",
+  );
+  const semanticsOwnerLoad = await loadReturnedInstalledOwnerExport({
+    install: semanticsOwnerInstall,
+    binding: semanticsBinding,
+  });
+  assert.equal(semanticsOwnerLoad.value, resolution.productSemantics);
+  assert.equal(semanticsOwnerLoad.value.kind, "product_semantics_provider");
+  const implementationRow = resolution.implementationSetCandidate.rows[0];
+  const implementationDescriptor = exact(
+    resolution.packagedImplementations,
+    (descriptor) =>
+      descriptor.implementationRef === implementationRow.implementationRef &&
+      descriptor.descriptorDigest ===
+        implementationRow.implementationDescriptorDigest,
+    "returned selected Implementation descriptor",
+  );
+  assert.equal(implementationDescriptor.modulePath, implementationRow.modulePath);
+  assert.equal(implementationDescriptor.namedSymbol, implementationRow.namedSymbol);
+  const implementationOwnerInstall = exact(
+    resolution.ownerInstalls,
+    (install) =>
+      install.productId === implementationRow.implementationOwnerProductId &&
+      install.packageName === implementationDescriptor.packageName &&
+      install.packageVersion === implementationDescriptor.packageVersion,
+    "returned Implementation owner install",
+  );
+  const implementationOwnerLoad = await loadReturnedInstalledOwnerExport({
+    install: implementationOwnerInstall,
+    binding: implementationDescriptor,
+  });
+  assert.equal(typeof implementationOwnerLoad.value, "function");
+  const returnedOwnerLoadEvidence = Object.freeze({
+    semantics: semanticsOwnerLoad.evidence,
+    implementation: implementationOwnerLoad.evidence,
+  });
   const absentSelection = await product.ProductExecutionResolutionPort.resolve({
     catalog,
     catalogView,
@@ -1092,6 +1690,9 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   });
   const setupHandoff = openStore.projectReopenAuthorityAndClose();
   openStore = null;
+  const preStartEventBytes = await readFile(
+    new URL(setupHandoff.prefix.eventLogRef),
+  );
   const startEventResource = Object.freeze({
     kind: "reopen_abg_event_resource",
     schemaVersion: SCHEMA_VERSION,
@@ -1165,6 +1766,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     requestRef: "public-request://odd-glc/t041/run-start",
   });
   const transportJsonLines = [];
+  const transportRawExchanges = [];
   const startReceipt = await runInstalledCli({
     scratch,
     installedRoot: abiInstall.installedRoot,
@@ -1172,6 +1774,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     identity: "start",
     call: startCall,
     rawJsonLines: transportJsonLines,
+    rawExchanges: transportRawExchanges,
   });
   assert.equal(startReceipt.ownerOutput.outcomeKind, "result");
   assert.equal(startReceipt.ownerOutput.value.disposition, "completed");
@@ -1301,6 +1904,7 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       identity: memberKey,
       call,
       rawJsonLines: transportJsonLines,
+      rawExchanges: transportRawExchanges,
     });
     assert.equal(receipt.ownerOutput.outcomeKind, "result", memberKey);
     assert.equal(receipt.ownerOutput.value.caseKey, memberKey);
@@ -1355,6 +1959,11 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
   assert.equal(fresh.kind, "odd_glc_abi5_fresh_process_read_result");
   assert.notEqual(fresh.processId, process.pid);
   assert.equal(fresh.publicModuleRef, installed.publicModuleRefs.public);
+  assert.equal(
+    fresh.publicRealModuleRef,
+    executionModuleEvidence.find(({ packageExportPath }) =>
+      packageExportPath === "./public").realModuleURL,
+  );
   assert.equal(fresh.receipts.length, 3);
   for (const [index, receipt] of fresh.receipts.entries()) {
     assert.deepEqual(receipt.ownerOutput, readReceipts[index].ownerOutput);
@@ -1364,6 +1973,15 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     await readFile(new URL(terminalPrefix.eventLogRef)),
     terminalBytes,
   );
+  assert.equal(fresh.eventLogObservation.eventLogRef, terminalPrefix.eventLogRef);
+  assert.equal(fresh.eventLogObservation.appendedByteLength, 0);
+  for (const phase of ["before", "after"]) {
+    const evidence = fresh.eventLogObservation[phase];
+    const bytes = Buffer.from(evidence.bytes, evidence.encoding);
+    assert.deepEqual(bytes, terminalBytes);
+    assert.equal(bytes.length, evidence.byteLength);
+    assert.equal(`sha256:${sha256Hex(bytes)}`, evidence.sha256);
+  }
   const statusCall = readCalls[0];
   const withEventResource = (call, eventResource) => Object.freeze({
     invocation: call.invocation,
@@ -1545,6 +2163,8 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     EXPECTED_TRANSPORTED_DEFINITION_KEYS,
   );
   assert.equal(transportJsonLines.length, 4);
+  assert.equal(transportRawExchanges.length, 4);
+  const productGitBasis = await exactProductGitBasis();
   const rawObservation = Object.freeze({
     kind: "odd_glc_abi5_installed_raw_observation",
     schemaVersion: "1",
@@ -1555,9 +2175,11 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       oddPackage: `${ODD.packageName}@${ODD.packageVersion}`,
       oddProductId: ODD.productId,
       oddTarballSha256: ODD_TARBALL_SHA256,
+      productGit: productGitBasis,
     }),
     archive: Object.freeze({
       members: oddPack.archiveMembers,
+      tarball: rawBytesEvidence(await readFile(oddPack.artifactPath)),
       executableOrDeclarationMemberCount: oddPack.archiveMembers.filter(
         (member) => /\.(?:[cm]?js|d\.[cm]?ts)$/u.test(member),
       ).length,
@@ -1569,17 +2191,9 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     installedPublicModuleEvidence: Object.freeze({
       bootstrap: structuredClone(bootstrapModuleEvidence),
       execution: structuredClone(executionModuleEvidence),
+      oddPublication: structuredClone(oddPublicationLoad.moduleEvidence),
     }),
-    publicFamily: Object.freeze({
-      operationCount: new Set(family.map(({ definitionKey }) =>
-        definitionKey.operationId)).size,
-      definitionCount: family.length,
-      consumedDefinitionKeys: CONSUMED_DEFINITION_KEYS.map(
-        ([operationId, memberKey]) => Object.freeze({ operationId, memberKey }),
-      ),
-      callableQualificationScope: "consumed_12_only",
-      unconsumedCallableClosure: "not_claimed",
-    }),
+    publicFamily: structuredClone(publicFamilyEvidence),
     ownership: Object.freeze({
       programRef: resolution.resolution.programRef,
       graphFunctionRef: resolution.resolution.graphFunctionRef,
@@ -1590,10 +2204,12 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
         resolution.declarationClosure.semanticsOwner.productId,
       implementationOwnerProductId:
         resolution.implementationSetCandidate.rows[0].implementationOwnerProductId,
+      returnedOwnerLoadEvidence: structuredClone(returnedOwnerLoadEvidence),
     }),
     nativeOwnerStageObservations: structuredClone(nativeStageObservations),
     transportedDefinitionKeys: structuredClone(transportedDefinitionKeys),
     transportedJsonLines: Object.freeze([...transportJsonLines]),
+    transportedRawExchanges: structuredClone(transportRawExchanges),
     resolutionBoundaryObservations:
       structuredClone(resolutionBoundaryObservations),
     transportBoundaryObservations:
@@ -1601,11 +2217,15 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
     freshProcessStdout: freshStdout,
     runtimeEventLog: Object.freeze({
       eventLogRef: terminalPrefix.eventLogRef,
-      byteLength: terminalBytes.length,
-      sha256: `sha256:${sha256Hex(terminalBytes)}`,
-      jsonl: terminalBytes.toString("utf8"),
+      preStart: rawBytesEvidence(preStartEventBytes),
+      postStart: rawBytesEvidence(terminalBytes),
+      postRead: rawBytesEvidence(
+        await readFile(new URL(terminalPrefix.eventLogRef)),
+      ),
     }),
     authenticatedRuntimeObservation: Object.freeze({
+      startDisposition: startReceipt.ownerOutput.value.disposition,
+      runtimeStatus: statusReceipt.ownerOutput.value.projection.status,
       semanticStartCount: invocationAdmissions.length,
       terminalResultCount: resultAdmissions.length,
       runClosedCount: runClosedEvents.length,
@@ -1616,13 +2236,9 @@ test("ABI5 executes the installed odd_glc Product through cross-owner Hello", as
       readTimeAppendedBytes: 0,
     }),
   });
-  const rawReceiptPath = process.env.ODD_GLC_T041_RAW_RECEIPT_PATH;
-  if (rawReceiptPath) {
-    assert.equal(path.isAbsolute(rawReceiptPath), true);
-    await writeFile(rawReceiptPath, `${JSON.stringify(rawObservation)}\n`, {
-      flag: "wx",
-    });
-  }
+  await writeFile(rawReceiptPath, `${JSON.stringify(rawObservation)}\n`, {
+    flag: "wx",
+  });
   t.diagnostic(JSON.stringify({
     abiArtifactDigest,
     oddArtifactDigest,

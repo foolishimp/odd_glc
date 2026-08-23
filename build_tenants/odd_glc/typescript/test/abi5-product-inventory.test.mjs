@@ -6,6 +6,7 @@ import {
   mkdtemp,
   readFile,
   readdir,
+  realpath,
   rm,
   writeFile,
 } from "node:fs/promises";
@@ -44,6 +45,16 @@ const ABI = Object.freeze({
   packageName: "@abiogenesis/typescript-tenant",
   packageVersion: "5.0.0-dev.286",
 });
+const ABI_PUBLIC_SUBPATHS = Object.freeze([
+  Object.freeze({ key: "root", packageExportPath: ".", specifier: ABI.packageName }),
+  ...["abg", "gtl", "hog", "product", "public", "validator"].map(
+    (key) => Object.freeze({
+      key,
+      packageExportPath: `./${key}`,
+      specifier: `${ABI.packageName}/${key}`,
+    }),
+  ),
+]);
 const PRODUCT_RELATIVE_LOCATORS = Object.freeze([
   "contracts/public-contract-catalog.schema.json",
   "build/publication.json",
@@ -61,17 +72,57 @@ function sha256Hex(bytes) {
   return createHash("sha256").update(bytes).digest("hex");
 }
 
+function requireSuccessful(command, args, options = {}) {
+  const result = spawnSync(command, args, {
+    encoding: "utf8",
+    ...options,
+  });
+  assert.equal(result.error, undefined, `${command}: ${result.error?.message}`);
+  assert.equal(result.status, 0, `${command}: ${result.stderr}`);
+  return result.stdout;
+}
+
+async function extractExactAbiTarball(tarballPath, scratchRoot) {
+  assert.equal(path.isAbsolute(tarballPath), true, "ABI tarball path must be absolute");
+  const bytes = await readFile(tarballPath);
+  assert.equal(sha256Hex(bytes), REQUIRED_ABI_TARBALL_SHA256);
+  const consumerRoot = path.join(scratchRoot, "abi-bootstrap-consumer");
+  const packageRoot = path.join(
+    consumerRoot,
+    "node_modules",
+    "@abiogenesis",
+    "typescript-tenant",
+  );
+  await mkdir(packageRoot, { recursive: true });
+  requireSuccessful(
+    "tar",
+    ["-xzf", tarballPath, "--strip-components=1", "-C", packageRoot],
+  );
+  const canonicalRoot = await realpath(packageRoot);
+  const gitProbe = spawnSync(
+    "git",
+    ["-C", canonicalRoot, "rev-parse", "--show-toplevel"],
+    { encoding: "utf8" },
+  );
+  assert.notEqual(
+    gitProbe.status,
+    0,
+    "tarball bootstrap must be outside every source checkout",
+  );
+  return canonicalRoot;
+}
+
 async function loadInstalledAbiPublic(packageRoot) {
   const packageJson = JSON.parse(
     await readFile(path.join(packageRoot, "package.json"), "utf8"),
   );
   assert.equal(packageJson.name, ABI.packageName);
   assert.equal(packageJson.version, ABI.packageVersion);
-  for (const subpath of ["product", "gtl", "validator"]) {
+  for (const { packageExportPath } of ABI_PUBLIC_SUBPATHS) {
     assert.equal(
-      typeof packageJson.exports[`./${subpath}`]?.import,
+      typeof packageJson.exports[packageExportPath]?.import,
       "string",
-      `installed ABI does not publicly export ./${subpath}`,
+      `installed ABI does not publicly export ${packageExportPath}`,
     );
   }
   const nodeModulesRoot = path.resolve(packageRoot, "../..");
@@ -83,9 +134,12 @@ async function loadInstalledAbiPublic(packageRoot) {
   await writeFile(
     bridgePath,
     [
-      `export * as product from "${ABI.packageName}/product";`,
-      `export * as gtl from "${ABI.packageName}/gtl";`,
-      `export * as validator from "${ABI.packageName}/validator";`,
+      ...ABI_PUBLIC_SUBPATHS.map(({ key, specifier }) =>
+        `export * as ${key} from ${JSON.stringify(specifier)};`),
+      `export const resolvedPublicSubpathURLs = Object.freeze({${ABI_PUBLIC_SUBPATHS.map(
+        ({ packageExportPath, specifier }) =>
+          `${JSON.stringify(packageExportPath)}: import.meta.resolve(${JSON.stringify(specifier)})`,
+      ).join(",")}});`,
       "",
     ].join("\n"),
   );
@@ -93,6 +147,30 @@ async function loadInstalledAbiPublic(packageRoot) {
     `${pathToFileURL(bridgePath).href}?basis=${Date.now()}`
   );
   await rm(bridgeRoot, { recursive: true, force: true });
+  const installedRoot = await realpath(packageRoot);
+  const publicModuleEvidence = [];
+  for (const { packageExportPath } of ABI_PUBLIC_SUBPATHS) {
+    const resolvedURL = publicModules.resolvedPublicSubpathURLs[packageExportPath];
+    assert.equal(typeof resolvedURL, "string", packageExportPath);
+    const resolvedPath = await realpath(fileURLToPath(resolvedURL));
+    const relative = path.relative(installedRoot, resolvedPath);
+    assert.equal(path.isAbsolute(relative), false, packageExportPath);
+    assert.equal(relative === ".." || relative.startsWith(`..${path.sep}`), false);
+    assert.equal(
+      pathToFileURL(resolvedPath).href,
+      pathToFileURL(await realpath(path.join(
+        installedRoot,
+        packageJson.exports[packageExportPath].import,
+      ))).href,
+      packageExportPath,
+    );
+    publicModuleEvidence.push(Object.freeze({
+      packageExportPath,
+      resolvedURL,
+      realModuleURL: pathToFileURL(resolvedPath).href,
+      packageRelativeTarget: relative.split(path.sep).join(path.posix.sep),
+    }));
+  }
   return {
     packageJson,
     manifest: JSON.parse(
@@ -101,15 +179,14 @@ async function loadInstalledAbiPublic(packageRoot) {
     product: publicModules.product,
     gtl: publicModules.gtl,
     validator: publicModules.validator,
+    publicModuleEvidence: Object.freeze(publicModuleEvidence),
   };
 }
 
-async function requireExactAbiBasis() {
-  const packageRoot = process.env.ODD_GLC_T041_ABI_PACKAGE_ROOT;
+async function requireExactAbiBasis(scratchRoot) {
   const tarballPath = process.env.ODD_GLC_T041_ABI_TARBALL;
-  assert.ok(packageRoot, "ODD_GLC_T041_ABI_PACKAGE_ROOT is required");
   assert.ok(tarballPath, "ODD_GLC_T041_ABI_TARBALL is required");
-  assert.equal(sha256Hex(await readFile(tarballPath)), REQUIRED_ABI_TARBALL_SHA256);
+  const packageRoot = await extractExactAbiTarball(tarballPath, scratchRoot);
   return {
     artifactDigest: `sha256:${REQUIRED_ABI_TARBALL_SHA256}`,
     packageRoot,
@@ -545,19 +622,13 @@ async function inspectExactProduct(abi, derived) {
 }
 
 test("ABI5 Product inventory is exact, data-only, and double-pack deterministic", async (t) => {
-    if (
-      !process.env.ODD_GLC_T041_ABI_PACKAGE_ROOT ||
-      !process.env.ODD_GLC_T041_ABI_TARBALL
-    ) {
-      t.skip("exact ABI dev.286 installed package and tarball are required");
-      return;
-    }
-    const abi = await requireExactAbiBasis();
+    const root = await mkdtemp(path.join(os.tmpdir(), "odd-glc-t041-pack-"));
+    t.after(async () => rm(root, { recursive: true, force: true }));
+    const abi = await requireExactAbiBasis(root);
+    assert.equal(abi.publicModuleEvidence.length, ABI_PUBLIC_SUBPATHS.length);
     const derived = await deriveProduct(abi);
     const initialSnapshot = await productSnapshot();
     const manifest = await inspectExactProduct(abi, derived);
-    const root = await mkdtemp(path.join(os.tmpdir(), "odd-glc-t041-pack-"));
-    t.after(async () => rm(root, { recursive: true, force: true }));
     const firstRoot = path.join(root, "first");
     const secondRoot = path.join(root, "second");
     await mkdir(firstRoot);
@@ -573,6 +644,13 @@ test("ABI5 Product inventory is exact, data-only, and double-pack deterministic"
     assert.equal(first.summary.version, PRODUCT.packageVersion);
     const firstBytes = await readFile(first.tarballPath);
     const secondBytes = await readFile(second.tarballPath);
+    const archiveHeaders = requireSuccessful("tar", ["-tzf", first.tarballPath])
+      .trim().split(/\r?\n/u).sort();
+    assert.deepEqual(
+      archiveHeaders,
+      EXACT_PRODUCT_FILES.map((member) => `package/${member}`).sort(),
+      "actual npm tar headers must contain exactly the five Product members",
+    );
     assert.deepEqual(firstBytes, secondBytes);
     assert.equal(
       await abi.product.sha256File(first.tarballPath),
