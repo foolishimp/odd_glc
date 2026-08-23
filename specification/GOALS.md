@@ -1,8 +1,9 @@
 # odd_glc Goals
 
 **Status**: Active
-**Reconciliation status**: Admitted by the `specification/GOVERNANCE.md`
-exact-tree record on 2026-08-24
+**Reconciliation status**: Evidence-driven `design_reframe` proposal over the
+accepted 2026-08-24 exact-tree record; not operative until independent
+exact-tree review and Executive/F_H acceptance
 **Date**: 2026-08-24
 **Derived From**: `specification/GOVERNANCE.md`; direct F_H goal reprice dated
 2026-08-17; `.ai-workspace/context/project_bootstrap.md`; immutable odd_glc
@@ -38,9 +39,10 @@ data-mapper, One Surface, and Consensus remain deferred.
 
 ## Downstream Routing And Selected Constraints
 
-T-041 routes this goal. The active ratified
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md` design
-selects `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
+T-041 routes this goal. The accepted predecessor design is re-entered by the
+pending evidence-driven proposal in
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md`. The proposal preserves
+the selected `@odd-glc/route-one-typescript@0.2.0-dev.1` and exact installed
 ABIogenesis tag `v5.0.0-dev.286`, commit
 `3014f12571c12f97f85dfe54ca4da28e7dfee3ea`, tree
 `a399045de5d752b92c084b5b38b358aa2d1c63aa`, package
@@ -111,6 +113,11 @@ Hello leaf binding. Raw IDs, digests, events, Programs, GraphFunctions, leaf
 bindings, greeting punctuation, and transport forms remain version-local.
 Hello World is steel-thread shorthand, not Product parity.
 
+Diagnostic execution of the selected Hello outcome may continue while this
+reframe is reviewed. A diagnostic result cannot admit the proposal, and no
+implementation candidate may freeze until independent review and
+Executive/F_H acceptance bind the exact reframe tree.
+
 ### Selected Execution Plan
 
 1. Hold implementation until the exact ABI tarball matches its pinned SHA-256.
@@ -118,28 +125,43 @@ Hello World is steel-thread shorthand, not Product parity.
 3. Publish one exact five-member, zero-code odd_glc Program candidate whose
    odd_glc-owned GraphFunction topology references the installed ABI Hello leaf
    capability.
-4. Install and run one CLI episode chain with exactly one start, then replay
-   from another process. Mechanically prove SDK/schema/catalog equality to the
-   same 18/56 family without a second semantic execution.
+4. Install and run one episode chain with exactly one start, then replay from
+   another process. Prove the eight setup stages through exact installed-public
+   owner relations and the start/status/result/replay stages through installed
+   Public DefinitionCall receipts. Prove only structural SDK/schema/catalog
+   equality to the published 18/56 family; do not infer whole-family callable
+   closure or behavior.
 5. Freeze the source-independent package census, receipts, and normalized
    differential for cold review and Executive disposition.
 
-The traced path consumes twelve definitions:
-`workspace.create#clean`, `workspace.open#open`, `product.verify#verify`,
-`product.resolve#resolve`, `product.install#install`, `workspace.bind#bind`,
-`catalog.admit#admit`, `catalog.view#allowlist`, `run.invoke#start`,
-`project.read#run_status`, `project.read#run_result`, and
-`project.read#run_replay`. The trace, not the count, governs. ABIogenesis
-`v5.0.0-dev.286` packages its one exact 18/56 family; unused definitions are
-outside this sentinel's evidence claim, not absent or replaced by a partial
-roster.
+The steel thread has twelve ordered stages. Exact ABIogenesis
+`v5.0.0-dev.286` exposes the first eight through installed public owner
+relations: `workspace.create#clean`, `workspace.open#open`,
+`product.verify#verify`, `product.resolve#resolve`, `product.install#install`,
+`workspace.bind#bind`, `catalog.admit#admit`, and
+`catalog.view#allowlist`. Their proof is the native owner result and its exact
+identity, dependency, resource, and effect observations. These stage labels
+are not DefinitionCall receipt identities.
 
-Package constructability still covers the entire family before this sentinel
-runs: every one of the 56 definitions has a concrete runtime-callable owner
-closure; the installed tarball contains every required owner module, runtime
-dependency, schema, and static catalog row; and one installed exact-set probe
-loads/resolves all 56 from packed bytes. This mechanical probe does not invoke
-all 56 behaviors. Scenario qualification remains the twelve-key path above.
+The installed Public DefinitionCall trace is exactly
+`run.invoke#start`, `project.read#run_status`, `project.read#run_result`, and
+`project.read#run_replay`. Each key derives from the returned
+`DefinitionHostReceipt.definitionKey`; a literal label or expected array is not
+trace evidence. Exactly one semantic start occurs.
+
+The exact package publishes one structural 18-operation/56-definition family.
+T-041 proves that structural identity and selected-stage callable availability.
+It makes no whole-56 callable-closure or behavioral claim. The activated
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-substrate` records 17
+unselected definitions whose installed callable locators are absent: five
+`interaction.respond`, two `product.materialize`, one
+`project.read#release_evidence`, one `result.assess`, two `run.continue`, and
+six `witness.admit`. None belongs to the twelve-stage sentinel.
+
+Exact DefinitionCall traversal of all twelve stages depends on a future ABI
+T-287 S2 bootstrap successor. That successor remains unselected and unpinned;
+using it requires fresh tag, commit, tree, package, and tarball admission plus
+a new design reframe. It is not a T-041 candidate claim or closure gate.
 
 The odd_glc `0.2.0-dev.1` package closes only when its production census
 contains declarative GTL publication data and no executable evaluator/provider,

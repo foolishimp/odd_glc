@@ -1,7 +1,9 @@
 # odd_glc ABIogenesis 5 Migration Design
 
 **Ticket**: T-041
-**Status**: Active ratified T-041 Program-only design; full lifecycle migration deferred
+**Status**: Proposed evidence-driven reframe of the accepted T-041 Program-only
+design; not operative until exact-tree independent review and Executive/F_H
+acceptance; full lifecycle migration deferred
 **Method Basis**: `specification/GOVERNANCE.md`; immutable STDO `v2.3.0`
 **Construction Basis**: direct-F_H-adopted authority-conserving,
 entity-centric, event-sourced functional reactive domain modeling method;
@@ -14,13 +16,23 @@ resolved through `specification/GOVERNANCE.md`
 `@abiogenesis/typescript-tenant@4.6.0-rc.3`
 **Development substrate**: `@abiogenesis/typescript-tenant@5.0.0-dev.286`
 
-## Ratified T-041 Design Completion
+## Proposed T-041 Evidence Reframe
 
-The exact-tree admission record in `specification/GOVERNANCE.md` makes this
-section the complete implementation authority for T-041. It supersedes the
-pre-pin Wave 2 draft and rejected candidate records below. Those records
-remain design history only. This cut is a `design_reframe` after the already-
-selected goal re-entry. It changes no Intent, Product meaning, or requirement.
+The `specification/GOVERNANCE.md` exact-tree record admits the predecessor
+design at status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`.
+End-to-end construction against its exact ABI substrate falsified two proof
+assumptions: the first eight steel-thread stages cannot be invoked as lawful
+DefinitionCalls, and the published 18/56 family is not whole-family callable
+from its installed export locators. This direct-child proposal is a
+`design_reframe`. It changes no Intent, Product meaning, requirement, frozen
+identity, five-member Product, owner relation, or Hello outcome.
+
+This proposal is not self-accepted. It becomes implementation authority only
+after independent review of its exact tree and explicit Executive/F_H
+acceptance. Diagnostic Hello execution may continue against the narrowed
+steel thread, but no implementation candidate may freeze or claim acceptance
+until those gates admit this reframe. The pre-pin Wave 2 draft and rejected
+candidate records below remain design history only.
 
 The selected subject is a governed, separately versioned and installable
 data-only GTL Product. It is not an application, runtime, controller, semantic
@@ -151,7 +163,7 @@ The minimum realization/proof path set is:
 | `build_tenants/odd_glc/typescript/product/contracts/public-contract-catalog.schema.json` | add canonical empty Catalog schema |
 | `build_tenants/odd_glc/typescript/product/product-toolchain-manifest.json` | add digest-bound Product/dependency/contribution manifest |
 | `build_tenants/odd_glc/typescript/test/abi5-product-inventory.test.mjs` | add real-pack census, digest, manifest, schema, and prohibited-code proof |
-| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | add public-only two-Product verify/resolve/install/bind/Catalog/start/ABG proof and seam negatives |
+| `build_tenants/odd_glc/typescript/test/abi5-installed-cross-owner-hello.test.mjs` | add installed-public owner-stage two-Product setup, four-call Public transport, cross-owner Hello/ABG proof, and seam negatives |
 | `build_tenants/odd_glc/typescript/test/abi5-fresh-process-read-worker.mjs` | add source-blind installed status/result/replay reader used only by proof |
 | `build_tenants/odd_glc/typescript/test/abi5-installed-differential.test.mjs` | add immutable 0.1 versus real-packed 0.2 semantic reduction |
 
@@ -315,28 +327,53 @@ The implementation DAG is linear until proof branches:
 | 9 | read and replay | durable terminal prefix | ABG-owned status/result/replay projections equal in a fresh process with zero read-time appended bytes | process-local truth or replay divergence |
 | 10 | project and compare | immutable 0.1 and 0.2 raw receipts | odd_glc test-only interpretation and bounded differential | rewriting version-local evidence |
 
-The admitted definition trace is exactly:
+The steel thread has eight installed-public owner stages followed by four
+installed Public DefinitionCall traversals. The owner-stage relation is:
+
+| Stage label | Exact installed public owner relation | Native observation |
+|---|---|---|
+| `workspace.create#clean` | `./product::WorkspaceOperationPort.create` | created workspace and authority identities plus creation manifest |
+| `workspace.open#open` | `./product::WorkspaceOperationPort.open` | opened workspace/authority identity, binding state, and residuals |
+| `product.verify#verify` | `./product::verifyProduct` | two exact verified Product artifacts and definition-contract coordinates |
+| `product.resolve#resolve` | `./product::constructResolvedProductLock` | one two-row lock and exact dependency edge |
+| `product.install#install` | `./product::installProduct` plus `./abg::admitProductInstall` | two distinct materialized and admitted installs |
+| `workspace.bind#bind` | `./product::constructWorkspaceBinding` plus `./abg::admitWorkspaceBinding` | one admitted workspace binding over the exact ProductSet and lock |
+| `catalog.admit#admit` | `./product::admitGraphFunctionCatalog` | one ready owner-separated Catalog containing the odd GraphFunction |
+| `catalog.view#allowlist` | `./product::narrowGraphFunctionCatalog` | one exact allowlisted Catalog view |
+
+These labels preserve the ordered consumer-stage map. They are not
+DefinitionCall receipt identities. Proof for each stage derives from the
+native result and its exact identity, dependency, resource, owner, and effect
+observations. A selected-stage locator probe may prove that each corresponding
+published definition has one installed callable locator; it does not prove
+that the owner-stage call traversed that DefinitionCall.
+
+The actual installed Public DefinitionCall trace is exactly:
 
 ```text
-workspace.create#clean
-workspace.open#open
-product.verify#verify
-product.resolve#resolve
-product.install#install
-workspace.bind#bind
-catalog.admit#admit
-catalog.view#allowlist
 run.invoke#start
 project.read#run_status
 project.read#run_result
 project.read#run_replay
 ```
 
-This twelve-key sentinel is the odd_glc consumption projection of ABI's one
-18-operation/56-key family. It is not a second roster and does not qualify the
-44 unconsumed keys. Exactly one semantic start occurs; SDK, Catalog, schema,
-CLI, result, and replay observations are projections or equality checks over
-that same execution.
+Each trace key derives from the returned
+`DefinitionHostReceipt.definitionKey`. Literal `trace.push` labels, an expected
+array, or direct owner results cannot establish this trace. Exactly one
+semantic start occurs; SDK, Catalog, schema, result, and replay observations
+are projections or equality checks over that same execution.
+
+Exact DefinitionCall traversal of all twelve stages requires capability-grant
+bootstrap authority that `v5.0.0-dev.286` does not provide. Its grant
+constructor requires an existing workspace binding and admits only
+`interaction.respond`, `run.continue`, `run.invoke`, and `project.read`
+operation families. The pre-binding create/open/verify/resolve/install/bind
+stages and Catalog admit/view stages therefore cannot acquire lawful grants.
+No test may forge a structurally plausible grant or relabel direct owner
+results as DefinitionCall receipts. A future ABI T-287 S2 bootstrap successor
+must be admitted by exact tag, commit, tree, package, and tarball identity
+before a twelve-DefinitionCall claim can re-enter design. That successor is
+not selected by T-041.
 
 The differential is semantic steel-thread equality, not carrier, event, or
 Product parity. It retains both raw observations and derives only this exact
@@ -372,28 +409,59 @@ Implementation owners are ABI, executes the ABI F_D Hello leaf, closes through
 ABG, and proves terminal status/result/replay in a fresh process. It also
 asserts the five-member zero-code tar census.
 
-That evidence establishes substrate sufficiency for this exact design. It is
-not odd_glc closure evidence: its package name, version, Product id, and GTL ids
-are synthetic; its builder and installed-publication loader are
+That evidence establishes the cross-owner Hello relation, eight direct owner
+setup stages, and transported start/read substrate used by this reframe. It
+does not establish twelve DefinitionCall traversals or whole-family installed
+callable closure. It is not odd_glc closure evidence: its package name,
+version, Product id, and GTL ids are synthetic; its builder and
+installed-publication loader are
 `test_env/support/developer-mini-product.mjs::prepareOddGlcDataProduct`; and it
 does not pack this source project, conserve the released
 odd_glc predecessor, or produce the T-041 differential. No source, fixture, or
 test is copied from it. The implementation must reconstruct the relation from
 the public contracts above and prove it with real odd_glc packed bytes.
 
-Substrate ruling: `v5.0.0-dev.286` exposes every ABI relation required by this
-development sentinel; no ABI source change or missing public surface blocks
-T-041. The first material gap is downstream: the clean odd_glc subject has no
-real five-member `0.2.0-dev.1` Product, derived manifest/digests, or
-source-blind installed proof. ABI release qualification is a later delivery
-dependency, not a missing sentinel API.
+The activated substrate record is
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-substrate`. It has two exact
+findings and inherits only the tag, commit, tree, package, and tarball
+coordinates in the immutable-bases table above:
+
+1. `S2_BOOTSTRAP_AUTHORITY_ABSENT`: the first eight stages have installed
+   public owner relations but cannot lawfully traverse DefinitionCalls because
+   the only grant constructor requires an existing workspace binding and does
+   not admit their operation families.
+2. `INSTALLED_CALLABLE_LOCATOR_17`: the package publishes the structural
+   18-operation/56-definition family, but 17 unselected definitions have no
+   resolvable installed callable locator:
+   `interaction.respond#select`, `interaction.respond#approve`,
+   `interaction.respond#reject`, `interaction.respond#assess`,
+   `interaction.respond#answer_escalation`,
+   `product.materialize#context_bootstrap`,
+   `product.materialize#configuration`, `project.read#release_evidence`,
+   `result.assess#assess`, `run.continue#current_intent`,
+   `run.continue#selected_action`, `witness.admit#reprice`,
+   `witness.admit#attest`, `witness.admit#hygiene-stamp`,
+   `witness.admit#intake`, `witness.admit#run-resumed`, and
+   `witness.admit#run-stopped`.
+
+None of the 17 missing locators belongs to the twelve-stage sentinel. The exact
+selected twelve definition locators remain a bounded mechanical existence
+probe. The 17 definition rows remain members of the structural family; their
+installed export/member locators do not resolve. The other 44 definitions
+remain outside T-041 behavior qualification, and this design makes no whole-56
+callable-closure or behavioral claim.
+Repair of either capsule finding belongs to an exact future ABI successor;
+odd_glc may not supply the missing bindings, grant authority, or substitute
+transport.
 
 Minimum assurance is:
 
 1. an exact archive/member/digest/manifest and prohibited-code census;
-2. public validation plus verify/resolve/install/bind/Catalog admission of both
-   real tarballs, with dependency and owner separation asserted;
-3. the exact twelve-key single-start sunny path;
+2. public validation plus the eight installed-public owner stages over both
+   real tarballs, with native result identities, dependency, resources,
+   effects, admission, and owner separation asserted;
+3. the exact four-receipt installed Public DefinitionCall trace with one start,
+   plus mechanical callable-locator existence for the twelve selected keys;
 4. absent, ambiguous, missing-dependency, incompatible/provenance,
    wrong-owner semantics, wrong-owner binding, and replay-divergence refusals;
 5. fresh-process status/result/replay equality and zero appended read bytes;
@@ -429,42 +497,39 @@ or remote movement is part of T-041 design completion.
 This design does not claim the odd_glc MVP, a complete lifecycle Program,
 read/query/proof interpretation delivery, instruction assembly, F_P/F_H,
 assurance fold, residuals, continuation, re-entry, Consensus, data-mapper
-parity, the full 18/56 ABI family, ABI release qualification, odd_glc RC/final
-publication, or compatibility across 4.6 and 5.0 carriers. Permanently removing
-future read-only lifecycle interpretation would require a separate Product
-reprice; the zero-code sentinel does not make that decision.
+parity, whole-family callable closure or behavior for the structural 18/56 ABI
+family, twelve DefinitionCall traversals, ABI release qualification, odd_glc
+RC/final publication, or compatibility across 4.6 and 5.0 carriers.
+Permanently removing future read-only lifecycle interpretation would require a
+separate Product reprice; the zero-code sentinel does not make that decision.
 
-The design admission subject is one identical Git tree containing only the
-bounded governance/design completion and ticket routing: Governance, Goals,
-T-041, this design and its index, the T-025/T-026/T-027 deferred queue, and the
-completed supersession disposition of T-033/T-038. It changes no Product
-semantics, requirement, source, package data, proof code, test, or ABI bytes.
+The reframe proposal subject is one direct-child Git commit over accepted
+status commit `7a8f0898538b87b0a2975015d05a2fdcd0c9b805`. It changes only
+`specification/GOALS.md`, this design, and T-041 routing. It changes no Product
+semantics, requirement, identity, source, package data, proof code, test, or
+ABI bytes.
 
-The target admission topology is atomic: freeze one exact tree; review that
-same tree independently; obtain explicit Executive/F_H acceptance of that
-tree; commit the identical tree unchanged on the named predecessor; then
-record commit/tree disposition outside that tree and not as a self-acceptance
-claim in its commit message. The accepted proposal was frozen as a proposed
-commit before external acceptance and remained non-operative at that point.
-The Governance admission record binds the later independent review and
-Executive/F_H acceptance to those exact bytes; this status-only child records
-the transition without changing design mechanics or self-accepting its own
-tree.
+The reframe admission topology is atomic: freeze one exact proposal commit and
+tree; review that tree independently; obtain explicit Executive/F_H acceptance
+of those bytes; then record the acceptance without treating the proposal's own
+commit message or diagnostic execution as self-acceptance. Until that occurs,
+the implementation candidate cannot freeze, close, publish, or move a ref.
 
-With design admission recorded, the first realization gate is availability of
-exact ABI tarball bytes at the frozen digest. No executable test is a prerequisite
-to authoring the first Product-data cut; the four named future proof paths
-above must exist before that cut can be accepted. No code, package, build,
-test, migration closure, RC, final release, or tag movement is credited by
-this document alone.
+After this reframe is admitted, the first realization gate remains availability
+of exact ABI tarball bytes at the frozen digest. No executable test is a
+prerequisite to authoring the first Product-data cut; the four named future
+proof paths above must exist before that cut can be accepted. No code, package,
+build, test, migration closure, RC, final release, or tag movement is credited
+by this document alone.
 
 ## Superseded Pre-Pin Wave 2 Draft
 
 The following section predates the exact immutable substrate and odd_glc
 identity freeze. It is retained as non-authoritative design history. The
-ratified completion above governs every difference. Words such as “accepted”
-inside this preserved history report former assumptions; they do not override
-the current design.
+accepted predecessor design governs until this proposal is admitted; after
+admission, the proposed evidence reframe above governs every difference. Words
+such as “accepted” inside this preserved history report former assumptions;
+they do not override the current design.
 
 The current design subject is `W2-ODD-GLC-PROGRAM-ONLY-HELLO`. "Hello World"
 is the minimal end-to-end scenario shorthand. A Hello World `GraphFunction`

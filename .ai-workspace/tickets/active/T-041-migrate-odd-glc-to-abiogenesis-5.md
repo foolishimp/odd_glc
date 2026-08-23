@@ -5,7 +5,7 @@
 - type: feature
 - ticket_category: implementation_migration
 - status: active
-- execution_state: ratified_design_awaiting_clean_realization
+- execution_state: evidence_driven_design_reframe_awaiting_exact_tree_review
 - goal: W2-ODD-GLC-PROGRAM-ONLY-HELLO
 - priority: critical
 - owner: odd_glc
@@ -18,7 +18,7 @@
 - change_class: goal_reprice
 - re_entry_point: specification/GOALS.md#current-goal
 - current_change_class: design_reframe
-- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-design-completion
+- current_re_entry_point: build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-evidence-reframe
 - migration_strategy: inside_out_hard_break
 - library_usage: consume
 - governing_library: >-
@@ -57,11 +57,12 @@
     dff495762dfacaaa20b095d146d6afa4a969e29d4f385b5884272d50ad17e153)
   - specification/PRODUCT.md
   - >-
-    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (active ratified
+    build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md (accepted predecessor
     design admitted from exact proposal commit
     22824d04c0ff8fce42425fa9649686cf616e635a, tree
     b4e7cce91862dd2054fbb5bcd8fc80d1e10c3335, full-index binary patch SHA-256
-    86e8bf2b02e23e1752ed54c821db6c1e39643228fe4eeb5240d0494f32324751)
+    86e8bf2b02e23e1752ed54c821db6c1e39643228fe4eeb5240d0494f32324751;
+    two proof assumptions now re-entered by evidence and pending replacement)
   - exact ABIogenesis v5.0.0-dev.286 public Product boundary
 - delegated_authority: >-
     Realize and prove the bounded Program-only sentinel from the named clean
@@ -75,37 +76,44 @@
 - acceptance_roles:
     product_authority: direct_F_H
     adjudicator: Executive_F_H
-    independent_review: satisfied_on_accepted_proposal_tree
-    checkpoint_administration: after_acceptance_only
+    independent_review: pending_on_design_reframe_proposal_tree
+    checkpoint_administration: after_design_reframe_acceptance_only
 - predecessor_tickets:
   - T-033
   - T-038
 - non_authorized_release_routes:
   - T-039
   - T-037
-- satisfied_admission_gates:
+- predecessor_design_admission_gates:
   - independent exact-tree review disposition ACCEPT
   - Executive/F_H accepted the exact proposal tree on 2026-08-24
+- design_reframe_admission_gates:
+  - independent exact-tree review of the frozen direct-child proposal commit
+  - explicit Executive/F_H acceptance of that exact proposal tree
 - realization_dependencies:
+  - accepted exact-tree admission of the evidence-driven design reframe before candidate freeze
   - exact ABI tarball bytes matching the pinned v5.0.0-dev.286 digest
   - clean realization from commit 96b5a9c2e109cb584f943f79997ac213d069f411
   - immutable v0.1.0 predecessor receipt for the bounded differential
 
-## Ratified Design-Completion Routing
+## Proposed Evidence-Reframe Routing
 
-The active implementation authority is
-`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#ratified-t-041-design-completion`.
-It freezes the ABI tag/commit/tree/tarball and public exports; odd_glc package,
-Product, module, Program, start, GraphFunction, graph, node, manifest, Catalog,
-and provenance identities; the exact five-member zero-code archive; the
-cross-owner declaration and implementation relation; the installed execution
-DAG; the twelve-key sentinel; proof/nonclaims; and predecessor conservation.
+The accepted implementation authority is the design admitted at status commit
+`7a8f0898538b87b0a2975015d05a2fdcd0c9b805`. End-to-end construction
+falsified its twelve-DefinitionCall and whole-56 callable-closure assumptions.
+This ticket therefore routes a direct-child `design_reframe` proposal at
+`build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md#proposed-t-041-evidence-reframe`.
+The proposal keeps the ABI and odd_glc identities, exact five-member zero-code
+archive, cross-owner declaration/Implementation relation, Hello semantics,
+installed execution DAG, and predecessor conservation unchanged.
 
-This ticket routes that accepted design through the exact-tree admission
-record in `specification/GOVERNANCE.md`. It does not authorize the ticket,
-synthetic ABI fixture, dirty checkout, rejected `abi5_program` source, or prior
-candidate tests to fill or revise any frozen field. The present cut is a
-`design_reframe`, not a Product or requirements reprice.
+The proposed reframe is not self-accepted. Diagnostic Hello execution may
+continue because it tests the selected end-to-end outcome, but its result does
+not admit this design. The implementation candidate cannot freeze until an
+independent reviewer evaluates the exact proposal tree and Executive/F_H
+accepts those same bytes. The ticket, synthetic ABI fixture, dirty checkout,
+rejected `abi5_program` source, diagnostic result, and prior candidate tests
+cannot fill or revise any frozen field or waive those gates.
 
 ## Operative Wave 2 Target
 
@@ -204,6 +212,8 @@ ABG, HoG, or Public production branch is lawful.
 
 ### Exact consumer map
 
+The first eight labels name installed-public owner stages:
+
 ```text
 workspace.create#clean
 workspace.open#open
@@ -213,25 +223,41 @@ product.install#install
 workspace.bind#bind
 catalog.admit#admit
 catalog.view#allowlist
+```
+
+Their proof comes from the native results of exact installed `./product` and
+`./abg` owner relations, including identities, dependencies, resources,
+effects, admissions, and owner separation. The labels preserve stage order;
+they are not DefinitionCall receipt identities.
+
+The actual installed Public DefinitionCall trace is:
+
+```text
 run.invoke#start
 project.read#run_status
 project.read#run_result
 project.read#run_replay
 ```
 
-The trace, not its twelve-key count, governs. Exact ABIogenesis
-`v5.0.0-dev.286` packages its one 18-operation/56-key Public family. Wave 2
-qualifies only these consumed definitions. Unused rows are outside this
-evidence claim, not absent, stubbed, replaced, or placed in a second partial
-roster/catalog/API.
+Each key derives from `DefinitionHostReceipt.definitionKey`. A literal label or
+expected array is not trace evidence. The four calls form one episode chain
+with exactly one semantic start. SDK, schema, Catalog, and CLI/transport
+projections may prove equality without executing a second semantic path.
 
-Package constructability is whole-family before behavioral qualification:
-all 56 definitions have concrete runtime-callable owner closures; the installed
-tarball contains every required owner module, runtime dependency, schema, and
-static catalog row; and one installed exact-set probe loads/resolves all 56
-closures from packed bytes. The probe is mechanical and does not execute all
-56 semantics. Behavioral qualification remains limited to the twelve-key
-sentinel path.
+Exact ABIogenesis `v5.0.0-dev.286` publishes one structural
+18-operation/56-definition Public family. T-041 proves that family identity
+and mechanically resolves the twelve selected callable locators. It makes no
+whole-family callable-closure or behavioral claim. The activated
+`capsule://odd_glc/t041/abiogenesis-5.0.0-dev.286-substrate` records 17
+unselected missing installed callable locators: five `interaction.respond`,
+two `product.materialize`, `project.read#release_evidence`, one
+`result.assess`, two `run.continue`, and six `witness.admit`. None is selected
+by this sentinel.
+
+Full twelve-stage DefinitionCall traversal depends on a future ABI T-287 S2
+bootstrap successor. That successor must be re-admitted by exact tag, commit,
+tree, package, and tarball identity before the stronger claim can re-enter
+design. It is not selected by or required to close this T-041 candidate.
 
 Transport is one installed CLI episode chain with exactly one
 `run.invoke#start`. SDK, schema, catalog, and CLI projections are mechanically
@@ -264,17 +290,18 @@ mode is introduced.
 
 ### Exact ABI substrate boundary consumed by this ticket
 
-ABIogenesis tag `v5.0.0-dev.286` already contains the public cross-publication
-chain: Catalog admission, transitive declaration validation, implementation
-resolution, `ProductExecutionResolutionPort.resolve`, installed owner loading,
-Public `run.invoke#start`, HoG traversal, ABG/Event Calculus, and project-read
-replay. T-041 changes no ABI source and imports no private ABI module.
+ABIogenesis tag `v5.0.0-dev.286` contains the installed-public owner-stage
+cross-publication setup plus Public `run.invoke#start`, HoG traversal,
+ABG/Event Calculus, and project-read replay needed by the narrowed sentinel.
+T-041 changes no ABI source and imports no private ABI module.
 
 The tag's synthetic ST-1 test proves that the Program/GraphFunction owner can be
 an additional installed Product while semantics and Hello Implementation owner
-remain the ABI Product. That is substrate evidence only. T-041 still must pack
-the frozen real odd_glc identity and reproduce the public install/catalog/run/
-replay relation from source-blind installed bytes.
+remain the ABI Product. Its setup uses direct owner relations for the first
+eight stages; it does not prove their DefinitionCall traversal. That is
+substrate evidence only. T-041 still must pack the frozen real odd_glc identity
+and reproduce the installed owner-stage plus Public start/read relation from
+source-blind installed bytes.
 
 ### Closure and exclusions
 
@@ -287,9 +314,10 @@ residualizer, controller, or ABI private/source import.
 This sentinel does not close `SCN-GLC-HELLO-WORLD-MINIMAL`. Requirements,
 instruction assembly, F_P, evidence binding, assurance fold, residuals,
 lifecycle disposition, retry, continuation, fan-out, service, data mapper, One
-Surface, Consensus, and all Public definitions outside the consumer map are
-excluded. Broader tests become later-wave gap discovery and cannot expand this
-ticket retroactively.
+Surface, Consensus, and all Public behavior outside the four-call receipt trace
+are excluded. The other selected definition locators receive mechanical
+existence proof only. Broader tests become later-wave gap discovery and cannot
+expand this ticket retroactively.
 
 Closure proof is one installed sunny path, one fresh-process replay, the
 package/source/private negative census, and seam negatives only for
@@ -301,23 +329,32 @@ is a Wave 2 gate.
 
 ### Execution order
 
-1. Hold implementation until this exact design candidate is accepted and the
-   ABI tarball matches the pinned `v5.0.0-dev.286` SHA-256.
+1. Diagnostic Hello execution may continue, but hold candidate freeze until
+   this exact design-reframe proposal is independently reviewed and
+   Executive/F_H accepted; reject construction unless the ABI tarball matches
+   the pinned `v5.0.0-dev.286` SHA-256.
 2. Freeze one clean installed 0.1/4.6.0-rc.3 baseline receipt.
-3. Prove the exact ABIogenesis tarball contains every owner closure, dependency,
-   schema, and static row and mechanically load/resolve the exact 56.
+3. Prove structural equality to the exact 18/56 family, mechanically
+   load/resolve the twelve selected callable locators, and retain the activated
+   substrate capsule as the bounded nonclaim for the 17 unselected missing
+   locators.
 4. Pack the exact five-member data-only odd_glc `0.2.0-dev.1` Program candidate.
-5. Execute one installed CLI episode chain with exactly one start and replay it
-   from another process; prove SDK/schema/catalog equality mechanically.
+5. Execute the eight installed-public owner stages, then one installed Public
+   episode chain with exactly one start and receipt-derived status/result/replay
+   keys; replay it from another process and prove SDK/schema/catalog equality
+   mechanically.
 6. Freeze both receipts, package censuses, and the normalized differential for
    cold review and Executive disposition.
 
 Stop if implementation requires an odd_glc executable, a second Catalog or
 roster, a Public semantic switch, a compatibility adapter, source/private
-imports, process-local truth, stubbed 18/56 bindings, an unresolved or
-wrong-owner semantic callable, or test-side rewriting of either raw
-observation. Missing exact owner meaning stops T-041 and requires upstream
-re-entry; it does not authorize odd_glc to fill the gap.
+imports, process-local truth, a missing selected-stage callable locator, a
+forged grant or DefinitionCall receipt, an unresolved or wrong-owner semantic
+callable, or test-side rewriting of either raw observation. A missing
+unselected locator stays in the activated ABI substrate capsule and does not
+block this bounded Hello outcome. Missing exact selected owner meaning stops
+T-041 and requires upstream re-entry; it does not authorize odd_glc to fill the
+gap.
 
 ## Deferred Full-Migration Record
 
