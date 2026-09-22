@@ -1,0 +1,16 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/activation.md
+/current-resource.json
+/diagnostic-process-dispositions.json
+/freeze.json
+/next-boundary-01-inputs.json
+/next-boundary-01-sources.json
+/next-boundary-01.md
+/return.md
+/self-check.json
+/source-routes.json
+/tracking-preimages/GOALS.md
+/tracking-preimages/T-287-deliver-abiogenesis-5-feature-waves.md
+/tracking-receipt.json

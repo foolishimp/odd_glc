@@ -16,19 +16,20 @@ The scenario exercises service start, environment-bound port selection, local
 HTTP client proof, response evidence, and residual/block interpretation for
 service startup or probe failure.
 
-## odd_sdlc Witness
+## Exact Acceptance Behavior
 
-The source witness is the Rust service/client Hello World behavior from
-`odd_sdlc`.
+The active acceptance predicate is the historical odd_glc live fixture already
+used by T-025. Earlier odd_sdlc witness prose used a different route and body;
+that witness does not override the retained odd_glc case.
 
-Witness behavior:
+Acceptance behavior:
 
 - generate a Rust binary crate under
   `build_tenants/hello_world_rust_service`;
 - read `HELLO_SERVICE_PORT`;
 - bind to `127.0.0.1`;
-- serve `GET /`;
-- return exactly `helloworld`;
+- serve `GET /hello`;
+- return exactly `Hello, world!\n`;
 - prove the service by starting it and making a local HTTP request.
 
 ## Generic Lifecycle Capability

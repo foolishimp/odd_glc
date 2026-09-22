@@ -1,3 +1,15 @@
+## Current ABI dependency
+
+The source-workspace default uses the [exact ABI5 development pin](build_tenants/odd_glc/typescript/abi5.development-pin.json),
+not a release. Use the installed `@abiogenesis/typescript-tenant` public exports
+(`./public`, `./product`, `./gtl`, `./abg`) and native
+`node_modules/.bin/abg.cli --jsonl <request-file>`; `bootstrap/index.mjs` is a thin
+public re-export. See the [migration receipt](.ai-workspace/comments/codex/20260918_ABI5_BASIC_CLI_SINGLE_START/migration-return.md).
+
+The generated 4.6 block below is retained historical predecessor context, not
+the active ABI/API basis. Its bytes are preserved; no generated ABI5 context
+is claimed.
+
 <!-- ABG_GTL_CONTEXT_START -->
 # Installed ABG/GTL Context Compression
 
@@ -67,3 +79,24 @@ Installed axioms:
   or script calls are not traversal parity.
 
 <!-- ABG_GTL_CONTEXT_END -->
+
+<!-- STDO_BOOTSTRAP_START -->
+## STDO Bootstrap
+
+This scope is routed by an STDO Product Definition Overlay.
+
+Before constitutional work:
+
+1. Resolve the applicable `stdo_<label>.json` for the requested Product scope.
+2. Use `constitution.stdo.basis`, not its mutable selector, as the operative basis.
+3. Resolve and verify that exact installed release through the STDO toolchain manager.
+4. Load the Product Definition's declared bootstrap entrypoint, then exact owning standards as needed.
+5. Resolve the applicable accepted Project Reference-Frame Basis or its declared composition.
+6. Enter governed work through its Executive frame or declared project equivalent: bind the exact outcome and basis, inspect the unresolved evaluation frontier, and activate only the smallest dependency-ready context needed for the next decision.
+7. Fail closed when the Product Definition, frame basis, subject, authority, or activation is missing, ambiguous, stale, or outside the governed scope.
+
+Mutable methodology source, another installed version, a cache entry, and this
+bootstrap cannot replace the exact basis selected by the Product Definition.
+A prompt, summary, symbolic map, or prior result may route attention but cannot
+replace current source authority or a closed frame result.
+<!-- STDO_BOOTSTRAP_END -->

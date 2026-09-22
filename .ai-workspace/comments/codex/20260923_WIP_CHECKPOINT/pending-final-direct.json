@@ -1,0 +1,278 @@
+{
+  "status": "pending Root source acceptance and final reconciliation",
+  "canonicalChangedDirectPaths": [
+    {
+      "path": ".ai-workspace/tickets/active/README.md",
+      "status": "modified_or_new",
+      "byteLength": 539
+    },
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "status": "modified_or_new",
+      "byteLength": 45947
+    },
+    {
+      "path": ".ai-workspace/tickets/completed/T-042-rebuild-odd-glc-over-mutable-worksite-abi.md",
+      "status": "modified_or_new",
+      "byteLength": 3648
+    },
+    {
+      "path": "AGENTS.md",
+      "status": "modified_or_new",
+      "byteLength": 11312
+    },
+    {
+      "path": "CLAUDE.md",
+      "status": "modified_or_new",
+      "byteLength": 5693
+    },
+    {
+      "path": "build_tenants/TENANT_REGISTRY.md",
+      "status": "modified_or_new",
+      "byteLength": 2229
+    },
+    {
+      "path": "build_tenants/common/design/ODD_GLC_ABI5_FULL_SANDBOX.md",
+      "status": "modified_or_new",
+      "byteLength": 11815
+    },
+    {
+      "path": "build_tenants/common/design/ODD_GLC_ABI5_LIVE_LLM_MVP.md",
+      "status": "modified_or_new",
+      "byteLength": 29969
+    },
+    {
+      "path": "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+      "status": "modified_or_new",
+      "byteLength": 10859
+    },
+    {
+      "path": "build_tenants/common/design/README.md",
+      "status": "modified_or_new",
+      "byteLength": 1057
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/abi5.development-pin.json",
+      "status": "modified_or_new",
+      "byteLength": 1330
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "status": "modified_or_new",
+      "byteLength": 3582
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/full-sandbox.mjs",
+      "status": "modified_or_new",
+      "byteLength": 1191
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/materialize-abi5-development-dependency.mjs",
+      "status": "modified_or_new",
+      "byteLength": 5524
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs",
+      "status": "modified_or_new",
+      "byteLength": 6166
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs",
+      "status": "modified_or_new",
+      "byteLength": 9496
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs",
+      "status": "modified_or_new",
+      "byteLength": 17136
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-intent-declarations.mjs",
+      "status": "modified_or_new",
+      "byteLength": 6877
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs",
+      "status": "modified_or_new",
+      "byteLength": 18311
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/product-package.mjs",
+      "status": "modified_or_new",
+      "byteLength": 4549
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-development-install.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 6287
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs",
+      "status": "modified_or_new",
+      "byteLength": 30749
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/d1-lifecycle-tail-declarations.mjs",
+      "status": "modified_or_new",
+      "byteLength": 11120
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/execution-authority-conformance.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 11588
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/d1-lifecycle-scenario.json",
+      "status": "modified_or_new",
+      "byteLength": 5040
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/generic-job/basic-cli.oracle.json",
+      "status": "modified_or_new",
+      "byteLength": 1112
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/generic-job/integer-addition.md",
+      "status": "modified_or_new",
+      "byteLength": 492
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/generic-job/integer-addition.oracle.json",
+      "status": "modified_or_new",
+      "byteLength": 656
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/generic-workflow-scenarios.json",
+      "status": "modified_or_new",
+      "byteLength": 43343
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs",
+      "status": "modified_or_new",
+      "byteLength": 13317
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+      "status": "modified_or_new",
+      "byteLength": 63598
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 18997
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "status": "modified_or_new",
+      "byteLength": 85483
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 22214
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-retained-branch-support.mjs",
+      "status": "modified_or_new",
+      "byteLength": 13644
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-retained-branch.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 3275
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-retained-workflow-support.mjs",
+      "status": "modified_or_new",
+      "byteLength": 29036
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-retained-workflow.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 6239
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-successor-epoch-support.mjs",
+      "status": "modified_or_new",
+      "byteLength": 8275
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-successor-epoch.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 2981
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-workflow-scenario-fixture.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 18657
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/management-environment.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 13420
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/native-continuation.test.mjs",
+      "status": "modified_or_new",
+      "byteLength": 21506
+    },
+    {
+      "path": "specification/GOALS.md",
+      "status": "modified_or_new",
+      "byteLength": 14651
+    },
+    {
+      "path": "specification/GOVERNANCE.md",
+      "status": "modified_or_new",
+      "byteLength": 11034
+    },
+    {
+      "path": "specification/PRODUCT.md",
+      "status": "modified_or_new",
+      "byteLength": 5710
+    },
+    {
+      "path": "specification/REFERENCE_FRAME_BASIS.md",
+      "status": "modified_or_new",
+      "byteLength": 9591
+    },
+    {
+      "path": "specification/requirements/README.md",
+      "status": "modified_or_new",
+      "byteLength": 1772
+    },
+    {
+      "path": "specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md",
+      "status": "modified_or_new",
+      "byteLength": 14008
+    },
+    {
+      "path": "specification/requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md",
+      "status": "modified_or_new",
+      "byteLength": 13840
+    },
+    {
+      "path": "specification/requirements/REQ-GLC-WORKSITE-LIFECYCLE.md",
+      "status": "modified_or_new",
+      "byteLength": 4341
+    },
+    {
+      "path": "specification/scenarios/README.md",
+      "status": "modified_or_new",
+      "byteLength": 624
+    },
+    {
+      "path": "specification/scenarios/SCN-GLC-HELLO-WORLD-RUST-SERVICE.md",
+      "status": "modified_or_new",
+      "byteLength": 2158
+    },
+    {
+      "path": "stdo_odd_glc.json",
+      "status": "modified_or_new",
+      "byteLength": 3778
+    }
+  ],
+  "count": 54,
+  "nonDeletedBytes": 709766,
+  "readiness": "All source workers CLOSED; no source bytes or generated metadata changed by checkpoint Writer."
+}

@@ -1,40 +1,54 @@
 # odd_glc Governance
 
-**Status**: Ratified method selection
+**Status**: Ratified current method selection
 **Effective scope**: current `odd_glc` source-project work
-**Selected method Product**: STDO `2.3.0`
+**Selected method Product**: STDO `v2.5.0-rc.4`
 
-## Immutable Method Basis
+**Adoption authority**: direct Product-owner instruction, 2026-09-02
+
+**Accepted adoption plan**:
+`4ec92449d5dfeea46cb9133db19633fa1d2790d90502f5ffb813fe925bb117e0`
+
+## Current Immutable Method Basis
 
 `odd_glc` selects the released STDO Product identified by all of the following:
 
 | Coordinate | Exact value |
 |---|---|
-| annotated tag | `v2.3.0` |
-| tag object | `a0a9a177bb1e835597517a55e25d231617d8eaef` |
-| commit | `b2c64047e01d9d582243a25af587ac772233a4ea` |
-| tree | `7734ac10ae4fe924e6d406297a7f1984ab7451e7` |
-| Product members | exact 41-member `specification/standards/` distribution |
-| standards aggregate SHA-256 | `014ead42a96412f51a172a8158e42fdfe1447a0af5e4f70a79cf8a020129630c` |
-| release note | `releases/v2.3.0.md`, SHA-256 `a1025340fee98a93fc9a08c969fcaf4f161628d433647c6b9c8b4c9598f4241e` |
+| public URI | `stdo://releases/v2.5.0-rc.4/` |
+| qualified annotated tag | `refs/tags/specification_methodology/v2.5.0-rc.4` |
+| tag object | `032dac0c833111547f7dd4b290c5316ed9b70f97` |
+| commit | `7a25668a8fecfd26f895759af3bec4708727964a` |
+| repository tree | `737af9a7a2779dbf59e7c81232e7efd4dd98692a` |
+| project subtree tree | `a9565f923213759984f936d087cd7cebd0f44a74` |
+| standards tree | `d6642edac9fb509a68b2ffc81d3404f2360b34e4` |
+| installed manifest SHA-256 | `4fa2556d0127bebce8f7184cc4a3cb708a175b2e40552c55cb211f2426d5049e` |
+| Product members | exact 52-member standards distribution |
+| standards member-set SHA-256 | `504db879867f60e46ed4dea60509d12056d10cdd8c3460dc94abf7bc56542656` |
 
-The selected normative members are read from that immutable tag, not from the
-mutable `specification_methodology` checkout. For current odd_glc work, the
-primary routed members are `SPEC_METHOD.md`, `DESIGN_MODULE_METHOD.md`,
-`ODD_METHOD.md`, `RELEASE_METHOD.md`, `TICKET_METHOD.md`, and
-`WRITING_GUIDE.md`; the rest of the selected 41-member distribution applies
-when its subject is in scope. Local summaries, compressed views, installed
-context blocks, comments, tickets, and sibling-repository precedent do not
-replace those selected bytes.
+The selected normative members are resolved through the digest-verified
+installed cut, not through mutable sibling source. For current odd_glc work,
+the primary routed members are `SPEC_METHOD.md`, `REFERENCE_FRAME_METHOD.md`,
+`STDO_REFERENCE_FRAME_BASELINE.md`, `DESIGN_MODULE_METHOD.md`, `ODD_METHOD.md`,
+`RELEASE_METHOD.md`, `TICKET_METHOD.md`, and `WRITING_GUIDE.md`; the remaining
+members apply when their subject is in scope. Local summaries, maps, prompts,
+comments, tickets, tests, and sibling precedent do not replace those bytes.
 
-| Primary selected member | SHA-256 at `v2.3.0` |
+| Primary selected member | SHA-256 at `v2.5.0-rc.4` |
 |---|---|
-| `specification/standards/SPEC_METHOD.md` | `25e673f16a1d28fc43c95848a486625b34da8ea703ad36febb653456e86f1b37` |
-| `specification/standards/DESIGN_MODULE_METHOD.md` | `82e40cf5074b1af0ba05c459c664c29a625cba8fa07c9b791b31973cf0c725da` |
-| `specification/standards/ODD_METHOD.md` | `42be18b4d16e7d1bd8ca764d951fd533a19fa0ce4c67d17462c3a0f6879d46bb` |
-| `specification/standards/RELEASE_METHOD.md` | `f66805ccaab8bbb51a2dcd8309dc121780a994230194067f42eaa0a280cc184e` |
-| `specification/standards/TICKET_METHOD.md` | `2a23614cdd344179cf43263dd6074b1c2f7d4747c33083fdcebff3992df41675` |
-| `specification/standards/WRITING_GUIDE.md` | `8af7a15e1a9f679dd7327a7da32c915e28a2f1fd0d0048d8292e09276968b8c7` |
+| `SPEC_METHOD.md` | `80a66946d4767b1ff857aad4bbaba696b591cd7e7529324c2ece8ced9754ced5` |
+| `REFERENCE_FRAME_METHOD.md` | `c7f7abfa620d73e209463605517075ac375d8e79e0273d3f435c4e36155de5d8` |
+| `STDO_REFERENCE_FRAME_BASELINE.md` | `6013e42693066127d729580ac3d01d31c2a82f00adea9d0fb1af3494b4ad9c3e` |
+| `DESIGN_MODULE_METHOD.md` | `6fb49e186c15a3ebd48dec6b2728a397f1cd5199c4c0d112a0d0c70a2d6346fc` |
+| `ODD_METHOD.md` | `b33dd5b868e66e27c583b3237e93421ab12d502b38368bf075973c1bf7faef2d` |
+| `RELEASE_METHOD.md` | `582bc15451855670495e559db3ae6a89ba37edaa3656f33499d02220cbdb141c` |
+| `TICKET_METHOD.md` | `6924e3284be3375af3514cdf0f810b53e8ac282cb96116ea2d721e9b84b75ba3` |
+| `WRITING_GUIDE.md` | `29e50edc00997b76c20fad74724991b8cfffbe692ee6cabab208ad7a0c1b63fd` |
+
+The accepted T-041 proposal remains historical evidence under its exact STDO
+`v2.3.0` basis. This current reprice does not rewrite that cut, its review, or
+its admission record. It changes the governing method for successor source
+work only.
 
 ## Local Authority Order
 

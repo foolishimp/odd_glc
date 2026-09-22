@@ -1,0 +1,13 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/activation.json
+/bind-selection.mjs
+/configuration.selected-05.json
+/freeze.json
+/prepare.stderr.log
+/prepare.stdout.log
+/return.md
+/run.stderr.log
+/run.stdout.log
+/selection-readiness.json

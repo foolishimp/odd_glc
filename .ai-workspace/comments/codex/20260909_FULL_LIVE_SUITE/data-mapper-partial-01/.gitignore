@@ -1,0 +1,12 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/first-failure.json
+/source-snapshot/build_tenants/scala_spark/build.sbt
+/source-snapshot/build_tenants/scala_spark/cdme-compiler/src/main/scala/com/cdme/compiler/TopologyCompiler.scala
+/source-snapshot/build_tenants/scala_spark/cdme-compiler/src/main/scala/com/cdme/compiler/package.scala
+/source-snapshot/build_tenants/scala_spark/cdme-compiler/src/test/scala/com/cdme/compiler/TopologyCompilerSpec.scala
+/source-snapshot/build_tenants/scala_spark/cdme-core/src/main/scala/com/cdme/core/package.scala
+/source-snapshot/build_tenants/scala_spark/cdme-core/src/test/scala/com/cdme/core/CoreContractsSpec.scala
+/source-snapshot/build_tenants/scala_spark/project/build.properties
+/source-snapshot/build_tenants/scala_spark/project/plugins.sbt

@@ -1,0 +1,37 @@
+{
+  "kind": "wip_checkpoint_publication_receipt",
+  "scope": "All approved authored work and lossless retained proof; reproducible install/dependency/compiler/cache exclusions remain explicit.",
+  "payloadPushes": [
+    {
+      "batch": 1,
+      "commit": "bb60b52d3d859759e4dc26bc04a6cdf8a84ce0c9",
+      "previousRemote": "dae8589b2784be4c101af70d891f85367fc13ebd",
+      "remoteMain": "bb60b52d3d859759e4dc26bc04a6cdf8a84ce0c9",
+      "payloadBytes": 946818595,
+      "push": "succeeded"
+    },
+    {
+      "batch": 2,
+      "commit": "7cc3ebf9e12a5360a95111a93929a88f6b5b5838",
+      "previousRemote": "bb60b52d3d859759e4dc26bc04a6cdf8a84ce0c9",
+      "remoteMain": "7cc3ebf9e12a5360a95111a93929a88f6b5b5838",
+      "payloadBytes": 937267542,
+      "push": "succeeded"
+    },
+    {
+      "batch": 3,
+      "commit": "b0d1f7e38603d3aadef53ae1e595293d97e65a76",
+      "previousRemote": "7cc3ebf9e12a5360a95111a93929a88f6b5b5838",
+      "remoteMain": "b0d1f7e38603d3aadef53ae1e595293d97e65a76",
+      "payloadBytes": 943521498,
+      "push": "succeeded"
+    }
+  ],
+  "finalSourceCommit": "The commit containing this receipt.",
+  "finalRemoteVerification": "Performed after the final push and reported in the Executive handoff; no self-referential commit hash is invented.",
+  "acceptedSource": null,
+  "restoration": "All archived members were restored and compared with unchanged originals; verification receipts and portable reconstruction code are included.",
+  "originalRawFiles": "Remain physically present. Exact transport-backed ignore patterns suppress only captured originals and named reproducible exclusions; new authored filenames remain visible.",
+  "outcome": "WIP; prior generic Run failed before assessment. Source fixes are accepted. Installed continuation, applicable qualification and reserved human acceptance remain open.",
+  "gitEffects": "Ordinary main commits and fast-forward pushes only; no force, amend, reset, clean, tag, default or release publication."
+}

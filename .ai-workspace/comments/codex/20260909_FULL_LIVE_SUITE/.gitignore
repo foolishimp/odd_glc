@@ -1,0 +1,34 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../20260923_WIP_CHECKPOINT/README.md
+/ambient-status.txt
+/build-final-index.py
+/build-interim-archive.py
+/current-observation.json
+/data-mapper-first-worker-closed.json
+/data-mapper-worker-diagnostic-01.json
+/delegated-continuations-01.json
+/execution.md
+/finish-final-supplement.py
+/first-failures.json
+/first-return-manifest.json
+/first-three-completed-evidence.json
+/first-three-transports.json
+/frozen-test-manifest.json
+/frozen-test-path-adaptation.diff
+/launch-observation.json
+/launch.py
+/parallel-js-completed-evidence.json
+/parallel-js-first-c2-refusal.json
+/poll.py
+/preimages-manifest.json
+/process-results.json
+/processes.json
+/retained-state-inventory-01.json
+/rust-cli-completed-evidence.json
+/rust-cli-first-subject-failure.json
+/rust-service-completed-evidence.json
+/rust-service-corrected-evidence.json
+/stage-closed-data-outcome.py
+/stage-final-supplement.py
+/stdo-status.json

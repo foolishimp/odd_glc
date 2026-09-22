@@ -1,0 +1,22 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/WORKER_RESULT.md
+/branch-preflight-02.log
+/branch-preflight.log
+/branch-preflight.mjs
+/branch-ready/fixtures/generic-workflow-scenarios.json
+/branch-ready/generic-live-workflow-support.mjs
+/branch-ready/generic-live-workflow.test.mjs
+/branch-ready/manifest.json
+/data-mapper-full-installed-preflight.json
+/deterministic-01.log
+/deterministic-02.log
+/deterministic-03.log
+/parallel-js-installed-preflight.json
+/setup-preflight-01.log
+/setup-preflight-02.log
+/setup-ready/generic-live-workflow-support.mjs
+/setup-ready/installed-preflight.json
+/setup-ready/manifest.json
+/shared-input-contract.json

@@ -1,0 +1,16 @@
+{
+  "kind": "odd_glc_abi5_development_dependency_pin",
+  "status": "development_candidate_not_release",
+  "packageName": "@abiogenesis/typescript-tenant",
+  "packageVersion": "5.0.0-dev.286",
+  "productId": "product://abiogenesis/typescript-tenant@5.0.0-dev.286",
+  "artifactDigest": "sha256:0fb7492d197ed51aa2f8583f11b4d565ef4df8498399b41f7fc7d146d895778e",
+  "productContentDigest": "sha256:b473ee7d84d49c9d3cba1f56a518593307d3d03139236df2b010d80b992114cb",
+  "manifestDigest": "sha256:a0d3b73d6fba91a44cc3071fc8952da4f184d13afcc656b2c3353ec0ad91d934",
+  "artifactPath": ".genesis/development-products/abiogenesis-5-dev/artifacts/0fb7492d197ed51aa2f8583f11b4d565ef4df8498399b41f7fc7d146d895778e/abiogenesis-typescript-tenant-5.0.0-dev.286.tgz",
+  "materializationRoot": ".genesis/development-products/abiogenesis-5-dev/native-install",
+  "evidenceRoot": ".ai-workspace/comments/codex/20260918_ABI5_BASIC_CLI_SINGLE_START",
+  "authority": "Owner-selected exact local development candidate; migration-only Worker activation, 2026-09-18",
+  "scope": "Source-workspace dependency and public entry only; not a release, sandbox admission, full lifecycle qualification or live result",
+  "predecessor": "Preserve the immutable odd_glc 0.1/ABI4.6 Product and T-041 data-only Product/evidence; this additive pin does not rewrite them"
+}

@@ -3,6 +3,7 @@
 **Status**: Active
 **Category**: Product Requirement / Consumption Contract
 **Date**: 2026-06-28
+**Re-entry**: [T-043 D1-D3](../../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-delivery-plan)
 **Derives from**: [GOALS.md](../GOALS.md), [INTENT.md](../INTENT.md),
 [PRODUCT.md](../PRODUCT.md),
 [T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
@@ -58,6 +59,13 @@ The first review target binds lifecycle slots to GTL/ABG system functions and
 carriers. These bindings are consumption declarations, not native odd_glc
 graph functions.
 
+The symbol names below are historical capability locators, not an ABIogenesis
+5 callable selection or availability assertion. Each activation shall resolve
+its exact current owner contract and readiness in the selected HOW. The owning
+[ABG requirement-proof carry-through law](../../../abiogenesis/specification/requirements/abg/REQ-R-ABG3-REQUIREMENT-PROOF-CARRY-THROUGH.md)
+governs shared obligation identity, evidence roles, replay coverage and
+non-closing residuals; its declaration alone does not prove an installed path.
+
 | Lifecycle slot | GTL/ABG system function or carrier | Existing or expected ABI surface | Non-closure examples |
 | --- | --- | --- | --- |
 | context observation and gap routing | `abg.requirements.ingest_context_fragments` / `abg.requirements.route_context_constraint` | `routeContextConstraint` | odd_glc admits or routes staged context locally. |
@@ -105,3 +113,38 @@ graph functions.
 **REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-015**: `odd_glc` shall not publish a native `glc.*` graph-function catalog for generic ODD lifecycle construction. Any named general lifecycle route shall be a GTL composition declaration over GTL/ABG system functions or a binding map to those functions.
 
 **REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-016**: A lifecycle view surface shall be a query, label, or policy interpretation over an admitted GTL/ABG carrier unless a requirement proves that no GTL/ABG carrier exists. Native odd_glc carriers shall be reserved for vocabulary, policy overlays, F_P/F_H decision surfaces, and specialization contracts that are not generic GTL/ABG system assets.
+
+**REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-017**: Full-input stage results
+shall use admitted GTL/ABG source, obligation, evidence and lineage contracts.
+Generic data-carrier admission, artifact persistence or a successful C1/C2
+call shall not be treated as ABG requirement admission, semantic preservation,
+coverage truth or lifecycle closure. The dependent claim shall remain
+non-closing until its exact owner contract and callable path are ready.
+
+**REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-018**: Every consumed refinement
+shall preserve the admitted parent/source obligation and relation to its
+realization and proof roles. Closure interpretation shall consume ABG-owned
+current evidence and residual coverage, including newly discovered obligations
+and required semantic assessments. Missing, stale, role-mismatched or weaker
+proof shall not become closing through a downstream comparator.
+
+**REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-019**: Semantic assessment and
+owner ruling shall enter through their admitted upstream result/authority
+relations before affecting requirement closure or scope. odd_glc may provide
+rubrics and interpretations; it shall not convert worker text or a local
+decision flag into admission, a ruling or traversal authority.
+
+**REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-020**: Selective revision shall
+consume ABG-owned dependency invalidation, lawful re-entry and persisted-state
+resume. It shall preserve the superseded result, expose affected stale evidence
+and carry unchanged evidence only where its admitted basis remains applicable.
+If these relations cannot be reconstructed through the consumed runtime, the
+revision claim shall defer and the exact upstream gap shall remain visible.
+
+**REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION-021**: The selected HOW shall
+bind each lifecycle slot to its current upstream owner source, required input
+and output relation, exact callable/pin evidence when available, readiness
+state and dependent claim. A planned requirement or older passing campaign
+shall not classify a new stage or changed composition as ready. Missing
+contracts shall be resolved at their owner without a generic-framework rewrite
+or downstream compatibility mechanism being inferred from this requirement.

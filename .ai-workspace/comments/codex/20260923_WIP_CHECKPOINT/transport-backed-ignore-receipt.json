@@ -1,0 +1,1408 @@
+{
+  "scope": "Exact archive-backed paths plus recorded reproducible exclusions; no family/comments/test_runs wildcard",
+  "originalArchivedPaths": 8988,
+  "files": [
+    {
+      "path": ".ai-workspace/comments/codex/.gitignore",
+      "patterns": 2,
+      "bytes": 353
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260907_STEEL_BASIC_CLI_01/.gitignore",
+      "patterns": 48,
+      "bytes": 1525
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260907_STEEL_BASIC_CLI_01/attempt-01/.gitignore",
+      "patterns": 101,
+      "bytes": 8085
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260907_STEEL_BASIC_CLI_01/candidate/.gitignore",
+      "patterns": 5,
+      "bytes": 551
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260907_STEEL_BASIC_CLI_01/consumer-read-correction-sources/.gitignore",
+      "patterns": 2,
+      "bytes": 304
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260907_STEEL_BASIC_CLI_01/preimages/.gitignore",
+      "patterns": 6,
+      "bytes": 633
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260907_STEEL_BASIC_CLI_01/proof-attempt-03/.gitignore",
+      "patterns": 9,
+      "bytes": 470
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260908_STEEL_JS_TENANT_01/.gitignore",
+      "patterns": 14,
+      "bytes": 656
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/.gitignore",
+      "patterns": 3,
+      "bytes": 266
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/acceptance/.gitignore",
+      "patterns": 3,
+      "bytes": 320
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/.gitignore",
+      "patterns": 10,
+      "bytes": 406
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/child-closure-binding-01/.gitignore",
+      "patterns": 33,
+      "bytes": 1521
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/consumer-unbound/.gitignore",
+      "patterns": 8,
+      "bytes": 502
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/intent-revision-input-01/.gitignore",
+      "patterns": 6,
+      "bytes": 411
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/postimages/.gitignore",
+      "patterns": 4,
+      "bytes": 475
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/preimages/.gitignore",
+      "patterns": 2,
+      "bytes": 288
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/root-output-binding-01/.gitignore",
+      "patterns": 28,
+      "bytes": 1439
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/setup-program-repair/.gitignore",
+      "patterns": 11,
+      "bytes": 803
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/source-publication-repair-01/.gitignore",
+      "patterns": 25,
+      "bytes": 1234
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/declaration-binding/tail-declaration-01/.gitignore",
+      "patterns": 17,
+      "bytes": 892
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/handoff-projection/.gitignore",
+      "patterns": 6,
+      "bytes": 414
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/source-witness/.gitignore",
+      "patterns": 2,
+      "bytes": 261
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_D1_LIFECYCLE/stage-contract/.gitignore",
+      "patterns": 17,
+      "bytes": 816
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/.gitignore",
+      "patterns": 31,
+      "bytes": 1082
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/branch-binding/.gitignore",
+      "patterns": 19,
+      "bytes": 825
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/branch-live-01/.gitignore",
+      "patterns": 12,
+      "bytes": 517
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/continued-setup-01/.gitignore",
+      "patterns": 18,
+      "bytes": 661
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/data-mapper-compact-ack-repair-01/.gitignore",
+      "patterns": 125,
+      "bytes": 8233
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/data-mapper-core-syntax-repair-01/.gitignore",
+      "patterns": 7,
+      "bytes": 385
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/data-mapper-execution-01/.gitignore",
+      "patterns": 4,
+      "bytes": 296
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/data-mapper-partial-01/.gitignore",
+      "patterns": 9,
+      "bytes": 967
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/data-mapper-repair-input-01/.gitignore",
+      "patterns": 26,
+      "bytes": 1109
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/.gitignore",
+      "patterns": 9,
+      "bytes": 436
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/.gitignore",
+      "patterns": 3,
+      "bytes": 285
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/acceptance/.gitignore",
+      "patterns": 4,
+      "bytes": 392
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/frozen/.gitignore",
+      "patterns": 3,
+      "bytes": 438
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/.gitignore",
+      "patterns": 14,
+      "bytes": 510
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/artifacts/.gitignore",
+      "patterns": 1,
+      "bytes": 321
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/.gitignore",
+      "patterns": 4,
+      "bytes": 323
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/.gitignore",
+      "patterns": 1,
+      "bytes": 258
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/abg/.gitignore",
+      "patterns": 41,
+      "bytes": 1144
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/gtl/.gitignore",
+      "patterns": 20,
+      "bytes": 632
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/hog/.gitignore",
+      "patterns": 20,
+      "bytes": 652
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/implementation/.gitignore",
+      "patterns": 16,
+      "bytes": 575
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/owner_bindings/.gitignore",
+      "patterns": 1,
+      "bytes": 270
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/product/.gitignore",
+      "patterns": 53,
+      "bytes": 1694
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/public/.gitignore",
+      "patterns": 7,
+      "bytes": 397
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/shared/.gitignore",
+      "patterns": 17,
+      "bytes": 650
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/code/src/validator/.gitignore",
+      "patterns": 9,
+      "bytes": 446
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/contracts/.gitignore",
+      "patterns": 85,
+      "bytes": 4884
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/scripts/.gitignore",
+      "patterns": 3,
+      "bytes": 316
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/test_env/.gitignore",
+      "patterns": 1,
+      "bytes": 256
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/test_env/falsifiers/.gitignore",
+      "patterns": 20,
+      "bytes": 759
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/test_env/fixtures/.gitignore",
+      "patterns": 12,
+      "bytes": 814
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/test_env/proof/.gitignore",
+      "patterns": 7,
+      "bytes": 445
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/test_env/support/.gitignore",
+      "patterns": 21,
+      "bytes": 907
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-input/test_env/tests/.gitignore",
+      "patterns": 81,
+      "bytes": 3280
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/build-seeds/.gitignore",
+      "patterns": 2,
+      "bytes": 355
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/frozen/.gitignore",
+      "patterns": 5,
+      "bytes": 650
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/implementation/preimages/.gitignore",
+      "patterns": 4,
+      "bytes": 550
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C1_TEXT_OUTPUT/preimages/.gitignore",
+      "patterns": 3,
+      "bytes": 438
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/acceptance/.gitignore",
+      "patterns": 10,
+      "bytes": 750
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/design/.gitignore",
+      "patterns": 10,
+      "bytes": 747
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/.gitignore",
+      "patterns": 20,
+      "bytes": 717
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/artifacts/.gitignore",
+      "patterns": 1,
+      "bytes": 321
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/.gitignore",
+      "patterns": 4,
+      "bytes": 323
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/.gitignore",
+      "patterns": 1,
+      "bytes": 258
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/abg/.gitignore",
+      "patterns": 41,
+      "bytes": 1144
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/gtl/.gitignore",
+      "patterns": 20,
+      "bytes": 632
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/hog/.gitignore",
+      "patterns": 20,
+      "bytes": 652
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/implementation/.gitignore",
+      "patterns": 16,
+      "bytes": 575
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/owner_bindings/.gitignore",
+      "patterns": 1,
+      "bytes": 270
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/product/.gitignore",
+      "patterns": 53,
+      "bytes": 1694
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/public/.gitignore",
+      "patterns": 7,
+      "bytes": 397
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/shared/.gitignore",
+      "patterns": 17,
+      "bytes": 650
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/code/src/validator/.gitignore",
+      "patterns": 9,
+      "bytes": 446
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/contracts/.gitignore",
+      "patterns": 85,
+      "bytes": 4884
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/scripts/.gitignore",
+      "patterns": 3,
+      "bytes": 316
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/test_env/.gitignore",
+      "patterns": 1,
+      "bytes": 256
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/test_env/falsifiers/.gitignore",
+      "patterns": 20,
+      "bytes": 759
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/test_env/fixtures/.gitignore",
+      "patterns": 12,
+      "bytes": 814
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/test_env/proof/.gitignore",
+      "patterns": 7,
+      "bytes": 445
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/test_env/support/.gitignore",
+      "patterns": 21,
+      "bytes": 907
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/build-input/test_env/tests/.gitignore",
+      "patterns": 81,
+      "bytes": 3280
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/frozen/.gitignore",
+      "patterns": 6,
+      "bytes": 701
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/abi/20260909_C2_HELPER_ACK/implementation/preimages/.gitignore",
+      "patterns": 6,
+      "bytes": 701
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/campaign/.gitignore",
+      "patterns": 3,
+      "bytes": 318
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/campaign/data-mapper-compact-ack-repair-01/.gitignore",
+      "patterns": 122,
+      "bytes": 8163
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/campaign/data-mapper-core-syntax-repair-01/.gitignore",
+      "patterns": 7,
+      "bytes": 394
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/campaign/data-mapper-repair-input-01/.gitignore",
+      "patterns": 26,
+      "bytes": 1118
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/campaign/successor-epoch-live-01/.gitignore",
+      "patterns": 53,
+      "bytes": 3967
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/campaign/successor-epoch-setup-01/.gitignore",
+      "patterns": 23,
+      "bytes": 1013
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/closure/.gitignore",
+      "patterns": 11,
+      "bytes": 880
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/instances/data-mapper-full/epochs/.gitignore",
+      "patterns": 125,
+      "bytes": 9757
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/instances/data-mapper-full/worksite/.gitignore",
+      "patterns": 22,
+      "bytes": 2207
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/staging/tracking/.gitignore",
+      "patterns": 5,
+      "bytes": 549
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/final-evidence-01/tracking-preimages/.gitignore",
+      "patterns": 6,
+      "bytes": 637
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/frozen-test/.gitignore",
+      "patterns": 3,
+      "bytes": 336
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/interim-evidence-01/.gitignore",
+      "patterns": 4,
+      "bytes": 310
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/preimages/.gitignore",
+      "patterns": 11,
+      "bytes": 777
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/proof/.gitignore",
+      "patterns": 10,
+      "bytes": 477
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/same-instance-repair/.gitignore",
+      "patterns": 60,
+      "bytes": 2546
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/successor-epoch-live-01/.gitignore",
+      "patterns": 53,
+      "bytes": 3958
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260909_FULL_LIVE_SUITE/successor-epoch-setup-01/.gitignore",
+      "patterns": 23,
+      "bytes": 1004
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260913_ABG5_D1_WITNESS_01/.gitignore",
+      "patterns": 4,
+      "bytes": 282
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260915_D1_CONTEXT_DECLARATION_01/.gitignore",
+      "patterns": 15,
+      "bytes": 647
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260918_ABI5_BASIC_CLI_SINGLE_START/.gitignore",
+      "patterns": 12,
+      "bytes": 549
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260918_ABI5_FULL_HELLO_SANDBOX/.gitignore",
+      "patterns": 8,
+      "bytes": 419
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260918_GENERIC_JOB_BINDING_REPAIR/.gitignore",
+      "patterns": 70,
+      "bytes": 3527
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260919_MANAGEMENT_STEEL_THREAD/.gitignore",
+      "patterns": 1,
+      "bytes": 243
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/.gitignore",
+      "patterns": 34,
+      "bytes": 1795
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-caller-summary-01/.gitignore",
+      "patterns": 7,
+      "bytes": 325
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-01/.gitignore",
+      "patterns": 65,
+      "bytes": 2034
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-02/.gitignore",
+      "patterns": 51,
+      "bytes": 1703
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-03/.gitignore",
+      "patterns": 53,
+      "bytes": 1748
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-04/.gitignore",
+      "patterns": 61,
+      "bytes": 1955
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-05/.gitignore",
+      "patterns": 26,
+      "bytes": 936
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-01/.gitignore",
+      "patterns": 75,
+      "bytes": 2714
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-02/.gitignore",
+      "patterns": 70,
+      "bytes": 2539
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-03/.gitignore",
+      "patterns": 64,
+      "bytes": 2346
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/.gitignore",
+      "patterns": 12,
+      "bytes": 579
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/caller-readiness/.gitignore",
+      "patterns": 15,
+      "bytes": 472
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/.gitignore",
+      "patterns": 34,
+      "bytes": 907
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/.gitignore",
+      "patterns": 5,
+      "bytes": 400
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/.gitignore",
+      "patterns": 3,
+      "bytes": 282
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/.gitignore",
+      "patterns": 1,
+      "bytes": 265
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-accounting/.gitignore",
+      "patterns": 75,
+      "bytes": 4872
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-adjoint/.gitignore",
+      "patterns": 103,
+      "bytes": 6326
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-assurance/.gitignore",
+      "patterns": 68,
+      "bytes": 4397
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-compiler/.gitignore",
+      "patterns": 76,
+      "bytes": 4954
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-core/.gitignore",
+      "patterns": 120,
+      "bytes": 7890
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-engine/.gitignore",
+      "patterns": 78,
+      "bytes": 5095
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-executor/.gitignore",
+      "patterns": 81,
+      "bytes": 5547
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/cdme-fidelity/.gitignore",
+      "patterns": 68,
+      "bytes": 4387
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/project/.gitignore",
+      "patterns": 57,
+      "bytes": 3643
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/archives/worksite-command-execution/cbcda9c6b4e8075158c78be3ef39918b21ecd3d6d03ac475ddce341a20096b1e/5a01b4e57e25cad9bc7b6601bd9882cd7a5e724a77f055acb5605097b8bba4dc/sandbox/build_tenants/scala_spark/target/.gitignore",
+      "patterns": 61,
+      "bytes": 3542
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/execution-01/resources/installed/.gitignore",
+      "patterns": 6,
+      "bytes": 389
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/partial-prepare-caller-01/.gitignore",
+      "patterns": 12,
+      "bytes": 426
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/preparation-completion-01/.gitignore",
+      "patterns": 16,
+      "bytes": 588
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-05/.gitignore",
+      "patterns": 118,
+      "bytes": 4898
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-06/.gitignore",
+      "patterns": 84,
+      "bytes": 3453
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-07/.gitignore",
+      "patterns": 97,
+      "bytes": 3681
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-08/.gitignore",
+      "patterns": 69,
+      "bytes": 2732
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-09/.gitignore",
+      "patterns": 89,
+      "bytes": 3395
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/.gitignore",
+      "patterns": 14,
+      "bytes": 639
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/caller-readiness/.gitignore",
+      "patterns": 3,
+      "bytes": 284
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/.gitignore",
+      "patterns": 61,
+      "bytes": 1608
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/.gitignore",
+      "patterns": 10,
+      "bytes": 564
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/.gitignore",
+      "patterns": 3,
+      "bytes": 282
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/.gitignore",
+      "patterns": 1,
+      "bytes": 265
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-accounting/.gitignore",
+      "patterns": 75,
+      "bytes": 4872
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-adjoint/.gitignore",
+      "patterns": 103,
+      "bytes": 6326
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-assurance/.gitignore",
+      "patterns": 68,
+      "bytes": 4397
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-compiler/.gitignore",
+      "patterns": 76,
+      "bytes": 4954
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-core/.gitignore",
+      "patterns": 120,
+      "bytes": 7890
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-engine/.gitignore",
+      "patterns": 127,
+      "bytes": 8278
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-executor/.gitignore",
+      "patterns": 81,
+      "bytes": 5547
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/cdme-fidelity/.gitignore",
+      "patterns": 68,
+      "bytes": 4387
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/project/.gitignore",
+      "patterns": 57,
+      "bytes": 3643
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/archives/worksite-command-execution/46f0bb2e2096d0326395c10e2da66dafe6fcabbe36068aca534b5992997f96d6/48156cb6835a5517757f589f39d344b95141510a1493c05368a1832ae50ba115/sandbox/build_tenants/scala_spark/target/.gitignore",
+      "patterns": 61,
+      "bytes": 3542
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/execution-01/resources/installed/.gitignore",
+      "patterns": 6,
+      "bytes": 389
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-d2-consumer-01/.gitignore",
+      "patterns": 40,
+      "bytes": 1259
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-d2-installed-01/.gitignore",
+      "patterns": 22,
+      "bytes": 697
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-execution-01/.gitignore",
+      "patterns": 102,
+      "bytes": 5918
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-execution-02/.gitignore",
+      "patterns": 107,
+      "bytes": 6457
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-repair-01/.gitignore",
+      "patterns": 11,
+      "bytes": 448
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/asset-transition/.gitignore",
+      "patterns": 23,
+      "bytes": 1075
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/asset-transition-adoption/.gitignore",
+      "patterns": 7,
+      "bytes": 407
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer/.gitignore",
+      "patterns": 19,
+      "bytes": 682
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-catalog-fix/.gitignore",
+      "patterns": 34,
+      "bytes": 1176
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-declaration-fix/.gitignore",
+      "patterns": 36,
+      "bytes": 1205
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-declaration-preparation-01/.gitignore",
+      "patterns": 64,
+      "bytes": 1749
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-launch-fix/.gitignore",
+      "patterns": 8,
+      "bytes": 367
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-runtime-preparation-02/.gitignore",
+      "patterns": 58,
+      "bytes": 1600
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-runtime-preparation-03/.gitignore",
+      "patterns": 58,
+      "bytes": 1600
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer-runtime-preparation-04/.gitignore",
+      "patterns": 62,
+      "bytes": 1826
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer/qualification-01/.gitignore",
+      "patterns": 38,
+      "bytes": 1234
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer/qualification-02/.gitignore",
+      "patterns": 39,
+      "bytes": 1219
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer/qualification-03/.gitignore",
+      "patterns": 40,
+      "bytes": 1244
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/consumer/src/.gitignore",
+      "patterns": 3,
+      "bytes": 274
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/external-caller-01/.gitignore",
+      "patterns": 23,
+      "bytes": 1071
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/first-fixture/.gitignore",
+      "patterns": 10,
+      "bytes": 556
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/intent-preparation-01/.gitignore",
+      "patterns": 71,
+      "bytes": 2162
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/lifecycle-extension-01/.gitignore",
+      "patterns": 14,
+      "bytes": 889
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/.gitignore",
+      "patterns": 35,
+      "bytes": 978
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/assets/.gitignore",
+      "patterns": 1,
+      "bytes": 254
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/context/.gitignore",
+      "patterns": 5,
+      "bytes": 357
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/launch-fix-02/.gitignore",
+      "patterns": 7,
+      "bytes": 323
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/package/.gitignore",
+      "patterns": 10,
+      "bytes": 591
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/package02/.gitignore",
+      "patterns": 10,
+      "bytes": 591
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/qualification-01/.gitignore",
+      "patterns": 74,
+      "bytes": 2266
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/qualification-02/.gitignore",
+      "patterns": 74,
+      "bytes": 2260
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/seed/.gitignore",
+      "patterns": 12,
+      "bytes": 562
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/native-assessment-consumer-01/src/.gitignore",
+      "patterns": 4,
+      "bytes": 295
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/.gitignore",
+      "patterns": 8,
+      "bytes": 427
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/.gitignore",
+      "patterns": 13,
+      "bytes": 551
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/.gitignore",
+      "patterns": 1,
+      "bytes": 266
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/build/.gitignore",
+      "patterns": 104,
+      "bytes": 4448
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/code/.gitignore",
+      "patterns": 65,
+      "bytes": 2449
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/contracts/.gitignore",
+      "patterns": 48,
+      "bytes": 2618
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/design/.gitignore",
+      "patterns": 9,
+      "bytes": 653
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/scripts/.gitignore",
+      "patterns": 1,
+      "bytes": 277
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/core/test_env/.gitignore",
+      "patterns": 4,
+      "bytes": 393
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/application-01/preimages/glc/.gitignore",
+      "patterns": 3,
+      "bytes": 445
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-01/.gitignore",
+      "patterns": 58,
+      "bytes": 1636
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-01/installed-retention/.gitignore",
+      "patterns": 91,
+      "bytes": 2861
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-01/installed-retention-02/.gitignore",
+      "patterns": 101,
+      "bytes": 3123
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-01/jobs/.gitignore",
+      "patterns": 4,
+      "bytes": 336
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-02/.gitignore",
+      "patterns": 47,
+      "bytes": 1321
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-02/installed-retention/.gitignore",
+      "patterns": 111,
+      "bytes": 3630
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-02/jobs/.gitignore",
+      "patterns": 4,
+      "bytes": 336
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/.gitignore",
+      "patterns": 19,
+      "bytes": 714
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/c2-preparation-diagnosis-01/.gitignore",
+      "patterns": 24,
+      "bytes": 875
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/c2-role-correction-01/.gitignore",
+      "patterns": 25,
+      "bytes": 1236
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/c2-role-integration-01/.gitignore",
+      "patterns": 23,
+      "bytes": 1109
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/caller-02/.gitignore",
+      "patterns": 16,
+      "bytes": 561
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/caller-03/.gitignore",
+      "patterns": 9,
+      "bytes": 399
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/caller-04/.gitignore",
+      "patterns": 8,
+      "bytes": 366
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/caller-05/.gitignore",
+      "patterns": 12,
+      "bytes": 428
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/caller-06/.gitignore",
+      "patterns": 10,
+      "bytes": 418
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-02/.gitignore",
+      "patterns": 99,
+      "bytes": 2875
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-03/.gitignore",
+      "patterns": 52,
+      "bytes": 1771
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/.gitignore",
+      "patterns": 75,
+      "bytes": 1985
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/.gitignore",
+      "patterns": 5,
+      "bytes": 397
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/.gitignore",
+      "patterns": 3,
+      "bytes": 279
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/.gitignore",
+      "patterns": 1,
+      "bytes": 262
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-accounting/.gitignore",
+      "patterns": 75,
+      "bytes": 4869
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-adjoint/.gitignore",
+      "patterns": 103,
+      "bytes": 6323
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-assurance/.gitignore",
+      "patterns": 68,
+      "bytes": 4394
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-compiler/.gitignore",
+      "patterns": 76,
+      "bytes": 4951
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-core/.gitignore",
+      "patterns": 120,
+      "bytes": 7887
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-engine/.gitignore",
+      "patterns": 127,
+      "bytes": 8275
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-executor/.gitignore",
+      "patterns": 81,
+      "bytes": 5544
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/cdme-fidelity/.gitignore",
+      "patterns": 68,
+      "bytes": 4384
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/project/.gitignore",
+      "patterns": 57,
+      "bytes": 3640
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/archives/worksite-command-execution/be00bf4139f01d86986f6336738bfd274d8b6feb6eb6d7172072a89612183ed1/68009c3a9ce2ec5b4a5938ba1908d004d30ff28c0a35ad924f1ef86e9047eb77/sandbox/build_tenants/scala_spark/target/.gitignore",
+      "patterns": 61,
+      "bytes": 3539
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-04/resources/installed/.gitignore",
+      "patterns": 6,
+      "bytes": 386
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/.gitignore",
+      "patterns": 84,
+      "bytes": 2184
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/.gitignore",
+      "patterns": 5,
+      "bytes": 397
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/.gitignore",
+      "patterns": 3,
+      "bytes": 279
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/.gitignore",
+      "patterns": 1,
+      "bytes": 262
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-accounting/.gitignore",
+      "patterns": 75,
+      "bytes": 4869
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-adjoint/.gitignore",
+      "patterns": 103,
+      "bytes": 6323
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-assurance/.gitignore",
+      "patterns": 68,
+      "bytes": 4394
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-compiler/.gitignore",
+      "patterns": 76,
+      "bytes": 4951
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-core/.gitignore",
+      "patterns": 120,
+      "bytes": 7887
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-engine/.gitignore",
+      "patterns": 127,
+      "bytes": 8275
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-executor/.gitignore",
+      "patterns": 81,
+      "bytes": 5544
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/cdme-fidelity/.gitignore",
+      "patterns": 68,
+      "bytes": 4384
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/project/.gitignore",
+      "patterns": 57,
+      "bytes": 3640
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/archives/worksite-command-execution/b3b458b13a5751f6d9d37b703814964d777cd2f80ee7b26b94a7d1f0c9110119/6684aeb7da7ecfcf91265a139026e849a70b00261b872fd219b5e41b180a25f8/sandbox/build_tenants/scala_spark/target/.gitignore",
+      "patterns": 61,
+      "bytes": 3539
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-05/resources/installed/.gitignore",
+      "patterns": 6,
+      "bytes": 386
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-diagnostic-01/.gitignore",
+      "patterns": 19,
+      "bytes": 618
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-diagnostic-02/.gitignore",
+      "patterns": 11,
+      "bytes": 445
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-diagnostic-03/.gitignore",
+      "patterns": 15,
+      "bytes": 532
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-diagnostic-04/.gitignore",
+      "patterns": 7,
+      "bytes": 352
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-diagnostic-05/.gitignore",
+      "patterns": 22,
+      "bytes": 706
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-exception-01/.gitignore",
+      "patterns": 37,
+      "bytes": 1237
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/post-c2-localization-01/.gitignore",
+      "patterns": 13,
+      "bytes": 563
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/readback-01/.gitignore",
+      "patterns": 8,
+      "bytes": 405
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/readback-02/.gitignore",
+      "patterns": 5,
+      "bytes": 331
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/readback-03/.gitignore",
+      "patterns": 16,
+      "bytes": 637
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/readback-04/.gitignore",
+      "patterns": 14,
+      "bytes": 665
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/readback-05/.gitignore",
+      "patterns": 59,
+      "bytes": 1841
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/readback-06/.gitignore",
+      "patterns": 22,
+      "bytes": 709
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/recovery-01/.gitignore",
+      "patterns": 18,
+      "bytes": 590
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/recovery-02/.gitignore",
+      "patterns": 19,
+      "bytes": 620
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/recovery-03/.gitignore",
+      "patterns": 25,
+      "bytes": 742
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/recovery-04/.gitignore",
+      "patterns": 26,
+      "bytes": 894
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/reprice-failure-diagnosis-01/.gitignore",
+      "patterns": 9,
+      "bytes": 405
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/artifacts/.gitignore",
+      "patterns": 1,
+      "bytes": 376
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/.gitignore",
+      "patterns": 4,
+      "bytes": 332
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/contracts/capabilities/.gitignore",
+      "patterns": 1,
+      "bytes": 302
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/contracts/public-functions/.gitignore",
+      "patterns": 1,
+      "bytes": 293
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/contracts/public-operations/.gitignore",
+      "patterns": 18,
+      "bytes": 996
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/contracts/qualification/.gitignore",
+      "patterns": 99,
+      "bytes": 3571
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/contracts/schemas/.gitignore",
+      "patterns": 64,
+      "bytes": 3211
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/bootstrap-package/contracts/vocabularies/.gitignore",
+      "patterns": 3,
+      "bytes": 351
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/native-install/.gitignore",
+      "patterns": 3,
+      "bytes": 310
+    },
+    {
+      "path": ".genesis/development-products/abiogenesis-5-dev/predecessor-default-4.6/.gitignore",
+      "patterns": 10,
+      "bytes": 584
+    }
+  ],
+  "futureAuthoredPaths": "New filenames are not ignored. Prior captured originals are frozen evidence; successor authored versions require a new path.",
+  "placement": "Directory-local exact patterns, normally at most 128 per file; pre-existing ignore files preserved."
+}

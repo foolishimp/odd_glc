@@ -1,0 +1,12 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/abi-authority/events/runtime.events.jsonl
+/c1-unexecuted-definition-call.json
+/generic-live-workflow-request.json
+/setup-1-verify.json
+/setup-2-resolve.json
+/setup-3-install.json
+/setup-4-bind.json
+/setup-5-admit.json
+/setup-6-allowlist.json

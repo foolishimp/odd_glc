@@ -1,0 +1,39 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/candidate-publication.json
+/declaration.patch
+/driver-v2.mjs
+/fixture-selection.json
+/focused-check-2-stderr.log
+/focused-check-2-stdout.json
+/focused-check-stderr.log
+/focused-check-stdout.json
+/freeze.json
+/launch-policy.json
+/local-operations.json
+/package-candidate.mjs
+/package-identity.json
+/package/artifacts/odd-glc-proof-native-work-consumer-5.0.0.tgz
+/package/pack-stderr.log
+/package/pack-stdout.json
+/package/prepared-product.json
+/package/product/build/
+/package/product/contracts/capabilities/capability-definition-graph.json
+/package/product/contracts/public-contract-catalog.schema.json
+/package/product/package.json
+/package/product/product-toolchain-manifest.json
+/packaging-stderr.log
+/packaging-stdout.json
+/preimages.json
+/preparation-config.json
+/prepare-product.mjs
+/program-validation.json
+/pure-conformance.json
+/pure-conformance.mjs
+/relation-fixture.mjs
+/src/identity.mjs
+/src/publication.mjs
+/src/runtime.mjs
+/validation-call.json
+/writer-return.md

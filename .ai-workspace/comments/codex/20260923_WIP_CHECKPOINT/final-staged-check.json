@@ -1,0 +1,13 @@
+{
+  "stagedPathCountAtValidation": 387,
+  "finalStagedPathCount": 387,
+  "largestStagedBlobBytes": 10021030,
+  "unresolvedCredentialShapedFindings": [],
+  "whitespaceExitCode": 0,
+  "whitespaceReport": "final-staged-whitespace-check.txt",
+  "whitespaceDisposition": "Pass.",
+  "acceptedSubjectCurrentHashCheck": 0,
+  "acceptedSourceGitBlobChecks": 0,
+  "transportGitBlobChecks": 154,
+  "transportGitBlobBytesVerified": 2837897656
+}

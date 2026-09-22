@@ -1,25 +1,21 @@
-# odd_glc Common Design
+# Common Build-Tenant Design
 
-Ratified common design for `odd_glc` lives here.
+This directory holds realization HOW. A design becomes active only through its
+own accepted status and the tenant registry.
 
-Common design governs realization choices that apply across future build
-tenants. Tenant-specific implementation details belong under the selected
-tenant after the tenant registry activates it.
+## Current Selected Design
 
-## Active Decisions
+- [ABI5 full-input sandbox binding](ODD_GLC_ABI5_FULL_SANDBOX.md) — bounded
+  construction candidate for the existing complete Hello scenario; native
+  lifecycle declarations and installed public entry, not historical parity.
+- [ABI5 live-LLM MVP](ODD_GLC_ABI5_LIVE_LLM_MVP.md) — T-043 selected design
+  for one reusable generic workflow over ABI live Worker and C0/ABG runtime
+  atoms. It creates no Hello World or Data Mapper Product or Program identity.
 
-- `ODD_GLC_ABI5_MIGRATION` —
-  [ABIogenesis 5 data-only Product migration](ODD_GLC_ABI5_MIGRATION.md):
-  active ratified T-041 Program-only design over exact ABIogenesis
-  `v5.0.0-dev.286`, admitted through the exact-tree record in
-  `specification/GOVERNANCE.md`; broader lifecycle migration is deferred.
-- [ADR-001 route-1 GTL/ABG lifecycle consumption](adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
+## Preserved Predecessor
 
-## Preserved Predecessor And Deferred Evidence
-
-- [ABIogenesis 4.2 typed startup binding](ODD_GLC_ABG42_TYPED_STARTUP_BINDING.md)
+- [ABIogenesis 5 data-only Product migration](ODD_GLC_ABI5_MIGRATION.md) —
+  accepted T-041 zero-code Product evidence; retained as predecessor basis.
+- [Route-1 GTL/ABG lifecycle consumption](adrs/ADR-001-route-1-gtl-abg-lifecycle-consumption.md)
 - [generic parity matrix](ODD_GLC_GENERIC_PARITY_MATRIX.md)
-- [dense odd_sdlc feature parity table](ODD_GLC_ODD_SDLC_FEATURE_PARITY_TABLE.md)
-
-These surfaces preserve released 0.1 or deferred full-lifecycle reasoning. They
-do not override or enlarge the active ratified T-041 design.
+- [odd_sdlc feature parity table](ODD_GLC_ODD_SDLC_FEATURE_PARITY_TABLE.md)

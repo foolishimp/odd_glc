@@ -1,0 +1,14 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../../20260923_WIP_CHECKPOINT/README.md
+/cause.json
+/preimages/consumer-unbound/build/
+/preimages/consumer-unbound/contracts/capabilities/capability-definition-graph.json
+/preimages/consumer-unbound/contracts/independent-source-input.json
+/preimages/consumer-unbound/contracts/public-contract-catalog.schema.json
+/preimages/consumer-unbound/contracts/scenario-input.json
+/preimages/consumer-unbound/contracts/source-role-declarations.json
+/preimages/consumer-unbound/package.json
+/preimages/consumer-unbound/product-toolchain-manifest.json
+/preimages/d1-lifecycle-declarations.mjs
+/preimages/package-staging.json

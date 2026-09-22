@@ -1,0 +1,17 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../20260923_WIP_CHECKPOINT/README.md
+/execution.md
+/js-tenant-test-frozen.json
+/live-attempt-01-archive-members.json
+/live-attempt-01-evidence.tar.gz
+/live-attempt-01-execution.log
+/live-attempt-01-post-inventory.json
+/live-attempt-01-pre-inventory.json
+/live-attempt-01-result.json
+/live-attempt-01-scout-result.json
+/live-attempt-01-selection.json
+/preimages.json
+/preimages/GOALS.md
+/preimages/T-043-deliver-generic-live-llm-scenario-mvp.md
+/run-live-attempt-01.mjs

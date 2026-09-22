@@ -1,0 +1,18 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../20260923_WIP_CHECKPOINT/README.md
+/activation.md
+/application-01/activation.md
+/application-01/application.json
+/application-01/handoff.md
+/application-01/request.txt
+/candidate/build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs
+/disposition.md
+/grant-record.md
+/handoff.md
+/manifest.json
+/preimage/build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs
+/records/proof.json
+/request.txt
+/source.diff
+/test/declaration.test.mjs

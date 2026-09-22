@@ -1,0 +1,29 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/WORKER_HANDOFF.md
+/deterministic-tests.stderr.log
+/deterministic-tests.stdout.log
+/frozen-02/fixtures/generic-workflow-scenarios.json
+/frozen-02/generic-live-workflow-support.mjs
+/frozen-02/generic-retained-branch-support.mjs
+/frozen-02/generic-retained-branch.test.mjs
+/frozen-02/generic-retained-workflow-support.mjs
+/frozen-02/generic-retained-workflow.test.mjs
+/frozen-identity.json
+/frozen/fixtures/generic-workflow-scenarios.json
+/frozen/generic-live-workflow-support.mjs
+/frozen/generic-retained-branch-support.mjs
+/frozen/generic-retained-branch.test.mjs
+/frozen/generic-retained-workflow-support.mjs
+/frozen/generic-retained-workflow.test.mjs
+/input-preparation.json
+/original-scenario.json
+/preparation-02.stderr.log
+/preparation-02.stdout.log
+/preparation.stderr.log
+/preparation.stdout.log
+/prepare-inputs-02.mjs
+/prepare-inputs.mjs
+/repair-scenario.json
+/request.json

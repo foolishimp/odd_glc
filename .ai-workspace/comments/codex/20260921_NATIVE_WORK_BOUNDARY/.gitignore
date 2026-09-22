@@ -1,0 +1,37 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../20260923_WIP_CHECKPOINT/README.md
+/consumer-declaration-preparation-01-driver-timing.json
+/consumer-declaration-preparation-01-driver.stderr.log
+/consumer-declaration-preparation-01-driver.stdout.log
+/consumer-runtime-preparation-02-config.json
+/consumer-runtime-preparation-02-prepare-stderr.log
+/consumer-runtime-preparation-02-prepare-stdout.log
+/consumer-runtime-preparation-02-prepare-timing.json
+/consumer-runtime-preparation-02-run-stderr.log
+/consumer-runtime-preparation-02-run-stdout.log
+/consumer-runtime-preparation-02-run-timing.json
+/consumer-runtime-preparation-03-config.json
+/consumer-runtime-preparation-03-prepare-stderr.log
+/consumer-runtime-preparation-03-prepare-stdout.log
+/consumer-runtime-preparation-03-prepare-timing.json
+/consumer-runtime-preparation-03-run-stderr.log
+/consumer-runtime-preparation-03-run-stdout.log
+/consumer-runtime-preparation-03-run-timing.json
+/consumer-runtime-preparation-04-config.json
+/consumer-runtime-preparation-04-prepare-stderr.log
+/consumer-runtime-preparation-04-prepare-stdout.log
+/consumer-runtime-preparation-04-prepare-timing.json
+/consumer-runtime-preparation-04-run-stderr.log
+/consumer-runtime-preparation-04-run-stdout.log
+/consumer-runtime-preparation-04-run-timing.json
+/failed-starts.json
+/intent-preparation-01-prepare-stderr.log
+/intent-preparation-01-prepare-stdout.log
+/intent-preparation-01-prepare-timing.json
+/intent-preparation-01-run-stderr.log
+/intent-preparation-01-run-stdout.log
+/intent-preparation-01-run-timing.json
+/intent-preparation-config-v2.json
+/intent-preparation-config-v3.json
+/intent-preparation-config.json

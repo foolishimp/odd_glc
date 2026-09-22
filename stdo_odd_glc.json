@@ -1,0 +1,125 @@
+{
+  "$schema": "stdo://releases/v2.5.0-rc.4/standards/schemas/product-definition.schema.json",
+  "kind": "stdo.product-definition",
+  "product": {
+    "definition_id": "urn:stdo:product-definition:odd-glc",
+    "name": "odd_glc",
+    "source_project": "./",
+    "bounded_context": null
+  },
+  "constitution": {
+    "stdo": {
+      "source": {
+        "repository": "https://github.com/foolishimp/specification_methodology.git"
+      },
+      "selector": "stdo://channels/2.5.0",
+      "basis": {
+        "uri": "stdo://releases/v2.5.0-rc.4/",
+        "manifest_sha256": "4fa2556d0127bebce8f7184cc4a3cb708a175b2e40552c55cb211f2426d5049e"
+      }
+    },
+    "additional_authorities": [],
+    "entrypoints": [
+      {
+        "basis": "#/constitution/stdo/basis",
+        "uri": "standards/authority_compressions/stdo_bootstrap.md"
+      },
+      {
+        "basis": "#/constitution/stdo/basis",
+        "uri": "standards/SPEC_METHOD.md"
+      },
+      {
+        "basis": "#/constitution/stdo/basis",
+        "uri": "standards/REFERENCE_FRAME_METHOD.md"
+      },
+      {
+        "basis": "#/constitution/stdo/basis",
+        "uri": "standards/STDO_REFERENCE_FRAME_BASELINE.md"
+      },
+      {
+        "basis": "#/constitution/stdo/basis",
+        "uri": "standards/ODD_METHOD.md"
+      },
+      {
+        "basis": "#/constitution/stdo/basis",
+        "uri": "standards/RELEASE_METHOD.md"
+      }
+    ],
+    "agent_bootstrap": {
+      "entrypoint": "#/constitution/entrypoints/0",
+      "targets": [
+        "./AGENTS.md",
+        "./CLAUDE.md"
+      ]
+    }
+  },
+  "local_constitution": {
+    "axioms": [],
+    "overrides": [],
+    "disambiguations": []
+  },
+  "reference_frame_bases": [
+    {
+      "uri": "./specification/REFERENCE_FRAME_BASIS.md#odd-glc-project-reference-frame-basis",
+      "authority": [
+        "./specification/GOVERNANCE.md#current-immutable-method-basis",
+        "./specification/PRODUCT.md#product-identity",
+        "./specification/GOALS.md#current-goal"
+      ],
+      "applies_to": [
+        "./.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md"
+      ]
+    }
+  ],
+  "what": {
+    "intent": "./specification/INTENT.md",
+    "product": "./specification/PRODUCT.md",
+    "specification": [
+      "./specification/requirements/",
+      "./specification/scenarios/"
+    ]
+  },
+  "how": {
+    "common": [
+      "./build_tenants/common/design/"
+    ],
+    "build_tenants": [
+      {
+        "id": "urn:odd-glc:build-tenant:typescript",
+        "root": "./build_tenants/odd_glc/typescript/",
+        "design": [
+          "./build_tenants/common/design/"
+        ],
+        "implementation": [
+          "./build_tenants/odd_glc/typescript/src/"
+        ]
+      }
+    ]
+  },
+  "ticketing": {
+    "goals": "./specification/GOALS.md",
+    "tickets": {
+      "root": "./.ai-workspace/tickets/",
+      "lanes": {
+        "backlog": "./.ai-workspace/tickets/backlog/",
+        "active": "./.ai-workspace/tickets/active/",
+        "completed": "./.ai-workspace/tickets/completed/"
+      }
+    },
+    "comments": {
+      "root": "./.ai-workspace/comments/"
+    }
+  },
+  "composition": [
+    {
+      "product_definition": "../abiogenesis/stdo_abiogenesis.json",
+      "target_definition_id": "urn:stdo:product-definition:abiogenesis",
+      "relation": "urn:stdo:concept:recursive-product-taxonomy:substrate",
+      "contracts": [
+        "../abiogenesis/specification/PRODUCT.md#definition-tool-and-runtime-authority",
+        "../abiogenesis/build_tenants/abiogenesis/typescript/design/T287_W2_R3_C0_MUTABLE_WORKSITE_CAUSALITY_DESIGN.md#w2-r3-c0-mutable-worksite-causality-design",
+        "../abiogenesis/build_tenants/abiogenesis/typescript/design/T287_NATIVE_WORKSPACE_WORK_DESIGN.md#t-287-native-workspace-work"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../../20260923_WIP_CHECKPOINT/README.md
+/GOALS.md.diff
+/T-043-deliver-generic-live-llm-scenario-mvp.md.diff
+/cause.json
+/check-and-stage.mjs
+/checks.json
+/consumer-unbound/build/
+/consumer-unbound/contracts/capabilities/capability-definition-graph.json
+/consumer-unbound/contracts/independent-source-input.json
+/consumer-unbound/contracts/public-contract-catalog.schema.json
+/consumer-unbound/contracts/scenario-input.json
+/consumer-unbound/contracts/source-role-declarations.json
+/consumer-unbound/package.json
+/consumer-unbound/product-toolchain-manifest.json
+/d1-lifecycle-declarations.mjs.diff
+/execution.md
+/manifest.json
+/native-cause.json
+/native-cause/candidate-05/root-carrier-first-cause.json
+/native-cause/installed-stage-witness-01/attempt-02/continuation-02/receipt-5.json
+/package-staging.json
+/postimages/.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
+/postimages/build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs
+/postimages/specification/GOALS.md
+/preimages.json
+/preimages/.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
+/preimages/build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs
+/preimages/specification/GOALS.md
+/static-check-01.json

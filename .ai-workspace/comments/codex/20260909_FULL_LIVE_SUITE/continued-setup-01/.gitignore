@@ -1,0 +1,21 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/basic-cli.stderr.log
+/basic-cli.stdout.log
+/frozen-basis.json
+/generic-live-workflow-support.mjs
+/generic-workflow-scenarios.json
+/js-sdlc-bootstrap.stderr.log
+/js-sdlc-bootstrap.stdout.log
+/js-tenant-test.stderr.log
+/js-tenant-test.stdout.log
+/launch.py
+/live-dispatch-observation.json
+/process-results.json
+/processes.json
+/resume-one.mjs
+/rust-cli.stderr.log
+/rust-cli.stdout.log
+/rust-service.stderr.log
+/rust-service.stdout.log

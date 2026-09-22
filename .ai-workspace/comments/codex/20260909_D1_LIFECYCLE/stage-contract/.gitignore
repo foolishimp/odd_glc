@@ -1,0 +1,20 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/derived-declarations.json
+/execution.md
+/manifest.json
+/oracle.json
+/postimages/GOALS.md
+/postimages/ODD_GLC_ABI5_LIVE_LLM_MVP.md
+/postimages/T-043-deliver-generic-live-llm-scenario-mvp.md
+/preimages/GOALS.md
+/preimages/ODD_GLC_ABI5_LIVE_LLM_MVP.md
+/preimages/T-043-deliver-generic-live-llm-scenario-mvp.md
+/version-repair/execution.md
+/version-repair/manifest.json
+/version-repair/postimages/derived-declarations.json
+/version-repair/postimages/oracle.json
+/version-repair/preimages/derived-declarations.json
+/version-repair/preimages/manifest.json
+/version-repair/preimages/oracle.json

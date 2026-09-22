@@ -1,0 +1,27 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/activation.json
+/conclusion.json
+/freeze.json
+/invocation-event-11823.json
+/literal-extraction-index.json
+/literal-task-event.json
+/new-segment-physical-body-index.json
+/offline-assembly-probe-result.json
+/offline-assembly-probe.mjs
+/offline-preparation-probe-result.json
+/offline-preparation-probe.mjs
+/physical-event-11896.json
+/physical-event-11897.json
+/physical-event-11898.json
+/physical-event-11899.json
+/physical-event-11900.json
+/physical-event-11901.json
+/physical-event-11902.json
+/physical-event-11903.json
+/physical-event-11904.json
+/physical-event-11905.json
+/probe-harness-first-diagnostic.txt
+/return.md
+/selected-basis-parts.json

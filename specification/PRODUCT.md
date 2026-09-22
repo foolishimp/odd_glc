@@ -1,191 +1,115 @@
 # odd_glc Product
 
 **Status**: Active
-**Date**: 2026-07-01
-**Derived From**: [GOALS.md](./GOALS.md), [INTENT.md](./INTENT.md),
-`.ai-workspace/context/project_bootstrap.md`,
-`/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260626T011328Z_STRATEGY_requirements_algebra_edge_spans.md`
 
-This document is the product-definition authority for `odd_glc`. It descends
-from goals and intent. Requirements, scenarios, ratified design, build tenants,
-code, and proof surfaces descend from this product shape.
+**Derived From**: [GOALS.md](./GOALS.md), [INTENT.md](./INTENT.md), and
+`.ai-workspace/context/project_bootstrap.md`
 
 ## Product Identity
 
-`odd_glc` is the source project for ODD General Life Cycle.
+`odd_glc` is the generic ODD General Life Cycle Product. It gives generic
+lifecycle vocabulary, policy, and read-only interpretation to admitted
+GTL/ABG truth. It is domain-agnostic: the same Product applies to a task,
+project, program, portfolio, or operating domain without acquiring their
+execution mechanism.
 
-The product is a downstream ODD framework over GTL/ABG. It gives general
-lifecycle meaning to admitted GTL/ABG graph, requirement, projection, evidence,
-fold, residual, replay, continuation, and re-entry truth.
+`odd_glc` is not ABIogenesis core, GTL, ABG, `odd_sdlc`, a runtime, a
+requirement compiler, a release cut, or an install.
 
-The product governs generic lifecycle interpretation at any scale. The same
-lifecycle vocabulary can apply to a task, project, program, multi-product
-portfolio, or operating domain. Lifecycles may nest and recur over ABG-owned
-zoom-frame, graph-span, and foldback truth; `odd_glc` owns the lifecycle
-meaning at each frame, not the recursive runtime substrate.
+Current source-project work uses exact STDO `v2.5.0-rc.4` and the
+Product-owned project reference-frame basis. That method selection governs how
+the Product is built and evaluated; it is not an odd_glc runtime dependency.
 
-The product is domain-agnostic. Software delivery, world-model construction,
-trading evaluation, service operation, and other governed domains may
-specialize it without changing its generic lifecycle law.
+## Ownership
 
-`odd_glc` is not ABIogenesis core, not GTL, not ABG, not a rebuild of
-`odd_sdlc`, not a runtime, not a requirement compiler, not a release cut, and
-not an install.
+GTL owns graph declaration. ABG owns selection, traversal, effects, admission,
+Event Calculus, replay, folds, residuals, continuation, and re-entry.
+`odd_glc` owns generic lifecycle vocabulary, labels, policies, query/read
+interpretation, proof interpretation, and downstream specialization contracts.
 
-## Constitutional Position
+`odd_glc` may publish declaration data and policy data over GTL/ABG carriers.
+It owns no worker invocation, filesystem effect, event writer, evidence
+admission, scheduler, fan-in runtime, retry controller, or replay engine.
 
-`odd_glc` exists to let domain products interpret ODD work as lifecycle work
-without moving graph construction or runtime authority out of GTL/ABG.
+## Full-Input Lifecycle Meaning
 
-GTL owns graph-native declaration law: graphs, nodes, graph vectors, graph
-functions, modules, jobs, interfaces, wrappers, and asset-surface declarations.
+The generic lifecycle takes the complete selected input through Intent,
+Product definition, Requirements, Design, construction, evidence and targeted
+revision. Each traversal unpacks and preserves preceding meaning, constraints,
+source provenance and unresolved obligations. A bounded construction choice
+orders delivery; it does not reduce the governing application specification.
 
-ABG owns runtime truth: traversal, facts, event replay, payload admission,
-evidence admission, requirement projection, assurance folds, residuals,
-correction, continuation, and re-entry.
+The input is a governed subject distinct from the odd_glc builder Product and
+its ABG runtime substrate. An application `ProductDefinitionAsset` describes
+that subject's intended behavior and boundary; it creates no scenario-specific
+odd_glc Product, Product member or Program identity. Imported requirements,
+supporting context, speculative material and conflicting claims retain their
+source roles until a permitted owner rules otherwise.
 
-`odd_glc` owns lifecycle meaning over that substrate: vocabulary, stage labels,
-policy overlays, read/query interpretation, proof interpretation, residual
-interpretation, and downstream specialization contracts.
+Realization and proof interpret the same admitted source obligation, including
+its expected evidence role and current basis. Computations check declared
+identity, coverage and freshness; admitted semantic judgments assess faithful
+decomposition and sufficient evidence. Owners retain scope and acceptance
+rulings. Requirement change or failed evidence produces affected re-entry over
+ABG truth, preserving valid unaffected work and outstanding obligations through
+persisted-state resume. A summary, fixture contract, count or bounded success
+cannot establish full application completion.
 
-## Product-Owned Surfaces
+## Generic Acceptance Scenarios
 
-`odd_glc` may define these surfaces:
+Hello World and Data Mapper are existing reusable acceptance scenarios and
+fixture subjects. They exercise generic odd_glc declarations in different
+subject workspaces. They are not odd_glc Products, Product members, Programs,
+lifecycle specializations, or identity variants.
 
-- lifecycle vocabulary and stage ordering;
-- lifecycle labels over admitted GTL/ABG carriers;
-- policy overlays, including `F_P` semantic judgment and `F_H` human decision
-  boundaries;
-- read/query surfaces over admitted ABG carriers;
-- lifecycle proof and residual interpretation over ABG fold and residual truth;
-- downstream specialization contracts;
-- GTL composition or binding declarations over GTL/ABG system functions.
+One generic workflow declaration selects lifecycle roles, dependencies,
+readiness, and expected evidence for every scenario. Scenario data supplies
+the full input, subject and existing worksite; admitted requirement and design
+results determine the bounded targets and proof obligations. The workflow remains
+declarative: ABIogenesis owns live LLM invocation, owner effects, admission,
+Event Calculus, replay, retry, and fan-in.
 
-These surfaces express lifecycle meaning. They do not write graph, runtime,
-admission, evidence, fold, residual, continuation, replay, or re-entry truth.
+The ABI5 C0 binding is the owner-effect portion of the lifecycle relation:
 
-## Non-Owned Surfaces
+```text
+generic lifecycle declaration + complete scenario input
+  -> ABG Program start and admitted lifecycle traversal
+  -> Intent/Product -> Requirements -> Design
+  -> construction and ABG C0 owner effect
+  -> admitted result and replay
+  -> independent Reviewer result
+  -> Executive disposition
+  -> lifecycle interpretation and affected re-entry when required
+```
 
-`odd_glc` owns no systems functionality. GTL provides declarative
-syntax; ABG interprets it and provides the runtime kernel — everything
-that executes, admits, derives, or gates. `odd_glc` provides domain
-knowledge: types, decomposition, vocabulary, policy data, calibration,
-and read-only interpretation. A surface in this product that executes
-plans, runs processes, derives truth, or adjudicates completeness is
-misallocated mechanism, not product realization.
+The C0 relation establishes worksite-content causality. Its evidence alone
+does not establish input preservation, lifecycle stage coverage or semantic
+application completion. Full Data Mapper acceptance requires every mandatory
+original application outcome or an explicit owner reprice; a bounded thread
+retains all other obligations as pending. Release remains a separate decision.
 
-`odd_glc` shall not own or republish:
+The immutable [T-041 zero-code Product](../build_tenants/common/design/ODD_GLC_ABI5_MIGRATION.md)
+remains predecessor evidence and an available declaration basis. It is reused
+only through its existing lawful installed-Product and declaration relation; it
+neither turns a fixture into a Product nor authorizes fixture-specific Product
+members.
 
-- generic graph functions or graph-function catalogs;
-- GTL graph, module, interface, job, wrapper, or carrier declaration law;
-- ABG runtime, actor/operator invocation, replay, admission, fold, residual,
-  continuation, correction, or re-entry authority;
-- a product-local requirement representation, translator, compiler, ledger, or
-  closure store;
-- a retry loop, process executor, runtime controller, or replay controller;
-- `odd_sdlc` phase names, local ledgers, retry behavior, closure rules, or
-  software-domain policy as generic lifecycle law.
+## C0 Consumption Contract
 
-## GTL/ABG Consumption Rule
+For a scenario edge that changes a worksite, the generic lifecycle relation
+consumes stable `WorkspaceBinding`, current `O0`, selected ABI owner and
+territory, receipt and `O1`, ordinary ABG admission, and fresh replay. A
+physical write or fixture assertion without admission is residue, not lifecycle
+truth. Parallel fixture branches require declared disjoint territories; fan-in
+consumes admitted results rather than ambient files.
 
-A constructive function belongs in GTL/ABG when the same function is needed by
-multiple ODD domains. Generic ODD construction is platform substrate, not
-`odd_glc` product law.
+If ABI5 does not expose a needed owner, worker, reviewer, fan-in, admission, or
+replay relation, the scenario records an ABI gap. `odd_glc` does not create a
+local compatibility mechanism.
 
-`odd_glc` shall not publish a native `glc.*` graph-function catalog for generic
-lifecycle construction. A named lifecycle route may be a GTL composition or
-binding map over GTL/ABG-published system functions.
+## Product Boundary
 
-The first consumed system-function set includes requirement context routing,
-requirement environment projection, requirement graph/refinement, obligation
-projection, destination topology, actor/operator invocation, evidence binding,
-assurance fold, assurance-case projection, residual projection, attenuation,
-continuation, and re-entry.
-
-When a required GTL/ABG capability is `missing`, `placeholder`, `test_only`,
-`unwired`, `unpinned`, forgeable, or disconnected from the required runtime or
-query path, the dependent lifecycle binding shall defer, block, or reprice.
-`odd_glc` shall not compensate with a local compatibility ledger, wrapper,
-fold, residual store, retry controller, or executor.
-
-Execution-bearing lifecycle edges default to typed F_P worker
-traversal: the declared edge contract names the worker as the executor
-of the built unit, test suite, or generation plan, and the typed
-execution-result asset it returns; deterministic mechanical checks and
-ABG admission make the result truth. `odd_glc` may declare that
-contract; it may not implement an execution loop. F_D-specific
-execution interiors arrive only through the substrate's ratified
-annealing path, never as product code.
-
-## Lifecycle Surface Classification
-
-The product uses lifecycle surfaces as vocabulary, labels, queries, policies,
-and downstream bindings over GTL/ABG truth.
-
-| Surface | Product classification |
-| --- | --- |
-| `LifeCycleWorksiteAsset` | Lifecycle scope label over ABG run/worksite refs and GTL module/job refs where present. |
-| `LifecycleContextAsset` | Query or label over ABG staged context, including `AuthorityContextFragment` and context routing. |
-| `IntentAsset` | Product-authored lifecycle meaning bound to GTL/ABG refs. |
-| `ProductDefinitionAsset` | Product-authored lifecycle meaning bound to requirement declaration and proof policy refs. |
-| `RequirementSetAsset` | GTL requirement-declaration binding, not an odd_glc-native requirement representation. |
-| `RequirementEnvironmentViewAsset` | Query or label over ABG `EdgeRequirementEnvironment`. |
-| `DestinationTopologyAsset` | Query or label over ABG `DestinationTopology`. |
-| `InstructionSetAsset` | Lifecycle handoff label over ABG obligation, materialization-target, and execution-schedule projections. |
-| `TargetArtifactAsset` | Downstream artifact binding over GTL asset surfaces and ABG admitted artifact refs. |
-| `CapabilityAsset` | Capability declaration label over GTL/ABG capability carriers and ABG actor/operator invocation. |
-| `EvidenceBindingAsset` | Query or label over ABG `RequirementEvidenceBinding`. |
-| `AssuranceFoldViewAsset` | Query or label over ABG `RequirementFoldProjection` and assurance-case projection. |
-| `ResidualPressureViewAsset` | Query or label over ABG residual projection and attenuation classification. |
-| `ReentryDecisionAsset` | Lifecycle disposition label over ABG continuation, correction, re-entry, release, or block truth plus `F_H` policy. |
-
-A `ViewAsset` name is not authority to mint a native carrier. Native
-`odd_glc` carriers are reserved for lifecycle vocabulary, policy overlays,
-`F_P`/`F_H` decision surfaces, and specialization contracts that are not
-generic GTL/ABG system assets.
-
-## Downstream Program Contract
-
-A downstream program may specialize `odd_glc` by adding domain-specific assets,
-schemas, policies, evidence expectations, and semantic proof interpretation.
-
-The downstream program must still use GTL/ABG for graph structure, graph-vector
-traversal, graph functions, execution, admission, evidence, fold, residual,
-continuation, replay, and re-entry truth.
-
-A future software-delivery downstream product may use current `odd_sdlc`
-workflows only as coverage-witness and deletion-target evidence. It shall not
-copy or reproduce `odd_sdlc` source code, `Sdlc*` carriers, local ledgers,
-phase flow, closure rules, retry behavior, or software-domain policy as
-`odd_glc` law or as a required downstream implementation shape.
-
-## Current Source State
-
-`T-001` through `T-024` and `T-028` are completed. `T-025`, `T-026`, and
-`T-027` are active for the remaining typed-startup parity wave. The current
-source checkpoint has an active TypeScript tenant under
-`build_tenants/odd_glc/typescript/` that reads and interprets admitted GTL/ABG
-truth from the installed ABIogenesis `4.6.0-rc.3` substrate.
-
-That tenant is not an odd_glc runtime. It does not emit runtime events, admit
-evidence, mint admitted refs, select graph functions, invoke actors, fold
-requirements, project residuals, route continuation, or execute `F_P` workers.
-
-The first steel-thread scenario remains
-[SCN-GLC-HELLO-WORLD-MINIMAL](./scenarios/SCN-GLC-HELLO-WORLD-MINIMAL.md). It
-is an MVP proof vehicle, not the product scope.
-
-The active parity wave extends the completed ABIogenesis 4.2 startup,
-registry, node-type, and typed-composition foundation into the scenario ladder,
-non-closed/re-entry proof, and recursive/any-scale proof. `odd_glc` may
-declare lifecycle node types, graph-function bindings, overlays, policy data,
-and startup configuration for ABG to consume. Those bindings reuse GTL/ABG
-catalog entries wherever generic equivalents exist; product-owned graph
-functions require explicit specialization proof. ABG owns startup admission,
-registry projection, lookup, selection, graph-call opening, traversal, runtime
-truth, evidence, fold, residual, and disposition.
-
-Full lifecycle parity with `odd_sdlc` means user-visible lifecycle coverage
-over generic `odd_glc` capabilities. It does not mean rebuilding, copying, or
-reproducing `odd_sdlc` source code, `Sdlc*` carriers, local ledgers, phase
-flow, retry behavior, closure rules, or software-domain policy.
+Downstream domain Products may add domain assets and interpretation, but must
+continue to use GTL/ABG for construction and runtime truth. Existing
+`odd_sdlc` workflows remain coverage witnesses only; their code, phase flow,
+ledgers, closure rules, and runtime authority are not `odd_glc` law.

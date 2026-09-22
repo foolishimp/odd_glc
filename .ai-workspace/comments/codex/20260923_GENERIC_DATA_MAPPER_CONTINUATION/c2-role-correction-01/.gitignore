@@ -1,0 +1,28 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/activation.json
+/authored.patch
+/environment-projection.json
+/freeze-self-check.json
+/freeze.json
+/generic-run-environment.successor.json
+/preimages/build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs
+/preimages/build_tenants/odd_glc/typescript/test/native-continuation.test.mjs
+/project-environment.mjs
+/projection-first-diagnostic.txt
+/regression-after.json
+/regression-after.txt
+/regression-before.json
+/regression-before.txt
+/return.md
+/review.md
+/selected-core-loader.mjs
+/self-check.json
+/source-delta.json
+/source-successors/build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs
+/source-successors/build_tenants/odd_glc/typescript/test/native-continuation.test.mjs
+/tracking-changes.json
+/tracking-preimages/.ai-workspace/comments/codex/20260921_TRUSTED_DESKTOP_STEEL_THREAD/native-reacquisition-01/d5-next-selection.json
+/tracking-preimages/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md
+/tracking-preimages/specification/GOALS.md

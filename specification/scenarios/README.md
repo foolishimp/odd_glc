@@ -1,19 +1,14 @@
 # odd_glc Scenarios
 
-Scenarios prove operational meaning where requirement claims need end-to-end
-evidence.
+Scenarios are reusable generic lifecycle acceptance coverage, not Product
+identities.
 
-Initial scenario targets:
+- [Hello World minimal](SCN-GLC-HELLO-WORLD-MINIMAL.md)
+- [Hello World scenario ladder](SCN-GLC-HELLO-WORLD-LADDER.md)
+- [T-025](../../.ai-workspace/tickets/active/T-025-replay-scenario-ladder-as-typed-glc-declarations.md)
+  owns the existing Data Mapper fixture family and generic lifecycle parity
+  mapping.
 
-- a generic lifecycle trace that does not depend on `odd_sdlc`:
-  [SCN-GLC-HELLO-WORLD-MINIMAL](SCN-GLC-HELLO-WORLD-MINIMAL.md);
-- a Hello World scenario ladder that uses current `odd_sdlc` scenarios only as
-  coverage witnesses:
-  [SCN-GLC-HELLO-WORLD-LADDER](SCN-GLC-HELLO-WORLD-LADDER.md);
-- basic CLI, JavaScript tenant/test, Rust CLI, Rust service, and parallel
-  JavaScript Hello World scenario witnesses;
-- active requirement projection through one lifecycle stage;
-- evidence binding and partial fold interpretation;
-- residual pressure carrying to a lawful re-entry point;
-- downstream specialization consuming `odd_glc` lifecycle meaning while still
-  using GTL/ABG carriers and ABG runtime truth.
+T-043 binds those existing acceptance cases to one generic live-LLM workflow
+over ABI5 C0. It adds no Hello World or Data Mapper Product, Product member,
+Program identity, or duplicate scenario authority.

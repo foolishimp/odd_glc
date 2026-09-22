@@ -1,0 +1,38 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/RETURN.md
+/check-conformance.mjs
+/conformance-final.json
+/conformance-final.log
+/conformance.json
+/conformance.log
+/context-correction.log
+/context-observation-refused.json
+/context-observation.json
+/correct-context-inventory.mjs
+/driver-launch-02.mjs
+/driver.mjs
+/focused-check-final.log
+/focused-check.json
+/focused-check.log
+/focused-check.mjs
+/foundation-delta.patch
+/foundation-preimages.json
+/freeze.json
+/freeze.py
+/inventory.json
+/package-candidate.mjs
+/package-verification.json
+/package02-verification.json
+/packaging-corrected.log
+/packaging-final.log
+/packaging.log
+/preparation-config-02.json
+/preparation-config.json
+/prepare-inputs.log
+/prepare-inputs.mjs
+/prepare-product.mjs
+/selection.json
+/source-provenance.json
+/stdo-status.json

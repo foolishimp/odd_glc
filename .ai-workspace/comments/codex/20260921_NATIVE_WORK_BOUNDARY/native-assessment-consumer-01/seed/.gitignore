@@ -1,0 +1,15 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../../20260923_WIP_CHECKPOINT/README.md
+/assets/intent.json
+/assets/product.json
+/evaluation/oracle.json
+/policy/rubric.json
+/selection/provenance.json
+/selection/source-basis.json
+/selection/witness.md
+/source/INTENT.md
+/source/REQUIREMENTS.md
+/source/appendices/APPENDIX_A_FROBENIUS_ALGEBRAS.md
+/source/mapper_requirements.md
+/source/requirements/00-imported-sources.md

@@ -3,6 +3,7 @@
 **Status**: Active
 **Category**: Product Requirement / Asset Model
 **Date**: 2026-06-28
+**Re-entry**: [T-043 D1-D3](../../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-delivery-plan)
 **Derives from**: [GOALS.md](../GOALS.md), [INTENT.md](../INTENT.md),
 [PRODUCT.md](../PRODUCT.md),
 [T-001](../../.ai-workspace/tickets/completed/T-001-govern-minimal-odd-glc-requirements-and-graph-design.md),
@@ -20,11 +21,10 @@
 Define the generic lifecycle surface vocabulary required for `odd_glc` to
 interpret governed work at any scale.
 
-The first steel-thread scenario instantiates this model as one Hello World
-program to force the thread through request, requirement projection, target
-construction, executable evidence, assurance fold, residual pressure, and
-re-entry decision. That scenario is an MVP proof vehicle, not the product
-scope.
+The Hello World binding below illustrates the minimum surface roles. A selected
+full-input lifecycle also derives Intent/Product, Requirements and Design
+before construction, and preserves its obligations through evidence and
+revision. The scenario is a proof vehicle, not the generic Product scope.
 
 This family keeps `odd_glc` minimal. It imports the useful asset distinction
 from the current `odd_sdlc` product surface, but it does not import SDLC phase
@@ -55,7 +55,7 @@ release snapshot, deployment lane, or operational-return loop.
 
 The generic `odd_glc` lifecycle model starts with these surfaces:
 
-| Surface | Classification | GTL/ABG binding | First steel-thread binding |
+| Surface | Classification | GTL/ABG binding | Illustrative Hello World binding |
 | --- | --- | --- | --- |
 | `LifeCycleWorksiteAsset` | odd_glc lifecycle scope label. | ABG run/worksite refs and GTL module/job refs where present. | One worksite label for the first steel-thread trace. |
 | `LifecycleContextAsset` | Query/label over staged context. | ABG `AuthorityContextFragment` and `routeContextConstraint`. | Request to produce an inspectable greeting program with executable proof. |
@@ -76,6 +76,12 @@ The generic minimum surface model does not make separate test-suite, backlog,
 release snapshot, deployment, runtime-return, incident, maintenance, or SDLC
 phase assets mandatory. Later requirements or downstream products may add those
 assets by specialization when the lifecycle scope requires them.
+
+The Design stage binds `DestinationTopologyAsset` and admitted design-choice
+and evidence-policy references. The stage names identify lifecycle meaning,
+not new native carriers or functions. The application `ProductDefinitionAsset`
+and imported specification describe the governed subject; neither replaces the
+builder Product Definition or registers a scenario as another odd_glc Product.
 
 ## Acceptance Criteria
 
@@ -112,3 +118,50 @@ assets by specialization when the lifecycle scope requires them.
 **REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-016**: Future downstream specialization may add domain-specific asset roles, evidence expectations, and policy bindings, but those additions shall not replace or duplicate the minimum `odd_glc` lifecycle asset truth. `odd_glc` shall not author software-domain requirement, design, source, test, build, release, deployment, or runtime-return semantics as generic lifecycle law.
 
 **REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-017**: `odd_glc` shall not mint a native carrier when the same role is already carried by GTL/ABG. A proposed native carrier requires requirement evidence that no GTL/ABG carrier exists and that the surface is not a generic ODD system asset.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-018**: A full-input lifecycle shall bind
+the complete owner-selected source set, member identities and digests, source
+roles and governing authority. It shall preserve normative, supporting,
+speculative and conflicting material as such. A file inventory is source
+integrity evidence, not proof that all semantic obligations were derived.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-019**: The lifecycle declaration shall
+carry admitted predecessor and source references through Intent/Product,
+Requirements, Design, construction and evidence. Each derivation shall retain
+applicable obligations and expose new, unresolved or conflicting pressure.
+Selection of a bounded target shall not erase unimplemented obligations or
+silently substitute a weaker fixture, summary or module contract.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-020**: Realization and proof shall bind
+the same admitted source obligation and its current requirement/design basis.
+Realization evidence, verifier artifacts, verifier execution and semantic
+assessment shall retain distinct roles. A passing verifier for a weaker
+contract shall not close the stronger source obligation.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-021**: Lifecycle interpretation shall
+distinguish computations over admitted identities, roles, freshness and declared
+coverage (C), admitted agent judgments of faithfulness and sufficiency (J), and
+owner scope and acceptance rulings (O). These are evaluation roles, not a new
+carrier catalog. No C check shall infer semantic completeness from counts; no
+J result shall mint admission or scope authority; no proposed scope change
+shall take effect without its permitted owner ruling.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-022**: A failed verifier or changed
+requirement shall preserve the prior result and route affected work to its
+owning lifecycle stage through admitted ABG re-entry. Interpretation shall
+distinguish stale affected evidence from reusable unaffected evidence, retain
+pending obligations, and support reconstruction of that distinction from
+persisted truth. Resetting an instance shall not stand in for this revision.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-023**: A bounded lifecycle result shall
+name its exact completed claims and remaining source obligations. Full
+application completion shall require all mandatory selected-source outcomes
+and constraints to be satisfied, or explicitly repriced by their permitted
+owner. Test counts, file counts, module names and prior bounded acceptance
+shall not close remaining application or release claims.
+
+**REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-024**: Full-input lifecycle order,
+dependencies, evidence gates and re-entry shall be declared as one reusable
+GTL composition consumed by ABG. A host caller that invokes construction and
+execution alone shall not establish the upstream lifecycle stages; adding
+host-side stage invocation or a local requirement/proof ledger is prohibited.

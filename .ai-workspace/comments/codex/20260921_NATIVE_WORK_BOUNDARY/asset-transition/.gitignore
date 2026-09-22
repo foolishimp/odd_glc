@@ -1,0 +1,26 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/README.md
+/authority-acquisition.json
+/authority-clarification.md
+/candidate.patch
+/candidate/build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md
+/candidate/build_tenants/odd_glc/typescript/src/native-intent-declarations.mjs
+/candidate/build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs
+/configuration.template.json
+/focused-check.json
+/focused-check.mjs
+/freeze.json
+/preimages.json
+/preimages/build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs
+/proof-fixture/evaluator-private/evaluate.mjs
+/proof-fixture/freeze.json
+/proof-fixture/worker-visible/input/request.md
+/proof-fixture/worker-visible/input/source-basis.json
+/proof-fixture/worker-visible/policy/intent-work-policy.json
+/selection.json
+/use-coordinates.json
+/work-declaration-input.json
+/work-declaration.json
+/writer-return.md

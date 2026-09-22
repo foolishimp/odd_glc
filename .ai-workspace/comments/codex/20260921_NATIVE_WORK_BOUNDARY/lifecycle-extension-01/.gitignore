@@ -1,0 +1,17 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/authored.patch
+/candidate/build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md
+/candidate/build_tenants/odd_glc/typescript/src/native-asset-declarations.mjs
+/candidate/build_tenants/odd_glc/typescript/src/native-intent-declarations.mjs
+/candidate/build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs
+/candidate/build_tenants/odd_glc/typescript/test/native-asset-declarations.test.mjs
+/check.log
+/core-seam.md
+/freeze.json
+/inventory.json
+/preimages/build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md
+/preimages/build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs
+/return.md
+/subject.json

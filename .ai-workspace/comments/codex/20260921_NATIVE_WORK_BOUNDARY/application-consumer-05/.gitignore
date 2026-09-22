@@ -1,0 +1,29 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/RETURN.md
+/activation.json
+/artifacts/odd-glc-proof-native-assessment-consumer-5.0.0.tgz
+/assets/assessment.schema.json
+/assets/oracle.json
+/build-component.mjs
+/check-selection.mjs
+/checks.json
+/component-build.json
+/component/build/
+/component/contracts/assessment.schema.json
+/component/contracts/capabilities/capability-definition-graph.json
+/component/contracts/evaluation-oracle.json
+/component/contracts/public-contract-catalog.schema.json
+/component/package.json
+/component/product-toolchain-manifest.json
+/declaration-delta.json
+/declaration.patch
+/freeze.json
+/jdk-release.txt
+/packaging.json
+/src/identity.mjs
+/src/publication.mjs
+/src/run-environment.mjs
+/src/runtime.mjs
+/src/selection-data.mjs

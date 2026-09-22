@@ -1,0 +1,22 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/README.md
+/catalog-boundary-summary.json
+/catalog-diagnostic.json
+/configuration-03.json
+/driver.mjs
+/fixture-selection.json
+/freeze.json
+/launch-policy-observation.json
+/launch-policy.json
+/next-configuration.template.json
+/prepare-product.mjs
+/qualification-01-driver.log
+/qualification-02-config.json
+/qualification-02-driver.log
+/qualification-03-driver.log
+/qualification-config.json
+/resume-inputs.json
+/setup-timing-summary.json
+/writer-return.md

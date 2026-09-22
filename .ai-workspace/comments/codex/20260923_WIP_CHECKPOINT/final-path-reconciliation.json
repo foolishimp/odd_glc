@@ -1,0 +1,16 @@
+{
+  "status": "Final publication inventory under the accepted Root grant",
+  "directPathCount": 674,
+  "archiveBackedPaths": 8988,
+  "newDirectPathsSincePreparation": [],
+  "archiveOriginalsStillVisible": [],
+  "forcedDirectGeneratedMetadata": [],
+  "sourceAcceptance": "Root accepted exact subject 95880556 after independent review d0c67865; transport preservation accepted.",
+  "pending": "Add this receipt and later publication receipts before the final commit; payload jobs must complete before final staging.",
+  "directoryLocalIgnoreFiles": 280,
+  "inventorySeconds": 0.688,
+  "finalDirectStageInventory": "final-stage-paths.nul",
+  "acceptedSubjectVerifiedPaths": 0,
+  "stageIncludesAlreadyCommittedPayloads": true,
+  "explicitIgnoreMetadataFiles": 280
+}

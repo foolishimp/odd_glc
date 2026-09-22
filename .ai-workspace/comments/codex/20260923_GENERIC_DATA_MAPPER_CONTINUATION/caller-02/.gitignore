@@ -1,0 +1,19 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/activation.json
+/bind-selection.mjs
+/caller-adaptation.patch
+/check-public-exports.mjs
+/configuration.pending.json
+/current-resource.mjs
+/driver.mjs
+/freeze.json
+/launch-policy.json
+/observe-process.py
+/public-export-check-final.log
+/public-export-check.json
+/public-export-check.log
+/readiness.json
+/return.md
+/reuse-preimages.json

@@ -1,0 +1,13 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/evaluator-private/evaluate.mjs
+/evaluator-private/expected-shipping-summary.json
+/evaluator-private/oracle-derivation.md
+/evaluator-private/qualification.json
+/evaluator-private/self-check.mjs
+/fixture-return.md
+/freeze.json
+/worker-visible/brief.md
+/worker-visible/input/orders.csv
+/worker-visible/output/shipping-summary.json

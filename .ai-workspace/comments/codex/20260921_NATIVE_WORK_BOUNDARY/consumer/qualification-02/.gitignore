@@ -1,0 +1,42 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../../20260923_WIP_CHECKPOINT/README.md
+/configuration.json
+/preparation-failure.json
+/resources/events/runtime.events.jsonl
+/resources/installed/consumers/selected/node_modules/
+/resources/installed/consumers/selected/package-lock.json
+/resources/installed/consumers/selected/package.json
+/resources/installed/node_modules/
+/resources/installed/package-lock.json
+/resources/installed/package.json
+/reused-product.json
+/setup-0-stderr.log
+/setup-0-stdout.json
+/setup-0.jsonl
+/setup-1-stderr.log
+/setup-1-stdout.json
+/setup-1.jsonl
+/setup-2-stderr.log
+/setup-2-stdout.json
+/setup-2.jsonl
+/setup-3-stderr.log
+/setup-3-stdout.json
+/setup-3.jsonl
+/setup-4-stderr.log
+/setup-4-stdout.json
+/setup-4.jsonl
+/setup-5-stderr.log
+/setup-5-stdout.json
+/setup-5.jsonl
+/setup-6-stderr.log
+/setup-6-stdout.json
+/setup-6.jsonl
+/setup-7-process-failure.json
+/setup-7-stderr.log
+/setup-7-stdout.json
+/setup-7.jsonl
+/worksite/.abiogenesis/workspace-manifest.json
+/worksite/brief.md
+/worksite/input/orders.csv
+/worksite/output/shipping-summary.json

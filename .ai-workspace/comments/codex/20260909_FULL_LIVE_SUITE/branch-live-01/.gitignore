@@ -1,0 +1,15 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/branch-one.mjs
+/data-mapper-full.stderr.log
+/data-mapper-full.stdout.log
+/frozen-basis.json
+/generic-live-workflow-support.mjs
+/generic-workflow-scenarios.json
+/launch.py
+/live-dispatch-observation.json
+/parallel-js.stderr.log
+/parallel-js.stdout.log
+/process-results.json
+/processes.json

@@ -1,0 +1,26 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/WORKER_HANDOFF.md
+/base-request.json
+/deterministic-tests.log
+/frozen-identity.json
+/frozen/fixtures/generic-workflow-scenarios.json
+/frozen/generic-live-workflow-support.mjs
+/frozen/generic-retained-branch-support.mjs
+/frozen/generic-retained-branch.test.mjs
+/frozen/generic-retained-workflow-support.mjs
+/frozen/generic-retained-workflow.test.mjs
+/frozen/generic-successor-epoch-support.mjs
+/frozen/generic-successor-epoch.test.mjs
+/frozen/generic-workflow-scenario-fixture.test.mjs
+/generic-live-workflow-support.preimage.mjs
+/native-open-proof.json
+/native-open.stderr.log
+/native-open.stdout.log
+/setup-epoch.mjs
+/setup-helper.patch
+/setup-text-output-repair-01-result.json
+/setup-text-output-repair-01.stderr.log
+/setup-text-output-repair-01.stdout.log
+/verify-open.mjs

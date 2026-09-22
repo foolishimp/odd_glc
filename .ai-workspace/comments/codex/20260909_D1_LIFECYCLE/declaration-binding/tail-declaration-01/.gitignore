@@ -1,0 +1,20 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../../20260923_WIP_CHECKPOINT/README.md
+/activation.md
+/candidate.patch
+/check-and-stage.mjs
+/checks.json
+/consumer-unbound/build/
+/consumer-unbound/contracts/capabilities/capability-definition-graph.json
+/consumer-unbound/contracts/public-contract-catalog.schema.json
+/consumer-unbound/package.json
+/consumer-unbound/product-toolchain-manifest.json
+/execution.md
+/input-binding.json
+/manifest.json
+/postimages/.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
+/postimages/build_tenants/odd_glc/typescript/test/d1-lifecycle-tail-declarations.mjs
+/preimages.json
+/preimages/.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
+/static-program-check.json

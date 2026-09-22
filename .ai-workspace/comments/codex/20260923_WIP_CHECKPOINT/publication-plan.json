@@ -1,0 +1,43 @@
+{
+  "status": "prepared; no Git mutation authorized or performed",
+  "repo": "/Users/jim/src/apps/odd_glc",
+  "expectedPublishedBase": "dae8589b2784be4c101af70d891f85367fc13ebd",
+  "payloadBatchLimitBytes": 950000000,
+  "existingUnpublishedObjectBytes": 0,
+  "batches": [
+    {
+      "batch": 1,
+      "pathList": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/batch-001-paths.nul",
+      "partCount": 30,
+      "payloadBytes": 946818595,
+      "pathListSha256": "8de0732f3b215366590840a32b7c16f2da46604d79e04be998bb4a4d5a516c0b",
+      "phase": "transport_only"
+    },
+    {
+      "batch": 2,
+      "pathList": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/batch-002-paths.nul",
+      "partCount": 19,
+      "payloadBytes": 937267542,
+      "pathListSha256": "922b5facd6ac06dc1cd9c01a25eb9e8e822e1b54932a70be88b1c31eb346d99f",
+      "phase": "transport_only"
+    },
+    {
+      "batch": 3,
+      "pathList": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/batch-003-paths.nul",
+      "partCount": 85,
+      "payloadBytes": 943521498,
+      "pathListSha256": "04f77c8c8615f961713a88fa48e8a61563104135ca0e0f1dce21c886065e3582",
+      "phase": "transport_only"
+    },
+    {
+      "batch": 4,
+      "pathList": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/batch-004-paths.nul",
+      "partCount": 20,
+      "payloadBytes": 10290021,
+      "pathListSha256": "4f8ef1a8b8c076a602685e3e8a7963ce762f1394d8781bbeeb6c32089608af66",
+      "phase": "final_source_and_metadata"
+    }
+  ],
+  "finalCommit": "Includes the last 10,290,021-byte payload batch, canonical source/tracking changes and all checkpoint metadata after Root acceptance. No force, amend, tags or release publication.",
+  "effectGrant": "Pending Root final Git grant covering all batches, both repos and remote equality."
+}

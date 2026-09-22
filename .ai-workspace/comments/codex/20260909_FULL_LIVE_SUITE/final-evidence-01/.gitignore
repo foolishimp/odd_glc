@@ -1,0 +1,12 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/REPORT.md
+/archive-record.json
+/closed-runtime-stage-index.json
+/data-mapper-and-abg-supplement.tar.gz
+/executive-disposition.json
+/index.json
+/projection-members.json
+/stage-index.json
+/tracking-delta.patch

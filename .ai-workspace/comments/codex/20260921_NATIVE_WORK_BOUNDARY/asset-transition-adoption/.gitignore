@@ -1,0 +1,10 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/authority-route-application.json
+/canonical-import.log
+/semantic-review-subject.json
+/semantic-review.md
+/source-adoption.json
+/stdo_odd_glc.preimage.json
+/transport-summary.json

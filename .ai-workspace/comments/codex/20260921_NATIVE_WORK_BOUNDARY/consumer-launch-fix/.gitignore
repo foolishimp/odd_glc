@@ -1,0 +1,11 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/caller.patch
+/driver-readback.mjs
+/driver.mjs
+/freeze.json
+/readback-freeze.json
+/readback-stderr.log
+/readback-stdout.log
+/readback.patch

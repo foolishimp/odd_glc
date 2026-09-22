@@ -1,0 +1,43 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/ACTIVATION.md
+/RETURN.md
+/assets/assessment.schema.json
+/assets/oracle.json
+/assets/witness.md
+/authored.patch
+/build-component.mjs
+/caller-recipe.md
+/caller.mjs
+/change-declaration.json
+/check-readiness.mjs
+/component-build.json
+/component/build/
+/component/contracts/assessment.schema.json
+/component/contracts/capabilities/capability-definition-graph.json
+/component/contracts/evaluation-oracle.json
+/component/contracts/public-contract-catalog.schema.json
+/component/contracts/witness.md
+/component/package.json
+/component/product-toolchain-manifest.json
+/consumer-how.md
+/evidence/build.json
+/evidence/first-diagnostic.json
+/evidence/fourth-diagnostic.json
+/evidence/readiness.json
+/evidence/second-diagnostic.json
+/evidence/third-diagnostic.json
+/executive-disposition.md
+/freeze.json
+/owner-source-basis.json
+/preimages.json
+/src/identity.mjs
+/src/prior/identity.mjs
+/src/prior/runtime.mjs
+/src/prior/selection-data.mjs
+/src/publication.mjs
+/src/run-environment.mjs
+/src/runtime.mjs
+/src/selection-data.mjs
+/work-order.json

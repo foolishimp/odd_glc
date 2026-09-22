@@ -19,6 +19,10 @@ const liveSource = await readFile(
   path.join(here, "glc-software-build-overlay-live.test.mjs"),
   "utf8"
 );
+const genericSupportSource = await readFile(
+  path.join(here, "generic-live-workflow-support.mjs"),
+  "utf8"
+);
 
 const SPAWN_CAPABLE = /\b(execSync|execFileSync|spawnSync|spawn|execFile|exec|fork|runSync|runAsync|runForEvidence|run)\s*\(\s*("(?:[^"\\]|\\.)*"|'[^']*'|[A-Za-z_$][\w.$]*)?/gu;
 
@@ -112,4 +116,119 @@ test("the data-mapper scenario declares worker execution, never framework execut
   assert.equal(/test-execution-plan\.json must set command to sbt/u.test(liveSource), false);
   assert.match(liveSource, /YOU run the test suite inside this turn/u);
   assert.match(liveSource, /Run sbt Test\/compile YOURSELF/u);
+});
+
+test("the generic C1 to C2 workflow has only artifact-tar and fresh-public-read process authority", () => {
+  const calls = [...genericSupportSource.matchAll(
+    /\bexecFileAsync\s*\(\s*("(?:[^"\\]|\\.)*"|'[^']*'|[A-Za-z_$][\w.$]*)/gu
+  )].map((match) => `execFileAsync(${match[1]}`);
+  assert.deepEqual(calls.sort(), [
+    "execFileAsync(\"tar\"",
+    "execFileAsync(process.execPath"
+  ]);
+  assert.match(
+    genericSupportSource,
+    /execFileAsync\(\s*"tar",\s*\["-xzf", canonicalArtifactPath, "-C", bootstrapRoot\]/u
+  );
+  assert.match(
+    genericSupportSource,
+    /\[supportPath, "--fresh-public-read", requestPath\]/u
+  );
+  for (const subjectTool of ["node", "sbt", "cargo", "rustc", "mkdir"]) {
+    assert.equal(
+      new RegExp(String.raw`execFileAsync\s*\(\s*["']${subjectTool}["']`, "u")
+        .test(genericSupportSource),
+      false,
+      `generic host process invoked subject tool ${subjectTool}`
+    );
+  }
+});
+
+test("the generic host contains no subject executor, module call, HTTP probe, or report synthesizer", () => {
+  for (const forbidden of [
+    "runValidationCommand",
+    "testReportEvidence",
+    "reportCounts",
+    "nodeTestPassCount",
+    "legacyHostEvaluateGenericScenarioOutcome",
+    "?predicate=",
+    "httpRequest(",
+    "fetch("
+  ]) {
+    assert.equal(
+      genericSupportSource.includes(forbidden),
+      false,
+      `${forbidden} restores host-side subject validation`
+    );
+  }
+  assert.equal(/<testsuite\b|<testcase\b/u.test(genericSupportSource), false);
+  assert.equal(/\b(?:spawnSync|spawn|execSync|execFileSync|fork)\s*\(/u.test(genericSupportSource), false);
+});
+
+test("generic outcome interpretation is a pure read over admitted C2 observations", () => {
+  const evaluator = genericSupportSource.slice(
+    genericSupportSource.indexOf("export function evaluateGenericScenarioOutcome"),
+    genericSupportSource.indexOf("function validateClaudeConfiguration")
+  );
+  assert.notEqual(evaluator.length, 0);
+  assert.match(evaluator, /worksite_command_execution_observation/u);
+  assert.match(evaluator, /worksite_predicate_observation/u);
+  assert.equal(
+    /\b(?:execFileAsync|readFile|writeFile|import|fetch|spawn)\b/u.test(evaluator),
+    false,
+    "odd_glc interpretation must consume admitted rows without performing subject IO"
+  );
+});
+
+test("generic execution uses the frozen public C1 result authority as C2 source", () => {
+  assert.match(
+    genericSupportSource,
+    /constructWorksiteConstructionModulePublication\([\s\S]*constructWorksiteCommandExecutionModulePublication\(/u
+  );
+  assert.match(
+    genericSupportSource,
+    /const allowlist = \[\s*constructionIds\.graphFunctionRef,\s*executionIds\.graphFunctionRef,?\s*\]\.sort\(\)/u
+  );
+  assert.match(genericSupportSource, /constructWorksiteCommandExecutionTask\(/u);
+  assert.match(genericSupportSource, /sourceConstructionResultRef: sourceResult\.resultRef/u);
+  assert.match(genericSupportSource, /sourceConstructionResultDigest: sourceResult\.resultDigest/u);
+  assert.match(genericSupportSource, /sourceConstructionResult: sourceResult/u);
+  assert.match(genericSupportSource, /deriveInvocationSourceResultBasisAtPrefix\(/u);
+  assert.match(genericSupportSource, /publicAuthorityDigest: call\.invocation\.invocationDigest/u);
+  assert.match(genericSupportSource, /kind: "admitted_source_result", basis: sourceRun\.sourceBasis/u);
+  assert.match(genericSupportSource, /run_result_projection/u);
+  assert.match(genericSupportSource, /run_replay_projection/u);
+  assert.equal(/RootPublicInvocation|RootOperationContext|sourceProjectionAuthority/u.test(genericSupportSource), false);
+  assert.equal(/sourceTerminal|sourceArtifact/u.test(genericSupportSource), false);
+});
+
+test("generic fresh reads use declared reads and exported ABG source-result derivation", () => {
+  const freshRead = genericSupportSource.slice(
+    genericSupportSource.indexOf("async function freshPublicReadMain"),
+    genericSupportSource.indexOf('process.argv[2] === "--fresh-public-read"')
+  );
+  assert.notEqual(freshRead.length, 0);
+  assert.match(freshRead, /applyDefinitionCall\(installedPublic, request\.invocation/u);
+  assert.match(freshRead, /sourceResultFromRead\(abg, request\.sourceRun\.call/u);
+  assert.equal(/RunProjectionPort/u.test(genericSupportSource), false);
+  assert.match(genericSupportSource, /abg\.ABG_PROJECT_READ_CONTRACTS\[memberKey\]/u);
+  assert.match(genericSupportSource, /deriveInvocationSourceResultBasisAtPrefix\(/u);
+  assert.match(genericSupportSource, /runInstalledDefinitionCallTransport\(acquisition, call\)/u);
+  assert.match(genericSupportSource, /runFreshPublicRead\(prepared, executionOutcome, "run_result"\)/u);
+  assert.match(genericSupportSource, /runFreshPublicRead\(prepared, executionOutcome, "run_replay"\)/u);
+});
+
+test("generic installed no-live qualification cannot enter either public run", () => {
+  const qualifier = genericSupportSource.slice(
+    genericSupportSource.indexOf("export async function qualifyGenericWorkflowInstalledNoLive"),
+    genericSupportSource.indexOf("export async function runGenericLiveWorkflowScenario")
+  );
+  assert.notEqual(qualifier.length, 0);
+  assert.match(qualifier, /prepareInstalledScenario\(/u);
+  assert.match(qualifier, /WORKSITE_CONSTRUCTION_IDS/u);
+  assert.match(qualifier, /WORKSITE_COMMAND_EXECUTION_IDS/u);
+  assert.match(qualifier, /loaded_product_execution_resolution/u);
+  assert.equal(/constructionRunInvocation|commandExecutionRunInvocation/u.test(qualifier), false);
+  assert.equal(/applyDeclaredRun/u.test(qualifier), false);
+  assert.equal(/ABG_TS_CLAUDE|liveWorkerInvoked:\s*true/u.test(qualifier), false);
 });

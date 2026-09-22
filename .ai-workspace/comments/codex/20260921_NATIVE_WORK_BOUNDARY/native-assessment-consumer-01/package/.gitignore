@@ -1,0 +1,13 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../../20260923_WIP_CHECKPOINT/README.md
+/artifacts/odd-glc-proof-native-assessment-consumer-5.0.0.tgz
+/pack-stderr.log
+/pack-stdout.json
+/prepared-product.json
+/product/build/
+/product/contracts/assessment.schema.json
+/product/contracts/capabilities/capability-definition-graph.json
+/product/contracts/public-contract-catalog.schema.json
+/product/package.json
+/product/product-toolchain-manifest.json

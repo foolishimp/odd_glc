@@ -1,0 +1,40 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/activation.md
+/authenticated-selection.json
+/continue-01.mjs
+/currentness-preserved.json
+/cursor-premise-intervention-result.json
+/cursor-premise-intervention.json
+/cursor-premise-intervention.mjs
+/diagnose.mjs
+/digest-discrimination.mjs
+/exact-join-values.json
+/exact-source-value.json
+/first-refused-relation.json
+/first-replay-exception.json
+/freeze.json
+/join-diagnosis.mjs
+/native-digest-discrimination-02.json
+/native-digest-discrimination.json
+/ordered-causal-evidence.json
+/ordered-evidence.mjs
+/phases.jsonl
+/preexisting-guard-proof.json
+/prospective-selection.json
+/provenance-diagnostic.mjs
+/provenance-seam.json
+/reconstructed-carriers.json
+/reproduction.md
+/retained-projection-result.json
+/return.md
+/route-projection-result.json
+/self-check.json
+/source-read-set.json
+/timing.json
+/tracking/GOALS.md.preimage
+/tracking/GOALS.md.successor
+/tracking/T-287-deliver-abiogenesis-5-feature-waves.md.preimage
+/tracking/T-287-deliver-abiogenesis-5-feature-waves.md.successor
+/tracking/application.json

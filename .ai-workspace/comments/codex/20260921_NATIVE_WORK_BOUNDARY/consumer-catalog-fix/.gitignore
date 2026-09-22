@@ -1,0 +1,37 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/authored.patch
+/continuation-config-v2.json
+/continuation-config.json
+/driver-v2.mjs
+/driver.mjs
+/freeze-v2.json
+/freeze.json
+/preimages/driver.mjs
+/qualification-04-driver.log
+/qualification-04/configuration.json
+/qualification-04/preparation-failure.json
+/qualification-05/configuration.json
+/qualification-05/continued-basis.json
+/qualification-05/preparation-failure.json
+/qualification-05/setup-0-stderr.log
+/qualification-05/setup-0-stdout.json
+/qualification-05/setup-0.jsonl
+/qualification-05/setup-1-stderr.log
+/qualification-05/setup-1-stdout.json
+/qualification-05/setup-1.jsonl
+/qualification-05/setup-2-process-failure.json
+/qualification-05/setup-2-stderr.log
+/qualification-05/setup-2-stdout.json
+/qualification-05/setup-2.jsonl
+/readiness-assertion-error.log
+/readiness.json
+/readiness.log
+/readiness.mjs
+/return-v2.md
+/return.md
+/v2-delta.patch
+/v2-owner-blocker.json
+/v2-underlying-conformance.json
+/v2-underlying-conformance.mjs

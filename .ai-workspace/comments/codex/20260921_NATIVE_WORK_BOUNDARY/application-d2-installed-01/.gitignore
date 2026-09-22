@@ -1,0 +1,25 @@
+# Exact frozen originals preserved by the 20260923 WIP checkpoint transport.
+# New filenames stay visible; named reproducible dependency/cache directories remain local.
+# Reconstruction: ../../20260923_WIP_CHECKPOINT/README.md
+/artifacts/odd-glc-proof-native-assessment-consumer-5.0.0.tgz
+/caller-activation.md
+/caller-check.json
+/caller-dependencies.json
+/caller-executive-disposition.md
+/caller-freeze.json
+/caller-recipe.md
+/caller-return.md
+/caller.mjs
+/check-caller.mjs
+/configuration.pending-selection.json
+/consumer-pack.json
+/declaration-check.json
+/declaration-selection.json
+/handoffs.mjs
+/packaging.json
+/public-io.mjs
+/reads.mjs
+/selection.md
+/setup.mjs
+/source.mjs
+/syntax-check.json

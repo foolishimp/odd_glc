@@ -1,0 +1,55 @@
+{
+  "scenarioRef": "scenario://odd-glc/data-mapper/d1-keyed-accounting@1",
+  "purpose": "Declaration-only lifecycle witness input. Probe requests are application tasks, not native operations, prescribed module APIs or expected answers.",
+  "sourceFixtureSha256": "13137b2080d9c9c6d8af5f5880f92b46a8cbbd4afc4c66451812e9e92f023871",
+  "domainDeclarationsSha256": "dd7c04e1cee319f2be7c0bf9d7cf2a72f6a2fe89555847751e1bc7630a214bdd",
+  "retainedInputSha256": "f367112206a7877f2d68347717b918e8c2876f72da5e1932e935df47d697c8ba",
+  "selectedRequirementRefs": [
+    "requirement://d1/REQ-ACC-01",
+    "requirement://d1/REQ-ACC-02",
+    "requirement://d1/REQ-ACC-03",
+    "requirement://d1/REQ-ACC-04",
+    "requirement://d1/REQ-ACC-05"
+  ],
+  "applicationTask": {
+    "purpose": "Derive and implement the selected source obligations through the existing retained CdmeEngine/Scala-Spark application or a source-faithful extension. Operate on supplied records and the declared transform; do not branch on fixture keys or substitute canned ledger/lookup results. Preserve the complete source and pending obligations.",
+    "sourceKeyField": "source_key",
+    "records": [
+      { "source_key": "src-101", "amount": "7", "include": true },
+      { "source_key": "src-102", "amount": "5", "include": false },
+      { "source_key": "src-103", "amount": "not-an-integer", "include": true }
+    ],
+    "transform": "Filter include=false with condition identifier include-true; otherwise parse amount as integer. Preserve the source key in the output identity. Parse errors retain the original record and reason. This bounded transform does not replace the full application requirements.",
+    "probeRequests": [
+      {
+        "caseRef": "application-transform-and-ledger",
+        "request": "Invoke the actual retained application entry on the records and transform. Emit the actual output, keyed accounting partitions, durable ledger and status/lineage events. Record the entry, arguments and produced locations."
+      },
+      {
+        "caseRef": "equal-count-wrong-identity",
+        "request": "After real transformation, exercise the application accounting verifier with a filtered source identity changed from src-102 to src-999 while retaining partition counts. Emit observed missing, extra and duplicate identities, persisted ledger and final status/lineage events."
+      },
+      {
+        "caseRef": "equal-count-cross-partition-duplicate",
+        "request": "After real transformation, exercise the application accounting verifier with src-101 also used in the filtered partition while retaining src-103 in the error partition and retaining total count three. Emit actual discrepancies, durable ledger and status/lineage events."
+      },
+      {
+        "caseRef": "fresh-process-backward-query",
+        "request": "Start a fresh application query process over persisted ledger/metadata; no transform execution is permitted. Query output:src-101, filtered:src-102 and error:src-103 twice. Emit recovered source identities, filter condition and original error/reason with the read locations and execution evidence."
+      },
+      {
+        "caseRef": "ledger-publication-interruption",
+        "request": "Exercise a controlled ledger-publication interruption through the application-supported verifier path. Emit final ledger validity and status/event ordering observations. Retain the diagnostic and complete any declared restoration before returning evidence."
+      }
+    ],
+    "designDeliverables": [
+      "Name implementation targets and executable verifier targets on the retained worksite with native current-observation identities and obligation/role bindings.",
+      "Declare a supported application invocation and verifier entry accepting these actual inputs; derive the interface from the retained application rather than adding an isolated expected-ledger helper.",
+      "Declare C2 commands that execute every requested probe and expose exact values, identities, persistent files, status ordering and process/report observations for later assessment. The assessor has no tools and cannot execute missing probes.",
+      "Use existing native command, stdout_exact and process/report observation contracts. File/test counts and generator-selected assertions do not establish scenario acceptance.",
+      "Bind the exact retained initial subject, admitted derived subject, verifier artifact and C2 observation. Declare every source and evidence write territory; preserve unaffected work and open source obligations."
+    ]
+  },
+  "generationBoundary": "The expected output/partitions/backward answers and required verdicts live only in the separately frozen oracle. This input contains requests and actual record data, not acceptance flags. Native instruction assembly controls role access.",
+  "coverageBoundary": "The five selected original terms stay mandatory and non-closing by declaration. Unselected and newly discovered source obligations remain visible; D2 revision and D3 full mandatory outcomes remain open."
+}

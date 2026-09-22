@@ -1,0 +1,12 @@
+{
+  "scenarioId": "SCN-GLC-INTEGER-ADDITION-CLI",
+  "purpose": "Independent evaluation only; no implementation or layout is supplied.",
+  "cases": [
+    { "arguments": ["2", "3"], "stdout": "5\n", "exitStatus": 0 },
+    { "arguments": [], "nonzeroExit": true, "nonemptyStderr": true },
+    { "arguments": ["no", "3"], "nonzeroExit": true, "nonemptyStderr": true }
+  ],
+  "minimumTestPasses": 2,
+  "requiredTestRoles": ["component", "user_acceptance"],
+  "assessment": "Compare admitted actual-command observations and distinct component/UAT test artifacts with the ordinary source. Counts and model assertions do not replace semantic or executed proof."
+}

@@ -4,8 +4,8 @@ Project-specific requirement families live in this folder.
 
 Use these method surfaces as governing references:
 
-- `/Users/jim/src/apps/specification_methodology/specification/standards/SPEC_METHOD.md`
-- `/Users/jim/src/apps/specification_methodology/specification/standards/ODD_METHOD.md`
+- `stdo://releases/v2.5.0-rc.4/standards/SPEC_METHOD.md`
+- `stdo://releases/v2.5.0-rc.4/standards/ODD_METHOD.md`
 
 ## Rules
 
@@ -35,3 +35,5 @@ Use these method surfaces as governing references:
   [REQ-GLC-DOWNSTREAM-SPECIALIZATION](REQ-GLC-DOWNSTREAM-SPECIALIZATION.md);
 - release and operational-feedback interpretation:
   [REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK](REQ-GLC-RELEASE-OPERATIONAL-FEEDBACK.md).
+- mutable-worksite lifecycle causality:
+  [REQ-GLC-WORKSITE-LIFECYCLE](REQ-GLC-WORKSITE-LIFECYCLE.md).

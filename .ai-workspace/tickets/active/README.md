@@ -1,15 +1,13 @@
-# odd_glc Active Tickets
+# Active Tickets
 
-Active durable work items live here.
+Current selected ticket:
 
-Current active tickets:
+- `T-043`: deliver the six historical Hello World variants and Data Mapper Full
+  through one generic live-LLM workflow over ABI5 runtime truth. It creates no
+  scenario Product or Program identity.
 
-- `T-025`: first in the ordered post-Hello queue; execution remains deferred
-  pending a separate ABI5 goal-and-design reprice.
-- `T-026`: second in that queue under the same deferral.
-- `T-027`: third in that queue under the same deferral.
-
-The deferred queue remains active for durable routing only. T-041 is completed;
-its completion does not select T-025 or authorize successor-wave execution.
-T-033 and T-038 are completed, superseded migration evidence. Their old
-upstream ticket and interface coordinates are not current authority.
+T-025 remains the generic scenario-ladder and Data Mapper fixture authority.
+T-042 is completed design-predecessor evidence. T-041 remains completed
+zero-code Product predecessor evidence. T-026 and
+T-027 remain deferred records. T-033 and T-038 remain completed, superseded
+migration evidence.

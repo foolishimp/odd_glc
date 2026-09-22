@@ -1,0 +1,18 @@
+{
+  "status": "CLOSED prepared transport; Git grant pending",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "transportBytes": 2837897656,
+  "metadataBytesAtReceipt": 812710,
+  "preparedPublicationBytesAtReceipt": 2838710366,
+  "archiveMemberCount": 8988,
+  "largestTransportPartBytes": 51380224,
+  "restorationVerified": true,
+  "allOriginalHashesComparedAfterPacking": true,
+  "originalsModified": false,
+  "sourceOrIndexMutation": false,
+  "pendingFinalSourceList": "pending-final-direct.json",
+  "pendingNewReviewEvidence": "Final source acceptance and any review/Executive commentary produced after archive enumeration will be added directly or as a small supplement under the final grant.",
+  "currentOutcome": "WIP. The generic live Run failed before independent assessment; no release or RC qualification claim.",
+  "publicationPlan": "publication-plan.json",
+  "credentialScanDisposition": "Zero credential-shaped heuristic hits and zero sensitive-looking filenames among retained members."
+}
