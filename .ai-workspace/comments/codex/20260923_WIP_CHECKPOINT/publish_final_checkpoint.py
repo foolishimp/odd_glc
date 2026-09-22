@@ -77,7 +77,9 @@ reconciliation.update(status='Final publication inventory under the accepted Roo
     directPathCount=len(selected), finalDirectStageInventory='final-stage-paths.nul',
     acceptedSubjectVerifiedPaths=len(source_rows),
     stageIncludesAlreadyCommittedPayloads=True,
-    explicitIgnoreMetadataFiles=len(ignored))
+    explicitIgnoreMetadataFiles=len(ignored),
+    pending=[],
+    sourceAcceptance=('Root accepted exact ABI subject 958805566246bb8d1cf2331424b6a935f41b0bae118e06fb4b0fc455c30e564e after independent review d0c67865; no installed qualification inferred.' if source_rows else 'GLC checkpoint preserves its selected RC4 work; ABI source acceptance does not qualify GLC.'))
 write('final-path-reconciliation.json', reconciliation)
 git('--literal-pathspecs', 'add', '--all', '--force', '--pathspec-from-file=' + str(listing), '--pathspec-file-nul', capture=False)
 staged = paths('diff', '--cached', '--name-only')

@@ -27,11 +27,13 @@
       "push": "succeeded"
     }
   ],
-  "finalSourceCommit": "The commit containing this receipt.",
+  "finalSourceCommit": "d777b8cd1098de187735f23fd0a0b42c3c6356f5",
   "finalRemoteVerification": "Performed after the final push and reported in the Executive handoff; no self-referential commit hash is invented.",
   "acceptedSource": null,
   "restoration": "All archived members were restored and compared with unchanged originals; verification receipts and portable reconstruction code are included.",
   "originalRawFiles": "Remain physically present. Exact transport-backed ignore patterns suppress only captured originals and named reproducible exclusions; new authored filenames remain visible.",
   "outcome": "WIP; prior generic Run failed before assessment. Source fixes are accepted. Installed continuation, applicable qualification and reserved human acceptance remain open.",
-  "gitEffects": "Ordinary main commits and fast-forward pushes only; no force, amend, reset, clean, tag, default or release publication."
+  "gitEffects": "Ordinary main commits and fast-forward pushes only; no force, amend, reset, clean, tag, default or release publication.",
+  "stagedValidationAppliesToSourceCommit": "d777b8cd1098de187735f23fd0a0b42c3c6356f5",
+  "metadataCorrection": "The commit containing this receipt corrects stale preparation-only pending/source labels in the current reconciliation and aligns the reusable finalizer; no source or retained proof changed."
 }
