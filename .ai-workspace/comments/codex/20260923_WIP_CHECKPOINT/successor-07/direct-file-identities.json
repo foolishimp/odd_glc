@@ -1,0 +1,207 @@
+{
+  "files": [
+    {
+      "path": ".ai-workspace/comments/.gitignore",
+      "bytes": 370533,
+      "sha256": "e5bf08c7fd0fd4d73b4ac88704d4d3de02e2b61b2ad82f72b2669ef65603df54",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/README.md",
+      "bytes": 1553,
+      "sha256": "3f72fea8e92b7306bfa0ce5d67408bf8bb652e6ee8a1aa68f7e3da46d84aa3df",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/activation.json",
+      "bytes": 1247,
+      "sha256": "bee307dc182ed0c6bab1ef43850bf7d13a5bd77acbb9a1a7726a6d5660bc2d6b",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/classification.json",
+      "bytes": 13063,
+      "sha256": "0ccae2c238ec3fdcc8e1bef55d026949937e3dcca44f1529123613370c5358ff",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/composition.json",
+      "bytes": 3321,
+      "sha256": "ba4ce0e73fd7b2ec0670d5374e8102d4d19faa04b7bf2224c7f079ded15f2a0d",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/exclusions.json",
+      "bytes": 499,
+      "sha256": "63fed3cbfb4aadb949fb4c17ca9e059e4ac459ee2920bba976b200861bbbaf35",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/final-path-reconciliation.json",
+      "bytes": 8952,
+      "sha256": "97660136e437a408b2c3c52fd22ed9d48e538412c6ebd1aaea40f1243bd9c7f5",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/final-stage-paths.nul",
+      "bytes": 3199,
+      "sha256": "3879ba6c78af57df411f67ca5dcac06bff49ddb8d934c19f671cbf4afb9b78b4",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/freeze-expectations.json",
+      "bytes": 8920,
+      "sha256": "2b7ce674a62b8973418e901914fd32ff220f52c4e338f852e03122da8ae35aa2",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/frozen-member-correspondence.json",
+      "bytes": 5192,
+      "sha256": "c3a8b0d25c7afeb1f068bf4a62161f47fe9128f5e1bb034f6c706fc699ad31d5",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/ignore-preimage.txt",
+      "bytes": 366501,
+      "sha256": "f9f1fee2a861f2cca90262ba4348dabbe583e28bece7163c3025cf4de010909f",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/incremental-inventory.jsonl.gz",
+      "bytes": 2343,
+      "sha256": "816779e929c89f9eecd80e09a042a6b0572f91c4ed46b6e6409ac9cc96a31b51",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/pack_incremental.py",
+      "bytes": 1677,
+      "sha256": "b35c6a471675a681c5a073c30d55ffd79561950690abfff28a1ad277be7980b9",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/prepare_incremental.py",
+      "bytes": 6495,
+      "sha256": "26abb3680c212d8d102a7da1c29647f22d546112356f33daa2a7f8e7a02ee3c0",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/publication-receipt.json",
+      "bytes": 1317,
+      "sha256": "79fe29c9739e29469842c12fc58147d3fb646c6cdc3624f06aab6991fd8dce4f",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/selected-archive-paths.nul",
+      "bytes": 4726,
+      "sha256": "e2f43e6ec9bf086cd5e1fb5a27c6ba26e448e14370d282f61377fbec5d20ab07",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/selection-final.json",
+      "bytes": 1690,
+      "sha256": "bb81376ba98e0d596729ab0d8ea93bd025ab47c957fb29bb54a738d0d5865ae5",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/selection.json",
+      "bytes": 11615,
+      "sha256": "cce988e7515f89ccc9128d116fba68e39553e32c823cc068cee5481392db5c86",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/stage_checkpoint.py",
+      "bytes": 11346,
+      "sha256": "7d60f8eccd06bf9d1a8f64e7906b7172604fc8cb7a3e3beed6f6064ba7a68ddd",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/catalog.json",
+      "bytes": 1279,
+      "sha256": "f16a33b467a6d67d9ebd0cee81ff65fb5a5cfa5d1b7a61ea101d0addef63b152",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/credential-shape-findings.json",
+      "bytes": 121,
+      "sha256": "44e87b2569a514609f5111491d1d0e0605c6a81f56db5ab4bdf0fe5812b7c55e",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/direct-paths.nul",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/exclusions.json",
+      "bytes": 348,
+      "sha256": "3974c18bd3617177301413f9dac88a296e227621726113ca3aa9e9ec8d227c36",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/members.jsonl.gz",
+      "bytes": 1951,
+      "sha256": "259b4f75434846f53315133cc227b7e0a606bfdc9b197a2b3aeec3b1c903070c",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/path-reconciliation.jsonl.gz",
+      "bytes": 477,
+      "sha256": "304b2eaf8b6933ab3b72379500642acf71f0356b07258361527cbc03f29dfd3c",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/payloads/family-0000.tar.gz.part0000",
+      "bytes": 54986,
+      "sha256": "86ace45d0b4d6124f15b6d33c0596e343e5136ea7f9a98e0c818be3ae14570f9",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/pending.json",
+      "bytes": 248,
+      "sha256": "5db967ae83d28d1f4d0cee865718f7c69ff1604472fe889e2211f1d9509b1fe8",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/restoration-verification.json",
+      "bytes": 479,
+      "sha256": "3ee0506b64a5d876e54f2d6dd50e18f9da2502de3e6acd34fadeefa18404739d",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01/verification.json",
+      "bytes": 479,
+      "sha256": "3ee0506b64a5d876e54f2d6dd50e18f9da2502de3e6acd34fadeefa18404739d",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-backed-ignore-receipt.json",
+      "bytes": 5637,
+      "sha256": "a97f870130f7527759741db934dfef6a11d80d113cf9047817d744cc683fd1a1",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-reuse.json",
+      "bytes": 4325,
+      "sha256": "0a977450404fd6931d99367e5edbb2388223491558240dafd3c899315046308b",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "bytes": 50620,
+      "sha256": "1c0e437aa92cf5af193c6f0ba24b581302b2a19dfad8e87a0ad0c7904b8b7dc2",
+      "mode": 420
+    },
+    {
+      "path": "specification/GOALS.md",
+      "bytes": 14462,
+      "sha256": "42ae79c9b2cbb3f2e0574470214e23898f3d82c33a66840eb1fe41ceb17b46c5",
+      "mode": 420
+    }
+  ],
+  "selfReferenceExclusions": [
+    "direct-file-identities.json",
+    "final-staged-check.json",
+    "final-staged-whitespace-check.txt"
+  ]
+}

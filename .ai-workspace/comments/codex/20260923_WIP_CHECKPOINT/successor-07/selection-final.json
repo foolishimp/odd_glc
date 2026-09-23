@@ -1,0 +1,33 @@
+{
+  "directExpected": {
+    "specification/GOALS.md": {
+      "sha256": "42ae79c9b2cbb3f2e0574470214e23898f3d82c33a66840eb1fe41ceb17b46c5",
+      "classification": "accepted_current_tracking"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "1c0e437aa92cf5af193c6f0ba24b581302b2a19dfad8e87a0ad0c7904b8b7dc2",
+      "classification": "accepted_current_tracking"
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01",
+      "catalogSha256": "f16a33b467a6d67d9ebd0cee81ff65fb5a5cfa5d1b7a61ea101d0addef63b152",
+      "indexSha256": "259b4f75434846f53315133cc227b7e0a606bfdc9b197a2b3aeec3b1c903070c",
+      "verificationSha256": "3ee0506b64a5d876e54f2d6dd50e18f9da2502de3e6acd34fadeefa18404739d",
+      "members": 36,
+      "logicalBytes": 217976,
+      "transportBytes": 54986
+    }
+  ],
+  "scope": "Accepted lifetime03/compiled08 full Public held path and frozen GLC caller readiness; closed lifetime01/02, compiled06/07, S02 continuations10-13 failures/diagnostics and accepted conformance/nested/mini source corrections; current GOAL035/T287 and GLC T043 tracking. Original/S02 active successors and full release obligations remain open.",
+  "excluded": [
+    "All original mutable GLC/S02 history and canonical worksite; no snapshot",
+    "s02-installed-continuation-14 and later active outputs",
+    "held-continuation-execution-01",
+    "held-continuation-launch-controls-01",
+    "held-continuation-implementation-01/final-binding.json",
+    "All node_modules, build scratch, unselected caches and unrelated work"
+  ],
+  "sourceReviewedAndAccepted": true
+}

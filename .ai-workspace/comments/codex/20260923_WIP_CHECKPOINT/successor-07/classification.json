@@ -1,0 +1,245 @@
+{
+  "baseCommit": "6aae3bf7a673041f7524835577e7573561d432ef",
+  "directPaths": [],
+  "priorTransportReceipts": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "members": 8988,
+      "transportBytes": 2837897656
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "indexSha256": "afdab2e383c6f62f1596bcfb0737fc4965539f3ad70c42dbf3933eb50c6c37b8",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "members": 1079,
+      "transportBytes": 219899764
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "indexSha256": "f2e3c62106aeda582b41d16072a22df2a0661c2016e40ecf0136210dd4cd47ac",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "members": 1,
+      "transportBytes": 40541024
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "indexSha256": "9e4cacc030cc09ddb8ec1b57e1a2f7c6691df9f328df595a272f7c6b77d91722",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "members": 35,
+      "transportBytes": 90126
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-02/transport-01",
+      "catalogSha256": "897627fe2296a09030af85542270a9a16fcf7ca80ea520d670ad0d567ce7bb9f",
+      "indexSha256": "8c6eaf2989c5496b0a90a2271b64df376c8db0ee52acda0fa21400f312f88468",
+      "verificationSha256": "b26dbacc1d8c15cf720759ce86ede2db1587003dc5439a629049b2a48cb6253d",
+      "members": 110,
+      "transportBytes": 43394337
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-03/transport-01",
+      "catalogSha256": "54ce43ee016f314ab830e4015218d5dbedba57461b91e5ccc7d2692435640b46",
+      "indexSha256": "252530af378ff076724e7b00026a327546548f3e48dd3c2bf19e00c3348d6987",
+      "verificationSha256": "4f4c6a6636d5374249023a520e41e870b72c52b3489fa76297d24dada60823f3",
+      "members": 162,
+      "transportBytes": 359204850
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/transport-01",
+      "catalogSha256": "11fa5293fbbd8284ed1b43ec3b1c12677e3b5b6470bfb91e427669ddf31715da",
+      "indexSha256": "f5790560a09a44872056be58f36a2cb96926579f73ae3708461e0d582122291b",
+      "verificationSha256": "b6f3529e8053534df7464eb57ae74c15b23c7fc9c32511dec33d0eca7f5704b4",
+      "members": 54,
+      "transportBytes": 121848
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01",
+      "catalogSha256": "39d71d54880850dcf5ee31ce2433d532c482a1af673ac3ba3a0906810975ad64",
+      "indexSha256": "76c46dc43928beb10eb25cefb4d79c3156e1aa14bb44ef200a050323de273108",
+      "verificationSha256": "2e14de42cacad13b11766d4642c11e27489d678eb87c455e9d938b5d950d36fc",
+      "members": 17,
+      "transportBytes": 31509
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01",
+      "catalogSha256": "ef68978d0902645d196a6aedc4e7d8ba04ace5795fe79b286849eb2a7c362f80",
+      "indexSha256": "65d1f03c4479d0e44e4657dcd046ed9fc600d15ab5e078e53a8309f33661a3fa",
+      "verificationSha256": "61c035fc0f4433b3fd460d4bb646410b1151568d38ca83b00d5fe8140df423df",
+      "members": 72,
+      "transportBytes": 12186305
+    }
+  ],
+  "inheritedIndexedMembers": 10518,
+  "reusedSelectedMembers": [
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/driver.mjs",
+      "sha256": "d43cc8cf9b330ab87646fbb476cd4dbe95f34f124d23de68c2ad470ece452a8e",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/current-resource.mjs",
+      "sha256": "fbef40bbb0b430a5507dcd6946fbf3e0232b1999c8fc23960059bdcaa1ee4060",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/observe-process.py",
+      "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/caller-readiness/current-resource.mjs",
+      "sha256": "a5e28ebd4bc0e828607dac6d2d2443a250520531c2e238b9d63a08b40b035c02",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-06/caller-readiness/current-resource.mjs",
+      "sha256": "5b3051df7dab4a8c4e5570af14a785681750fde8d5353bc47dbb6a5754884539",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+    }
+  ],
+  "newArchiveMembers": 36,
+  "newArchiveBytes": 217976,
+  "selectedFreezes": [
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/freeze.json",
+      "sha256": "1f5936e0f7363bc0405a4a8ad7d131f940ab2b2f52a9a563c5c945d751c27064",
+      "declaredMembers": 101,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/review-01/freeze.json",
+      "sha256": "9a0127061cec01420fdb1fb2ca22f3d69e73c8600f8826ab55413c23687265a3",
+      "declaredMembers": 2,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/cost-diagnosis-01/freeze.json",
+      "sha256": "9ea7007544a771761cbc7051c40699af477608798270a36246962b92204a98f6",
+      "declaredMembers": 3,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/cost-measurement-01/freeze.json",
+      "sha256": "38560f13e743cce49abbcb1ce513d3db193e16722ee33f541d35d8a462d31786",
+      "declaredMembers": 15,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-02/freeze.json",
+      "sha256": "b54921b7ac588b47d510d28f0645096c6b00ab2868a6e8af9a6a417a7d6dfa14",
+      "declaredMembers": 65,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-02/review-01/freeze.json",
+      "sha256": "3eedce0d3fecfbac664e29d249b1ce7ba626da5da37f32c6ec3515fc16fff1d4",
+      "declaredMembers": 2,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-03/freeze.json",
+      "sha256": "6380cf21ce89bf3dfd6ababfddb59f8e231f77cf7f91293351557d76c9196c5e",
+      "declaredMembers": 81,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-07/freeze.json",
+      "sha256": "b2eb50dca3c510d0e1431ba16d8810cd7bb8c179cd895e8bcae533395c9f2a9e",
+      "declaredMembers": 25,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-08/freeze.json",
+      "sha256": "cd6828dacd491dedbc787a0016eb37eb307af98bf234557a1a9f99c03275f092",
+      "declaredMembers": 23,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-13/runtime-stop/freeze.json",
+      "sha256": "899b3e6b07d21e3b38069993c287ef3f027a65a3bb247b2a50daaf07ecbb4580",
+      "declaredMembers": 71,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-13-diagnosis-01/freeze.json",
+      "sha256": "030bee8db700047bcf62a1d664e243e755c75b34e61d4a9e00562d78d2537e58",
+      "declaredMembers": 12,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-conformance-authority-repair-01/freeze.json",
+      "sha256": "3f8d598e39e783de915b6f6a746d5acc34e7ca5c3b96cff807c4ef6baae6777e",
+      "declaredMembers": 37,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-conformance-authority-repair-01/review-01/freeze.json",
+      "sha256": "8f327c6d7f334c2505017f1eee52cbda9d0220deb652b53b80d87235cbd55c8e",
+      "declaredMembers": 2,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-nested-scope-repair-01/freeze.json",
+      "sha256": "954644bc1f77f0e3d8322dc417274168f4a7f9fd707c7656bb68703e25aafc0a",
+      "declaredMembers": 35,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-nested-scope-repair-01/review-01/freeze.json",
+      "sha256": "7f4adb135744346c43dfeff708c15942539e2af33b56cdfdeb65ec66b403a839",
+      "declaredMembers": 2,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-mixed-declaration-repair-01/freeze.json",
+      "sha256": "84dac491e77f7db348e30c88f0efd98de796379c10c5d9d5f2a244d132a22766",
+      "declaredMembers": 43,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/freeze.json",
+      "sha256": "9fc5bd0f8de989a7a5da732ddef6bf8f3b8b702085620834b68e5cf53e8efeef",
+      "declaredMembers": 3,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/freeze.json",
+      "sha256": "cb1b5f0f178e65933b21c0c2b5eb299de1d79eed069adbb9e280fea07ede50b6",
+      "declaredMembers": 0,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/subject.json",
+      "sha256": "983d43d32ce3851eedeb35b82f25aea56b3c78ae97dc09f53255e146b1bfde3f",
+      "declaredMembers": 30,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_EXECUTIVE_CHECKPOINT/tracking-01/freeze.json",
+      "sha256": "d09f496490bb57f0e654e728d58a6d536612a9c4f08608c0d0331161a3447165",
+      "declaredMembers": 0,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_EXECUTIVE_CHECKPOINT/tracking-02/freeze.json",
+      "sha256": "1552e9dfa4a2d617ec7238b0ffd25a9a7dc02a2c677b3dd9263137beac2fef82",
+      "declaredMembers": 0,
+      "externalCallerMembers": 0
+    }
+  ],
+  "canonicalFreezeReferencesConservedThroughPostimages": [],
+  "pending": [
+    "Active s02-installed-continuation-14 and later carriers",
+    "In-progress implementation03 independent review; later added only after CLOSED and Root acceptance",
+    "All original mutable GLC/S02 resources/history/worksite; no snapshot",
+    "Unselected scratch, node_modules, reproducible caches and unrelated outputs"
+  ],
+  "scope": "Closed lifetime01/02/03 and compiled06/07/08; continuation13 failure/diagnosis, conformance/nested/mini repairs; GLC held caller readiness/implementation; current tracking, with independent03/caller acceptance still pending",
+  "priorPayloadReadOrReupload": false
+}

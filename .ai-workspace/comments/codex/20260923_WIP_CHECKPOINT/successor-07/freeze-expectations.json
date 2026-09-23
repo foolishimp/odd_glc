@@ -1,0 +1,146 @@
+{
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/activation.json": {
+    "sha256": "fd7a081796fed173d1e3a04e69bf961cfab210564ca84619c6f6ac6a88807f2e",
+    "byteLength": 1479
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/evidence.json": {
+    "sha256": "3dc8650c2d6bb328bab49a07c0c7c6f703d45d15e6ca6f2116df1decc4874fc5",
+    "byteLength": 7236
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/return.md": {
+    "sha256": "49cd2cbf6cb4f1f488818d9edce03242bad0d6659aaf9644aa0ed1fe1bf529c8",
+    "byteLength": 12316
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/freeze.json": {
+    "sha256": "9fc5bd0f8de989a7a5da732ddef6bf8f3b8b702085620834b68e5cf53e8efeef",
+    "byteLength": 948
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/freeze.json": {
+    "sha256": "cb1b5f0f178e65933b21c0c2b5eb299de1d79eed069adbb9e280fea07ede50b6",
+    "byteLength": 760
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/activation.json": {
+    "sha256": "58ac7dcd618dec6a0159fb7ce70bb44bec3b01ed08f7ca9a3fbd2c2181e0e765",
+    "byteLength": 845
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/caller-controls-final-result.json": {
+    "sha256": "bbd4e5b8e4fbc4d991784e211eaa2c727ad06e7deb8cc2e790a9ad30f2892cf7",
+    "byteLength": 790
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/caller-controls-result.json": {
+    "sha256": "bbd4e5b8e4fbc4d991784e211eaa2c727ad06e7deb8cc2e790a9ad30f2892cf7",
+    "byteLength": 790
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/caller-controls.mjs": {
+    "sha256": "be8888ffe38afe9188fdb6141b28acd081881e3c678cfcdc46aa1c5e8c69abf1",
+    "byteLength": 2949
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/configuration.json": {
+    "sha256": "0d11c10af697c53dde81f6c5520a091231d2ba276c7cae3f85768ec3d78736f6",
+    "byteLength": 11005
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/configuration.json.diff": {
+    "sha256": "688a76be3e93c1a43684f2311e8d8ac1f011ac3b782241cd054bd94b4b5ac59c",
+    "byteLength": 11287
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-child.py": {
+    "sha256": "2b54e868ae4b18c575f6a32156051f25781a2c31972ba9d35963a62e00c1c6c0",
+    "byteLength": 457
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-deadline.json": {
+    "sha256": "254216877ec60fa1622a130f79b54e478019a2ef1f08fe135bb5444fa77bd746",
+    "byteLength": 370
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-phase.json": {
+    "sha256": "574b5b16227038f5735f9876ff867f317b042727f34d36585ce21e7786ba21ce",
+    "byteLength": 141
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-process-result.json": {
+    "sha256": "d71269fb273ba60ead7577795ec6dc11cae4c71726da31ace0c3af922a1346fb",
+    "byteLength": 652
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-process-start.json": {
+    "sha256": "7c7e6ffbb84a7bf3e413c07bd3a244f70a133722c8b472c14b31084082380a40",
+    "byteLength": 791
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/deadline-stdout.json": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-final-process-result.json": {
+    "sha256": "76f8e86cb97f764f62c666925c8254815813d0078c622e78079160c6e16a0119",
+    "byteLength": 313
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-final-process-start.json": {
+    "sha256": "71c9a600fb7261d2956f2c7d0afaaa6bf065071170c6b13292cef5cd3d1dc6ab",
+    "byteLength": 1124
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-final-stderr.log": {
+    "sha256": "b37fab07e34ee0201c3abaddd46ef8af171aca9db90dcca0571aa5c4cb99fbe0",
+    "byteLength": 851
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-final-stdout.json": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-process-result.json": {
+    "sha256": "97c95c60c21be7e8fd4abe7692f795a8980d6b7cbcc02ec45ef4b2142c20cb2e",
+    "byteLength": 283
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-process-start.json": {
+    "sha256": "cb85d51dde05f3165fbd70c3e4338739a7903c50cb7fe4670bf11115c9a73d2c",
+    "byteLength": 1096
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-stderr.log": {
+    "sha256": "b37fab07e34ee0201c3abaddd46ef8af171aca9db90dcca0571aa5c4cb99fbe0",
+    "byteLength": 851
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/controls/unbound-stdout.json": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/driver.mjs": {
+    "sha256": "8a2f292e9f4e3bd3ae531bc1ad640010af33a9749f3d514edd8d93a77a768728",
+    "byteLength": 35688
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/driver.mjs.diff": {
+    "sha256": "3dae3ffb214a2017b378ace027b2340236078123659c26471a6cf06f32d4c191",
+    "byteLength": 93391
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/final-binding.template.json": {
+    "sha256": "bc53b660843594a319fbb41b7606e86db8b121da176ce778017a75b2e97ebf5d",
+    "byteLength": 247
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/future-commands.json": {
+    "sha256": "9fc019f50a9fb98c20f2df20b08e745dba8b1599571d487f033e059a70593bd2",
+    "byteLength": 3171
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/mechanical-checks.json": {
+    "sha256": "963689658aa6b854875c927ab7d558146f22c43b949ecad13934f1d4bd06f9b3",
+    "byteLength": 1678
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/observe-process.py": {
+    "sha256": "1baca590f1015db5c873adc0e4b6eb80a020fba68785e41e1b93d788b23182a1",
+    "byteLength": 3957
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/observe-process.py.diff": {
+    "sha256": "c04dd8e512d6db1d0f8d3f528187e622c9e7bc3a8db59b9f6ae08229f322a893",
+    "byteLength": 4251
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/predecessors.json": {
+    "sha256": "ad36fd0bbfe6b6a498ed42d467c6638a5e2110dac0986718e1f7784ffea46576",
+    "byteLength": 1257
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/return.md": {
+    "sha256": "222e3b18ba656d2723c9d050f011c34095d70193954403ecae652ba836d728fb",
+    "byteLength": 5840
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/subject.json": {
+    "sha256": "983d43d32ce3851eedeb35b82f25aea56b3c78ae97dc09f53255e146b1bfde3f",
+    "byteLength": 11162
+  }
+}

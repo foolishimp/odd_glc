@@ -1,0 +1,200 @@
+{
+  "directExpected": {},
+  "closedProofSelections": [
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/freeze.json",
+      "sha256": "1f5936e0f7363bc0405a4a8ad7d131f940ab2b2f52a9a563c5c945d751c27064",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/review-01/freeze.json",
+      "sha256": "9a0127061cec01420fdb1fb2ca22f3d69e73c8600f8826ab55413c23687265a3",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/cost-diagnosis-01/freeze.json",
+      "sha256": "9ea7007544a771761cbc7051c40699af477608798270a36246962b92204a98f6",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/cost-measurement-01/freeze.json",
+      "sha256": "38560f13e743cce49abbcb1ce513d3db193e16722ee33f541d35d8a462d31786",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-02/freeze.json",
+      "sha256": "b54921b7ac588b47d510d28f0645096c6b00ab2868a6e8af9a6a417a7d6dfa14",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-02/review-01/freeze.json",
+      "sha256": "3eedce0d3fecfbac664e29d249b1ce7ba626da5da37f32c6ec3515fc16fff1d4",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-03/freeze.json",
+      "sha256": "6380cf21ce89bf3dfd6ababfddb59f8e231f77cf7f91293351557d76c9196c5e",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-07/freeze.json",
+      "sha256": "b2eb50dca3c510d0e1431ba16d8810cd7bb8c179cd895e8bcae533395c9f2a9e",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-08/freeze.json",
+      "sha256": "cd6828dacd491dedbc787a0016eb37eb307af98bf234557a1a9f99c03275f092",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-13/runtime-stop/freeze.json",
+      "sha256": "899b3e6b07d21e3b38069993c287ef3f027a65a3bb247b2a50daaf07ecbb4580",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-13-diagnosis-01/freeze.json",
+      "sha256": "030bee8db700047bcf62a1d664e243e755c75b34e61d4a9e00562d78d2537e58",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-conformance-authority-repair-01/freeze.json",
+      "sha256": "3f8d598e39e783de915b6f6a746d5acc34e7ca5c3b96cff807c4ef6baae6777e",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-conformance-authority-repair-01/review-01/freeze.json",
+      "sha256": "8f327c6d7f334c2505017f1eee52cbda9d0220deb652b53b80d87235cbd55c8e",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-nested-scope-repair-01/freeze.json",
+      "sha256": "954644bc1f77f0e3d8322dc417274168f4a7f9fd707c7656bb68703e25aafc0a",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-nested-scope-repair-01/review-01/freeze.json",
+      "sha256": "7f4adb135744346c43dfeff708c15942539e2af33b56cdfdeb65ec66b403a839",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-mixed-declaration-repair-01/freeze.json",
+      "sha256": "84dac491e77f7db348e30c88f0efd98de796379c10c5d9d5f2a244d132a22766",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/freeze.json",
+      "sha256": "9fc5bd0f8de989a7a5da732ddef6bf8f3b8b702085620834b68e5cf53e8efeef",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/freeze.json",
+      "sha256": "cb1b5f0f178e65933b21c0c2b5eb299de1d79eed069adbb9e280fea07ede50b6",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/subject.json",
+      "sha256": "983d43d32ce3851eedeb35b82f25aea56b3c78ae97dc09f53255e146b1bfde3f",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_EXECUTIVE_CHECKPOINT/tracking-01/freeze.json",
+      "sha256": "d09f496490bb57f0e654e728d58a6d536612a9c4f08608c0d0331161a3447165",
+      "memberBase": null
+    },
+    {
+      "freeze": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_EXECUTIVE_CHECKPOINT/tracking-02/freeze.json",
+      "sha256": "1552e9dfa4a2d617ec7238b0ffd25a9a7dc02a2c677b3dd9263137beac2fef82",
+      "memberBase": null
+    }
+  ],
+  "adjoiningClosedPosts": [
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/return.md",
+      "sha256": "2edc13c2dd30818fd31147cedc1f82d3d099d2b9176d3549a0fdc25aa7bb888a"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/review-01/return.md",
+      "sha256": "d69ca50998712bed01ce3e1085de2946b7b403909c59daa41db72e143b4295e5"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/cost-diagnosis-01/return.md",
+      "sha256": "068f750c1d6809a916d57a7c179129ab22833c3844b14058b391d34605607b39"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01/cost-measurement-01/return.md",
+      "sha256": "e3f236dff70f1c5fe2796689ea0f4ecaced6ea689dcaa3b9c37f62932bbe18da"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-02/return.md",
+      "sha256": "cbd7346222cde0e981726f64961e94d248799024f5a83a8052a7167fa794d6e2"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-02/review-01/return.md",
+      "sha256": "5cca5c7f5059f6b1a604bbb7d1665eadbfd3aedfba330f242dae68850fb0ef25"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-03/return.md",
+      "sha256": "0d395a505a4df3304d2243cd85b424e77ca430b71972b38562faeaf0f46e1fb3"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-07/return.md",
+      "sha256": "2efdec55abd0292717549b2ea421570ae7050bd874ecb7a3a2716afd2cf0920d"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-08/return.md",
+      "sha256": "fded88ba9a62ff96e2a0a5174f229f69c49c8dc890491015240c1b16f64682a6"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-13-diagnosis-01/return.md",
+      "sha256": "24abbad97c18c37b1e1df44300c57dd330e174445876d791ae3b56233bc2e331"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-conformance-authority-repair-01/return.md",
+      "sha256": "cdab6924fabb98647e68062d6e2593f413ccd7c2a5284c7d34ea13dc0467ec19"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-conformance-authority-repair-01/review-01/return.md",
+      "sha256": "2e9ec82b131b0eea35438ab86abb56f0c333a06b00ab46837de0439af77e3402"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-nested-scope-repair-01/return.md",
+      "sha256": "7b2a57b49126a49f105d21b90f74ce0d31986b9f0931acddf7952cd5e2e3a985"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-nested-scope-repair-01/review-01/return.md",
+      "sha256": "29905119e402e33356bd85473c12c93ea6940fe847b54ab76677bd467f057eb2"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-mixed-declaration-repair-01/return.md",
+      "sha256": "731a4ab59dd62cbefbcbf2a55645cf946e435b86fb03113ebce068b1cacc9a82"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-readiness-01/return.md",
+      "sha256": "49cd2cbf6cb4f1f488818d9edce03242bad0d6659aaf9644aa0ed1fe1bf529c8"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/return.md",
+      "sha256": "222e3b18ba656d2723c9d050f011c34095d70193954403ecae652ba836d728fb"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/return.md",
+      "sha256": "222e3b18ba656d2723c9d050f011c34095d70193954403ecae652ba836d728fb"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_EXECUTIVE_CHECKPOINT/tracking-01/return.md",
+      "sha256": "5bfe9008a766127149833b69fe7ade7c5a4a88f6d02489022cd8166854782fec"
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_EXECUTIVE_CHECKPOINT/tracking-02/return.md",
+      "sha256": "2daf0a3e8bf7c48c9944a59172397a034385a2d38068e0a9019fef28cbedf167"
+    }
+  ],
+  "pending": [
+    "Active s02-installed-continuation-14 and later carriers",
+    "In-progress implementation03 independent review; later added only after CLOSED and Root acceptance",
+    "All original mutable GLC/S02 resources/history/worksite; no snapshot",
+    "Unselected scratch, node_modules, reproducible caches and unrelated outputs"
+  ],
+  "scope": "Closed lifetime01/02/03 and compiled06/07/08; continuation13 failure/diagnosis, conformance/nested/mini repairs; GLC held caller readiness/implementation; current tracking, with independent03/caller acceptance still pending",
+  "generatedCoverage": "Tracked generated Product members match compiled08 generated-product ledger; ignored emitted outputs are covered by exact compiled08 archive and inventories."
+}
