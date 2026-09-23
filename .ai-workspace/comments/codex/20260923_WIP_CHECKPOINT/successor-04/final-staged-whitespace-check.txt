@@ -1,0 +1,16 @@
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-goals.patch:4: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-goals.patch:6: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-goals.patch:19: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-goals.patch:24: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-goals.patch:38: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-ticket.patch:17: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-ticket.patch:19: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/tracking-ticket.patch:30: trailing whitespace.
++ 

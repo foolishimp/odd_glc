@@ -25,34 +25,34 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: ODD_GLC_READINESS02_ACCEPTED_HELD_FOR_RETRY_HANDOFF_DISPOSITION
-- current_re_entry: dependency_wait; closed retry-handoff diagnosis and selected reviewed correction/installed proof before original preparation
-- current_activation_status: readiness02_accepted_compiled03_original_execution09_close_untouched_finite06_HoG_failure_under_read_only_diagnosis
+- current_activation: ODD_GLC_CORRECTION_READINESS_HELD_FOR_CCALL_REPAIR_AND_REVIEW
+- current_re_entry: dependency_wait; bounded CCall source/caller review and successor installed retry proof before original preparation
+- current_activation_status: execution10_readiness_closed_pending_review_and_archive_rebinding_original_execution09_close_untouched
 - last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/route-dependency.json
 - last_execution_result: preparation_1665_286s_setup8_OOM_before_Run_actor_zero_spend_application_writes_genuine_setup6_close_preserved
-- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-02/return.md
+- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness/return.md
 
 ## Current bounded selection
 
-[Execution10 readiness02](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-02/return.md)
-subject `4ed64dc6…` is accepted on compiled-03 under satisfied caller review
-`6cca8f94…`; caller/reader/observer logic and original input remain unchanged. The caller separates original assessment provenance
+[Execution10 readiness](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness/return.md)
+subject `fb9d1a13…` is CLOSED with pure caller checks, pending independent review
+and later archive rebinding. The caller separates original assessment provenance
 from the actual latest close and reuses an actual candidate verification result.
 No original-resource, provider or application effect occurred. [Execution09](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/return.md)
 retains its preparation-only failure and genuine setup6 close over the untouched
 1,155,547,309-byte history; no old Run is relabeled.
 
 [T-287](../../../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-checkpoint-and-installed-continuation)
-owns accepted compact/caller/CCall source and compiled-03 mechanical readiness.
-[Finite06](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-06/execution-01/return.md)
-admits actual malformed failure evidence, retry judgment/progress and inner
-attempt2, then fails at HoG retry projection before actor2. The CCall repair has
-that installed scope; recovery remains unproved and read-only whole-handoff
-diagnosis is active. Whole-path compact selection remains CLOSED/accepted.
-Existing cost, diagnostic and fixture residuals remain in T-287's register.
+owns the substrate: accepted compact source/independent review and compiled-02 c9
+mechanical readiness (15 compiled checks), then finite05's seven setup passes and
+ordinary compact conformance. Nested attempts/first actor now execute; the
+[closed CCall diagnosis](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-05-diagnosis-01/diagnosis.md)
+finds missing authenticated native-assessment disposition during failure
+reclassification. Its bounded correction is active; recovery and full qualification
+are unproved. Whole-path review/compact owner decision are CLOSED and accepted.
+Cost, diagnostic and fixture residuals remain in T-287's existing register.
 
-The next sequence is closed handoff diagnosis/selected correction and source
-review → one rebuild → affected
+The next sequence is narrow source/caller review → one rebuild → affected
 installed retry proof → preserved generic correction → remaining applicable
 qualification, clean checkpoint and RC1; actual human release acceptance is
 separate. Last pushed ABG `11e03718…` / GLC `ae006dbc…`; subsequent work is local.

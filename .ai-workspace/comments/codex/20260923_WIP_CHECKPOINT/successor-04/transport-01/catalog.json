@@ -1,0 +1,34 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "ae006dbc2a22e8643a5ef393dbc46089a37154ea",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 54
+  },
+  "archiveMemberCount": 54,
+  "archiveMemberBytes": 484831,
+  "transportBytes": 121848,
+  "assets": [
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION",
+      "byteLength": 121848,
+      "sha256": "48b56371eaedcd8bef9622b01950c771208414ec51a6f7b23241747c1e91afca",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 121848,
+          "sha256": "48b56371eaedcd8bef9622b01950c771208414ec51a6f7b23241747c1e91afca"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "f5790560a09a44872056be58f36a2cb96926579f73ae3708461e0d582122291b",
+  "reconciliationSha256": "c63b350edf2f2ba8dd73337b7b2c8861103540f4f7012342d3cc5f9ef2a1e127",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

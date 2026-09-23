@@ -9,12 +9,12 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [execution10 readiness02](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-02/return.md)
-is accepted on compiled-03 under the satisfied caller review; original-resource
-preparation remains held. Finite06 proves actual CCall failure admission/retry
-progress, then fails at HoG retry projection before actor2. Read-only handoff
-diagnosis is active. Execution09 and its close remain untouched; full S1–S5,
-targeted revision, qualification and human acceptance remain open under RC4.
+Current delivery tracking: [execution10 readiness](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness/return.md)
+is CLOSED pending caller review and successor archive binding. Original execution09
+and its genuine close are untouched. ABG c9 has accepted mechanical readiness
+and finite compact conformance, but retry recovery exposed a CCall classification
+defect under bounded correction. Full S1–S5, targeted revision, qualification and
+actual release acceptance remain open; this Product stays on RC4.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
@@ -41,9 +41,9 @@ residuals and targeted revision through declared native owners. Preserve the
 original worksite and author; no manual Data Mapper business-code work.
 
 [T-287's current checkpoint](../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-checkpoint-and-installed-continuation)
-owns accepted compact/caller/CCall source and compiled-03, finite05 conformance,
-and finite06's installed failure-admission/progress proof and later HoG failure. Whole-path review and the compact owner decision
-are CLOSED, not a pending design gate. Next: closed handoff diagnosis/selected correction and source review → one
+owns accepted compact source/review, compiled-02 c9, finite05's seven setup passes
+and the diagnosed CCall omission. Whole-path review and the compact owner decision
+are CLOSED, not a pending design gate. Next: narrow source/caller review → one
 rebuild → affected installed retry proof → preserved generic correction →
 remaining applicable qualification, clean checkpoint and RC1. Actual human
 release acceptance is separate; original-resource launch remains held.
@@ -194,8 +194,8 @@ folds and re-entry. GLC supplies meaning, policy and interpretation without a
 controller, requirement compiler or proof ledger. Reuse valid retained work;
 do not reset the original instance or relabel reduced output as full success.
 
-The current frontier is read-only retry-handoff diagnosis and accepted, held
-generic-correction readiness02 described above. Earlier rejected full-input sandbox evidence
+The current frontier is the bounded CCall correction and held generic-correction
+readiness described above. Earlier rejected full-input sandbox evidence
 keeps its historical scope. This tracking Writer grants no implementation,
 qualification, model/application execution, Git action or release. Dependent
 effects proceed only through the owning bounded activations.
