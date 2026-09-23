@@ -109,3 +109,95 @@ label and bytes reach only the assessment work order and quote interpretation.
 This preserves a previously external oracle without adding it to installed
 semantics or requiring a new file in a preserved worksite. It supplies no method,
 run-environment, source-admission, or capability authority.
+
+## Selected generic consequential correction — 2026-09-23
+
+Status: Executive-selected `design_reframe` under the unchanged Product/T-043
+and ABI T-287 D2/S03/S06. This source/component increment is accepted under
+subject `1a0c8893…` / review `73a33590…`; installed correction remains open. The preceding read-only readiness proposal was not
+implementation or installed proof. [Selection and source handoff](../../../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/consequence-implementation-01/)
+retain that distinction. GLC remains on RC4; future installed policy and final
+prospective-RC sequencing require their own Executive selection.
+
+The existing continuation module adds one generic correction callable and start
+to the same Program. The original continuation start remains the default. No
+application name, file layout, command, criterion or oracle enters publication
+identity. The input retains the exact prior continuation entry, C2 observation,
+independent assessment and closed-child terminal coordinates, separately from
+current workspace authority/binding/context and finite candidate write bounds.
+These are evidence and work bounds, not invented semantic lifecycle provenance.
+
+Declared traversal is:
+
+```text
+prepare affectedness task; J authenticates prior closed assessment through R10
+  -> native read-only affectedness assessment
+  -> pure interpretation and construction-only consequence, or typed stop
+  -> native author in selected file territory
+  -> prepare C2 from actual new author observation
+  -> native same-Run C2
+  -> independent assessment of new candidate and new execution
+  -> supported completion or blocked judgment
+```
+
+The first judgment consumes HoG's `currentOwnerPrefix`, never an input-supplied
+current prefix. It delegates exact historical terminal reconstruction to the
+exported ABG R10 owner, compares stable terminal/producer/value coordinates,
+and requires the complete original assessed context to match the current
+observation. Historical and current binding identities remain separate. No
+consumer event reader, historical scan, source-result transplant or fabricated
+semantic revision envelope supplies admission.
+
+The selected historical/current ingress realization preserves the original
+assessment task's schema product owner. The supplied historical declaration must
+contain one matching module/owner publication, the existing consumer semantics
+binding and the unchanged complete raw assessment contract. The complete task is
+reconstructed from the original job/C2 with that original owner; schema bytes,
+source, rubric, oracle, evidence obligations and provenance must remain exact.
+This structural contract comparison creates no historical authority: the same
+R10 judgment still authenticates the actual original Result and declaration at
+HoG's current prefix before any selector or author effect. Unknown contract or
+task changes refuse. New selector/author/final-assessment tasks retain current
+declaration authority; the ordinary current-assessment check remains strict.
+[Bounded source/component successor](../../../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/historical-assessment-01/)
+is pending affected independent review; it grants no package or new Run.
+
+The affectedness assessor uses the existing native read-only work owner and one
+closed consumer selection schema. It must account for every mandatory failed
+criterion and every selected residual, identify affected existing candidate files
+and read dependencies, quote observed evidence, and distinguish
+`construction_repair`, `stage_revision_required` and `blocked`. The caller's
+write candidates bound permission; they do not establish semantic affectedness.
+Unknown dependencies, required meaning changes or inadequate territory stop for
+the owner. Pure interpretation verifies coverage, actual quotations and scope;
+it does not replace semantic judgment. The admitted selection and its typed
+stop reason remain observable even when the judgment prevents author dispatch.
+
+The author receives the unchanged source/plan and actual selected causes, with
+only the selected existing candidate paths writable and no C2 checks. Native
+before/after observations conserve nonselected assets. Missing required files
+block at author foldback before C2 preparation. C2 preparation reuses the existing
+native constructor over the new admitted author observation; the ABI same-Run
+owner authenticates it. Historical author/C2 observations cannot substitute.
+No host selects individual stages or repeats the correction.
+
+Three declared edges reuse ABI's fixed retained-input pair: selection, author
+and C2 outputs each retain the original correction input. The final wrapper
+constructs assessment from the new author context and actual new C2, retaining
+the complete unchanged job/rubric/oracle and evidence roles. Every original
+mandatory criterion remains required. Selected residuals block completion;
+the prior outside residuals remain visible verbatim, because construction-only
+authority grants no disposition of them. An apparent source or test success is
+not independent semantic acceptance.
+
+One author attempt is structurally bounded by an acyclic graph. Native failures
+keep their native owner result; invalid causes fail before any F_P; unsupported
+affectedness produces a typed blocked/re-entry decision. A changed requirement,
+source or oracle needs a separately selected owner relation. Existing semantic
+D2 is not applicable without its actual semantic-envelope/construction lineage.
+
+Source checks cover actual GTL validation, complete contract/descriptors/role
+composition, critical cause/scope/currentness refusals, typed stops, preservation
+and two different ordinary job inputs. Successful R10/native/admission premises
+in component fixtures are explicitly supplied. These checks do not establish
+actual installed correction, application closure, RC qualification or release.

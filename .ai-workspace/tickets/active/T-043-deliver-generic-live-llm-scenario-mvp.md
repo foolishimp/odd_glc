@@ -25,14 +25,22 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: ODD_GLC_GENERIC_CONSUMER_APPLY_01
-- current_re_entry: design_reframe restoring generic job input and graph/context composition
-- current_activation_status: closed_source_and_mechanical_correction_accepted_canonically_applied_native_continuation_unqualified
-- last_execution_selection: ../../comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-10/launch-selection.json
-- last_execution_result: C10_native_process_heap_exhausted543920ms_no_Public_receipt_diagnostic_only
-- current_activation_record: ../../../../abiogenesis/.ai-workspace/comments/codex/20260921_TRUSTED_DESKTOP_STEEL_THREAD/native-reacquisition-01/d5-next-selection.json#/genericConsumerCorrection
+- current_activation: ODD_GLC_HISTORICAL_ASSESSMENT_INGRESS_01
+- current_re_entry: realization_refactor preserving original historical assessment producer under current consumer
+- current_activation_status: installed_Public_child_read_cure_accepted_historical_consumer_ingress_source_component_pending_review
+- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-07-executive-disposition.json
+- last_execution_result: execution07_cursor_discriminator_accepted_independent_assessment_completed_consumer_blocked_5_selected_4_outside_residuals
+- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/historical-assessment-01/activation.json
 
 ## Current bounded selection
+
+Root accepts the [installed Public historical child read](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-acquisition-03/return.md) (`340d0925…`, freeze `0fe2a629…`) on exact RC1 archive `882199e7…`: original dev.3 assessment Result `c514b407…`, unchanged 1150170187B history and genuine close. Supported recovery receipt `8947585e…` owns the prior abandoned-lock closure. The acquired task differs from today's expected task only in schema product owner. Root therefore selects the [narrow historical/current consumer correction](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/historical-assessment-01/activation.json): original task/schema/job/provenance remain authenticated by R10; new work uses current dev.4 authority. Source/component affected review precedes consumer package or new Run; no more original reads are selected. Five selected/four outside residuals and the complete oracle remain unchanged. This is no application or RC completion.
+
+Root accepted correction source/component subject `1a0c8893`, return `77ba7b7f`, freeze `dbe03a65`, max review `73a33590`; exact acceptance is recorded in `20260923_GENERIC_DATA_MAPPER_CONTINUATION/consequence-implementation-01-executive-acceptance.json`. The prior readiness package retains that original source identity. The accepted composite RC1 and genuine historical input are now available; the narrow ingress successor requires affected independent review before a new consumer package or correction Run. The separately selected one-correction policy remains a future installed selection. No S03/S06 closure or new qualification credit.
+
+Root selects one generic consequential-correction callable under the existing Product and [owning HOW](../../../build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md#selected-generic-consequential-correction--2026-09-23). The [selection](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/consequence-implementation-01/selection.md) permits source and focused checks only: authenticated prior assessment → native affectedness judgment → bounded native author → same-Run C2 → independent assessment, with one attempt and typed stops. No direct application repair or new ABG owner is selected. Execution07 remains accepted at its installed cursor-discriminator boundary, with five selected/four outside residuals and unchanged oracle. The genuine resource close remains banked. Source acceptance, future installed policy and prospective-RC execution remain separate.
+
+### Historical generic consumer application selection
 
 Owner authorizes correcting S1 ODD-DOM-01 in odd_glc. [The current selection](/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260921_TRUSTED_DESKTOP_STEEL_THREAD/native-reacquisition-01/d5-next-selection.json) restores one reusable consumer with scenario facts as admitted input; it does not repair the generated Data Mapper application. Design re-entry starts from the existing generic Product/requirements. Historical consumer01–05 and C10 remain diagnostic evidence; they cannot qualify the generic lifecycle. The [final independent review](../../comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/implementation-review.md) is accepted: one fixed generic ABG pair, job-parametric consumer, bounded two-job component evidence and actual installed deterministic traversal with agreeing cold reads. [Canonical application](../../comments/codex/20260922_GENERIC_CONSUMER_CORRECTION/executive-disposition.md) is accepted and complete; actual native C2/assessment continuation remains unqualified. The same Product/Program accepts unrelated job inputs.
 

@@ -1,7 +1,7 @@
 // Canonical bounded continuation. Every application selection is invocation data.
 export const VERSION = "5.0.0";
 export const PACKAGE_NAME = "@odd-glc/route-one-typescript";
-export const PACKAGE_VERSION = "0.2.0-dev.3";
+export const PACKAGE_VERSION = "0.2.0-dev.4";
 const ref = (kind, name = "") => `${kind}://odd-glc/native-continuation${name ? "/" + name : ""}@5`;
 export const ids = Object.freeze({
  productId:`product://odd_glc/route-one-typescript@${PACKAGE_VERSION}`,
@@ -130,3 +130,37 @@ export const ASSESSMENT_SCHEMA = {
 export const ASSESSMENT_SCHEMA_TEXT = JSON.stringify(ASSESSMENT_SCHEMA) + "\n";
 
 export const constructBoundContract = product => product.RETAINED_GRAPH_INPUT_CONTRACT;
+
+// One additional generic callable. Job meaning and repair territories are input.
+export const correction = Object.freeze({
+ graphFunctionRef:ref('graph-function','correction'),graphRef:ref('graph','correction'),startRef:ref('start','correction'),
+ wrapperRef:ref('graph-function','correction-assessment'),wrapperGraphRef:ref('graph','correction-assessment'),
+ inputContractRef:ref('contract','correction-input'),decisionContractRef:ref('contract','correction-decision'),
+ selectionContractRef:ref('contract','correction-selection'),wrapperClosureRef:ref('contract','correction-assessment-closure'),
+ stepPredicateRef:ref('predicate','correction-step'),wrapperPredicateRef:ref('predicate','correction-assessed'),
+ selectorNodeRef:ref('node','select-affectedness'),authorNodeRef:ref('node','correct'),executionNodeRef:ref('node','execute-correction'),
+ assessmentNodeRef:ref('node','assess-correction'),wrapperCallNodeRef:ref('node','native-correction-assessment'),
+});
+export const correctionInputContract=Object.freeze({contractRef:correction.inputContractRef,contractVersion:VERSION,contractKind:'input',valueKind:'native_correction_input'});
+export const correctionDecisionContract=Object.freeze({contractRef:correction.decisionContractRef,contractVersion:VERSION,contractKind:'output',valueKind:'native_correction_decision'});
+export const correctionSelectionContract=Object.freeze({contractRef:correction.selectionContractRef,contractVersion:VERSION,contractKind:'output',valueKind:'native_correction_selection'});
+export const correctionStages=Object.freeze([
+ ['prepare-correction-selection','prepareCorrectionSelection',correction.inputContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+ ['select-correction','selectCorrection',ids.boundInputContractRef,correction.decisionContractRef],
+ ['prepare-correction-author','prepareCorrectionAuthor',correction.decisionContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+ ['prepare-correction-execution','prepareCorrectionExecution',ids.boundInputContractRef,executionContract.contractRef.replace('observation','task')],
+ ['prepare-correction-assessment','prepareCorrectionAssessment',ids.boundInputContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+].map(([name,namedSymbol,inputContractRef,outputContractRef])=>Object.freeze({name,namedSymbol,inputContractRef,outputContractRef,
+ programLocusRef:ref('node',name),implementationRef:ref('implementation',name),bindingRef:ref('implementation-binding',name),predicateRef:ref('predicate',name),armId:ref('arm',name)})));
+const nonblank={type:'string',minLength:1};
+export const CORRECTION_SELECTION_SCHEMA={
+ '$schema':'https://json-schema.org/draft/2020-12/schema','$id':correction.selectionContractRef,type:'object',additionalProperties:false,
+ required:['kind','disposition','issues','dependencyPaths','reason'],properties:{
+  kind:{const:'native_correction_selection'},disposition:{enum:['construction_repair','stage_revision_required','blocked']},reason:nonblank,
+  dependencyPaths:{type:'array',uniqueItems:true,items:nonblank},
+  issues:{type:'array',items:{type:'object',additionalProperties:false,required:['causeRef','writePaths','reason','evidence'],properties:{
+   causeRef:nonblank,writePaths:{type:'array',uniqueItems:true,items:nonblank},reason:nonblank,
+   evidence:{type:'array',minItems:1,items:{type:'object',additionalProperties:false,required:['path','quote'],properties:{path:nonblank,quote:nonblank}}},
+  }}},
+ }};
+export const CORRECTION_SELECTION_SCHEMA_TEXT=JSON.stringify(CORRECTION_SELECTION_SCHEMA)+'\n';

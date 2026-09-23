@@ -1,0 +1,39 @@
+{
+  "kind": "incremental_checkpoint_composition",
+  "baseCommit": "3e43823beb542f474a5595f38b255ba8879fb543",
+  "baseCheckpoint": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+  "inheritedArchiveMembers": 8987,
+  "inheritedProof": "Prior publication/archive/member/restoration receipts reused without rehashing or reuploading old payloads.",
+  "transports": [
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "memberCount": 1079,
+      "memberBytes": 1092206739,
+      "transportBytes": 219899764,
+      "parts": 22
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "memberCount": 1,
+      "memberBytes": 233398207,
+      "transportBytes": 40541024,
+      "parts": 1
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "memberCount": 35,
+      "memberBytes": 306379,
+      "transportBytes": 90126,
+      "parts": 1
+    }
+  ],
+  "appendRecord": "append-record.json",
+  "wholeAppendRecompositionDuringPreparation": false,
+  "currentClaims": "WIP only; source/component and installed scoped acceptances remain bounded. F11 HOW direction adopted, implementation selected but held until this verified checkpoint; current F11 unchanged/unqualified. RC recipe successor02 partial, first mini refusal and both mini archives preserved."
+}

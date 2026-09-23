@@ -1,0 +1,35 @@
+{
+  "kind": "lossless_append_checkpoint",
+  "logicalPath": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-execution-02/qualification-01/resources/events/runtime.events.jsonl",
+  "inheritedPrefix": {
+    "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-execution-02/qualification-01/resources/events/runtime.events.jsonl",
+    "kind": "file",
+    "mode": 420,
+    "byteLength": 916771980,
+    "sha256": "7ecb59fe940e4ed99e8881c3898f8247de3fc5ba6281a1b06df091777442ea6a",
+    "asset": "family-0012",
+    "checkpoint": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+  },
+  "currentWhole": {
+    "byteLength": 1150170187,
+    "sha256": "0d9fbe33f29c1deb75e8c77736610c36c7a050967f03708a0bb6a291c3010dc4",
+    "coordinateDigest": "sha256:4677c5af49d0597b834b066356efc874c4ed559f397d85c203aaedcd3d289652",
+    "authority": "accepted genuine Public close, not independently rehashed by this Writer",
+    "handoffPath": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-acquisition-03/current-handoff.json",
+    "handoffFileSha256": "30c183ec1eec0d749bab241d20234a6ebd90e9b09d5bb53fb5e74d3a4be0b905"
+  },
+  "suffix": {
+    "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/append-staging/runtime.events.jsonl.suffix",
+    "offset": 916771980,
+    "byteLength": 233398207,
+    "sha256": "6490322ff289511148a4f1605ad298ff2b1c7c13de0d1cdb001e62f0ac59da46"
+  },
+  "physicalSource": {
+    "device": 16777230,
+    "inode": 455703821,
+    "mtimeNs": 1790125709898465315,
+    "unchangedThroughRead": true,
+    "lockAbsentAtCapture": true
+  },
+  "proof": "Banked prefix restoration proof reused. Only new suffix bytes were read and hashed. New suffix receives exact archive/restore comparison. Whole current digest is inherited from actual Public close; a fresh-clone composition command verifies it after restoring prefix+suffix. No old payload or original prefix rehash."
+}

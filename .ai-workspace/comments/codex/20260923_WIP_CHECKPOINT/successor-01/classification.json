@@ -1,0 +1,58 @@
+{
+  "kind": "incremental_WIP_classification",
+  "repository": "odd_glc",
+  "baseCommit": "3e43823beb542f474a5595f38b255ba8879fb543",
+  "inheritedReceipts": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "transportBytes": 2837897656
+    }
+  ],
+  "counts": {
+    "inherited_archive": 8987,
+    "changed_archive_original": 1,
+    "new_archive_member": 1079,
+    "pending_active_write": 33,
+    "direct_git": 9
+  },
+  "newArchiveBytes": 1092206739,
+  "changedArchiveOriginals": [
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-execution-02/qualification-01/resources/events/runtime.events.jsonl",
+      "disposition": "changed_archive_original",
+      "basis": {
+        "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-execution-02/qualification-01/resources/events/runtime.events.jsonl",
+        "kind": "file",
+        "mode": 420,
+        "byteLength": 916771980,
+        "sha256": "7ecb59fe940e4ed99e8881c3898f8247de3fc5ba6281a1b06df091777442ea6a",
+        "asset": "family-0012",
+        "checkpoint": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+      },
+      "stat": {
+        "byteLength": 1150170187,
+        "mtimeNs": 1790125709898465315,
+        "device": 16777230,
+        "inode": 455703821
+      }
+    }
+  ],
+  "pendingRoots": [
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/historical-assessment-01"
+  ],
+  "directPaths": [
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+    "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+    "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs",
+    "build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs",
+    "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs",
+    "build_tenants/odd_glc/typescript/test/native-continuation.test.mjs",
+    "build_tenants/odd_glc/typescript/test/native-correction.test.mjs",
+    "build_tenants/odd_glc/typescript/test/support/native-continuation-fixture.mjs"
+  ],
+  "scope": "Previous byte/restoration proofs reused; unchanged archived originals checked by size/mtime/symlink metadata only, no content rehash. New/changed evidence receives fresh transport proof."
+}

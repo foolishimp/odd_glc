@@ -1,0 +1,6 @@
+{"stage": "inventory_closed", "repo": "/Users/jim/src/apps/odd_glc", "counts": {"archive_backed": 1}, "archiveFamilies": 1, "excludedPrefixes": 0}
+{"stage": "family_packed", "repo": "odd_glc", "family": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT", "files": 1, "familiesDone": 1, "familyCount": 1, "transportBytes": 40541024}
+{"stage": "transport_prepared", "repo": "odd_glc", "members": 1, "bytes": 40541024, "findings": 0}
+{"stage": "verification_progress", "assets": 1, "assetCount": 1, "members": 1, "bytes": 40541024}
+{"stage": "verification_closed", "kind": "checkpoint_restoration_verification", "allPartHashesVerified": true, "allReconstructedAssetHashesVerified": true, "allMemberPathsAndHashesVerified": true, "memberCount": 1, "transportBytes": 40541024, "originalsComparedAfterPacking": true, "restoredToDirectory": "/private/tmp/20260923-checkpoint-odd_glc-transport-append-25202", "verification": "Complete bounded-memory reconstruction/readback through the restoration path; no source/runtime execution."}
+{"closed": true, "repository": "odd_glc", "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append", "restored": "/private/tmp/20260923-checkpoint-odd_glc-transport-append-25202"}
