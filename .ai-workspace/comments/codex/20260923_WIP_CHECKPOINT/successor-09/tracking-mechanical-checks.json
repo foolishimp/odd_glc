@@ -1,0 +1,22 @@
+{
+  "files": [
+    {
+      "path": "specification/GOALS.md",
+      "inversePatchCheck": true,
+      "preimageSha256": "eeec85ff8088ab15d0fc503f0f443fb4e79df4386a452a6910c785aada0d9292",
+      "postimageSha256": "ccd31bd90ba26b33e0313d1ec447771fcd3388aa71040fc58e104e5df275e266",
+      "newLocalLinks": true,
+      "newTrailingWhitespace": false
+    },
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "inversePatchCheck": true,
+      "preimageSha256": "12b0ea8927bca322638be84a85fe3947ddd6ff2bb60ca68c96511f0b257346f2",
+      "postimageSha256": "9cedba8c73c44d5177392c76543790247d71be7828d6eb7dc7e5a183dfcdc3ac",
+      "newLocalLinks": true,
+      "newTrailingWhitespace": false
+    }
+  ],
+  "all592GuardedSourceFilesExact": true,
+  "firstCheckDiagnostic": "Initial reverse check omitted -p0 for existing repo-relative patch format, producing GOALS.md not found; corrected invocation passes with no document change."
+}

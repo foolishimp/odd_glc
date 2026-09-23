@@ -1,5 +1,4 @@
 import * as product from '@abiogenesis/typescript-tenant/product';
-import {projectClosedGraphCallTerminalAtDurablePrefix,isAbgTypedTerminalResult} from '@abiogenesis/typescript-tenant/abg';
 import {isDeepStrictEqual} from 'node:util';
 import {ids,stages,bindingFor,inputContract,executionContract,rawContract,VERSION,PACKAGE_NAME,PACKAGE_VERSION,ASSESSMENT_SCHEMA_TEXT,constructBoundContract,
  correction,correctionStages,correctionSelectionContract,CORRECTION_SELECTION_SCHEMA_TEXT} from './native-continuation-contracts.mjs';
@@ -25,7 +24,7 @@ const validOracle = (context,oracle) => oracle===null ||
 export const boundContract = constructBoundContract(product);
 export const retentionBinding = product.graphInputRetentionBinding(inputContract.contractRef,executionContract.contractRef);
 function rubric(input) {
- const value=JSON.parse(body(input.reacquisitionRequest.currentContext,input.job.rubric.path));
+ const value=JSON.parse(body(input.currentContext??input.reacquisitionRequest.currentContext,input.job.rubric.path));
  need(record(value)&&Array.isArray(value.criteria)&&value.criteria.length>0&&value.criteria.every(c=>record(c)&&text(c.criterionRef)&&typeof c.mandatory==='boolean'&&text(c.instruction))&&
    new Set(value.criteria.map(c=>c.criterionRef)).size===value.criteria.length,'finite unique criterion rubric required');
  return value;
@@ -34,7 +33,9 @@ function rubric(input) {
 export function isNativeContinuationInput(input) { try {
  if (!exact(input,['kind','schemaVersion','job','reacquisitionRequest'])||input.kind!==inputContract.valueKind||input.schemaVersion!==VERSION||
    !product.isNativeWorksiteCommandReacquisitionRequest(input.reacquisitionRequest)) return false;
- const job=input.job, context=input.reacquisitionRequest.currentContext;
+ return isContinuationJob(input.job,input.reacquisitionRequest.currentContext,input.reacquisitionRequest.selectedSources);
+ } catch { return false; } }
+function isContinuationJob(job,context,selectedSources) {try {
  if (!exact(job,['jobRef','claim','planBasis','candidatePaths','sourcePaths','rubric','oracle','criterionEvidence','evidenceExpectations'])||
    !text(job.jobRef)||!text(job.claim)||!unique(job.candidatePaths)||!unique(job.sourcePaths)||
    !observed(context,job.rubric)||!validOracle(context,job.oracle)||
@@ -42,11 +43,11 @@ export function isNativeContinuationInput(input) { try {
      ['requirements','design'].includes(p.assetKind)&&file(context,p.path).digest===p.digest&&
      (p.provenance===null||exact(p.provenance,['ref','digest'])&&text(p.provenance.ref)&&/^sha256:[0-9a-f]{64}$/.test(p.provenance.digest)))||
    !Array.isArray(job.evidenceExpectations)||!job.evidenceExpectations.every(text)) return false;
- const selected=input.reacquisitionRequest.selectedSources.map(s=>s.relativePath);
+ const selected=selectedSources.map(s=>s.relativePath);
  if (!job.candidatePaths.every(p=>selected.includes(p))||!job.sourcePaths.every(p=>file(context,p))||
    job.candidatePaths.some(p=>job.sourcePaths.includes(p))||job.candidatePaths.includes(job.rubric.path)||
    job.oracle!==null&&job.candidatePaths.includes(job.oracle.path)) return false;
- const criteria=rubric(input).criteria;
+ const criteria=rubric({job,currentContext:context}).criteria;
  if (!Array.isArray(job.criterionEvidence)||job.criterionEvidence.length!==criteria.length||
    new Set(job.criterionEvidence.map(r=>r.criterionRef)).size!==criteria.length||
    !job.criterionEvidence.every(row=>exact(row,['criterionRef','roles'])&&criteria.some(c=>c.criterionRef===row.criterionRef)&&unique(row.roles)&&
@@ -65,17 +66,21 @@ export function isNativeContinuationBoundInput(value) {try {
  }catch{return false;} }
 export function executionEvidence(execution) {
  need(product.isNativeWorksiteCommandExecutionObservation(execution),'typed C2 observation required');
- return execution.commandResults.flatMap((command,i)=>['stdout','stderr'].map(stream=>({label:`command-${i+1}.${stream}`,
-   text:new TextDecoder('utf-8',{fatal:true}).decode(Buffer.from(command[stream].payload,'base64')),commandId:command.commandId,
-   digest:command[stream].digest,byteLength:command[stream].byteLength})));
+ return executionStreams(execution);
 }
+function retainedExecutionStreams(execution) {
+ return execution.commandResults.flatMap((command,i)=>['stdout','stderr'].map(stream=>({label:`command-${i+1}.${stream}`,
+  commandId:command.commandId,payload:command[stream].payload,digest:command[stream].digest,byteLength:command[stream].byteLength})));
+}
+const streamEvidence=({payload,...stream})=>({...stream,text:new TextDecoder('utf-8',{fatal:true}).decode(Buffer.from(payload,'base64'))});
+function executionStreams(execution) { return retainedExecutionStreams(execution).map(streamEvidence); }
 export function assessmentTask(bound) {
  need(isNativeContinuationBoundInput(bound),'retained exact job and admitted C2 relation required');
  const {entry,source:execution}=bound, {job,reacquisitionRequest:request}=entry, context=request.currentContext, source=request.sourceNativeWork;
  return buildAssessmentTask(job,request,context,source,execution);
 }
-function buildAssessmentTask(job,request,context,source,execution,schemaOwner=ids.productId) {
- const evidence=executionEvidence(execution), candidatePath=job.candidatePaths[0], candidate=file(context,candidatePath), rubricFile=file(context,job.rubric.path);
+function buildAssessmentTask(job,request,context,source,execution,schemaOwner=ids.productId,evidence=executionEvidence(execution)) {
+ const candidatePath=job.candidatePaths[0], candidate=file(context,candidatePath), rubricFile=file(context,job.rubric.path);
  const sources=context.entries.filter(e=>e.state==='file'&&e.relativePath!==candidatePath&&e.relativePath!==job.rubric.path).map(e=>({path:e.relativePath,digest:e.digest}));
  const instructions=[
   'Independently assess the complete selected source, actual candidate and exact typed execution evidence against the selected rubric and oracle. The candidate anchor is one file; every declared candidate path belongs to the assessed subject. Exit status, shape and counts do not prove semantic satisfaction.',
@@ -98,7 +103,10 @@ function buildAssessmentTask(job,request,context,source,execution,schemaOwner=id
 }
 /** Finite arithmetic over F_P judgments. Never a domain oracle or admission. */
 export function interpretEvidenceRows(entry,assessment,bytes,streamLabels) {
- need(isNativeContinuationInput(entry),'exact selected job required');
+ need(isNativeContinuationInput(entry)||isNativeCorrectionInput(entry),'exact selected job required');
+ return interpretJobEvidenceRows(entry,assessment,bytes,streamLabels);
+}
+function interpretJobEvidenceRows(entry,assessment,bytes,streamLabels) {
  const {job}=entry, criteria=rubric(entry).criteria, required=criteria.map(c=>c.criterionRef), rows=assessment?.criteria, diagnostics=[];
  if (!Array.isArray(rows)||rows.length!==required.length||new Set(rows.map(r=>r.criterionRef)).size!==required.length||!required.every(ref=>rows.some(r=>r.criterionRef===ref)))
   diagnostics.push('criterion_coverage_mismatch');
@@ -120,76 +128,105 @@ export function interpretExecutionAssessment(bound,observation) {
    'assessment must be the exact successor of this retained job and typed C2 input');
  return interpretAssessment(bound.entry,bound.source,observation);
 }
-function interpretPriorAssessment(prior) {
- const {bound,assessment:observation}=prior,owner=observation.task.assessment?.schemaAsset.productId;
- if(owner===ids.productId)return interpretExecutionAssessment(bound,observation);
- // Structural contract continuity only. R10 below authenticates this historical
- // publication and exact original Result at the HoG-supplied current prefix.
- const publications=prior.source.declarationProof.catalog?.boundPublications?.filter(publication=>
-  publication.moduleRef===ids.moduleRef&&publication.owningProductId===owner);
- need(publications?.length===1,'one original assessment schema publication required');
- const publication=publications[0],binding=publication.productSemanticsBinding;
+function interpretPriorAssessment(bound,observation,publication,streams) {
+ const owner=observation.task.assessment?.schemaAsset.productId;
+ // R10 supplies the publication belonging to the exact admitted ancestor.
+ need(publication.moduleRef===ids.moduleRef&&publication.owningProductId===owner,'one original assessment schema publication required');
+ const binding=publication.productSemanticsBinding;
  need(binding?.kind==='product_semantics_binding'&&binding.bindingRef===ids.semanticsBindingRef&&binding.packageName===PACKAGE_NAME&&
   text(binding.packageVersion)&&binding.modulePath==='build/native-continuation-runtime.mjs'&&binding.namedSymbol==='NATIVE_CONTINUATION_SEMANTICS'&&
   same(publication.contracts.filter(contract=>contract.contractRef===ids.rawContractRef),[rawContract]),'unchanged historical assessment contract required');
  const {entry,source:execution}=bound,{job,reacquisitionRequest:request}=entry;
- need(same(observation.task,buildAssessmentTask(job,request,request.currentContext,request.sourceNativeWork,execution,owner)),
+ need(isContinuationJob(job,request.currentContext,request.selectedSources)&&same(observation.before,observation.after)&&
+  same(execution.task.sourceReacquisition?.request,request)&&
+  same(observation.task,buildAssessmentTask(job,request,request.currentContext,request.sourceNativeWork,execution,owner,streams)),
   'historical assessment must retain the exact job, schema bytes and typed C2 relation');
- return interpretAssessment(entry,execution,observation);
+ return interpretAssessmentFacts(entry,execution,observation,streams);
 }
 function interpretAssessment(entry,execution,observation) {
  need(product.nativeWorkspaceAssessmentMatchesContext(observation,observation.after),'current exact read-only assessment subject required');
+ need(isNativeContinuationInput(entry)||isNativeCorrectionInput(entry),'exact selected job required');
+ return interpretAssessmentFacts(entry,execution,observation,executionEvidence(execution));
+}
+function interpretAssessmentFacts(entry,execution,observation,streams) {
  const author=execution.task.sourceNativeWork.provenance;
  need(observation.provenance.actorInvocationRef!==author.actorInvocationRef&&observation.provenance.actorInvocationRef!==execution.provenance.actorInvocationRef&&
    observation.provenance.cCallRef!==author.cCallRef,'independent assessment invocation required');
- const streams=executionEvidence(execution), bytes=new Map(streams.map(e=>[e.label,e.text]));
+ const bytes=new Map(streams.map(e=>[e.label,e.text]));
  for(const e of observation.after.entries)if(e.state==='file')bytes.set(e.relativePath,decode(e));
  if(entry.job.oracle!==null)bytes.set(oracleLabel(entry.job.oracle),oracleText(observation.after,entry.job.oracle));
- return interpretEvidenceRows(entry,observation.assessment,bytes,streams.map(s=>s.label));
+ return interpretJobEvidenceRows(entry,observation.assessment,bytes,streams.map(s=>s.label));
 }
-/** Structural ingress is not historical admission. The first declared J below
- * authenticates its exact cause with the existing R10 owner before any F_P. */
+const priorFields=['job','priorSource','priorAssessment','priorExecution','priorAuthor','executionPlan'];
+const stableTerminal=({value,projectionBasis,...selection})=>selection;
+const observationCoordinate=observation=>({observationRef:observation.observationRef,observationDigest:observation.observationDigest,provenance:observation.provenance});
+const coordinateShape=value=>text(value.observationRef)&&/^sha256:[a-f0-9]{64}$/.test(value.observationDigest)&&record(value.provenance)&&text(value.provenance.actorInvocationRef);
+
+/** Candidate facts only. This pure projection confers no admission. At first J
+ * its source is supplied by the invoking ABG owner, never by input assertions.
+ * R10 and the original basis/producer admissions own native value validity and
+ * the exact ancestor input. We reuse those facts; only consumer meaning is
+ * compared here, without walking earlier tasks through native shape admission. */
+export function projectNativeCorrectionPrior(source){
+ const terminal=source.terminalResult,bound=source.input.value,assessment=terminal.value;
+ need(source.input.graphFunctionRef===ids.assessmentWrapperRef&&source.input.contractRef===ids.boundInputContractRef&&
+  terminal.kind==='abg_typed_terminal_result'&&terminal.schemaVersion===VERSION&&
+  bound.kind===boundContract.valueKind&&bound.schemaVersion===VERSION&&bound.entry.kind===inputContract.valueKind&&bound.entry.schemaVersion===VERSION&&
+  assessment.kind==='native_workspace_work_observation'&&assessment.schemaVersion===VERSION&&
+  terminal.producer.graphFunction.ref===product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef&&
+  terminal.producer.cCallRef===assessment.provenance.cCallRef,'exact original terminal assessment and enclosing input required');
+ const streams=retainedExecutionStreams(bound.source),interpreted=interpretPriorAssessment(bound,assessment,source.publication,streams.map(streamEvidence));
+ need(interpreted.disposition==='unsatisfied'&&interpreted.diagnostics.length===0,'authentic unsatisfied prior assessment without structural diagnostics required');
+ const request=bound.entry.reacquisitionRequest,execution=bound.source,author=request.sourceNativeWork;
+ return freeze({job:bound.entry.job,priorSource:stableTerminal(terminal),
+  priorAssessment:{...observationCoordinate(assessment),assessment:assessment.assessment},
+  priorExecution:{...observationCoordinate(execution),streams},priorAuthor:observationCoordinate(author),
+  executionPlan:{selectedSources:request.selectedSources,commands:request.commands,outcomePredicates:request.outcomePredicates,allowedWriteTerritories:request.allowedWriteTerritories}});
+}
+
+/** Structural ingress is not historical admission. No earlier tasks, contexts,
+ * catalogs or verified source bodies belong to this successor semantic input. */
 export function isNativeCorrectionInput(input) {try {
- if(!exact(input,['kind','schemaVersion','prior','workspaceAuthorityBasis','workspaceBinding','capabilityGrant','currentContext','writeCandidates'])||
+ if(!exact(input,['kind','schemaVersion',...priorFields,'workspaceAuthorityBasis','workspaceBinding','capabilityGrant','currentContext','writeCandidates'])||
   input.kind!=='native_correction_input'||input.schemaVersion!==VERSION||
-  !exact(input.prior,['bound','assessment','source'])||!exact(input.prior.source,['graphCallRef','declarationProof','terminalResult'])||
-  !isNativeContinuationBoundInput(input.prior.bound)||!product.isNativeWorkspaceWorkObservation(input.prior.assessment)||
-  !isAbgTypedTerminalResult(input.prior.source.terminalResult)||!text(input.prior.source.graphCallRef)||
-  !record(input.prior.source.declarationProof)||!same(input.prior.source.terminalResult.value,input.prior.assessment))return false;
- const prior=input.prior,terminal=prior.source.terminalResult,context=input.currentContext,job=prior.bound.entry.job;
- if(terminal.producer.graphCallRef!==prior.source.graphCallRef||terminal.producer.graphFunction.ref!==product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef||
-  terminal.producer.cCallRef!==prior.assessment.provenance.cCallRef||
-  !same(input.workspaceAuthorityBasis,prior.assessment.task.workspaceAuthorityBasis)||
-  !product.isWorksiteContextObservation(context)||!same(context.entries,prior.assessment.after.entries)||
-  !same(context.readRoots,prior.assessment.after.readRoots)||context.maxFiles!==prior.assessment.after.maxFiles||context.maxBytes!==prior.assessment.after.maxBytes||
-  !unique(input.writeCandidates)||input.writeCandidates.some(p=>!job.candidatePaths.includes(p)||job.planBasis.some(b=>b.path===p)))return false;
- const interpreted=interpretPriorAssessment(prior);
- if(interpreted.disposition!=='unsatisfied'||interpreted.diagnostics.length!==0)return false;
- // Reuse the native task's full authority/context validation without granting an effect.
- product.constructNativeWorkspaceWorkTask({...currentAuthority(input),context,outcome:'Validate current correction authority',instructions:[],
-  readFirst:context.entries.filter(e=>e.state==='file').map(e=>e.relativePath),writeRoots:input.writeCandidates,checks:[]});
+  !exact(input.executionPlan,['selectedSources','commands','outcomePredicates','allowedWriteTerritories'])||
+  !['selectedSources','commands','outcomePredicates','allowedWriteTerritories'].every(key=>Array.isArray(input.executionPlan[key]))||
+  !exact(input.priorSource,['kind','schemaVersion','result','contract','valueKind','valueDigest','producer'])||
+  !exact(input.priorAssessment,['observationRef','observationDigest','provenance','assessment'])||!coordinateShape(input.priorAssessment)||
+  !exact(input.priorExecution,['observationRef','observationDigest','provenance','streams'])||!coordinateShape(input.priorExecution)||
+  !exact(input.priorAuthor,['observationRef','observationDigest','provenance'])||!coordinateShape(input.priorAuthor)||
+  !Array.isArray(input.priorExecution.streams)||!input.priorExecution.streams.every(e=>exact(e,['label','payload','commandId','digest','byteLength'])&&
+   text(e.label)&&typeof e.payload==='string'&&text(e.commandId)&&Number.isSafeInteger(e.byteLength)&&
+   Buffer.from(e.payload,'base64').toString('base64')===e.payload&&e.byteLength===Buffer.from(e.payload,'base64').length&&product.sha256Bytes(Buffer.from(e.payload,'base64'))===e.digest)||
+  !record(input.priorAssessment.assessment)||!Array.isArray(input.priorAssessment.assessment.criteria)||!Array.isArray(input.priorAssessment.assessment.residuals)||
+  !product.isWorksiteContextObservation(input.currentContext)||!isContinuationJob(input.job,input.currentContext,input.executionPlan.selectedSources)||
+  !unique(input.writeCandidates)||input.writeCandidates.some(p=>!input.job.candidatePaths.includes(p)||input.job.planBasis.some(b=>b.path===p)))return false;
+ product.constructNativeWorkspaceWorkTask({...currentAuthority(input),context:input.currentContext,outcome:'Validate current correction authority',instructions:[],
+  readFirst:input.currentContext.entries.filter(e=>e.state==='file').map(e=>e.relativePath),writeRoots:input.writeCandidates,checks:[]});
  return true;
  }catch{return false;} }
 const currentAuthority=input=>({workspaceAuthorityBasis:input.workspaceAuthorityBasis,workspaceBinding:input.workspaceBinding,capabilityGrant:input.capabilityGrant});
-export function constructNativeCorrectionInput(input){const value={kind:'native_correction_input',schemaVersion:VERSION,...input};need(isNativeCorrectionInput(value),'exact prior assessment, unchanged current subject and bounded authority required');return freeze(value);}
+export function constructNativeCorrectionInput(input){const value={kind:'native_correction_input',schemaVersion:VERSION,...input};need(isNativeCorrectionInput(value),'complete compact prior facts, current subject and bounded authority required');return freeze(value);}
 const correctionBound=(value,predicate)=>exact(value,['kind','schemaVersion','entry','source'])&&value.kind===boundContract.valueKind&&value.schemaVersion===VERSION&&isNativeCorrectionInput(value.entry)&&predicate(value.source);
 export function correctionCauses(input){
  need(isNativeCorrectionInput(input),'correction input required');
- const rows=input.prior.assessment.assessment,criteria=rubric(input.prior.bound.entry).criteria;
+ const rows=input.priorAssessment.assessment,criteria=rubric(input).criteria;
  return [...rows.criteria.filter(row=>criteria.some(c=>c.criterionRef===row.criterionRef&&c.mandatory)&&row.disposition!=='satisfied')
   .map(row=>({causeRef:'criterion:'+row.criterionRef,criterionRef:row.criterionRef,description:row.rationale})),
   ...rows.residuals.flatMap((row,index)=>row.scope==='selected-assessment'?[{causeRef:'residual:'+index,criterionRef:row.criterionRef,description:row.description}]:[])];
 }
-/** No event iteration, receipt manufacture or alternative read owner. */
-export function correctionCauseCurrent(input,currentOwnerPrefix){try{
+/** One owner read at first J; subsequent transforms use only compact facts. */
+export function correctionCauseCurrent(input,currentOwnerPrefix,nativeProof){try{
  if(!isNativeCorrectionInput(input)||currentOwnerPrefix===undefined)return false;
- const source=input.prior.source,actual=projectClosedGraphCallTerminalAtDurablePrefix(currentOwnerPrefix,source.graphCallRef,source.declarationProof);
- if(actual===null)return false;
- const stable=({projectionBasis,...value})=>value;
- return same(stable(actual),stable(source.terminalResult));
+ const source=nativeProof?.historicalGraphCallSource?.();
+ if(source===null||source===undefined)return false;
+ const facts=projectNativeCorrectionPrior(source),assessment=source.terminalResult.value,context=input.currentContext;
+ return priorFields.every(key=>same(input[key],facts[key]))&&same(input.workspaceAuthorityBasis,assessment.task.workspaceAuthorityBasis)&&
+  same(context.entries,assessment.after.entries)&&same(context.readRoots,assessment.after.readRoots)&&
+  context.maxFiles===assessment.after.maxFiles&&context.maxBytes===assessment.after.maxBytes;
  }catch{return false;} }
 function correctionReadTask(input,{outcome,instructions,resultContract,schemaText,producer}){
- const job=input.prior.bound.entry.job,context=input.currentContext,candidatePath=job.candidatePaths[0];
+ const job=input.job,context=input.currentContext,candidatePath=job.candidatePaths[0];
  return product.constructNativeWorkspaceWorkTask({...currentAuthority(input),context,outcome,instructions,
   readFirst:context.entries.filter(e=>e.state==='file').map(e=>e.relativePath),writeRoots:[],checks:[],assessment:{resultContract,
    schemaAsset:{productId:ids.productId,contractId:resultContract.contractRef,bytesBase64:Buffer.from(schemaText).toString('base64')},
@@ -198,7 +235,7 @@ function correctionReadTask(input,{outcome,instructions,resultContract,schemaTex
 }
 export function correctionSelectionTask(input){
  need(isNativeCorrectionInput(input),'exact correction input required');
- const prior=input.prior.assessment,job=input.prior.bound.entry.job;
+ const prior=input.priorAssessment,job=input.job;
  return correctionReadTask(input,{outcome:'Independently select affected construction work or truthful owner re-entry from the admitted assessment.',
   resultContract:correctionSelectionContract,schemaText:CORRECTION_SELECTION_SCHEMA_TEXT,
   producer:{resultRef:prior.observationRef,resultDigest:prior.observationDigest,cCallRef:prior.provenance.cCallRef,actorInvocationRef:prior.provenance.actorInvocationRef},
@@ -209,14 +246,14 @@ export function correctionSelectionTask(input){
    'Evidence labels are observed worksite paths or prior-assessment; quotes must be actual short substrings. Keep outside-assessment obligations explicit and do not relabel them satisfied. One correction attempt is permitted by this callable.',
    `Unchanged job: ${product.canonicalJson(job)}\nOwner write bounds: ${JSON.stringify(input.writeCandidates)}\nRequired causes: ${product.canonicalJson(correctionCauses(input))}`,
    `Actual prior-assessment:\n${product.canonicalJson(prior.assessment)}`,
-   ...executionEvidence(input.prior.bound.source).map(e=>`Prior admitted execution (${e.label}):\n${e.text}`),
+   ...input.priorExecution.streams.map(streamEvidence).map(e=>`Prior admitted execution (${e.label}):\n${e.text}`),
   ]});
 }
 function isSelectionObservation(input,observation){try{
  return product.isNativeWorkspaceWorkObservation(observation)&&same(observation.task,correctionSelectionTask(input))&&
   product.nativeWorkspaceAssessmentMatchesContext(observation,input.currentContext)&&
-  observation.provenance.actorInvocationRef!==input.prior.assessment.provenance.actorInvocationRef&&
-  observation.provenance.actorInvocationRef!==input.prior.bound.source.task.sourceNativeWork.provenance.actorInvocationRef;
+  observation.provenance.actorInvocationRef!==input.priorAssessment.provenance.actorInvocationRef&&
+  observation.provenance.actorInvocationRef!==input.priorAuthor.provenance.actorInvocationRef;
  }catch{return false;} }
 export function correctionDecision(bound){
  need(correctionBound(bound,product.isNativeWorkspaceWorkObservation)&&isSelectionObservation(bound.entry,bound.source),'exact independent affectedness observation required');
@@ -226,7 +263,7 @@ export function correctionDecision(bound){
   !['construction_repair','stage_revision_required','blocked'].includes(selection.disposition)||!text(selection.reason)||
   !Array.isArray(selection.issues)||!Array.isArray(selection.dependencyPaths))diagnostics.push('malformed_selection');
  const bytes=new Map(context.entries.filter(e=>e.state==='file').map(e=>[e.relativePath,decode(e)]));
- bytes.set('prior-assessment',product.canonicalJson(input.prior.assessment.assessment));
+ bytes.set('prior-assessment',product.canonicalJson(input.priorAssessment.assessment));
  const issues=Array.isArray(selection?.issues)?selection.issues:[],paths=[];
  for(const issue of issues){
   if(!exact(issue,['causeRef','writePaths','reason','evidence'])||!text(issue.causeRef)||!text(issue.reason)||!unique(issue.writePaths)||
@@ -248,7 +285,7 @@ function isCorrectionDecision(value){try{return exact(value,['kind','schemaVersi
  same(value,correctionDecision(product.constructRetainedGraphInput(value.entry,value.selection)));}catch{return false;}}
 export function correctionAuthorTask(decision){
  need(isCorrectionDecision(decision)&&decision.disposition==='construction_repair','admitted construction-only selection required');
- const input=decision.entry,job=input.prior.bound.entry.job;
+ const input=decision.entry,job=input.job;
  return product.constructNativeWorkspaceWorkTask({...currentAuthority(input),context:input.currentContext,
   outcome:'Correct the selected construction defects while preserving governing meaning and unaffected work.',
   instructions:['Read the complete selected source, retained plan and actual candidate. Apply only this independent affectedness selection within the exact write scope. Preserve source, requirements/design, rubric, oracle and outside obligations.',
@@ -263,11 +300,11 @@ function isCorrectedAuthor(input,source){try{
   !same(source.task.capabilityGrant,input.capabilityGrant)||!unique(source.task.writeRoots)||source.task.writeRoots.some(p=>!input.writeCandidates.includes(p)))return false;
  const preserved=input.currentContext.entries.filter(e=>!source.task.writeRoots.includes(e.relativePath));
  return preserved.every(e=>same(e,source.after.entries.find(a=>a.relativePath===e.relativePath)))&&
-  source.provenance.actorInvocationRef!==input.prior.assessment.provenance.actorInvocationRef;
+  source.provenance.actorInvocationRef!==input.priorAssessment.provenance.actorInvocationRef;
  }catch{return false;} }
 export function correctionExecutionTask(bound){
  need(correctionBound(bound,product.isNativeWorkspaceWorkObservation)&&isCorrectedAuthor(bound.entry,bound.source),'new exact current native author observation required');
- const input=bound.entry,request=input.prior.bound.entry.reacquisitionRequest;
+ const input=bound.entry,request=input.executionPlan;
  return product.constructNativeWorksiteCommandExecutionTask({...currentAuthority(input),sourceNativeWork:bound.source,
   selectedSources:request.selectedSources,commands:request.commands,outcomePredicates:request.outcomePredicates,allowedWriteTerritories:request.allowedWriteTerritories});
 }
@@ -278,27 +315,27 @@ function isCorrectionExecution(bound){try{
 export function correctionAssessmentTask(bound){
  need(isCorrectionExecution(bound),'same corrected native source and new C2 observation required');
  const execution=bound.source,source=execution.task.sourceNativeWork;
- const task=buildAssessmentTask(bound.entry.prior.bound.entry.job,execution.task,source.after,source,execution);
+ const task=buildAssessmentTask(bound.entry.job,execution.task,source.after,source,execution);
  return product.constructNativeWorkspaceWorkTask({...task,instructions:[...task.instructions,
   'Reassess every original mandatory criterion using the new candidate and new execution evidence. Resolve each prior selected residual with actual evidence or retain it as selected; the prior assessment is history, not new proof. Preserve every outside-assessment residual below verbatim; this construction-only correction grants no disposition of those obligations.',
-  `Prior assessment and conserved outside obligations:\n${product.canonicalJson(bound.entry.prior.assessment.assessment)}`]});
+  `Prior assessment and conserved outside obligations:\n${product.canonicalJson(bound.entry.priorAssessment.assessment)}`]});
 }
 export function interpretCorrectionAssessment(bound,observation){
  need(isCorrectionExecution(bound)&&product.isNativeWorkspaceWorkObservation(observation)&&same(observation.task,correctionAssessmentTask(bound)),
   'exact new C2/current assessment required');
- const result=interpretAssessment(bound.entry.prior.bound.entry,bound.source,observation);
+ const result=interpretAssessment(bound.entry,bound.source,observation);
  return preservesOutside(bound.entry,observation)?result:freeze({...result,disposition:'unsatisfied',diagnostics:[...result.diagnostics,'outside_obligation_loss']});
 }
-const preservesOutside=(input,output)=>input.prior.assessment.assessment.residuals.filter(r=>r.scope==='outside-assessment').every(r=>output.assessment?.residuals?.some(row=>same(row,r)));
+const preservesOutside=(input,output)=>input.priorAssessment.assessment.residuals.filter(r=>r.scope==='outside-assessment').every(r=>output.assessment?.residuals?.some(row=>same(row,r)));
 function correctionCompleted(input,output){try{
  if(!isNativeCorrectionInput(input)||!product.isNativeWorkspaceWorkObservation(output)||!output.task.assessment||
   !same(currentAuthority(input),currentAuthority(output.task))||!product.nativeWorkspaceAssessmentMatchesContext(output,output.after)||
-  output.task.assessment.rubric.path!==input.prior.bound.entry.job.rubric.path||output.task.assessment.rubric.digest!==input.prior.bound.entry.job.rubric.digest||
+  output.task.assessment.rubric.path!==input.job.rubric.path||output.task.assessment.rubric.digest!==input.job.rubric.digest||
   !preservesOutside(input,output))return false;
- const protectedPaths=new Set([...input.prior.bound.entry.job.sourcePaths,...input.prior.bound.entry.job.planBasis.map(p=>p.path),input.prior.bound.entry.job.rubric.path,
-  ...(input.prior.bound.entry.job.oracle?.path?[input.prior.bound.entry.job.oracle.path]:[])]);
+ const protectedPaths=new Set([...input.job.sourcePaths,...input.job.planBasis.map(p=>p.path),input.job.rubric.path,
+  ...(input.job.oracle?.path?[input.job.oracle.path]:[])]);
  return [...protectedPaths].every(path=>same(file(input.currentContext,path),file(output.after,path)))&&
-  rubric(input.prior.bound.entry).criteria.filter(c=>c.mandatory).every(c=>output.assessment.criteria.filter(r=>r.criterionRef===c.criterionRef&&r.disposition==='satisfied').length===1)&&
+  rubric(input).criteria.filter(c=>c.mandatory).every(c=>output.assessment.criteria.filter(r=>r.criterionRef===c.criterionRef&&r.disposition==='satisfied').length===1)&&
   !output.assessment.residuals.some(r=>r.scope==='selected-assessment');
  }catch{return false;} }
 
@@ -329,14 +366,14 @@ export function contractValuePredicate(kind) {
   native_workspace_work_observation:product.isNativeWorkspaceWorkObservation,worksite_command_execution_task:product.isNativeWorksiteCommandExecutionTask,
   worksite_command_execution_observation:product.isNativeWorksiteCommandExecutionObservation})[kind]??null;
 }
-const relation=(predicateRef,evaluate)=>Object.freeze({predicateRef,advanceReasonRef:predicateRef+'/satisfied',rejectionReasonRef:predicateRef+'/refused',evaluate(input,output,currentOwnerPrefix){try{return evaluate(input,output,currentOwnerPrefix);}catch{return false;}}});
+const relation=(predicateRef,evaluate)=>Object.freeze({predicateRef,advanceReasonRef:predicateRef+'/satisfied',rejectionReasonRef:predicateRef+'/refused',evaluate(input,output,currentOwnerPrefix,nativeProof){try{return evaluate(input,output,currentOwnerPrefix,nativeProof);}catch{return false;}}});
 export const NATIVE_CONTINUATION_SEMANTICS=Object.freeze({kind:'product_semantics_provider',schemaVersion:VERSION,bindingRef:ids.semanticsBindingRef,packageName:PACKAGE_NAME,packageVersion:PACKAGE_VERSION,
  admitInput(contractRef,value){return (contractRef===ids.inputContractRef&&isNativeContinuationInput(value)||contractRef===correction.inputContractRef&&isNativeCorrectionInput(value))?freeze(value):null;},evaluateInteractionResponse(){return null;},
  validateContractValue(kind,value){return contractValuePredicate(kind)?.(value)??false;},
  resolveJudgmentRelation(predicateRef){
   const ci=correctionStages.findIndex(s=>s.predicateRef===predicateRef);
-  if(ci>=0)return relation(predicateRef,(input,output,prefix)=>same(output,correctionTransforms[ci](input))&&
-   (ci!==0||correctionCauseCurrent(input,prefix))&&(ci!==1||output.disposition==='construction_repair'));
+  if(ci>=0)return relation(predicateRef,(input,output,prefix,nativeProof)=>same(output,correctionTransforms[ci](input))&&
+   (ci!==0||correctionCauseCurrent(input,prefix,nativeProof))&&(ci!==1||output.disposition==='construction_repair'));
   if(predicateRef===correction.wrapperPredicateRef)return relation(predicateRef,(input,output)=>interpretCorrectionAssessment(input,output).disposition==='satisfied');
   if(predicateRef===correction.stepPredicateRef)return relation(predicateRef,(input,output)=>
    product.isNativeWorkspaceWorkTask(input)&&product.isNativeWorkspaceWorkObservation(output)&&same(input,output.task)&&

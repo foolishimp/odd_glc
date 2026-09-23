@@ -122,9 +122,12 @@ prospective-RC sequencing require their own Executive selection.
 The existing continuation module adds one generic correction callable and start
 to the same Program. The original continuation start remains the default. No
 application name, file layout, command, criterion or oracle enters publication
-identity. The input retains the exact prior continuation entry, C2 observation,
-independent assessment and closed-child terminal coordinates, separately from
-current workspace authority/binding/context and finite candidate write bounds.
+identity. The successor input carries the complete unchanged job, prior assessment rows,
+ordered stdout/stderr evidence, author/executor/assessor observation and provenance
+coordinates, execution plan, and stable closed-child terminal coordinates. Current
+workspace authority/binding/context and finite candidate write bounds remain
+explicit. Earlier native tasks, bound inputs and declaration catalogs are resolved
+by their historical owners, not recursively retained in successor input.
 These are evidence and work bounds, not invented semantic lifecycle provenance.
 
 Declared traversal is:
@@ -141,16 +144,19 @@ prepare affectedness task; J authenticates prior closed assessment through R10
 ```
 
 The first judgment consumes HoG's `currentOwnerPrefix`, never an input-supplied
-current prefix. It delegates exact historical terminal reconstruction to the
-exported ABG R10 owner, compares stable terminal/producer/value coordinates,
+current prefix. The invoking Run supplies one explicit `historicalSource` read resource outside
+semantic input, containing the stable terminal selection, exact enclosing
+GraphFunction/input-contract selector, and original declaration proof. Its existing
+nonserialized judgment-proof port delegates to ABG R10, which resolves the closed
+terminal and exact admitted ancestor input together. The consumer compares every
+compact fact against those borrowed values, including terminal/producer/value coordinates,
 and requires the complete original assessed context to match the current
 observation. Historical and current binding identities remain separate. No
 consumer event reader, historical scan, source-result transplant or fabricated
 semantic revision envelope supplies admission.
 
 The selected historical/current ingress realization preserves the original
-assessment task's schema product owner. The supplied historical declaration must
-contain one matching module/owner publication, the existing consumer semantics
+assessment task's schema product owner. The R10-selected historical ancestor publication must be the matching module/owner, the existing consumer semantics
 binding and the unchanged complete raw assessment contract. The complete task is
 reconstructed from the original job/C2 with that original owner; schema bytes,
 source, rubric, oracle, evidence obligations and provenance must remain exact.
@@ -201,3 +207,46 @@ composition, critical cause/scope/currentness refusals, typed stops, preservatio
 and two different ordinary job inputs. Successful R10/native/admission premises
 in component fixtures are explicitly supplied. These checks do not establish
 actual installed correction, application closure, RC qualification or release.
+
+
+## Compact historical carrier selection — 2026-09-24
+
+Executive accepted [design-01](../../../.ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/design-01/return.md),
+subject `3820023c04f37d3ce5bf572591f8a9e1f4982d19ec7fce79cfa7a74ef3f14bdd`,
+as `design_reframe` under unchanged T-043 / ABI T-287 GOAL-035. The selected frame
+is End-to-End Interface Integration composed with Owner, Conservation, Reuse and
+Code Construction; GLC retains STDO 2.5.0 RC4 and ABI selects 2.5.1 RC1. The
+successor source package identity is `0.2.0-dev.5`; immutable prior packages and
+the original continuation start remain preserved. Installed proof is pending.
+
+`projectNativeCorrectionPrior` projects candidate facts, never admission. The
+first existing J obtains its source through `historicalGraphCallSource()` from
+the invoking leaf owner. R10 authenticates durable history, terminal producer,
+result, contract, judgment, closed child, admitted parent frontier and ancestor
+input digest, and the historical publication through the exact root closure and
+admitted installs. That owner result is borrowed: no consumer re-admission of
+historical native graphs, no serialized R10 projection, and no consumer cache.
+The pure projection extracts ordered streams once. It retains complete prior
+rows and provenance, never computes a new native observation identity.
+
+GLC still checks its known wrapper/input selection, original assessment schema
+owner/binding/contract, exact historical task (including full C2 command facts),
+original job and complete evidence roles, actual quoted evidence, and independent
+assessor. The source-reacquisition request and original C2 task must agree. The
+first J also requires current A and the complete unchanged observed file scope
+against the original assessment. Later transforms operate exclusively on compact
+facts. Current binding/capability/native before-effect checks, same-Run author/C2
+checks, final independent assessment and every selected/outside obligation keep
+their existing owners. Unknown source, task, contract or current subject refuses.
+
+The historical declaration proof is one explicit cold resource; it is neither a
+claim that IDs reconstruct source bodies nor a second current Catalog. The Run
+owner retains an R10 projection only in its existing prefix derivation lifetime
+under the actual immutable resource object. Equal copies, released owners and
+cold processes authenticate history and declaration evidence again. Recovery
+uses the existing acquisition path. No old event, incomplete Run, Result or
+package is transplanted, pruned, closed, retargeted or rewritten by this change.
+The obsolete full-prior successor input shape is removed. The graph, original
+continuation, native actors, application choices and stop/re-entry meanings are
+unchanged. The installed model-free first F_D/J and cold discriminator belongs
+to the later single combined package, not this source-readiness increment.

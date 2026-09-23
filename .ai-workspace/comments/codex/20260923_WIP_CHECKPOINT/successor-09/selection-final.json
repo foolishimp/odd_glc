@@ -1,0 +1,46 @@
+{
+  "directExpected": {
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md": {
+      "sha256": "5ef60ef1f1da9e2502d9d21a0d355dd491fd5b5a4e5444ba3029c35b3e623139",
+      "classification": "consumer01"
+    },
+    "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs": {
+      "sha256": "7566f9dc36ed91c2aa5e6f08c19e3f8a06e3ecbba511f63bd31c84161b14f238",
+      "classification": "consumer01"
+    },
+    "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs": {
+      "sha256": "ba6aca05b0f7e47b408a612b9ecc5475ad03414ea092243ed8809f561be3eea2",
+      "classification": "consumer01"
+    },
+    "build_tenants/odd_glc/typescript/test/native-correction.test.mjs": {
+      "sha256": "a2022a29d18c41363f7350c344d71d767a80416b753065f16488f24fdaef841a",
+      "classification": "consumer01"
+    },
+    "specification/GOALS.md": {
+      "sha256": "ccd31bd90ba26b33e0313d1ec447771fcd3388aa71040fc58e104e5df275e266",
+      "classification": "current_tracking_projection"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "9cedba8c73c44d5177392c76543790247d71be7828d6eb7dc7e5a183dfcdc3ac",
+      "classification": "current_tracking_projection"
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01",
+      "catalogSha256": "8608247b90f14fdf9740ba51d74b5a42372a4875e18e40e212676976830c1339",
+      "indexSha256": "8f7fded9678e96d2103f4b09ee52b86be474e826d8a74ebfbcb64046546e8fa6",
+      "verificationSha256": "12c731714ef047aa465a7e0feee80f9c974dc836daa009d5d0e9964f8087e1a0",
+      "members": 96,
+      "logicalBytes": 891960,
+      "transportBytes": 235402
+    }
+  ],
+  "scope": "Accepted core04/consumer01/caller02 SOURCE/READINESS and independently accepted compiled09/dev5 PACKAGE/CALLER READINESS; original recovered ordinary caller02 integration NEXT, all native outcome/OOM cure/RC qualification claims remain open.",
+  "excluded": [
+    "All original mutable GLC/S02 journals/worksites/live logs; no read/hash/copy",
+    "All dependency trees, implementation03 disposable fixture, build scratch and unselected caches",
+    "All unclosed and post-cutoff successors; source/package readiness only, original integration and qualification pending"
+  ],
+  "sourcePostimageMutationByWriter": false
+}

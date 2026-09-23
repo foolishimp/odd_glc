@@ -1,0 +1,18 @@
+{
+  "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md": {
+    "sha256": "5ef60ef1f1da9e2502d9d21a0d355dd491fd5b5a4e5444ba3029c35b3e623139",
+    "classification": "consumer01"
+  },
+  "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs": {
+    "sha256": "7566f9dc36ed91c2aa5e6f08c19e3f8a06e3ecbba511f63bd31c84161b14f238",
+    "classification": "consumer01"
+  },
+  "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs": {
+    "sha256": "ba6aca05b0f7e47b408a612b9ecc5475ad03414ea092243ed8809f561be3eea2",
+    "classification": "consumer01"
+  },
+  "build_tenants/odd_glc/typescript/test/native-correction.test.mjs": {
+    "sha256": "a2022a29d18c41363f7350c344d71d767a80416b753065f16488f24fdaef841a",
+    "classification": "consumer01"
+  }
+}

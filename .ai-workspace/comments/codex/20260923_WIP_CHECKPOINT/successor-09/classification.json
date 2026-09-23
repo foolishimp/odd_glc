@@ -1,0 +1,229 @@
+{
+  "baseCommit": "f03d5664db29fb7ab8aa7fc8492aee7884843698",
+  "directPaths": [
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+    "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs",
+    "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs",
+    "build_tenants/odd_glc/typescript/test/native-correction.test.mjs"
+  ],
+  "priorTransportReceipts": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "members": 8988,
+      "transportBytes": 2837897656
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "indexSha256": "afdab2e383c6f62f1596bcfb0737fc4965539f3ad70c42dbf3933eb50c6c37b8",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "members": 1079,
+      "transportBytes": 219899764
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "indexSha256": "f2e3c62106aeda582b41d16072a22df2a0661c2016e40ecf0136210dd4cd47ac",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "members": 1,
+      "transportBytes": 40541024
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "indexSha256": "9e4cacc030cc09ddb8ec1b57e1a2f7c6691df9f328df595a272f7c6b77d91722",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "members": 35,
+      "transportBytes": 90126
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-02/transport-01",
+      "catalogSha256": "897627fe2296a09030af85542270a9a16fcf7ca80ea520d670ad0d567ce7bb9f",
+      "indexSha256": "8c6eaf2989c5496b0a90a2271b64df376c8db0ee52acda0fa21400f312f88468",
+      "verificationSha256": "b26dbacc1d8c15cf720759ce86ede2db1587003dc5439a629049b2a48cb6253d",
+      "members": 110,
+      "transportBytes": 43394337
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-03/transport-01",
+      "catalogSha256": "54ce43ee016f314ab830e4015218d5dbedba57461b91e5ccc7d2692435640b46",
+      "indexSha256": "252530af378ff076724e7b00026a327546548f3e48dd3c2bf19e00c3348d6987",
+      "verificationSha256": "4f4c6a6636d5374249023a520e41e870b72c52b3489fa76297d24dada60823f3",
+      "members": 162,
+      "transportBytes": 359204850
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/transport-01",
+      "catalogSha256": "11fa5293fbbd8284ed1b43ec3b1c12677e3b5b6470bfb91e427669ddf31715da",
+      "indexSha256": "f5790560a09a44872056be58f36a2cb96926579f73ae3708461e0d582122291b",
+      "verificationSha256": "b6f3529e8053534df7464eb57ae74c15b23c7fc9c32511dec33d0eca7f5704b4",
+      "members": 54,
+      "transportBytes": 121848
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01",
+      "catalogSha256": "39d71d54880850dcf5ee31ce2433d532c482a1af673ac3ba3a0906810975ad64",
+      "indexSha256": "76c46dc43928beb10eb25cefb4d79c3156e1aa14bb44ef200a050323de273108",
+      "verificationSha256": "2e14de42cacad13b11766d4642c11e27489d678eb87c455e9d938b5d950d36fc",
+      "members": 17,
+      "transportBytes": 31509
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01",
+      "catalogSha256": "ef68978d0902645d196a6aedc4e7d8ba04ace5795fe79b286849eb2a7c362f80",
+      "indexSha256": "65d1f03c4479d0e44e4657dcd046ed9fc600d15ab5e078e53a8309f33661a3fa",
+      "verificationSha256": "61c035fc0f4433b3fd460d4bb646410b1151568d38ca83b00d5fe8140df423df",
+      "members": 72,
+      "transportBytes": 12186305
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01",
+      "catalogSha256": "f16a33b467a6d67d9ebd0cee81ff65fb5a5cfa5d1b7a61ea101d0addef63b152",
+      "indexSha256": "259b4f75434846f53315133cc227b7e0a606bfdc9b197a2b3aeec3b1c903070c",
+      "verificationSha256": "3ee0506b64a5d876e54f2d6dd50e18f9da2502de3e6acd34fadeefa18404739d",
+      "members": 36,
+      "transportBytes": 54986
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-08/transport-01",
+      "catalogSha256": "2d0c2f77c7273cbb23f5f4aebb290effb6eb62eaf499e2aadb3a1328cd9c90ae",
+      "indexSha256": "d31ad6fe786926203f6e3ee3ed721fee929fdc586f7241c536f717c2054d7988",
+      "verificationSha256": "4a1db62f5f03569e995f4e094b7420bda8c308601da68f4d0999778a979e7f22",
+      "members": 47,
+      "transportBytes": 61583821
+    }
+  ],
+  "inheritedIndexedMembers": 10601,
+  "reusedSelectedMembers": [
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/driver.mjs",
+      "sha256": "d43cc8cf9b330ab87646fbb476cd4dbe95f34f124d23de68c2ad470ece452a8e",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/current-resource.mjs",
+      "sha256": "fbef40bbb0b430a5507dcd6946fbf3e0232b1999c8fc23960059bdcaa1ee4060",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/observe-process.py",
+      "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/caller-readiness/current-resource.mjs",
+      "sha256": "a5e28ebd4bc0e828607dac6d2d2443a250520531c2e238b9d63a08b40b035c02",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-06/caller-readiness/current-resource.mjs",
+      "sha256": "5b3051df7dab4a8c4e5570af14a785681750fde8d5353bc47dbb6a5754884539",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+    }
+  ],
+  "newArchiveMembers": 96,
+  "newArchiveBytes": 891960,
+  "selectedFreezes": [
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/original-run-allocation-diagnosis-01/freeze.json",
+      "sha256": "d5f6b667a151ec1c859fcbba0afe1e2c92aa4ca1538e504e0a6594a25b8fa138",
+      "declaredMembers": 9,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-04/freeze.json",
+      "sha256": "47f8832a9e71ddf9423e477b04fe204772143deccd5a1832d0015404b0f40add",
+      "declaredMembers": 40,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/tracking-05/freeze.json",
+      "sha256": "95c4c32b35ea1acb549f3cc8f7599e6d8c16ca1acd4edccc60a7b0f3f9e04000",
+      "declaredMembers": 0,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-review-01/freeze.json",
+      "sha256": "af25927f408875ac44f52d70e36aa698e599dab9e0fb8f0107cd84ccad7f82e9",
+      "declaredMembers": 6,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-01/freeze.json",
+      "sha256": "93723f8c1156c0ea0bc108a422ac59dc8b014e930199f38bcf6fb4eb57aab7bb",
+      "declaredMembers": 23,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/tracking-05/subject.json",
+      "sha256": "edb1f8c7c01dfa64c3b1a47304509bc9604d3a35e093a441f7ce957555094e44",
+      "declaredMembers": 6,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-09/freeze.json",
+      "sha256": "bec9b205e6eb4dcab457f23274659d8d6d41c8da797d7f90808d8b899d7c3c9c",
+      "declaredMembers": 24,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-16/freeze.json",
+      "sha256": "15563c0f0cb38b073daa5b865167d33e57240d74f43818461df57874c065ab80",
+      "declaredMembers": 18,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/design-01/freeze.json",
+      "sha256": "4e0eacf2aa31aa8ea233e052733416757009d931ebd4acae655d7242947d87d0",
+      "declaredMembers": 2,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/freeze.json",
+      "sha256": "920ab058bceb69642a3bf34d50f4186cbdddfdaee3a66e582b0a4af944872d0a",
+      "declaredMembers": 36,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-01/freeze.json",
+      "sha256": "c192afc67a47190d31d57f05a4e48f06ae74c1e7fca0d2f0f650f1cfd3283df8",
+      "declaredMembers": 29,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-readiness-01/subject.json",
+      "sha256": "4df91344106b1a1a7fcde60a7fd6436d7b66a06317fc2d49d4d41abf89dbeaf0",
+      "declaredMembers": 6,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-readiness-01/freeze.json",
+      "sha256": "440d8d936339f01cd87d29b135fa8fa2d4c38834ba035ef75a6e5c15775649f3",
+      "declaredMembers": 0,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/subject.json",
+      "sha256": "cb8b1d45e2da66ec10f4330497d86d3c48e85751a67cba35e521fa9bfb9d3f51",
+      "declaredMembers": 16,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/freeze.json",
+      "sha256": "5c8c88c518d8810894e9c01590b1ab08fe58bd522324c68721917e329fd2cc37",
+      "declaredMembers": 0,
+      "externalCallerMembers": 0
+    }
+  ],
+  "canonicalFreezeReferencesConservedThroughPostimages": [],
+  "pending": [
+    "Independent package review beyond frozen source-readiness review unless CLOSED before coherent cutoff",
+    "Original mutable journals/worksites/live logs, installed dependency trees, implementation03 fixture and scratch",
+    "All late successors and unclosed carriers; semantic-negative applicability/evidence remains open"
+  ],
+  "scope": "Accepted core04/consumer01/caller02 SOURCE/READINESS, CLOSED compiled09/dev5 package readiness, original recovery and installed correction conjunction pending; no OOM cure/native outcome/RC qualification.",
+  "priorPayloadReadOrReupload": false
+}

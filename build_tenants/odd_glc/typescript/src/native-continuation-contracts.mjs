@@ -1,7 +1,7 @@
 // Canonical bounded continuation. Every application selection is invocation data.
 export const VERSION = "5.0.0";
 export const PACKAGE_NAME = "@odd-glc/route-one-typescript";
-export const PACKAGE_VERSION = "0.2.0-dev.4";
+export const PACKAGE_VERSION = "0.2.0-dev.5";
 const ref = (kind, name = "") => `${kind}://odd-glc/native-continuation${name ? "/" + name : ""}@5`;
 export const ids = Object.freeze({
  productId:`product://odd_glc/route-one-typescript@${PACKAGE_VERSION}`,
