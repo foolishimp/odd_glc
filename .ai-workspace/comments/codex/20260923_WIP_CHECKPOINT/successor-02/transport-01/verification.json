@@ -1,0 +1,11 @@
+{
+  "kind": "checkpoint_restoration_verification",
+  "allPartHashesVerified": true,
+  "allReconstructedAssetHashesVerified": true,
+  "allMemberPathsAndHashesVerified": true,
+  "memberCount": 110,
+  "transportBytes": 43394337,
+  "originalsComparedAfterPacking": true,
+  "restoredToDirectory": "/private/tmp/20260923-checkpoint-successor02-odd_glc-42954",
+  "verification": "Complete bounded-memory reconstruction/readback through the restoration path; no source/runtime execution."
+}

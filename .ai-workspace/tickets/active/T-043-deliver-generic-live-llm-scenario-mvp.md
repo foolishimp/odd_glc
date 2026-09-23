@@ -15,7 +15,7 @@
 - re_entry_point: specification/GOALS.md#current-goal
 - triaged_at: 2026-09-09
 - created_at: 2026-09-01
-- updated_at: 2026-09-22
+- updated_at: 2026-09-23
 - selected_method: STDO v2.5.0-rc.4
 - selected_method_qualified_tag: refs/tags/specification_methodology/v2.5.0-rc.4
 - selected_method_tag_object: 032dac0c833111547f7dd4b290c5316ed9b70f97
@@ -25,14 +25,20 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: ODD_GLC_HISTORICAL_ASSESSMENT_INGRESS_01
-- current_re_entry: realization_refactor preserving original historical assessment producer under current consumer
-- current_activation_status: installed_Public_child_read_cure_accepted_historical_consumer_ingress_source_component_pending_review
-- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-07-executive-disposition.json
-- last_execution_result: execution07_cursor_discriminator_accepted_independent_assessment_completed_consumer_blocked_5_selected_4_outside_residuals
-- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/historical-assessment-01/activation.json
+- current_activation: ODD_GLC_CALLER_PREPARATION_LIFETIME_01
+- current_re_entry: caller-only realization_refactor; accepted component correction, installed continuation separate
+- current_activation_status: execution08_closed_preparation_OOM_before_Run_caller_component_repair_accepted
+- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-selection/activation.json
+- last_execution_result: setup0_to6_retained_parent_preparation_SIGABRT_OOM_before_catalog_Run_or_actor
+- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-preparation-lifetime-01/return.md
 
 ## Current bounded selection
+
+Root accepts the closed [execution08 failure](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08/return.md), freeze `02699c4e…`: selected core RC1 `dd76783f…` completed setup0–6, then parent preparation aborted at default-heap OOM after19m28.9s / peak6.15GB before catalog receipt, Run or paid actor. The original resource has its genuine setup6 close; no application change or qualification success follows. The [caller preparation-lifetime correction](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-preparation-lifetime-01/return.md), subject `b6ba3d73…` / freeze `5fa42e02…`, is Root-accepted component readiness. A separately selected successor reuses setup0–6; installed cure remains open. No core/consumer canonical code or source method change is part of this caller repair.
+
+The accepted historical ingress source and generic correction remain preserved. Five selected/four outside residuals, full original-source S1–S5 and actual targeted revision remain required; a green correction alone cannot close S06. ABG's successor05 F11 cross-producer and application-domain findings are selected but unimplemented under T-287, not consumer authority or native J.
+
+### Retained earlier selection and evidence
 
 Root accepts the [installed Public historical child read](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-acquisition-03/return.md) (`340d0925…`, freeze `0fe2a629…`) on exact RC1 archive `882199e7…`: original dev.3 assessment Result `c514b407…`, unchanged 1150170187B history and genuine close. Supported recovery receipt `8947585e…` owns the prior abandoned-lock closure. The acquired task differs from today's expected task only in schema product owner. Root therefore selects the [narrow historical/current consumer correction](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/historical-assessment-01/activation.json): original task/schema/job/provenance remain authenticated by R10; new work uses current dev.4 authority. Source/component affected review precedes consumer package or new Run; no more original reads are selected. Five selected/four outside residuals and the complete oracle remain unchanged. This is no application or RC completion.
 

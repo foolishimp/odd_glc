@@ -9,6 +9,8 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
+Current delivery tracking: execution08 is closed at preparation OOM before any Run or paid actor; the caller-only lifetime correction is accepted at component scope, with installed continuation separate. [T-043 current selection](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) preserves the original resource, selected core RC1, complete S1–S5 and targeted-revision obligations. No application completion or qualification follows.
+
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
 Design, a working application and admitted evidence, then uses failures or changed requirements

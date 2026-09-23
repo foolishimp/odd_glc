@@ -1,0 +1,16 @@
+{
+  "basisCommit": "0844bfdd253a0703f051604ea54408fa021e13da",
+  "prior": "successor-01/composition.json plus inherited transport receipts in classification.json",
+  "newTransport": "transport-01/catalog.json",
+  "archiveMembers": 110,
+  "archiveMemberBytes": 229245768,
+  "transportBytes": 43394337,
+  "parts": 2,
+  "priorPayloadReadOrReupload": false,
+  "pending": [
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/**",
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/**",
+    "original event resource/worksite; no new snapshot or log suffix selected"
+  ],
+  "scope": "Accepted source/component and bounded installed proof, failures and prospective control diagnosis conserved; no qualification/human acceptance."
+}

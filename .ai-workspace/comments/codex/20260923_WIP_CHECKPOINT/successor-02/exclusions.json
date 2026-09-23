@@ -1,0 +1,11 @@
+{
+  "prefixesAndFiles": {
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-integration-02/package/build/": "compiled package projection beside retained package.json",
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08/resources/installed/": "Reproducible exact installed input; archive/installation receipts retained"
+  },
+  "active": [
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/**",
+    ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/**",
+    "original event resource/worksite; no new snapshot or log suffix selected"
+  ]
+}
