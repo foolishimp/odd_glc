@@ -1,0 +1,172 @@
+{
+  "baseCommit": "7a9de213be424ee9ccf72a1e4908ca9d1292d996",
+  "directPaths": [
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "specification/GOALS.md"
+  ],
+  "priorTransportReceipts": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "members": 8988,
+      "transportBytes": 2837897656
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "indexSha256": "afdab2e383c6f62f1596bcfb0737fc4965539f3ad70c42dbf3933eb50c6c37b8",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "members": 1079,
+      "transportBytes": 219899764
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "indexSha256": "f2e3c62106aeda582b41d16072a22df2a0661c2016e40ecf0136210dd4cd47ac",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "members": 1,
+      "transportBytes": 40541024
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "indexSha256": "9e4cacc030cc09ddb8ec1b57e1a2f7c6691df9f328df595a272f7c6b77d91722",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "members": 35,
+      "transportBytes": 90126
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-02/transport-01",
+      "catalogSha256": "897627fe2296a09030af85542270a9a16fcf7ca80ea520d670ad0d567ce7bb9f",
+      "indexSha256": "8c6eaf2989c5496b0a90a2271b64df376c8db0ee52acda0fa21400f312f88468",
+      "verificationSha256": "b26dbacc1d8c15cf720759ce86ede2db1587003dc5439a629049b2a48cb6253d",
+      "members": 110,
+      "transportBytes": 43394337
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-03/transport-01",
+      "catalogSha256": "54ce43ee016f314ab830e4015218d5dbedba57461b91e5ccc7d2692435640b46",
+      "indexSha256": "252530af378ff076724e7b00026a327546548f3e48dd3c2bf19e00c3348d6987",
+      "verificationSha256": "4f4c6a6636d5374249023a520e41e870b72c52b3489fa76297d24dada60823f3",
+      "members": 162,
+      "transportBytes": 359204850
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/transport-01",
+      "catalogSha256": "11fa5293fbbd8284ed1b43ec3b1c12677e3b5b6470bfb91e427669ddf31715da",
+      "indexSha256": "f5790560a09a44872056be58f36a2cb96926579f73ae3708461e0d582122291b",
+      "verificationSha256": "b6f3529e8053534df7464eb57ae74c15b23c7fc9c32511dec33d0eca7f5704b4",
+      "members": 54,
+      "transportBytes": 121848
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01",
+      "catalogSha256": "39d71d54880850dcf5ee31ce2433d532c482a1af673ac3ba3a0906810975ad64",
+      "indexSha256": "76c46dc43928beb10eb25cefb4d79c3156e1aa14bb44ef200a050323de273108",
+      "verificationSha256": "2e14de42cacad13b11766d4642c11e27489d678eb87c455e9d938b5d950d36fc",
+      "members": 17,
+      "transportBytes": 31509
+    }
+  ],
+  "inheritedIndexedMembers": 10446,
+  "reusedSelectedMembers": [
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/driver.mjs",
+      "sha256": "f8f0ebd05b8b096c5485806efff12862d3c23e436b08b76fce5d90b5112870b8",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/current-resource.mjs",
+      "sha256": "fbef40bbb0b430a5507dcd6946fbf3e0232b1999c8fc23960059bdcaa1ee4060",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/observe-process.py",
+      "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/configuration.json",
+      "sha256": "d16dec71c89a31901f5ebe1e50e6d74af967f0512db6b13a6691a56af4497a15",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/freeze.json",
+      "sha256": "0191da60204996f3269829171908938654d653f0b076141c5ea7d05e0aaa6907",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md",
+      "sha256": "a6244f22062a4f6cfebe2e0ffa4f5cbf97f5ff6b1c31a9bca0f0c5b71f6b8600",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-integration-01/launch-policy.json",
+      "sha256": "1e8e4febf717a9202b100e95e6b44d94e9cb2745c5f4518777e34e0eb0514bcb",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01"
+    }
+  ],
+  "newArchiveMembers": 72,
+  "newArchiveBytes": 86956096,
+  "selectedFreezes": [
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-05/freeze.json",
+      "sha256": "b56dcc3e2a0bb585e6b9b98952cc344d60857088389811525fa58cde8f42457b",
+      "declaredMembers": 33,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-08/runtime-stop/freeze.json",
+      "sha256": "c45caf93b64d9a2eb949111400b6fc3740b61b82f4aab99acadf5bf2a127eb06",
+      "declaredMembers": 112,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-08-review/freeze.json",
+      "sha256": "be2d2dad6f48251b5fa1ee7bbfbb6014b072737406c6d04f4e0c29afce343703",
+      "declaredMembers": 1,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-08-repair-01/freeze.json",
+      "sha256": "3237fbb78c4ec72cb2e2e6f3b9823be45743a96b4ebb38fa28f032007e078cfb",
+      "declaredMembers": 31,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-08-repair-01/review-01/freeze.json",
+      "sha256": "e36e6a0610f2c930de7b793f1a411515b37114544ed78d7870adec50f4ffe04c",
+      "declaredMembers": 1,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-09/runtime-stop/freeze.json",
+      "sha256": "0f22eca0ff47d57fd381fbce1d623aeab4cba35087360a16e72827bdfde6bbed",
+      "declaredMembers": 172,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-failure-01/freeze.json",
+      "sha256": "26766ccaac160bc00a6d0f88ee2e32446724db1d76794337abaf938fb125c946",
+      "declaredMembers": 8,
+      "externalCallerMembers": 0
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/freeze.json",
+      "sha256": "b852306cc4f99aa5268cbc9515f059296f4cca115c6d92cb6487a852d8a11a6a",
+      "declaredMembers": 26,
+      "externalCallerMembers": 0
+    }
+  ],
+  "canonicalFreezeReferencesConservedThroughPostimages": [],
+  "pending": [
+    "Active 20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01 and all lifetime owner/HOW/test/generated successors",
+    "Active s02-installed-continuation-10 and later carriers",
+    "All original mutable GLC/S02 resources/history/worksite; no snapshot",
+    "Unselected scratch, reproducible caches and unrelated outputs"
+  ],
+  "scope": "Accepted Hello two-source/test delta, compiled05 generated/package correspondence, closed08/09/reviews/probes; execution10 failed preparation and finite receipts, execution11 readiness and lifetime review; no complete qualification/RC/human acceptance",
+  "priorPayloadReadOrReupload": false
+}

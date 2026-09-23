@@ -1,0 +1,14 @@
+[
+  {
+    "path": "specification/GOALS.md",
+    "before": "90935651e1b41bf86815fa034770ba1ee9699cce956fac0613ee47e17bed3512",
+    "after": "7238dc56cb1cc7090b2ba92d7f77f8b3fa37847d061a0aaf1a288a6a39d11ba0",
+    "historicalTailUnchanged": true
+  },
+  {
+    "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "before": "b8b5aa61f7bb12292f2e993e683bca29da903dc4e17f6dcf102b1f1dd8fe9afc",
+    "after": "003ac4d31e80154bbc3e2090d2291b826823badf2c483c09df67519b3ac109a4",
+    "historicalTailUnchanged": true
+  }
+]

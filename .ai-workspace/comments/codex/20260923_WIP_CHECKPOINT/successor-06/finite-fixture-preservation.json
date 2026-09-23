@@ -1,0 +1,24 @@
+{
+  "kind": "lossless proof copies of fresh finite fixtures only",
+  "members": [
+    {
+      "path": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/execution11-owner-check-7y75Ql/copied-events.jsonl",
+      "bytes": 2292887,
+      "sha256": "e2e523db89b199af3c5a0e7290ede7dacf57b4b7ea59d71602859676ce6bc681",
+      "checkpointPath": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixtures/execution11-owner-check-7y75Ql/copied-events.jsonl"
+    },
+    {
+      "path": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/execution11-owner-check-7y75Ql/events.jsonl",
+      "bytes": 2297149,
+      "sha256": "d22769b4ab5cb1c508e2bb27f06d01e9a3aad36fe24debfc0c3b7a454643135e",
+      "checkpointPath": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixtures/execution11-owner-check-7y75Ql/events.jsonl"
+    },
+    {
+      "path": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/execution11-control-check-kzNF1U/wrong-receipt.json",
+      "bytes": 6012,
+      "sha256": "3c878b71290e4b5be22eec4bbdf1c0ae23d9ffd30a1c1775e510c9c85c9356ee",
+      "checkpointPath": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixtures/execution11-control-check-kzNF1U/wrong-receipt.json"
+    }
+  ],
+  "notRuntimeResourceAuthority": true
+}

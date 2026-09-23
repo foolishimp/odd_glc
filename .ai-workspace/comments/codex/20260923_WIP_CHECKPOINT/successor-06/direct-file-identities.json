@@ -1,0 +1,261 @@
+{
+  "files": [
+    {
+      "path": ".ai-workspace/comments/.gitignore",
+      "bytes": 366501,
+      "sha256": "f9f1fee2a861f2cca90262ba4348dabbe583e28bece7163c3025cf4de010909f",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/README.md",
+      "bytes": 1919,
+      "sha256": "fca00e0eb3e3c7a32776646b17998f2f8bc5580fb2c260a5e65899dee295b027",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/activation.json",
+      "bytes": 923,
+      "sha256": "8e5dd8e0b5d64c63c9a2537526d9bed66036a1d8c0642081d6e9b71fc3dc423a",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/classification.json",
+      "bytes": 9456,
+      "sha256": "c538547643168f74c2eac63e956d772ce4f81e5837f94f67c297a770369ec33e",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/composition.json",
+      "bytes": 968,
+      "sha256": "2b90fa2112eb6e89678063ad6da118da1443a8c9ec416cc374c80556d021a3e9",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/exclusions.json",
+      "bytes": 501,
+      "sha256": "19602a8d46fed38f97dba714da4ab1c3f620ead490d249c33ca0297395bdacc8",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/final-path-reconciliation.json",
+      "bytes": 13560,
+      "sha256": "8c85488902f361c47e36e11b99e1a0039d019913655329cdca962f1c2ccee569",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/final-stage-paths.nul",
+      "bytes": 4173,
+      "sha256": "0ba68275ded431885a7e289ce51541eb2401bb7137204d896ddd206bd0d7f9ac",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixture-preservation.json",
+      "bytes": 1302,
+      "sha256": "20000725ec921f7360492b7a742c97789c61608b1d884182007d7d17968c9592",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixtures/execution11-control-check-kzNF1U/wrong-receipt.json",
+      "bytes": 6012,
+      "sha256": "3c878b71290e4b5be22eec4bbdf1c0ae23d9ffd30a1c1775e510c9c85c9356ee",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixtures/execution11-owner-check-7y75Ql/copied-events.jsonl",
+      "bytes": 2292887,
+      "sha256": "e2e523db89b199af3c5a0e7290ede7dacf57b4b7ea59d71602859676ce6bc681",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/finite-fixtures/execution11-owner-check-7y75Ql/events.jsonl",
+      "bytes": 2297149,
+      "sha256": "d22769b4ab5cb1c508e2bb27f06d01e9a3aad36fe24debfc0c3b7a454643135e",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/freeze-expectations.json",
+      "bytes": 16457,
+      "sha256": "1e8eb476f7f5cb530117899eb2c0ee164ee3aa8dff38f8ab5f46cd542d01918f",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/frozen-member-correspondence.json",
+      "bytes": 8762,
+      "sha256": "2b91aea8c5d1b7c7475953774d956fd3c880e8bac94db20f615be35367f584ed",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/ignore-preimage.txt",
+      "bytes": 359943,
+      "sha256": "d811fb2c938608fdd240bee34906052f89009a2b8f1dec9646b9b46f8d8c872d",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/incremental-inventory.jsonl.gz",
+      "bytes": 4472,
+      "sha256": "62f93b2e23cd1e448be12e8ca877237ca451b4d4f59e18847bf8bae53e162106",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/pack_incremental.py",
+      "bytes": 1677,
+      "sha256": "22f7b61efb3682d5f79ccd04d923e2e5e8efa7aea6d4e2f0044fa3c75a7a1245",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/preimages.json",
+      "bytes": 312,
+      "sha256": "c57510d993c326e2f82c7de492820997e565ee39e54dd9cf1d588f9680f7a8e3",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/prepare_incremental.py",
+      "bytes": 6297,
+      "sha256": "3a95e1ce48cb6a5a12936e7b942494abbdfd935ebf9fd3878ae07a0331ea1a14",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/publication-receipt.json",
+      "bytes": 1160,
+      "sha256": "feb286ae6b2c0b584074a4ec7d67d7682c0a3f48517055907722d1837743c35f",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/selected-archive-paths.nul",
+      "bytes": 8044,
+      "sha256": "2278c5db073cb87e3f2b2000429b1effafd734d1780949337672ea0c2e4b220a",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/selection.json",
+      "bytes": 15103,
+      "sha256": "4a9bb51a08acab5c66a5716c5785cf946769930615e04d8e8c81efb51aa8b142",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/stage_checkpoint.py",
+      "bytes": 9741,
+      "sha256": "42bd1f4d4f0d353c0b4aba94afe1582491e565bde627cb9cbd04baf9995f5edc",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/tracking-delta.json",
+      "bytes": 548,
+      "sha256": "4a111641e97d975cc1d763bfd2c32ab4d428a191c82f51478ef062f05d60a9c0",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/tracking-preimages/GOALS.md",
+      "bytes": 14136,
+      "sha256": "90935651e1b41bf86815fa034770ba1ee9699cce956fac0613ee47e17bed3512",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/tracking-preimages/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "bytes": 50415,
+      "sha256": "b8b5aa61f7bb12292f2e993e683bca29da903dc4e17f6dcf102b1f1dd8fe9afc",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/tracking.patch",
+      "bytes": 9245,
+      "sha256": "cd971a6bcfce243351b5ad07b9b834e7c3cd345f8c739a2ce873179857659a49",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/catalog.json",
+      "bytes": 1290,
+      "sha256": "ef68978d0902645d196a6aedc4e7d8ba04ace5795fe79b286849eb2a7c362f80",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/credential-shape-findings.json",
+      "bytes": 121,
+      "sha256": "44e87b2569a514609f5111491d1d0e0605c6a81f56db5ab4bdf0fe5812b7c55e",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/direct-paths.nul",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/exclusions.json",
+      "bytes": 348,
+      "sha256": "3974c18bd3617177301413f9dac88a296e227621726113ca3aa9e9ec8d227c36",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/members.jsonl.gz",
+      "bytes": 3729,
+      "sha256": "65d1f03c4479d0e44e4657dcd046ed9fc600d15ab5e078e53a8309f33661a3fa",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/path-reconciliation.jsonl.gz",
+      "bytes": 685,
+      "sha256": "89c9631a83bd183185d79af266da777e00227c1407888882f88a10ef66a88fc5",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/payloads/family-0000.tar.gz.part0000",
+      "bytes": 12186305,
+      "sha256": "c4e14566ab709d162a664f7d8fa5236705e72e4fcbabeba1b0500bc2fb9c116a",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/pending.json",
+      "bytes": 248,
+      "sha256": "5db967ae83d28d1f4d0cee865718f7c69ff1604472fe889e2211f1d9509b1fe8",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/restoration-verification.json",
+      "bytes": 482,
+      "sha256": "61c035fc0f4433b3fd460d4bb646410b1151568d38ca83b00d5fe8140df423df",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01/verification.json",
+      "bytes": 482,
+      "sha256": "61c035fc0f4433b3fd460d4bb646410b1151568d38ca83b00d5fe8140df423df",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-backed-ignore-receipt.json",
+      "bytes": 12846,
+      "sha256": "f922e2cd71e029332abde81ffee8a3d78a09c9ccb7d744b49c6aab946cc8bf8b",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-reuse.json",
+      "bytes": 3886,
+      "sha256": "76c3191e4a07c7290a72c4296ae0c7abdc675c908ae800226bdaef9ef6b640ca",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/writer-first-diagnostic.json",
+      "bytes": 370,
+      "sha256": "a0be7f48196148d7c423a4adfd24aa93a1b057e7fd1597b9a4c439bfa6790284",
+      "mode": 420
+    },
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "bytes": 50221,
+      "sha256": "003ac4d31e80154bbc3e2090d2291b826823badf2c483c09df67519b3ac109a4",
+      "mode": 420
+    },
+    {
+      "path": "specification/GOALS.md",
+      "bytes": 14468,
+      "sha256": "7238dc56cb1cc7090b2ba92d7f77f8b3fa37847d061a0aaf1a288a6a39d11ba0",
+      "mode": 420
+    }
+  ],
+  "selfReferenceExclusions": [
+    "direct-file-identities.json",
+    "final-staged-check.json",
+    "final-staged-whitespace-check.txt"
+  ]
+}

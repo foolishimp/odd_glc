@@ -9,12 +9,11 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: original [execution10](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-failure-01/return.md)
-failed at parent JSON allocation after setup0–4/994.797s, before Run or paid actor;
-the genuine bind close is preserved. [Execution11](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/return.md)
-is accepted finite readiness only, with six cold parent acquisitions remaining
-and no original cure. Existing-owner lifetime repair is active under ABG HOW5.6.2C;
-original effects remain held. Full S1–S5 and human acceptance remain open.
+Current delivery tracking: [execution10 readiness03](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md)
+is accepted on compiled04; independently accepted installed07 nested recovery
+satisfies its candidate dependency. Final checkpoint precedes original
+preparation and one correction Run. Execution09 and its close remain untouched;
+full S1–S5, targeted revision, qualification and human acceptance remain open.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
@@ -41,18 +40,16 @@ residuals and targeted revision through declared native owners. Preserve the
 original worksite and author; no manual Data Mapper business-code work.
 
 [T-287's current checkpoint](../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-checkpoint-and-installed-continuation)
-owns accepted compiled05 Hello repair and installed09. The malformed negative
-lawfully failed; its blocked-only oracle was stale, with no new runtime exception.
-Remaining declared S02 cases continue separately on frozen05; exact outcomes
-remain in native returns. Next: existing-owner
-lifetime repair and installed proof, preserved generic correction, remaining
-qualification and clean checkpoint/RC1. Complete goal and actual human release
-acceptance stay open; no new Product/session authority or heap increase.
+owns accepted compiled04/installed07 recovery, its independent review and
+residual setup/memory costs. Fifteen remaining S02 cases and complete
+qualification/RC1 stay open. Next: final checkpoint, preserved generic
+correction and remaining applicable qualification; actual human acceptance is
+separate. No new session authority or performance closure is implied.
 
-Last verified pushes at Writer entry: ABG `1efca608…` / GLC `7a9de213…`;
-[successor06](../.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/publication-receipt.json)
-banks accepted completed work. RC4, default dependency and Product obligations
-are unchanged. Existing cost, diagnostic and fixture debt remains in T-287.
+Last verified pushes at Writer entry: ABG `462de346…` / GLC `d563c894…`;
+[successor05](../.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/publication-receipt.json)
+records this next checkpoint. RC4, default dependency and Product obligations
+are unchanged. Existing diagnostic/fixture debt remains in T-287.
 
 ### Retained predecessor selection and evidence
 

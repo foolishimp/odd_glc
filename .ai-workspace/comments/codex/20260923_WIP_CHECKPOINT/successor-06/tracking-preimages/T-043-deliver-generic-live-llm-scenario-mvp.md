@@ -15,7 +15,7 @@
 - re_entry_point: specification/GOALS.md#current-goal
 - triaged_at: 2026-09-09
 - created_at: 2026-09-01
-- updated_at: 2026-09-24
+- updated_at: 2026-09-23
 - selected_method: STDO v2.5.0-rc.4
 - selected_method_qualified_tag: refs/tags/specification_methodology/v2.5.0-rc.4
 - selected_method_tag_object: 032dac0c833111547f7dd4b290c5316ed9b70f97
@@ -25,34 +25,38 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: ODD_GLC_EXECUTION10_FAILED_EXECUTION11_READINESS_EXISTING_OWNER_LIFETIME_ACTIVE
-- current_re_entry: existing_owner_lifetime_repair_under_ABG_HOW5.6.2C_then_installed_proof_before_original_continuation
-- current_activation_status: execution11_finite_readiness_only_six_cold_acquisitions_original_cure_unproved
-- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-failure-01/return.md
-- last_execution_result: parent_JSON_OOM_994_797s_after_setup0_to4_no_Run_paid_actor_application_effect_genuine_bind_close_preserved
-- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/return.md
+- current_activation: ODD_GLC_READINESS03_READY_FINAL_CHECKPOINT_BEFORE_ORIGINAL_PREPARATION
+- current_re_entry: dependency_ready; final checkpoint then Executive original preparation and one correction Run
+- current_activation_status: readiness03_accepted_compiled04_installed07_recovery_accepted_original_close_untouched
+- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/route-dependency.json
+- last_execution_result: preparation_1665_286s_setup8_OOM_before_Run_actor_zero_spend_application_writes_genuine_setup6_close_preserved
+- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md
 
 ## Current bounded selection
 
-The complete generic lifecycle, original job/S1–S5/oracle, five selected/four
-outside residuals and protected worksite remain unchanged. No manual application
-business-code work is selected.
-
-[Execution10 failure](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-failure-01/return.md)
-records parent JSON allocation OOM after setup0–4/994.797s, no Run or paid actor,
-and the genuine bind close. [Execution11](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/return.md)
-is accepted finite contraction/readiness only: six cold parent acquisitions
-remain and the original cost defect is unclosed. Root selected existing-owner
-lifetime repair under ABG HOW5.6.2C, [implementation-01](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/implementation-01),
-active and unqualified. No new Product/session authority or heap increase.
+[Execution10 readiness03](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md)
+subject `818ae6eb…` is accepted on compiled04 under unchanged caller review
+`6cca8f94…`. Independently accepted installed07 nested recovery satisfies its
+candidate dependency; final checkpoint precedes Executive original preparation
+and one correction Run. Caller/reader/observer, actual prior assessment, latest
+execution09 setup6 close, job and policy remain unchanged. No original-resource,
+provider or application effect occurred during readiness.
 
 [T-287](../../../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-checkpoint-and-installed-continuation)
-owns accepted compiled05 Hello correction/installed09 and cost/diagnostic debt.
-The malformed negative lawfully failed against a stale blocked-only oracle;
-there is no new runtime exception. Remaining declared S02 cases continue on frozen05 separately; exact outcomes
-remain in native returns. This checkpoint preserves closed evidence and excludes active work.
-Next: lifetime repair/installed proof, original generic correction and remaining
-qualification/RC1. Complete outcomes and actual human acceptance remain open.
+owns [accepted source/compiled/installed recovery](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-06-repair-01/return.md)
+and independent review `11507bf4…`. A distinct second actor completes nested
+retry with agreeing fresh reads; earlier failed cuts remain historical.
+Setup192.773s/root13.412s/case86.503s and peak2.806GB are retained costs, not
+performance closure. Fifteen remaining S02 cases, full generic outcomes and
+qualification/RC1 remain open; diagnostic/fixture debt stays in T-287.
+
+Consumer RC4, archive `01ad8134…`, original job/S1–S5/oracle, five selected/four
+outside residuals and protected scope remain exact. Actual human release
+acceptance is separate. Last verified pushes at Writer entry are ABG
+`462de346…` / GLC `d563c894…`; successor05 records the next checkpoint. Existing
+physical acquisition/session lifetime and optional Run association add no new
+authority. Readiness itself grants no paid launch, default migration or manual
+business-code repair.
 
 ### Retained earlier selection and evidence
 

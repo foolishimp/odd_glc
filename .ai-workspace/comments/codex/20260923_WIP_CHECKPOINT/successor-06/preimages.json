@@ -1,0 +1,10 @@
+[
+  {
+    "path": "specification/GOALS.md",
+    "sha256": "7238dc56cb1cc7090b2ba92d7f77f8b3fa37847d061a0aaf1a288a6a39d11ba0"
+  },
+  {
+    "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "sha256": "003ac4d31e80154bbc3e2090d2291b826823badf2c483c09df67519b3ac109a4"
+  }
+]
