@@ -1,0 +1,49 @@
+{
+  "basisCommit": "89a5bcfe4a0cd358f1de85fa0cf9185a4787baab",
+  "inherited": "successor-07/composition.json and unchanged prior bank indexes",
+  "newBanks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-08/transport-01",
+      "catalogSha256": "2d0c2f77c7273cbb23f5f4aebb290effb6eb62eaf499e2aadb3a1328cd9c90ae",
+      "indexSha256": "d31ad6fe786926203f6e3ee3ed721fee929fdc586f7241c536f717c2054d7988",
+      "verificationSha256": "4a1db62f5f03569e995f4e094b7420bda8c308601da68f4d0999778a979e7f22",
+      "members": 47,
+      "logicalBytes": 514380343,
+      "transportBytes": 61583821
+    }
+  ],
+  "newMembers": 47,
+  "newLogicalBytes": 514380343,
+  "newTransportBytes": 61583821,
+  "priorPayloadReadOrReupload": false,
+  "scope": "Original held execution process failure only, no established ABG terminal; accepted S02continuation15 nested-compose/fresh readback and preserved14 ordering refusal; accepted core03 unchanged; original recovery/correction and remaining8cases plus semantic-negative gap open",
+  "excluded": [
+    "All original mutable GLC/S02 journals and canonical worksites; no read/hash/copy",
+    "original-run-allocation-diagnosis-01 and successors",
+    "s02-installed-continuation-16 and later active readiness/execution",
+    "All node_modules, installed dependency trees, build scratch and unselected caches"
+  ],
+  "rootAcceptance": {
+    "status": "accepted_factual_process_failure_and_bounded_nested_compose",
+    "authority": "Root consumed the two CLOSED returns and authorized this tracking/checkpoint",
+    "originalReturn": {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/return.md",
+      "sha256": "efef6105f9aab9b41ab91e99ddce3c5c1b1242daf948043de2b0955f73184a0c"
+    },
+    "originalSubject": {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/subject.json",
+      "sha256": "c8c81abb77c8a8b3a9284d7a396e219d1716c141e9d0372ae6872468c12cfbb5"
+    },
+    "nestedReturn": {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-15/return.md",
+      "sha256": "a9263977a3737d0b7acec5dade7bb23b3c5b3ca1c2ca94c464eba3e2ed073590"
+    },
+    "nestedFreeze": {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-15/freeze.json",
+      "sha256": "09986d350f76eb44d5d571f70ef9fee66fe3da5c31d9395532854f28137c6752"
+    },
+    "preserve": "Core03 and compiled08 exercised bounded acceptance unchanged",
+    "selection": "bounded allocation cause/removal under existing live progression owner, then legitimately authorized original recovery/continuation; S02ready waiting",
+    "notAuthorized": "retry, recovery, heap increase, new native case execution or release by this Writer"
+  }
+}

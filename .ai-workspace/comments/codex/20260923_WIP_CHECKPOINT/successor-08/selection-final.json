@@ -1,0 +1,31 @@
+{
+  "directExpected": {
+    "specification/GOALS.md": {
+      "sha256": "98d17d399282803ce4f432d19b6f0e81a84d5090f4a2a46a43d572dcf269433e",
+      "classification": "accepted_current_tracking"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "be657fd62bafad15dda125cdb1c4098b447b769ebe19b6bfe2e82bc7e6b35903",
+      "classification": "accepted_current_tracking"
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-08/transport-01",
+      "catalogSha256": "2d0c2f77c7273cbb23f5f4aebb290effb6eb62eaf499e2aadb3a1328cd9c90ae",
+      "indexSha256": "d31ad6fe786926203f6e3ee3ed721fee929fdc586f7241c536f717c2054d7988",
+      "verificationSha256": "4a1db62f5f03569e995f4e094b7420bda8c308601da68f4d0999778a979e7f22",
+      "members": 47,
+      "logicalBytes": 514380343,
+      "transportBytes": 61583821
+    }
+  ],
+  "scope": "Original held execution process failure only, no established ABG terminal; accepted S02continuation15 nested-compose/fresh readback and preserved14 ordering refusal; accepted core03 unchanged; original recovery/correction and remaining8cases plus semantic-negative gap open",
+  "excluded": [
+    "All original mutable GLC/S02 journals and canonical worksites; no read/hash/copy",
+    "original-run-allocation-diagnosis-01 and successors",
+    "s02-installed-continuation-16 and later active readiness/execution",
+    "All node_modules, installed dependency trees, build scratch and unselected caches"
+  ],
+  "canonicalSourceUnchanged": true
+}

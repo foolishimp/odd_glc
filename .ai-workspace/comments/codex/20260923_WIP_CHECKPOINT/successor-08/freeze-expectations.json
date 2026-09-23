@@ -1,0 +1,190 @@
+{
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/freeze.json": {
+    "sha256": "b7e050048045330f79f793b5346c4dfb336d519b55271c6e06e53c335f813eb1",
+    "byteLength": 686
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/configuration.json": {
+    "sha256": "ac3e082fc196d3dd6e48386aecf887db8eded07b5c3f31693624d98a513ef110",
+    "byteLength": 12010
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/consumer-verification-reuse.json": {
+    "sha256": "b38885c0990f25bd5080b9a84300028f27cd8969e9583c23e0280e1f880db601",
+    "byteLength": 1379
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/native-attempt.json": {
+    "sha256": "436e60435ceb204faae5351a25b050bbd250e25f2c22f82e8a610876447695fe",
+    "byteLength": 1463
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/preparation.json": {
+    "sha256": "8215cb59f9e5369fe5124069aa593730995d47eccac97380332569b40fe356f0",
+    "byteLength": 3316046
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/product-0-verification.json": {
+    "sha256": "2b29b754c4176dd7ef1e3c163e22a4ffa4ccf93196584e29db1036c7d65be371",
+    "byteLength": 12675176
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/product-1-verification.json": {
+    "sha256": "d4f1de7baad36d881eefc875d63c7ef5f1e3ba33b4b7eff6c4ac3d5a0e9785e6",
+    "byteLength": 12678
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/run-start-evidence.json": {
+    "sha256": "19ead7cf33425998c22e1b7acd289e74bc457d79236e4a6b4ea72878b465794e",
+    "byteLength": 233491292
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-0-call.json": {
+    "sha256": "31b34f7682d184cdf05d78d5ba70c52f367b0419dbd6b48223c3389a4b4a0b8b",
+    "byteLength": 25733734
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-0-receipt.json": {
+    "sha256": "db96bc3241df505ecc29163133531f3ae19d8f5c9ed3e9692bcd19a593592fdb",
+    "byteLength": 257214
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-1-call.json": {
+    "sha256": "e79b1d9f48ff260e31b29a6443998b3e9489ac75e89d39e730e455dba4383a9e",
+    "byteLength": 26369719
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-1-receipt.json": {
+    "sha256": "493fff7945bf5956959a3b0b612078151c6a6e0ebeb30ccb0e10e9ca36eb60fe",
+    "byteLength": 5396
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-2-call.json": {
+    "sha256": "b5cf51bb281cf464462f62bacf16b8fd0d8fcf1f70277db372faacee733aa776",
+    "byteLength": 29407312
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-2-receipt.json": {
+    "sha256": "70128c4c0bfd1ffdbbb946a5c1162124c076feba8f9a04a627c061d466ee6b2f",
+    "byteLength": 6191
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-3-call.json": {
+    "sha256": "47f613c757296f426dcd31cf6f29be21f49f70ef39b26c019ba154b06c4284fb",
+    "byteLength": 16813566
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-3-receipt.json": {
+    "sha256": "23175ab9a26ede440d02265f8e4b2070ff3810fe1e357fe0b24c11b98e97b66e",
+    "byteLength": 6269
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-4-call.json": {
+    "sha256": "11bb1aba9e1d33fcedfef1698abeda145f878249cb2de62f0de38e7fd6417a7f",
+    "byteLength": 20358530
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-4-receipt.json": {
+    "sha256": "18b64297f94e8d80d82dd9e5b3064bea1505ea392c8249564d70cc981502b19d",
+    "byteLength": 6950
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-5-call.json": {
+    "sha256": "c3afbbff8a92f2085f7e090cdd9e9b8f3178f1965cb913c103835dc27d03c5c5",
+    "byteLength": 13135194
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-5-receipt.json": {
+    "sha256": "157a6c07116a028531d85cd9362752f6af3ffac07ad33c6f9d153d36f4b2dbd3",
+    "byteLength": 3642
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-6-call.json": {
+    "sha256": "95e6a4ef747f39192338ab3d70f9d145a843740c8d3ac58524b184d2d04f7747",
+    "byteLength": 33838045
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-6-receipt.json": {
+    "sha256": "b4945686fbf12ab033735a875abb88f2e2bf30e71c0e1f60d65533c293c137bf",
+    "byteLength": 224347
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-7-call.json": {
+    "sha256": "333ba980f09d69ea158c09e232cdef133453fb4d95081a580bec332046fa329e",
+    "byteLength": 36262011
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-7-receipt.json": {
+    "sha256": "b0d295f52936ee83c612a3fc962b72afb99e0aa69dfd617485ac2f1563962aee",
+    "byteLength": 2090
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-8-call.json": {
+    "sha256": "4e5eeca800c04ce4334fce9900c34e73729d4533f53579862a303df2142e560a",
+    "byteLength": 37680976
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/setup-8-receipt.json": {
+    "sha256": "88541890db1fbe63d2d6daff67804e0180edb91dd7ee613a714ec33f08ef4396",
+    "byteLength": 24548014
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-01/final-binding.json": {
+    "sha256": "a4127732abaceaae5dbfc97fa79282164e5a548575a4b3ee2df44cf349c90e32",
+    "byteLength": 1082
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/activation.json": {
+    "sha256": "5d1b1844e433f132efe517b46fb9134764569037ed640c821b48f304ef7d35f3",
+    "byteLength": 5666
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/caller-conservation.json": {
+    "sha256": "3f11e59189c50545e1627c651df5677cc008842e200d8c51a0bbc2c9aadbecd1",
+    "byteLength": 8196
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/command.json": {
+    "sha256": "e7b1843d970acc57951d05d2cc376c6f8da7a14313a9dce1d41d569a8bc38869",
+    "byteLength": 1193
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/current-resource-status.json": {
+    "sha256": "1a4c92189a427c5146ae0e93ed7a798e085f2db7e593a52ce7e740493ecfc38b",
+    "byteLength": 3749
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/phase-observations.json": {
+    "sha256": "c5d4f77dd94eab944254df3d293c69f4756f0c835aef8935f25ead81bbdf3376",
+    "byteLength": 21899
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/phase.json": {
+    "sha256": "75500ccec7cee559a0d333eae4aa6fcbe0564b66ef10890aa209d41c883bc6bc",
+    "byteLength": 116
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/post-process-metadata.json": {
+    "sha256": "550a63f772c62b7cb4d278d6620858951b89c3fa521ff3a2737961842aceec98",
+    "byteLength": 1154
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/preflight.json": {
+    "sha256": "64f96e7e21f97d11331de5e2c316191a606be9ad348847b5b7e0b11f2c544041",
+    "byteLength": 586
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/public-readback-status.json": {
+    "sha256": "9b9d94c4aebcb7090fad71a16304b82d0e2b5d178c323bab25d1fa4375c3b2ee",
+    "byteLength": 420
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/reach-summary.json": {
+    "sha256": "b3a61c55571f9cdb0fd4bd1c6bd2fa60b50deb14dbf8e7add86a30fc77f61a90",
+    "byteLength": 30836
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/run-process-result.json": {
+    "sha256": "51957d50153e25d54338ebec3f7136e6a017f2140c6951ad33dead914299a6a2",
+    "byteLength": 459
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/run-process-start.json": {
+    "sha256": "51895c409bea4328654674300a6d3a246f8dcd3792fe53c7b079a23608d37b37",
+    "byteLength": 1071
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/run-stderr.log": {
+    "sha256": "9346002197f4795b92df37ae5ddd2e4f7a796942464daa360eb01566d96b9a4b",
+    "byteLength": 7540
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/run-stdout.json": {
+    "sha256": "de9917c6b39151207d13441d7b56c2963e6f96ff708478b47f8c354af0c4d393",
+    "byteLength": 536
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/suffix-diagnostic.json": {
+    "sha256": "e06a608c29a062d328b57fb45a85283ed1d520cd3d6aa25920d745aa42fceca7",
+    "byteLength": 70537
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/suffix-probes.json": {
+    "sha256": "ece4b4b83aa9de40846c204f55e86c0c43f59d3c91316e18b40c1b2568708550",
+    "byteLength": 25934
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/terminal-observations.json": {
+    "sha256": "d2a84e2f368c3bff09f6905626c19baef00e2f1e920cf73fa81c7614b47d657a",
+    "byteLength": 5290
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/evidence-inventory.json": {
+    "sha256": "c398fe7e3f7a2b437a7372a37ad09140b37b4f957eb6a380d39530441877a094",
+    "byteLength": 14859
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/subject.json": {
+    "sha256": "c8c81abb77c8a8b3a9284d7a396e219d1716c141e9d0372ae6872468c12cfbb5",
+    "byteLength": 1524
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/return.md": {
+    "sha256": "efef6105f9aab9b41ab91e99ddce3c5c1b1242daf948043de2b0955f73184a0c",
+    "byteLength": 7766
+  }
+}
