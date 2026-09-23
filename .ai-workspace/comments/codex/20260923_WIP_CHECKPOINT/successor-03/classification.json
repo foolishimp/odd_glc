@@ -1,0 +1,92 @@
+{
+  "baseCommit": "ac17504af98556db094ee40ffcdaa4b78268a332",
+  "directPaths": [
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "specification/GOALS.md"
+  ],
+  "priorTransportReceipts": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "members": 8988,
+      "transportBytes": 2837897656
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "indexSha256": "afdab2e383c6f62f1596bcfb0737fc4965539f3ad70c42dbf3933eb50c6c37b8",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "members": 1079,
+      "transportBytes": 219899764
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "indexSha256": "f2e3c62106aeda582b41d16072a22df2a0661c2016e40ecf0136210dd4cd47ac",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "members": 1,
+      "transportBytes": 40541024
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "indexSha256": "9e4cacc030cc09ddb8ec1b57e1a2f7c6691df9f328df595a272f7c6b77d91722",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "members": 35,
+      "transportBytes": 90126
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-02/transport-01",
+      "catalogSha256": "897627fe2296a09030af85542270a9a16fcf7ca80ea520d670ad0d567ce7bb9f",
+      "indexSha256": "8c6eaf2989c5496b0a90a2271b64df376c8db0ee52acda0fa21400f312f88468",
+      "verificationSha256": "b26dbacc1d8c15cf720759ce86ede2db1587003dc5439a629049b2a48cb6253d",
+      "members": 110,
+      "transportBytes": 43394337
+    }
+  ],
+  "inheritedIndexedMembers": 10213,
+  "reusedSelectedMembers": [],
+  "newArchiveMembers": 162,
+  "newArchiveBytes": 1696163204,
+  "selectedFreezes": [
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/freeze.json",
+      "sha256": "232de5e8bc5260231f5d76e3e244cf37287986262c7bf148631af6a7a6ac64ff",
+      "declaredMembers": 61
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/freeze.json",
+      "sha256": "1936e87736fd847746b703f0943ff01025b7e26408194ce8e18bd33ad5821d17",
+      "declaredMembers": 81
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/freeze.json",
+      "sha256": "fdc059c514c11730e1b2e5274104ce273d236d988b1bf2b18d29c47030339cf7",
+      "declaredMembers": 13
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_CONFORMANCE_RESOURCE_REPAIR/implementation-01/freeze.json",
+      "sha256": "4774293795202a9e4a17964585927c8052d0208ac5cabc24d73fcc7f513d0d58",
+      "declaredMembers": 54
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_S02_NESTED_RETRY_REPAIR/implementation-01/freeze.json",
+      "sha256": "f186ef62b39bb3bb29947de845f04600e4d32a10bf9f5749e5482cc040688f35",
+      "declaredMembers": 42
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_CURRENT_STATUS_RECONCILIATION/successor-02/freeze.json",
+      "sha256": "8972d3454c394961f1213669c313fb9e4ff36a07a21f189405e4937d34ce7723",
+      "declaredMembers": 14
+    }
+  ],
+  "canonicalFreezeReferencesConservedThroughPostimages": [],
+  "pending": [
+    "Active WHOLE_PATH_SCOPE_REVIEW output; excluded until separately CLOSED",
+    "Original mutable GLC history/worksite and S02 resource trees; no snapshot selected"
+  ],
+  "scope": "Accepted closed work plus explicitly pending-review conformance/retry WIP; not qualification/source-ready/release",
+  "priorPayloadReadOrReupload": false
+}

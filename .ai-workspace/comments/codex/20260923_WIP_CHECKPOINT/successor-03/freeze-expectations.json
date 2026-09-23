@@ -1,0 +1,650 @@
+{
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/configuration.json": {
+    "sha256": "b93dc911a59c1ce6321c5b658f7f6df1116e9d855d6f951dd6f653b99f286818",
+    "byteLength": 9063
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/cost-observation.json": {
+    "sha256": "33a6f6f5c37d9897e8cf363c8077be1e224cb7631ba9e2f5b3344d13c8a33cd2",
+    "byteLength": 2526
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/current-handoff.json": {
+    "sha256": "dee1bb86f1d87ac7b90529db29cbf942ac1e17bb0e98654e4652ea35e3bf2429",
+    "byteLength": 1372
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/current-resource-selection.json": {
+    "sha256": "3405c48de6ad68e0397963f3d1bb785264ee8ee2cbe7fdbbccb958a57036a09f",
+    "byteLength": 3223
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/delivery.json": {
+    "sha256": "9efed519df688f11edc561080d396fcb5ec95adfb2fbba9ec259027d8a73d672",
+    "byteLength": 4836
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/first-cause.json": {
+    "sha256": "7cb7902a363d6b6aa9904adb7826bdab84c6e93a25eb26a5aeeda4fd9b914daf",
+    "byteLength": 6681
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/input-readiness.json": {
+    "sha256": "f6f7241b05535d1da65e83f07b728ef50f52f0cc879f35f2d34a4a88d50db507",
+    "byteLength": 5489
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-appended-physical-evidence.json": {
+    "sha256": "199ce9770d9c8ef2daa6340c001099d6fbd1b37b38147f3fe48eb6523b2d4204",
+    "byteLength": 832
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-appended-physical-evidence.jsonl": {
+    "sha256": "4f13917759d00fe9d4e291f2f37a55d7b899a10e00dbbcfa1b072dd35673b695",
+    "byteLength": 752834
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-attempt.json": {
+    "sha256": "2136454b2e5a3898ae3de2e3bd95700b672c9093c676ced92a57e4e66cbface4",
+    "byteLength": 1486
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-process-failure.json": {
+    "sha256": "9b41d5690baa92604a86d09a859dd76596ce8faa91d73c322b327c14b1959259",
+    "byteLength": 774
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-process-result.json": {
+    "sha256": "867e91ba8bf7b98961f57c41535df9c1fcd7aaf6107baa1855ed79ce3316f2ec",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-process-start.json": {
+    "sha256": "5b1c652be66234ca939cea53385a0228999262bea62e6d97481095f71f3084d6",
+    "byteLength": 670
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-stdout.json": {
+    "sha256": "70ce6d3b34a32dded907434a36b3b61d34765526a86ddac36404bba47ea9773b",
+    "byteLength": 3137
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/native-timing.json": {
+    "sha256": "c3ba3fe1de946af2bf86e44b4b40cfd0ff457d1e72b7c4dc0c44589e6fba8df0",
+    "byteLength": 100
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/preparation.json": {
+    "sha256": "2e937ef0a2cfdf003b22f67f27242dbf90fec906eb90262c784088b0930caccb",
+    "byteLength": 3328906
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/prepared-boundary.json": {
+    "sha256": "6ae48ad495efd539d750c3e7024fba2d2ed1db0a193f23620a6436854d26e9d6",
+    "byteLength": 5755
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/resolution-diagnosis-02.json": {
+    "sha256": "aec4ac209e201bea81e172a7922219a925e29c210b4b9e9e276f41b0a3f75993",
+    "byteLength": 43337
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/resolution-diagnosis.json": {
+    "sha256": "68895b2cd69562e6550444c483012f1291cd96aa6efa5074dd4becde607aae11",
+    "byteLength": 36649
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/return.md": {
+    "sha256": "06f5c2801d2a6888dcd4dc0567c377840cf96244816948d1fc633e7825d7ade5",
+    "byteLength": 3717
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/run-start.jsonl": {
+    "sha256": "610d7bbcc31235d2edc7f24a1bde83dd70a54210ca907650d1ce853381cb816d",
+    "byteLength": 162117407
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-7-close.json": {
+    "sha256": "a56b61729360c1a48f01a6a8e46501179ab537a6fbc2a0d9136e462eb3db5a92",
+    "byteLength": 1372
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-7-process-result.json": {
+    "sha256": "3361da6b5116f23950400d554a1cc07bc654cd799a8a97360126d2caa26fceca",
+    "byteLength": 237
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-7-process-start.json": {
+    "sha256": "9ab10479963abc6980f629b0bf971dfa574231941c423fec604978d684c67eb0",
+    "byteLength": 667
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-7-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-7-stdout.json": {
+    "sha256": "a823073e7d15ccf8f4055105c0d8772da2bd3be2e75de9fa88fb2b0be51c6cc0",
+    "byteLength": 177409
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-7.jsonl": {
+    "sha256": "bcc357d04638b159eb1ef583cd0eed8e0ed8e54fb16c9c701dee6ed691d8ba00",
+    "byteLength": 148152003
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-8-process-result.json": {
+    "sha256": "e88530774b11ff5ac62f3c2e5f66933879059707a9bec3eab7df368fbc1688e1",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-8-process-start.json": {
+    "sha256": "e37731a01ffe47d81eb4de7e8a2fb68272b319543e861135aacbd457d2c6087e",
+    "byteLength": 667
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-8-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-8-stdout.json": {
+    "sha256": "3b43b648a02ae5534a97f87b749f36894c90f9870bd1ac4726f8a57a1d062db9",
+    "byteLength": 1715
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-8.jsonl": {
+    "sha256": "c4f68769581acc39a1947d85df665fcddcc91bf966044c2f7361ad6ef932ab3f",
+    "byteLength": 149162415
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-9-process-result.json": {
+    "sha256": "6b7f26bd69bdfa416870bc35cde70c67242c3311fbb96853fee6045abc6c8a2f",
+    "byteLength": 240
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-9-process-start.json": {
+    "sha256": "a5997eafca62eaa871b5178c964551d452387351c403cb29f71222388e59a916",
+    "byteLength": 667
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-9-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-9-stdout.json": {
+    "sha256": "b9c90500b45f28727cb7f5f64e8693e3274afaa127af26e13497d40fce2e468a",
+    "byteLength": 134301825
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-9.jsonl": {
+    "sha256": "bf1308ce49cb476475ecb6eaefdf1651c8d88e5dc93c398b8d197aa8560bc13d",
+    "byteLength": 266526282
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/setup-reuse.json": {
+    "sha256": "adf41fe0f80ea40d064dd797f337ac981c73248c9e1bf3bca303ac1833d985f1",
+    "byteLength": 2783
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/activation.json": {
+    "sha256": "5bc75a6fad6b8fe77696703dea08db89f72b596dfecf3210e72b4414a1f27b1c",
+    "byteLength": 1019
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/caller-freeze.json": {
+    "sha256": "16bd19fddfe82b4f35600b9b30b6081e90812c412ed3d6961afbc5ff159b092c",
+    "byteLength": 1713
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/configuration.json": {
+    "sha256": "b93dc911a59c1ce6321c5b658f7f6df1116e9d855d6f951dd6f653b99f286818",
+    "byteLength": 9063
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/current-resource.mjs": {
+    "sha256": "a4aaa972aa785897d65291259b137d97bb591e604d5672ca4f69361bfa2faeb0",
+    "byteLength": 17159
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/diagnose-resolution-02.mjs": {
+    "sha256": "2f68c0bfc553c390bfc6ba94bff049e77bcdf55087c2f353227ae238be60f87e",
+    "byteLength": 5138
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/diagnose-resolution.mjs": {
+    "sha256": "36754cc85ce4a9eed5e2ad53d5e3d2ff94863f4fdf0f3e7e3c0951afa8047828",
+    "byteLength": 4442
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/driver.mjs": {
+    "sha256": "621da6af874630a57c7a009021075363742d36abf54f9a4d503c416f05a26388",
+    "byteLength": 59400
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/launch-process-result.json": {
+    "sha256": "7e3053a0d7f33049904541bd60e6d6ec4dcef3ae5a7b0f0cdce44cc4395ba45a",
+    "byteLength": 232
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/launch-process-start.json": {
+    "sha256": "73f6dec39121c10172a1f05adb44f093a0f8d32e288ca190c4b1c4a4ae131adc",
+    "byteLength": 724
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/launch-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/launch-stdout.json": {
+    "sha256": "b46f9fc220203d9c32e2d496944e9ec8c16e0f0d8c7c4f36f4afb18b6a1b1326",
+    "byteLength": 68
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/live-process-observations.jsonl": {
+    "sha256": "553461ea76d54faf8516d3d8daa73eae0a42d7fbc0807cd16eff0489a0f7c2da",
+    "byteLength": 498
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/observe-process.py": {
+    "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+    "byteLength": 2217
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/pre-effect-check.json": {
+    "sha256": "0299cad323cb37c1705e83e11252e083a6694d0aca98326ceb3728e61fed71b1",
+    "byteLength": 1186
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/prepare-process-result.json": {
+    "sha256": "cec52c6538e98ea93ef715390a2b4a46f045d1a819ba3bf4508791dadbcb1ed3",
+    "byteLength": 234
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/prepare-process-start.json": {
+    "sha256": "4125ce2e6cc6f241513aacabc52b7f611e9e0ebfaf37780065ecf8c4c32ea13f",
+    "byteLength": 442
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/prepare-remaining.mjs": {
+    "sha256": "a5d4cf273ecf20aaa670bfdd2daadb503a5310688a4c22a47b74cfbb72735178",
+    "byteLength": 23918
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/prepare-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/prepare-stdout.json": {
+    "sha256": "7ac4a145273e82795337736fcbfa65c451719bc324a4bee4a0d05ba58a9afa22",
+    "byteLength": 1619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/profile-readiness.json": {
+    "sha256": "5c98e0e09bd2897e5de475414f066143a49635e8f171c6ee6f31319c55e768c8",
+    "byteLength": 419
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/reuse-source-map.json": {
+    "sha256": "632a53b53403dfcb65965d0bced90da81ff06d974aaeedee424be51b9d904b76",
+    "byteLength": 570
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining-selection/selection.json": {
+    "sha256": "69cf0badcfa2f9cf67359a304492c740fb97f9634d0b816f4f6c435711c85d3d",
+    "byteLength": 5356
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/freeze.json": {
+    "sha256": "232de5e8bc5260231f5d76e3e244cf37287986262c7bf148631af6a7a6ac64ff",
+    "byteLength": 11728
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/configuration.json": {
+    "sha256": "e335201a4de604075e8328b10965af1688efbb98bb0465167be7c8a11ba89b60",
+    "byteLength": 11237
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/current-handoff.json": {
+    "sha256": "5bc7a4073015233e82e93942e3ebe2ffe6310434b0a758fb0451390f63fec7d7",
+    "byteLength": 1372
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/current-resource-selection.json": {
+    "sha256": "12c65e39525bd928aa876c9f3b8562c26bbabdfda996f4ebc13c82920e84019f",
+    "byteLength": 5416
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/first-cause.json": {
+    "sha256": "246d542b5fb8c8c66d73357cc9dc408e55a253def1b2a52a74cca9f7c09580b1",
+    "byteLength": 6787
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/preparation-failure.json": {
+    "sha256": "72ee69325cafbd8761e1830a3a045f1af85b5f615464dc13775d8a4ed7573789",
+    "byteLength": 1088
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/return.md": {
+    "sha256": "70a711d2df7ed277b2c32b24a0a798a998061974e4129cd8a1950dc429dbf429",
+    "byteLength": 4269
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-0-process-result.json": {
+    "sha256": "b335e4f9b2a4ecde46965306915b45ea7eae6a42e431d5e22c02d5760beb3a24",
+    "byteLength": 237
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-0-process-start.json": {
+    "sha256": "68f681a3445261c46eaaa6af03bd08b0a945901e5c775f559760ca63d0708c9b",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-0-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-0-stdout.json": {
+    "sha256": "c0c7e281e082ed6447196968ed4c712c6512a40b53517ac4399cae99bb69ce65",
+    "byteLength": 146548
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-0.jsonl": {
+    "sha256": "bae6b1bd76efd65c6ab7d04cdd1735526cf6e6682c300587a68b852059f4b328",
+    "byteLength": 11020353
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-1-process-result.json": {
+    "sha256": "bd41fe93f6546a3c515a855c8ff13597687ddd555a718ab453fa06ce4aae5e7c",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-1-process-start.json": {
+    "sha256": "cfcc8b2f40a4aff415ee1467bc393e9041792fe6636bc313d8611f5cdbe0dbc4",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-1-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-1-stdout.json": {
+    "sha256": "44a6bb66216f8872264c7d5b3b8cf539fbdb779c0484109511d2b6553d3607d6",
+    "byteLength": 3982
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-1.jsonl": {
+    "sha256": "56ae765df09174f360262e8ebb39fe38d5f06b24a740e81284c19b59425df85b",
+    "byteLength": 22181881
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-2-process-result.json": {
+    "sha256": "efc86d21eb17811cf55fb7ba4dd4f8c6e1c32babd04ef9d9034aac6d32c7519f",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-2-process-start.json": {
+    "sha256": "ef88a593ba04c46d0100713009c2e61ec1f983b7aa3cecde7a88c3854b8db581",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-2-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-2-stdout.json": {
+    "sha256": "e8e47b12681aec74dfd67b98207c5c2358414707b3d041172c9fab6656b1ecc0",
+    "byteLength": 5633
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-2.jsonl": {
+    "sha256": "875971d8679d3179fa32da76594853d71f047eab2e9d82e836d1d52cbda8ad73",
+    "byteLength": 24323462
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-3-process-result.json": {
+    "sha256": "39e5576d307367e5f17a3478962824b5ea9e81ffab6fddb308a1659d635d00ac",
+    "byteLength": 234
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-3-process-start.json": {
+    "sha256": "3643f9cc85afcb40c5f91d6af696d6b2e86c5e97ed50a7b57dbd50bcece747ca",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-3-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-3-stdout.json": {
+    "sha256": "37035ee0f6219c81d62039aa1bd18915e2604c5c35c6c56dc75ca179adef3c0d",
+    "byteLength": 5711
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-3.jsonl": {
+    "sha256": "086a4af325bf3df7a90edb957b6b4fd4df131c4bad648917ef06607d731fa661",
+    "byteLength": 13325820
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-4-process-result.json": {
+    "sha256": "033ab164a913b232da238d302e0a443e964b0c17aa930943d41a89254f4b2836",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-4-process-start.json": {
+    "sha256": "a682e725d43ced412234faf77a60d0fb94f9c62df2348fe576e4f7d4022b0a3f",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-4-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-4-stdout.json": {
+    "sha256": "fc19b26a17a40b96851d09b473d483297b2633fe999157c8a4cae6d65db4793a",
+    "byteLength": 6082
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-4.jsonl": {
+    "sha256": "d8baaa80c6be90618c55b3e93a4e14759ae413bd77b67fc86e85a5f4b505b00d",
+    "byteLength": 15616207
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-5-process-result.json": {
+    "sha256": "1db01d8dfad24a4cea040a4f9041a52066c61deb1b01c249c4168bbcc1ba24af",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-5-process-start.json": {
+    "sha256": "b713440cc8476d032301c55c6fed6e978a96f6b3a848002a51453b68f3dbe5ae",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-5-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-5-stdout.json": {
+    "sha256": "7856e0da5032f3d1ba4f1ec1a1afd306869888e167c397a7a6c5c68db7b6bdb3",
+    "byteLength": 3392
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-5.jsonl": {
+    "sha256": "9b9623fab69da1ed5afde4345be1be7324835da5a859b6674d8d8344a667018c",
+    "byteLength": 139258669
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-6-process-result.json": {
+    "sha256": "a863ac83f2997fa700b101f93c781f42878144f884bd5317198401ca52cedeff",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-6-process-start.json": {
+    "sha256": "db18218fa90ffa7bc5027a50ec55203e4f3d4fa67089fb361d43798f8211d03b",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-6-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-6-stdout.json": {
+    "sha256": "fc2694dc852b10b8731608accef7736123aa5cdec41a41e9ff041ea53c8133ef",
+    "byteLength": 177409
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-6.jsonl": {
+    "sha256": "b8cfa7fd0ee9c3b2de74d2bb9bf7f687e5250614e3f69c8dc43bb1bf45a02aea",
+    "byteLength": 155324155
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-7-process-result.json": {
+    "sha256": "92a84c78f96b081a35a1726c96b30e145a2a4125bc642a1458665cc3c9761750",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-7-process-start.json": {
+    "sha256": "e9616142dafef1ca876389cd37e2afd3bb51e68800ef1c2ab9f81662b654c82b",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-7-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-7-stdout.json": {
+    "sha256": "e8233ff15b8b824aa37c90dc59394d5132fe01a6a557ef93c93e93fd83cbf0bf",
+    "byteLength": 1715
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-7.jsonl": {
+    "sha256": "a4fcb27a7baf464fecbc7b2a197f976585e34d033bf5b062ffa1e01cfee86565",
+    "byteLength": 156334567
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-8-process-failure.json": {
+    "sha256": "db6c00a47845b63271e48c521350f9e0379b39312709db069f96e9fac3cbd827",
+    "byteLength": 706
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-8-process-result.json": {
+    "sha256": "4eb4bd845cc9382951e6347428c80db010fea68b2fef5001778db3fc238826cb",
+    "byteLength": 233
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-8-process-start.json": {
+    "sha256": "0c2f4cd16511e746d9735df84215e1636faad53fdddc17392ebd451bcbdfa056",
+    "byteLength": 619
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-8-stderr.log": {
+    "sha256": "8aa0d4d8753a1ab329c1d63cb8f76208a34fc465eb06b2e60d22981aaa46a982",
+    "byteLength": 6144
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-8-stdout.json": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-8.jsonl": {
+    "sha256": "298d376c87daef49b1b4b26d737a2f71b20bda2b62e047d1c352edbfbf73c716",
+    "byteLength": 280585831
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/setup-reuse.json": {
+    "sha256": "1eae1e370e9d6d9384cd4c1e934db118558a94420a0bb086c93df1cc4ef69cb9",
+    "byteLength": 1515
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/subject.json": {
+    "sha256": "97a34317bbff686652f2505c4494942811e08914ce5de3c6eebe7cd18db7e65c",
+    "byteLength": 1481
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/worksite-preservation.json": {
+    "sha256": "75f688c28cff25b5f0a0debd5bbb2242f765bc63102123d859a74aa6640a64c2",
+    "byteLength": 10501
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/activation.json": {
+    "sha256": "befb82c080321632f9d83c967f274a0951dbf70b9126abcbe1daa04ebc258532",
+    "byteLength": 2136
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/caller-delta.json": {
+    "sha256": "b00cfb15f136b30eef90dead1be19571623ddee56ca1270f4f40ef928b7f5f32",
+    "byteLength": 376
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/caller-input-freeze.json": {
+    "sha256": "e40b1ce6e04936c408b06b992e38f5f958a99280dfffd29ef74c3c9c657a97de",
+    "byteLength": 1393
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/check-route-dependency.mjs": {
+    "sha256": "bf5ba299c42fc7edc4da59d4db70270fc711b99af1ede0aede1c4f4bcd7a8b8f",
+    "byteLength": 2987
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/configuration.json": {
+    "sha256": "e335201a4de604075e8328b10965af1688efbb98bb0465167be7c8a11ba89b60",
+    "byteLength": 11237
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/configuration.pending-owner.json": {
+    "sha256": "d1c37e203d13cb1a19540c71c5fc44306f6236c614d5838e443be259deea6208",
+    "byteLength": 11186
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/current-resource.first-preimage.mjs": {
+    "sha256": "415af8f0c326d7c93deb12966bdf06b8c87a721e070104735f0e54f140810570",
+    "byteLength": 18574
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/current-resource.mjs": {
+    "sha256": "74055d82bd0847f42fd462d20b7a6a9bd10cf33aa1a76092ba9dd57a9644f690",
+    "byteLength": 18626
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/driver.mjs": {
+    "sha256": "621da6af874630a57c7a009021075363742d36abf54f9a4d503c416f05a26388",
+    "byteLength": 59400
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/first-caller-diagnostic.json": {
+    "sha256": "fca1eb69100b78c496ffd147c0e07860999169ff1866d2ed3874f5cd9ca43999",
+    "byteLength": 636
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/observe-process.py": {
+    "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+    "byteLength": 2217
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/owner-verification.json": {
+    "sha256": "425fef06857922791e22640d7c435bbcf692f13433312aa1c258f9bbcece32b6",
+    "byteLength": 12664392
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/pre-effect-physical.json": {
+    "sha256": "390497ddf8c6cd89f4ea05b9b219f58273010605ee8988ad6ef3ee4bbff5a1a8",
+    "byteLength": 159
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/prepare-process-result.json": {
+    "sha256": "acc20a3068cbe9d79fca8b4d95440260be9dfcbf9feb065a6224b1b7ed28e718",
+    "byteLength": 237
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/prepare-process-start.json": {
+    "sha256": "1728df69981b50cd7161e446c8120a97f37fe209ff8b2b97e40b13b980d217de",
+    "byteLength": 513
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/prepare-stderr.log": {
+    "sha256": "08bdec7578864730f872283ca55528bc5c19e2a624c0585f92521af634785c0f",
+    "byteLength": 1084
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/prepare-stdout.json": {
+    "sha256": "ff60c92b4db4ad3a74180043c69c73167b3a77c7ef383cea8b7e1b90f0f4b0a7",
+    "byteLength": 2091
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/profile-readiness.json": {
+    "sha256": "2c988ae394de354ed0d0671bcb5259cf169f7fa9d94053918cc4aa25c97ea74c",
+    "byteLength": 432
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/route-dependency.json": {
+    "sha256": "e17ea88db0552d519a3b7523762437698946c279a9f46d9f5aeb392148615aef",
+    "byteLength": 5470
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/selection-check.json": {
+    "sha256": "d689a5a851057256321465f45ed73350fa30c2f59465a25049786ac37642c4ae",
+    "byteLength": 3380
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/verify-selection-02.mjs": {
+    "sha256": "7556575e4a84f599607a5f297aa7d6e18d06b0089a877d3f415cb9f91481f101",
+    "byteLength": 3032
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/verify-selection-02.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/verify-selection-02.stdout": {
+    "sha256": "599da3ca8f16d056fab5c5a29b3a7a5cc31d6ee91a253aeebb351bf78907fcef",
+    "byteLength": 212
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/verify-selection.mjs": {
+    "sha256": "4c79f223988d0deccee3e2ac7658c017028f8f2d4c6f28642f9592175be2faec",
+    "byteLength": 3028
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/verify-selection.stderr": {
+    "sha256": "f4adbb921415c5c38e4084339f1c1521306a75e34169069553ccf82b73aee022",
+    "byteLength": 837
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/verify-selection.stdout": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/freeze.json": {
+    "sha256": "1936e87736fd847746b703f0943ff01025b7e26408194ce8e18bd33ad5821d17",
+    "byteLength": 13849
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/activation.json": {
+    "sha256": "6ea1ced38bff3dc6dad3742452ea1980d961a687387edd0f9131c9e9a694e53e",
+    "byteLength": 653
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/diagnosis.json": {
+    "sha256": "429342308f789326da9d8e0fb2e1a2639505471c6459ae0486fccc1b9a9f5eea",
+    "byteLength": 4036
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/passive-equality-probe.json": {
+    "sha256": "3fe7cef29adaaf596526f9fb8dc8479c240890e262535483a7b011b068741dab",
+    "byteLength": 1396
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/passive-equality-probe.mjs": {
+    "sha256": "0e9a3c59e9e36b276a8da01e55000da4f9cd4c89fdd1f7b75a2587eed1712073",
+    "byteLength": 3355
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/passive-equality-probe.stderr": {
+    "sha256": "781e97c428096693b88e0037138d1017c1c79a698de06ce618eca2df5ae35e4c",
+    "byteLength": 173
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/passive-equality-probe.stdout": {
+    "sha256": "efa85e732683e6e53905d490d7fbcaa3f62d53451e8ff19e374848a3435fef8e",
+    "byteLength": 1181
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/request-census.json": {
+    "sha256": "4b93ea7156ac6ecee0c241e6570cf6d7a782d0ace27f2bd9c6e557fb7d0b98cd",
+    "byteLength": 37813
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/request-census.py": {
+    "sha256": "7ec90a0317ae8c028f6a3acc363b7cff5f6690acd4ef71e57ebf73a96c40d2a9",
+    "byteLength": 3137
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/request-census.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/request-census.stdout": {
+    "sha256": "fdef9f4e6cd9d8407290c017d88971316b80b74a6eea302a5faf9e6a494da059",
+    "byteLength": 5560
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/return.md": {
+    "sha256": "ad4c18b79c5ff62045836bdbcee5dd6d7e770cfa8c42ecb26dbe766342ba0df9",
+    "byteLength": 5194
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/source-owner-identity.json": {
+    "sha256": "7327716516d077dafe78c98cb01fcf9630cc3a95f374ff11215cde70eb615117",
+    "byteLength": 4933
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/subject.json": {
+    "sha256": "146795c83b687395b64b99ba0b645859ad51caf7a2edff53d420f5e12d7afec0",
+    "byteLength": 600
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/freeze.json": {
+    "sha256": "fdc059c514c11730e1b2e5274104ce273d236d988b1bf2b18d29c47030339cf7",
+    "byteLength": 2146
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-conformance-caller-01/caller-delta.json": {
+    "sha256": "84fb583677701fd1d1b6feb8071b892fee09b2531f1eb834aef2b3384556b006",
+    "byteLength": 1033
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-conformance-caller-01/current-resource.mjs": {
+    "sha256": "74055d82bd0847f42fd462d20b7a6a9bd10cf33aa1a76092ba9dd57a9644f690",
+    "byteLength": 18626
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-conformance-caller-01/driver.mjs": {
+    "sha256": "f8450d045bbad0cc07a408eebfce806a1fd09de9ee8c0dc586834920e370191e",
+    "byteLength": 59358
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-conformance-caller-01/observe-process.py": {
+    "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+    "byteLength": 2217
+  }
+}

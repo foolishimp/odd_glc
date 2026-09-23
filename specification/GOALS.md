@@ -9,7 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: execution08 is closed at preparation OOM before any Run or paid actor; the caller-only lifetime correction is accepted at component scope, with installed continuation separate. [T-043 current selection](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) preserves the original resource, selected core RC1, complete S1–S5 and targeted-revision obligations. No application completion or qualification follows.
+Current delivery tracking: [execution09](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/return.md) closed at setup-8 default-heap OOM after 1,665.286 s, before any Run/actor, with zero spend/application writes. ABG composite e4e61fbe is accepted for bounded installed use, not qualification. S02 passes eight including recursion, then retry fails; fifteen remain held. Conformance and retry source/component repairs are CLOSED and await independent review, and the remaining 128 MB environment needs an owner decision. A bounded whole-path admission/execution ownership-context review precedes further large preparation. Full S1–S5 and actual targeted revision remain open; no application completion, RC publication or consumer method migration follows.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
@@ -30,11 +30,36 @@ own ABG release applicability.
 
 ## Selected Work
 
-The owner selects correction of the installed consumer’s Data Mapper specialization under [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection). One reusable Product/Program consumes ordinary task data; application-specific work orders, file paths, commands, criteria and oracle remain outside its implementation. Preserve the existing generated application as diagnostic input. The correction is independently accepted and canonically applied, with installed mechanical and bounded two-job component evidence. Actual native continuation remains unqualified. This disposition takes precedence over the historical sequence below without changing the generic Product or selected method.
+The selected outcome remains one generic lifecycle/correction composition under
+[T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection).
+Its accepted consumer declarations retain ordinary job data, the original
+source/oracle, five selected and four outside residuals, and full S1–S5 plus
+targeted revision. Preserve the generated application and native author as
+diagnostic evidence; no manual Data Mapper business-logic work is selected.
 
-The owner's 2026-09-21 graph/context direction now selects one generic native workspace-work boundary and one actual source-to-Intent transition under [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection), coordinated by [T-287](../../abiogenesis/.ai-workspace/comments/codex/20260921_TRUSTED_DESKTOP_STEEL_THREAD/native-work/selection.md). The native host owns its internal work; GTL/HoG/ABG retain declared execution and truth. An independent evaluator reads actual outputs. The complete lifecycle goal above remains; the failed cumulative response protocol need not first succeed. The native owner completed the first installed correction thread and the actual source-to-Intent transition on the same frozen core. Independent semantic assessment passed and the opt-in source/HOW is applied; later lifecycle outcomes remain pending. Default dependency, RC4 source basis and prior evidence remain unchanged.
+[T-287's current checkpoint](../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-checkpoint-and-installed-continuation)
+owns the runtime dependency: review the frozen payload/retry repairs and the bounded
+whole-path review/owner decision → accepted batch, one build/package → installed
+affected proofs and the preserved correction path → full applicable qualification
+and publication. No unchanged-candidate large preparation is selected. Whole-
+workspace versus selected Run/closure scope, lost publication/environment relations
+and duplicated state bodies are a review hypothesis, not adopted architecture.
 
-The next authorized increment is reusable native asset progression through Product and Requirements under [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection). Its independent assessment and declared continuation support the full lifecycle goal. The prospectively selected keyed-accounting S06 witness, complete original sources, oracle and downstream exclusions remain unchanged; existing valid semantic work is reused within its evidence scope.
+[Execution09 cost diagnosis](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/return.md)
+finds two equal 123,638,704-byte artifact-truth bodies (88.1% of the request);
+the exact OOM allocation remains unknown. Removing that duplicate does not
+justify the remaining 128,232,644-byte environment. The original 1,155,547,309-byte
+history retains its genuine setup-6 close and absent owning lock; this projection
+has not reacquired it. R7 and C0 sunny evidence retain their limited scope;
+clone-dependent C0 negatives remain obsolete fixture debt. Root accepts
+[fixtures-06](../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-06/return.md):
+C3 Parallel passes in 93.187 s with deterministic transport; Data Mapper stops
+on a legacy envelope before Product verification and partial-prefix is held.
+The independent whole-path review is now active (astra/max); no additional
+fixture expansion precedes its decision. Diagnostic loss is separately open. Latest known checkpoint is ABG
+`15ef2b3d…` / GLC `ac17504a…`; later work is local. T-288/T-289 stay closed.
+This Product keeps RC4, its default dependency and generic lifecycle obligations;
+Data Mapper diagnoses the framework and supplies no business-code work grant.
 
 ### Retained predecessor selection and evidence
 
@@ -175,8 +200,8 @@ folds and re-entry. GLC supplies meaning, policy and interpretation without a
 controller, requirement compiler or proof ledger. Reuse valid retained work;
 do not reset the original instance or relabel reduced output as full success.
 
-The current frontier is authorized cross-project repair in design, while the
-rejected full-input sandbox stays held. The tracking Writer's grant covers only
-the named status and inventory records; it activates no implementation,
+The current frontier is the finite runtime repairs and active independent
+whole-path review described above. Earlier rejected full-input sandbox evidence
+keeps its historical scope. This tracking Writer grants no implementation,
 qualification, model/application execution, Git action or release. Dependent
 effects proceed only through the owning bounded activations.

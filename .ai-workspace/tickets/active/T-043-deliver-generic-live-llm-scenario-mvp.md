@@ -25,18 +25,79 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: ODD_GLC_CALLER_PREPARATION_LIFETIME_01
-- current_re_entry: caller-only realization_refactor; accepted component correction, installed continuation separate
-- current_activation_status: execution08_closed_preparation_OOM_before_Run_caller_component_repair_accepted
-- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-selection/activation.json
-- last_execution_result: setup0_to6_retained_parent_preparation_SIGABRT_OOM_before_catalog_Run_or_actor
-- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-preparation-lifetime-01/return.md
+- current_activation: ODD_GLC_CONTINUATION_HELD_FOR_PAYLOAD_RETRY_AND_WHOLE_PATH_OWNER_REVIEW
+- current_re_entry: dependency_wait; assess frozen ABG repairs and bounded admission-to-execution ownership/context review before further large preparation
+- current_activation_status: execution09_setup8_default_heap_OOM_before_Run_actor_payload_source_closed_pending_review_environment_owner_decision_and_retry_review_pending
+- last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/route-dependency.json
+- last_execution_result: preparation_1665_286s_setup8_OOM_before_Run_actor_zero_spend_application_writes_genuine_setup6_close_preserved
+- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/return.md
 
 ## Current bounded selection
 
-Root accepts the closed [execution08 failure](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08/return.md), freeze `02699c4e…`: selected core RC1 `dd76783f…` completed setup0–6, then parent preparation aborted at default-heap OOM after19m28.9s / peak6.15GB before catalog receipt, Run or paid actor. The original resource has its genuine setup6 close; no application change or qualification success follows. The [caller preparation-lifetime correction](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-preparation-lifetime-01/return.md), subject `b6ba3d73…` / freeze `5fa42e02…`, is Root-accepted component readiness. A separately selected successor reuses setup0–6; installed cure remains open. No core/consumer canonical code or source method change is part of this caller repair.
+Root accepts [compiled-01](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-01/return.md)
+for bounded installed use: one build in 18.148 s, 42 affected compiled checks,
+and archive `e4e61fbe…` with 5,232 exact package/source/install members.
+Selected-closure, recursion and F11 producer/domain/acquisition repairs are
+included. This is not release qualification; prior `dd76783f…` evidence keeps
+its original scope.
 
-The accepted historical ingress source and generic correction remain preserved. Five selected/four outside residuals, full original-source S1–S5 and actual targeted revision remain required; a green correction alone cannot close S06. ABG's successor05 F11 cross-producer and application-domain findings are selected but unimplemented under T-287, not consumer authority or native J.
+Actual [S02 continuation-04](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-04/return.md)
+passed eight selected outcomes, including repaired recursive child/foldback,
+then failed at nested retry entry; fifteen cases remain held. Recursion now has
+installed positive evidence. The [nested-retry correction](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_S02_NESTED_RETRY_REPAIR/implementation-01/return.md)
+is source-ready and pending independent review, with no emitted or installed
+claim. Earlier failed Runs and exact resource identities remain historical.
+
+[Execution09](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/return.md)
+closed failed after 1,665.286 s of preparation: setup-8 conformance exhausted the
+default heap before any Run or actor. Actor spend and application writes were
+zero. Its retained current handoff owns the original 1,155,547,309-byte history
+and genuine setup-6 close, with the owning lock absent; this tracking update
+performs no resource acquisition.
+
+[Conformance-cost-01](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/return.md)
+establishes two identical 123,638,704-byte artifact-truth bodies, 88.1% of the
+280,585,831-byte request. The exact JavaScript OOM allocation remains unknown.
+Conformance source/component repair is CLOSED, pending the active independent review; no compiled or installed cure is claimed. The remaining 128,232,644-byte environment is an
+unresolved delivery red flag requiring a bounded owner relation/design decision,
+not a justified resource cost. No unchanged-candidate large preparation is selected.
+
+[R7](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-02/return.md) passed;
+[C0 sunny assertions](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-04/return.md)
+passed at their disclosed retained scope, with no preserved successful physical
+history or complete C0-suite claim. [Clone-dependent C0 negatives](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-05/return.md)
+remain held as obsolete fixture debt: no lawful copied-prefix append owner was
+established, and no new runtime is selected to salvage them. Root accepts
+[fixtures-06](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-06/return.md)'s one-field
+publication correction and C3 Parallel installed pass (93.187 s, deterministic
+transport). Data Mapper stops before Product verification on its obsolete
+transport envelope; partial-prefix remains held. Both remain unqualified. Existing [F_D diagnostic cause loss](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/c0-diagnosis-03/return.md)
+and the retry projector's swallowed replay cause remain separately recorded;
+retained debug probes do not repair ordinary diagnostics.
+
+Conformance and retry source/component repairs are CLOSED, pending the active
+independent review. The bounded whole-path admission-to-execution ownership/context
+review is now active under Executive selection (astra/max); its owner decision
+is required before another large preparation. Whole-workspace versus selected Run/closure
+scope, omitted or reconstructed publication/environment relations, and duplicated
+immutable/current-state bodies are a recurring-mechanism hypothesis for that
+review, not an adopted architecture. The next delivery sequence is accepted
+payload/retry batch and the required owner decision → one build/package →
+installed affected proofs and the preserved correction path → complete applicable
+qualification and publication. This is no speculative redesign grant.
+
+Latest known checkpoint is ABG `15ef2b3d…` / GLC `ac17504a…`; later work is local.
+RC1/source publication, full selected S1–S5, actual targeted revision, complete
+qualification and later actual human acceptance remain open. Sixteen coverage
+groups and sixty-six behavioral declarations are shared coverage, not one Run
+per declaration. Data Mapper remains a generic framework discriminator; no
+business-code work is selected. T-288/T-289 remain closed. Historical narratives
+below keep their subjects; this checkpoint owns the next-work projection.
+
+Consumer RC4, the original job/S1–S5/oracle, five selected/four outside residuals
+and actual targeted revision remain unchanged. ABG method adoption does not
+migrate odd_glc. No default-dependency, business-code or consumer release change
+is selected; no completed correction alone closes the entire S06 lifecycle.
 
 ### Retained earlier selection and evidence
 

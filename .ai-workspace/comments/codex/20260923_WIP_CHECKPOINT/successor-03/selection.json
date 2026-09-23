@@ -1,0 +1,159 @@
+{
+  "directExpected": {
+    "specification/GOALS.md": {
+      "sha256": "8306e83bd5cea1bd055034cb0d59eb3615b46f7ae7331531cbad33c2614e92f9",
+      "classification": "accepted_Writer_tracking"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "2701b7721e9d623fb516de128f1c7bfbde8ca688c894118550d06f1434ce1cb1",
+      "classification": "accepted_Writer_tracking"
+    }
+  },
+  "closedProofSelections": [
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/successor-05/implementation-01/freeze.json",
+      "sha256": "b4448e0d1be417b50160cb3c875819d8b4fbfce915a642dd8166631f8c4d196b",
+      "bytes": 16195,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/successor-05/implementation-02/freeze.json",
+      "sha256": "4b47285b95656c83dd07f0d6cbcf794738b8328404aacc35cb9e0111e62559a3",
+      "bytes": 8131,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_SELECTED_EXECUTION_CLOSURE_REPAIR/implementation-01/freeze.json",
+      "sha256": "40241a390deafb5088daea0d02803b22655a0e2c54ea5fe156e36087faa35104",
+      "bytes": 8470,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_S02_RECURSION_RESTORATION/implementation-01/freeze.json",
+      "sha256": "6917d71ff20a57ad3a3ad78b8c3c38bae02768fe93269a2edb4b26a32172c981",
+      "bytes": 4757,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-03/runtime-stop/freeze.json",
+      "sha256": "0ed8c8f7a1f5a1dd779ad239705cb114edf8760c089e6f03373715e6f3b1abd3",
+      "bytes": 87155,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-04/runtime-stop/freeze.json",
+      "sha256": "bd4bdc4825139f30acc414d1a8529341242108495d8910b4ff1f13967517e4ed",
+      "bytes": 96567,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-01/freeze.json",
+      "sha256": "3ec580e6ed4f14fbd3838868be57f773606ab195a54004ee0d1fa3def5f188db",
+      "bytes": 9261,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-02/freeze.json",
+      "sha256": "9105b8f48afeaf908da2c819b59979c353a4b6f8afcb9f32e0447e16af27155c",
+      "bytes": 11457,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/c0-diagnosis-03/freeze.json",
+      "sha256": "4c48839e8286867224305dbe25f173df001bd24673107b127795963128ec3742",
+      "bytes": 3241,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-04/freeze.json",
+      "sha256": "82693ad8da11288a48a25486cad19b4608d862b96339e67491c41dd60f22c8e9",
+      "bytes": 3024,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-05/freeze.json",
+      "sha256": "07cc6d3feb634564ee5fb47891f9a06d3f036baa7528896733418f336d385505",
+      "bytes": 2024,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "abiogenesis",
+      "freeze": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/fixtures-06/freeze.json",
+      "sha256": "e90d9d60e3f268bf3309dd3df1ffe0a8a72ca65fb8e869a54b679cb6ede5e599",
+      "bytes": 3288,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "odd_glc",
+      "freeze": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-08-remaining/freeze.json",
+      "sha256": "232de5e8bc5260231f5d76e3e244cf37287986262c7bf148631af6a7a6ac64ff",
+      "bytes": 11728,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "odd_glc",
+      "freeze": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/freeze.json",
+      "sha256": "1936e87736fd847746b703f0943ff01025b7e26408194ce8e18bd33ad5821d17",
+      "bytes": 13849,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    },
+    {
+      "repository": "odd_glc",
+      "freeze": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-conformance-cost-01/freeze.json",
+      "sha256": "fdc059c514c11730e1b2e5274104ce273d236d988b1bf2b18d29c47030339cf7",
+      "bytes": 2146,
+      "selection": "Only exact frozen member set plus its freeze/closed return/review; deduplicate already banked members. Never select directory-wide mutable resources."
+    }
+  ],
+  "pendingReviewWipSelections": [
+    {
+      "repository": "abiogenesis",
+      "carrier": ".ai-workspace/comments/codex/20260923_CONFORMANCE_RESOURCE_REPAIR/implementation-01",
+      "freezeSha256": "4774293795202a9e4a17964585927c8052d0208ac5cabc24d73fcc7f513d0d58",
+      "returnSha256": "0c9e13fa1765712eade61e36423b8e2f386a2d539dba242bca5c754e3e5e5066",
+      "sourcePaths": [
+        "build_tenants/abiogenesis/typescript/code/src/validator/conformance_definition_bindings.ts",
+        "build_tenants/abiogenesis/typescript/test_env/support/declared-testing-capability.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/d2-frame-installed.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/t287-stdo-run-environment-installed.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/t287-d1-semantic-stage.test.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/steel-consumer-declaration.test.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/t287-w2-05-install-catalog-owner-chain.test.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/t287-conformance-owner-reuse.test.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/w2-steel-single-start-installed.test.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/w2-steel-serial-branch-installed.test.mjs",
+        "build_tenants/abiogenesis/typescript/test_env/tests/t287-d1-requirement-handoff.test.mjs"
+      ],
+      "includesGlcClosedCaller": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/correction-conformance-caller-01",
+      "classification": "Root-selected frozen pending-review WIP; preserve exact carrier-member/postimage set; no acceptance or emitted/installed cure"
+    },
+    {
+      "repository": "abiogenesis",
+      "carrier": ".ai-workspace/comments/codex/20260923_S02_NESTED_RETRY_REPAIR/implementation-01",
+      "freezeSha256": "f186ef62b39bb3bb29947de845f04600e4d32a10bf9f5749e5482cc040688f35",
+      "sourcePaths": [
+        "build_tenants/abiogenesis/typescript/code/src/abg/retry.ts",
+        "build_tenants/abiogenesis/typescript/test_env/tests/t287-retry-run-prefix.test.mjs"
+      ],
+      "classification": "Root-selected frozen pending-review WIP; no acceptance, self-assurance or installed claim"
+    }
+  ],
+  "writerReceipt": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_CURRENT_STATUS_RECONCILIATION/successor-02/freeze.json",
+  "adjoiningClosedPosts": [
+    "20260923_RC1_QUALIFICATION_RECIPE/successor-05/implementation-01/review.md",
+    "20260923_RC1_QUALIFICATION_RECIPE/successor-05/implementation-02/review.md",
+    "20260923_SELECTED_EXECUTION_CLOSURE_REPAIR/implementation-01/review-01.md",
+    "20260923_S02_RECURSION_RESTORATION/implementation-01/review-01.md"
+  ]
+}

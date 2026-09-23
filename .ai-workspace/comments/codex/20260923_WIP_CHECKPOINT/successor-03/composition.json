@@ -1,0 +1,15 @@
+{
+  "basisCommit": "ac17504af98556db094ee40ffcdaa4b78268a332",
+  "prior": "successor-02/composition.json plus inherited transport receipts in classification.json",
+  "newTransport": "transport-01/catalog.json",
+  "archiveMembers": 162,
+  "archiveMemberBytes": 1696163204,
+  "transportBytes": 359204850,
+  "parts": 7,
+  "priorPayloadReadOrReupload": false,
+  "pending": [
+    "Active WHOLE_PATH_SCOPE_REVIEW output; excluded until separately CLOSED",
+    "Original mutable GLC history/worksite and S02 resource trees; no snapshot selected"
+  ],
+  "scope": "Accepted bounded source/component and installed proof plus explicitly pending-review retry/conformance WIP conserved; closed failures remain failed; no qualification/human acceptance."
+}

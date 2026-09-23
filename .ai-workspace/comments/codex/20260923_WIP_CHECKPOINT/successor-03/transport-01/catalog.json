@@ -1,0 +1,64 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "ac17504af98556db094ee40ffcdaa4b78268a332",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 162
+  },
+  "archiveMemberCount": 162,
+  "archiveMemberBytes": 1696163204,
+  "transportBytes": 359204850,
+  "assets": [
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION",
+      "byteLength": 359204850,
+      "sha256": "57465c65f06e47aa34d472bb0394ca8a8ba36ac038486b1545b8f6a2ecdfdc53",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 51380224,
+          "sha256": "4178a441d114ca05109f1cee0287c11d390a5a04c5202473de16a0fab547a08e"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0001",
+          "byteLength": 51380224,
+          "sha256": "bb0a0c1f4fd3da6339da31ee3d74a02712ec200f842ffe4d025f752dc4119437"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0002",
+          "byteLength": 51380224,
+          "sha256": "a23c3a7b8dfabc0ab35dfae214f41616cba39d277ecbb5dde92806b7d7a6097d"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0003",
+          "byteLength": 51380224,
+          "sha256": "f068376f2eeba3c1125d76be10b177aa2a1423cc1a8ed6dbe9622deae79eee19"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0004",
+          "byteLength": 51380224,
+          "sha256": "8f793a17fce4796b5cc8f270fc5cbefea18c67fafa5f30f8e7093f36ada4a68f"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0005",
+          "byteLength": 51380224,
+          "sha256": "3fd15e47fa160507ba2d65a8010de387445bbb97fbca94080b01c4077b5eac15"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0006",
+          "byteLength": 50923506,
+          "sha256": "390243654c45f513b1357e83f27737b22e8eda1bb5ac192c768b2392819788a0"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "252530af378ff076724e7b00026a327546548f3e48dd3c2bf19e00c3348d6987",
+  "reconciliationSha256": "d485ce49769eed36716254c88ae3f6f35af43553ddf17e2d717a8819045717b5",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}
