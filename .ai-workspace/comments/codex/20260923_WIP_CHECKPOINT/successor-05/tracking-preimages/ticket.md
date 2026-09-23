@@ -25,38 +25,45 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: ODD_GLC_READINESS03_READY_FINAL_CHECKPOINT_BEFORE_ORIGINAL_PREPARATION
-- current_re_entry: dependency_ready; final checkpoint then Executive original preparation and one correction Run
-- current_activation_status: readiness03_accepted_compiled04_installed07_recovery_accepted_original_close_untouched
+- current_activation: ODD_GLC_READINESS02_ACCEPTED_HELD_FOR_RETRY_HANDOFF_DISPOSITION
+- current_re_entry: dependency_wait; closed retry-handoff diagnosis and selected reviewed correction/installed proof before original preparation
+- current_activation_status: readiness02_accepted_compiled03_original_execution09_close_untouched_finite06_HoG_failure_under_read_only_diagnosis
 - last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09-selection/route-dependency.json
 - last_execution_result: preparation_1665_286s_setup8_OOM_before_Run_actor_zero_spend_application_writes_genuine_setup6_close_preserved
-- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md
+- current_activation_record: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-02/return.md
 
 ## Current bounded selection
 
-[Execution10 readiness03](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md)
-subject `818ae6eb…` is accepted on compiled04 under unchanged caller review
-`6cca8f94…`. Independently accepted installed07 nested recovery satisfies its
-candidate dependency; final checkpoint precedes Executive original preparation
-and one correction Run. Caller/reader/observer, actual prior assessment, latest
-execution09 setup6 close, job and policy remain unchanged. No original-resource,
-provider or application effect occurred during readiness.
+[Execution10 readiness02](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-02/return.md)
+subject `4ed64dc6…` is accepted on compiled-03 under satisfied caller review
+`6cca8f94…`; caller/reader/observer logic and original input remain unchanged. The caller separates original assessment provenance
+from the actual latest close and reuses an actual candidate verification result.
+No original-resource, provider or application effect occurred. [Execution09](../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/return.md)
+retains its preparation-only failure and genuine setup6 close over the untouched
+1,155,547,309-byte history; no old Run is relabeled.
 
 [T-287](../../../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-checkpoint-and-installed-continuation)
-owns [accepted source/compiled/installed recovery](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-06-repair-01/return.md)
-and independent review `11507bf4…`. A distinct second actor completes nested
-retry with agreeing fresh reads; earlier failed cuts remain historical.
-Setup192.773s/root13.412s/case86.503s and peak2.806GB are retained costs, not
-performance closure. Fifteen remaining S02 cases, full generic outcomes and
-qualification/RC1 remain open; diagnostic/fixture debt stays in T-287.
+owns accepted compact/caller/CCall source and compiled-03 mechanical readiness.
+[Finite06](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-06/execution-01/return.md)
+admits actual malformed failure evidence, retry judgment/progress and inner
+attempt2, then fails at HoG retry projection before actor2. The CCall repair has
+that installed scope; recovery remains unproved and read-only whole-handoff
+diagnosis is active. Whole-path compact selection remains CLOSED/accepted.
+Existing cost, diagnostic and fixture residuals remain in T-287's register.
 
-Consumer RC4, archive `01ad8134…`, original job/S1–S5/oracle, five selected/four
-outside residuals and protected scope remain exact. Actual human release
-acceptance is separate. Last verified pushes at Writer entry are ABG
-`462de346…` / GLC `d563c894…`; successor05 records the next checkpoint. Existing
-physical acquisition/session lifetime and optional Run association add no new
-authority. Readiness itself grants no paid launch, default migration or manual
-business-code repair.
+The next sequence is closed handoff diagnosis/selected correction and source
+review → one rebuild → affected
+installed retry proof → preserved generic correction → remaining applicable
+qualification, clean checkpoint and RC1; actual human release acceptance is
+separate. Last pushed ABG `11e03718…` / GLC `ae006dbc…`; subsequent work is local.
+Current infrastructure may use existing physical acquisition/session lifetime,
+with optional Run association after admission; no new session authority.
+
+Consumer RC4, unchanged archive `01ad8134…`, original job/S1–S5/oracle,
+five selected/four outside residuals and protected scope remain exact. Full
+lifecycle and genuine consequential revision stay open. No large preparation,
+paid launch, default dependency change, method migration, manual business-code
+repair or consumer release is selected by readiness.
 
 ### Retained earlier selection and evidence
 

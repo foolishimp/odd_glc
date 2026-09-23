@@ -1562,22 +1562,3 @@
 /codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness/subject.json
 /codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness/verification-reuse.json
 /codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness/verification-selection-disposition.json
-
-# WIP successor-05: exact lossless transport-backed closed originals; active resources excluded.
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/activation.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/check-rebind.mjs
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/checks.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/configuration.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/configuration.patch
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/current-resource.mjs
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/dependencies.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/driver.mjs
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/freeze.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/future-commands.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/observe-process.py
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/owner-verification-request.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/rebind-delta.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/subject.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/syntax-checks.json
-/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/verification-binding.json

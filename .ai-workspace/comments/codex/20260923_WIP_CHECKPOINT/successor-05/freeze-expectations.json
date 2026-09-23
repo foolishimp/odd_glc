@@ -1,0 +1,70 @@
+{
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/activation.json": {
+    "sha256": "dc9fc665b499f2af85ca61b192c8779e2ae512b980a84d914e7aa0987292875b",
+    "byteLength": 1281
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/check-rebind.mjs": {
+    "sha256": "1b51221f59de8f9de58c1f838cd37cbe56466a5a0f03f5fe8d4fbd5cc089b5e3",
+    "byteLength": 4680
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/checks.json": {
+    "sha256": "f9e4666469df961b56ab39417eb846c21f09756b9538707d5d664629a7b06573",
+    "byteLength": 1099
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/configuration.json": {
+    "sha256": "d16dec71c89a31901f5ebe1e50e6d74af967f0512db6b13a6691a56af4497a15",
+    "byteLength": 12696
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/configuration.patch": {
+    "sha256": "2246ae6bc7824387b8c1effb3d524e389ad04c9a1d743f972cb0ab825fad5a52",
+    "byteLength": 3524
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/current-resource.mjs": {
+    "sha256": "fbef40bbb0b430a5507dcd6946fbf3e0232b1999c8fc23960059bdcaa1ee4060",
+    "byteLength": 20171
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/dependencies.json": {
+    "sha256": "4d6577affa0d8516f803a1584893ea2b4d5fb3339a0be3f38d0d86c11f5d6441",
+    "byteLength": 2648
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/driver.mjs": {
+    "sha256": "f8f0ebd05b8b096c5485806efff12862d3c23e436b08b76fce5d90b5112870b8",
+    "byteLength": 60633
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/future-commands.json": {
+    "sha256": "3f7dfe986688f6c7ce5eb9412ac459b9bf3e0fd573517a010e67e03420640c88",
+    "byteLength": 2463
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/observe-process.py": {
+    "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+    "byteLength": 2217
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/owner-verification-request.json": {
+    "sha256": "08efa30204acf565a60d961bcdd709ec6ce694e0c6bda39260193065cdf7a9e6",
+    "byteLength": 858
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/rebind-delta.json": {
+    "sha256": "5a09075dc5a1f252929725b8d39d56c1bffd16d72eabc4d25718a2841351a0b6",
+    "byteLength": 3680
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/return.md": {
+    "sha256": "a6244f22062a4f6cfebe2e0ffa4f5cbf97f5ff6b1c31a9bca0f0c5b71f6b8600",
+    "byteLength": 2367
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/subject.json": {
+    "sha256": "818ae6eb1a5b38f019f9a3f200291d8d5b601b13a0d4f145649754ab1d895e88",
+    "byteLength": 4466
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/syntax-checks.json": {
+    "sha256": "80dc3cfd7022523933e23dee8c6a20eed26ecb3b325c167d2935fa8cd03ce59b",
+    "byteLength": 368
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/verification-binding.json": {
+    "sha256": "32819ad77cc034bbb117eab6b8ae15977f3b4b551b856eb525c9132a307ff329",
+    "byteLength": 1751
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10-readiness-03/freeze.json": {
+    "sha256": "0191da60204996f3269829171908938654d653f0b076141c5ea7d05e0aaa6907",
+    "byteLength": 2813
+  }
+}

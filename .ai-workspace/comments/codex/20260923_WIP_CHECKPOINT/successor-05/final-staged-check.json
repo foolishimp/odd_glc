@@ -1,0 +1,11 @@
+{
+  "paths": 42,
+  "stagedBlobComparisons": 42,
+  "largestBlobBytes": 359943,
+  "credentialShapeFindings": [],
+  "whitespaceExitCode": 2,
+  "whitespaceDisposition": "Historical frozen bytes preserved; diagnostics retained.",
+  "selectedAcceptedSourcePostimagesUnchanged": true,
+  "priorPayloadsRehashedOrReuploaded": false,
+  "activeResourcesExcluded": true
+}

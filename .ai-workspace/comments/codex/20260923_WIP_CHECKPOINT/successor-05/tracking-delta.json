@@ -1,0 +1,16 @@
+[
+  {
+    "path": "specification/GOALS.md",
+    "preimageSha256": "40ce585dfe15c6dea76f698fc535600dee5cd1966c27b2b6bc7490e80b687588",
+    "postimageSha256": "90935651e1b41bf86815fa034770ba1ee9699cce956fac0613ee47e17bed3512",
+    "preimageBytes": 14660,
+    "postimageBytes": 14136
+  },
+  {
+    "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "preimageSha256": "c84fd3f18b52becc98b291229ddd0693308b04b1927a4b0278048a3426206a69",
+    "postimageSha256": "b8b5aa61f7bb12292f2e993e683bca29da903dc4e17f6dcf102b1f1dd8fe9afc",
+    "preimageBytes": 51034,
+    "postimageBytes": 50415
+  }
+]
