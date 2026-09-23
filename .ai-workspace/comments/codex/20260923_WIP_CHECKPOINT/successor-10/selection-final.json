@@ -1,0 +1,38 @@
+{
+  "directExpected": {
+    "build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs": {
+      "sha256": "e44d81f3129e6e212f1319ea5053e32b2120a7480add93ddbb1a5aa8d6409b1a",
+      "classification": "accepted_frozen_source_test_HOW"
+    },
+    "build_tenants/odd_glc/typescript/test/native-correction.test.mjs": {
+      "sha256": "77fc2822787678186b2749786343058926ab781584dd9c4d33d21098d97ea621",
+      "classification": "accepted_frozen_source_test_HOW"
+    },
+    "specification/GOALS.md": {
+      "sha256": "069c6603f2e0d69248130e24151c6c5ac12b93ff3b1e330001d96b6eb5a9337a",
+      "classification": "current_tracking_projection"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "fe2e335813edb36b6348cd355c0911250d1110ce57377df90ac1ccd6118b576e",
+      "classification": "current_tracking_projection"
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/transport-01",
+      "catalogSha256": "ce604992384744e6a9c180c2a9302eec613b897515116d41aacd2b5f4af27072",
+      "indexSha256": "250403b7f1cd678ef68b216b8d1041a5d6255f40c9b2eefbcece3606735bbea1",
+      "verificationSha256": "fea6f4bea9a50beff7f1bb8711db2e97dd9454eb8859a7bcb2e6deb1b679958b",
+      "members": 128,
+      "logicalBytes": 377555396,
+      "transportBytes": 44368841
+    }
+  ],
+  "scope": "Root-accepted source9 and compiled10/dev6 package/caller readiness; recovery02/original launch02 and seven S02-17 scopes preserved; original03 and mixed-only18 native verification authorized only after paired checkpoint remote verification. Full S1-S5/oracle/qualification/RC1 open.",
+  "excluded": [
+    "Original mutable GLC/S02 journals/locks/worksites; no checkpoint read/hash/copy",
+    "Installed/node_modules trees, implementation03 fixture and scratch, unselected caches",
+    "PhaseB live evidence after checkpoint cutoff; no native outcome at this commit"
+  ],
+  "sourcePostimageMutationByWriter": false
+}

@@ -1,0 +1,514 @@
+{
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/archive-members.json": {
+    "sha256": "37b031a4e6c05bfc3e27f65c304f14a5a62ae0885c7aa51867c11483c6377491",
+    "byteLength": 1637
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/artifacts/odd-glc-route-one-typescript-0.2.0-dev.6.tgz": {
+    "sha256": "4f96ba95f76d7c65bd8d6866c6193e0ab361f05b531e8da07fe8be88c58982eb",
+    "byteLength": 27195
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/bootstrap-install.json": {
+    "sha256": "7f26d154bfe5072ad32e1ff81dfc211da52730a02c09db3a970c8183272ec544",
+    "byteLength": 674
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/bootstrap-install.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/bootstrap-install.stdout": {
+    "sha256": "712b6c338e4340aeda594ef0ec4d03d0516d992d84dc9391b531eaf4b911591e",
+    "byteLength": 26
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/build-result.json": {
+    "sha256": "ed9a4e00b60560c22755393a27ff9cef7e5348161834cd0e4634828bc6a5d58d",
+    "byteLength": 1810
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/build-timing.json": {
+    "sha256": "dc72466cce9109cdf010ce0478b3bf6f5b2a8524e8a80d140e5f3df03f2f2184",
+    "byteLength": 1358
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/construction/scripts/build-native-continuation-product.mjs": {
+    "sha256": "3fa812f08369411b1df99706da91ac48700f1f4b407155ef2dc930aee9eea2ac",
+    "byteLength": 3732
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/construction/src/native-continuation-contracts.mjs": {
+    "sha256": "f06770d2dab4bee2cd5371cacd8f6796b3906c3be7b9f00906fd0ae23a2d340f",
+    "byteLength": 9746
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/construction/src/native-continuation-declarations.mjs": {
+    "sha256": "e44d81f3129e6e212f1319ea5053e32b2120a7480add93ddbb1a5aa8d6409b1a",
+    "byteLength": 12093
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/construction/src/native-continuation-runtime.mjs": {
+    "sha256": "7566f9dc36ed91c2aa5e6f08c19e3f8a06e3ecbba511f63bd31c84161b14f238",
+    "byteLength": 41429
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/construction/src/product-package.mjs": {
+    "sha256": "4c9dd6ee36f7bff43995adee94901add62ef66f2ac25b221592fb595a1ecd3e0",
+    "byteLength": 4549
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/construction-inputs.json": {
+    "sha256": "7a3d8124ad7f627501db14bbe5a0d8750632eb1f8b54a66ff89aa50baec1013d",
+    "byteLength": 3017
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/environment-input.json": {
+    "sha256": "cc125013126d9b7feb7437fa0b09ce1730d430fe671ef892f9548acf4a8b0fd8",
+    "byteLength": 550
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/initial-verification/product-verification-request.json": {
+    "sha256": "4969855fd305270206eaf504cc27eff9681acd60bde0e3860e9e7694fd7ea086",
+    "byteLength": 1088
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/initial-verification/product-verification-summary.json": {
+    "sha256": "56fcb47d795f6fe767e6433143b124a25b902ae82470213aba1f3c0b7bcda9d4",
+    "byteLength": 2215
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/initial-verification/product-verification-timing.json": {
+    "sha256": "b40bdb1fdccfb41322ef2eb0726695f3a332fb8072bb70c807c3c4321aecc212",
+    "byteLength": 373
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/initial-verification/selected-consumer.json": {
+    "sha256": "53a68013a1dacbadeedbf4763af40110dcec62f80e10878efdb30da6b76ab46c",
+    "byteLength": 1051
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/pack.json": {
+    "sha256": "c58d5e254f4fea23469122c74682d1afdf40c56d9f7c28cf0b199366e6fa69da",
+    "byteLength": 646
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/pack.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/pack.stdout": {
+    "sha256": "98885921ba876afe4660d394feeef70e2531fc39ba8c060a3a526d696ee98073",
+    "byteLength": 1662
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/build/native-continuation-contracts.mjs": {
+    "sha256": "f06770d2dab4bee2cd5371cacd8f6796b3906c3be7b9f00906fd0ae23a2d340f",
+    "byteLength": 9746
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/build/native-continuation-declarations.mjs": {
+    "sha256": "e44d81f3129e6e212f1319ea5053e32b2120a7480add93ddbb1a5aa8d6409b1a",
+    "byteLength": 12093
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/build/native-continuation-runtime.mjs": {
+    "sha256": "7566f9dc36ed91c2aa5e6f08c19e3f8a06e3ecbba511f63bd31c84161b14f238",
+    "byteLength": 41429
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/build/publication.json": {
+    "sha256": "1baedf255423c633db461497f7a50354a393300f7c2816c40e28966795062bf5",
+    "byteLength": 62383
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/contracts/capabilities/capability-definition-graph.json": {
+    "sha256": "f664ed939704a5573a2f5151eccb86532c777eda6d5b927454f65ca839363bd0",
+    "byteLength": 247
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/contracts/native-continuation-assessment.schema.json": {
+    "sha256": "8289425dbcfbb85c0be94a46451267183bb8666af413fc8484d941b594efbcc7",
+    "byteLength": 1119
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/contracts/native-correction-selection.schema.json": {
+    "sha256": "afec49d152bbe34632e429fd9258a0540f24eb27d6b8b81474e6d689a839568e",
+    "byteLength": 1068
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/contracts/public-contract-catalog.schema.json": {
+    "sha256": "a69db2dd825711aba598d29d8880b20df39aa8ac691fa25b5d7c058eed964646",
+    "byteLength": 145
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/package.json": {
+    "sha256": "a4e09f5c90f67f6c9c41b6d546e7085ce059f64214cc11ddc328b0f8766935d7",
+    "byteLength": 330
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package/product-toolchain-manifest.json": {
+    "sha256": "ac81dbcc082abf821f208e19340ab680420996ae60fa614550e388bcdbad17b2",
+    "byteLength": 6954
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package-correspondence.json": {
+    "sha256": "8c724636a5a1393d5e55acb24d507385a0a844020d2fea270a93903d583498da",
+    "byteLength": 925
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package-identity.json": {
+    "sha256": "fe2e82d589a951a70fe1f882d30df590507f2349cf8f9a1d464184356c61da8a",
+    "byteLength": 609
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package-once.py": {
+    "sha256": "4df12eb9da18fadb9d4e1684978d638492c3c871f2229db58c18fd04dd52bb68",
+    "byteLength": 3320
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/package-readiness.json": {
+    "sha256": "c6849c8f13a59c9761cd8f30d0f659f00ce91aae08061b071079bff0fa70d47d",
+    "byteLength": 2682
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/product-verification-request.json": {
+    "sha256": "4969855fd305270206eaf504cc27eff9681acd60bde0e3860e9e7694fd7ea086",
+    "byteLength": 1088
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/product-verification-summary.json": {
+    "sha256": "56fcb47d795f6fe767e6433143b124a25b902ae82470213aba1f3c0b7bcda9d4",
+    "byteLength": 2215
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/product-verification-timing.json": {
+    "sha256": "2fabfad7ea7bbcd65571e53a37c382f21cbf0ae72dfcd0c20f7e0a6ef01aff5c",
+    "byteLength": 373
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/selected-consumer.json": {
+    "sha256": "53a68013a1dacbadeedbf4763af40110dcec62f80e10878efdb30da6b76ab46c",
+    "byteLength": 1051
+  },
+  ".ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/implementation-01/package-02/freeze.json": {
+    "sha256": "69aadbd4e97dd7e9d3dd6f3dc7d5986729a58a8f6f3ff2a01cad97f5dea7e365",
+    "byteLength": 12063
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/attempt-start.json": {
+    "sha256": "417f1118da51270e11d6799202de39730ec6afb4906b137d1babd3cbee13a430",
+    "byteLength": 3852
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/execution-authorization.json": {
+    "sha256": "f4177efce1158fcb03faf83643fc3101b0e1bbc6d6c4de7a9c05fbd0963a8a65",
+    "byteLength": 3613
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/launch-selection.json": {
+    "sha256": "7482af045b436b52704cb14f709431691fe993d2fd60c9d9ce6aa21cc5a6ea9f",
+    "byteLength": 2408
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/launcher-subject.json": {
+    "sha256": "7454a79a3d64e82f4a678558968ae330fcfc06b4b89c313221b625589094bf3f",
+    "byteLength": 1645
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/owner-verification.json": {
+    "sha256": "e602b8136e9d9d9f9acd3ebab6e9832b2528a279b079f6dfaf0bc9560445fa09",
+    "byteLength": 12706267
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/post-recovery-metadata.json": {
+    "sha256": "bdcddd6611df78d46ad8062f7dd9086dd19e379b21e3e391c1205b0026e2c32d",
+    "byteLength": 1011
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/preparation-activation.json": {
+    "sha256": "3504eb6631ec42d6116a6d089879f0d07eb2e9e88e83ac9a6c823bb3ec44e364",
+    "byteLength": 1083
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/quiescence.json": {
+    "sha256": "bdb4db28c7f17f570f2addfb213a89690861487ba41df4aaeda0cdcbc51d1832",
+    "byteLength": 2989
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recover-once.mjs": {
+    "sha256": "7ce68d08e9896751979f7dee070e4f004a2c3e974172732a4f70493994e2aa1c",
+    "byteLength": 10975
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-process-result.json": {
+    "sha256": "7fae82de86788303a9ca6f62f3bc04809ee3a818f4e68de98918f9f272d63c4c",
+    "byteLength": 233
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-process-start.json": {
+    "sha256": "ffd6b799da90c8e1023a92f5bf2ede6083f013ace18d5cdf59ae3e35d00b9bb3",
+    "byteLength": 583
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-receipt.json": {
+    "sha256": "a300cb66b65aae8d5c4db881e0ca644df9aa63bae7d348947d772173d169acb6",
+    "byteLength": 5068
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-return.md": {
+    "sha256": "6079f2906f41833431b281acfeb4da825575d00598a9fecd3efb035783c2633c",
+    "byteLength": 2085
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-stdout.json": {
+    "sha256": "35bedb2d2fc6d7fa9e156e41c378a38dafc191e6317ccb20c39197f5d9e69991",
+    "byteLength": 376
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/request-evidence.json": {
+    "sha256": "0da277b92ccd68862bd8e38ccfbee26fd262d24f1dd00b01dd6e7162ffbb9089",
+    "byteLength": 12641198
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/selection.json": {
+    "sha256": "11daf7662d9d12003bc8d4b651c9a06f72b30b09f8a894088be2fbf2d2e61ae2",
+    "byteLength": 4448
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/timings.json": {
+    "sha256": "40bd4bc41e3c906e411b7bd12f2d54e8b694a3c75a4e27fed0a2ef562411a135",
+    "byteLength": 182
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/conservation.json": {
+    "sha256": "15adf4416f01923a05b3a3938bac2b1fc5d65b76c17a3790a641d4debf53dd6e",
+    "byteLength": 20621
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/execution-authorization.json": {
+    "sha256": "ccd9ffb4e10ecdef6ca75907060b7cb9586e546912c99dccb56100458e3a1c1f",
+    "byteLength": 2105
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/first-cause.json": {
+    "sha256": "95bf711b1423745b271f2b56d92f0e446d0810e63e60e68d4b7d16f7ccbf1c5b",
+    "byteLength": 4601
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/journal-suffix.jsonl": {
+    "sha256": "cc6ca692e6e16fc579c3bd52470c75140784cec06c8c33b89bda79eb26f641b3",
+    "byteLength": 6721037
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/phase.json": {
+    "sha256": "9c8d278f81d897d5a7ed8a35445631b83ceae0876dbc3a93d739b15390a97e05",
+    "byteLength": 121
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/reach-summary.json": {
+    "sha256": "f1870142d1003d450f45457b4c31ee9e09cd7907c56fa934a8bd045d0b87fb2a",
+    "byteLength": 10422
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/return.md": {
+    "sha256": "43938320ca203d8054ce87d13a8a14c02bec98f74d4a035121015e4608aacbd2",
+    "byteLength": 6773
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/run-process-result.json": {
+    "sha256": "15aee30f9efa989a9010ccff59a84747e92845a53408aa87628204f68d8bd632",
+    "byteLength": 458
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/run-process-start.json": {
+    "sha256": "4454661d71991f8a73e5880b5763f55d59b0e0e7b1509bd2be269a3f55676e0a",
+    "byteLength": 1071
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/run-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/run-stdout.json": {
+    "sha256": "2b557951cc9d4f44b7247e891c70057226c14e9ffa9926cf8a83e75d16180106",
+    "byteLength": 808
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/stage-times.json": {
+    "sha256": "a131021df414f8a62b9d258839556df7f350005caaa181ee499c22799ea814e2",
+    "byteLength": 2598
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/suffix-observation.json": {
+    "sha256": "c2ba21aeaf1746215489e9eded6dcd9298e07e103798951c1fd11eaf1cece426",
+    "byteLength": 1994
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/configuration.json": {
+    "sha256": "bf3102cae5c1aa70af370b698fbae97b580e3e9dc2e5cdcff287dcb0dfc7e28c",
+    "byteLength": 10675
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/delivery.json": {
+    "sha256": "920ec700a682ad95a63dba8b7c8c8b3ab0b2b500ae42f00357be123b94940ba8",
+    "byteLength": 29171
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/final-close.json": {
+    "sha256": "ae6278266fbd795a91f76dd1648e3de306ef03f1cc91bdf2985a6140113c459c",
+    "byteLength": 2338
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/historical-candidate-evidence.json": {
+    "sha256": "24736270e5162012829bb48f3c0ac91a17c02b21c9e18805769948ebdd1b57f0",
+    "byteLength": 3857
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/native-attempt.json": {
+    "sha256": "d52e57eeed4805b5a1f63946faace1498402014121cdbb06cdddad70a212f157",
+    "byteLength": 1463
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/native-receipt.json": {
+    "sha256": "4dc6ca7d97089a31cf8a19ce33fffdb9eec88a2ce5005a775b44dbffc395402a",
+    "byteLength": 18616
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/preparation.json": {
+    "sha256": "88f162c95127e27fbb83ac89474dbbced5999aa1a25129a8e2a0003f4880e816",
+    "byteLength": 3316335
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/product-0-verification.json": {
+    "sha256": "e602b8136e9d9d9f9acd3ebab6e9832b2528a279b079f6dfaf0bc9560445fa09",
+    "byteLength": 12706267
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/product-1-verification.json": {
+    "sha256": "2a55b24cdc00064e3cf7b44d5dc3a5e55e685b52bb08b6057cb0324638193205",
+    "byteLength": 12708
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run-start-evidence.json": {
+    "sha256": "43fe3d445036dfc60e496ba2904edbc4b5246f26fba3b0d775d2fd44812d3273",
+    "byteLength": 50536501
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_replay-process-result.json": {
+    "sha256": "185181dcd663df96850cbf1d238a9f4034aaff15ac9ae65896470d093b77e7c8",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_replay-process-start.json": {
+    "sha256": "e3c21cd039edd6d453830051a59b0b69af6bba7573df8f60cd02a4768280879b",
+    "byteLength": 634
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_replay-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_replay-stdout.json": {
+    "sha256": "7b7785dc9815ae63c391d4a65f62f0eaae77d117591409c14ba6d5c4aab6e7b7",
+    "byteLength": 3574
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_replay.jsonl": {
+    "sha256": "9b46556d5154522096be21963d55d26cec2375912ce21fc7738c5b0ff05b98bd",
+    "byteLength": 9730
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_result-process-failure.json": {
+    "sha256": "76c621ace79fa7fa2625f76fa2859976afc941f383acb4f2e216435acf58a3c1",
+    "byteLength": 740
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_result-process-result.json": {
+    "sha256": "13ad144c473b72cc046b944370a0a4378964da7c04327795053b15f91a67c25b",
+    "byteLength": 235
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_result-process-start.json": {
+    "sha256": "05c5d31a1b48c3c0366b5610a645a31238f440c9c366f020ca6f263884d23ba5",
+    "byteLength": 634
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_result-stderr.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_result-stdout.json": {
+    "sha256": "fd174c79c0883e4c7ec7e7b18e5c5ae831f6e3dd7211d68b6e8d872c3f1537f1",
+    "byteLength": 2645
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/run_result.jsonl": {
+    "sha256": "5719a8879df35e15c218f7aac67c4809ab770e1ce0033b3f71ee35c59694e8c8",
+    "byteLength": 9692
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-0-call.json": {
+    "sha256": "c48b74866afb7801ec9c8370b0d52067ee4dd6225538fc876b53572308ffc189",
+    "byteLength": 25795916
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-0-receipt.json": {
+    "sha256": "96c65ac64ddf5d2f3e26a0deaaae390026cc9ed59698afd15a6123430b3f2139",
+    "byteLength": 257214
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-1-call.json": {
+    "sha256": "17276ac21f99c25db9addea0d9a56d7959a93e1c6663bd1beb7f0fd8339ba3ef",
+    "byteLength": 13172359
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-1-receipt.json": {
+    "sha256": "94f39b893e4f4aa51886415cbaa9d77c5b1cfe0351cd2c597528b5f7a275bbda",
+    "byteLength": 2117
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-2-call.json": {
+    "sha256": "3c3e8bbc801eaf84746208819d9a49da49d865afe263954c285117685105cad5",
+    "byteLength": 26431911
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-2-receipt.json": {
+    "sha256": "e74dde2ddb36bed11217d5a24443502ea96370cd97c506891af7150e08a26f7d",
+    "byteLength": 5396
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-3-call.json": {
+    "sha256": "0c8d6e1814627a7b9ed448abaca1132bd4174148c4fe251f8a1bc7ff4dbde61a",
+    "byteLength": 29469494
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-3-receipt.json": {
+    "sha256": "ca4dcd318a0a394e73edf948cdb30c352b515f6ba25bf875c6fe0bfd19b7fd96",
+    "byteLength": 6191
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-4-call.json": {
+    "sha256": "8e93627d421732600cc0584a5f6a7b68577cae86839c4cba1d25097eb099d798",
+    "byteLength": 16844687
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-4-receipt.json": {
+    "sha256": "5d007a6be32125fea0f046410d62809263babc1fc24dd1a6b18f012266a7b40f",
+    "byteLength": 6279
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-5-call.json": {
+    "sha256": "d6884079e3d280563df36a5823a02e7f7726c38e318d5d07ef99cf8827cb4922",
+    "byteLength": 20389621
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-5-receipt.json": {
+    "sha256": "f32ef36d1ecf8a3425765334440a5c978e4b2c5531a23942a2a4accbf4b5ff2d",
+    "byteLength": 6950
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-6-call.json": {
+    "sha256": "45672aa702b7bf1805185649dcb393ab7b58a421d0f7624ec3a6949c64ae7ef8",
+    "byteLength": 13166373
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-6-receipt.json": {
+    "sha256": "4e1cf9bb10e749495c0ecd2b7f103761012a0a006d08cb0e991c3910268600a0",
+    "byteLength": 3642
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-7-call.json": {
+    "sha256": "9da0fdf415546b3b4662f0ec01d760325ff25b500e02dc61adc8d0825915fb93",
+    "byteLength": 33900237
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-7-receipt.json": {
+    "sha256": "cb98b8e6708d93c1c433d8318ba85535ce1447bae33792481550c62cd44b7e24",
+    "byteLength": 224347
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-8-call.json": {
+    "sha256": "5103fbde6ccc8c1929769a180e53af1ab6e5c914baeb35ae1ab01d426c9dfec2",
+    "byteLength": 36324203
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-8-receipt.json": {
+    "sha256": "770594daa94915dd48e3c04c7c501e6621a45462e1ee5f6a41a005342816b4b9",
+    "byteLength": 2090
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-9-call.json": {
+    "sha256": "fe6b7e80cf341b586bceb4ab5e50a323a233f5746812fb6b900fcc2114d90cde",
+    "byteLength": 37743172
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/setup-9-receipt.json": {
+    "sha256": "53aa0888b63b1719781c145836363e348be518804f585632f03656dff197d39c",
+    "byteLength": 24579115
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/subject.json": {
+    "sha256": "f28efef985bcbce3b61a85009edad7ba0c05d0e2335d0ca561f697a9c2b4bc24",
+    "byteLength": 31994
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/activation.json": {
+    "sha256": "d2090d661ba6482180b7f872038cf2629e4a9d73ff9f5d4325d9a3fa92d59dc2",
+    "byteLength": 883
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/caller-controls-result.json": {
+    "sha256": "3b720df75fc34c829d029590d24f0d94898ada785e68f7cfb4fccf5f91fc8b05",
+    "byteLength": 1082
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/caller-controls.mjs": {
+    "sha256": "417a6c6abc23183d491918670bbd50b997d6a6dfa83cd8b5cc693d648cdb3a4a",
+    "byteLength": 4515
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/configuration.json": {
+    "sha256": "a3fa89bf118fb714d86c3a279fe47c55cf9023a29714b69993c11bef80bddb1d",
+    "byteLength": 7510
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/configuration.json.diff": {
+    "sha256": "26f98b09db1ecd7fc8ad0c9467a8432130ced94eeec526e1a36e974f3e4bb70d",
+    "byteLength": 5815
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/driver.mjs": {
+    "sha256": "2ce3ecbdb880f5fa8a9bdc58bb555d0d0f53af4fa16322926118fe3388235ec1",
+    "byteLength": 41645
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/driver.mjs.diff": {
+    "sha256": "0a5e3037d33d0429d5cf6969705022ec5fd726b676125551e4f2fb29802e198c",
+    "byteLength": 6123
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/external-dependencies.json": {
+    "sha256": "263a831b87fa787fed4f2e6fe7761cb5e4a7ee40df2e6364c8443f91263db67b",
+    "byteLength": 3430
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/final-binding.json": {
+    "sha256": "e34dab653296d5acfd4ef6453e8783992bfe960d51c570b30b30305758b9b266",
+    "byteLength": 2760
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/final-binding.template.json": {
+    "sha256": "bd4b123ad900e18b09b5b736b0782a16e0076a6b7059f836ce596366a62eba5b",
+    "byteLength": 155
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/future-commands.json": {
+    "sha256": "f4135ad14ebad799938eebee1214d410e8c6299864c769b68c51e8ddc913af89",
+    "byteLength": 3966
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/observe-process.py": {
+    "sha256": "1baca590f1015db5c873adc0e4b6eb80a020fba68785e41e1b93d788b23182a1",
+    "byteLength": 3957
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/return.md": {
+    "sha256": "4b44df1edb51161979e6faaf11286413cd853c1468491d8673496106e47680b5",
+    "byteLength": 1294
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/subject.json": {
+    "sha256": "bc2e071c789645da2b8cd8f72abb6428fa3bff2e58846e12c0088f5d756c04f8",
+    "byteLength": 5051
+  },
+  ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/execution-selection.json": {
+    "sha256": "b41375ad2940421b5b1bbe8fa717bbb38d5dfaf3aabf8c6a35473d65992fd634",
+    "byteLength": 2536
+  }
+}

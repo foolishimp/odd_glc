@@ -10,11 +10,11 @@ export function constructNativeContinuationPublication({artifact,gtl,product,run
  requirement:{kind:'executable_leaf_requirement',implementationBindingRef:s.bindingRef,inputContractRef:s.inputContractRef,outputContractRef:s.outputContractRef,
  evidenceContractRef:ids.evidenceContractRef,failureContractRef:ids.failureContractRef,refusalContractRef:ids.refusalContractRef,judgmentContractRef:ids.judgmentContractRef}})});
  const call=(nodeRef,graphFunctionRef,input,output)=>({nodeRef,nodeKind:'c_locus',term:gtl.workflow.C(gtl.cGraphFunctionRef({graphFunctionRef,input:gtl.cCarrier(input),output:gtl.cCarrier(output)}))});
- const declarations=(closure,predicate,child)=>({'abg.compute_regime':'mixed','abg.closure_contract':closure,...(child?{'abg.child_closure_contract':closure}:{}),
- 'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,'abg.judgment_predicate':predicate,'abg.transition_contract':ids.transitionContractRef,'abg.raw_result_contract':ids.rawContractRef});
- const graph=(name,graphRef,input,nodes,closure,predicate,child,retentions={})=>({kind:'graph_function',name,version:VERSION,
+ const declarations=(closure,predicate,child,rawResultContract)=>({'abg.compute_regime':'mixed','abg.closure_contract':closure,...(child?{'abg.child_closure_contract':closure}:{}),
+ 'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,'abg.judgment_predicate':predicate,'abg.transition_contract':ids.transitionContractRef,'abg.raw_result_contract':rawResultContract});
+ const graph=(name,graphRef,input,nodes,closure,predicate,child,retentions={},rawResultContract=ids.rawContractRef)=>({kind:'graph_function',name,version:VERSION,
  environment:{requires:[input],provides:[n.observationContractRef,c2.observationContractRef],carries:[input,c2.observationContractRef]},inputs:[input],outputs:[n.observationContractRef],effects:[n.effectUri],tags:['odd-glc','bounded-continuation','native-work'],
- declarations:declarations(closure,predicate,child),template:{kind:'inline_graph',graphRef,startNodeRef:nodes[0].nodeRef,terminalNodeRefs:[nodes.at(-1).nodeRef],nodes,
+ declarations:declarations(closure,predicate,child,rawResultContract),template:{kind:'inline_graph',graphRef,startNodeRef:nodes[0].nodeRef,terminalNodeRefs:[nodes.at(-1).nodeRef],nodes,
  edges:nodes.slice(1).map((node,i)=>gtl.graphEdge({fromNodeRef:nodes[i].nodeRef,toNodeRef:node.nodeRef,...(retentions[nodes[i].nodeRef]?{inputBinding:retentions[nodes[i].nodeRef]}:nodes[i].nodeRef===ids.executionNodeRef?{inputBinding:retentionBinding}:{})})),applications:[]}});
  const graphFunctions=[graph(ids.graphFunctionRef,ids.graphRef,ids.inputContractRef,[leaf(stages[0]),call(ids.reacquisitionNodeRef,reacquisition.name,reacquisition.inputs[0],c2.taskContractRef),
  call(ids.executionNodeRef,c2.graphFunctionRef,c2.taskContractRef,c2.observationContractRef),
@@ -27,7 +27,7 @@ export function constructNativeContinuationPublication({artifact,gtl,product,run
  call(correction.assessmentNodeRef,correction.wrapperRef,ids.boundInputContractRef,n.observationContractRef)],ids.closureContractRef,correction.stepPredicateRef,false,{
  [correction.selectorNodeRef]:product.graphInputRetentionBinding(correction.inputContractRef,n.observationContractRef),
  [correction.authorNodeRef]:product.graphInputRetentionBinding(correction.inputContractRef,n.observationContractRef),
- [correction.executionNodeRef]:product.graphInputRetentionBinding(correction.inputContractRef,c2.observationContractRef)}),
+ [correction.executionNodeRef]:product.graphInputRetentionBinding(correction.inputContractRef,c2.observationContractRef)},correction.selectionContractRef),
  graph(correction.wrapperRef,correction.wrapperGraphRef,ids.boundInputContractRef,[leaf(correctionStages[4]),
  call(correction.wrapperCallNodeRef,n.assessmentGraphFunctionRef,n.taskContractRef,n.observationContractRef)],correction.wrapperClosureRef,ids.wrapperStepPredicateRef,true)];
  const contract=(contractRef,contractKind,valueKind)=>({contractRef,contractVersion:VERSION,contractKind,valueKind});

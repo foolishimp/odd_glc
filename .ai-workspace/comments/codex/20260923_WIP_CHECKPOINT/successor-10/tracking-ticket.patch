@@ -1,0 +1,41 @@
+--- .ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
++++ .ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
+@@ -25,12 +25,12 @@
+ - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
+ - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
+ - release_status: unselected
+-- current_activation: COMPOSITE10_DEV6_PACKAGE_ORIGINAL03_CALLER_CLOSED_ROOT_DECISION_PENDING
+-- current_re_entry: Root_package_decision_then_affected_original03_and_mixed18_native_execution_preserve_seven_S02_passes
+-- current_activation_status: source_accepted_combined_package_callers_CLOSED_no_native_effect_no_recovery_needed
++- current_activation: COMPOSITE10_DEV6_ACCEPTED_ORIGINAL03_MIXED18_NATIVE_VERIFICATION_SELECTED_AFTER_CHECKPOINT
++- current_re_entry: paired_checkpoint_then_original03_and_only_mixed18_native_verification
++- current_activation_status: source_package_caller_accepted_native_verification_authorized_after_paired_push_not_yet_executed
+ - last_execution_selection: ../../comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/return.md
+ - last_execution_result: first_FD_J_R10_accepted_FP_preparation_failed_no_actor_effect_genuine_close1241896147_fresh_failed_replay_35files_unchanged
+-- current_activation_record: ../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-02/disposition.md
++- current_activation_record: ../abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/root-disposition.json
+ 
+ ## Current bounded selection
+ 
+@@ -61,8 +61,8 @@
+ (`96dfe183…`) are accepted by Root for source readiness after [max independent review](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation-repair-review-01/return.md)
+ (`0ae3209b…`). [Combined compiled10/dev.6 package and caller readiness](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-02/disposition.md)
+ is CLOSED: archives `7b6791d3…` / `4f96ba95…`, exact offline install verification,
+-original caller03 and mixed-only continuation18. Root package acceptance and the
+-affected native execution decision remain pending; no repaired native outcome is claimed.
++original caller03 and mixed-only continuation18. Root accepts that readiness and selects original03 plus mixed18 native verification
++after the paired checkpoint; no repaired native outcome is yet claimed.
+ No first-J stop, new producer campaign, heap/timer/model increase or automatic
+ retry is selected by this tracking update.
+ 
+@@ -78,8 +78,8 @@
+ not a hardcoded mode or new Product law.
+ 
+ Last pushed predecessor readiness remains ABI `2b9e540…` / GLC `8fd1de6…`.
+-Reviewed repair source and generated successor are uncommitted. Package readiness
+-is bounded evidence; affected native completion and release remain unclaimed.
++Reviewed source/package/evidence checkpoint and affected native verification are
++selected by Root; no native outcome or release is claimed by this projection.
+ 
+ ### Retained earlier selection and evidence
+ 

@@ -1,0 +1,226 @@
+{
+  "baseCommit": "8fd1de656fed50812ff70fa468e679166439c8f7",
+  "directPaths": [
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs",
+    "build_tenants/odd_glc/typescript/test/native-correction.test.mjs",
+    "specification/GOALS.md"
+  ],
+  "priorTransportReceipts": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "members": 8988,
+      "transportBytes": 2837897656
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "indexSha256": "afdab2e383c6f62f1596bcfb0737fc4965539f3ad70c42dbf3933eb50c6c37b8",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "members": 1079,
+      "transportBytes": 219899764
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "indexSha256": "f2e3c62106aeda582b41d16072a22df2a0661c2016e40ecf0136210dd4cd47ac",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "members": 1,
+      "transportBytes": 40541024
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "indexSha256": "9e4cacc030cc09ddb8ec1b57e1a2f7c6691df9f328df595a272f7c6b77d91722",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "members": 35,
+      "transportBytes": 90126
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-02/transport-01",
+      "catalogSha256": "897627fe2296a09030af85542270a9a16fcf7ca80ea520d670ad0d567ce7bb9f",
+      "indexSha256": "8c6eaf2989c5496b0a90a2271b64df376c8db0ee52acda0fa21400f312f88468",
+      "verificationSha256": "b26dbacc1d8c15cf720759ce86ede2db1587003dc5439a629049b2a48cb6253d",
+      "members": 110,
+      "transportBytes": 43394337
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-03/transport-01",
+      "catalogSha256": "54ce43ee016f314ab830e4015218d5dbedba57461b91e5ccc7d2692435640b46",
+      "indexSha256": "252530af378ff076724e7b00026a327546548f3e48dd3c2bf19e00c3348d6987",
+      "verificationSha256": "4f4c6a6636d5374249023a520e41e870b72c52b3489fa76297d24dada60823f3",
+      "members": 162,
+      "transportBytes": 359204850
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/transport-01",
+      "catalogSha256": "11fa5293fbbd8284ed1b43ec3b1c12677e3b5b6470bfb91e427669ddf31715da",
+      "indexSha256": "f5790560a09a44872056be58f36a2cb96926579f73ae3708461e0d582122291b",
+      "verificationSha256": "b6f3529e8053534df7464eb57ae74c15b23c7fc9c32511dec33d0eca7f5704b4",
+      "members": 54,
+      "transportBytes": 121848
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01",
+      "catalogSha256": "39d71d54880850dcf5ee31ce2433d532c482a1af673ac3ba3a0906810975ad64",
+      "indexSha256": "76c46dc43928beb10eb25cefb4d79c3156e1aa14bb44ef200a050323de273108",
+      "verificationSha256": "2e14de42cacad13b11766d4642c11e27489d678eb87c455e9d938b5d950d36fc",
+      "members": 17,
+      "transportBytes": 31509
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01",
+      "catalogSha256": "ef68978d0902645d196a6aedc4e7d8ba04ace5795fe79b286849eb2a7c362f80",
+      "indexSha256": "65d1f03c4479d0e44e4657dcd046ed9fc600d15ab5e078e53a8309f33661a3fa",
+      "verificationSha256": "61c035fc0f4433b3fd460d4bb646410b1151568d38ca83b00d5fe8140df423df",
+      "members": 72,
+      "transportBytes": 12186305
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01",
+      "catalogSha256": "f16a33b467a6d67d9ebd0cee81ff65fb5a5cfa5d1b7a61ea101d0addef63b152",
+      "indexSha256": "259b4f75434846f53315133cc227b7e0a606bfdc9b197a2b3aeec3b1c903070c",
+      "verificationSha256": "3ee0506b64a5d876e54f2d6dd50e18f9da2502de3e6acd34fadeefa18404739d",
+      "members": 36,
+      "transportBytes": 54986
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-08/transport-01",
+      "catalogSha256": "2d0c2f77c7273cbb23f5f4aebb290effb6eb62eaf499e2aadb3a1328cd9c90ae",
+      "indexSha256": "d31ad6fe786926203f6e3ee3ed721fee929fdc586f7241c536f717c2054d7988",
+      "verificationSha256": "4a1db62f5f03569e995f4e094b7420bda8c308601da68f4d0999778a979e7f22",
+      "members": 47,
+      "transportBytes": 61583821
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01",
+      "catalogSha256": "8608247b90f14fdf9740ba51d74b5a42372a4875e18e40e212676976830c1339",
+      "indexSha256": "8f7fded9678e96d2103f4b09ee52b86be474e826d8a74ebfbcb64046546e8fa6",
+      "verificationSha256": "12c731714ef047aa465a7e0feee80f9c974dc836daa009d5d0e9964f8087e1a0",
+      "members": 96,
+      "transportBytes": 235402
+    }
+  ],
+  "inheritedIndexedMembers": 10697,
+  "reusedSelectedMembers": [
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/activation.json",
+      "sha256": "e36ab2a8d5a1a8963aeec8fa1f08e8eead540854087f968aab8088482792fa38",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/basis-evidence.json",
+      "sha256": "af950591c08b1a9cce5b839f09262f116b57e259b1a03241cc5802a9ece06260",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/caller-controls-result.json",
+      "sha256": "b8a8989aae384f91379cadfe721455b30c87eeb8ec84a479d9193b130f21080e",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/caller-controls.mjs",
+      "sha256": "ae0c2a7b127e4be6f489247e5cd0250c6439049d2477923ff2cfac4e6e2d68f7",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/configuration.json",
+      "sha256": "b4e4b744660c1ab98bd892851311c2d0e5fba1e7a1bfa2336970600efd15d291",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/configuration.json.diff",
+      "sha256": "5b89dfa9fbd9eaa8ed282525f15f68cb60b4603f8f13f1c1f1bfeaad6b01201e",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/driver.mjs",
+      "sha256": "eeb88a559e333f843a5f223bf5f7aae43d271b034af06a70e7b8efab175ba5f0",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/driver.mjs.diff",
+      "sha256": "856ba4853a50befe22b08e75f5288e334af42a632154fc2ec6d4eebb43a3de7b",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/external-dependencies.json",
+      "sha256": "263a831b87fa787fed4f2e6fe7761cb5e4a7ee40df2e6364c8443f91263db67b",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/final-binding.template.json",
+      "sha256": "36f3acc21d312291d960663588a8137f4bdac56f0d36055c6ca5dfe9ca204107",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/future-commands.json",
+      "sha256": "e7026330ba60daf0fceb01f11380cee4d51bf30b8418587ad49ca8185bb2046a",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/historical-input-routes.json",
+      "sha256": "350d7362800c06e0c8b675b71c1c7c773c4beeb8b066dcd17a22d14de6c54bc8",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/mechanical-checks.json",
+      "sha256": "a70918b235654df1b657a5b9712609fea66c2a2a2117bd594edeb1d11697baa0",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/observe-process.py",
+      "sha256": "1baca590f1015db5c873adc0e4b6eb80a020fba68785e41e1b93d788b23182a1",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/recovery-prerequisite.json",
+      "sha256": "00b4de00e0af6da6c51d2db28e89501af3086c2bc19e51d48dbb082b0d7c4814",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/return.md",
+      "sha256": "38c2f4639619cce723e6e5d80a49e761fd80d965bfcecea877bc7fabc6472917",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/driver.mjs",
+      "sha256": "d43cc8cf9b330ab87646fbb476cd4dbe95f34f124d23de68c2ad470ece452a8e",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/current-resource.mjs",
+      "sha256": "fbef40bbb0b430a5507dcd6946fbf3e0232b1999c8fc23960059bdcaa1ee4060",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-11-readiness/observe-process.py",
+      "sha256": "c4dfc05c77bae747debe6199fa90c1fdcd69617bd9809fa031b81afc518fc781",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-04/caller-readiness/current-resource.mjs",
+      "sha256": "a5e28ebd4bc0e828607dac6d2d2443a250520531c2e238b9d63a08b40b035c02",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-continuation-06/caller-readiness/current-resource.mjs",
+      "sha256": "5b3051df7dab4a8c4e5570af14a785681750fde8d5353bc47dbb6a5754884539",
+      "priorTransport": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT"
+    }
+  ],
+  "newArchiveMembers": 128,
+  "newArchiveBytes": 377555396,
+  "selectedFreezes": [],
+  "canonicalFreezeReferencesConservedThroughPostimages": [],
+  "pending": [
+    "Original mutable GLC/S02 journals/locks/worksites; no checkpoint read/hash/copy",
+    "Installed/node_modules trees, implementation03 fixture and scratch, unselected caches",
+    "PhaseB live evidence after checkpoint cutoff; no native outcome at this commit"
+  ],
+  "scope": "Root-accepted source9 and compiled10/dev6 package/caller readiness; recovery02/original launch02 and seven S02-17 scopes preserved; original03 and mixed-only18 native verification authorized only after paired checkpoint remote verification. Full S1-S5/oracle/qualification/RC1 open.",
+  "priorPayloadReadOrReupload": false
+}

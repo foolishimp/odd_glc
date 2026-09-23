@@ -1,0 +1,13 @@
+ M .ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md
+ M build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs
+ M build_tenants/odd_glc/typescript/test/native-correction.test.mjs
+ M specification/GOALS.md
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-09/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/execution-10/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-01/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-execution-02/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-03/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/
+?? .ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/
+?? .ai-workspace/comments/codex/20260924_NATIVE_CONTINUATION_CARRIER_CONTRACTION/

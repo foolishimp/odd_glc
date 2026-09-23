@@ -9,16 +9,13 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: The [original held attempt](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/return.md)
-is CLOSED PROCESS-FAILED: nine setup calls passed before SIGABRT/default-heap
-OOM,481.166s total/147.293s native phase, maximum RSS6,843,973,632B. Raw suffix
-evidence records only the first F_D task success. It establishes no ABG terminal
-result, genuine final close/current handoff, current Public readback, provider
-execution/cost or final protected-worksite conservation. The physical journal is
-1,235,175,110B; its bytes and worksite remain preserved. Core03/compiled08's
-bounded acceptance remains unchanged. Core04/consumer01/caller02 source readiness
-is now accepted and compiled09/dev.5 package readiness is CLOSED; original
-correction, installed composition and S1–S5 remain unfulfilled.
+Current delivery tracking: Root accepts [recovery02 and the original first F_D/J/R10 conjunction](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation09-disposition/disposition.md)
+and seven S02 case outcomes at their exact scopes. The original continuation
+failed before F_P actor dispatch/effect, closed genuinely at 1,241,896,147 B and
+has fresh failed replay; 35 selected files are unchanged. Mixed S02 failed at
+F_H; its separate resource closed genuinely. Root accepted both source repairs; compiled10/dev.6 package and caller readiness
+is CLOSED and Root-accepted; affected native verification selected after checkpoint. The older OOM Run remains historically
+nonterminal. Full correction, S1–S5/oracle and qualification remain open.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
@@ -40,73 +37,53 @@ own ABG release applicability.
 ## Selected Work
 
 GOAL-035/T-287 and T-043 retain the fixed fifteen-family ABG5 outcome, original
-job/S1–S5/oracle, five selected/four outside residuals, source stream bytes and
-protected worksite. ABG uses STDO 2.5.1 RC1; GLC remains on RC4. Earlier
-core03/compiled08 and nested-compose15 acceptances keep their bounded scopes.
+job/S1–S5/oracle, five selected/four outside residuals and protected worksite.
+ABG uses STDO 2.5.1 RC1; GLC remains on RC4. Earlier bounded acceptances remain
+historical evidence. [Root disposition](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation09-disposition/disposition.md) owns the current conjunction.
 
-Root accepts core04, consumer01 and caller02 at SOURCE/READINESS after the
-[independent source review](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-review-01/source-readiness-return.md)
-(`f596f35e…`). Core04 removes duplicate native complete-call admission and two
-whole validated-prefix comparisons. Consumer01 contracts the prior carrier and
-borrows authenticated historical input/publication through existing R10 and leaf
-owners. Caller02 uses the resulting ordinary interfaces. All 16 named source,
-test and HOW postimages are exact. No new admission relation, runtime entity,
-controller or Product family is selected.
+Predecessor core04/consumer01/caller02 source readiness and compiled09/dev.5
+[package/caller readiness](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-review-01/package-readiness-return.md)
+remain accepted (`f596f35e…` / `f3d85f69…`; archives `ddce524a…` / `f266d072…`).
+Root now accepts [recovery02](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-02/recovery-return.md)
+and the [ordinary original caller02 execution](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-02/return.md)
+only through its actual first F_D/J/R10 compact-prior conjunction. Recovery,
+final binding and preparation are complete. The full continuation failed in
+native F_P preparation before actor dispatch or application effect; genuine
+close is 1,241,896,147 B, fresh replay is failed and Result is not_found. All
+35 selected files remain unchanged. The [older OOM Run](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/return.md)
+remains historically nonterminal; its failure is neither erased nor retargeted.
 
-[Combined package readiness](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-01/return.md) is CLOSED:
-compiled09 archive `ddce524a0f992206a2836bbdc4c0655beff5aab5fb7bef7c59ca6b8f180528d5`
-and consumer dev.5 archive
-`f266d0723a48d858d8de59b1828693e784b38c1e9ee0924112b3f2776424f265`.
-Its frozen correspondence records all 5,232 core and 10 consumer members exact,
-713 generated core members with 11 changes, real installed Product verification
-and GTL validation. Root accepts package/caller readiness after the CLOSED independent review
-[`f3d85f69…`](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-review-01/package-readiness-return.md); its 31 named package/request/caller joins match.
-These are source/package readiness claims; the installed native correction
-conjunction and ordinary original-workspace outcome remain unproved.
+Root accepts the seven [S02 continuation17](../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-17/return.md) case outcomes in their exact
+deterministic/native scopes. Mixed F_D/F_P succeeded before F_H admission failed;
+the resource genuinely closed at 23,360,130 B and all 19 fresh reads are retained.
+The seven passes and earlier nested-compose acceptance are preserved.
 
-No suitable directly identified small assessment fixture supplies the required
-native-assessment/physical-subject conjunction. Root selects the
-[original recovered ordinary caller02](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-implementation-02/return.md)
-as the NEXT integration discriminator after package readiness. Do not manufacture
-a producer campaign. Its `final-binding.json` is absent; no current recovery or
-Run is claimed. The caller uses `until: converged`, so this selection establishes
-no model-free first-J stop. Installed first F_D/J equivalence, source/ancestor/
-currentness refusals, genuine cold reconstruction and original capacity outcome
-remain open to applicable evidence and Executive disposition.
+[F_H source repair](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fh-hold-repair-01/return.md) (`96a89f0e…`) and
+[native preparation/GLC declaration repair](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-preparation-repair-01/return.md)
+(`96dfe183…`) are accepted by Root for source readiness after [max independent review](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation-repair-review-01/return.md)
+(`0ae3209b…`). [Combined compiled10/dev.6 package and caller readiness](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-02/disposition.md)
+is CLOSED: archives `7b6791d3…` / `4f96ba95…`, exact offline install verification,
+original caller03 and mixed-only continuation18. Root accepts that readiness and selects original03 plus mixed18 native verification
+after the paired checkpoint; no repaired native outcome is yet claimed.
+No first-J stop, new producer campaign, heap/timer/model increase or automatic
+retry is selected by this tracking update.
 
-The [original attempt](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-launch-controls-01/return.md)
-remains CLOSED PROCESS-FAILED: nine setup calls passed before default-heap OOM
-(481.166 s total, 147.293 s native phase, 6,843,973,632 B peak RSS); only the first
-F_D task success is recorded. No ABG terminal, genuine final close/current
-handoff, current Public readback, provider cost or final protected conservation
-is established. The 1,235,175,110-byte journal and worksite remain preserved;
-this checkpoint did not read, hash, recover or mutate them. The
-[allocation diagnosis](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/original-run-allocation-diagnosis-01/return.md)
-is CLOSED; the exact fatal allocator and OOM cure remain unproved.
+Full S1–S5/oracle, complete qualification, QUAL056, independent F11 J, sole AF22,
+RC1 and human acceptance stay open. The separate semantic-negative question maps
+to actual governing/shared evidence and contrary evidence; unknown applicability
+is not a waiver or a new automatic campaign. Recorded costs remain observed
+complexity red flags, not isolated benchmarks, causal attribution or an OOM cure.
 
-[Recovery readiness](../.ai-workspace/comments/codex/20260923_GENERIC_DATA_MAPPER_CONTINUATION/held-continuation-recovery-readiness-01/return.md)
-retains its read-only acceptance. Genuine recovery requires the actual current
-digest, identity-scoped lock state, quiescence, executing artifact and exact
-owner approval. Old-Run terminalization is not a prerequisite for the distinct
-corrected-candidate Run; preserve its nonterminal history. Native `run-stopped`
-binding remains a separate open release-applicability/implementation residual.
-One live owner progresses incremental state with the append journal; cold
-recovery applies only when state is absent. This checkpoint grants no runtime
-recovery, retry, heap increase or new native execution.
+Executive interpretation of the existing owner scope: one live owner maintains
+incremental admitted state and appends events; reconstruction belongs to genuine
+cold acquisition/recovery when state is absent. This records scope interpretation,
+not a hardcoded mode or new Product law.
 
-[Continuation16](../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-16/return.md)
-is CLOSED readiness (`394df327…`, subject `006b80e8…`); eight S02 cases await an
-adequate final candidate. Semantic-negative applicability/evidence retains its
-contrary evidence and unknown applicability; no new campaign, closure or waiver.
-Full S1–S5/oracle, qualification, unpublished RC1 and human acceptance stay open.
-Existing actor/command budgets, default heap and default dependency stay fixed.
-
-The [successor09 checkpoint](../.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/README.md)
-conserves accepted source/package evidence through the existing proof bank and
-records exact commit/remote identities in its publication return. Source push
-publishes this bounded checkpoint; it does not qualify or release the Product.
-Next: separately authorized genuine recovery and ordinary
-caller02 integration → remaining qualification and human release acceptance.
+Last pushed predecessor readiness remains ABI `2b9e540…` / GLC `8fd1de6…`.
+Reviewed repair source, generated successor and finite evidence are selected for
+the paired checkpoint. Root accepts package readiness and authorizes the two
+affected native verifications after successful remote checks; execution and release
+outcomes remain unclaimed. [Root selection](../../abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/root-disposition.json).
 
 ### Retained predecessor selection and evidence
 

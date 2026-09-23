@@ -1,0 +1,18 @@
+[
+  {
+    "repo": "/Users/jim/src/apps/odd_glc",
+    "path": "specification/GOALS.md",
+    "preparedProjectionSha256": "ea9f284fd577356c751cfd84c32f45e2bb049ef8bcedc0192d1c538f43a98a73",
+    "retainedPreimage": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/tracking-preimages/specification/GOALS.md",
+    "selectedSha256": "069c6603f2e0d69248130e24151c6c5ac12b93ff3b1e330001d96b6eb5a9337a",
+    "patch": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/tracking-goals.patch"
+  },
+  {
+    "repo": "/Users/jim/src/apps/odd_glc",
+    "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "preparedProjectionSha256": "ce79fef008c3e32274c6437f1e9e0437fd9b295df7ca1c15427f152e5cbbe002",
+    "retainedPreimage": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/tracking-preimages/.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "selectedSha256": "fe2e335813edb36b6348cd355c0911250d1110ce57377df90ac1ccd6118b576e",
+    "patch": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/tracking-ticket.patch"
+  }
+]

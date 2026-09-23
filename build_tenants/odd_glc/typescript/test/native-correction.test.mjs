@@ -68,6 +68,48 @@ test('actual generic GTL declares one bounded correction path and complete imple
  assert.deepEqual(JSON.parse(CORRECTION_SELECTION_SCHEMA_TEXT).properties.disposition.enum,['construction_repair','stage_revision_required','blocked']);
 });
 
+test('generic correction selection and final assessment both satisfy the unchanged native raw-contract gate',async t=>{
+ const f=await correctionFixture(t,'calendar'),task=r.correctionSelectionTask(f.input);
+ const h=hash('component'),artifact={productId:p.ABI5_PRODUCT_ID,packageName:p.ABI5_PACKAGE_NAME,packageVersion:p.ABI5_PACKAGE_VERSION,
+  artifactDigest:h,productContentDigest:h,manifestDigest:h,productManifestDigest:h};
+ const pub=constructNativeContinuationPublication({artifact,gtl,product:p});
+ const nativePub=gtl.constructNativeWorkspaceWorkModulePublication(artifact),graphFunction=nativePub.graphFunctions.find(g=>g.name===p.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef);
+ const rows=[];
+ for(const [contractRef,text,path]of [[correction.selectionContractRef,CORRECTION_SELECTION_SCHEMA_TEXT,'selection.json'],[ids.rawContractRef,ASSESSMENT_SCHEMA_TEXT,'assessment.json']]){
+  await fs.writeFile(join(f.env.scratch,path),text);const digest=p.sha256Bytes(Buffer.from(text));
+  rows.push({contractKind:'schema_asset',contractId:contractRef,contractVersion:'5.0.0',owningProduct:ids.productId,contractDigest:digest,
+   assetLocator:{path,mediaType:'application/schema+json',contentDigest:digest}});
+ }
+ const role={contextPolicy:{selectors:['current_worksite']},frameRefs:[],policy:{},sourceContent:[],accessContent:[]};
+ let selectedTask=task,selectedPub=pub;
+ const call={regime:'F_P',cCallRef:'c-call://component/selector',cCallDigest:h,implementationRef:p.NATIVE_WORKSPACE_WORK_IDS.implementationRef,
+  graphFunctionRef:graphFunction.name,inputContractRef:p.NATIVE_WORKSPACE_WORK_IDS.taskContractRef,outputContractRef:p.NATIVE_WORKSPACE_WORK_IDS.observationContractRef,
+  programLocusRef:graphFunction.template.nodes[0].nodeRef};
+ const owner=()=>({inputValue:selectedTask,inputDigest:hash(selectedTask),inputRef:'input://component',call,events:[],program:selectedPub.programs[0],
+  execution:{invocationAdmissionRef:'invocation://component',programRef:ids.programRef,basisRef:'basis://component',basisDigest:h},
+  environment:{kind:'exact_prefix_workspace_environment',productInstalls:[{productId:ids.productId,installedRoot:f.env.scratch,publicContracts:rows}]}});
+ const path=join(process.env.ABI5_COMPONENT_ROOT,'build/code/src/abg/instruction_assembly.js');
+ const module=new SourceTextModule(await fs.readFile(path,'utf8'),{identifier:path});
+ await module.link(async specifier=>{
+  const imported=await import(specifier.startsWith('.')?new URL(specifier,pathToFileURL(path)).href:specifier);
+  const values={...imported,...(specifier==='./execution_basis.js'?{authenticateNativeInstructionAssemblyBasis:owner}:{}),
+   ...(specifier==='./stdo_environment.js'?{projectRunEnvironmentRoleEvidence:()=>role}:{})};
+  return new SyntheticModule(Object.keys(values),function(){for(const[k,v]of Object.entries(values))this.setExport(k,v);});
+ });await module.evaluate();
+ const assemble=()=>module.namespace.constructWorksiteNativeInstructionAssembly({publication:selectedPub,graphFunction,predecessorPrefix:{component:true}},selectedTask);
+ assert.equal(assemble().request.resultContractRef,correction.selectionContractRef);
+ assert.deepEqual(assemble().request.responseJsonSchema,JSON.parse(CORRECTION_SELECTION_SCHEMA_TEXT));
+ selectedTask=f.assessmentTask;assert.equal(assemble().request.resultContractRef,ids.rawContractRef);
+ assert.deepEqual(assemble().request.responseJsonSchema,JSON.parse(ASSESSMENT_SCHEMA_TEXT));
+ selectedTask=task;
+ const oldGraphs=pub.graphFunctions.map(g=>({...g,declarations:{...g.declarations,'abg.raw_result_contract':ids.rawContractRef}}));
+ selectedPub={...pub,graphFunctions:oldGraphs};assert.equal(assemble(),null,'original all-criterion-verdicts declaration refuses the selection task');
+ selectedPub={...pub,programs:[{...pub.programs[0],callableMembership:pub.programs[0].callableMembership.filter(ref=>ref!==correction.graphFunctionRef)}]};
+ assert.equal(assemble(),null,'a contract on a callable outside the selected closure is insufficient');
+ selectedPub=pub;await fs.writeFile(join(f.env.scratch,'selection.json'),'{}');assert.equal(assemble(),null,'changed installed schema bytes still refuse');
+ t.diagnostic('Actual native assembly with supplied admission/role premises; generic source declaration and both exact installed schemas. No native actor or admitted Run.');
+});
+
 test('R10 cause gate consumes owner values once and refuses missing or altered complete candidate facts before selector/author',async t=>{
  const f=await correctionFixture(t,'calendar'),prefix={fixture:'current owned prefix'};let calls=0;
  const nativeProof={historicalGraphCallSource:()=>{calls++;return f.historicalSource;}};

@@ -1,0 +1,35 @@
+--- specification/GOALS.md
++++ specification/GOALS.md
+@@ -14,7 +14,7 @@
+ failed before F_P actor dispatch/effect, closed genuinely at 1,241,896,147 B and
+ has fresh failed replay; 35 selected files are unchanged. Mixed S02 failed at
+ F_H; its separate resource closed genuinely. Root accepted both source repairs; compiled10/dev.6 package and caller readiness
+-is CLOSED pending Root package/execution decision. The older OOM Run remains historically
++is CLOSED and Root-accepted; affected native verification selected after checkpoint. The older OOM Run remains historically
+ nonterminal. Full correction, S1–S5/oracle and qualification remain open.
+ 
+ Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
+@@ -63,8 +63,8 @@
+ (`96dfe183…`) are accepted by Root for source readiness after [max independent review](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation-repair-review-01/return.md)
+ (`0ae3209b…`). [Combined compiled10/dev.6 package and caller readiness](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-02/disposition.md)
+ is CLOSED: archives `7b6791d3…` / `4f96ba95…`, exact offline install verification,
+-original caller03 and mixed-only continuation18. Root package acceptance and the
+-affected native execution decision remain pending; no repaired native outcome is claimed.
++original caller03 and mixed-only continuation18. Root accepts that readiness and selects original03 plus mixed18 native verification
++after the paired checkpoint; no repaired native outcome is yet claimed.
+ No first-J stop, new producer campaign, heap/timer/model increase or automatic
+ retry is selected by this tracking update.
+ 
+@@ -80,8 +80,10 @@
+ not a hardcoded mode or new Product law.
+ 
+ Last pushed predecessor readiness remains ABI `2b9e540…` / GLC `8fd1de6…`.
+-Reviewed repair source and generated successor are uncommitted. Package readiness
+-is bounded evidence; affected native completion and release remain unclaimed.
++Reviewed repair source, generated successor and finite evidence are selected for
++the paired checkpoint. Root accepts package readiness and authorizes the two
++affected native verifications after successful remote checks; execution and release
++outcomes remain unclaimed. [Root selection](../../abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/root-disposition.json).
+ 
+ ### Retained predecessor selection and evidence
+ 
