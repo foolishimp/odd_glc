@@ -1,0 +1,39 @@
+{
+  "directExpected": {
+    "specification/GOALS.md": {
+      "sha256": "09098f7875b7912589682187c782cfaa10bb0d28d81a5e45489ecfd2f0039192",
+      "byteLength": 19966,
+      "proof": "Root accepted finite source/generated selection or current Writer tracking projection"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "7c75ddeed5d6575df4c6e3ede01e20f71880e9dd119a62790b24807a8a0fff95",
+      "byteLength": 57403,
+      "proof": "Root accepted finite source/generated selection or current Writer tracking projection"
+    },
+    "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs": {
+      "sha256": "8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "byteLength": 87990,
+      "proof": "Root accepted finite source/generated selection or current Writer tracking projection"
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12/transport-01",
+      "catalogSha256": "86fddecf4a0f8875717d0266478faae790ff19e8dace4f39384bf87fdbeb8840",
+      "indexSha256": "c1a9c37285144c7998d2c89a46f5a77661a1e91115e08b81005c890b76d86a72",
+      "verificationSha256": "24b8a47209b4e4b60edae31cfc4027a3830c98ec374f91e2296fbde95702485a",
+      "members": 128,
+      "logicalBytes": 76121938,
+      "transportBytes": 9493032
+    }
+  ],
+  "scope": "Accepted replay source/test, compiled14 construction, helper contract/retention repairs, four current trackers and finite closed basic-cli C1/C2/readback evidence. Full odd_glc fresh-source sandbox remains required; new source implementation is a separate excluded Worker activation.",
+  "excluded": [
+    "All pending NATIVE_FULL_HELLO_FRESH_START_IMPLEMENTATION source/HOW/tests and evidence: excluded, no source acceptance/package/paid launch claim",
+    "The five remaining reduced Hello cases: not launched; retention syntax only, new actual setup-record validation pending",
+    "Original/S02/Data Mapper resources, active/live journals, locks, worksite files, active installs/node_modules and scratch: excluded",
+    "Duplicated setup call+receipt trees and unrelated historical untracked outputs: preserved locally, not staged",
+    "Q07 prepared/incomplete; operator-stop installed readback and qualification/RC1 remain open"
+  ],
+  "sourcePostimageMutationByWriter": false
+}

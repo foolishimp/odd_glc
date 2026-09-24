@@ -1,0 +1,542 @@
+{
+  "closedProofSelections": [],
+  "adjoiningClosedPosts": [
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-11-paired-post-push.json",
+      "sha256": "315ba5f1c2a4cd2e3def78e6fe57f08deb2181020864a9f84998de5039112f23"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-11-return.md",
+      "sha256": "3267fa860f4afa718dc9aebbb5653bafa0bbdafb66fd765ab22b6bc67e75ee30"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/T043-preimage.md",
+      "sha256": "32e513728f2853f1fa053d535ddeda11a84e880b91ab10262710c283b2e6a01a"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/activation.json",
+      "sha256": "2bbbb0e111bbb65310d5a8a9dc91a0e2c94d0866e2df9c8b4f85960c50f10791"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/first-cause.json",
+      "sha256": "6f0186cc67cd6d34325cfc921c1ec003f71cd32a19f55a15ff787895fbf59e4d"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/frozen-test/fixtures/generic-workflow-scenarios.json",
+      "sha256": "47e0abb7964063c839f9b239010b1ae498239fdb0507bc8ba7a10521eccc88e4"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/frozen-test/generic-live-workflow-support.mjs",
+      "sha256": "8d60be227f76c50de8a69ce1354d59b36ba09b8116cfb068d1ba64f70c13a37f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/frozen-test/generic-live-workflow.test.mjs",
+      "sha256": "5679df6fb28cd1d9baaca573f69a9954b0f29cafc57215341d36f9cd70fb2181"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/last-lawful-state.json",
+      "sha256": "903af39ec0e57865ea44e6386043a7bc97f1a8fa675d334f65bc7aa526a8a702"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/launch.json",
+      "sha256": "c79cc459fe4e2380ea1795f61d2b82fc7f80e406e99c7046a01af43a2e790632"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/return.md",
+      "sha256": "229af449eb9690b1c0ca738047c3db049bd9d8c302e7a1efa71bc053836bb3ac"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-01/tracking-projection.json",
+      "sha256": "735e295820240faa763e4b5ff454c87de4895dacf5f20b51099beed25a8c5b74"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/T043-preimage.md",
+      "sha256": "2344cae995a8ce09b3045cfc1b98639ab7d72ebf47f4c5ec73e30f66c332506b"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/T287-debt-preimage.md",
+      "sha256": "15925faa84e71defeee83d3cb32030e0d6a517f56e2012dee816862103c40fb5"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/activation.json",
+      "sha256": "d2b48e135d8d3549eae1cd1a121f2778f554206ee20fc6c82cc8a27116cad993"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/catalog-refusal.json",
+      "sha256": "3e5c41bc8f32891fc2a110adf9d541f308c192adf24a3f1966b4f92be2c1df7d"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/debt-projection.json",
+      "sha256": "4c4cc8c1dd19b1bbc1e7ca1855eba595089f432f9cedfff0ada562aad1bb908f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/first-cause.json",
+      "sha256": "788acccc8a063814cb2953a2b753e95edd1323ee6ce06afe6a7ab26698f98e31"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/frozen-test/fixtures/generic-workflow-scenarios.json",
+      "sha256": "47e0abb7964063c839f9b239010b1ae498239fdb0507bc8ba7a10521eccc88e4"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/frozen-test/generic-live-workflow-support.mjs",
+      "sha256": "143922e6cc3d8d661131ad45c250275d89508d7333e2a8b43d852fea4fabd230"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/frozen-test/generic-live-workflow.test.mjs",
+      "sha256": "5679df6fb28cd1d9baaca573f69a9954b0f29cafc57215341d36f9cd70fb2181"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/generic-live-workflow-support.mjs.preimage",
+      "sha256": "8d60be227f76c50de8a69ce1354d59b36ba09b8116cfb068d1ba64f70c13a37f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/last-lawful-state.json",
+      "sha256": "db29a380eee71649a43a042e70a7f74884dd68a2c43a1910893d492f6637c9af"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/launch.json",
+      "sha256": "bc83a7df7758f7d38a000e84a46fae7ba08cadbc2f0f96fe50e66480256c7504"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/return.md",
+      "sha256": "0844534f28f2e22656c99d5cfc93370accd137cc286b84c89197607eafcc32b7"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/source-change.json",
+      "sha256": "64e2cfdd42a15b28ea0e94bdb730fe19543ca221a64856f11e05ff90bde11ddc"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/source.patch",
+      "sha256": "986c58ac2c71a608dcb76b168d2bc4ac78038958263b0e51d62f2e8fe847d908"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/syntax-check.json",
+      "sha256": "33d130c56f9351899081f18288074a12a08d9374c19fc9461b406925d82aad7f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-02/tracking-projection.json",
+      "sha256": "899f2029d2ce4ed6e516c3e031cbd5def61458ca1a2492e91f75e7527f539526"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/activation.json",
+      "sha256": "af29b63a4fec5559f39ba8cfab1cce4674ef036e5806cf1a4604c6ce80e47529"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/c2-refusal.json",
+      "sha256": "7007e78976940637f708e1c0795068fb614f90dea2f96cc8b99673cef0dbd75f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/catalog-diagnosis.json",
+      "sha256": "0a5517265306d5286956671ca685ce82fbfc170b86588784f74186ff8c6c58ba"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/construction-check.json",
+      "sha256": "1326bf362d4611bcd39faea95e47361a5b0f45c9f482b2682070f5b8d1fb5875"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/first-cause.json",
+      "sha256": "2f9632b1c7101a41b70f965ce29c830eb8f8a3ce8702a66f93612f592fd19fba"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/frozen-test/fixtures/generic-workflow-scenarios.json",
+      "sha256": "47e0abb7964063c839f9b239010b1ae498239fdb0507bc8ba7a10521eccc88e4"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/frozen-test/generic-live-workflow-support.mjs",
+      "sha256": "bfe251c8ba5ad54208dc9e598aa285066c11d4ad952310d391b4d63200f98d97"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/frozen-test/generic-live-workflow.test.mjs",
+      "sha256": "5679df6fb28cd1d9baaca573f69a9954b0f29cafc57215341d36f9cd70fb2181"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/helper-preimage.mjs",
+      "sha256": "143922e6cc3d8d661131ad45c250275d89508d7333e2a8b43d852fea4fabd230"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/launch.json",
+      "sha256": "daa5d4ed5f87c590eab733082650f74f05bb87f200c36fc8a643419920cc4f93"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/observed-metrics.json",
+      "sha256": "20f8439dc4257666ad6e5486ce160c878230e57d4cb7bc78487119661b0fca0c"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/retained-c2-continuation.json",
+      "sha256": "2c338615dddf9d2afa924ec3ad2e46c666e34acb575abb0f1234d57b853a6b38"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/return.md",
+      "sha256": "a0f18b6d9e33c3cbd271e17604d7eedbaa852204c1b6eb9f5dcd0d95066b712e"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/source-change.json",
+      "sha256": "a035df83144128892e4ca289f7f6db5d060c99f82bfbf1d8f0d6428dc1b9aef7"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/source.patch",
+      "sha256": "1ba1904fb071cae4175961af3a409fd6969f08f8a13906bfcd9b3b90bf3442bb"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/syntax-check.json",
+      "sha256": "2409354df294d6451634a18a170d401d45dbe44d70c92f66d03615dbd55d74cc"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-output.txt",
+      "sha256": "2c01d2c358ea32c420a5909652f33ecc05acd3ca63965e4c654ab6aa154f1175"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-prompt.txt",
+      "sha256": "e8e20e5d138c38e653ffd823016d3c0a88dfb6f5eba18183aed9b43279e17209"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-stdout.log",
+      "sha256": "3e9a89739a5220e0ac18aececaaa39765d21113fa736d0b2511d24628bd89a95"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-transport.json",
+      "sha256": "f2d0cc47ddbebdb46bb5b7e881b4398ae9ca35efb4da9f6e1fb3514c9caca15c"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-output.txt",
+      "sha256": "9dc89d3ba3e04fcf6a45c7821041b00a321f0902f996d028ba887100421a8806"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-prompt.txt",
+      "sha256": "60b56c717e30d369d71921677bb3d19649217be99cb1e3651a7b6459e37783a3"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-stdout.log",
+      "sha256": "9b7abeb2e45ea0bce677bd1802cd19b55d64638395e4a0a4395b68372fb8f587"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-transport.json",
+      "sha256": "224482d995358ed73197b37e38e27f72e5023fc81e718cd0cf44bf58aacbe44b"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/events/runtime.events.jsonl",
+      "sha256": "2409e468e608703ef66729cda6c60435de71a5a3eb1114e5ea50025ba0be8b57"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/c1-construction-definition-call.json",
+      "sha256": "a6d9743d14fd5538119076dfa0055c33707fd1149138bc6d118c24dc95256576"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/c1-construction-definition-receipt.json",
+      "sha256": "5dad8741880d361cdee30e37cd4565fbed46c801b49093a0d905682cc6e8bfaf"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/c1-construction-result-read-call.json",
+      "sha256": "a9537ebe3a76fe799199c0b90bc3c998125fb68c54bb55de39374847e0d89e97"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/c1-construction-result-read-receipt.json",
+      "sha256": "a0aa28a76b30217a6a64d637b0978d13a9b98d733c3f4fe31deecb6925e9484d"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/c2-execution-definition-call.json",
+      "sha256": "dc24f90089f765a7e9c75224ccd236a704cc11cf7a9534f0f091056c6319df58"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/T043-preimage.md",
+      "sha256": "7ed02a737467a610e807e33522da373e374e3a40ca9594ec3dcb5fe051427e02"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/activation.json",
+      "sha256": "107d4e531a1e7b412d9c7de4c8f708c193ba2a646d06080c1ed9b6f6d18b6bab"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/c2-refusal.json",
+      "sha256": "40847814161c88f05fc34b4836570c344e04f5f6b68ff3f862abd79da07bf0c3"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/construction-check.json",
+      "sha256": "aa1c0c583f3b9f7cd4d99a9642a14c880bb9e49abb822a63f099af40b9f44721"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/continuation/c2-execution-definition-call.json",
+      "sha256": "8c2305976ffc87d1ff6e9256f57f71ddf34d54cccde58ea34e460467a009bae3"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/continue.mjs",
+      "sha256": "eef3c706429b5c5ba8a6bddcd2cb9fed9b3f0f9adec33533040f1f0512f89b6c"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/first-cause.json",
+      "sha256": "2b03ee1bac873d515a5afead33acc31e5e116c6ac4ed358dd752b5092ddabf6e"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/generic-live-workflow-support.mjs",
+      "sha256": "e1c09ec4fdbb93efa2fa63fa5f1671f29e7ecf6541f4c20515beba2020a81afc"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/helper-preimage.mjs",
+      "sha256": "bfe251c8ba5ad54208dc9e598aa285066c11d4ad952310d391b4d63200f98d97"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/last-lawful-state.json",
+      "sha256": "e206044a439163e73e27ab3ee2c0ad6d0d6a4a7465ef44628e534e53b80ea623"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/observed-metrics.json",
+      "sha256": "795057961ebf3016a96d581e3631103c53d551691215232db8958dee4ef57127"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/return.md",
+      "sha256": "157517bd87b072f935b409dc3ccaccacd040e0d49b470c187f97e7533f7f33a2"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/run-truth-diagnostic.json",
+      "sha256": "f677e677c8ec1aad7208a86d661adacca22df807bce6566fdfa7bc784588efa8"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/source-change.json",
+      "sha256": "9d7b0f9df7a3e3c59a5894ae16adfa15c09fd3b4e0788fed7beaa066091d6327"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-04/source.patch",
+      "sha256": "86c9dc2ba6c678d0556047931017d13631630e92994cc36a3f82556e53960817"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/checks.json",
+      "sha256": "d17893d1394ebf894b70f8ca80993f86826b25b89304e6e65c9e1c1b46fb8860"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/diagnosis-01.json",
+      "sha256": "da8eb77f9c379bc9836a816f1a6ea0f7a03cd3bfb77750ea105f31fc9d50ae28"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/diagnosis-02.json",
+      "sha256": "bda402fdfd817bd7f72f4da3e9f086e3948a873500101b4e68c7820ec72b450d"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/noemit.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/noemit.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/regression-after.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/regression-after.stdout.log",
+      "sha256": "24eda6092b93bdb0f4ce5d8038992ae48c672b415781953261402924a5b765f5"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/regression-before.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/regression-before.stdout.log",
+      "sha256": "1921451f8f7f153fc7972262452f77f01ecc9cbddbb1dd109ce151744571554f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/replay.ts.before",
+      "sha256": "25b23363037bc72eea5ec6859bf329ed3afd7c3eaec946240381ba011289ca05"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/retained-terminal-coordinates.json",
+      "sha256": "7897d83b7853c9eb880a173cc723b636cf8039922d2cfec955a11a4eba3be93e"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/return.md",
+      "sha256": "c6c5b9edbcc403ebe87747f1e3d95e7674bcf7a59c2e5b8120a56d6b224313a2"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/source-preimages.json",
+      "sha256": "8eda48dfcb3ebab5df2c739034d28add5238ad63b52b9fc7b25ac51472a4a1e1"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/source-subject.json",
+      "sha256": "50b385e7b805a30c83f33e04edef876da141a25741ea2891aee8c13dd18df887"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/source.patch",
+      "sha256": "6a3948a2fc21ee2f0961b798ddf5943b07c2772fa2dacc054ddd87cd7ed0ca42"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-05/steel-basic-cli-source-replay.test.mjs.before",
+      "sha256": "3ac2f149615534421634105bc739fa2e0127b9b4fa994c08b9b4ceff10e058d2"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-01/first-cause.json",
+      "sha256": "93a5e9e4d44f8d118f2299fdedfe2412d5dca6ee3be799f1d0cc40fd338d7ec1"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-01/readback.mjs",
+      "sha256": "d85f98a8dfbc13a5a664436a516d928979744fe627fef99743283e54d1e89237"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-01/stderr.log",
+      "sha256": "ad4fefcbb1328fb2f98ea988e9da3475b5e7253f374873df9dc6bd23a97acac2"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-01/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/caller-correction.json",
+      "sha256": "d58488be1033a08d6424fb8fadd5bdf1c150a0f197146805cfcd1d69b695268c"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/first-cause.json",
+      "sha256": "f2039afd4420e80dee77e09592f112fb0a52598ad2cb9c7c33d2bff5d5501a3f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/readback.mjs",
+      "sha256": "24447d95d85210ea367bc6868ce42f2aa4824e310666529ba54eb0fad1c855eb"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/run_replay-outcome.json",
+      "sha256": "4f72d34ae566a45935227e8edeb360c18ba348cca579fa96852a82d694320633"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/run_replay-request.json",
+      "sha256": "1f73db1a48ddb59cf2f590d806f1aa91ec32fb4e58bf09846fff0eb0ce3535b3"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/run_replay-timing.json",
+      "sha256": "1b7d90c36b613c5450615f00e52db11cc4fa88085ddc0920473285499ff9eb51"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/run_result-outcome.json",
+      "sha256": "3fca54b3550296b772e1bf87981b928eb890f05f612bc82f9b1fe9b8c4030598"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/run_result-request.json",
+      "sha256": "8cbb546829a8b7ec5f900a5de5099a42ed324d28fe9b27b9892cfee647348da0"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/run_result-timing.json",
+      "sha256": "f07e5d631fa5e6eb10500abf5eb65cd3e88266c77c1ea1024474ad971bd904cd"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/selection.json",
+      "sha256": "78837b79692776968e893d344b408ea7dc72db397d025c6d5c8ebf139c62077e"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/stderr.log",
+      "sha256": "84b6ed562d9fdb15abd95440999441f31f9cd3c4bae2e8b5e9712dd8f6172475"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-02/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/caller-correction.json",
+      "sha256": "6acaf6bd79b83052835db9a5aca0aeb82c3abdcb3713e87a8b05f9f3620cb8e5"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/freeze.json",
+      "sha256": "6c24199c20b50e8000a66113d44276226d12923cceefdee6b781a1c80e3fe18a"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/readback-result.json",
+      "sha256": "d769cd7a268779d3c513d669b649dff68eeea5a5f532b8ad21a67fd40ba32582"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/readback.mjs",
+      "sha256": "fcfe2f81de10778733ee13a26aa4dd55538ef625210cf985a2744a24360b7f86"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/return.md",
+      "sha256": "1eda41aafdf20b4de3a4007f6c737ae19bdbfa81b2cd9448090b6c4af3bd3370"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/run_replay-outcome.json",
+      "sha256": "56e08a25f7a43fd0668cdda93ac31e0cba57564677a4ecea2ac3fba6edd85fb7"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/run_replay-request.json",
+      "sha256": "06c965c4ee08aa92a6c072ad05343e6b8a873173d8a8ea02db29167a0d93884b"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/run_replay-timing.json",
+      "sha256": "3c8d91dbd5e85656a72a16fab17f5c9f34e9d48554d5cdfa089b9777711d52bc"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/selection.json",
+      "sha256": "78837b79692776968e893d344b408ea7dc72db397d025c6d5c8ebf139c62077e"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/stdout.log",
+      "sha256": "01c9e2d9ab7074e6c9f7541960a4ce5336e6d8b3807276e837fd9610a0a5753a"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-readback-03/summary.json",
+      "sha256": "04ec05f73c1ca4bc76d5626c8303f494b57b793e7d42830777c516b2d81cbae6"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/activation.json",
+      "sha256": "6d7898572caacaa032abbcd36b5d3883125c00e03319e6cf427740cf6ee8901f"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/frozen-test/fixtures/generic-workflow-scenarios.json",
+      "sha256": "47e0abb7964063c839f9b239010b1ae498239fdb0507bc8ba7a10521eccc88e4"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/frozen-test/generic-live-workflow-support.mjs",
+      "sha256": "8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/frozen-test/generic-live-workflow.test.mjs",
+      "sha256": "5679df6fb28cd1d9baaca573f69a9954b0f29cafc57215341d36f9cd70fb2181"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/helper-preimage.mjs",
+      "sha256": "e1c09ec4fdbb93efa2fa63fa5f1671f29e7ecf6541f4c20515beba2020a81afc"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/launch-disposition.json",
+      "sha256": "c8de061262a0f0ff5000c6a8a97060f84d8a83b4ca304b2c9900ab9985b432f0"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/source-change.json",
+      "sha256": "aef33aa7196d927608d4bf87c72b8f35c4b7188e255c136297854a22c721b6a4"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/source.patch",
+      "sha256": "6e707c3b9512c61d8d85e0bc998a00e2594fce126645e86f41b668342a95f56a"
+    }
+  ],
+  "directExpected": {
+    "specification/GOALS.md": {
+      "sha256": "09098f7875b7912589682187c782cfaa10bb0d28d81a5e45489ecfd2f0039192",
+      "byteLength": 19966,
+      "proof": "Root accepted finite source/generated selection or current Writer tracking projection"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "7c75ddeed5d6575df4c6e3ede01e20f71880e9dd119a62790b24807a8a0fff95",
+      "byteLength": 57403,
+      "proof": "Root accepted finite source/generated selection or current Writer tracking projection"
+    },
+    "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs": {
+      "sha256": "8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "byteLength": 87990,
+      "proof": "Root accepted finite source/generated selection or current Writer tracking projection"
+    }
+  },
+  "pending": [
+    "All pending NATIVE_FULL_HELLO_FRESH_START_IMPLEMENTATION source/HOW/tests and evidence: excluded, no source acceptance/package/paid launch claim",
+    "The five remaining reduced Hello cases: not launched; retention syntax only, new actual setup-record validation pending",
+    "Original/S02/Data Mapper resources, active/live journals, locks, worksite files, active installs/node_modules and scratch: excluded",
+    "Duplicated setup call+receipt trees and unrelated historical untracked outputs: preserved locally, not staged",
+    "Q07 prepared/incomplete; operator-stop installed readback and qualification/RC1 remain open"
+  ],
+  "scope": "Accepted replay source/test, compiled14 construction, helper contract/retention repairs, four current trackers and finite closed basic-cli C1/C2/readback evidence. Full odd_glc fresh-source sandbox remains required; new source implementation is a separate excluded Worker activation."
+}

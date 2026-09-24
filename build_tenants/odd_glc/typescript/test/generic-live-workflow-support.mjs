@@ -684,7 +684,6 @@ export async function prepareInstalledScenario({
     packageName: verified.packageName, packageVersion: verified.packageVersion };
   let setupOrdinal = 0;
   let setupHandoff = null;
-  let admittedEnvironment = null;
   const call = async (operationId, memberKey, request, resources, supplied = {}) => {
     const definition = definitionFor(installedPublic, operationId, memberKey);
     const packet = exact([
@@ -708,7 +707,8 @@ export async function prepareInstalledScenario({
         expectedPackageName: basis.packageName, expectedPackageVersion: basis.packageVersion }, verified },
       request, resourceScope: { resourcesDigest: product.sha256Canonical(resources),
         authoritySlots: product.admissionAuthoritySlots(slots) },
-      boundEnvironment: packet.metadata.workspaceBindingRequirement === "forbidden" ? null : admittedEnvironment };
+      boundEnvironment: packet.metadata.workspaceBindingRequirement === "forbidden" ? null
+        : product.admissionEnvironmentSelection(setupHandoff.prefix, slots.workspace_binding) };
     const authorityValue = { actorRef: WORKER_ACTOR_REF, authorityMode: "trusted_developer" };
     const approvalValue = { decision: "allow", actorRef: WORKER_ACTOR_REF,
       definitionRef: definition.definitionRef, definitionDigest: definition.definitionDigest,
@@ -729,12 +729,13 @@ export async function prepareInstalledScenario({
   };
   const applySetup = async (pendingDefinition, label) => {
     const definition = await pendingDefinition;
-    await writeFile(path.join(setupEvidenceRoot, `setup-${setupOrdinal}-${definition.invocation.definitionKey.memberKey}-call.json`),
-      `${JSON.stringify(definition, null, 2)}\n`, { flag: "wx" });
+    const callFileName = `setup-${setupOrdinal}-${definition.invocation.definitionKey.memberKey}-call.json`;
+    const callBytes = Buffer.from(`${JSON.stringify(definition, null, 2)}\n`);
+    await writeFile(path.join(setupEvidenceRoot, callFileName), callBytes, { flag: "wx" });
     const receipt = await applyDefinitionCall(installedPublic, definition, label);
     if (receipt.resources.eventResource !== undefined) setupHandoff = receipt.resources.eventResource.closeHandoff;
     await writeFile(path.join(setupEvidenceRoot, `setup-${setupOrdinal}-${definition.invocation.definitionKey.memberKey}.json`),
-      `${JSON.stringify({ call: definition, receipt }, null, 2)}\n`, { flag: "wx" });
+      `${JSON.stringify({ callFile: { path: callFileName, sha256: sha256Bytes(callBytes) }, receipt }, null, 2)}\n`, { flag: "wx" });
     return receipt;
   };
   const verifyCall = await call("abg.operation.product.verify", "verify", {
@@ -806,18 +807,24 @@ export async function prepareInstalledScenario({
   const binding = await applySetup(bindCall, "public WorkspaceBinding");
   const environmentTruth = abg.projectExactPrefixWorkspaceEnvironment(setupHandoff.prefix, binding.ownerOutput.value.binding);
   if (environmentTruth.kind !== "exact_prefix_workspace_environment") throw new Error(`admitted environment refused: ${JSON.stringify(environmentTruth)}`);
-  admittedEnvironment = environmentTruth;
   const workspaceAuthorityBasis = environmentTruth.workspaceAuthorityBasis;
   const workspaceBinding = environmentTruth.workspaceBinding;
   artifactTruth = environmentTruth.artifactTruth;
   assert.equal(workspaceAuthorityBasis.canonicalRoot, await realpath(workspaceRoot));
   assert.equal(workspaceBinding.roots.productRoot, installedRoot);
   assert.notEqual(workspaceAuthorityBasis.canonicalRoot, installedRoot);
-  const publications = Object.freeze([
-    gtl.constructHelloWorldModulePublication(basis), gtl.constructConsensusModulePublication(basis),
-    gtl.constructWorksiteConstructionModulePublication(basis),
-    gtl.constructWorksiteCommandExecutionModulePublication(basis),
-  ]);
+  // The verified Product manifest selects membership; installed public producers
+  // supply the exact publication values, including all declared dependencies.
+  const publicationCandidates = Object.entries(gtl)
+    .filter(([name, value]) => /^construct.+ModulePublication$/u.test(name) &&
+      typeof value === "function")
+    .map(([, construct]) => construct(basis));
+  const publications = Object.freeze(verified.contributionManifest.publicationBindings
+    .map(({ moduleRef, publicationDigest }) => exact(publicationCandidates,
+      (publication) => publication.owningProductId === verified.productId &&
+        publication.moduleRef === moduleRef &&
+        product.modulePublicationSemanticDigest(publication) === publicationDigest,
+      `installed publication ${moduleRef}`)));
   const readinessBasis = { workspaceBinding: environmentTruth.workspaceBindingCandidate, resolvedLock, verifiedProducts: [verified],
     installedProducts: [admittedInstall.candidate], publications };
   const catalogSlots = { workspace_binding: binding.ownerOutput.value.binding, product_set: [installation.ownerOutput.value.installedProduct],
@@ -993,6 +1000,32 @@ export async function runDefinition(environment, task, resolution, policy, close
     resolution.program.programRef, resolution.selectedCatalogEntry, policy, grants,
     { admittedInstalls: environment.admittedInstalls, workspaceBinding, fixedPacket: product.RUN_OPERATION_CONTRACTS.invoke.invoke });
   assert.equal(authority.kind, "invocation_authority", JSON.stringify(authority));
+  const environmentRef = resolution.program.policies[environment.gtl.RUN_ENVIRONMENT_POLICY];
+  let runEnvironmentResources;
+  if (environmentRef !== undefined) {
+    const declaration = exact(resolution.programPublication.runEnvironments ?? [],
+      (candidate) => candidate.declarationRef === environmentRef, "installed run environment");
+    const inventory = environment.gtl.WORKSITE_COMMAND_EXECUTION_CONTEXT_INVENTORY;
+    assert.equal(declaration.corpusAccess, null, "C1/C2 context has no external corpus");
+    const dependencies = declaration.dependencies.map((dependency) => {
+      assert.equal(dependency.recordFormat, "member_inventory@1");
+      assert.equal(dependency.recordDigest, sha256Bytes(Buffer.from(inventory.content)),
+        "declared dependency must select the installed C2 context inventory");
+      return { dependencyRef: dependency.dependencyRef, root: resolution.programInstall.installedRoot,
+        recordPath: path.join(resolution.programInstall.installedRoot, inventory.path) };
+    });
+    const temporaryRoot = path.join(workspaceBinding.roots.archiveRoot, "run-environment");
+    await mkdir(temporaryRoot, { recursive: true });
+    const coordinates = { dependencies, temporaryRoot, pythonPath: null };
+    runEnvironmentResources = product.constructRunEnvironmentResources({
+      kind: "run_environment_resources", schemaVersion: SCHEMA_VERSION, ...coordinates,
+      permission: { authorityRef: authority.authorityRef, authorityDigest: authority.authorityDigest,
+        actorRef: authority.actorRef, programRef: resolution.program.programRef,
+        environmentRef, environmentDigest: product.sha256Canonical(declaration),
+        operations: [...new Set(["read_context", ...declaration.accesses.map((access) => access.operation)])].sort(),
+        ...coordinates },
+    });
+  }
   const program = { ref: resolution.resolution.programRef, digest: resolution.resolution.programDigest };
   const view = { ref: `graph-function-catalog-view://abiogenesis/${catalogView.viewDigest.slice(7)}`, digest: catalogView.viewDigest };
   const definition = definitionFor(installedPublic, "abg.operation.run.invoke", "invoke");
@@ -1019,7 +1052,8 @@ export async function runDefinition(environment, task, resolution, policy, close
       transport_steering: { ref: `transport-steering://abiogenesis/${steeringDigest.slice(7)}`, digest: steeringDigest },
     },
     resources: { kind: "run_invocation_resource_assertion", schemaVersion: SCHEMA_VERSION,
-      eventResource, catalog, catalogView, applications: environment.applications, source },
+      eventResource, catalog, catalogView, applications: environment.applications, source,
+      ...(runEnvironmentResources === undefined ? {} : { runEnvironmentResources }) },
   });
 }
 
@@ -1463,8 +1497,7 @@ export async function qualifyGenericWorkflowInstalledNoLive({
   }
   if (
     prepared.product.canonicalJson(prepared.catalogView.allowlist) !==
-      prepared.product.canonicalJson(expectedAllowlist) ||
-    prepared.publications.length !== 4
+      prepared.product.canonicalJson(expectedAllowlist)
   ) {
     throw new TypeError("installed setup did not retain one shared C1+C2 catalog view");
   }

@@ -1,0 +1,65 @@
+{
+  "status": "CLOSED read-only provider evidence check",
+  "journal": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/events/runtime.events.jsonl",
+    "bytes": 5819027,
+    "sha256": "2409e468e608703ef66729cda6c60435de71a5a3eb1114e5ea50025ba0be8b57",
+    "events": 939,
+    "actorInvocationStarts": 2,
+    "actorProcessStarts": 2,
+    "actorInvocationCloses": 2
+  },
+  "command": "/Users/jim/.local/bin/claude",
+  "effort": "medium",
+  "modelRecorded": "claude-fable-5-1",
+  "providerRecorded": "firstParty",
+  "claudeCodeVersion": "2.1.280",
+  "controlledSubstitute": false,
+  "actors": [
+    {
+      "phase": "C1 construction",
+      "stdoutPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-stdout.log",
+      "stdoutSha256": "3e9a89739a5220e0ac18aececaaa39765d21113fa736d0b2511d24628bd89a95",
+      "transportPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-ef1a8329e1e71ee1-transport.json",
+      "transportSha256": "f2d0cc47ddbebdb46bb5b7e881b4398ae9ca35efb4da9f6e1fb3514c9caca15c",
+      "durationMs": 19490,
+      "durationApiMs": 17065,
+      "reportedCostUsd": 0.22266,
+      "tokens": {
+        "input": 2,
+        "cacheCreationInput": 6822,
+        "cacheReadInput": 0,
+        "output": 1724
+      },
+      "providerMessageIds": [
+        "msg_011CfMNBBbeywVGxwanqQAgK"
+      ],
+      "apiRetryCount": 0
+    },
+    {
+      "phase": "C2 execution",
+      "stdoutPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-stdout.log",
+      "stdoutSha256": "9b7abeb2e45ea0bce677bd1802cd19b55d64638395e4a0a4395b68372fb8f587",
+      "transportPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/core13-03/test_runs/generic-live-workflow/basic-cli/20260924T010309387Z_pid56131/abi-authority/archive/fp-fe11e2cf0995a3c5-transport.json",
+      "transportSha256": "224482d995358ed73197b37e38e27f72e5023fc81e718cd0cf44bf58aacbe44b",
+      "durationMs": 29555,
+      "durationApiMs": 23106,
+      "reportedCostUsd": 0.69498825,
+      "tokens": {
+        "input": 34,
+        "cacheCreationInput": 31929,
+        "cacheReadInput": 31073,
+        "output": 966
+      },
+      "providerMessageIds": [
+        "msg_011CfMNxosEgM8FrJa1SzKTX",
+        "msg_011CfMNzFnjFM6pLG5CLQbr9"
+      ],
+      "apiRetryCount": 0
+    }
+  ],
+  "totalReportedCostUsd": 0.91764825,
+  "costMeaning": "CLI reported list-cost; actual billing unknown.",
+  "providerWork": "C1 StructuredOutput supplies three file bodies. C2 Bash invocation runs installed worksite_command_helper and returns the typed helper artifact.",
+  "scope": "Real generic-live ABI C1/C2 supporting proof; not the required complete odd_glc fresh full-source sandbox. Later 1.5s figures measure only Public readback."
+}

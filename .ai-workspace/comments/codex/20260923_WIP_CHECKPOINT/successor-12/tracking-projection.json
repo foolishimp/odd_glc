@@ -1,0 +1,20 @@
+{
+  "role": "Writer gpt-6-astra/max",
+  "authority": "Root bounded checkpoint activation after accepted installed basic-cli recovery",
+  "files": [
+    {
+      "path": "specification/GOALS.md",
+      "preimageSha256": "f0933ea6cf1da12cf074596f9f0a180dc949b1dc3a8be00c6dc62498f1190e1c",
+      "postimageSha256": "09098f7875b7912589682187c782cfaa10bb0d28d81a5e45489ecfd2f0039192"
+    },
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "preimageSha256": "8bd58d7f4e934e483a9b321d0c284e184aba50430f711ed6b33c85bfa6db80fd",
+      "postimageSha256": "7c75ddeed5d6575df4c6e3ede01e20f71880e9dd119a62790b24807a8a0fff95"
+    }
+  ],
+  "historicalRecordsRewritten": false,
+  "noNewExecutionAuthority": true,
+  "currentActivation": "NATIVE_FULL_HELLO_FRESH_START_IMPLEMENTATION",
+  "newWorkerSourceAcceptance": false
+}
