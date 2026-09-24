@@ -1,0 +1,69 @@
+{
+  "closedProofSelections": [],
+  "adjoiningClosedPosts": [
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13-paired-post-push.json",
+      "sha256": "75546c7ebeeeef92d77c2ab4e8e5c88c031873f745f003f0aea824ecfbbd67ab"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13-return.md",
+      "sha256": "836da900bb07589425ab3e05e75c455ef981e696ba04a9db03eeaf8f0865c02c"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/closed-suffix-diagnostic.json",
+      "sha256": "343a9ddb151957747d4d5840eab3b73d0b7bf3ba5c4f2c0283482b8af9f03129"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/native-evidence-task-diagnostic.json",
+      "sha256": "cfd22e81caea5652f494ae9af6ebf873258a390d21d5daa7c041f9417534b87d"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/native-evidence-territory-diagnostic.json",
+      "sha256": "5cb336e5713172bc02f2d63d85733cc6cd5db4c1abd7ebd90523958221318e04"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/observed-metrics.json",
+      "sha256": "b7df108a615ec6d15162e83cdc511eac69fa8e629237356d24ea5d40e8bbd058"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/return.md",
+      "sha256": "de6f0b9f9dbabe1cb9d411aed531c7a706be7efe96f17e6279b1cb6ac6e41dda"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/terminal-owner-extract.json",
+      "sha256": "eb8ac9d84092e33b09d99e6be1863f2fdc1f6e8f33bf72482af4b314dcd49ba7"
+    }
+  ],
+  "directExpected": {
+    "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs": {
+      "sha256": "c19639bf1eaa52529d5bcd51c9bc3d0d35494fb70eb15de822c7e03517f46259",
+      "byteLength": 78928,
+      "proof": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/source-subject.json"
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs": {
+      "sha256": "4b9c490c55059b0b5bb2555865d24e39e9b6252f32c45c450dd4a70d0fd8675d",
+      "byteLength": 24913,
+      "proof": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/source-subject.json"
+    },
+    "specification/GOALS.md": {
+      "sha256": "509318ce3d6063eaf2f3bf3866e55d85c721f54c9b158e8dc1594ebb39645df1",
+      "byteLength": 19139,
+      "proof": "Root current tracker/debt projection; all historical outcomes retained"
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "fe55e455af7a9fc91e7ff8aba1daa5b6a01050918cd47a6cf80667b16d6b6d3d",
+      "byteLength": 58200,
+      "proof": "Root current tracker/debt projection; all historical outcomes retained"
+    }
+  },
+  "pending": [
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/caller",
+    "Opus02 optional detailed native-semantic-replay projection (122634623 bytes), caller trees and actor archives are excluded; only six explicit closed summary/diagnostic/fixture files selected",
+    "All live/shared event resources and journals, worksites, active inputs/control/archives, installed node_modules and unrelated dirty work",
+    "No runtime history read/acquisition, new package/test or native call; full previous lifecycle stays failed and installed repaired outcome is pending",
+    "No qualification/F11/AF22/full-GLC/RC1 acceptance"
+  ],
+  "scope": "Five accepted native Evidence source/test postimages; exact compiled17 generated projections/archive/construction; concise closed repair/review/check records; single retained C2 regression extract and five Opus02 summary/metrics/diagnostic files; current four trackers/debt. No active resource or recursive historical collection."
+}

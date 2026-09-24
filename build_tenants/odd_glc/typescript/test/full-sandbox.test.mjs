@@ -199,6 +199,21 @@ async function observationFixture(key, commands) {
 }
 const passingDiscovery = () => commandObservation(["--test"], { stdout: "# pass 2\n# fail 0\n", ref: "unit-node-discovery" });
 
+test("native evidence targets use exact protected artifact observations without a legacy worksite", async () => {
+  const fixture = await observationFixture("basic-cli", [
+    commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }), passingDiscovery(),
+  ]);
+  const legacy = evaluateOrdinaryJobObservation(fixture), targets = fixture.output.worksite.targets;
+  fixture.output.assets = [{ candidate: { design: { targets: targets.map(row => ({ relativePath: row.target.subject.relativePath, role: row.role })) } } }];
+  fixture.output.worksite = null;
+  Object.assign(fixture.output.evidence.executionObservation, { kind: "worksite_command_execution_observation",
+    task: { sourceNativeWork: { kind: "unit-only-native-source" }, protectedObservations: targets.map(row => ({
+      subject: row.target.subject, observation: { observationRef: "unit-artifact:" + row.target.subject.relativePath } })) } });
+  assert.deepEqual(evaluateOrdinaryJobObservation(fixture), legacy);
+  fixture.output.evidence.artifacts[0].observationRef = "unit:crossed-observation";
+  assert.equal(evaluateOrdinaryJobObservation(fixture).artifactCoverage[0].disposition, "not_in_admitted_evidence");
+});
+
 test("ordinary discovery and different valid vectors leave hidden Addition probes unqualified, not failed", async () => {
   const value = evaluateOrdinaryJobObservation(await observationFixture("integer-addition", [
     commandObservation(["app/main.mjs", "4", "6"], { stdout: "10\n" }), passingDiscovery(),

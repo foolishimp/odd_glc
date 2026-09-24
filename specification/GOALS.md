@@ -9,7 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) records the accepted native fresh-source lifecycle, dependency correction and compiled16 retained-input repair. A distinct full-Hello Opus 5.5/xhigh Run is active; no full lifecycle/oracle outcome is claimed. The first Fable fold failure and Opus CLI refusal remain preserved. Basic-cli’s earlier two real Claude calls and compiled14 readback remain narrow C1→C2 supporting proof; five other reduced cases were not launched. Data Mapper stays held. Full GLC delivery, the fifteen-family ABG outcome, qualification and RC1 remain open.
+Current delivery tracking: [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) records failed Opus02 after ten successful actors and C2, the accepted native Evidence correction and compiled17, and Opus03 setup stopped at the existing install-helper ceiling before any Run/actor. Owner/lock diagnosis proceeds without retry or timeout increase. Full installed Evidence admission, independent assessment and lifecycle/oracle outcome remain pending. Basic-cli’s earlier C1→C2 supporting proof is unchanged; five other reduced cases were not launched. Data Mapper stays held. Full GLC delivery, fifteen-family ABG completion, qualification and RC1 remain open.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,

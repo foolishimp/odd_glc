@@ -1,0 +1,25 @@
+{
+  "path": ".ai-workspace/comments/.gitignore",
+  "preimageSha256": "37d77d89d24fe6a2e8ff93973185064f2d948ee65947d2737f7ca3eed11165e6",
+  "preimageSource": "553f6b4545c1a50da1f596c6054e16a9f2d464c7:.ai-workspace/comments/.gitignore",
+  "postimageSha256": "eb41af023a4cf2789e3fd6043c59a9f1548278327bceb52f22006e850ecf0dbc",
+  "exactIgnoredOriginals": [
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13-paired-post-push.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13-return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/closed-suffix-diagnostic.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/native-evidence-task-diagnostic.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/native-evidence-territory-diagnostic.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/observed-metrics.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/terminal-owner-extract.json"
+  ],
+  "activeRootsAreNotIgnored": [
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/caller",
+    "Opus02 optional detailed native-semantic-replay projection (122634623 bytes), caller trees and actor archives are excluded; only six explicit closed summary/diagnostic/fixture files selected",
+    "All live/shared event resources and journals, worksites, active inputs/control/archives, installed node_modules and unrelated dirty work",
+    "No runtime history read/acquisition, new package/test or native call; full previous lifecycle stays failed and installed repaired outcome is pending",
+    "No qualification/F11/AF22/full-GLC/RC1 acceptance"
+  ]
+}

@@ -676,9 +676,21 @@ export async function executeFullSandbox(recordPath, environment = process.env, 
 
 // Observational classification only. Unmatched independent probes are not
 // executed here and are not application failures. Design never receives them.
+function observedSemanticTargets(output) {
+  if (output.worksite !== null) return output.worksite?.targets ?? [];
+  const execution = output.evidence?.executionObservation;
+  if (execution?.kind !== "worksite_command_execution_observation" || !execution.task?.sourceNativeWork) return [];
+  const design = output.assets.findLast(asset => asset.candidate.design !== null)?.candidate.design;
+  return (design?.targets ?? []).flatMap(selected => {
+    const rows = execution.task.protectedObservations.filter(row => row.subject.relativePath === selected.relativePath &&
+      output.evidence.artifacts.some(artifact => artifact.subjectRef === row.subject.subjectRef &&
+        artifact.observationRef === row.observation.observationRef));
+    return rows.length === 1 ? [{ role: selected.role, target: { subject: rows[0].subject } }] : [];
+  });
+}
 export function evaluateOrdinaryJobObservation({ output, input, workspaceRoot }) {
   const oracle = input.evaluationData, commands = output.evidence?.executionObservation?.commandResults ?? [];
-  const targets = output.worksite?.targets ?? [], artifacts = output.evidence?.artifacts ?? [];
+  const targets = observedSemanticTargets(output), artifacts = output.evidence?.artifacts ?? [];
   const text = stream => Buffer.from(stream.payload, "base64").toString("utf8");
   const normal = command => !command.timedOut && command.processSignal === null && command.terminationConfirmed;
   const resolvedArgument = (command, value) => relative(workspaceRoot, resolve(workspaceRoot, command.relativeCwd, value));
@@ -832,7 +844,7 @@ export async function freshFullSandboxReadback(recordPath) {
   assert.ok(output.bindingVersions.length > 0, "Requirements must instantiate assessed binding versions");
   const interpreted = evaluateOrdinaryJobObservation({ output, input: originalInput, workspaceRoot: record.workspaceRoot });
   const currentArtifactPaths = [];
-  for (const target of output.worksite.targets) {
+  for (const target of observedSemanticTargets(output)) {
     const relativePath = target.target.subject.relativePath;
     const artifact = output.evidence.artifacts.find(row => row.subjectRef === target.target.subject.subjectRef);
     assert.ok(artifact, "admitted current artifact " + relativePath);

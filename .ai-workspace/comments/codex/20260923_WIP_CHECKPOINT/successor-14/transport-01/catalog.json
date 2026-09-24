@@ -1,0 +1,48 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "553f6b4545c1a50da1f596c6054e16a9f2d464c7",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 8
+  },
+  "archiveMemberCount": 8,
+  "archiveMemberBytes": 5737557,
+  "transportBytes": 1070258,
+  "assets": [
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "byteLength": 2155,
+      "sha256": "0825994e64479833a37283128259d21a1d3a71e50244217e582d4b7a8cb908fe",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 2155,
+          "sha256": "0825994e64479833a37283128259d21a1d3a71e50244217e582d4b7a8cb908fe"
+        }
+      ]
+    },
+    {
+      "id": "family-0001",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE",
+      "byteLength": 1068103,
+      "sha256": "35b45c42351c983397b5a0fd1ebe11d9b00db83270d9349f01a56bed4ef2612a",
+      "parts": [
+        {
+          "path": "payloads/family-0001.tar.gz.part0000",
+          "byteLength": 1068103,
+          "sha256": "35b45c42351c983397b5a0fd1ebe11d9b00db83270d9349f01a56bed4ef2612a"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "8a84cefdbb29041480ab8c733294f84a7024440675f7c584b7040e8cfcc70dd4",
+  "reconciliationSha256": "3abb0d06ac29d34952147e5b2466e57893ceaa075ea565092e13447d245b050f",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

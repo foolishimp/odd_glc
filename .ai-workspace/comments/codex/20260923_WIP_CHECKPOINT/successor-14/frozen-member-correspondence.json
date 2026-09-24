@@ -1,0 +1,16 @@
+{
+  "status": "all selected original freeze identities exact",
+  "checked": 8,
+  "paths": [
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13-paired-post-push.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13-return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/closed-suffix-diagnostic.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/native-evidence-task-diagnostic.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/native-evidence-territory-diagnostic.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/observed-metrics.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02/terminal-owner-extract.json"
+  ],
+  "noRuntimeResourceMutation": true,
+  "restoration": "/private/tmp/20260924-checkpoint-successor14-odd_glc-46937"
+}
