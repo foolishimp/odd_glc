@@ -9,13 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: Root accepts [recovery02 and the original first F_D/J/R10 conjunction](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation09-disposition/disposition.md)
-and seven S02 case outcomes at their exact scopes. The original continuation
-failed before F_P actor dispatch/effect, closed genuinely at 1,241,896,147 B and
-has fresh failed replay; 35 selected files are unchanged. Mixed S02 failed at
-F_H; its separate resource closed genuinely. Root accepted both source repairs; compiled10/dev.6 package and caller readiness
-is CLOSED and Root-accepted; affected native verification selected after checkpoint. The older OOM Run remains historically
-nonterminal. Full correction, S1–S5/oracle and qualification remain open.
+Current delivery tracking: Root accepts [original03](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation10-native-verification-01/return.md) for repaired F_P/admission/foldback and its truthful construction-only `stage_revision_required` block; all 35 files remain unchanged and the genuine close is 1,285,520,237 B with fresh outcomes. [Mixed18](../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-18/return.md) reached truthful human hold with accepted fresh-read scope; its result-only caller assertion defect remains retained. Seven prior S02 passes are preserved. [Accepted compiled13](../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-13/return.md) and existing dev.7 now supply the selected one-launch GLC Design-reentry steel thread; the execution Worker owns the identity-only caller rebind and native outcome. The retained selector, ordinary first-J/R10 authentication and current Design-absence check stay on that path. Operator stop was admitted once on retained S02-19. Its preserving-obligation [source repair](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/operator-stop-03/review-01/return.md) is accepted; fresh installed status/replay readback remains pending at the release boundary, with absent Result still expected as Public `not_found`. Q07 is prepared/incomplete and carries no qualification acceptance. Q07 completion, independent stop readback and this paired checkpoint are not launch prerequisites. Full S1–S5/oracle, qualification, QUAL056/F11/sole AF22 and RC1 remain open.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
@@ -39,7 +33,7 @@ own ABG release applicability.
 GOAL-035/T-287 and T-043 retain the fixed fifteen-family ABG5 outcome, original
 job/S1–S5/oracle, five selected/four outside residuals and protected worksite.
 ABG uses STDO 2.5.1 RC1; GLC remains on RC4. Earlier bounded acceptances remain
-historical evidence. [Root disposition](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation09-disposition/disposition.md) owns the current conjunction.
+historical evidence. [Root disposition](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation09-disposition/disposition.md) retains the predecessor conjunction.
 
 Predecessor core04/consumer01/caller02 source readiness and compiled09/dev.5
 [package/caller readiness](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-review-01/package-readiness-return.md)
@@ -63,8 +57,7 @@ The seven passes and earlier nested-compose acceptance are preserved.
 (`96dfe183…`) are accepted by Root for source readiness after [max independent review](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation-repair-review-01/return.md)
 (`0ae3209b…`). [Combined compiled10/dev.6 package and caller readiness](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/composite-native-02/disposition.md)
 is CLOSED: archives `7b6791d3…` / `4f96ba95…`, exact offline install verification,
-original caller03 and mixed-only continuation18. Root accepts that readiness and selects original03 plus mixed18 native verification
-after the paired checkpoint; no repaired native outcome is yet claimed.
+original caller03 and mixed-only continuation18. Root accepts [original03](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/continuation10-native-verification-01/return.md) for repaired F_P/admission/foldback and its truthful construction-only `stage_revision_required` block; all 35 files remain unchanged and the genuine close is 1,285,520,237 B with fresh outcomes. [Mixed18](../../abiogenesis/.ai-workspace/comments/codex/20260923_RC1_QUALIFICATION_RECIPE/s02-installed-continuation-18/return.md) reached truthful human hold with accepted fresh-read scope; its result-only caller assertion defect remains retained. Seven prior S02 passes are preserved. [Accepted compiled13](../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-13/return.md) and existing dev.7 now supply the selected one-launch GLC Design-reentry steel thread; the execution Worker owns the identity-only caller rebind and native outcome. The retained selector, ordinary first-J/R10 authentication and current Design-absence check stay on that path. Operator stop was admitted once on retained S02-19. Its preserving-obligation [source repair](../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/operator-stop-03/review-01/return.md) is accepted; fresh installed status/replay readback remains pending at the release boundary, with absent Result still expected as Public `not_found`. Q07 is prepared/incomplete and carries no qualification acceptance. Q07 completion, independent stop readback and this paired checkpoint are not launch prerequisites. Full S1–S5/oracle, qualification, QUAL056/F11/sole AF22 and RC1 remain open.
 No first-J stop, new producer campaign, heap/timer/model increase or automatic
 retry is selected by this tracking update.
 
@@ -79,11 +72,7 @@ incremental admitted state and appends events; reconstruction belongs to genuine
 cold acquisition/recovery when state is absent. This records scope interpretation,
 not a hardcoded mode or new Product law.
 
-Last pushed predecessor readiness remains ABI `2b9e540…` / GLC `8fd1de6…`.
-Reviewed repair source, generated successor and finite evidence are selected for
-the paired checkpoint. Root accepts package readiness and authorizes the two
-affected native verifications after successful remote checks; execution and release
-outcomes remain unclaimed. [Root selection](../../abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/root-disposition.json).
+Predecessor readiness ABI `2b9e540…` / GLC `8fd1de6…` and the paired successor10 selection remain historical. The one-launch GLC steel thread is selected under [current Root disposition](../.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-11/root-disposition.json); its active outcome is not claimed by this checkpoint. [Historical successor10 selection](../../abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/root-disposition.json).
 
 ### Retained predecessor selection and evidence
 
@@ -224,8 +213,4 @@ folds and re-entry. GLC supplies meaning, policy and interpretation without a
 controller, requirement compiler or proof ledger. Reuse valid retained work;
 do not reset the original instance or relabel reduced output as full success.
 
-The current frontier is the final checkpoint and accepted generic-correction
-readiness03 described above. Earlier rejected full-input sandbox evidence
-keeps its historical scope. This tracking Writer grants no implementation,
-qualification, model/application execution, Git action or release. Dependent
-effects proceed only through the owning bounded activations.
+The current frontier is the authorized one-launch GLC Design-reentry steel thread on accepted core13 and existing dev.7. This Writer updates tracking and checkpoints completed work in parallel; active execution belongs to its separate Worker grant. Q07 remains prepared/incomplete, and installed operator-stop readback remains pending at the release boundary. Earlier evidence keeps its exact scope; no new native outcome, qualification or release acceptance is claimed here.

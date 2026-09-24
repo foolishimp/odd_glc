@@ -4,7 +4,7 @@ import {dirname,resolve,join} from 'node:path';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {constructOddGlcProductPackage} from '../src/product-package.mjs';
 import {constructNativeContinuationPublication} from '../src/native-continuation-declarations.mjs';
-import {ids,correction,PACKAGE_NAME,PACKAGE_VERSION,ASSESSMENT_SCHEMA_TEXT,CORRECTION_SELECTION_SCHEMA_TEXT} from '../src/native-continuation-contracts.mjs';
+import {ids,correction,reentry,PACKAGE_NAME,PACKAGE_VERSION,ASSESSMENT_SCHEMA_TEXT,CORRECTION_SELECTION_SCHEMA_TEXT,DESIGN_ASSESSMENT_SCHEMA_TEXT} from '../src/native-continuation-contracts.mjs';
 export async function buildNativeContinuationProduct({coreRoot,runEnvironment,outputRoot}) {
  const pkg=JSON.parse(await readFile(join(coreRoot,'package.json'),'utf8'));
  const load=async name=>import(pathToFileURL(join(coreRoot,pkg.exports['./'+name].import)).href);
@@ -17,7 +17,8 @@ export async function buildNativeContinuationProduct({coreRoot,runEnvironment,ou
  for(const name of ['native-continuation-contracts.mjs','native-continuation-runtime.mjs','native-continuation-declarations.mjs'])
   sourceFiles['build/'+name]=await readFile(join(sourceRoot,name),'utf8');
  const contractRows=[['contracts/native-continuation-assessment.schema.json',ids.rawContractRef,ASSESSMENT_SCHEMA_TEXT],
-  ['contracts/native-correction-selection.schema.json',correction.selectionContractRef,CORRECTION_SELECTION_SCHEMA_TEXT]].map(([path,contractId,text])=>{
+  ['contracts/native-correction-selection.schema.json',correction.selectionContractRef,CORRECTION_SELECTION_SCHEMA_TEXT],
+  ['contracts/native-design-assessment.schema.json',reentry.rawContractRef,DESIGN_ASSESSMENT_SCHEMA_TEXT]].map(([path,contractId,text])=>{
   sourceFiles[path]=text;const digest=product.sha256Bytes(Buffer.from(text));
   return {contractId,contractVersion:'5.0.0',contractDigest:digest,contractKind:'schema_asset',owningProduct:ids.productId,
    requirementAuthorityRefs:['requirement://odd-glc/REQ-GLC-WORKSITE-LIFECYCLE-005'],capabilityIdentities:[],

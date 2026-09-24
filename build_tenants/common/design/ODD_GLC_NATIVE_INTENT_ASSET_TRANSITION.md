@@ -250,3 +250,182 @@ The obsolete full-prior successor input shape is removed. The graph, original
 continuation, native actors, application choices and stop/re-entry meanings are
 unchanged. The installed model-free first F_D/J and cold discriminator belongs
 to the later single combined package, not this source-readiness increment.
+
+
+<a id="proposed-declared-design-re-entry-from-retained-native-work--2026-09-24"></a>
+
+## Declared Design re-entry from retained native work — 2026-09-24
+
+**Status: Root accepted design reframe; bounded source implementation selected. No package or native execution claim.**
+Root accepted proposal `ba48190e563672470abbf6ad055167615dc898823c54ecbd82afbb19c52a06d4` and prior HOW `43f3ded8d9750f764f49d2eb546d31f182dad28d30b6e25656beafc6f1d8a09c` under the unchanged Product and requirements.
+Smallest re-entry is `design_reframe` under the unchanged full-input Product,
+Boundary-Authority-014 and Lifecycle-Vocabulary-Assets-018–024, composed with
+ABG5 declared local correction and REQ-P-SCENARIOS-013. This adds a bounded,
+opt-in generic GTL composition to the existing continuation module. The current
+construction-only callable and its truthful stage-revision block stay intact.
+Artifact paths, source roles, criteria, commands and job content remain supplied
+data, with no scenario identity in published semantics.
+
+### Existing capability and the missing relation
+
+The existing native asset transition supplies author effect, actual observation,
+independent read-only assessment and judgment. R10 supplies authenticated closed
+child Result and ancestor input; fixed retained-input pairs carry current work
+through child foldback. Native work supplies bounded file effects and C2 supplies
+same-Run command evidence. These owners suffice for this declared path.
+The consumer realization supplies the Design-author/reviewer composition,
+closed assessment contract and ordinary edge value selecting an accepted
+successor Design for construction. This value creates no new basis owner, store,
+runtime authority or semantic-stage envelope.
+
+Existing semantic D2 remains preferable when an actual admitted semantic-stage or
+job envelope and construction lineage exist (`product/semantic_revision.ts`,
+`abg/semantic_revision.ts`). Observed plan files and a native-work assessment do
+not satisfy those prerequisites. This path must not fabricate them or claim
+source-to-Design derivation retrospectively.
+
+### Selected graph and dataflow
+
+```text
+F_D prepare; first J authenticates retained affectedness child + ancestor via R10
+  -> native Design author, writing one scoped successor candidate artifact
+  -> native independent Design assessment, writeRoots=[]
+  -> J: governing-source fidelity, complete affectedness and adequate design
+  -> F_D select sole current successor Design and bounded construction task
+  -> native construction author
+  -> F_D derive C2 from this actual new author observation and assessed plan
+  -> native same-Run C2
+  -> native independent assessment of the complete selected outcome
+  -> existing supported completion, or typed block with residuals
+```
+
+The new input contains compact original job/cause/provenance facts, exact selector
+terminal coordinates, current worksite/authority and separately granted Design
+candidate territory. One explicit historical declaration-proof resource stays
+outside semantic input. At HoG's current prefix, the existing nonserialized
+`historicalGraphCallSource()` port resolves the already-paid selector's closed
+native-assessment child under its actual correction-root input contract. Compare
+its original task/schema owner, full cause population, source/plan identities,
+result and producer, and complete observed entries with the new current subject.
+The later blocked parent does not invalidate that closed child; its original
+frontier and root closure still require R10 authentication. The consumer's exact supported source projection extends to this selector;
+R10 law stays unchanged. A missing/stale or
+incompatible source blocks before any paid stage. No default selector rerun,
+recursive prior-call copying, serialized prefix, borrowed-object rehydration or
+consumer history reader is introduced.
+
+Design authoring receives complete higher source/requirements and authenticated
+predecessor Design, candidate differences, actual affectedness and all remaining
+obligations. The actor must choose warranted design under that higher authority;
+matching current code is not an acceptance criterion. It writes only the explicit
+successor candidate path through the native owner. Existing Design and all other
+unselected files remain unchanged. Unknown required authority or a necessary
+source/requirement/rubric/oracle change stops this path.
+
+A separate actor reviews the actual candidate against complete governing source,
+requirements and every selected cause, including contradictions, dependencies,
+construction/proof coverage and preservation. It must independently determine
+whether revision is warranted and adequate, not merely endorse the selector.
+Its raw output uses a declared closed consumer contract in the caller/root
+closure. F_D checks identities, evidence quotes, cause coverage and currentness;
+J consumes that admitted assessment and blocks falsified/indeterminate outcomes.
+The author cannot judge its own revision. No construction starts on an unjudged
+physical Design file.
+
+After positive J, an ordinary deterministic edge value selects the exact reviewed
+successor artifact/digest and native author/assessment provenance as the **sole
+current Design**. The old Design is authenticated historical/predecessor input
+only; it cannot remain a competing current plan. Requirements remain unchanged.
+The handoff carries the full unchanged job/rubric/oracle, selected and outside
+obligations, current observed subject and the independently assessed affected
+construction/dependency set. It is derived from actual preceding results, not a
+caller replacement of `planBasis`. New typed consumer data and equality predicates
+are necessary; silently bypassing current construction-only input/currentness
+checks is prohibited.
+
+Construction receives the accepted Design and only its authorized affected
+candidate paths. Evaluator-only oracle material remains withheld from authors.
+Commands/probes derive from the assessed plan within existing toolchain/effect
+bounds; they preserve every required outcome and evidence role. A changed plan
+never authorizes weaker tests or a changed oracle. Native observations conserve
+unaffected work. Final assessment is a fresh independent actor over the new
+candidate and actual same-Run C2 evidence, checking every original mandatory
+criterion and selected residual while retaining outside obligations verbatim.
+Prior passing rows are history, not fresh satisfaction. Rejection retains actual
+partial effects and routes a typed stop; no host stage loop or automatic retry.
+
+### Finite policy and next discriminator
+
+Reuse the paid selector at zero additional selector calls. The prospective graph
+has five paid stages: Design author, Design assessor, construction author, C2
+executor and final assessor, one attempt each. At the retained $15 per-actor cap,
+its upper configured actor allowance is $75; this is a later explicit Root policy
+selection, not an extension of the prior four-actor/$60 grant or a run request.
+Keep model, effort, default heap and per-actor limits explicit. Five actors each
+using the full 25-minute absolute limit do not fit the prior 110-minute native
+limit; Root must select a finite overall allocation or retain that limit with a
+truthful timeout boundary. No automatic increase or retry is proposed.
+
+The next steel-thread discriminator is this single declared path on the retained
+ordinary subject after source/package/caller acceptance: authenticate the paid
+selector, admit a warranted successor Design through independent J, establish
+exactly one current Design, then construct/execute/assess the complete selected
+outcome while preserving unaffected work and prior history. Failure of historical
+authentication, candidate currentness, proper Design judgment, sole-plan selection
+or complete outcome evidence falsifies this selected composition's affected join. Stop there
+and return the actual cause; do not add a fixture campaign. Source readiness neither accepts the actor's application-design findings nor supplies native execution authority.
+
+
+### Source realization and explicit limits
+
+`native-continuation-contracts.mjs`, `native-continuation-declarations.mjs` and
+`native-continuation-runtime.mjs` declare the opt-in `design-reentry@5` start in
+the same Program; the original default and construction-only start remain.
+Four small compositions use existing graph-input retention: the re-entry root,
+Design-review child, construction child and complete-outcome assessment child.
+The root and Design-review child declare `design-verdict@5`; the final assessment
+child keeps `criterion-verdicts@5`. The existing package constructor emits the
+new exact schema asset; this source change does not itself build a package.
+The prospective caller supplies exact Design method `sourceSelections.design`
+for author and reviewer alongside its existing role sources; the generic role
+policy distinguishes Design authoring from construction. This does not select
+new standards or infer source authority from task prose.
+
+The supplied fresh Design path must be explicitly observed absent, within the
+current native worksite read/write scope. All historical entries stay exact;
+the current observation may add only that absent path/read root under the same
+observation bounds. Existing Design files remain protected predecessor inputs.
+The successor file is ordinary JSON with exactly `kind: native_revision_design`,
+`designText`, `commands` and `outcomePredicates`. It is not a semantic-stage
+envelope. The Design author writes only that file. The independent assessor
+quotes every governing source/Requirements path and the new Design, covers every
+selected cause and supplies the bounded construction/dependency set.
+
+The existing commands and probes remain an exact ordered prefix of the new
+plan. Extra commands use an existing executable, working directory and environment,
+with no greater command timeout/grace. `selectedSources` and write territories
+remain unchanged. Existing C2 construction validates command/probe structure at
+the Design-review judgment using the actual retained Design-author observation;
+this is pure task construction with no execution or fabricated native input.
+Actual C2 later binds to the newly admitted construction observation. An adequate
+revision that needs wider sources, toolchain, effect territory or governing
+meaning requires owner re-entry; this composition cannot grant it.
+
+After positive Design judgment, `native_selected_design` contains one current
+Design coordinate and compact author/reviewer provenance, the unchanged higher
+job/obligation facts, current context, assessed construction writes and plan.
+Old Design coordinates are historical only and are removed from current
+`planBasis` and source-role selection. No old task, nested prior context,
+serialized prefix, Catalog or declaration-proof body enters that value. The
+retained R10 source resource remains external. Admission comes from existing J
+and graph composition, not the value's name or a structural predicate.
+
+Design rejection, absent outputs, unsupported affectedness, stale subjects or
+inadequate command permissions cannot advance into construction. Authors and
+assessors remain separate native invocations. Final assessment uses actual new
+C2 evidence, preserves the complete original criterion set and outside rows,
+and cannot reuse the Design author/reviewer, constructor, executor or historical
+selector/assessor as its independent invocation. Focused component evidence is
+recorded under `LIFE/glc-stage-reentry-01/implementation`; supplied semantic/R10
+premises there do not constitute installed native integration or application
+Design acceptance. The five-stage finite policy remains a later Root selection.

@@ -164,3 +164,38 @@ export const CORRECTION_SELECTION_SCHEMA={
   }}},
  }};
 export const CORRECTION_SELECTION_SCHEMA_TEXT=JSON.stringify(CORRECTION_SELECTION_SCHEMA)+'\n';
+
+// Opt-in Design re-entry. These are ordinary values, never semantic ancestry.
+export const reentry=Object.freeze({
+ graphFunctionRef:ref('graph-function','design-reentry'),graphRef:ref('graph','design-reentry'),startRef:ref('start','design-reentry'),
+ reviewRef:ref('graph-function','design-review'),reviewGraphRef:ref('graph','design-review'),
+ constructionRef:ref('graph-function','design-construction'),constructionGraphRef:ref('graph','design-construction'),
+ assessmentRef:ref('graph-function','design-outcome-assessment'),assessmentGraphRef:ref('graph','design-outcome-assessment'),
+ inputContractRef:ref('contract','design-reentry-input'),handoffContractRef:ref('contract','selected-design'),rawContractRef:ref('contract','design-verdict'),
+ reviewClosureRef:ref('contract','design-review-closure'),constructionClosureRef:ref('contract','design-construction-closure'),assessmentClosureRef:ref('contract','design-outcome-closure'),
+ stepPredicateRef:ref('predicate','design-reentry-step'),reviewPredicateRef:ref('predicate','design-reviewed'),constructionPredicateRef:ref('predicate','design-constructed'),assessmentPredicateRef:ref('predicate','design-outcome-assessed'),
+ authorNodeRef:ref('node','author-design'),reviewNodeRef:ref('node','review-design'),reviewCallNodeRef:ref('node','native-design-review'),
+ constructionNodeRef:ref('node','construct-selected-design'),authorCallNodeRef:ref('node','native-design-construction'),executionNodeRef:ref('node','execute-selected-design'),
+ assessmentNodeRef:ref('node','assess-design-outcome'),assessmentCallNodeRef:ref('node','native-design-outcome-assessment'),
+});
+const reentryContract=(contractRef,contractKind,valueKind)=>Object.freeze({contractRef,contractVersion:VERSION,contractKind,valueKind});
+export const reentryInputContract=reentryContract(reentry.inputContractRef,'input','native_design_reentry_input');
+export const designHandoffContract=reentryContract(reentry.handoffContractRef,'output','native_selected_design');
+export const designAssessmentContract=reentryContract(reentry.rawContractRef,'output','native_design_assessment');
+export const reentryStages=Object.freeze([
+ ['prepare-design-author','prepareDesignAuthor',reentry.inputContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+ ['prepare-design-review','prepareDesignReview',ids.boundInputContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+ ['select-current-design','selectCurrentDesign',ids.boundInputContractRef,reentry.handoffContractRef],
+ ['prepare-design-construction','prepareDesignConstruction',reentry.handoffContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+ ['prepare-design-execution','prepareDesignExecution',ids.boundInputContractRef,executionContract.contractRef.replace('observation','task')],
+ ['prepare-design-outcome','prepareDesignOutcome',ids.boundInputContractRef,'contract://abiogenesis/worksite/native-work/task@5'],
+].map(([name,namedSymbol,inputContractRef,outputContractRef])=>Object.freeze({name,namedSymbol,inputContractRef,outputContractRef,
+ programLocusRef:ref('node',name),implementationRef:ref('implementation',name),bindingRef:ref('implementation-binding',name),predicateRef:ref('predicate',name),armId:ref('arm',name)})));
+export const DESIGN_ASSESSMENT_SCHEMA={
+ '$schema':'https://json-schema.org/draft/2020-12/schema','$id':reentry.rawContractRef,type:'object',additionalProperties:false,
+ required:['kind','disposition','reason','evidence','causes','dependencyPaths'],properties:{kind:{const:'native_design_assessment'},
+ disposition:{enum:['satisfied','falsified','indeterminate']},reason:nonblank,
+ evidence:CORRECTION_SELECTION_SCHEMA.properties.issues.items.properties.evidence,
+ causes:CORRECTION_SELECTION_SCHEMA.properties.issues,
+ dependencyPaths:{type:'array',uniqueItems:true,items:nonblank}}};
+export const DESIGN_ASSESSMENT_SCHEMA_TEXT=JSON.stringify(DESIGN_ASSESSMENT_SCHEMA)+'\n';

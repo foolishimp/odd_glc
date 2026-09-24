@@ -1,0 +1,69 @@
+{
+  "directExpected": {
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "32e513728f2853f1fa053d535ddeda11a84e880b91ab10262710c283b2e6a01a",
+      "byteLength": 54477,
+      "proof": "Writer current tracking projection with retained preimage"
+    },
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md": {
+      "sha256": "a08b2549b6dc7c68fcbbaebf00dc8f27d74c76560415ef6ecc50c74d6c6ef446",
+      "byteLength": 32188,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs": {
+      "sha256": "3b7f6ded4565083e6d122e122d3fec72803666444ecb8a517f03f5bd3bd098bc",
+      "byteLength": 3877,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs": {
+      "sha256": "98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886",
+      "byteLength": 13664,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs": {
+      "sha256": "31447f63a40a22794a82f9f68eddc70cfac79169be339647e6e1ae2010c2d901",
+      "byteLength": 15184,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs": {
+      "sha256": "4718be7a9fb0cbf556b613635f78dc06223b75eeec9c9a761635394123dc9371",
+      "byteLength": 69250,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "build_tenants/odd_glc/typescript/test/native-continuation.test.mjs": {
+      "sha256": "4179ae714944d508581a4478505d9ff94498f201b9e2a3ad07d7d0eae857f012",
+      "byteLength": 13887,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "build_tenants/odd_glc/typescript/test/native-correction.test.mjs": {
+      "sha256": "6cfd42e8af9e2feb7b85c0717f15c79a709fcb10c6ca68d18012a7e2e2b17781",
+      "byteLength": 40487,
+      "proof": "accepted GLC source subject 8eef0699"
+    },
+    "specification/GOALS.md": {
+      "sha256": "f0933ea6cf1da12cf074596f9f0a180dc949b1dc3a8be00c6dc62498f1190e1c",
+      "byteLength": 20117,
+      "proof": "Writer current tracking projection with retained preimage"
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-11/transport-01",
+      "catalogSha256": "44a06f4f136fdcfb95846644d2c4f79a63c8564c760f0b579990a68c6a6e574c",
+      "indexSha256": "9243343f5638d4df2ecde323dcb78932736559d71a50c1b65b69038365ac6897",
+      "verificationSha256": "1fef1a47fd829135691b2ddbaa71dc46b1d6eaa177aedec13b6cd9c1fa0d935f",
+      "members": 143,
+      "logicalBytes": 395352658,
+      "transportBytes": 48006866
+    }
+  ],
+  "scope": "Completed accepted source/generated/core13 and finite CLOSED evidence checkpoint, independent of the authorized one-launch GLC steel thread. Q07, operator-stop readback and paired checkpoint are not launch prerequisites. No execution or qualification outcome is inferred.",
+  "excluded": [
+    "Active G/held-design-reentry-implementation-02, held-design-reentry-execution-01 and held-design-reentry-launch-controls-01: excluded, no read/hash/copy or launch dependency",
+    "Q/successor-07: prepared/incomplete; excluded, no qualification acceptance or launch dependency",
+    "Operator-stop installed readback: pending at release boundary; no launch dependency",
+    "Original/S02 mutable journals, locks and worksites, installed/node_modules trees, scratch/disposable trees: excluded",
+    "S1-S5/oracle, complete qualification, QUAL056/F11/sole AF22, RC1 and human acceptance: open; earlier evidence keeps its exact scope"
+  ],
+  "sourcePostimageMutationByWriter": false
+}

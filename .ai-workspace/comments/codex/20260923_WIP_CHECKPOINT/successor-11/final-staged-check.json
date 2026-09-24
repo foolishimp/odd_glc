@@ -1,0 +1,11 @@
+{
+  "paths": 55,
+  "stagedBlobComparisons": 55,
+  "largestBlobBytes": 47878186,
+  "credentialShapeFindings": [],
+  "whitespaceExitCode": 0,
+  "whitespaceDisposition": "Pass",
+  "allAcceptedCanonicalPostimagesExact": true,
+  "priorPayloadReadOrReupload": false,
+  "activeResourcesExcluded": true
+}

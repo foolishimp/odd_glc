@@ -69,7 +69,7 @@ test('consumer command role produces a real native C2 instruction assembly',asyn
 test('one canonical Program preserves continuation and declares bounded correction handoffs',()=>{
  const result=validation();assert.equal(result.kind,'program_validation',JSON.stringify(result.diagnostics));
  const program=pub.programs[0],graphs=pubs.flatMap(p=>p.graphFunctions).filter(g=>program.callableMembership.includes(g.name));
- assert.equal(graphs.flatMap(g=>g.template.edges).filter(e=>e.inputBinding).length,4);assert.equal(pub.implementationBindings.length,7);
+ assert.equal(graphs.flatMap(g=>g.template.edges).filter(e=>e.inputBinding).length,8);assert.equal(pub.implementationBindings.length,13);
  for(const graph of graphs)for(const node of graph.template.nodes)for(const field of ['inputCarrierRef','outputCarrierRef']){
   const contract=pubs.flatMap(p=>p.contracts).find(c=>c.contractRef===node.term[field]);assert(contract);assert(r.contractValuePredicate(contract.valueKind),contract.valueKind);
  }

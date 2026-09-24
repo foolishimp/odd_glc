@@ -1,0 +1,18 @@
+{
+  "role": "Writer gpt-6-astra/max",
+  "files": [
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "preimageSha256": "5c1f7413b74fc645c15fba277a6c6f1697678dda3a72766ab5698a61e3df11c6",
+      "postimageSha256": "32e513728f2853f1fa053d535ddeda11a84e880b91ab10262710c283b2e6a01a"
+    },
+    {
+      "path": "specification/GOALS.md",
+      "preimageSha256": "f11e19e5b0a1038cfe0a686ef4c2552ee1bfcfca1a3df4e962b4bed2ad89d9e0",
+      "postimageSha256": "f0933ea6cf1da12cf074596f9f0a180dc949b1dc3a8be00c6dc62498f1190e1c"
+    }
+  ],
+  "sourceEdits": false,
+  "historicalEvidenceRewritten": false,
+  "scope": "Completed accepted source/generated/core13 and finite CLOSED evidence checkpoint, independent of the authorized one-launch GLC steel thread. Q07, operator-stop readback and paired checkpoint are not launch prerequisites. No execution or qualification outcome is inferred."
+}

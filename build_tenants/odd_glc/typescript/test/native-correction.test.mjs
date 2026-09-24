@@ -9,7 +9,7 @@ import * as abg from '@abiogenesis/typescript-tenant/abg';
 import * as gtl from '@abiogenesis/typescript-tenant/gtl';
 import * as v from '@abiogenesis/typescript-tenant/validator';
 import * as r from '../src/native-continuation-runtime.mjs';
-import {ids,correction,correctionStages,ASSESSMENT_SCHEMA_TEXT,CORRECTION_SELECTION_SCHEMA_TEXT} from '../src/native-continuation-contracts.mjs';
+import {ids,correction,correctionStages,reentry,reentryStages,ASSESSMENT_SCHEMA_TEXT,CORRECTION_SELECTION_SCHEMA_TEXT,DESIGN_ASSESSMENT_SCHEMA_TEXT} from '../src/native-continuation-contracts.mjs';
 import {constructNativeContinuationPublication,constructNativeContinuationEnvironmentRoles} from '../src/native-continuation-declarations.mjs';
 import {fixture,provenance,physical,native,executionObservation} from './support/native-continuation-fixture.mjs';
 const hash=p.sha256Canonical,coord=label=>({ref:'component://'+label,digest:hash(label)});
@@ -55,7 +55,7 @@ test('actual generic GTL declares one bounded correction path and complete imple
  assert(graph.template.edges.every((edge,i)=>edge.fromNodeRef===nodes[i].nodeRef&&edge.toNodeRef===nodes[i+1].nodeRef),'finite forward edges; no repetition');
  assert.equal(nodes[0].term.judgmentPredicateRef,correctionStages[0].predicateRef);
  assert.equal(nodes[2].term.judgmentPredicateRef,correctionStages[1].predicateRef);
- for(const stage of correctionStages){
+ for(const stage of [...correctionStages,...reentryStages]){
   const matches=Object.values(r).filter(x=>x?.kind==='packaged_leaf_implementation_descriptor'&&x.namedSymbol===stage.namedSymbol);
   assert.equal(matches.length,1);assert(p.isPackagedLeafImplementationDescriptor(matches[0]));assert.equal(typeof r[stage.namedSymbol],'function');
  }
@@ -64,6 +64,10 @@ test('actual generic GTL declares one bounded correction path and complete imple
  assert.deepEqual(roles.map(x=>x.role).sort(),['assessor','command_executor','constructor']);
  assert.deepEqual(roles.find(x=>x.role==='constructor').contextPolicy.selectors,['current_worksite']);
  assert.deepEqual(roles.find(x=>x.role==='command_executor').contextPolicy.selectors,['current_worksite','admitted_execution_evidence']);
+ const designSource={sourceRef:'source://component/design-method'};
+ const designRoles=constructNativeContinuationEnvironmentRoles({gtl,product:p,publication:pub,nativePublications:nativePubs,sourceBasisRef:'stdo://releases/v2.5.0-rc.4/',accessRefs:[],
+  sourceSelections:{common:[],worker:[],reviewer:[],construction:[],execution:[],evidence:[],design:[designSource]}});
+ assert(designRoles.filter(row=>row.role!=='command_executor').every(row=>row.sourceBindings.includes(designSource)));
  assert.notEqual(JSON.parse(CORRECTION_SELECTION_SCHEMA_TEXT).$id,JSON.parse(ASSESSMENT_SCHEMA_TEXT).$id);
  assert.deepEqual(JSON.parse(CORRECTION_SELECTION_SCHEMA_TEXT).properties.disposition.enum,['construction_repair','stage_revision_required','blocked']);
 });
@@ -75,7 +79,7 @@ test('generic correction selection and final assessment both satisfy the unchang
  const pub=constructNativeContinuationPublication({artifact,gtl,product:p});
  const nativePub=gtl.constructNativeWorkspaceWorkModulePublication(artifact),graphFunction=nativePub.graphFunctions.find(g=>g.name===p.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef);
  const rows=[];
- for(const [contractRef,text,path]of [[correction.selectionContractRef,CORRECTION_SELECTION_SCHEMA_TEXT,'selection.json'],[ids.rawContractRef,ASSESSMENT_SCHEMA_TEXT,'assessment.json']]){
+ for(const [contractRef,text,path]of [[correction.selectionContractRef,CORRECTION_SELECTION_SCHEMA_TEXT,'selection.json'],[ids.rawContractRef,ASSESSMENT_SCHEMA_TEXT,'assessment.json'],[reentry.rawContractRef,DESIGN_ASSESSMENT_SCHEMA_TEXT,'design.json']]){
   await fs.writeFile(join(f.env.scratch,path),text);const digest=p.sha256Bytes(Buffer.from(text));
   rows.push({contractKind:'schema_asset',contractId:contractRef,contractVersion:'5.0.0',owningProduct:ids.productId,contractDigest:digest,
    assetLocator:{path,mediaType:'application/schema+json',contentDigest:digest}});
@@ -101,13 +105,19 @@ test('generic correction selection and final assessment both satisfy the unchang
  assert.deepEqual(assemble().request.responseJsonSchema,JSON.parse(CORRECTION_SELECTION_SCHEMA_TEXT));
  selectedTask=f.assessmentTask;assert.equal(assemble().request.resultContractRef,ids.rawContractRef);
  assert.deepEqual(assemble().request.responseJsonSchema,JSON.parse(ASSESSMENT_SCHEMA_TEXT));
+ const d=await designFixture(t,'calendar');selectedTask=d.reviewTask;
+ assert.equal(assemble().request.resultContractRef,reentry.rawContractRef);
+ assert.deepEqual(assemble().request.responseJsonSchema,JSON.parse(DESIGN_ASSESSMENT_SCHEMA_TEXT));
+ selectedPub={...pub,graphFunctions:pub.graphFunctions.map(g=>({...g,declarations:{...g.declarations,'abg.raw_result_contract':ids.rawContractRef}}))};
+ assert.equal(assemble(),null,'Design raw contract must be declared in the selected callable closure');
+ selectedPub=pub;
  selectedTask=task;
  const oldGraphs=pub.graphFunctions.map(g=>({...g,declarations:{...g.declarations,'abg.raw_result_contract':ids.rawContractRef}}));
  selectedPub={...pub,graphFunctions:oldGraphs};assert.equal(assemble(),null,'original all-criterion-verdicts declaration refuses the selection task');
  selectedPub={...pub,programs:[{...pub.programs[0],callableMembership:pub.programs[0].callableMembership.filter(ref=>ref!==correction.graphFunctionRef)}]};
  assert.equal(assemble(),null,'a contract on a callable outside the selected closure is insufficient');
  selectedPub=pub;await fs.writeFile(join(f.env.scratch,'selection.json'),'{}');assert.equal(assemble(),null,'changed installed schema bytes still refuse');
- t.diagnostic('Actual native assembly with supplied admission/role premises; generic source declaration and both exact installed schemas. No native actor or admitted Run.');
+ t.diagnostic('Actual native assembly with supplied admission/role premises; generic source declaration and all three exact installed schemas. No native actor or admitted Run.');
 });
 
 test('R10 cause gate consumes owner values once and refuses missing or altered complete candidate facts before selector/author',async t=>{
@@ -235,4 +245,123 @@ test('material compact correction preserves every meaning/provenance fact withou
  assert(observations.compactInputBytes<observations.historicalBoundBytes/3);
  if(process.env.ABI5_HISTORICAL_SOURCE_EVIDENCE)await fs.writeFile(join(process.env.ABI5_HISTORICAL_SOURCE_EVIDENCE,'consumer-observations.json'),JSON.stringify(observations,null,2)+'\n');
  t.diagnostic(JSON.stringify(observations));
+});
+
+async function designFixture(t,label){
+ const f=await correctionFixture(t,label),selection={...f.selection,disposition:'stage_revision_required'},selector=f.selector(selection);
+ const terminal={...f.terminal,result:coord(label+'-closed-selector'),value:selector,valueDigest:hash(selector),
+  producer:{...f.terminal.producer,graphCallRef:'graph-call://component/'+label+'-selector',cCallRef:selector.provenance.cCallRef}};
+ const historicalSource={terminalResult:terminal,input:{graphFunctionRef:correction.graphFunctionRef,contractRef:correction.inputContractRef,value:f.input},publication:f.historicalSource.publication};
+ const designPath='successor-design.json',currentContext=await physical.observeWorksiteContext({...f.env,readRoots:[...f.context.readRoots,designPath],maxFiles:f.context.maxFiles,maxBytes:f.context.maxBytes});
+ const input=r.constructNativeDesignReentryInput({...r.projectNativeDesignReentryPrior(historicalSource),...Object.fromEntries(['workspaceAuthorityBasis','workspaceBinding','capabilityGrant'].map(k=>[k,f.input[k]])),currentContext,designPath});
+ const task=r.designAuthorTask(input),asset={kind:'native_revision_design',designText:'A warranted revision preserving '+label+' source and every obligation.',commands:input.executionPlan.commands,outcomePredicates:input.executionPlan.outcomePredicates};
+ await fs.writeFile(join(f.env.canonicalRoot,designPath),JSON.stringify(asset));
+ const after=await physical.observeWorksiteContext({...f.env,readRoots:currentContext.readRoots,maxFiles:currentContext.maxFiles,maxBytes:currentContext.maxBytes});
+ const author=native.constructNativeWorkspaceWorkObservation(task,after,{summary:'Supplied Design author premise.',gaps:[]},provenance(label+'-design-author'));
+ const reviewInput=bound(input,author),reviewTask=r.designReviewTask(reviewInput);
+ const raw={kind:'native_design_assessment',disposition:'satisfied',reason:'Supplied independent warranted Design judgment, not semantic proof.',
+  evidence:[{path:'source.txt',quote:f.texts['source.txt']},{path:designPath,quote:asset.designText}],
+  causes:[{causeRef:'residual:0',writePaths:['candidate.txt'],reason:'This exact candidate is affected.',evidence:[{path:designPath,quote:asset.designText}]}],
+  dependencyPaths:['source.txt','candidate.txt',designPath]};
+ const review=candidate=>native.constructNativeWorkspaceWorkObservation(reviewTask,after,null,provenance(label+'-design-reviewer'),candidate);
+ return {...f,input,selector,historicalSource,terminal,designPath,asset,author,after,reviewInput,reviewTask,raw,review};
+}
+
+test('closed selector of a later blocked parent is reused once; exact ancestor/task/cause and currentness conditions remain',async t=>{
+ const f=await designFixture(t,'calendar'),gate=r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentryStages[0].predicateRef),task=r.prepareDesignAuthor(f.input).resultCandidate;
+ let reads=0;const proof={historicalGraphCallSource(){reads++;return f.historicalSource;}};
+ assert(gate.evaluate(f.input,task,{currentOwner:true},proof));assert.equal(reads,1);
+ assert(!('parentResult' in f.historicalSource));assert(!('declarationProof' in f.input));assert(!('value' in f.input.selectorSource));
+ assert(!JSON.stringify(f.input).includes('projectionBasis'));assert(!JSON.stringify(f.input).includes('sourceReacquisition'));
+ assert(!gate.evaluate(f.input,task,undefined,proof));assert(!gate.evaluate(f.input,task,{},{}));
+ for(const mutate of [s=>s.input.graphFunctionRef=ids.assessmentWrapperRef,s=>s.input.contractRef=ids.boundInputContractRef,
+  s=>s.terminalResult.producer.cCallRef+='-crossed',s=>s.terminalResult.value.task.assessment.schemaAsset.bytesBase64=Buffer.from('{}').toString('base64'),
+  s=>s.terminalResult.value.assessment.issues=[],s=>s.terminalResult.value.assessment.disposition='construction_repair',
+  s=>s.publication.owningProductId='product://foreign',s=>s.input.value.job.claim+='-changed']){
+  const source=clone(f.historicalSource);mutate(source);assert(!gate.evaluate(f.input,task,{}, {historicalGraphCallSource:()=>source}));
+ }
+ for(const mutate of [x=>x.priorSelector.assessment.issues.pop(),x=>x.selectorSource.producer.runRef+='-crossed',x=>x.job.claim+='-different',
+  x=>x.executionPlan.commands[0].args=['other'],x=>x.currentContext.entries.find(e=>e.relativePath==='source.txt').digest=hash('changed')]){
+  const input=clone(f.input);mutate(input);let output;try{output=r.prepareDesignAuthor(input).resultCandidate;}catch{output=task;}
+  assert(!gate.evaluate(input,output,{},proof));
+ }
+ const owner='product://odd_glc/route-one-typescript@0.2.0-dev.6',source=clone(f.historicalSource);
+ source.publication.owningProductId=owner;source.publication.productSemanticsBinding.packageVersion='0.2.0-dev.6';
+ source.terminalResult.value=native.constructNativeWorkspaceWorkObservation(r.correctionSelectionTask(source.input.value,owner),source.input.value.currentContext,null,f.selector.provenance,f.selector.assessment);
+ source.terminalResult.valueDigest=hash(source.terminalResult.value);
+ const successor=r.constructNativeDesignReentryInput({...f.input,...r.projectNativeDesignReentryPrior(source)});
+ assert(gate.evaluate(successor,r.prepareDesignAuthor(successor).resultCandidate,{}, {historicalGraphCallSource:()=>source}),'historical schema owner remains exact');
+ const readsBeforeTransforms=reads;r.designAuthorTask(f.input);r.designReviewTask(f.reviewInput);assert.equal(reads,readsBeforeTransforms,'transforms never resolve history');
+ t.diagnostic(diagnostic+' Parent Run is explicitly nonterminal/blocked; only the selector child terminal is a supplied R10 premise.');
+});
+
+test('two unrelated jobs traverse judged Design, sole-current plan, construction, same-Run C2 and complete independent outcome',async t=>{
+ for(const label of ['calendar','accounting']){
+  const f=await designFixture(t,label),review=f.review(f.raw),reviewGate=r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentry.reviewPredicateRef);
+  assert(reviewGate.evaluate(f.reviewInput,review),JSON.stringify(r.interpretDesignReview(f.input,review)));
+  const handoff=r.selectCurrentDesign(bound(f.input,review)).resultCandidate;assert(r.isSelectedDesign(handoff));
+  assert.equal(handoff.job.planBasis.filter(p=>p.assetKind==='design').length,1);assert.equal(handoff.job.planBasis.find(p=>p.assetKind==='design').path,f.designPath);
+  assert(!handoff.job.sourcePaths.includes('design.json'));assert(handoff.predecessorDesigns.some(p=>p.path==='design.json'));
+  for(const key of ['jobRef','claim','candidatePaths','rubric','oracle','criterionEvidence','evidenceExpectations'])assert.deepEqual(handoff.job[key],f.input.job[key]);
+  assert.deepEqual(handoff.priorAssessment,f.input.priorAssessment);assert.deepEqual(handoff.executionPlan,f.input.executionPlan);
+  const task=r.designConstructionTask(handoff);assert.deepEqual(task.writeRoots,['candidate.txt']);assert(!task.readFirst.includes('oracle.json'));assert(!task.readFirst.includes('design.json'));
+  assert(!task.instructions.join('\n').includes(f.texts['oracle.json']));
+  await fs.writeFile(join(f.env.canonicalRoot,'candidate.txt'),'revised '+f.texts['candidate.txt']);
+  const after=await physical.observeWorksiteContext({...f.env,readRoots:f.after.readRoots,maxFiles:f.after.maxFiles,maxBytes:f.after.maxBytes});
+  const author=native.constructNativeWorkspaceWorkObservation(task,after,{summary:'Supplied construction premise.',gaps:[]},provenance(label+'-reentry-constructor'));
+  const executionTask=r.prepareDesignExecution(bound(handoff,author)).resultCandidate;
+  assert.equal(executionTask.sourceReacquisition,undefined);assert.equal(executionTask.sourceNativeWork,author);
+  const execution=executionObservation(executionTask,label+'-reentry'),assessmentInput=bound(handoff,execution),assessmentTask=r.prepareDesignOutcome(assessmentInput).resultCandidate;
+  const raw={...f.observation.assessment,residuals:f.input.priorAssessment.assessment.residuals.filter(r=>r.scope==='outside-assessment')};
+  const assess=(raw,who=provenance(label+'-outcome-reviewer'))=>native.constructNativeWorkspaceWorkObservation(assessmentTask,after,null,who,raw),result=assess(raw);
+  assert.equal(r.interpretDesignOutcome(assessmentInput,result).disposition,'satisfied');
+  assert(r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentry.assessmentPredicateRef).evaluate(assessmentInput,result));
+  assert(r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentry.constructionPredicateRef).evaluate(handoff,result));
+  assert(r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(ids.completionPredicateRef).evaluate(f.input,result));
+  for(const row of f.context.entries)if(row.relativePath!=='candidate.txt')assert.deepEqual(after.entries.find(e=>e.relativePath===row.relativePath),row);
+  assert.equal(r.interpretDesignOutcome(assessmentInput,assess({...raw,residuals:[]})).disposition,'unsatisfied');
+  assert.equal(r.interpretDesignOutcome(assessmentInput,assess({...raw,residuals:f.input.priorAssessment.assessment.residuals})).disposition,'unsatisfied');
+  assert(!r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentry.assessmentPredicateRef).evaluate(assessmentInput,assess({...raw,criteria:[]})));
+  for(const who of [author.provenance,execution.provenance,review.provenance,f.author.provenance,f.selector.provenance,f.input.priorAssessment.provenance])assert.throws(()=>r.interpretDesignOutcome(assessmentInput,assess(raw,who)),/independent/);
+  assert.throws(()=>r.designOutcomeTask(bound(handoff,f.execution)),/same-Run/);
+  const crossed=clone(handoff);crossed.job.planBasis.push(...handoff.predecessorDesigns);assert(!r.isSelectedDesign(crossed),'two current Designs refuse');
+ }
+ t.diagnostic(diagnostic);
+});
+
+test('Design rejection, independence, source protection, currentness and complete affectedness block before construction',async t=>{
+ const f=await designFixture(t,'calendar'),gate=r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentry.reviewPredicateRef);
+ for(const change of [x=>x.disposition='falsified',x=>x.disposition='indeterminate',x=>x.causes=[],x=>x.causes.push(x.causes[0]),
+  x=>x.causes[0].writePaths=['source.txt'],x=>x.causes[0].evidence[0].quote='invented',x=>x.dependencyPaths=['source.txt'],x=>x.evidence=x.evidence.filter(e=>e.path!=='source.txt')]){
+  const raw=clone(f.raw);change(raw);const review=f.review(raw);assert(!gate.evaluate(f.reviewInput,review));assert.throws(()=>r.selectDesign(bound(f.input,review)),/positive independent/);
+ }
+ for(const who of [f.author.provenance,f.selector.provenance,f.input.priorAssessment.provenance]){
+  const review=native.constructNativeWorkspaceWorkObservation(f.reviewTask,f.after,null,who,f.raw);assert(!gate.evaluate(f.reviewInput,review));
+ }
+ const originalSource=f.texts['source.txt'];await fs.writeFile(join(f.env.canonicalRoot,'source.txt'),'unauthorized governing change');
+ const crossed=await physical.observeWorksiteContext({...f.env,readRoots:f.after.readRoots,maxFiles:f.after.maxFiles,maxBytes:f.after.maxBytes});
+ const author=native.constructNativeWorkspaceWorkObservation(r.designAuthorTask(f.input),crossed,{summary:'Forbidden source write.',gaps:[]},f.author.provenance);
+ assert.throws(()=>r.designReviewTask(bound(f.input,author)),/bounded Design/);
+ await fs.writeFile(join(f.env.canonicalRoot,'source.txt'),originalSource);
+ for(const mutate of [a=>a.commands=[],a=>a.commands.push({...a.commands[0],commandId:'command://extra',executable:'different-tool'}),
+  a=>a.commands.push({...a.commands[0],commandId:'command://extra',timeoutMs:999999}),a=>a.commands.push(a.commands[0])]){
+  const asset=clone(f.asset);mutate(asset);await fs.writeFile(join(f.env.canonicalRoot,f.designPath),JSON.stringify(asset));
+  const context=await physical.observeWorksiteContext({...f.env,readRoots:f.after.readRoots,maxFiles:f.after.maxFiles,maxBytes:f.after.maxBytes});
+  const a=native.constructNativeWorkspaceWorkObservation(r.designAuthorTask(f.input),context,{summary:'Inadequate command plan.',gaps:[]},f.author.provenance),b=bound(f.input,a),task=r.designReviewTask(b);
+  const review=native.constructNativeWorkspaceWorkObservation(task,context,null,provenance('independent-invalid-plan'),f.raw);
+  assert(!gate.evaluate(b,review),'raw positive cannot admit weakened or unauthorized execution plan');
+  assert(!gate.evaluate(f.reviewInput,review),'a later valid observation cannot replace the selected current subject');
+ }
+ const extended={...f.asset,commands:[...f.asset.commands,{...f.asset.commands[0],commandId:'command://extra',args:['additional-check.mjs']}]};
+ await fs.writeFile(join(f.env.canonicalRoot,f.designPath),JSON.stringify(extended));
+ const extensionContext=await physical.observeWorksiteContext({...f.env,readRoots:f.after.readRoots,maxFiles:f.after.maxFiles,maxBytes:f.after.maxBytes});
+ const extensionAuthor=native.constructNativeWorkspaceWorkObservation(r.designAuthorTask(f.input),extensionContext,{summary:'Scoped additional proof command.',gaps:[]},f.author.provenance),extensionInput=bound(f.input,extensionAuthor);
+ const extensionReview=native.constructNativeWorkspaceWorkObservation(r.designReviewTask(extensionInput),extensionContext,null,provenance('independent-extension'),f.raw);
+ assert(gate.evaluate(extensionInput,extensionReview),'existing command bounds permit independently assessed additional proof');
+ assert.equal(r.selectDesign(bound(f.input,extensionReview)).executionPlan.commands.length,f.asset.commands.length+1);
+ await fs.unlink(join(f.env.canonicalRoot,f.designPath));
+ const missing=await physical.observeWorksiteContext({...f.env,readRoots:f.after.readRoots,maxFiles:f.after.maxFiles,maxBytes:f.after.maxBytes});
+ const missingAuthor=native.constructNativeWorkspaceWorkObservation(r.designAuthorTask(f.input),missing,{summary:'No Design was produced.',gaps:['candidate absent']},f.author.provenance);
+ assert(!r.NATIVE_CONTINUATION_SEMANTICS.resolveJudgmentRelation(reentry.stepPredicateRef).evaluate(missingAuthor.task,missingAuthor),'missing Design blocks at author foldback before preparation');
+ t.diagnostic(diagnostic);
 });
