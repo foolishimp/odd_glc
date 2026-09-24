@@ -1,0 +1,60 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "44a3f3989f7158e60559336a65a9461b5f4852a0",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 52
+  },
+  "archiveMemberCount": 52,
+  "archiveMemberBytes": 2165001,
+  "transportBytes": 837780,
+  "assets": [
+    {
+      "id": "raw-27d9dddbdeaf910012735bffdb6d5d91d0c04f0592bd9958a80d286eb6a13bd6",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 89937,
+      "sha256": "27d9dddbdeaf910012735bffdb6d5d91d0c04f0592bd9958a80d286eb6a13bd6",
+      "parts": [
+        {
+          "path": "payloads/raw-27d9dddbdeaf910012735bffdb6d5d91d0c04f0592bd9958a80d286eb6a13bd6.part0000",
+          "byteLength": 89937,
+          "sha256": "27d9dddbdeaf910012735bffdb6d5d91d0c04f0592bd9958a80d286eb6a13bd6"
+        }
+      ]
+    },
+    {
+      "id": "raw-65e8a3822fb6f761ad670053496dab8231a5bca6ba2c9af3d82bcc77e1e20f03",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 89936,
+      "sha256": "65e8a3822fb6f761ad670053496dab8231a5bca6ba2c9af3d82bcc77e1e20f03",
+      "parts": [
+        {
+          "path": "payloads/raw-65e8a3822fb6f761ad670053496dab8231a5bca6ba2c9af3d82bcc77e1e20f03.part0000",
+          "byteLength": 89936,
+          "sha256": "65e8a3822fb6f761ad670053496dab8231a5bca6ba2c9af3d82bcc77e1e20f03"
+        }
+      ]
+    },
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS",
+      "byteLength": 657907,
+      "sha256": "08497907e648ba7a4fbc710e50d56e1ba6d52f181d2451a562b638689f53dae2",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 657907,
+          "sha256": "08497907e648ba7a4fbc710e50d56e1ba6d52f181d2451a562b638689f53dae2"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "82a595334bd0be806d09aa1fe878867612042b6d9052982cd2b7d6eb255f040d",
+  "reconciliationSha256": "755680788e0f8268a751df228d8abfe75162d98428b4b75e4ec60f7ec1f1b19d",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

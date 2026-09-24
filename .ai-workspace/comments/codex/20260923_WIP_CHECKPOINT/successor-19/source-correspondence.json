@@ -1,0 +1,14 @@
+[
+  {
+    "repo": "odd_glc",
+    "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "headPreimageSha256": "e23d9c34af63a051549fea5e6fdbb487ef5774cf173c7aca4fcd9efe33e63a46",
+    "acceptedPostimageSha256": "c971c79b3012901b7ad8c350722acb6e68416666a23b1fe434c43818f4fbad6e"
+  },
+  {
+    "repo": "odd_glc",
+    "path": "specification/GOALS.md",
+    "headPreimageSha256": "2060088e78b81ee2e04d8fe7427e3e8374c9143548e0a811a23124891cb0982f",
+    "acceptedPostimageSha256": "b909bfb80aa2f49542624d08d8c293395eb0ff7c3136b03aaffe3f1256f69e95"
+  }
+]
