@@ -1,0 +1,55 @@
+{
+  "directExpected": {
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-15-paired-post-push.json": {
+      "sha256": "c3ab671b146291a3f61fe222d7bdad2c0f0dd76f3a6cf231bb463495e3278f3a",
+      "byteLength": 13755
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-15-return.md": {
+      "sha256": "8574f4e642bbfd70c890c88a31013d400cfaec64bf047a9c104e4efca8b9c576",
+      "byteLength": 1386
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/activation.json": {
+      "sha256": "d70d5724b1ca9fe24cdbc826c8ecf95cf868f81ab13c34e832335085207f2615",
+      "byteLength": 798
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/direct-selection.json": {
+      "sha256": "204f0ec45ee5d0ae356cb20725162526f0f0109b97773e23b074acfef12e6773",
+      "byteLength": 311
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/exclusions.json": {
+      "sha256": "4f4658c15d8c2713863d403e63d990e2d0be3ecb902c1dc0f1e19e140af4f5c3",
+      "byteLength": 568
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/root-disposition.json": {
+      "sha256": "dfd903feb02187592045d13f9bd8dde690bc3727305f2d2fb1fc0d94e4fadc26",
+      "byteLength": 1786
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/stage_checkpoint.py": {
+      "sha256": "ad0752d940ba8dc931b8c33c2e080d118c203d0c48df1dcdaaa125d4e9c780a2",
+      "byteLength": 2927
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/tracking-postimages.json": {
+      "sha256": "b8e58610e25f2360fa5873d66868b0efa2930275710569b63a4d0ceb6dfb4d25",
+      "byteLength": 338
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/tracking-preimages.json": {
+      "sha256": "fa63f380893f55ba187055d307a7db9229a854f7be6069016e284d865158b1ce",
+      "byteLength": 338
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-16/transport-reuse.json": {
+      "sha256": "bfaae2160a879df34db6cb3e11f39da0d4433cb399a09401ba154841868e5e23",
+      "byteLength": 627
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "50287229df6e3bf55c8f22772f83b428eddbefcbd92d85df2a7923bf00e0f371",
+      "byteLength": 60538
+    },
+    "specification/GOALS.md": {
+      "sha256": "b56423eeaf0bb055ddf7dfe6221ed455b1ce8bc4ea6bbcc984093abba67b4c17",
+      "byteLength": 19905
+    }
+  },
+  "newArchive": null,
+  "excludedRuntimeScope": "see exclusions.json",
+  "previousO4Bank": "reference only; no historical bytes reprocessed"
+}

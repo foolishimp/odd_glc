@@ -1,0 +1,11 @@
+{
+  "status": "exact explicit staged set and all blob/current-file hashes verified",
+  "stagedMembers": 15,
+  "canonicalWhitespace": "passed",
+  "fullFrozenEvidenceWhitespaceExitCode": 0,
+  "fullFrozenEvidenceWhitespaceOutput": "",
+  "frozenSourcePatchDisposition": null,
+  "sourceUnchanged": true,
+  "currentState": "Root selected five core18 successor preparation/execution; latest caller hash-domain assertion before binding retained; no Run/actor/workspace effect",
+  "noTestsBuildRuntimeReads": true
+}
