@@ -1,0 +1,6 @@
+{
+  "predecessorBank": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/catalog.json",
+  "predecessorBankSha256": "8617388c5956bb35069ede21f17b969f8cbd8f7f0ddcb721fa1b52c42454ae67",
+  "reuse": "checkpoint20 and earlier banks retain old core22/dev12/setup/source cuts by reference; new bank stores core23 and dev14 once plus dev13 explicitly rejected diagnostic candidate",
+  "excludedReadbackBasis": "Large derived snapshot is preserved outside Git. No replay claim is reconstructed from serialized live-owner authority; exact closed receipts/requests and source construction remain banked."
+}

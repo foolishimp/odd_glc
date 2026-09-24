@@ -1,12 +1,13 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, mkdtemp, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
 import { constructFullSandboxPackage, constructOrdinaryJobInput, constructFullHelloInputs, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
   FULL_HELLO_TARGETS, FULL_HELLO_STAGE_MEANINGS, nativeFullSandboxPublications } from "./full-sandbox-declarations.mjs";
 import { readFullSandboxCandidate, installedFullSandboxApis, ordinarySandboxInputs, evaluateOrdinaryJobObservation,
-  fullSandboxTransportEnvironment } from "./full-sandbox-support.mjs";
+  fullSandboxTransportEnvironment, fullSandboxSetupCalls } from "./full-sandbox-support.mjs";
 import { D1_WITNESS_IDS, D1_FROZEN_INPUT_SHA256 } from "./d1-lifecycle-declarations.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -34,6 +35,58 @@ if (candidatePath) {
 }
 const native = { skip: candidatePath ? false : "PENDING: exact frozen successor ABI package not selected; current default pin is not used" };
 const managedNative = { skip: candidatePath && managementConfigurationPath ? false : "PENDING: exact candidate and frozen management configuration both required" };
+
+test("setup native lifetime retains actual successors and closes on result, refusal and exception", { skip: !sourceRoot }, async () => {
+  const abg = await import(pathToFileURL(join(sourceRoot, "build/code/src/abg/index.js")).href);
+  const resourceOwner = await import(pathToFileURL(join(sourceRoot, "build/code/src/abg/definition_event_resource.js")).href);
+  // Controlled fixed-operation output tests caller cleanup, not Public admission.
+  // Resource acquisition, borrowing, successor and reopen are actual ABG owners.
+  for (const disposition of ["result", "refusal", "exception"]) {
+    const scratch = await mkdtemp(join(tmpdir(), "glc-setup-lifetime-")), calls = [];
+    const productValue = Object.freeze({ retained: "actual object" });
+    const state = { ordinal: 0, closeHandoff: null, abg, product,
+      installedPublic: {
+        async runInstalledDefinitionCallTransport(acquisition, candidate) {
+          assert.equal(acquisition.kind, "eventless");
+          assert.strictEqual(candidate.resources.verifiedArtifact, productValue);
+          return { kind: "installed_definition_call_transport_result", receipt: { exitCode: 0, ownerOutput: { outcomeKind: "result" }, resources: {} } };
+        },
+        async runInstalledDefinitionCallWithResource(selection, candidate) {
+          assert.strictEqual(candidate.resources.eventResource, selection);
+          const borrowed = await abg.acquireAbgEventResource(selection);
+          assert.equal(borrowed.kind, "acquired_abg_event_resource");
+          if (disposition === "exception") throw new Error("retained first cause");
+          const completion = resourceOwner.completeAbgEventResource(borrowed.resource, selection.prefix);
+          assert.ok(resourceOwner.acquiredAbgEventResourceCompletionCorresponds(selection, completion));
+          return { kind: "installed_definition_call_transport_result", receipt: { exitCode: disposition === "result" ? 0 : 1,
+            ownerOutput: { outcomeKind: disposition === "result" ? "result" : "failure" },
+            failure: disposition === "refusal" ? { code: "retained refusal" } : null, resources: { eventResource: completion } } };
+        },
+      } };
+    const setup = fullSandboxSetupCalls({ scratch, abiArtifact: productValue, abiRequest: {}, hash: product.sha256Canonical, coord: () => {}, calls, state });
+    const invocation = { definitionKey: { operationId: "abg.operation.product.install", memberKey: "install" }, invocationRef: "test://setup" };
+    try {
+      await setup.invoke({ invocation, resources: { verifiedArtifact: productValue } }, "eventless");
+      const eventLogPath = join(scratch, "events.jsonl");
+      await setup.acquire({ kind: "new_abg_event_resource", schemaVersion: "5.0.0", eventLogPath, locatorDigest: product.sha256Canonical({ kind: "abg_event_log_locator", eventLogPath }) });
+      const entry = setup.reopen();
+      try {
+        const call = setup.invoke({ invocation, resources: { eventResource: entry } }, "owned");
+        if (disposition === "result") { await call; assert.notStrictEqual(setup.reopen(), entry); }
+        else await assert.rejects(call, disposition === "exception" ? /retained first cause/ : /receipts\/01-owned.json/);
+      } finally { await setup.close(); }
+      await setup.close(); // no duplicate physical close or evidence overwrite
+      const closed = JSON.parse(await readFile(join(scratch, "setup-resource-close.json"), "utf8"));
+      assert.equal(resourceOwner.validateAbgEventResourceReceipt(closed.receipt), true);
+      const reopened = await abg.acquireAbgEventResource(setup.reopen());
+      assert.equal(reopened.kind, "acquired_abg_event_resource");
+      abg.closeAbgEventResource(reopened.resource, reopened.resource.entryPrefix);
+      const retained = JSON.parse(await readFile(join(scratch, `receipts/01-owned.${disposition === "exception" ? "exception.json" : "json"}`), "utf8"));
+      if (disposition === "refusal") assert.equal(retained.receipt.failure.code, "retained refusal");
+      if (disposition === "exception") assert.match(retained.stack, /retained first cause/);
+    } finally { await setup.close(); await rm(scratch, { recursive: true, force: true }); }
+  }
+});
 
 function validateDeclaredProgram(publication, freshNative = false, selectedProgram = publication.programs[0]) {
   const nativePublications = nativeFullSandboxPublications(gtl, artifact, freshNative), publications = [...nativePublications, publication];

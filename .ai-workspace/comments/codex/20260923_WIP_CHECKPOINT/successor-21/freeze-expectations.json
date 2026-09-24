@@ -1,0 +1,254 @@
+{
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/artifacts/odd-glc-route-one-typescript-0.2.0-dev.13.tgz": {
+    "sha256": "13657d1a77fda154d7396c2785841f55333991c692563767f2cb5a440fd4d3c7",
+    "byteLength": 89939
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/configuration-source.json": {
+    "sha256": "f4705ba649097cb4221b18d7af6240426e8377510bb86c3053415d13b1dec3ad",
+    "byteLength": 2251
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/construct-consumer.mjs": {
+    "sha256": "49d3e92ef79689669537785775da7064bbb2a4c0b9809acfd972d7e71156e105",
+    "byteLength": 5324
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/construction-timing.json": {
+    "sha256": "bc84430ec4517611440e62789c7972ea45f9c90e0f8b7ee120a30ea95a049fef",
+    "byteLength": 312
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/construction.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/construction.stdout": {
+    "sha256": "4eb24f9cc7e5500ae5e946d421932bdc45d8b625b6e69e533b6913c62aff8b8d",
+    "byteLength": 393
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnose-consumer.mjs": {
+    "sha256": "f248f0994b5f08768465e670a67123539d6d95fb8113df5ace7210a0ca3f9289",
+    "byteLength": 1742
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnostic-cause.json": {
+    "sha256": "c13336cf63ad09236623b5f4afc08e9ea2a3091b9f9177783dd07b55eb9a8de4",
+    "byteLength": 7813
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnostic-verification-input.json": {
+    "sha256": "9ec0bb3d6e5b4dabe767d0cc9155a410f80e1da4ad5b4d8c35fbc7e59cd1c14e",
+    "byteLength": 5396
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnostic-verification-result.json": {
+    "sha256": "404cda4a0c59c40a72018b1567ef92778a20a8d2f14bff0ee53d494e4e2b26e2",
+    "byteLength": 367
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnostic-verification-timing.json": {
+    "sha256": "c0e1a581326a8f87ad7e3e70bff271d5a38a3030889cb185efb78efaea0bfb6f",
+    "byteLength": 184
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnostic.stderr": {
+    "sha256": "9ab5023826172f8b06cf5a05596aa7461878cc13b38f3c5df54c04dd3cf568c9",
+    "byteLength": 777
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/diagnostic.stdout": {
+    "sha256": "36d349bdb5d15ef8c9a5c5e2f8cfc4f79cf8734ff66c2d4452d54a8edcc84cc9",
+    "byteLength": 68
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/install.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/install.stdout": {
+    "sha256": "5c514abdf82574090df3d860cd7d3f2e9c821a9d6a1531f9778485e0ee1f7db2",
+    "byteLength": 25
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/installed-consumer.json": {
+    "sha256": "542330367759af1effe96303e22faa3d48b150f8fef37cb86d465d4de568d0a0",
+    "byteLength": 3059
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/member-correspondence.json": {
+    "sha256": "3ee28d3e76b0c22c58d08951383110bdfcf0d579a0baee1d39dbf99155ca8908",
+    "byteLength": 1613
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/pack.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/pack.stdout": {
+    "sha256": "5c3f38465b0f3105c3a5d25d6dc0b3e76a40dab07f8997fde883e8275ac7c20f",
+    "byteLength": 1525
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/package-basis.json": {
+    "sha256": "e2db6d796dcc3f6b196f61cff2288e8be405481238ce6d01fd988189821a763f",
+    "byteLength": 3087
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/return.md": {
+    "sha256": "a74f4146c9a541e5155c46d50436fa7a4832284a98c74e3778531ab34b784104",
+    "byteLength": 968
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/selection.json": {
+    "sha256": "86447da7b8c70cd5dce18279e2f8a15177184e423e6fb17a16afd23984ee3273",
+    "byteLength": 2058
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/tooling-source-correspondence.json": {
+    "sha256": "5d17c509e5c5b04d5671db2d7abf7b6828888967d6818ea53ec28f9feb4d3ab7",
+    "byteLength": 1119
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/verification.stderr": {
+    "sha256": "75a6dedaff8cb0f1cb52df33f763c0f0ee73c656b333e7d8b0f862a914e574ba",
+    "byteLength": 837
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/verification.stdout": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/verify-consumer.mjs": {
+    "sha256": "cee66a06c26dbfa5eb2aa3807aaea8f18f0be66db846347b3a733a0092ea57f9",
+    "byteLength": 6586
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/artifacts/odd-glc-route-one-typescript-0.2.0-dev.14.tgz": {
+    "sha256": "6bb1c603594258cafb80349edde611dab3bd6a33265aada806114ccb5d06e2a2",
+    "byteLength": 89936
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/configuration-source.json": {
+    "sha256": "f4705ba649097cb4221b18d7af6240426e8377510bb86c3053415d13b1dec3ad",
+    "byteLength": 2251
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/construct-consumer.mjs": {
+    "sha256": "d4aac09b4ffd1936b88d02e8b35b9d823179110062a655464609770e6709f74e",
+    "byteLength": 6549
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/construction-timing.json": {
+    "sha256": "7770bf5c84c7348b1000b2d4ecf4b46e928bfd2c53467ddcb06a551b788ab689",
+    "byteLength": 319
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/construction.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/construction.stdout": {
+    "sha256": "1701a8b46f63906fef343fb0d23b6105fe045092a175622766e394b8e51c823e",
+    "byteLength": 393
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/factory-retention-correspondence.json": {
+    "sha256": "4e507e4c99d24cc80d1fce50136f2113b5757b9fbe0e9b34d06db82c5d59b627",
+    "byteLength": 724
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/install.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/install.stdout": {
+    "sha256": "27f383a1db5d0550625b2577355617a2d0f84d319ac6ad5fb32f06274bb98625",
+    "byteLength": 25
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/installed-consumer.json": {
+    "sha256": "8a7ffee376a55c561d48d106e45f6e44f74184a067855ba385769903e42947a6",
+    "byteLength": 3059
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/member-correspondence.json": {
+    "sha256": "f31f88c3bf322f4c8b983c9614932279f63d1d4e3ed40a2a6ab1dcf1ebc28f16",
+    "byteLength": 1613
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/pack.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/pack.stdout": {
+    "sha256": "4a849a916834bc0570265782cdc568081db3e4950e43173589d2ff0850a76bd8",
+    "byteLength": 1525
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/package-basis.json": {
+    "sha256": "9b8370dcb0743440432317d3380a1c8a29dbd7808585778dfaed439998b2b2fc",
+    "byteLength": 3087
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-1.json": {
+    "sha256": "21ac863a5cf730a9e719b87c9a590ce47cabb69fe85f630efe76f8c3526471f7",
+    "byteLength": 88730
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-2.json": {
+    "sha256": "cc270de0a87619dae9755f81e8760c58d61d09cc485dea1d9f42118e0c1f4459",
+    "byteLength": 52353
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-3.json": {
+    "sha256": "8629b178a51c7dbd57a838affa20c672028a4ae0f076d78572b1d982c7964b99",
+    "byteLength": 56116
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-4.json": {
+    "sha256": "3a433ddaa25fa6680e834808cb9c5c7a81e9ebdb8a297c8aca52a692c215f78e",
+    "byteLength": 42435
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-5.json": {
+    "sha256": "2182890f9543f3171cb63c6595c798a42240ba2ed51038fd839187bbf81f5311",
+    "byteLength": 67553
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-6.json": {
+    "sha256": "6aed87aca3712ea94826fe7d2740398435695e6cf6e01cd1a4a1513eb900219e",
+    "byteLength": 63755
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-7.json": {
+    "sha256": "ba1eaff12b75767ec68255824d4adb2e3a6e0009b6384f08cd7927e013ca2481",
+    "byteLength": 59973
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation-8.json": {
+    "sha256": "1d7065fdbbd89213fc5c761c48cee2d1aeef154c2a8586ee3ed9ba9f4717f59a",
+    "byteLength": 40532
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/program-validation.json": {
+    "sha256": "3dfa69b294dfd376cde77e3c60e1c9a8dc8b94909592775c88d1696a12dfde9d",
+    "byteLength": 484412
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/prospective-publication.json": {
+    "sha256": "c494ec982b9b44bf866313478b50ec3007b0ab39208752d3dc8662cba703ac18",
+    "byteLength": 1084080
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/publication-identity-selection.json": {
+    "sha256": "14dfb584bd395f02a7d165ccbc81af64fa21b18c0e36cd9208ec3d30f7019611",
+    "byteLength": 740
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/return.md": {
+    "sha256": "848d86a2c9b30552662fd35af9c44a1c35f1b8fe8ef0ceae5869a69faa5d23d1",
+    "byteLength": 728
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/selection.json": {
+    "sha256": "cf5947e6a725233555ff9f43e31e461f79447859bef0544375b9b410e0d395d4",
+    "byteLength": 2102
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/tooling-source-correspondence.json": {
+    "sha256": "5d17c509e5c5b04d5671db2d7abf7b6828888967d6818ea53ec28f9feb4d3ab7",
+    "byteLength": 1119
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification-outcome-0.json": {
+    "sha256": "51b2837e4d055282c3d57c943f45aa5d160d80e0321f7e24682b22549ff3e44f",
+    "byteLength": 12625668
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification-outcome-1.json": {
+    "sha256": "d49e2da276f60b249b90a80119f07a642fdfc556745516bdc96c6e69f8116c1e",
+    "byteLength": 38981
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification-request-0.json": {
+    "sha256": "9666bf48d5b51cd4d54e46c7153c920d6338ddde6be2bf8d3c2f45c9394a3607",
+    "byteLength": 893
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification-request-1.json": {
+    "sha256": "94aa4a9625c4ea0b4f7f027db35e532f60bda6d0cc9f88e89045a9c013cab6d1",
+    "byteLength": 895
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification-summary.json": {
+    "sha256": "196076dff7d1108e273554db181b3895788f44911921b6f719e2be4d2a10e38f",
+    "byteLength": 6116
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verification.stdout": {
+    "sha256": "60a86ca1669c9711074c043edced4813091fa90ce17488e1d090b92d33ac15fc",
+    "byteLength": 246
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/verify-consumer.mjs": {
+    "sha256": "58570543a86c54f9093d69d3fa98fdf2a4aaa56657b1357ae38aefb53a8ac37b",
+    "byteLength": 6704
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/whole-publication-validation.json": {
+    "sha256": "c8662a8149d08df2a55d8e787e9ef7479e12b08e71a6d685210213ab3e262eb6",
+    "byteLength": 2837
+  }
+}

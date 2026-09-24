@@ -1,0 +1,21 @@
+{
+  "explicit": [
+    {
+      "path": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev13/development-product",
+      "reason": "installed/materialized tree or runtime directory; exact selected package retained instead"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev14/development-product",
+      "reason": "installed/materialized tree or runtime directory; exact selected package retained instead"
+    }
+  ],
+  "general": [
+    "all original and current runtime journals",
+    "all workspaces/application files",
+    "all installed Products/node_modules",
+    "all unchanged predecessor proof banks/archives",
+    "unrelated untracked work"
+  ],
+  "noNewRuntimeEffects": true,
+  "currentClosedResourceBytes": 115102824
+}

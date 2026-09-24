@@ -1,0 +1,60 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "bccd73b5dba3424bbb90ebfb0cf1fc28c21174db",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 63
+  },
+  "archiveMemberCount": 63,
+  "archiveMemberBytes": 14971892,
+  "transportBytes": 2054986,
+  "assets": [
+    {
+      "id": "raw-13657d1a77fda154d7396c2785841f55333991c692563767f2cb5a440fd4d3c7",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 89939,
+      "sha256": "13657d1a77fda154d7396c2785841f55333991c692563767f2cb5a440fd4d3c7",
+      "parts": [
+        {
+          "path": "payloads/raw-13657d1a77fda154d7396c2785841f55333991c692563767f2cb5a440fd4d3c7.part0000",
+          "byteLength": 89939,
+          "sha256": "13657d1a77fda154d7396c2785841f55333991c692563767f2cb5a440fd4d3c7"
+        }
+      ]
+    },
+    {
+      "id": "raw-6bb1c603594258cafb80349edde611dab3bd6a33265aada806114ccb5d06e2a2",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 89936,
+      "sha256": "6bb1c603594258cafb80349edde611dab3bd6a33265aada806114ccb5d06e2a2",
+      "parts": [
+        {
+          "path": "payloads/raw-6bb1c603594258cafb80349edde611dab3bd6a33265aada806114ccb5d06e2a2.part0000",
+          "byteLength": 89936,
+          "sha256": "6bb1c603594258cafb80349edde611dab3bd6a33265aada806114ccb5d06e2a2"
+        }
+      ]
+    },
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS",
+      "byteLength": 1875111,
+      "sha256": "56b68de6b2940b3b57caada77117431ba84f371154560af533e5c5765c7da169",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 1875111,
+          "sha256": "56b68de6b2940b3b57caada77117431ba84f371154560af533e5c5765c7da169"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "cbbccb24d8126991023308f25049d8fb8558379766d102f960676b6ae08ac2d7",
+  "reconciliationSha256": "ad0fb42ad13a25622100500bd024877a3850863e0eeb3344bd7a1d7950d1e020",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

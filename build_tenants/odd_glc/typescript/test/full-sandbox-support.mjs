@@ -40,6 +40,43 @@ export function constructFullSandboxTransportConfiguration(value, abg) {
 
 // Thin Public setup caller shared by initial setup and its finite conformance tail.
 export function fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, coord, calls, state }) {
+  // One installed module instance owns verification and the setup lifetime.
+  // Retained JSON below is evidence only; it never restores a live selection.
+  const { abg, installedPublic } = state;
+  let acquired = null, selection = null, closed = false;
+  const prefix = () => selection?.prefix ?? state.closeHandoff?.prefix;
+  const reopen = () => selection ?? ({ kind: "reopen_abg_event_resource", schemaVersion,
+    closeHandoff: state.closeHandoff, handoffDigest: hash(state.closeHandoff) });
+  async function acquire(assertion = reopen()) {
+    assert.ok(!acquired && !closed, "setup has one resource acquisition");
+    const started = performance.now(), outcome = await abg.acquireAbgEventResource(assertion);
+    // Take custody before any fallible evidence write so finally can release it.
+    if (outcome.kind === "acquired_abg_event_resource") {
+      acquired = outcome.resource;
+      selection = abg.selectAcquiredAbgEventResource(acquired, acquired.entryPrefix);
+    }
+    await save(scratch, "setup-resource-entry.json", { elapsedMs: performance.now() - started,
+      outcome: acquired ? { kind: outcome.kind, acquisitionKind: acquired.acquisitionKind, entryPrefix: acquired.entryPrefix } : outcome });
+    assert.equal(outcome.kind, "acquired_abg_event_resource", "setup acquisition refused; see setup-resource-entry.json");
+    return selection;
+  }
+  async function close() {
+    if (!acquired || closed) return;
+    const started = performance.now();
+    try {
+      // A throwing owner may have appended before returning a completion.
+      // Ask the same physical owner for its actual cut, never guess the extent.
+      const receipt = abg.closeAbgEventResource(acquired, abg.selectHeldEventStoreDurablePrefix(acquired.store));
+      closed = true; selection = null; state.closeHandoff = receipt.closeHandoff;
+      await save(scratch, "setup-resource-close.json", { elapsedMs: performance.now() - started, receipt });
+      return receipt;
+    } catch (error) {
+      if (!closed) { abg.abandonAbgEventResource(acquired); closed = true; selection = null; }
+      await save(scratch, "setup-resource-close-failure.json", { message: error.message, stack: error.stack,
+        disposition: "No synthetic close; retained owner recovery is required if physical close failed." });
+      throw error;
+    }
+  }
   const slotsFor = (definition, supplied = {}) => ({ workspace_binding: null, product_set: null, dependency_lock: null, catalog_scope: null,
     execution_program: null, graph_function: null, input_contract: null, session_policy: null, capability_grants: { requiredCapabilityRefs: [...definition.capabilityRefs], grants: [] },
     actor: null, transport_steering: null, verification_references: null, execution_basis: null, ...supplied });
@@ -54,7 +91,7 @@ export function fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, 
         owner: { ref: packet.owner.authorityRef, digest: packet.owner.authorityDigest } }, ownerArtifact: { request: abiRequest, verified: abiArtifact }, request,
       resourceScope: { resourcesDigest: hash(resources), authoritySlots: product.admissionAuthoritySlots(slots) },
       boundEnvironment: packet.metadata.workspaceBindingRequirement === "forbidden" ? null
-        : product.admissionEnvironmentSelection(state.closeHandoff.prefix, slots.workspace_binding) };
+        : product.admissionEnvironmentSelection(prefix(), slots.workspace_binding) };
     const authorityValue = { actorRef, authorityMode: "trusted_developer" }, approvalValue = { decision: "allow", actorRef,
       definitionRef: definition.definitionRef, definitionDigest: definition.definitionDigest, requestDigest: hash(request), scopeDigest: product.admissionAuthorityScope(data).digest };
     const authority = { kind: "resolved_admission_authority", schemaVersion, actorRef, authorityMode: "trusted_developer",
@@ -65,31 +102,38 @@ export function fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, 
     return call(packet, request, { ...slots, capability_grants: { requiredCapabilityRefs: [...definition.capabilityRefs], grants: grants.map(g => ({ ref: g.grantRef, digest: g.grantDigest })) } },
       { ...resources, admissionAuthority: { basis: data, authority, grants } });
   }
-  const reopen = () => ({ kind: "reopen_abg_event_resource", schemaVersion, closeHandoff: state.closeHandoff, handoffDigest: hash(state.closeHandoff) });
   async function invoke(prepared, label) {
-    const path = await save(scratch, `calls/${String(calls.length + (state.retainedFailures ?? 0)).padStart(2, "0")}-${label}.jsonl`, transportPacket(prepared));
-    // Prepare-only may invoke only deterministic Programs. A transport command
-    // is deliberately unavailable even if a malformed setup tried to dispatch.
-    let result;
+    const stem = `${String(calls.length + (state.retainedFailures ?? 0)).padStart(2, "0")}-${label}`;
+    // Native setup performs fixed Public setup operations, never a Run.
+    assert.notEqual(prepared.invocation.definitionKey.operationId, "abg.operation.run.invoke");
+    await save(scratch, `calls/${stem}.json`, prepared);
+    let outcome;
     try {
-      result = await exec(process.execPath, [state.cliPath, "--jsonl", path], { cwd: scratch,
-        env: { ...process.env, NODE_OPTIONS: "", ABG_TS_CLAUDE_COMMAND: "/unavailable/prepare-only-no-actors" }, timeout: 180000, maxBuffer: 128 * 1024 * 1024 });
+      const bound = prepared.resources.admissionAuthority?.basis.boundEnvironment !== null &&
+        prepared.resources.admissionAuthority?.basis.boundEnvironment !== undefined;
+      outcome = selection && (prepared.resources.eventResource !== undefined || bound)
+        ? await installedPublic.runInstalledDefinitionCallWithResource(selection, prepared)
+        : await installedPublic.runInstalledDefinitionCallTransport({ kind: "eventless" }, prepared);
     } catch (error) {
-      await save(scratch, `receipts/${String(calls.length + (state.retainedFailures ?? 0)).padStart(2, "0")}-${label}.process-failure.json`,
-        { code: error.code ?? null, signal: error.signal ?? null, killed: error.killed ?? false, message: error.message });
-      result = { stdout: error.stdout ?? "", stderr: error.stderr ?? String(error) };
+      await save(scratch, `receipts/${stem}.exception.json`, { message: error.message, stack: error.stack });
+      throw error;
     }
-    await save(scratch, `receipts/${String(calls.length + (state.retainedFailures ?? 0)).padStart(2, "0")}-${label}.json`, result.stdout);
-    await save(scratch, `receipts/${String(calls.length + (state.retainedFailures ?? 0)).padStart(2, "0")}-${label}.stderr`, result.stderr);
-    assert.ok(result.stdout.trim(), "prepare CLI produced no receipt; inspect retained process failure");
-    const outcome = JSON.parse(result.stdout); assert.equal(outcome.kind, "installed_definition_call_transport_result", result.stdout);
-    const receipt = outcome.receipt; assert.equal(receipt.ownerOutput?.outcomeKind, "result", JSON.stringify(receipt)); assert.equal(receipt.exitCode, 0);
-    if (receipt.resources?.eventResource?.closeHandoff) state.closeHandoff = receipt.resources.eventResource.closeHandoff;
+    await save(scratch, `receipts/${stem}.json`, outcome);
+    assert.equal(outcome.kind, "installed_definition_call_transport_result", `see receipts/${stem}.json`);
+    const receipt = outcome.receipt, completion = receipt.resources?.eventResource;
+    if (completion) {
+      assert.equal(completion.kind, "abg_event_resource_completion", "borrowed setup must not close its owner");
+      assert.equal(completion.entryPrefix.coordinateDigest, selection.prefix.coordinateDigest);
+      assert.ok(abg.isAcquiredAbgEventResourceSelection(completion.successor), "actual setup successor required");
+      abg.assertAcquiredAbgEventResourceSelectionCurrent(completion.successor);
+      selection = completion.successor;
+    }
+    assert.equal(receipt.ownerOutput?.outcomeKind, "result", `see receipts/${stem}.json`); assert.equal(receipt.exitCode, 0);
     calls.push({ label, definitionKey: prepared.invocation.definitionKey, invocationRef: prepared.invocation.invocationRef });
     console.error(JSON.stringify({ phase: "full_sandbox_public_setup", ordinal: calls.length, label }));
     return receipt;
   }
-  return { call, authorized, reopen, invoke };
+  return { call, authorized, reopen, invoke, acquire, close, prefix };
 }
 
 export async function completeFullSandboxJob({ product, gtl, abg, validator, configuration, runEnvironment, environment, publication, catalog, catalogView, boundSlots, catalogScope, lock, ordinary, input, roots, jobRoot, workspaceRoot, allowlist, hash, coord, authorized, invoke }) {
@@ -410,8 +454,9 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
   const callerState = { calls,
     get ordinal() { return ordinal; }, set ordinal(value) { ordinal = value; },
     get closeHandoff() { return closeHandoff; }, set closeHandoff(value) { closeHandoff = value; },
-    get cliPath() { return cliPath; }, get product() { return product; }, get installedPublic() { return installedPublic; } };
-  const { call, authorized, reopen, invoke } = fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, coord, calls, state: callerState });
+    abg, get cliPath() { return cliPath; }, get product() { return product; }, get installedPublic() { return installedPublic; } };
+  const { call, authorized, reopen, invoke, acquire, close, prefix } = fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, coord, calls, state: callerState });
+  try {
   const products = [{ verification: abiVerification, request: abiRequest }, { verification: consumerVerification, request: consumerRequest }];
   for (const [i, item] of products.entries()) {
     const v = item.verification.verifiedArtifact;
@@ -423,7 +468,7 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
       { targetKind: "packed_artifact", artifact: item.packed.artifact, productContent: item.packed.productContent, descriptor: item.packed.descriptor,
         contributionManifest: item.packed.contributionManifest, declaredDependencies: v.declaredDependencies,
         compatibilityInputs: v.compatibilityRefs.map(compatibilityRef => ({ compatibilityRef, subjectRef: item.packed.productContent.ref })) },
-      { kind: "product_verification_resources", schemaVersion, targetKind: "packed_artifact", packedArtifact: item.packed });
+      { kind: "product_verification_resources", schemaVersion, targetKind: "packed_artifact", packedArtifact: item.packed, verifiedArtifact: v });
     item.receipt = await invoke(request, "verify-" + i);
     item.reference = { invocation: { ref: request.invocation.invocationRef, digest: request.invocation.invocationDigest }, outcome: item.receipt.ownerOutput.value.verifiedArtifact };
   }
@@ -436,21 +481,21 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
     { kind: "product_resolution_resource_assertion", schemaVersion, verifiedPreimages: products.map(p => ({ verification: p.reference, verifiedArtifact: p.verification.verifiedArtifact, verificationOutput: p.receipt.ownerOutput })),
       nativeContractClosure: { selectorDispositions: [], occurrences: [], nativeBindings: [] } }, { verification_references: products.map(p => p.reference) }), "resolve");
   const eventLogPath = join(scratch, "events/runtime.events.jsonl"); await mkdir(dirname(eventLogPath));
+  await acquire({ kind: "new_abg_event_resource", schemaVersion, eventLogPath, locatorDigest: hash({ kind: "abg_event_log_locator", eventLogPath }) });
   const installed = [], installTargets = products.map((_, i) => join(scratch, "products", i === 0 ? "abiogenesis" : "odd_glc"));
   for (const [i, item] of products.entries()) {
     const request = await authorized(product.PRODUCT_INSTALL_SOURCE_DECLARATIONS.install,
       { verifiedArtifact: item.verification.coordinates.verifiedArtifact, descriptor: item.packed.descriptor, contributionManifest: item.packed.contributionManifest,
         resolvedLock: lock, targetRoot: installTargets[i], installPolicy: "clean" },
-      { kind: "product_install_resource_assertion", schemaVersion, eventResource: closeHandoff === null
-        ? { kind: "new_abg_event_resource", schemaVersion, eventLogPath, locatorDigest: hash({ kind: "abg_event_log_locator", eventLogPath }) } : reopen(),
+      { kind: "product_install_resource_assertion", schemaVersion, eventResource: reopen(),
         packedArtifact: item.packed, verifiedArtifact: item.verification.verifiedArtifact, resolvedLock },
       { dependency_lock: lock, verification_references: [item.reference], actor });
     await invoke(request, "install-" + i);
-    const row = abg.projectAdmittedProductInstallByInvocationRef(abg.projectExactPrefixArtifactTruth(closeHandoff.prefix), request.invocation.invocationRef);
+    const row = abg.projectAdmittedProductInstallByInvocationRef(abg.projectExactPrefixArtifactTruth(prefix()), request.invocation.invocationRef);
     assert.ok(row); installed.push(row);
   }
   const abiRoot = installed[0].install.installedRoot;
-  ({ product, gtl, abg, validator, installedPublic } = await installedFullSandboxApis(abiRoot));
+  // Keep the verified installed module instance and its live resource owner.
   cliPath = join(abiRoot, "build/code/src/public/cli.js");
   const consumerRoot = installed[1].install.installedRoot;
   const publicationBytes = await readFile(join(consumerRoot, "build/publication.json"));
@@ -492,7 +537,7 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
       { kind: "product_workspace_binding_resource_assertion", schemaVersion, eventResource: reopen(), workspaceAuthority, workspaceManifest,
         admittedInstalls: installed.map(row => row.install), resolvedLock, declaredRoots: roots },
       { product_set: installed.map(row => product.productInstallCoordinate(row.install)), dependency_lock: lock, actor }), ordinary.key + "-bind");
-    environment = abg.projectExactPrefixWorkspaceEnvironment(closeHandoff.prefix, bound.ownerOutput.value.binding);
+    environment = abg.projectExactPrefixWorkspaceEnvironment(prefix(), bound.ownerOutput.value.binding);
     assert.equal(environment.kind, "exact_prefix_workspace_environment");
     const boundSlots = { workspace_binding: bound.ownerOutput.value.binding, product_set: environment.productInstalls.map(product.productInstallCoordinate), dependency_lock: lock, actor };
     const catalogReceipt = await invoke(await authorized(product.CATALOG_OPERATION_SOURCE_DECLARATIONS.admit,
@@ -509,7 +554,9 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
     const catalogScope = { catalog: catalogReceipt.ownerOutput.value.catalog, view: viewReceipt.ownerOutput.value.view, allowlist: catalogView.allowlist };
     jobs.push(await completeFullSandboxJob({ product, gtl, abg, validator, configuration, runEnvironment, environment, publication, catalog, catalogView, boundSlots, catalogScope, lock, ordinary, input, roots, jobRoot, workspaceRoot, allowlist, hash, coord, authorized, invoke }));
   }
-  return publishFullSandboxPreparation({ product, hash, call, reopen, callerState, pin, abiArtifact, built, lock, publication, abiRoot, consumerRoot, cliPath, lifecycle, transport, runEnvironment, freshNative, scratch, installed, jobs });
+  await close();
+  return await publishFullSandboxPreparation({ product, hash, call, reopen, callerState, pin, abiArtifact, built, lock, publication, abiRoot, consumerRoot, cliPath, lifecycle, transport, runEnvironment, freshNative, scratch, installed, jobs });
+  } finally { await close(); }
 }
 
 /** Continue only the uncompleted setup tail after an eventless conformance
@@ -584,7 +631,7 @@ export async function continueFullSandboxPreparation({ runRoot, candidatePath, c
   const runEnvironment = gtl.constructRunEnvironmentDeclaration(configuration.runEnvironment);
   assert.deepEqual(publication.runEnvironments, [runEnvironment]);
   const cliPath = join(abiRoot, "build/code/src/public/cli.js");
-  const callerState = { ordinal: 10, closeHandoff, calls, cliPath, product, installedPublic, retainedFailures: 1 };
+  const callerState = { ordinal: 10, closeHandoff, calls, cliPath, product, abg, installedPublic, retainedFailures: 1 };
   const setup = fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, coord, calls, state: callerState });
   const { call, authorized, reopen } = setup;
   let retainedConformance = null;
@@ -608,10 +655,14 @@ export async function continueFullSandboxPreparation({ runRoot, candidatePath, c
   if (retainedConformance === null) await save(scratch, "setup-continuation.json", { failedPath, failedDigest: await product.sha256File(failedPath), priorSuccessfulCalls: calls,
     closeHandoff, abiRoot, consumerRoot, abiArtifact: pin, consumerArtifact: builtBasis, inputDigest: hash(input),
     retainedInstalledProducts: environment.productInstalls.map(product.productInstallCoordinate), noPriorCallReexecution: true, noActorDispatch: true });
+  try {
+  await setup.acquire();
   const job = await completeFullSandboxJob({ product, gtl, abg, validator, configuration, runEnvironment, environment, publication, catalog, catalogView,
     boundSlots, catalogScope, lock, ordinary, input, roots, jobRoot, workspaceRoot, allowlist, hash, coord, authorized, invoke });
-  return publishFullSandboxPreparation({ product, hash, call, reopen, callerState, pin, abiArtifact, built, lock, publication, abiRoot, consumerRoot, cliPath, lifecycle, transport,
+  await setup.close();
+  return await publishFullSandboxPreparation({ product, hash, call, reopen, callerState, pin, abiArtifact, built, lock, publication, abiRoot, consumerRoot, cliPath, lifecycle, transport,
     runEnvironment, freshNative: true, scratch, installed, jobs: [job] });
+  } finally { await setup.close(); }
 }
 
 function transportPacket(prepared) {
