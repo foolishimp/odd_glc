@@ -429,3 +429,14 @@ selector/assessor as its independent invocation. Focused component evidence is
 recorded under `LIFE/glc-stage-reentry-01/implementation`; supplied semantic/R10
 premises there do not constitute installed native integration or application
 Design acceptance. The five-stage finite policy remains a later Root selection.
+
+
+## Fresh native full-input composition — selected 2026-09-24
+
+This fresh-start route uses complete ordinary source and evaluator-only oracle data, not historical continuation or fabricated prior work. One generic GTL Program declares Intent, Product, Requirements and Design author/independent-assessment relations, then native construction, same-Run C2 and independent complete-outcome judgment. The existing ABI semantic source adapter admits the native observations and delegates grounding/binding meaning to existing Product derivations. No GLC requirement compiler or plain-prose substitute is permitted.
+
+Assets live at supplied workspace paths. Authors receive full governing source and applicable current predecessor assets plus compact reference domains; no accumulated response envelope is an LLM input or output. Independent read-only assessors receive the actual candidate and complete selected obligations. The assessed current Design determines construction and proof; protected source, earlier assets, oracle and residual obligations are conserved. A rejection remains a rejection and grants no retry or scope reduction. Source/Program identity is generic and excludes scenario names, solution bytes and oracle predicates.
+
+The full-sandbox entry preserves its complete original Hello source and independent oracle as ordinary data. Historical cumulative-response declarations and reduced C1/C2 evidence remain historical distinct routes. This selection authorizes source realization and focused owner checks only; package identity and finite live policy require the subsequent Root selection.
+
+The opt-in full-sandbox configuration selects `freshNative: true`, one explicit successor consumer identity, `selectedJobKeys` and the existing exact role environment/resources. The generic declaration reuses three native actor families for twelve sequential occurrences: five author/independent-assessor pairs, one constructor and one C2 executor. The Evidence author binds actual source/effect evidence; the separate final assessor alone receives the independent oracle. This is one declared Program with no recursive stage call or host progression loop. Original input/oracle bytes are conserved, and package/default selectors remain unchanged until separately selected.

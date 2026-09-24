@@ -1,0 +1,127 @@
+{
+  "prior": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT",
+      "catalogSha256": "6eaa91516d02f460fb3c6bf4f9f1c69e0c5eaebc7806dc8f8cc35a1106ae08a5",
+      "indexSha256": "a13e7be06007f58984390d964d430b6e41402572587feae5b3d9c035665c1730",
+      "verificationSha256": "dcfb09373bead5a44c707299f0952b918047303e3c1cbdce420c0a700fb9a9da",
+      "members": 8988,
+      "transportBytes": 2837897656
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-01",
+      "catalogSha256": "71dfd0e6a351dc64992f518fea8268f86ddfdc0ec3ff7236d7132d1cfee8016c",
+      "indexSha256": "afdab2e383c6f62f1596bcfb0737fc4965539f3ad70c42dbf3933eb50c6c37b8",
+      "verificationSha256": "f491125137609eae40205ea0c25113d4777820e683879915dccd9d6bb18642bb",
+      "members": 1079,
+      "transportBytes": 219899764
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-append",
+      "catalogSha256": "825a9047d1be19a32cba83bd809dd35e048fed30df20cc5d4c8e62cdfbc51117",
+      "indexSha256": "f2e3c62106aeda582b41d16072a22df2a0661c2016e40ecf0136210dd4cd47ac",
+      "verificationSha256": "ff1410ff7644b5849b3e5243e718e86563b34134b29a542de779fb066a17f375",
+      "members": 1,
+      "transportBytes": 40541024
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/transport-late",
+      "catalogSha256": "88d5ed6cea319311354868e61a9af43d60640a11200ea3114ee6fa07b9ef56e6",
+      "indexSha256": "9e4cacc030cc09ddb8ec1b57e1a2f7c6691df9f328df595a272f7c6b77d91722",
+      "verificationSha256": "9a7b6509441f91b2e06382d0c1eb2f657bcf113980fa3958c6c2095b13166af3",
+      "members": 35,
+      "transportBytes": 90126
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-02/transport-01",
+      "catalogSha256": "897627fe2296a09030af85542270a9a16fcf7ca80ea520d670ad0d567ce7bb9f",
+      "indexSha256": "8c6eaf2989c5496b0a90a2271b64df376c8db0ee52acda0fa21400f312f88468",
+      "verificationSha256": "b26dbacc1d8c15cf720759ce86ede2db1587003dc5439a629049b2a48cb6253d",
+      "members": 110,
+      "transportBytes": 43394337
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-03/transport-01",
+      "catalogSha256": "54ce43ee016f314ab830e4015218d5dbedba57461b91e5ccc7d2692435640b46",
+      "indexSha256": "252530af378ff076724e7b00026a327546548f3e48dd3c2bf19e00c3348d6987",
+      "verificationSha256": "4f4c6a6636d5374249023a520e41e870b72c52b3489fa76297d24dada60823f3",
+      "members": 162,
+      "transportBytes": 359204850
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-04/transport-01",
+      "catalogSha256": "11fa5293fbbd8284ed1b43ec3b1c12677e3b5b6470bfb91e427669ddf31715da",
+      "indexSha256": "f5790560a09a44872056be58f36a2cb96926579f73ae3708461e0d582122291b",
+      "verificationSha256": "b6f3529e8053534df7464eb57ae74c15b23c7fc9c32511dec33d0eca7f5704b4",
+      "members": 54,
+      "transportBytes": 121848
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-05/transport-01",
+      "catalogSha256": "39d71d54880850dcf5ee31ce2433d532c482a1af673ac3ba3a0906810975ad64",
+      "indexSha256": "76c46dc43928beb10eb25cefb4d79c3156e1aa14bb44ef200a050323de273108",
+      "verificationSha256": "2e14de42cacad13b11766d4642c11e27489d678eb87c455e9d938b5d950d36fc",
+      "members": 17,
+      "transportBytes": 31509
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-06/transport-01",
+      "catalogSha256": "ef68978d0902645d196a6aedc4e7d8ba04ace5795fe79b286849eb2a7c362f80",
+      "indexSha256": "65d1f03c4479d0e44e4657dcd046ed9fc600d15ab5e078e53a8309f33661a3fa",
+      "verificationSha256": "61c035fc0f4433b3fd460d4bb646410b1151568d38ca83b00d5fe8140df423df",
+      "members": 72,
+      "transportBytes": 12186305
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-07/transport-01",
+      "catalogSha256": "f16a33b467a6d67d9ebd0cee81ff65fb5a5cfa5d1b7a61ea101d0addef63b152",
+      "indexSha256": "259b4f75434846f53315133cc227b7e0a606bfdc9b197a2b3aeec3b1c903070c",
+      "verificationSha256": "3ee0506b64a5d876e54f2d6dd50e18f9da2502de3e6acd34fadeefa18404739d",
+      "members": 36,
+      "transportBytes": 54986
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-08/transport-01",
+      "catalogSha256": "2d0c2f77c7273cbb23f5f4aebb290effb6eb62eaf499e2aadb3a1328cd9c90ae",
+      "indexSha256": "d31ad6fe786926203f6e3ee3ed721fee929fdc586f7241c536f717c2054d7988",
+      "verificationSha256": "4a1db62f5f03569e995f4e094b7420bda8c308601da68f4d0999778a979e7f22",
+      "members": 47,
+      "transportBytes": 61583821
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-09/transport-01",
+      "catalogSha256": "8608247b90f14fdf9740ba51d74b5a42372a4875e18e40e212676976830c1339",
+      "indexSha256": "8f7fded9678e96d2103f4b09ee52b86be474e826d8a74ebfbcb64046546e8fa6",
+      "verificationSha256": "12c731714ef047aa465a7e0feee80f9c974dc836daa009d5d0e9964f8087e1a0",
+      "members": 96,
+      "transportBytes": 235402
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-10/transport-01",
+      "catalogSha256": "ce604992384744e6a9c180c2a9302eec613b897515116d41aacd2b5f4af27072",
+      "indexSha256": "250403b7f1cd678ef68b216b8d1041a5d6255f40c9b2eefbcece3606735bbea1",
+      "verificationSha256": "fea6f4bea9a50beff7f1bb8711db2e97dd9454eb8859a7bcb2e6deb1b679958b",
+      "members": 128,
+      "transportBytes": 44368841
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-11/transport-01",
+      "catalogSha256": "44a06f4f136fdcfb95846644d2c4f79a63c8564c760f0b579990a68c6a6e574c",
+      "indexSha256": "9243343f5638d4df2ecde323dcb78932736559d71a50c1b65b69038365ac6897",
+      "verificationSha256": "1fef1a47fd829135691b2ddbaa71dc46b1d6eaa177aedec13b6cd9c1fa0d935f",
+      "members": 143,
+      "transportBytes": 48006866
+    },
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12/transport-01",
+      "catalogSha256": "86fddecf4a0f8875717d0266478faae790ff19e8dace4f39384bf87fdbeb8840",
+      "indexSha256": "c1a9c37285144c7998d2c89a46f5a77661a1e91115e08b81005c890b76d86a72",
+      "verificationSha256": "24b8a47209b4e4b60edae31cfc4027a3830c98ec374f91e2296fbde95702485a",
+      "members": 128,
+      "transportBytes": 9493032
+    }
+  ],
+  "script": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-01/checkpoint_transport.py",
+  "scriptSha256": "04f1331b20ae18ea4c6fb54e0b948525a1d04638ddb29267ed3c96b18bdccca3",
+  "unchangedPriorByteProof": "Only prior indexes/catalogs/verification receipts acquired; accepted payload proofs reused. No prior transport payload scanned, repacked or uploaded."
+}

@@ -3,7 +3,7 @@ import { constructOddGlcProductPackage } from "../src/product-package.mjs";
 // Runtime owners, source derivation and every effect remain installed ABI APIs.
 import assert from "node:assert/strict";
 import { D1_WITNESS_IDS, constructD1WorksiteGraph, materializeD1Publication } from "./d1-lifecycle-declarations.mjs";
-import { constructNativeLifecyclePublication, constructNativeLifecycleEnvironmentRoles } from "../src/native-lifecycle-declarations.mjs";
+import { constructNativeLifecyclePublication, constructNativeLifecycleEnvironmentRoles, constructFreshNativeLifecyclePublication, constructFreshNativeLifecycleEnvironmentRoles } from "../src/native-lifecycle-declarations.mjs";
 
 export const FULL_SANDBOX_IDS = Object.freeze({ ...D1_WITNESS_IDS,
   packageName: "@odd-glc/route-one-typescript", packageVersion: "0.2.0-dev.2",
@@ -36,13 +36,13 @@ export function selectOriginalHelloDeclaration(sourceBytes, product) {
     endByte: Buffer.byteLength(text.slice(0, end)), selectedDigest: product.sha256Bytes(selected) } };
 }
 
-export function nativeFullSandboxPublications(gtl, artifact) {
+export function nativeFullSandboxPublications(gtl, artifact, freshNative = false) {
   const basis = { ...artifact, productManifestDigest: artifact.manifestDigest };
   return [gtl.constructHelloWorldModulePublication, gtl.constructConsensusModulePublication,
     gtl.constructWorksiteConstructionModulePublication, gtl.constructWorksiteCommandExecutionModulePublication,
     gtl.constructWorksiteCommandForwardModulePublication, gtl.constructRequirementHandoffModulePublication,
     gtl.constructSemanticStageModulePublication, gtl.constructSemanticRevisionModulePublication,
-    gtl.constructSelfConformanceModulePublication].map(construct => construct(basis));
+    gtl.constructSelfConformanceModulePublication, ...(freshNative ? [gtl.constructNativeWorkspaceWorkModulePublication] : [])].map(construct => construct(basis));
 }
 
 export function constructFullHelloInputs({ product, originalSourceBytes, oracle }) {
@@ -56,10 +56,12 @@ export function constructFullHelloInputs({ product, originalSourceBytes, oracle 
     evaluationData: structuredClone(oracle) };
 }
 
-export function constructOrdinaryJobInput({ product, gtl, input, executable }) {
+export function constructOrdinaryJobInput({ product, gtl, input, executable, lifecycle }) {
   return product.constructSemanticJobInput({ kind: "semantic_job_input", schemaVersion: "5.0.0",
     lifecycleRef: FULL_SANDBOX_IDS.lifecycleDeclarationRef, sourceRoleRef: gtl.SEMANTIC_STAGE_IDS.jobSourceContextRoleRef,
-    members: structuredClone(input.members), taskData: structuredClone(input.taskData), evaluationData: structuredClone(input.evaluationData),
+    members: structuredClone(input.members), taskData: { ...structuredClone(input.taskData), ...(lifecycle === undefined ? {} : { nativeLifecycle: {
+      assets: lifecycle.stages.map((stage, i) => ({ stageRef: stage.declarationRef, path: `semantic-assets/stage-${i}.json` })),
+      rubricPath: "semantic-assets/lifecycle-rubric.json" } }) }, evaluationData: structuredClone(input.evaluationData),
     worksiteScope: { readRoots: ["."], writeRoots: ["."], parentWriteRoots: ["."], evidenceWriteRoots: ["execution-evidence"],
       executableCapabilities: [{ executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }] } });
 }
@@ -138,21 +140,22 @@ export function fullSandboxManagementSourceSelections({ product, contexts, conte
  * environmentBasis supplies native declaration fields except roles; contents
  * supplies full immutable Context member bytes for exact source-span selection.
  */
-export function constructFullSandboxManagementEnvironment({ product, gtl, abiArtifact, environmentBasis, contextContents }) {
-  const nativePublications = nativeFullSandboxPublications(gtl, abiArtifact);
-  const publication = constructFullSandboxPackage({ product, gtl, abiArtifact }).bundle.consumerPublication;
+export function constructFullSandboxManagementEnvironment({ product, gtl, abiArtifact, environmentBasis, contextContents, freshNative = false, ids = FULL_SANDBOX_IDS }) {
+  const nativePublications = nativeFullSandboxPublications(gtl, abiArtifact, freshNative);
+  const publication = constructFullSandboxPackage({ product, gtl, abiArtifact, freshNative, ids }).bundle.consumerPublication;
   const sourceDependencies = environmentBasis.dependencies.filter(row => row.dependencyRef === environmentBasis.corpusAccess.sourceDependencyRef);
   assert.equal(sourceDependencies.length, 1, "one explicitly selected source dependency");
   const sourceBasisRef = sourceDependencies[0].basisRef;
   const sourceSelections = fullSandboxManagementSourceSelections({ product, contexts: environmentBasis.contexts, contextContents, sourceBasisRef });
-  const roles = constructNativeLifecycleEnvironmentRoles({ gtl, product, publication, nativePublications, sourceSelections,
+  const roles = (freshNative ? constructFreshNativeLifecycleEnvironmentRoles : constructNativeLifecycleEnvironmentRoles)({ gtl, product, publication, nativePublications, sourceSelections,
     accessRefs: environmentBasis.accesses.map(row => row.accessRef), sourceBasisRef });
   return gtl.constructStdoRunEnvironmentDeclaration({ ...environmentBasis, roles });
 }
 
 // Exactly one generic package. This function deliberately has no job argument.
-export function constructFullSandboxPackage({ product, gtl, abiArtifact, runEnvironment }) {
-  const publications = nativeFullSandboxPublications(gtl, abiArtifact);
+export function constructFullSandboxPackage({ product, gtl, abiArtifact, runEnvironment, freshNative = false, ids = FULL_SANDBOX_IDS }) {
+  if (freshNative && (ids.packageVersion === FULL_SANDBOX_IDS.packageVersion || ids.productId === FULL_SANDBOX_IDS.productId)) throw new TypeError("fresh native composition requires an explicitly selected successor identity");
+  const publications = nativeFullSandboxPublications(gtl, abiArtifact, freshNative);
   const one = ref => {
     const rows = publications.filter(row => row.moduleRef === ref);
     assert.equal(rows.length, 1, "one native module " + ref); return rows[0];
@@ -163,7 +166,7 @@ export function constructFullSandboxPackage({ product, gtl, abiArtifact, runEnvi
   // Reuse the unchanged fixed-source witness's generic C1/C2 graph helper only.
   // Its source, fixture, lifecycle and package factories are not invoked.
   const worksite = constructD1WorksiteGraph({ gtl, product, c1Publication, c2Publication });
-  const consumerPublication = constructNativeLifecyclePublication({ gtl, product, ids: FULL_SANDBOX_IDS,
+  const consumerPublication = freshNative ? constructFreshNativeLifecyclePublication({ gtl, product, ids, semanticPublication, runEnvironment }) : constructNativeLifecyclePublication({ gtl, product, ids,
     semanticPublication, c1Publication, c2Publication, worksite, runEnvironment });
-  return constructOddGlcProductPackage({product,gtl,ids:FULL_SANDBOX_IDS,abiArtifact,consumerPublication});
+  return constructOddGlcProductPackage({product,gtl,ids,abiArtifact,consumerPublication});
 }

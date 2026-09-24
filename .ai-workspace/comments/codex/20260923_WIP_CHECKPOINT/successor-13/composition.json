@@ -1,0 +1,65 @@
+{
+  "basisCommit": "4f1881ed4a95ab2ccd1146170ed1fab6de130b1f",
+  "inherited": "successor-12/composition.json and unchanged prior bank indexes",
+  "newBanks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13/transport-01",
+      "catalogSha256": "11f6cd910725d90ed28bacb35a4b70c9f67b5f68a7a46ca022be581f2fa5408d",
+      "indexSha256": "143b0efb131252a6b5fecce75ced154a1fdccc74c5cc00137a1951b76e8b5f25",
+      "verificationSha256": "e35b0a7d15932e53da248d7fe689ef3834a62c7941cfbff5eaa2ca1d5364fc80",
+      "members": 6,
+      "logicalBytes": 91691,
+      "transportBytes": 26137
+    }
+  ],
+  "newMembers": 6,
+  "newLogicalBytes": 91691,
+  "newTransportBytes": 26137,
+  "priorPayloadReadOrReupload": false,
+  "scope": "Reviewed generic native lifecycle plus dependency correction and retained-input repair; exact compiled15/16 construction and generated projections; closed source/check/review records, two closed failed-attempt summaries, four current trackers and debt. Source checkpoint only; active Run dependencies unbanked.",
+  "excluded": [
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/caller",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02",
+    "All live journals, worksites, active actor archives and active return files; no read, acquire, copy or hash in this checkpoint",
+    "Any closed-record/test dependency on a reused active resource remains unbanked; reproducible full native evidence is pending until resource closure",
+    "Isolated installed node_modules and generated build trees are excluded; completed immutable core15/16 package archives retained",
+    "Unrelated dirty evidence and pending peer work remain outside this finite selection",
+    "No full-Hello, fifteen-family, qualification, F11/AF22 or RC1 closure; existing release-boundary checks remain open"
+  ],
+  "rootAcceptance": {
+    "status": "accepted_source_readiness_checkpoint_not_runtime_or_release_qualification",
+    "authority": "Root explicit checkpoint grant; prior user commit/push authorization",
+    "acceptedReviews": [
+      {
+        "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fresh-native-lifecycle-01/review-01/successor-return.md",
+        "sha256": "fbe7e82960bf179d27d7e6ee5850f2bc69de2bb48bd1e5de4bb915beba7dd6b2"
+      },
+      {
+        "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-assembly-retained-input-01/review-01/return.md",
+        "sha256": "6fc78f5290b0a152df83864c447884770bb1883509206fa6852815abfd50cbc6"
+      }
+    ],
+    "acceptedSource": [
+      {
+        "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fresh-native-lifecycle-01/dependency-correction-01/subject.json",
+        "sha256": "1a6d848001a544b1e999a6bf86aa7acc28bb88aabff9fc441bc757ae7dd33642"
+      },
+      {
+        "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-assembly-retained-input-01/source-subject.json",
+        "sha256": "e0858530d9ed0fb8a1042b9614e7e4bd0def7cea00610af7ae41223467e110da"
+      }
+    ],
+    "core16": {
+      "artifactDigest": "sha256:7f7215e34fc4a9406c077112da0fdd598d63df94bf91aa89f4ecc4ca9d5dda2a",
+      "productContentDigest": "sha256:564f3aa0ad83f88bd52d084231c07cbacfbb735e2127ff3bdd4f632175bc7a2c",
+      "manifestDigest": "sha256:d5ac222ed2463c7ac426479cec3a15baee8f9f9b491aeb5bbe39f58a8996d71b",
+      "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+      "packageName": "@abiogenesis/typescript-tenant",
+      "packageVersion": "5.0.0-rc.1"
+    },
+    "sourceMutationByWriter": false,
+    "liveRunOutcome": "Active at checkpoint selection; no outcome inferred",
+    "activeResourceArchival": "Pending; excluded even where closed returns/tests reference those resources"
+  }
+}

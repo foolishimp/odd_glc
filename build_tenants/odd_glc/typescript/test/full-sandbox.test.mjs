@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { resolve, dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
 import { constructFullSandboxPackage, constructOrdinaryJobInput, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS,
   FULL_HELLO_TARGETS, FULL_HELLO_STAGE_MEANINGS, nativeFullSandboxPublications } from "./full-sandbox-declarations.mjs";
@@ -11,7 +11,14 @@ import { D1_WITNESS_IDS, D1_FROZEN_INPUT_SHA256 } from "./d1-lifecycle-declarati
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const candidatePath = process.env.ODD_GLC_ABI5_CANDIDATE_BASIS;
 const managementConfigurationPath = process.env.ODD_GLC_MANAGEMENT_CONFIGURATION;
+const sourceRoot = process.env.ODD_GLC_ABI5_SOURCE_BUILD_ROOT;
 let product, gtl, validator, artifact, inputs;
+if (sourceRoot && !candidatePath) {
+  [product, gtl, validator] = await Promise.all(["product", "gtl", "validator"].map(name => import(pathToFileURL(join(sourceRoot, "build/code/src", name, "index.js")).href)));
+  const zero = "sha256:" + "0".repeat(64);
+  artifact = { productId: product.ABI5_PRODUCT_ID, packageName: product.ABI5_PACKAGE_NAME, packageVersion: product.ABI5_PACKAGE_VERSION, artifactDigest: zero, productContentDigest: zero, manifestDigest: zero };
+  inputs = await ordinarySandboxInputs(product);
+}
 if (candidatePath) {
   const candidate = await readFullSandboxCandidate(candidatePath);
   ({ product, gtl, validator } = await installedFullSandboxApis(candidate.installedRoot));
@@ -27,8 +34,8 @@ if (candidatePath) {
 const native = { skip: candidatePath ? false : "PENDING: exact frozen successor ABI package not selected; current default pin is not used" };
 const managedNative = { skip: candidatePath && managementConfigurationPath ? false : "PENDING: exact candidate and frozen management configuration both required" };
 
-function validateDeclaredProgram(publication) {
-  const nativePublications = nativeFullSandboxPublications(gtl, artifact), publications = [...nativePublications, publication];
+function validateDeclaredProgram(publication, freshNative = false) {
+  const nativePublications = nativeFullSandboxPublications(gtl, artifact, freshNative), publications = [...nativePublications, publication];
   const program = publication.programs[0], admit = (value, kind, contract) => {
     const row = validator.rawAdmitValue(value, kind, "contract://abiogenesis/gtl/" + contract + "@5");
     assert.equal(row.kind, "raw_admitted_value", JSON.stringify(row)); return row;
@@ -257,4 +264,46 @@ test("readback source retains both public projections before application interpr
   assert.match(readback, /native-semantic-replay\.json/u);
   // Source-order regression only; fresh native CLI read/replay remains a live
   // result obligation and is not simulated by this classifier test.
+});
+
+
+// Source composition check; no install, native actor, application or admission claim.
+test("fresh native full-input declaration closes contracts and stays independent of both ordinary jobs", { skip: !sourceRoot }, () => {
+  const ids = { ...FULL_SANDBOX_IDS, packageVersion: "0.2.0-source-check", productId: "product://odd_glc/source-check",
+    descriptorRef: "descriptor://odd_glc/source-check", contributionManifestRef: "contribution-manifest://odd_glc/source-check",
+    catalogRef: "catalog://odd_glc/source-check", provenanceRef: "provenance://odd_glc/source-check" };
+  const built = constructFullSandboxPackage({ product, gtl, abiArtifact: artifact, freshNative: true, ids });
+  const publication = built.bundle.consumerPublication;
+  const validation = validateDeclaredProgram(publication, true);
+  assert.equal(validation.kind, "program_validation", JSON.stringify(validation.diagnostics));
+  assert.equal(validation.disposition, "valid");
+  const jobs = inputs.map(input => constructOrdinaryJobInput({ product, gtl, input, executable: process.execPath, lifecycle: publication.semanticJobLifecycle }));
+  assert.notEqual(product.sha256Canonical(jobs[0]), product.sha256Canonical(jobs[1]));
+  assert.deepEqual(jobs.map(job => job.members), inputs.map(input => input.members));
+  assert.deepEqual(jobs.map(job => job.evaluationData), inputs.map(input => input.evaluationData));
+  assert.equal(publication.semanticJobLifecycle.stages.length, 5);
+  assert.equal(publication.graphFunctions.filter(g => g.declarations["abg.semantic_native_stage"]).length, 10);
+  assert.equal(validation.executableLeafRows.filter(row => row.fibre === "F_P").length, 3);
+  assert.deepEqual(constructFullSandboxPackage({ product, gtl, abiArtifact: artifact, freshNative: true, ids }).bundle.consumerPublication, publication);
+  const text = JSON.stringify(publication);
+  for (const input of inputs) for (const member of input.members) assert.equal(text.includes(member.base64), false);
+  assert.throws(() => constructFullSandboxPackage({ product, gtl, abiArtifact: artifact, freshNative: true }), /successor identity/);
+});
+
+test("fresh native retention permits only the exact constructed graph and ABI adapter owners", { skip: !sourceRoot }, async () => {
+  const { constructFreshNativeLifecyclePublication } = await import('../src/native-lifecycle-declarations.mjs');
+  const { nativeSemanticRetentionOwnersMatch } = await import(pathToFileURL(join(sourceRoot, 'build/code/src/product/execution_resolution.js')).href);
+  const semantic = nativeFullSandboxPublications(gtl, artifact, true).find(p => p.moduleRef === gtl.SEMANTIC_STAGE_IDS.moduleRef);
+  const publication = constructFreshNativeLifecyclePublication({ gtl, product, ids: FULL_SANDBOX_IDS, semanticPublication: semantic });
+  const graph = publication.graphFunctions.find(g => g.declarations['abg.semantic_native_stage']);
+  const graphOwner = { productId: publication.owningProductId, moduleRef: publication.moduleRef, publicationDigest: product.modulePublicationSemanticDigest(publication), installId: 'component:consumer' };
+  const abiOwner = { productId: product.ABI5_PRODUCT_ID, moduleRef: gtl.SEMANTIC_STAGE_IDS.moduleRef, publicationDigest: product.modulePublicationSemanticDigest(semantic), installId: 'component:abi' };
+  const check = (selectedGraph = graph, target = abiOwner, selectedOwner = graphOwner) => nativeSemanticRetentionOwnersMatch(publication, selectedGraph, selectedOwner, abiOwner, target, abiOwner);
+  assert.equal(check(), true);
+  assert.equal(check(graph, { ...abiOwner, productId: 'product://foreign' }), false);
+  assert.equal(check(graph, { ...abiOwner, installId: 'component:other-install' }), false);
+  assert.equal(check(graph, abiOwner, { ...graphOwner, publicationDigest: artifact.artifactDigest }), false);
+  const changed = structuredClone(graph); changed.template.nodes.find(n => n.term.kind === 'c_of').term.requirement.implementationBindingRef = 'implementation-binding://foreign';
+  assert.equal(check(changed), false);
+  assert.equal(check({ ...graph, declarations: {} }), false);
 });

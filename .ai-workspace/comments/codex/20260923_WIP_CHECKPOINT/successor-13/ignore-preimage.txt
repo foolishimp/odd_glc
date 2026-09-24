@@ -2245,11 +2245,3 @@
 /codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/launch-disposition.json
 /codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/source-change.json
 /codex/20260924_HELLO_PROJECT_BASELINE/core14-remaining-01/source.patch
-
-# WIP successor-13: exact lossless transport-backed CLOSED originals; active resources excluded.
-/codex/20260923_WIP_CHECKPOINT/successor-12-paired-post-push.json
-/codex/20260923_WIP_CHECKPOINT/successor-12-return.md
-/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/absent-result-disposition.json
-/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/full-sandbox-support.preimage.mjs
-/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/return.md
-/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/return.md

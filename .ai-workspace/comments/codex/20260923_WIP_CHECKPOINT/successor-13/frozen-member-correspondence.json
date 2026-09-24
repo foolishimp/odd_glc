@@ -1,0 +1,14 @@
+{
+  "status": "all selected original freeze identities exact",
+  "checked": 6,
+  "paths": [
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12-paired-post-push.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12-return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/absent-result-disposition.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/full-sandbox-support.preimage.mjs",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/return.md"
+  ],
+  "noRuntimeResourceMutation": true,
+  "restoration": "/private/tmp/20260924-checkpoint-successor13-odd_glc-97463"
+}

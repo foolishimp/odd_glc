@@ -1,0 +1,62 @@
+{
+  "directExpected": {
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md": {
+      "sha256": "ae17927299c1aadd43a59e9f44cb4317e483dae37dfbd4c961ee3e7db3063dd4",
+      "proof": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fresh-native-lifecycle-01/dependency-correction-01/subject.json",
+      "byteLength": 34476
+    },
+    "build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs": {
+      "sha256": "8b73267f5ee441113e1973aaeac8bdea1c49cf38b46ff45900d7c303213a1969",
+      "proof": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fresh-native-lifecycle-01/dependency-correction-01/subject.json",
+      "byteLength": 27302
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs": {
+      "sha256": "a6bdc274897cbf93f31345936d0b6a7dbaaa2713c871b9702378b2b2a0d8f45a",
+      "proof": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fresh-native-lifecycle-01/dependency-correction-01/subject.json",
+      "byteLength": 14278
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs": {
+      "sha256": "226ca2fd8084b0d497aae4d5ac756230af298c687769345eace792319e245742",
+      "proof": "Root-selected ordinary setup/readback caller corrections and exported existing preparation helpers; peer confirmed source frozen; closed predecessor in fresh-native-01/opus-successor-01/full-sandbox-support.preimage.mjs",
+      "byteLength": 78074
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs": {
+      "sha256": "90302653bf8864843e0e4beb7ac0c33fc4daef24f8df66b80b3c16949b86335b",
+      "proof": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/fresh-native-lifecycle-01/dependency-correction-01/subject.json",
+      "byteLength": 23709
+    },
+    "specification/GOALS.md": {
+      "sha256": "1cec02e5b6c74a5b03f9fcdcc71e0e3c0cf032d0831f131bb7d95cc54cf3002a",
+      "proof": "Current Writer projection under Root source-checkpoint grant; preimage retained in this checkpoint",
+      "byteLength": 19096
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "c994f12240174f18fc507168f755b61142ac7832e16c1c3fe83b73e3d54f0194",
+      "proof": "Current Writer projection under Root source-checkpoint grant; preimage retained in this checkpoint",
+      "byteLength": 57900
+    }
+  },
+  "banks": [
+    {
+      "root": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-13/transport-01",
+      "catalogSha256": "11f6cd910725d90ed28bacb35a4b70c9f67b5f68a7a46ca022be581f2fa5408d",
+      "indexSha256": "143b0efb131252a6b5fecce75ced154a1fdccc74c5cc00137a1951b76e8b5f25",
+      "verificationSha256": "e35b0a7d15932e53da248d7fe689ef3834a62c7941cfbff5eaa2ca1d5364fc80",
+      "members": 6,
+      "logicalBytes": 91691,
+      "transportBytes": 26137
+    }
+  ],
+  "scope": "Reviewed generic native lifecycle plus dependency correction and retained-input repair; exact compiled15/16 construction and generated projections; closed source/check/review records, two closed failed-attempt summaries, four current trackers and debt. Source checkpoint only; active Run dependencies unbanked.",
+  "excluded": [
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/caller",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02",
+    "All live journals, worksites, active actor archives and active return files; no read, acquire, copy or hash in this checkpoint",
+    "Any closed-record/test dependency on a reused active resource remains unbanked; reproducible full native evidence is pending until resource closure",
+    "Isolated installed node_modules and generated build trees are excluded; completed immutable core15/16 package archives retained",
+    "Unrelated dirty evidence and pending peer work remain outside this finite selection",
+    "No full-Hello, fifteen-family, qualification, F11/AF22 or RC1 closure; existing release-boundary checks remain open"
+  ],
+  "sourcePostimageMutationByWriter": false
+}

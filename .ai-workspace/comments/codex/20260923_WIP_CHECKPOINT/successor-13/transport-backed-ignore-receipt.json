@@ -1,0 +1,23 @@
+{
+  "path": ".ai-workspace/comments/.gitignore",
+  "preimageSha256": "f72c2eb544f5979d533feb4ecb803ca9389a9d0eb6007a3aaa6fa5ea5f00511b",
+  "postimageSha256": "37d77d89d24fe6a2e8ff93973185064f2d948ee65947d2737f7ca3eed11165e6",
+  "exactIgnoredOriginals": [
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12-paired-post-push.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12-return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/absent-result-disposition.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/full-sandbox-support.preimage.mjs",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/return.md"
+  ],
+  "activeRootsAreNotIgnored": [
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/caller",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-02",
+    "All live journals, worksites, active actor archives and active return files; no read, acquire, copy or hash in this checkpoint",
+    "Any closed-record/test dependency on a reused active resource remains unbanked; reproducible full native evidence is pending until resource closure",
+    "Isolated installed node_modules and generated build trees are excluded; completed immutable core15/16 package archives retained",
+    "Unrelated dirty evidence and pending peer work remain outside this finite selection",
+    "No full-Hello, fifteen-family, qualification, F11/AF22 or RC1 closure; existing release-boundary checks remain open"
+  ]
+}

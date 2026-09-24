@@ -1,0 +1,26 @@
+{
+  ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12-paired-post-push.json": {
+    "sha256": "2ae5f3dc3ad1a05fb2d38bf88337ba9ff43da11d2f966f3f1c0fda59423bc8e1",
+    "byteLength": 3767
+  },
+  ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-12-return.md": {
+    "sha256": "c8a9f836a001046d52e6ae7f072b9390cdd35b0ea7297fc35b7f651dd9f251c8",
+    "byteLength": 2271
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/absent-result-disposition.json": {
+    "sha256": "09d78169a7dfdcf4661f3beda0904564d759770df55104014a3e3961164c7b95",
+    "byteLength": 1819
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/full-sandbox-support.preimage.mjs": {
+    "sha256": "da0914b917943ab65d47744e950a42a0048aaeb5bdbf9098db9ae776aebe2a17",
+    "byteLength": 78053
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/return.md": {
+    "sha256": "b3f12972605185614a505b6cc39a23446da1533be0dd8d6d9baced78cb7ff9d4",
+    "byteLength": 2913
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/return.md": {
+    "sha256": "5134dbde9b3f82505c697dca497d053cc94e6f1e27b16925920f057835611200",
+    "byteLength": 2868
+  }
+}

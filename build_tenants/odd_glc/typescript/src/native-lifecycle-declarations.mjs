@@ -170,3 +170,85 @@ export function constructNativeLifecycleEnvironmentRoles({ gtl, product, publica
 
 // Bounded observed-source continuation; the historical lifecycle API remains separate.
 export { constructNativeContinuationPublication, constructNativeContinuationEnvironmentRoles } from "./native-continuation-declarations.mjs";
+
+/** Fresh complete-source route. Assets are native workspace files; the same
+ * Product requirement algebra and ABG fold owners admit their meaning. No job
+ * bytes, host stage loop, or accumulated model response enters publication. */
+export function constructFreshNativeLifecyclePublication({ gtl, product, ids, semanticPublication, runEnvironment }) {
+  const n = gtl.SEMANTIC_STAGE_IDS, work = gtl.NATIVE_WORKSPACE_WORK_IDS;
+  const original = constructNativeLifecycleDeclaration({ gtl, product, ids });
+  const lifecycle = gtl.constructSemanticJobLifecycleDeclaration({ ...original,
+    proofTemplates: original.proofTemplates.map(row => ({ ...row, realizationContractRef: work.observationContractRef })),
+    stages: original.stages.map(stage => !stage.bodyCapabilities.includes("application_assessment") ? stage : { ...stage,
+      requiredContent: ["Bind exact admitted artifacts and same-Run command/predicate observations to the complete governing source and current obligations. Report supported behavior and residual gaps; do not run tools or invent missing evidence. The independent assessor alone receives evaluator-only oracle data.",
+        "Keep realization, verifier artifact, verifier execution and semantic assessment distinct. Application coverage remains non-closing."] }) });
+  const closures = [], close = (name, predicateRef, resultContractRef = n.envelopeContractRef, closureScope = "graph_call") => {
+    const closureContractRef = name === "root" ? ids.closureContractRef : `contract://odd-glc/fresh-native-lifecycle/${name}/closure@5`;
+    closures.push(gtl.constructSemanticClosureContract({ closureContractRef, predicateRef, resultContractRef, closureScope }));
+    return closureContractRef;
+  };
+  const stages = lifecycle.stages.map((stage, i) => gtl.constructNativeSemanticStageGraphFunctions(stage,
+    close(`stage-${i}`, n.nativeStagePredicateRef), close(`assessment-${i}`, n.nativeStagePredicateRef)));
+  const intake = gtl.constructSemanticJobGraphFunction({ graphFunctionRef: lifecycle.intakeGraphFunctionRef,
+    nodeRef: graphRef("intake") + "/node", lifecycleRef: lifecycle.declarationRef, operation: "intake",
+    closureContractRef: close("intake", n.jobIntakePredicateRef) });
+  const construction = gtl.constructNativeSemanticConstructionGraphFunction({ graphFunctionRef: graphRef("native-construction"),
+    closureContractRef: close("construction", n.nativeEvidencePredicateRef) });
+  const terminal = gtl.constructSemanticBridgeGraphFunction({ graphFunctionRef: graphRef("envelope-output"),
+    nodeRef: graphRef("envelope-output") + "/node", operation: "envelope_output",
+    closureContractRef: close("envelope-output", n.terminalPredicateRef, n.outputContractRef) });
+  const chain = [intake, ...stages.slice(0, 4).map(pair => pair[0]), construction, stages[4][0], terminal];
+  const nodes = chain.map((graph, i) => ({ nodeRef: `${ids.graphRef}/step-${i}`, nodeKind: "c_locus",
+    term: gtl.workflow.C(gtl.cGraphFunctionRef({ graphFunctionRef: graph.name, input: gtl.cCarrier(graph.inputs[0]), output: gtl.cCarrier(graph.outputs[0]) })) }));
+  const closureContractRef = close("root", n.lifecyclePredicateRef, n.outputContractRef, "run");
+  const root = { kind: "graph_function", name: ids.graphFunctionRef, version: "5.0.0",
+    environment: { requires: [n.jobInputContractRef], provides: [n.outputContractRef], carries: [n.envelopeContractRef] },
+    inputs: [n.jobInputContractRef], outputs: [n.outputContractRef], effects: [work.effectUri], tags: ["odd-glc", "fresh-native-lifecycle"],
+    declarations: { "abg.compute_regime": "mixed", "abg.closure_contract": closureContractRef,
+      "abg.evidence_contract": n.evidenceContractRef, "abg.judgment_contract": n.judgmentContractRef,
+      "abg.judgment_predicate": n.lifecycleStepPredicateRef, "abg.transition_contract": n.transitionContractRef,
+      "abg.raw_result_contract": "contract://abiogenesis/semantic-stage/native-assessment@5" },
+    template: { kind: "inline_graph", graphRef: ids.graphRef, startNodeRef: nodes[0].nodeRef,
+      terminalNodeRefs: [nodes.at(-1).nodeRef], nodes, applications: [],
+      edges: nodes.slice(1).map((node, i) => gtl.graphEdge({ fromNodeRef: nodes[i].nodeRef, toNodeRef: node.nodeRef })) } };
+  const graphs = [intake, ...stages.flat(), construction, terminal, root], zero = `sha256:${"0".repeat(64)}`;
+  const program = { kind: "gtl_program", programRef: ids.programRef, version: "5.0.0", moduleRef: ids.moduleRef,
+    starts: [{ startRef: ids.startRef, graphFunctionRef: ids.graphFunctionRef }],
+    callableMembership: [...graphs.map(g => g.name), work.graphFunctionRef, work.assessmentGraphFunctionRef,
+      product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef], closureContractRef,
+    policies: { "abg.root_mode": "direct", "abg.compute_regime": "mixed", "abg.default_start_ref": ids.startRef,
+      "abg.semantic_lifecycle": lifecycle.declarationRef,
+      ...(runEnvironment === undefined ? {} : { [gtl.RUN_ENVIRONMENT_POLICY]: runEnvironment.declarationRef }) } };
+  const template = exactlyOne(semanticPublication.contracts.filter(c => c.contractRef === n.closureContractRef), "semantic closure contract");
+  return gtl.modulePublication({ kind: "module_publication", moduleVersion: "5.0.0", moduleRef: ids.moduleRef, owningProductId: ids.productId,
+    descriptorRef: ids.descriptorRef, contributionManifestRef: ids.contributionManifestRef,
+    artifactDigest: zero, productContentDigest: zero, productManifestDigest: zero,
+    productSemanticsBinding: structuredClone(semanticPublication.productSemanticsBinding), semanticJobLifecycle: lifecycle,
+    ...(runEnvironment === undefined ? {} : { runEnvironments: [gtl.constructRunEnvironmentDeclaration(runEnvironment)] }),
+    contracts: closures.map(c => ({ ...template, contractRef: c.closureContractRef })), closureContracts: closures,
+    implementationBindings: [], evaluators: [], rules: [], graphFunctions: graphs, programs: [program],
+    contributions: graphs.map(g => ({ handle: g.name, kind: "graph_function", declarationOrContractRef: g.name, owningProductId: ids.productId,
+      programMembershipRefs: [ids.programRef], readinessPrerequisiteRefs: [ids.programRef], compatibilityRefs: ["compatibility://abiogenesis/major/5"], provenanceRefs: [zero, zero] })) });
+}
+
+/** Three reusable native actor families; twelve sequential actor occurrences.
+ * The admitted task supplies the current stage and exact candidate contract. */
+export function constructFreshNativeLifecycleEnvironmentRoles({ gtl, product, publication, nativePublications, sourceSelections, accessRefs, sourceBasisRef }) {
+  const program = exactlyOne(publication.programs, "fresh native Program");
+  const functions = [...publication.graphFunctions, ...nativePublications.flatMap(p => p.graphFunctions)].filter(g => program.callableMembership.includes(g.name));
+  const rows = functions.flatMap(graph => graph.template.nodes.flatMap(node => gtl.cLeafTerms(node.term).filter(leaf => leaf.fibre === "F_P").map(leaf => {
+    const role = gtl.nativeContextLeafFamily(graph, leaf), posture = role === "assessor" ? "reviewer" : "worker";
+    if (!["constructor", "assessor", "command_executor"].includes(role)) throw new TypeError("unsupported fresh native actor family");
+    const selected = role === "command_executor" ? ["execution"] : ["intent", "product", "requirements", "design", "evidence", ...(role === "constructor" ? ["construction"] : [])];
+    const text = role === "assessor" ? "Independently assess the admitted current candidate against the complete source, exact stage rubric and observed evidence. Remain read-only; report rejection and gaps honestly."
+      : role === "constructor" ? "Carry out the admitted stage task in the native workspace. Write only its declared asset or construction paths, preserving higher source and every unaffected obligation. Return only the native report, never accumulated semantic envelopes."
+        : "Execute only the admitted same-Run command task and probes. Retain actual failures and observations; never infer semantic completion from an exit code.";
+    return { graphFunctionRef: graph.name, programLocusRef: leaf.programLocusRef, role,
+      frameRefs: [sourceBasisRef + "standards/STDO_REFERENCE_FRAME_BASELINE.md#derived-" + posture + "-frame"],
+      policy: { policyRef: `policy://odd-glc/fresh-native-lifecycle/${role}@5`, text, digest: product.sha256Bytes(Buffer.from(text)) },
+      accessRefs: [...accessRefs], sourceBindings: [...sourceSelections.common, ...sourceSelections[posture], ...selected.flatMap(key => sourceSelections[key])],
+      contextPolicy: { policyRef: `policy://odd-glc/fresh-native-lifecycle/${role}/selection@5`, selectors: role === "command_executor" ? ["current_worksite", "admitted_execution_evidence"] : ["current_worksite"] } };
+  })));
+  if (rows.length !== 3 || new Set(rows.map(r => r.role)).size !== 3) throw new TypeError("one native author, assessor and executor family required");
+  return rows;
+}
