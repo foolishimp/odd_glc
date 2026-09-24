@@ -1,0 +1,18 @@
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/source-diff.patch:17: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:6: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:33: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:54: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:66: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:78: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:115: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:220: trailing whitespace.
++ 
+.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch:225: trailing whitespace.
++ 

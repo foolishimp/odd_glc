@@ -1,0 +1,15 @@
+✔ source fixtures keep the original full Hello obligations and an ordinary different request (1.844833ms)
+✔ remaining full Hello selections preserve original sources, oracles and capability data (5.116125ms)
+✔ remaining full Hello selection rejects unknown, crossed and altered original inputs (2.768166ms)
+✔ remaining full Hello non-CLI outcomes stay explicitly unobserved pending semantic review (1.573625ms)
+✔ Hello observations plus discovery preserve every original artifact and still require semantic review (0.325541ms)
+✔ Node TAP and spec counts preserve missing, insufficient and failed observations (0.7695ms)
+✔ an actual observed verifier failure is not hidden by a passing CLI probe (0.195625ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 338.829167

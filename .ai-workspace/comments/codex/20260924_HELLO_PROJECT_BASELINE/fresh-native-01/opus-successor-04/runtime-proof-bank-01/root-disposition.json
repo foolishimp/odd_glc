@@ -1,0 +1,38 @@
+{
+  "kind": "executive_case_disposition",
+  "status": "ACCEPTED",
+  "authority": "Root Executive instruction 2026-09-24; Writer gpt-6-astra/max preserves the disposition",
+  "subject": "selected complete basic-cli full native outcome on Opus04/core17/dev8",
+  "nativeReturn": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/return.md",
+    "sha256": "a5c85c1d028bcf6906b137ab8b8028f91baf22ef6315730721e6c409e7c05c4d",
+    "byteLength": 5322
+  },
+  "review": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/review-01/return.md",
+    "sha256": "cd56945f4d2fce1ffa9b91f77b9bf8bae8edb22ceef1aa89ff5ff7ec694f6321",
+    "byteLength": 9044
+  },
+  "parserProjection": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/projection.json",
+    "sha256": "53fbe236599d9477771f2af7dbaa99bf9986c303a76417d7f7bcde072064e93c",
+    "byteLength": 10868
+  },
+  "nativeFieldsUnchanged": {
+    "applicationCoverage": "non_closing",
+    "remainingGaps": [
+      "full_source_semantic_completeness_unassessed",
+      "application_requirements_not_closed",
+      "proof_depth_and_strength_unassessed"
+    ]
+  },
+  "noFurtherBasicCliExecutionRequired": true,
+  "nextSelection": "bounded remaining-five full-Hello caller integration; separate Worker source changes; source review and later native selection remain distinct",
+  "nonClaims": [
+    "six-project suite completion",
+    "Data Mapper acceptance",
+    "fifteen-family completion",
+    "RC1 qualification or release"
+  ],
+  "writerScope": "closed proof bank and current trackers/debt only; no staging or commit of overlapping source"
+}

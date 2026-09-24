@@ -1,0 +1,277 @@
+{
+  "directExpected": {
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-14-paired-post-push.json": {
+      "sha256": "3d3a5f307f888917394550a4bb9028c9b1784d3b28e391100256068b86e3116f",
+      "byteLength": 4362
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-14-return.md": {
+      "sha256": "91e0c1525ff5d342c5ed33eb1298a7ece2cd0e3337af269c4e3ee1233fe916b3",
+      "byteLength": 1614
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/check-1.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/check-2.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/check-3.log": {
+      "sha256": "2ebc5035c18aab26fa8e0719c269f5b2835f4753899d306b6c767da18fc1415d",
+      "byteLength": 419
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/checks.json": {
+      "sha256": "f5122b90cd9a29d941760e253f6f64e5431c0ba232b7ecc28629f5a287a3b8a9",
+      "byteLength": 691
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/projection.json": {
+      "sha256": "53fbe236599d9477771f2af7dbaa99bf9986c303a76417d7f7bcde072064e93c",
+      "byteLength": 10868
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/return.md": {
+      "sha256": "546fff08906fc8771a94e3cf52a0fc242f1f22689f7be50e68524bbf730e78d7",
+      "byteLength": 3078
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/source-diff.patch": {
+      "sha256": "56771fd3a5c23af59d71999a672f59253c641c7db255acde2a97343c140e107d",
+      "byteLength": 2903
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/source-subject.json": {
+      "sha256": "f0db9055d3bd8a4e179c1037295efd672158ee22cce2693af573946aa44bc35b",
+      "byteLength": 679
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observed-metrics.json": {
+      "sha256": "051b7bc5765ac1e254f9f1a65f07d6cd62c94d450af27b2a1acba676aca8f721",
+      "byteLength": 26731
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/return.md": {
+      "sha256": "a5c85c1d028bcf6906b137ab8b8028f91baf22ef6315730721e6c409e7c05c4d",
+      "byteLength": 5322
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/review-01/return.md": {
+      "sha256": "cd56945f4d2fce1ffa9b91f77b9bf8bae8edb22ceef1aa89ff5ff7ec694f6321",
+      "byteLength": 9044
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/first-metadata-assertion.json": {
+      "sha256": "611bed9f7fb6e02629a8189e86c31e1a6d5c30ae6ed5659d405058fab8daaa79",
+      "byteLength": 960
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/frozen-member-correspondence.json": {
+      "sha256": "3af0028f784c6157ece32c20d0a48c27c181aea43dc8cbd5316f00cb7a44874c",
+      "byteLength": 1306
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/pack_closed.py": {
+      "sha256": "a2ae59170f8a0d929be32f7bf91d4e0515746ef3e9a7fb6b93844bb597322ca2",
+      "byteLength": 1964
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/return.md": {
+      "sha256": "9a1692828bb4e7a4f29fb2bee13bd0e1a184146d3c5a6cafb6484e82408fe560",
+      "byteLength": 3252
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/root-disposition.json": {
+      "sha256": "1778323005f65d83141d4b3e2272c87e44c4ca3efdd1ef1c1d2655d80c28b5b8",
+      "byteLength": 1860
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/selection.json": {
+      "sha256": "82f5970f959964993d84381d3611e379b314301ec9d9977f0380df4a6d20d6eb",
+      "byteLength": 65746
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/tracking-check.json": {
+      "sha256": "e7d5ece353d84c88ce3850102eb92651e572f9371053c4c943f10b0c469b9539",
+      "byteLength": 364
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/tracking-postimages.json": {
+      "sha256": "5511dfac9bf864ea0ef854e065ae38e309e6f50d87db396a32276f9d5fb37b39",
+      "byteLength": 840
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/tracking-preimages.json": {
+      "sha256": "45b88d9a89b8a776874fb4f800c94de7d50fac001225561c11e1a041adbbdd27",
+      "byteLength": 840
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/catalog.json": {
+      "sha256": "70e1ab97f2eb53420b6c43e988cd6f8c2ec6b5af9e829a0753a9713bc415122b",
+      "byteLength": 2010
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/credential-shape-findings.json": {
+      "sha256": "44e87b2569a514609f5111491d1d0e0605c6a81f56db5ab4bdf0fe5812b7c55e",
+      "byteLength": 121
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/direct-paths.nul": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/exclusions.json": {
+      "sha256": "3974c18bd3617177301413f9dac88a296e227621726113ca3aa9e9ec8d227c36",
+      "byteLength": 348
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/members.jsonl.gz": {
+      "sha256": "a7255ba3fb0204728911b3f12ddb980ad78fd93383f38b8f6415d685104a54c0",
+      "byteLength": 7794
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/path-reconciliation.jsonl.gz": {
+      "sha256": "705247289242d9016835ebbe2fd515b03dd6edea32ec7a2b8848902779198f73",
+      "byteLength": 1567
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/payloads/family-0000.tar.gz.part0000": {
+      "sha256": "78e5cae20c0ccffdddeb18a1f7b9bbdac16808f4dc3f7dd185de9bf8e24a6f93",
+      "byteLength": 51380224
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/payloads/family-0000.tar.gz.part0001": {
+      "sha256": "78164effbf9305d9b1904aa88b1f7f58393f9f75161b8383a586193020df4860",
+      "byteLength": 16170314
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/payloads/raw-aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9.part0000": {
+      "sha256": "aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "byteLength": 17462
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/pending.json": {
+      "sha256": "5db967ae83d28d1f4d0cee865718f7c69ff1604472fe889e2211f1d9509b1fe8",
+      "byteLength": 248
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/runtime-proof-bank-01/transport-01/verification.json": {
+      "sha256": "fde397cb63df165a3f0ac0327ab9c45d6e61cad08a736560121b2e19a32c4974",
+      "byteLength": 1971
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/check-1.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/check-2.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/check-3.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/check-4.log": {
+      "sha256": "7892d83358e7259a3317efb20ffe5dcbd315ae40126e8bd8f5fde6788039b74c",
+      "byteLength": 837
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/checks.json": {
+      "sha256": "b32e09583e308027f928d390aeb4db3c8aaaafeeee0e77598966b6f1f1c56265",
+      "byteLength": 1166
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/execution-plan.json": {
+      "sha256": "88963e73c854b014a95d426439e207fb02ffa889614a68f3a33639b275e4616c",
+      "byteLength": 17989
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/freeze.json": {
+      "sha256": "50a427fea26318f49688c8a7d24b7f5693a129188d1f61fc565e74dc8b8be5e9",
+      "byteLength": 635
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/js-sdlc-bootstrap.json": {
+      "sha256": "cf67b040b7e8b56e1b33cde65ba3f7435ac8f459ebb960d8d4fb820e9b87bc08",
+      "byteLength": 12834
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/js-tenant-test.json": {
+      "sha256": "bf2bf6945c3c0e83865c4ca04f7e3a06c71909524def1a86d88dbb52d7d13ffa",
+      "byteLength": 9436
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/parallel-js.json": {
+      "sha256": "3fa0be1ea9a704be3658a1a7daee7609ce8750fd1b511ffc26e3e9ab4ad1b7bd",
+      "byteLength": 10855
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/rust-cli.json": {
+      "sha256": "6574245c1a88abbc2bec3305647f7b8c8a67cdf305156d30c420a61c8c8f84f3",
+      "byteLength": 10185
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/rust-service.json": {
+      "sha256": "f78c4b715f02d731c101a88ed180750a76c4274c44484b13a15c53dfea0dfdd0",
+      "byteLength": 10536
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/preimages/full-sandbox-declarations.mjs": {
+      "sha256": "a6bdc274897cbf93f31345936d0b6a7dbaaa2713c871b9702378b2b2a0d8f45a",
+      "byteLength": 14278
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/preimages/full-sandbox-support.mjs": {
+      "sha256": "1d6bac3fd16959f8423cdedfc584bb3626cc1b310cbf49cb27a79853df876dea",
+      "byteLength": 78944
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/preimages/full-sandbox.test.mjs": {
+      "sha256": "931dd9d9c1f333613614ae9ab5197617d3b5ad3a191e6c556ee240f298673439",
+      "byteLength": 26221
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/return.md": {
+      "sha256": "b647ecf08d28b2477ee36229b7d8289d38115155204700f2bea4fd35f74aaf9d",
+      "byteLength": 5257
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/review-01/return.md": {
+      "sha256": "bbaf6106e99108cbbe85bda21a0e74033d1e0ae200211eebb9f34e3a141e83cd",
+      "byteLength": 5238
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/selected-inputs.json": {
+      "sha256": "090674602fd86bbf11a771fb9129df882f2969bfadfcc225ec3eab6e6d086e9a",
+      "byteLength": 12654
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-diff.patch": {
+      "sha256": "d4d0f4b5cfdad8cfa8f829fd7522c5ff3ebd5ec5323a4a95c209e451e5b3ae7e",
+      "byteLength": 31846
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-preimages.json": {
+      "sha256": "1184b42d06a9f648d4275e2e23599c3d7db8f02b697e1e96a117558231f35593",
+      "byteLength": 617
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/source-subject.json": {
+      "sha256": "cbbf51195934fc074169d617727cf1903d7d9ba69d7a633cea15922c2e23c068",
+      "byteLength": 2524
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/tooling.json": {
+      "sha256": "d7ebd8666840104cda2a92d0432ea00a2ef975019a627e39d939d797d7d87059",
+      "byteLength": 921
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "071e3508f5e042b0e13e4ad0da536d5139cbf016466070cf33852b4d2c2764f6",
+      "byteLength": 59338
+    },
+    "build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-sdlc-bootstrap.oracle.json": {
+      "sha256": "a448f2400c1052892ebd78183cfb564e5db08da84402308a183d3c86e6100f6f",
+      "byteLength": 1890
+    },
+    "build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-tenant-test.oracle.json": {
+      "sha256": "55658e3343d7b27a553dbf38118052e60f9b27d977c3992ea13131ce5eebd58e",
+      "byteLength": 1782
+    },
+    "build_tenants/odd_glc/typescript/test/fixtures/generic-job/parallel-js.oracle.json": {
+      "sha256": "82a35700c78d9a9c85d18b2727b6de6f9fcb1fbb6a44910f2e46825fbcc2527c",
+      "byteLength": 2335
+    },
+    "build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-cli.oracle.json": {
+      "sha256": "fca13e707df3c3ff3653e5c715a048e86518fc9c4a091ebe8b828f8b8649b25e",
+      "byteLength": 1877
+    },
+    "build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-service.oracle.json": {
+      "sha256": "eaced4b57ccdb33b85006b79502ef773aaa396b8ace5689085cbd9d1296d5d9c",
+      "byteLength": 1966
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs": {
+      "sha256": "53cb1e33e9d33d671318198b27f7aba7d000774b1d3bd0b573bab7216d88050d",
+      "byteLength": 15820
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs": {
+      "sha256": "f420e49f6d6b933b9768a7fbaecd00c966d98b1f8644aa2c0b9783ae55d92d64",
+      "byteLength": 80143
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs": {
+      "sha256": "065dd639f2316f0d28f53a3d093ed7e7a66442b58863f9cd81222554b0afc171",
+      "byteLength": 30669
+    },
+    "specification/GOALS.md": {
+      "sha256": "17d6761ffb46ad99757f2c46c865d4a54e1e4d3133fe738a13faf7f0a5d7ed47",
+      "byteLength": 19278
+    }
+  },
+  "excluded": [
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-preparation-01/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/ partial physical install and caller tree",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-01/caller/",
+    "All active resources, journals, worksites, control/archives; node_modules and installed/package trees; unrelated dirty evidence and scratch; old historical banks and optional detailed replay"
+  ],
+  "newRuntimeEvidenceCaptured": false
+}

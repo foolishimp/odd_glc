@@ -1,0 +1,19 @@
+{
+  "status": "preserved_writer_metadata_assertion_failure",
+  "effect": "packing and full transport reconstruction verification had already passed; no archive or runtime rewrite",
+  "exception": "AssertionError comparing native helperArtifactDigest to raw serialized helper result bytes",
+  "mismatches": [
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/worksite-command-execution/d77c8d6a7d7b853a3322202fd4249d46499c4297f5c4d0f5466e240c707acef4/371636727e529cefc3ae3a099490d54982f88b12aca2dec21d93da425fffbbc7/result.json",
+      "claimed": {
+        "sha256": "f91ff79e8b73c803cf4506761e3e4cbf2d0e2bdd9001b1f2f839219b9bb4b7fc",
+        "byteLength": 42110
+      },
+      "archived": {
+        "sha256": "3169db4a69ac2cbc509e2ead3feef5cc568304bdd53c12fdf39c3843ac1c27da",
+        "byteLength": 42110
+      }
+    }
+  ],
+  "subsequentNativeExecution": false
+}

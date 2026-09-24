@@ -25,11 +25,23 @@ export const FULL_HELLO_STAGE_MEANINGS = Object.freeze([
   "component_test_source", "uat_test_source", "test_execution_plan", "test_execution_result",
 ]);
 
-export function selectOriginalHelloDeclaration(sourceBytes, product) {
-  const text = sourceBytes.toString("utf8"), marker = '  sdlcComplianceScenario({\n    key: "basic-cli",';
+// Exact original caller inputs, not Program declarations or runtime authority.
+export const FULL_HELLO_CASES = Object.freeze(Object.fromEntries([
+  ["basic-cli", "CLI-BASIC", "ce602ce2cc0fcefaba288623a675a770d11bc14d224b90045aebbe031330172f"],
+  ["js-tenant-test", "JS-TENANT-TEST", "3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9"],
+  ["js-sdlc-bootstrap", "JS-SDLC-BOOTSTRAP", "c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4"],
+  ["rust-cli", "RUST-CLI", "d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81"],
+  ["rust-service", "RUST-SERVICE", "a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d"],
+  ["parallel-js", "PARALLEL-JS", "d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053"],
+].map(([key, suffix, digest]) => [key, Object.freeze({ scenarioId: "SCN-GLC-HELLO-WORLD-" + suffix, sourceDigest: "sha256:" + digest })])));
+
+export function selectOriginalHelloDeclaration(sourceBytes, product, key = "basic-cli") {
+  assert.ok(Object.hasOwn(FULL_HELLO_CASES, key), "known original full Hello key");
+  const text = sourceBytes.toString("utf8"), marker = '  sdlcComplianceScenario({\n    key: "' + key + '",';
   const start = text.indexOf(marker), end = text.indexOf('\n  sdlcComplianceScenario({', start + marker.length);
-  assert.ok(start >= 0 && end > start && text.indexOf(marker, start + 1) === -1, "one original basic-cli declaration");
+  assert.ok(start >= 0 && end > start && text.indexOf(marker, start + 1) === -1, "one original " + key + " declaration");
   const selected = Buffer.from(text.slice(start, end));
+  assert.equal(product.sha256Bytes(selected), FULL_HELLO_CASES[key].sourceDigest, "unchanged original " + key + " declaration");
   for (const stage of FULL_HELLO_STAGE_MEANINGS) assert.ok(selected.includes('stage: "' + stage + '"'), "original " + stage + " retained");
   return { bytes: selected, provenance: { path: "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
     wholeFileDigest: product.sha256Bytes(sourceBytes), startByte: Buffer.byteLength(text.slice(0, start)),
@@ -45,25 +57,30 @@ export function nativeFullSandboxPublications(gtl, artifact, freshNative = false
     gtl.constructSelfConformanceModulePublication, ...(freshNative ? [gtl.constructNativeWorkspaceWorkModulePublication] : [])].map(construct => construct(basis));
 }
 
-export function constructFullHelloInputs({ product, originalSourceBytes, oracle }) {
-  const original = selectOriginalHelloDeclaration(originalSourceBytes, product);
-  return { key: "basic-cli", scenarioId: "SCN-GLC-HELLO-WORLD-CLI-BASIC", original,
-    members: [{ memberRef: "urn:" + original.provenance.selectedDigest, path: "original-basic-cli-declaration.txt",
+export function constructFullHelloInputs({ product, originalSourceBytes, oracle, key = "basic-cli" }) {
+  const original = selectOriginalHelloDeclaration(originalSourceBytes, product, key), scenarioId = FULL_HELLO_CASES[key].scenarioId;
+  assert.equal(oracle.scenarioId, scenarioId, "oracle belongs to the selected original case");
+  if (oracle.sourceSelection !== undefined) {
+    assert.equal(oracle.sourceSelection.key, key, "oracle source key");
+    assert.equal(oracle.sourceSelection.digest, original.provenance.selectedDigest, "oracle exact original source");
+  }
+  return { key, scenarioId, original,
+    members: [{ memberRef: "urn:" + original.provenance.selectedDigest, path: "original-" + key + "-declaration.txt",
       sourceLocator: "repo://odd_glc/" + original.provenance.path + "#bytes=" + original.provenance.startByte + "-" + original.provenance.endByte,
       base64: original.bytes.toString("base64") }],
-    taskData: { scenarioId: "SCN-GLC-HELLO-WORLD-CLI-BASIC", originalSource: original.provenance,
+    taskData: { scenarioId, originalSource: original.provenance,
       request: "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success." },
     evaluationData: structuredClone(oracle) };
 }
 
-export function constructOrdinaryJobInput({ product, gtl, input, executable, lifecycle }) {
+export function constructOrdinaryJobInput({ product, gtl, input, executable, executableCapabilities, lifecycle }) {
   return product.constructSemanticJobInput({ kind: "semantic_job_input", schemaVersion: "5.0.0",
     lifecycleRef: FULL_SANDBOX_IDS.lifecycleDeclarationRef, sourceRoleRef: gtl.SEMANTIC_STAGE_IDS.jobSourceContextRoleRef,
     members: structuredClone(input.members), taskData: { ...structuredClone(input.taskData), ...(lifecycle === undefined ? {} : { nativeLifecycle: {
       assets: lifecycle.stages.map((stage, i) => ({ stageRef: stage.declarationRef, path: `semantic-assets/stage-${i}.json` })),
       rubricPath: "semantic-assets/lifecycle-rubric.json" } }) }, evaluationData: structuredClone(input.evaluationData),
     worksiteScope: { readRoots: ["."], writeRoots: ["."], parentWriteRoots: ["."], evidenceWriteRoots: ["execution-evidence"],
-      executableCapabilities: [{ executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }] } });
+      executableCapabilities: structuredClone(executableCapabilities ?? [{ executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }]) } });
 }
 
 export const FULL_SANDBOX_MANAGEMENT_SOURCE_BASIS = "stdo://releases/v2.5.0-rc.7/";

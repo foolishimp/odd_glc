@@ -1,0 +1,228 @@
+{
+  "publicationPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/development-product/build/publication.json",
+  "publicationDigest": "sha256:9372b18c5eca6e93ffb2179697b582b1642bf8637441d1474e165d777d442122",
+  "jobs": [
+    {
+      "key": "js-tenant-test",
+      "scenarioId": "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
+      "inputPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/js-tenant-test.json",
+      "inputDigest": "sha256:db64b1d652185f72c196650a6beb441f1f27022cb56a9bba17817dc7a760f9c2",
+      "inputFileDigest": "sha256:bf2bf6945c3c0e83865c4ca04f7e3a06c71909524def1a86d88dbb52d7d13ffa",
+      "source": {
+        "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+        "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+        "startByte": 11915,
+        "endByte": 15570,
+        "selectedDigest": "sha256:3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9"
+      },
+      "oraclePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-tenant-test.oracle.json",
+      "oracleDigest": "sha256:93f39d5e1cb13efdba66da134b1998ba7418f96d335ab4a627752f8b58af6e52",
+      "runRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/events/runtime.events.jsonl",
+      "callerRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/jobs/js-tenant-test",
+      "executableCapabilities": [
+        {
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        }
+      ],
+      "semanticDestinations": [
+        "semantic-assets/stage-0.json",
+        "semantic-assets/stage-1.json",
+        "semantic-assets/stage-2.json",
+        "semantic-assets/stage-3.json",
+        "semantic-assets/stage-4.json"
+      ],
+      "runtimeAdmission": "not_started"
+    },
+    {
+      "key": "js-sdlc-bootstrap",
+      "scenarioId": "SCN-GLC-HELLO-WORLD-JS-SDLC-BOOTSTRAP",
+      "inputPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/js-sdlc-bootstrap.json",
+      "inputDigest": "sha256:5b642eaceb26413bef4f6abe7121a17f7d6d1da5488a26ab9856a8e1f8ac40c6",
+      "inputFileDigest": "sha256:cf67b040b7e8b56e1b33cde65ba3f7435ac8f459ebb960d8d4fb820e9b87bc08",
+      "source": {
+        "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+        "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+        "startByte": 15571,
+        "endByte": 21691,
+        "selectedDigest": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4"
+      },
+      "oraclePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-sdlc-bootstrap.oracle.json",
+      "oracleDigest": "sha256:091ca27cb92d7e80422272f1b0d71d5ae7fd7dfc299d037dfef1c71b1b924e99",
+      "runRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "callerRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap",
+      "executableCapabilities": [
+        {
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        }
+      ],
+      "semanticDestinations": [
+        "semantic-assets/stage-0.json",
+        "semantic-assets/stage-1.json",
+        "semantic-assets/stage-2.json",
+        "semantic-assets/stage-3.json",
+        "semantic-assets/stage-4.json"
+      ],
+      "runtimeAdmission": "not_started"
+    },
+    {
+      "key": "rust-cli",
+      "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-CLI",
+      "inputPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/rust-cli.json",
+      "inputDigest": "sha256:d655a68cfd105a87c887f46756e1294899f10c0a9b8f65701f485e052c6606d6",
+      "inputFileDigest": "sha256:6574245c1a88abbc2bec3305647f7b8c8a67cdf305156d30c420a61c8c8f84f3",
+      "source": {
+        "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+        "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+        "startByte": 21692,
+        "endByte": 25508,
+        "selectedDigest": "sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81"
+      },
+      "oraclePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-cli.oracle.json",
+      "oracleDigest": "sha256:a1189492d1fce47f868ce55b031ce85ced8618a1aeec42723e991d1788bf6f95",
+      "runRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/events/runtime.events.jsonl",
+      "callerRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/jobs/rust-cli",
+      "executableCapabilities": [
+        {
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        },
+        {
+          "executable": "/Users/jim/.cargo/bin/cargo",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        },
+        {
+          "executable": "/Users/jim/.cargo/bin/rustc",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        }
+      ],
+      "semanticDestinations": [
+        "semantic-assets/stage-0.json",
+        "semantic-assets/stage-1.json",
+        "semantic-assets/stage-2.json",
+        "semantic-assets/stage-3.json",
+        "semantic-assets/stage-4.json"
+      ],
+      "runtimeAdmission": "not_started"
+    },
+    {
+      "key": "rust-service",
+      "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+      "inputPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/rust-service.json",
+      "inputDigest": "sha256:d95dfac85c7373496a7a112ac5f4622a6a30f340d15937b1bf4a64cf9c79ca30",
+      "inputFileDigest": "sha256:f78c4b715f02d731c101a88ed180750a76c4274c44484b13a15c53dfea0dfdd0",
+      "source": {
+        "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+        "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+        "startByte": 25509,
+        "endByte": 29684,
+        "selectedDigest": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d"
+      },
+      "oraclePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-service.oracle.json",
+      "oracleDigest": "sha256:100a3595db7942e7da295e17b4a807ae8b8377c5480dbf91335e8d7b0fdbdb35",
+      "runRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/events/runtime.events.jsonl",
+      "callerRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/jobs/rust-service",
+      "executableCapabilities": [
+        {
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        },
+        {
+          "executable": "/Users/jim/.cargo/bin/rustc",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        }
+      ],
+      "semanticDestinations": [
+        "semantic-assets/stage-0.json",
+        "semantic-assets/stage-1.json",
+        "semantic-assets/stage-2.json",
+        "semantic-assets/stage-3.json",
+        "semantic-assets/stage-4.json"
+      ],
+      "runtimeAdmission": "not_started"
+    },
+    {
+      "key": "parallel-js",
+      "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+      "inputPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/parallel-js.json",
+      "inputDigest": "sha256:edf4a3a9bd301c4741536515fcfad4dcb49b179ad8d5af995e05be686f59859f",
+      "inputFileDigest": "sha256:3fa0be1ea9a704be3658a1a7daee7609ce8750fd1b511ffc26e3e9ab4ad1b7bd",
+      "source": {
+        "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+        "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+        "startByte": 29685,
+        "endByte": 33970,
+        "selectedDigest": "sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053"
+      },
+      "oraclePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/parallel-js.oracle.json",
+      "oracleDigest": "sha256:2208a738458687755511e635f97c0e61db453fb9a24f7de701b6169e54caed64",
+      "runRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/events/runtime.events.jsonl",
+      "callerRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/jobs/parallel-js",
+      "executableCapabilities": [
+        {
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "relativeCwdRoots": [
+            "."
+          ],
+          "environment": {},
+          "maxTimeoutMs": 120000,
+          "maxTerminationGraceMs": 1000
+        }
+      ],
+      "semanticDestinations": [
+        "semantic-assets/stage-0.json",
+        "semantic-assets/stage-1.json",
+        "semantic-assets/stage-2.json",
+        "semantic-assets/stage-3.json",
+        "semantic-assets/stage-4.json"
+      ],
+      "runtimeAdmission": "not_started"
+    }
+  ]
+}

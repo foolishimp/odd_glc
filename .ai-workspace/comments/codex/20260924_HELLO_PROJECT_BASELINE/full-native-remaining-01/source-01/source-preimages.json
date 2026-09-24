@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs",
+    "preimageSha256": "a6bdc274897cbf93f31345936d0b6a7dbaaa2713c871b9702378b2b2a0d8f45a"
+  },
+  {
+    "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+    "preimageSha256": "1d6bac3fd16959f8423cdedfc584bb3626cc1b310cbf49cb27a79853df876dea"
+  },
+  {
+    "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs",
+    "preimageSha256": "931dd9d9c1f333613614ae9ab5197617d3b5ad3a191e6c556ee240f298673439"
+  }
+]

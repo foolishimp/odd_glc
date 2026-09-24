@@ -1,0 +1,52 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "abd4f4ce47b27dd78a1fd4b538c7bcaf97dca15e",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 153
+  },
+  "archiveMemberCount": 153,
+  "archiveMemberBytes": 472116750,
+  "transportBytes": 67568000,
+  "assets": [
+    {
+      "id": "raw-aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 17462,
+      "sha256": "aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "parts": [
+        {
+          "path": "payloads/raw-aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9.part0000",
+          "byteLength": 17462,
+          "sha256": "aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9"
+        }
+      ]
+    },
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE",
+      "byteLength": 67550538,
+      "sha256": "c0efe5d81bff5696ca37bcb463f40a1aa59bc085a85be5139f55f396919b2d79",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 51380224,
+          "sha256": "78e5cae20c0ccffdddeb18a1f7b9bbdac16808f4dc3f7dd185de9bf8e24a6f93"
+        },
+        {
+          "path": "payloads/family-0000.tar.gz.part0001",
+          "byteLength": 16170314,
+          "sha256": "78164effbf9305d9b1904aa88b1f7f58393f9f75161b8383a586193020df4860"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "a7255ba3fb0204728911b3f12ddb980ad78fd93383f38b8f6415d685104a54c0",
+  "reconciliationSha256": "705247289242d9016835ebbe2fd515b03dd6edea32ec7a2b8848902779198f73",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

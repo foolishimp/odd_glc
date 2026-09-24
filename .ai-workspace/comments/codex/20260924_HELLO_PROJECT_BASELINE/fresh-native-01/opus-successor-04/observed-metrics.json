@@ -1,0 +1,696 @@
+{
+  "scope": "Closed Opus04 receipts and owned actor artifacts; no journal read or extra actor",
+  "run": {
+    "digest": "sha256:9dc23f7fd354b22a5a2de5a37a59cafd6f6da798205c1de3b345440c44d034d9",
+    "ref": "run://abiogenesis/08b5322ec8633eaff50a40a11aeaa57e17fe0f672ce9cadf308796535783d421"
+  },
+  "result": {
+    "digest": "sha256:ae6a2a452d58e83c573a031061674e8fa740593341d8bbea942a149f31e13be2",
+    "ref": "result://abiogenesis/ae6a2a452d58e83c573a031061674e8fa740593341d8bbea942a149f31e13be2"
+  },
+  "disposition": "completed",
+  "entryPrefixBytes": 2310001,
+  "close": {
+    "coordinateDigest": "sha256:06e8c20644dff44de8cc9b2a34a44774386e3f59d45b1d6da980732e49d501c1",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/resources/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:d19bfa943757107e5d0ca47e340f821c684aac539aa1b5402ca71c64c7aadd66",
+    "prefixLength": 353742824,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459234334
+    }
+  },
+  "preparation": {
+    "exitCode": 0,
+    "elapsedSeconds": 104.65224885940552,
+    "maxRssBytes": 2977300480
+  },
+  "native": {
+    "exitCode": 0,
+    "elapsedSeconds": 4025.7646758556366,
+    "maxRssBytes": 4854153216
+  },
+  "actors": [
+    {
+      "role": "Intent author",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 153106,
+      "apiDurationMs": 140601,
+      "reportedCostUsd": 1.2209118,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 18,
+          "outputTokens": 17854,
+          "cacheReadInputTokens": 615799,
+          "cacheCreationInputTokens": 92575,
+          "webSearchRequests": 0,
+          "costUSD": 1.2209118,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 5496,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 876553,
+      "promptBytes": 103006,
+      "outputBytes": 3880,
+      "promptWrittenUnix": 1790229883.5815725,
+      "transportWrittenUnix": 1790230037.3145623
+    },
+    {
+      "role": "Intent assessor",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 203257,
+      "apiDurationMs": 200283,
+      "reportedCostUsd": 1.3622116,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 10,
+          "outputTokens": 24144,
+          "cacheReadInputTokens": 320978,
+          "cacheCreationInputTokens": 101887,
+          "webSearchRequests": 0,
+          "costUSD": 1.3622116,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 16643,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 742786,
+      "promptBytes": 106420,
+      "outputBytes": 14997,
+      "promptWrittenUnix": 1790230047.16677,
+      "transportWrittenUnix": 1790230251.1042593
+    },
+    {
+      "role": "Product author",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 294642,
+      "apiDurationMs": 282523,
+      "reportedCostUsd": 1.850502,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 22,
+          "outputTokens": 37201,
+          "cacheReadInputTokens": 916130,
+          "cacheCreationInputTokens": 115396,
+          "webSearchRequests": 0,
+          "costUSD": 1.850502,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 17892,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 1312441,
+      "promptBytes": 104061,
+      "outputBytes": 4371,
+      "promptWrittenUnix": 1790230262.1532104,
+      "transportWrittenUnix": 1790230557.4028823
+    },
+    {
+      "role": "Product assessor",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 233641,
+      "apiDurationMs": 220913,
+      "reportedCostUsd": 1.6100048,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 22,
+          "outputTokens": 25376,
+          "cacheReadInputTokens": 842104,
+          "cacheCreationInputTokens": 116747,
+          "webSearchRequests": 0,
+          "costUSD": 1.6100048,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 15652,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 995606,
+      "promptBytes": 107831,
+      "outputBytes": 16651,
+      "promptWrittenUnix": 1790230571.7553573,
+      "transportWrittenUnix": 1790230806.0022488
+    },
+    {
+      "role": "Requirements author",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 436288,
+      "apiDurationMs": 423123,
+      "reportedCostUsd": 2.5241232000000005,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 26,
+          "outputTokens": 51607,
+          "cacheReadInputTokens": 1266516,
+          "cacheCreationInputTokens": 154822,
+          "webSearchRequests": 0,
+          "costUSD": 2.5241232000000005,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 22701,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 2016864,
+      "promptBytes": 105642,
+      "outputBytes": 4363,
+      "promptWrittenUnix": 1790230822.01748,
+      "transportWrittenUnix": 1790231258.9110608
+    },
+    {
+      "role": "Requirements assessor",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 239103,
+      "apiDurationMs": 220471,
+      "reportedCostUsd": 2.0278422,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 40,
+          "outputTokens": 24621,
+          "cacheReadInputTokens": 1909631,
+          "cacheCreationInputTokens": 144167,
+          "webSearchRequests": 0,
+          "costUSD": 2.0278422,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 11756,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 1310681,
+      "promptBytes": 111514,
+      "outputBytes": 14369,
+      "promptWrittenUnix": 1790231282.3566132,
+      "transportWrittenUnix": 1790231522.0705497
+    },
+    {
+      "role": "Design author",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 576006,
+      "apiDurationMs": 562640,
+      "reportedCostUsd": 3.23423,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 44,
+          "outputTokens": 61175,
+          "cacheReadInputTokens": 2558290,
+          "cacheCreationInputTokens": 187362,
+          "webSearchRequests": 0,
+          "costUSD": 3.23423,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 31180,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 2463910,
+      "promptBytes": 132301,
+      "outputBytes": 4717,
+      "promptWrittenUnix": 1790231545.208612,
+      "transportWrittenUnix": 1790232121.9228804
+    },
+    {
+      "role": "Design assessor",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 512428,
+      "apiDurationMs": 493760,
+      "reportedCostUsd": 2.8394771999999993,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 38,
+          "outputTokens": 53903,
+          "cacheReadInputTokens": 2037886,
+          "cacheCreationInputTokens": 169211,
+          "webSearchRequests": 0,
+          "costUSD": 2.8394771999999993,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 22909,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 2391673,
+      "promptBytes": 127290,
+      "outputBytes": 30034,
+      "promptWrittenUnix": 1790232155.0564787,
+      "transportWrittenUnix": 1790232668.3119621
+    },
+    {
+      "role": "Construction",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 85907,
+      "apiDurationMs": 74900,
+      "reportedCostUsd": 1.8354429999999997,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 26,
+          "outputTokens": 7190,
+          "cacheReadInputTokens": 1721495,
+          "cacheCreationInputTokens": 168405,
+          "webSearchRequests": 0,
+          "costUSD": 1.8354429999999997,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 2100,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 623535,
+      "promptBytes": 247546,
+      "outputBytes": 4464,
+      "promptWrittenUnix": 1790232712.434542,
+      "transportWrittenUnix": 1790232799.0921102
+    },
+    {
+      "role": "C2 worker",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 19866,
+      "apiDurationMs": 11696,
+      "reportedCostUsd": 0.40308940000000004,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 4,
+          "outputTokens": 922,
+          "cacheReadInputTokens": 46087,
+          "cacheCreationInputTokens": 46927,
+          "webSearchRequests": 0,
+          "costUSD": 0.40308940000000004,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 0,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 115949,
+      "promptBytes": 51202,
+      "outputBytes": 635,
+      "promptWrittenUnix": 1790232819.4845412,
+      "transportWrittenUnix": 1790232840.154381
+    },
+    {
+      "role": "Evidence author",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 504902,
+      "apiDurationMs": 491315,
+      "reportedCostUsd": 3.3316182000000003,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 48,
+          "outputTokens": 57450,
+          "cacheReadInputTokens": 2920891,
+          "cacheCreationInputTokens": 199781,
+          "webSearchRequests": 0,
+          "costUSD": 3.3316182000000003,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 31275,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 2110233,
+      "promptBytes": 144152,
+      "outputBytes": 4701,
+      "promptWrittenUnix": 1790232880.3868103,
+      "transportWrittenUnix": 1790233386.0922155
+    },
+    {
+      "role": "Evidence assessor",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-transport.json",
+      "disposition": "success",
+      "nativeResultAssessment": "admitted",
+      "apiRetryCount": 0,
+      "durationMs": 375615,
+      "apiDurationMs": 363487,
+      "reportedCostUsd": 2.5353638,
+      "modelUsage": {
+        "claude-opus-5-5": {
+          "inputTokens": 38,
+          "outputTokens": 39124,
+          "cacheReadInputTokens": 1999619,
+          "cacheCreationInputTokens": 169101,
+          "webSearchRequests": 0,
+          "costUSD": 2.5353638,
+          "contextWindow": 1000000,
+          "maxOutputTokens": 128000,
+          "thinkingTokens": 12420,
+          "canonicalModel": "claude-opus-5-5",
+          "provider": "firstParty",
+          "costBasis": "list"
+        }
+      },
+      "stdoutBytes": 1994092,
+      "promptBytes": 149684,
+      "outputBytes": 26043,
+      "promptWrittenUnix": 1790233434.830506,
+      "transportWrittenUnix": 1790233811.3007877
+    }
+  ],
+  "actorDurationMsSum": 3634761,
+  "actorApiDurationMsSum": 3485712,
+  "reportedCostUsd": 24.7748172,
+  "commandResults": [
+    {
+      "commandId": "verifier-plan-node-test",
+      "args": [
+        "--test",
+        "test/component/hello-cli.test.mjs",
+        "test/uat/hello-cli.uat.test.mjs"
+      ],
+      "exitStatus": 0,
+      "timedOut": false,
+      "stdoutBytes": 285,
+      "stdoutDigest": "sha256:e49a23cf2d8177b5c677b7d967acd56716ae540646b9003fcedc0519f6df5296",
+      "reportedTestDurationMs": [
+        55.833958
+      ],
+      "observationRef": "worksite-command-observation://abiogenesis/cfa816abc1f80b052a435a543b54bfb32ccbc8bdcad7dcdae9f8a86948877acd",
+      "stdout": "\u2714 CLI writes exactly Hello, world! and one newline to stdout and exits 0 (22.688875ms)\n\u2714 a user running the CLI sees exactly Hello, world! and a newline (22.661625ms)\n\u2139 tests 2\n\u2139 suites 0\n\u2139 pass 2\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 55.833958\n"
+    },
+    {
+      "commandId": "component-test-file",
+      "args": [
+        "--test",
+        "test/component/hello-cli.test.mjs"
+      ],
+      "exitStatus": 0,
+      "timedOut": false,
+      "stdoutBytes": 203,
+      "stdoutDigest": "sha256:0f93fde297a130017a5406178a37367783b7f6c19fbead6e2ed4eefb34ce15a4",
+      "reportedTestDurationMs": [
+        55.934792
+      ],
+      "observationRef": "worksite-command-observation://abiogenesis/c7e997c6af451ead29da485382cc8808b545aa71b2b0bd6966973650e3b696e0",
+      "stdout": "\u2714 CLI writes exactly Hello, world! and one newline to stdout and exits 0 (23.651333ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 55.934792\n"
+    },
+    {
+      "commandId": "uat-test-file",
+      "args": [
+        "--test",
+        "test/uat/hello-cli.uat.test.mjs"
+      ],
+      "exitStatus": 0,
+      "timedOut": false,
+      "stdoutBytes": 196,
+      "stdoutDigest": "sha256:e8b84c259a5a90c1e132551049f11137280711f0f1ce45cdfcc1195062aa07d4",
+      "reportedTestDurationMs": [
+        51.399833
+      ],
+      "observationRef": "worksite-command-observation://abiogenesis/9766296a319270051a86bb4cd3d5620894b6d28bc2e703170508f75b58b29314",
+      "stdout": "\u2714 a user running the CLI sees exactly Hello, world! and a newline (20.844083ms)\n\u2139 tests 1\n\u2139 suites 0\n\u2139 pass 1\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 51.399833\n"
+    },
+    {
+      "commandId": "cli-direct-probe",
+      "args": [
+        "generated/hello-world.mjs"
+      ],
+      "exitStatus": 0,
+      "timedOut": false,
+      "stdoutBytes": 14,
+      "stdoutDigest": "sha256:d9014c4624844aa5bac314773d6b689ad467fa4e1d1a50a1b8a99d5a95f72ff5",
+      "reportedTestDurationMs": [],
+      "observationRef": "worksite-command-observation://abiogenesis/9be3d1a3a06a124e9e41b4572c076ab72b2ba94695c5bbedd2b2a0373fa2e254",
+      "stdout": "Hello, world!\n"
+    }
+  ],
+  "commandTimingLimit": "The command owner does not report wall duration. Reported TAP duration is test-runner time only; C2 actor duration includes its helper work.",
+  "predicateObservations": [
+    {
+      "predicateId": "verifier-plan-exit-zero",
+      "predicateKind": "process_exit",
+      "observedValue": 0
+    },
+    {
+      "predicateId": "verifier-plan-pass-floor",
+      "predicateKind": "test_pass_count",
+      "observedValue": 2
+    },
+    {
+      "predicateId": "component-test-file-exit-zero",
+      "predicateKind": "process_exit",
+      "observedValue": 0
+    },
+    {
+      "predicateId": "component-test-file-pass-floor",
+      "predicateKind": "test_pass_count",
+      "observedValue": 1
+    },
+    {
+      "predicateId": "uat-test-file-exit-zero",
+      "predicateKind": "process_exit",
+      "observedValue": 0
+    },
+    {
+      "predicateId": "uat-test-file-pass-floor",
+      "predicateKind": "test_pass_count",
+      "observedValue": 1
+    },
+    {
+      "predicateId": "cli-exit-status-zero",
+      "predicateKind": "process_exit",
+      "observedValue": 0
+    },
+    {
+      "predicateId": "cli-stdout-exact",
+      "predicateKind": "stdout_exact",
+      "observedValue": "Hello, world!\n"
+    }
+  ],
+  "constructionChangedPaths": [
+    "specification/project-conformance.md"
+  ],
+  "currentTargetChanges": [
+    {
+      "path": "specification/project-conformance.md",
+      "beforeDigest": "sha256:48d0a08357e22ac76fe7bd0715c2f5b212930e2e202e5847dc3be1ff75a385d8",
+      "afterDigest": "sha256:ecdd3558f67e26a724659370c3f89137f427cca79e8409555b3bec3272f2e489",
+      "changed": true
+    },
+    {
+      "path": "design/implementation-design.md",
+      "beforeDigest": "sha256:77c746d77ad4a767b52e86896dac1108db34fccdfb6f0465c35780989326f620",
+      "afterDigest": "sha256:77c746d77ad4a767b52e86896dac1108db34fccdfb6f0465c35780989326f620",
+      "changed": false
+    },
+    {
+      "path": "generated/hello-world.mjs",
+      "beforeDigest": "sha256:28f2a389bcd8996da86d6ca79e0df4d2c17a003a78df09a440fb3aa4ff09f261",
+      "afterDigest": "sha256:28f2a389bcd8996da86d6ca79e0df4d2c17a003a78df09a440fb3aa4ff09f261",
+      "changed": false
+    },
+    {
+      "path": "design/test-design.md",
+      "beforeDigest": "sha256:dee95de2d49eedd17cee5dc836f65297c58a9239938f09f4b19e4e1defeed0b2",
+      "afterDigest": "sha256:dee95de2d49eedd17cee5dc836f65297c58a9239938f09f4b19e4e1defeed0b2",
+      "changed": false
+    },
+    {
+      "path": "test/component/hello-cli.test.mjs",
+      "beforeDigest": "sha256:a335548b2b1b9d810d56bad993c5cddab1d78470d894f73ef6ee163af757f928",
+      "afterDigest": "sha256:a335548b2b1b9d810d56bad993c5cddab1d78470d894f73ef6ee163af757f928",
+      "changed": false
+    },
+    {
+      "path": "test/uat/hello-cli.uat.test.mjs",
+      "beforeDigest": "sha256:7011423813b0b7724047937bc530d10573953d070b093bec71cd073949c4e21e",
+      "afterDigest": "sha256:7011423813b0b7724047937bc530d10573953d070b093bec71cd073949c4e21e",
+      "changed": false
+    },
+    {
+      "path": "test-execution-plan.json",
+      "beforeDigest": "sha256:4e08ff50b2a870392b9a62b2d456385d4f426b23182371780ce7b8d2c5f4e552",
+      "afterDigest": "sha256:4e08ff50b2a870392b9a62b2d456385d4f426b23182371780ce7b8d2c5f4e552",
+      "changed": false
+    }
+  ],
+  "historicalAssetConservation": [
+    {
+      "path": "semantic-assets/opus-01-stage-0.json",
+      "expected": "sha256:c9bd6ca0b24ddc87d9c0d426b5b14353b845abf4ff01a9d6f921818fe5d72b90",
+      "actual": "sha256:c9bd6ca0b24ddc87d9c0d426b5b14353b845abf4ff01a9d6f921818fe5d72b90",
+      "unchanged": true
+    },
+    {
+      "path": "semantic-assets/opus-01-stage-1.json",
+      "expected": "sha256:cf5bb34d8152f7a88db059ce767d8b5c129ea8caa0a55edbc6849feb8d904b06",
+      "actual": "sha256:cf5bb34d8152f7a88db059ce767d8b5c129ea8caa0a55edbc6849feb8d904b06",
+      "unchanged": true
+    },
+    {
+      "path": "semantic-assets/opus-01-stage-2.json",
+      "expected": "sha256:645149a6dc437ee3315ccde42937f3ff367d3ce75a6fc7975af728f44be002c2",
+      "actual": "sha256:645149a6dc437ee3315ccde42937f3ff367d3ce75a6fc7975af728f44be002c2",
+      "unchanged": true
+    },
+    {
+      "path": "semantic-assets/opus-01-stage-3.json",
+      "expected": "sha256:b85276ed0cdcb79607552b4c5c4df14f417004455a1d1b38b719e98ec7bfb3ac",
+      "actual": "sha256:b85276ed0cdcb79607552b4c5c4df14f417004455a1d1b38b719e98ec7bfb3ac",
+      "unchanged": true
+    },
+    {
+      "path": "semantic-assets/stage-0.json",
+      "expected": "sha256:b250fc72a3b0cbdad56298759e55b5e39a19bac38eb4b478f3d050c3cac66fff",
+      "actual": "sha256:b250fc72a3b0cbdad56298759e55b5e39a19bac38eb4b478f3d050c3cac66fff",
+      "unchanged": true
+    },
+    {
+      "path": "original-basic-cli-declaration.txt",
+      "expected": "sha256:ce602ce2cc0fcefaba288623a675a770d11bc14d224b90045aebbe031330172f",
+      "actual": "sha256:ce602ce2cc0fcefaba288623a675a770d11bc14d224b90045aebbe031330172f",
+      "unchanged": true
+    },
+    {
+      "path": "semantic-assets/lifecycle-rubric.json",
+      "expected": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+      "actual": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+      "unchanged": true
+    }
+  ],
+  "stageAssessments": [
+    {
+      "stageRef": "stage://odd-glc/generic-lifecycle/intent@5",
+      "disposition": "satisfied"
+    },
+    {
+      "stageRef": "stage://odd-glc/generic-lifecycle/product@5",
+      "disposition": "satisfied"
+    },
+    {
+      "stageRef": "stage://odd-glc/generic-lifecycle/requirements@5",
+      "disposition": "satisfied"
+    },
+    {
+      "stageRef": "stage://odd-glc/generic-lifecycle/design@5",
+      "disposition": "satisfied"
+    },
+    {
+      "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5",
+      "disposition": "satisfied"
+    }
+  ],
+  "applicationCoverage": "non_closing",
+  "remainingGaps": [
+    "full_source_semantic_completeness_unassessed",
+    "application_requirements_not_closed",
+    "proof_depth_and_strength_unassessed"
+  ],
+  "nativeC2WorksiteDelta": [],
+  "nativeC2ProductDelta": [],
+  "actorStdoutBytes": 16954323,
+  "journalGrowthBytes": 351432823,
+  "growthLimit": "Close extent only; no event-category accounting or byte-to-latency causal attribution.",
+  "readback": {
+    "exitCode": 0,
+    "elapsedSeconds": 424.43589091300964,
+    "maxRssBytes": 4503912448,
+    "publicReads": [
+      {
+        "memberKey": "run_result",
+        "disposition": "preserved_and_checked",
+        "elapsedMs": 210961.544,
+        "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_result.json",
+        "resultDigest": "sha256:6798cf7d88155c214f36843ecc62f7f4a5793f05202bc80f1dac9c5799d2e454"
+      },
+      {
+        "memberKey": "run_replay",
+        "disposition": "preserved_and_checked",
+        "elapsedMs": 212518.44095799996,
+        "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_replay.json",
+        "resultDigest": "sha256:0f9cb4c375719c01d1a77977c883df11277d2acac4671423bbf64f835f47643b"
+      }
+    ],
+    "typedValueAndProducerComparison": "passed",
+    "currentArtifactByteComparison": "passed",
+    "separateSdkReconstruction": false
+  },
+  "ordinaryOracle": {
+    "status": "unqualified_missing_independent_coverage",
+    "minimumTestPasses": {
+      "required": 2,
+      "observed": null,
+      "disposition": "unobserved"
+    },
+    "directCases": [
+      {
+        "ordinal": 0,
+        "disposition": "observed_pass"
+      }
+    ],
+    "semanticReview": "required"
+  },
+  "nativeNonActorRemainderSeconds": 391.00367585563663,
+  "timingInterpretation": "The non-actor remainder includes native setup, owner transitions and terminal close; it is not isolated causal overhead. File timestamps mark retention boundaries only.",
+  "retainedReceiptBytes": {
+    "live-receipt.json": 19115058,
+    "read-run_result.json": 7879156,
+    "read-run_replay.json": 7878813,
+    "full-result-proof.json": 10926
+  },
+  "ordinaryOracleParser": {
+    "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+    "line": 719,
+    "expects": "# pass and # fail lines; observed Node output uses the information symbol prefix. No correction or reclassification applied."
+  }
+}

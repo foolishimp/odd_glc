@@ -1,0 +1,13 @@
+{
+  "paths": 78,
+  "stagedBlobComparisons": 78,
+  "largestBlobBytes": 51380224,
+  "credentialShapeFindings": [],
+  "canonicalWhitespaceExitCode": 0,
+  "allStagedWhitespaceExitCode": 2,
+  "whitespaceDisposition": "Exact frozen patch/preimage evidence retains literal whitespace; canonical source/trackers pass",
+  "allAcceptedCanonicalPostimagesExact": true,
+  "heldResourcesExcluded": true,
+  "originalJournalRead": false,
+  "archiveExpansion": false
+}

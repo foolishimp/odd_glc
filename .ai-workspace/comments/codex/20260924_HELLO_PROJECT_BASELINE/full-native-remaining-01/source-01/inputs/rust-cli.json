@@ -1,0 +1,148 @@
+{
+  "kind": "semantic_job_input",
+  "schemaVersion": "5.0.0",
+  "lifecycleRef": "declaration://odd-glc/generic-lifecycle/stages@5",
+  "sourceRoleRef": "context-role://abiogenesis/semantic-stage/job-source@5",
+  "members": [
+    {
+      "memberRef": "urn:sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81",
+      "path": "original-rust-cli-declaration.txt",
+      "sourceLocator": "repo://odd_glc/build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs#bytes=21692-25508",
+      "base64": "ICBzZGxjQ29tcGxpYW5jZVNjZW5hcmlvKHsKICAgIGtleTogInJ1c3QtY2xpIiwKICAgIHNjZW5hcmlvSWQ6ICJTQ04tR0xDLUhFTExPLVdPUkxELVJVU1QtQ0xJIiwKICAgIGtpbmQ6ICJydXN0X2NsaSIsCiAgICBleHBlY3RlZFN0ZG91dDogIkhlbGxvLCB3b3JsZCFcbiIsCiAgICBzdGFnZVBsYW46IFsKICAgICAgewogICAgICAgIHN0YWdlOiAiY29uZm9ybWFuY2VfcHJvamVjdCIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsic3BlY2lmaWNhdGlvbi9wcm9qZWN0LWNvbmZvcm1hbmNlLm1kIl0sCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiV3JpdGUgb25seSBzcGVjaWZpY2F0aW9uL3Byb2plY3QtY29uZm9ybWFuY2UubWQuIiwKICAgICAgICAgICJEZWNsYXJlIGEgUnVzdCBDTEkgSGVsbG8gV29ybGQgc29mdHdhcmUtYnVpbGQgdHJhdmVyc2FsLiIsCiAgICAgICAgICAiVGhlIHNvdXJjZSBzdXJmYWNlIG11c3QgaW5jbHVkZSBDYXJnby50b21sIGFuZCBzcmMvbWFpbi5ycy4iLAogICAgICAgICAgIlRoZSBleGVjdXRpb24gcHJvb2YgbXVzdCBydW4gY2FyZ28gcnVuIC0tcXVpZXQgYW5kIG9ic2VydmUgc3Rkb3V0IGV4YWN0bHkgXCJIZWxsbywgd29ybGQhXFxuXCIuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAiaW1wbGVtZW50YXRpb25fZGVzaWduIiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJkZXNpZ24vaW1wbGVtZW50YXRpb24tZGVzaWduLm1kIl0sCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiV3JpdGUgb25seSBkZXNpZ24vaW1wbGVtZW50YXRpb24tZGVzaWduLm1kLiIsCiAgICAgICAgICAiRGVmaW5lIGEgbWluaW1hbCBSdXN0IGJpbmFyeSBjcmF0ZSBuYW1lZCBnbGNfaGVsbG9fd29ybGRfcnVzdC4iLAogICAgICAgICAgIlRoZSBiaW5hcnkgbXVzdCBwcmludCBleGFjdGx5IFwiSGVsbG8sIHdvcmxkIVwiIGZvbGxvd2VkIGJ5IG9uZSBuZXdsaW5lLiIsCiAgICAgICAgICAiTmFtZSBjb21wb25lbnQgYW5kIFVBVCB0ZXN0IHNvdXJjZSBzdXJmYWNlcyB0aGF0IGV4ZWN1dGUgY2FyZ28gcnVuIC0tcXVpZXQgYW5kIGFzc2VydCBzdGRvdXQuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAic291cmNlIiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJDYXJnby50b21sIiwgInNyYy9tYWluLnJzIl0sCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiV3JpdGUgb25seSBDYXJnby50b21sIGFuZCBzcmMvbWFpbi5ycy4iLAogICAgICAgICAgIkNhcmdvLnRvbWwgbXVzdCBkZWZpbmUgcGFja2FnZSBuYW1lIGdsY19oZWxsb193b3JsZF9ydXN0LCB2ZXJzaW9uIDAuMC4wLCBlZGl0aW9uIDIwMjEsIGFuZCBubyBkZXBlbmRlbmNpZXMuIiwKICAgICAgICAgICJzcmMvbWFpbi5ycyBtdXN0IGRlZmluZSBtYWluKCkgYW5kIHByaW50IGV4YWN0bHkgXCJIZWxsbywgd29ybGQhXCIgZm9sbG93ZWQgYnkgb25lIG5ld2xpbmUuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAidGVzdF9kZXNpZ24iLAogICAgICAgIGZpbGVzVG9Qcm9kdWNlOiBbImRlc2lnbi90ZXN0LWRlc2lnbi5tZCJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgZGVzaWduL3Rlc3QtZGVzaWduLm1kLiIsCiAgICAgICAgICAiU3BlY2lmeSBjb21wb25lbnQgYW5kIFVBVCB2YWxpZGF0aW9uIG9mIHRoZSBSdXN0IENMSSBzdGRvdXQgY29udHJhY3QuIiwKICAgICAgICAgICJCb3RoIHRlc3RzIG11c3Qgc3Bhd24gY2FyZ28gcnVuIC0tcXVpZXQgZnJvbSB0aGUgcHJvamVjdCByb290IGFuZCBhc3NlcnQgc3RhdHVzIDAgYW5kIHN0ZG91dCBleGFjdGx5IFwiSGVsbG8sIHdvcmxkIVxcblwiLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogImNvbXBvbmVudF90ZXN0X3NvdXJjZSIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsidGVzdC9jb21wb25lbnQvcnVzdC1jbGkudGVzdC5tanMiXSwKICAgICAgICBpbnN0cnVjdGlvbnM6IFsKICAgICAgICAgICJXcml0ZSBvbmx5IHRlc3QvY29tcG9uZW50L3J1c3QtY2xpLnRlc3QubWpzLiIsCiAgICAgICAgICAiVXNlIG5vZGU6dGVzdCwgbm9kZTphc3NlcnQvc3RyaWN0LCBhbmQgbm9kZTpjaGlsZF9wcm9jZXNzIHNwYXduU3luYy4iLAogICAgICAgICAgIlJ1biBjYXJnbyB3aXRoIFtcInJ1blwiLCBcIi0tcXVpZXRcIl0gZnJvbSB0aGUgcHJvamVjdCByb290LiIsCiAgICAgICAgICAiQXNzZXJ0IHN0YXR1cyAwIGFuZCBzdGRvdXQgZXhhY3RseSBcIkhlbGxvLCB3b3JsZCFcXG5cIi4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJ1YXRfdGVzdF9zb3VyY2UiLAogICAgICAgIGZpbGVzVG9Qcm9kdWNlOiBbInRlc3QvdWF0L3J1c3QtY2xpLnVhdC50ZXN0Lm1qcyJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgdGVzdC91YXQvcnVzdC1jbGkudWF0LnRlc3QubWpzLiIsCiAgICAgICAgICAiVXNlIG5vZGU6dGVzdCwgbm9kZTphc3NlcnQvc3RyaWN0LCBhbmQgbm9kZTpjaGlsZF9wcm9jZXNzIHNwYXduU3luYy4iLAogICAgICAgICAgIlJ1biBjYXJnbyB3aXRoIFtcInJ1blwiLCBcIi0tcXVpZXRcIl0gZnJvbSB0aGUgcHJvamVjdCByb290LiIsCiAgICAgICAgICAiQXNzZXJ0IHRoZSB1c2VyLXZpc2libGUgUnVzdCBDTEkgb3V0cHV0IGlzIGV4YWN0bHkgXCJIZWxsbywgd29ybGQhXFxuXCIuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAidGVzdF9leGVjdXRpb25fcGxhbiIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsidGVzdC1leGVjdXRpb24tcGxhbi5qc29uIl0sCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiV3JpdGUgb25seSB0ZXN0LWV4ZWN1dGlvbi1wbGFuLmpzb24uIiwKICAgICAgICAgICJUaGUgSlNPTiBjb21tYW5kIG11c3QgYmUgbm9kZS4iLAogICAgICAgICAgIlRoZSBhcmdzIG11c3QgYmUgW1wiLS10ZXN0XCIsIFwidGVzdC9jb21wb25lbnQvcnVzdC1jbGkudGVzdC5tanNcIiwgXCJ0ZXN0L3VhdC9ydXN0LWNsaS51YXQudGVzdC5tanNcIl0uIiwKICAgICAgICAgICJleHBlY3RlZFRlc3RQYXNzQ291bnQgbXVzdCBiZSBhdCBsZWFzdCAyLCBtYXRjaGluZyB0aGUgYWRtaXR0ZWQgY29tcG9uZW50IGFuZCBVQVQgY292ZXJhZ2UgZmxvb3IuIiwKICAgICAgICAgICJleHBlY3RlZFN0ZG91dE1hdGNoIG11c3QgaW5jbHVkZSBzdGFibGUgemVyby1mYWlsdXJlIGV2aWRlbmNlIHN1Y2ggYXMgZmFpbCAwOyBkbyBub3QgcGluIGFuIGV4YWN0IHBhc3MtY291bnQgZnJhZ21lbnQgd2hlbiB0aGUgZ2VuZXJhdGVkIHRlc3RzIGFkZCBkZXB0aCBjb3ZlcmFnZS4iLAogICAgICAgICAgImFzc2VydGVkUmV0dXJuVmFsdWUgbXVzdCBiZSBcIkhlbGxvLCB3b3JsZCFcIi4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJ0ZXN0X2V4ZWN1dGlvbl9yZXN1bHQiLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIlByb2R1Y2Ugbm8gZmlsZXMuIiwKICAgICAgICAgICJBY2NlcHQgb25seSBpZiB0aGUgcGxhbm5lZCBub2RlOnRlc3QgY29tbWFuZCBleGl0ZWQgMCwgb2JzZXJ2ZWRUZXN0UGFzc0NvdW50IGlzIGF0IGxlYXN0IHRoZSBwcmlvciB0ZXN0X2V4ZWN1dGlvbl9wbGFuIGV4cGVjdGVkVGVzdFBhc3NDb3VudCwgYW5kIHBsYW5TYXRpc2ZpZWQgaXMgdHJ1ZS4iCiAgICAgICAgXQogICAgICB9CiAgICBdCiAgfSks"
+    }
+  ],
+  "taskData": {
+    "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-CLI",
+    "originalSource": {
+      "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+      "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+      "startByte": 21692,
+      "endByte": 25508,
+      "selectedDigest": "sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81"
+    },
+    "request": "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success.",
+    "nativeLifecycle": {
+      "assets": [
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/intent@5",
+          "path": "semantic-assets/stage-0.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/product@5",
+          "path": "semantic-assets/stage-1.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/requirements@5",
+          "path": "semantic-assets/stage-2.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/design@5",
+          "path": "semantic-assets/stage-3.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5",
+          "path": "semantic-assets/stage-4.json"
+        }
+      ],
+      "rubricPath": "semantic-assets/lifecycle-rubric.json"
+    }
+  },
+  "evaluationData": {
+    "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-CLI",
+    "purpose": "Independent evaluation of the complete unchanged original rust-cli declaration.",
+    "sourceSelection": {
+      "key": "rust-cli",
+      "digest": "sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81"
+    },
+    "cases": [
+      {
+        "observationKind": "command_stdout",
+        "command": "cargo",
+        "arguments": [
+          "run",
+          "--quiet"
+        ],
+        "stdout": "Hello, world!\n",
+        "exitStatus": 0
+      }
+    ],
+    "minimumTestPasses": 2,
+    "requiredArtifacts": [
+      "specification/project-conformance.md",
+      "design/implementation-design.md",
+      "Cargo.toml",
+      "src/main.rs",
+      "design/test-design.md",
+      "test/component/rust-cli.test.mjs",
+      "test/uat/rust-cli.uat.test.mjs",
+      "test-execution-plan.json"
+    ],
+    "requiredTestFiles": [
+      "test/component/rust-cli.test.mjs",
+      "test/uat/rust-cli.uat.test.mjs"
+    ],
+    "requiredTestRoles": [
+      "component",
+      "user_acceptance"
+    ],
+    "requiredStageMeanings": [
+      "conformance_project",
+      "implementation_design",
+      "source",
+      "test_design",
+      "component_test_source",
+      "uat_test_source",
+      "test_execution_plan",
+      "test_execution_result"
+    ],
+    "requiredHostTools": [
+      "node",
+      "cargo",
+      "rustc"
+    ],
+    "assessment": "Preserve the dependency-free Rust 2021 package glc_hello_world_rust version 0.0.0. Component and UAT tests must each actually execute cargo run --quiet, asserting status 0 and exact stdout; conserve all original lifecycle surfaces. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
+  },
+  "worksiteScope": {
+    "readRoots": [
+      "."
+    ],
+    "writeRoots": [
+      "."
+    ],
+    "parentWriteRoots": [
+      "."
+    ],
+    "evidenceWriteRoots": [
+      "execution-evidence"
+    ],
+    "executableCapabilities": [
+      {
+        "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+        "relativeCwdRoots": [
+          "."
+        ],
+        "environment": {},
+        "maxTimeoutMs": 120000,
+        "maxTerminationGraceMs": 1000
+      },
+      {
+        "executable": "/Users/jim/.cargo/bin/cargo",
+        "relativeCwdRoots": [
+          "."
+        ],
+        "environment": {},
+        "maxTimeoutMs": 120000,
+        "maxTerminationGraceMs": 1000
+      },
+      {
+        "executable": "/Users/jim/.cargo/bin/rustc",
+        "relativeCwdRoots": [
+          "."
+        ],
+        "environment": {},
+        "maxTimeoutMs": 120000,
+        "maxTerminationGraceMs": 1000
+      }
+    ]
+  }
+}

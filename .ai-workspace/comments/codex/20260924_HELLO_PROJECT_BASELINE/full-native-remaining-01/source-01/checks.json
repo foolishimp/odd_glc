@@ -1,0 +1,48 @@
+{
+  "environmentSelection": {
+    "ODD_GLC_ABI5_SOURCE_BUILD_ROOT": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript"
+  },
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "test/full-sandbox-declarations.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.01965250028297305,
+      "log": "check-1.log"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "test/full-sandbox-support.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.0192565000616014,
+      "log": "check-2.log"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "test/full-sandbox.test.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.01917362492531538,
+      "log": "check-3.log"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-name-pattern=^(remaining full Hello|source fixtures keep|Node TAP and spec counts|Hello observations plus discovery|an actual observed verifier failure)",
+        "test/full-sandbox.test.mjs"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.3612737078219652,
+      "log": "check-4.log"
+    }
+  ]
+}

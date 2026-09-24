@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
-import { constructFullSandboxPackage, constructOrdinaryJobInput, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS,
+import { constructFullSandboxPackage, constructOrdinaryJobInput, constructFullHelloInputs, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
   FULL_HELLO_TARGETS, FULL_HELLO_STAGE_MEANINGS, nativeFullSandboxPublications } from "./full-sandbox-declarations.mjs";
 import { readFullSandboxCandidate, installedFullSandboxApis, ordinarySandboxInputs, evaluateOrdinaryJobObservation } from "./full-sandbox-support.mjs";
 import { D1_WITNESS_IDS, D1_FROZEN_INPUT_SHA256 } from "./d1-lifecycle-declarations.mjs";
@@ -79,6 +79,45 @@ test("native source input retains the complete unchanged original selected bytes
   assert.equal(hello.members[0].base64, selected.bytes.toString("base64"));
   assert.equal(hello.members[0].sourceLocator.endsWith("#bytes=" + selected.provenance.startByte + "-" + selected.provenance.endByte), true);
   assert.throws(() => selectOriginalHelloDeclaration(Buffer.from("no selected source"), product));
+});
+
+const remainingHelloKeys = ["js-tenant-test", "js-sdlc-bootstrap", "rust-cli", "rust-service", "parallel-js"];
+const callerApis = { skip: product ? false : "select the existing source build for caller value checks" };
+test("remaining full Hello selections preserve original sources, oracles and capability data", callerApis, async () => {
+  const bytes = await readFile(join(root, "test/glc-software-build-overlay-live.test.mjs"));
+  const selected = await ordinarySandboxInputs(product, remainingHelloKeys);
+  assert.deepEqual(selected.map(input => input.key), remainingHelloKeys);
+  for (const input of selected) {
+    const { startByte, endByte, selectedDigest } = input.original.provenance;
+    assert.equal(input.members[0].base64, bytes.subarray(startByte, endByte).toString("base64"));
+    assert.equal(selectedDigest, FULL_HELLO_CASES[input.key].sourceDigest);
+    assert.deepEqual(input.evaluationData.requiredStageMeanings, FULL_HELLO_STAGE_MEANINGS);
+    assert.equal(input.evaluationData.sourceSelection.digest, selectedDigest);
+    assert.ok(input.evaluationData.requiredArtifacts.includes("design/test-design.md"));
+    const executableCapabilities = [process.execPath, "/unit-only/cargo"].map(executable => ({
+      executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }));
+    const job = constructOrdinaryJobInput({ product, gtl, input, executable: process.execPath, executableCapabilities });
+    assert.equal(product.isSemanticJobInput(job), true);
+    assert.deepEqual(job.members, input.members); assert.deepEqual(job.evaluationData, input.evaluationData);
+    assert.deepEqual(job.worksiteScope.executableCapabilities, executableCapabilities);
+  }
+  assert.deepEqual((await ordinarySandboxInputs(product)).map(input => input.key), ["basic-cli", "integer-addition"]);
+});
+
+test("remaining full Hello selection rejects unknown, crossed and altered original inputs", callerApis, async () => {
+  const bytes = await readFile(join(root, "test/glc-software-build-overlay-live.test.mjs"));
+  const oracle = JSON.parse(await readFile(join(root, "test/fixtures/generic-job/js-tenant-test.oracle.json"), "utf8"));
+  assert.throws(() => selectOriginalHelloDeclaration(bytes, product, "unknown"), /known original full Hello key/u);
+  await assert.rejects(ordinarySandboxInputs(product, ["unknown"]), /known selected ordinary job/u);
+  await assert.rejects(ordinarySandboxInputs(product, ["rust-cli", "rust-cli"]), /distinct selected ordinary jobs/u);
+  assert.throws(() => constructFullHelloInputs({ product, originalSourceBytes: bytes, oracle, key: "rust-cli" }), /oracle belongs/u);
+  const wrongDigest = { ...oracle, sourceSelection: { ...oracle.sourceSelection, digest: "sha256:" + "0".repeat(64) } };
+  assert.throws(() => constructFullHelloInputs({ product, originalSourceBytes: bytes, oracle: wrongDigest, key: "js-tenant-test" }), /oracle exact original source/u);
+  const selected = selectOriginalHelloDeclaration(bytes, product, "js-tenant-test");
+  const altered = Buffer.from(bytes); altered[selected.provenance.startByte] = 9;
+  assert.throws(() => selectOriginalHelloDeclaration(altered, product, "js-tenant-test"), /one original/u);
+  const changedBody = Buffer.from(bytes); changedBody[selected.provenance.startByte + selected.bytes.indexOf("Hello, world!")] = 74;
+  assert.throws(() => selectOriginalHelloDeclaration(changedBody, product, "js-tenant-test"), /unchanged original/u);
 });
 
 test("native generic declaration contains full topology and no fixed source declaration or input", native, () => {
@@ -199,6 +238,21 @@ async function observationFixture(key, commands) {
 }
 const passingDiscovery = () => commandObservation(["--test"], { stdout: "# pass 2\n# fail 0\n", ref: "unit-node-discovery" });
 
+test("remaining full Hello non-CLI outcomes stay explicitly unobserved pending semantic review", async () => {
+  for (const key of remainingHelloKeys) {
+    const oracle = JSON.parse(await readFile(join(root, "test/fixtures/generic-job/" + key + ".oracle.json"), "utf8"));
+    const fixture = await observationFixture("basic-cli", [
+      commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }), passingDiscovery(),
+    ]);
+    fixture.input.evaluationData.cases = oracle.cases;
+    const value = evaluateOrdinaryJobObservation(fixture);
+    assert.ok(value.cases.every(row => row.disposition === "unexecuted_probe" && row.reason === "outside_direct_cli_interpretation"));
+    assert.deepEqual(value.cases.map(row => row.expected), oracle.cases);
+    assert.equal(value.applicationQualification, "unqualified_missing_independent_coverage");
+    assert.equal(value.semanticReview.disposition, "required");
+  }
+});
+
 test("native evidence targets use exact protected artifact observations without a legacy worksite", async () => {
   const fixture = await observationFixture("basic-cli", [
     commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }), passingDiscovery(),
@@ -256,6 +310,26 @@ test("Hello observations plus discovery preserve every original artifact and sti
   assert.ok(value.artifactCoverage.every(row => row.disposition === "present_in_admitted_evidence"));
   assert.ok(value.requiredTestFiles.every(row => row.disposition === "present_in_admitted_evidence"));
   assert.ok(value.verifierArtifacts.every(row => Buffer.from(row.base64, "base64").toString("utf8").includes("independent semantic review")));
+});
+
+test("Node TAP and spec counts preserve missing, insufficient and failed observations", async () => {
+  for (const [stdout, observed, countDisposition, qualification] of [
+    ["# pass 2\n# fail 0\n", 2, "met", "unqualified_pending_independent_semantic_review"],
+    ["ℹ pass 2\nℹ fail 0\n", 2, "met", "unqualified_pending_independent_semantic_review"],
+    ["ℹ fail 0\n", null, "unobserved", "unqualified_missing_independent_coverage"],
+    ["ℹ pass 2\n", null, "unobserved", "unqualified_missing_independent_coverage"],
+    ["ℹ pass 1\nℹ fail 0\n", 1, "not_met", "unqualified_missing_independent_coverage"],
+    ["ℹ pass 2\nℹ fail 1\n", 2, "met", "unqualified_observed_failure"],
+  ]) {
+    const value = evaluateOrdinaryJobObservation(await observationFixture("basic-cli", [
+      commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }),
+      commandObservation(["--test"], { stdout }),
+    ]));
+    assert.deepEqual(value.minimumTestPasses, { required: 2, observed, disposition: countDisposition });
+    assert.equal(value.applicationQualification, qualification);
+    assert.equal(value.semanticReview.disposition, "required");
+    if (qualification === "unqualified_observed_failure") assert.equal(value.testCommands[0].disposition, "observed_fail");
+  }
 });
 
 test("an actual observed verifier failure is not hidden by a passing CLI probe", async () => {

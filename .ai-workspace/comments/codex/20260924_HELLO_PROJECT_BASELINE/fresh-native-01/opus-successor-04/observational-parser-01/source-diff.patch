@@ -1,0 +1,40 @@
+--- build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs (preimage)
++++ build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs (postimage)
+@@ -716,7 +716,7 @@
+       observations };
+   });
+   const testCommands = commands.filter(command => executables.includes(command.executable) && command.args.includes("--test")).map(command => {
+-    const stdout = text(command.stdout), pass = stdout.match(/^# pass (\d+)$/mu), fail = stdout.match(/^# fail (\d+)$/mu);
++    const stdout = text(command.stdout), pass = stdout.match(/^(?:#|ℹ) pass (\d+)$/mu), fail = stdout.match(/^(?:#|ℹ) fail (\d+)$/mu);
+     return { observationRef: command.observationRef, args: command.args, relativeCwd: command.relativeCwd,
+       disposition: !normal(command) || command.exitStatus !== 0 || fail !== null && Number(fail[1]) > 0 ? "observed_fail" : "observed_pass",
+       testPasses: pass === null ? null : Number(pass[1]), testFailures: fail === null ? null : Number(fail[1]) };
+--- build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs (preimage)
++++ build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs (postimage)
+@@ -258,6 +258,26 @@
+   assert.ok(value.verifierArtifacts.every(row => Buffer.from(row.base64, "base64").toString("utf8").includes("independent semantic review")));
+ });
+ 
++test("Node TAP and spec counts preserve missing, insufficient and failed observations", async () => {
++  for (const [stdout, observed, countDisposition, qualification] of [
++    ["# pass 2\n# fail 0\n", 2, "met", "unqualified_pending_independent_semantic_review"],
++    ["ℹ pass 2\nℹ fail 0\n", 2, "met", "unqualified_pending_independent_semantic_review"],
++    ["ℹ fail 0\n", null, "unobserved", "unqualified_missing_independent_coverage"],
++    ["ℹ pass 2\n", null, "unobserved", "unqualified_missing_independent_coverage"],
++    ["ℹ pass 1\nℹ fail 0\n", 1, "not_met", "unqualified_missing_independent_coverage"],
++    ["ℹ pass 2\nℹ fail 1\n", 2, "met", "unqualified_observed_failure"],
++  ]) {
++    const value = evaluateOrdinaryJobObservation(await observationFixture("basic-cli", [
++      commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }),
++      commandObservation(["--test"], { stdout }),
++    ]));
++    assert.deepEqual(value.minimumTestPasses, { required: 2, observed, disposition: countDisposition });
++    assert.equal(value.applicationQualification, qualification);
++    assert.equal(value.semanticReview.disposition, "required");
++    if (qualification === "unqualified_observed_failure") assert.equal(value.testCommands[0].disposition, "observed_fail");
++  }
++});
++
+ test("an actual observed verifier failure is not hidden by a passing CLI probe", async () => {
+   const value = evaluateOrdinaryJobObservation(await observationFixture("basic-cli", [
+     commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }),

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md",
+    "sha256": "c49b44bec6198aa74cd58d9be9ce2f56fe07a81844ebd70370738011967281c6",
+    "byteLength": 345517
+  },
+  {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "sha256": "fe55e455af7a9fc91e7ff8aba1daa5b6a01050918cd47a6cf80667b16d6b6d3d",
+    "byteLength": 58200
+  },
+  {
+    "path": "/Users/jim/src/apps/abiogenesis/specification/GOALS.md",
+    "sha256": "58d4e266a6cbffe1b546131c752dbd178a4a91fd547f51b034a7b9b9e08e3a91",
+    "byteLength": 60122
+  },
+  {
+    "path": "/Users/jim/src/apps/odd_glc/specification/GOALS.md",
+    "sha256": "509318ce3d6063eaf2f3bf3866e55d85c721f54c9b158e8dc1594ebb39645df1",
+    "byteLength": 19139
+  }
+]

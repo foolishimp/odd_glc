@@ -1,0 +1,1133 @@
+{
+  "kind": "closed_runtime_proof_bank_selection",
+  "writer": "gpt-6-astra/max",
+  "selectedOutcome": "Executive-accepted Opus04 complete basic-cli case only",
+  "members": [
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/return.md",
+      "byteLength": 5322,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/selection.json",
+      "byteLength": 7702,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/selection.md",
+      "byteLength": 817,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/ordinary-input.json",
+      "byteLength": 13961,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/prepare.mjs",
+      "byteLength": 12728,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/read-public.mjs",
+      "byteLength": 7083,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/prepare-process.json",
+      "byteLength": 344,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/prepare-timing.json",
+      "byteLength": 60,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/prepare.stderr",
+      "byteLength": 1251,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/prepare.stdout",
+      "byteLength": 2304782,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/run-process.json",
+      "byteLength": 414,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/run-timing.json",
+      "byteLength": 60,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/run.stderr",
+      "byteLength": 777,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/readback-process.json",
+      "byteLength": 461,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/readback-timing.json",
+      "byteLength": 60,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/readback.stdout",
+      "byteLength": 1173,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/readback.stderr",
+      "byteLength": 777,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observed-metrics.json",
+      "byteLength": 26731,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/first-actor-boundary.json",
+      "byteLength": 1212,
+      "purpose": "closed selected native caller, outcome, timings and source selection"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/retained-eventless-setup.json",
+      "byteLength": 684,
+      "purpose": "existing setup/binding/candidate provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/successor-basis.json",
+      "byteLength": 5948,
+      "purpose": "existing setup/binding/candidate provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/prepared.json",
+      "byteLength": 3322181,
+      "purpose": "existing setup/binding/candidate provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/00-install-core17.json",
+      "byteLength": 5517,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/00-install-core17.stderr",
+      "byteLength": 0,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/01-admit-consumer-successor-lock.json",
+      "byteLength": 5572,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/01-admit-consumer-successor-lock.stderr",
+      "byteLength": 0,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/02-bind-existing-workspace.json",
+      "byteLength": 6142,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/02-bind-existing-workspace.stderr",
+      "byteLength": 0,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/03-catalog.json",
+      "byteLength": 202235,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/03-catalog.stderr",
+      "byteLength": 0,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/04-view.json",
+      "byteLength": 2102,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/04-view.stderr",
+      "byteLength": 0,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/05-basic-cli-lifecycle-conformance.json",
+      "byteLength": 18454095,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/receipts/05-basic-cli-lifecycle-conformance.stderr",
+      "byteLength": 0,
+      "purpose": "closed ordinary Public setup receipt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/ordinary-input.json",
+      "byteLength": 13961,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/prepared.json",
+      "byteLength": 7876,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/live-attempt.json",
+      "byteLength": 1908,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/live-receipt.json",
+      "byteLength": 19115058,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/live-start.jsonl",
+      "byteLength": 17767586,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/full-result-proof.json",
+      "byteLength": 10926,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/public-readback.json",
+      "byteLength": 1539,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_result.json",
+      "byteLength": 7879156,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_result.jsonl",
+      "byteLength": 9578,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_result.boundary.json",
+      "byteLength": 379,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_result.stderr",
+      "byteLength": 0,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_replay.json",
+      "byteLength": 7878813,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_replay.jsonl",
+      "byteLength": 9617,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_replay.boundary.json",
+      "byteLength": 387,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_replay.stderr",
+      "byteLength": 0,
+      "purpose": "exact invocation, terminal receipt and fresh Public read proof"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/check-1.log",
+      "byteLength": 0,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/check-2.log",
+      "byteLength": 0,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/check-3.log",
+      "byteLength": 419,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/checks.json",
+      "byteLength": 691,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/projection.json",
+      "byteLength": 10868,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/recompute.log",
+      "byteLength": 328,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/recompute.mjs",
+      "byteLength": 3323,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/return.md",
+      "byteLength": 3078,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/source-diff.patch",
+      "byteLength": 2903,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/source-preimages.json",
+      "byteLength": 408,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/source-subject.json",
+      "byteLength": 679,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/review-01/return.md",
+      "byteLength": 9044,
+      "purpose": "closed parser correction/offline successor or independent review"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-transport.json",
+      "byteLength": 973300,
+      "purpose": "actual Intent author native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-output.txt",
+      "byteLength": 3880,
+      "purpose": "actual Intent author output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-prompt.txt",
+      "byteLength": 103006,
+      "purpose": "actual Intent author prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Intent author stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-stdout.log",
+      "byteLength": 876553,
+      "purpose": "actual Intent author stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-transport.json",
+      "byteLength": 834651,
+      "purpose": "actual Intent assessor native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-output.txt",
+      "byteLength": 14997,
+      "purpose": "actual Intent assessor output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-prompt.txt",
+      "byteLength": 106420,
+      "purpose": "actual Intent assessor prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Intent assessor stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-stdout.log",
+      "byteLength": 742786,
+      "purpose": "actual Intent assessor stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-transport.json",
+      "byteLength": 1448576,
+      "purpose": "actual Product author native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-output.txt",
+      "byteLength": 4371,
+      "purpose": "actual Product author output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-prompt.txt",
+      "byteLength": 104061,
+      "purpose": "actual Product author prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Product author stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-stdout.log",
+      "byteLength": 1312441,
+      "purpose": "actual Product author stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-transport.json",
+      "byteLength": 1105163,
+      "purpose": "actual Product assessor native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-output.txt",
+      "byteLength": 16651,
+      "purpose": "actual Product assessor output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-prompt.txt",
+      "byteLength": 107831,
+      "purpose": "actual Product assessor prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Product assessor stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-stdout.log",
+      "byteLength": 995606,
+      "purpose": "actual Product assessor stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-transport.json",
+      "byteLength": 2224813,
+      "purpose": "actual Requirements author native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-output.txt",
+      "byteLength": 4363,
+      "purpose": "actual Requirements author output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-prompt.txt",
+      "byteLength": 105642,
+      "purpose": "actual Requirements author prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Requirements author stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-stdout.log",
+      "byteLength": 2016864,
+      "purpose": "actual Requirements author stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-transport.json",
+      "byteLength": 1437066,
+      "purpose": "actual Requirements assessor native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-output.txt",
+      "byteLength": 14369,
+      "purpose": "actual Requirements assessor output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-prompt.txt",
+      "byteLength": 111514,
+      "purpose": "actual Requirements assessor prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Requirements assessor stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-stdout.log",
+      "byteLength": 1310681,
+      "purpose": "actual Requirements assessor stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-transport.json",
+      "byteLength": 2706519,
+      "purpose": "actual Design author native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-output.txt",
+      "byteLength": 4717,
+      "purpose": "actual Design author output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-prompt.txt",
+      "byteLength": 132301,
+      "purpose": "actual Design author prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Design author stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-stdout.log",
+      "byteLength": 2463910,
+      "purpose": "actual Design author stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-transport.json",
+      "byteLength": 2662950,
+      "purpose": "actual Design assessor native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-output.txt",
+      "byteLength": 30034,
+      "purpose": "actual Design assessor output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-prompt.txt",
+      "byteLength": 127290,
+      "purpose": "actual Design assessor prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Design assessor stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-stdout.log",
+      "byteLength": 2391673,
+      "purpose": "actual Design assessor stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-transport.json",
+      "byteLength": 677100,
+      "purpose": "actual Construction native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-output.txt",
+      "byteLength": 4464,
+      "purpose": "actual Construction output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-prompt.txt",
+      "byteLength": 247546,
+      "purpose": "actual Construction prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Construction stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-stdout.log",
+      "byteLength": 623535,
+      "purpose": "actual Construction stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-transport.json",
+      "byteLength": 133972,
+      "purpose": "actual C2 worker native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-output.txt",
+      "byteLength": 635,
+      "purpose": "actual C2 worker output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-prompt.txt",
+      "byteLength": 51202,
+      "purpose": "actual C2 worker prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual C2 worker stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-stdout.log",
+      "byteLength": 115949,
+      "purpose": "actual C2 worker stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-transport.json",
+      "byteLength": 2303003,
+      "purpose": "actual Evidence author native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-output.txt",
+      "byteLength": 4701,
+      "purpose": "actual Evidence author output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-prompt.txt",
+      "byteLength": 144152,
+      "purpose": "actual Evidence author prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Evidence author stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-stdout.log",
+      "byteLength": 2110233,
+      "purpose": "actual Evidence author stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-transport.json",
+      "byteLength": 2230406,
+      "purpose": "actual Evidence assessor native transport/provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-output.txt",
+      "byteLength": 26043,
+      "purpose": "actual Evidence assessor output"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-prompt.txt",
+      "byteLength": 149684,
+      "purpose": "actual Evidence assessor prompt"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-stderr.log",
+      "byteLength": 0,
+      "purpose": "actual Evidence assessor stderr"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-stdout.log",
+      "byteLength": 1994092,
+      "purpose": "actual Evidence assessor stdout"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/specification/project-conformance.md",
+      "byteLength": 2171,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/design/implementation-design.md",
+      "byteLength": 1867,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/generated/hello-world.mjs",
+      "byteLength": 41,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/design/test-design.md",
+      "byteLength": 3336,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/test/component/hello-cli.test.mjs",
+      "byteLength": 510,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/test/uat/hello-cli.uat.test.mjs",
+      "byteLength": 503,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/test-execution-plan.json",
+      "byteLength": 241,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/original-basic-cli-declaration.txt",
+      "byteLength": 4325,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-0.json",
+      "byteLength": 36909,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-1.json",
+      "byteLength": 55863,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-2.json",
+      "byteLength": 118799,
+      "purpose": "selected artifact bytes joined to admitted C2 snapshot"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/lifecycle-rubric.json",
+      "byteLength": 16810,
+      "purpose": "unchanged stage rubric"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-3.json",
+      "byteLength": 129539,
+      "purpose": "current native authored semantic stage"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-4.json",
+      "byteLength": 108413,
+      "purpose": "current native authored semantic stage"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-0.json",
+      "byteLength": 31155,
+      "purpose": "named preserved source/rubric/historical context"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-1.json",
+      "byteLength": 51317,
+      "purpose": "named preserved source/rubric/historical context"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-2.json",
+      "byteLength": 104052,
+      "purpose": "named preserved source/rubric/historical context"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-3.json",
+      "byteLength": 116724,
+      "purpose": "named preserved source/rubric/historical context"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/stage-0.json",
+      "byteLength": 27333,
+      "purpose": "named preserved source/rubric/historical context"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/worksite-command-execution/d77c8d6a7d7b853a3322202fd4249d46499c4297f5c4d0f5466e240c707acef4/371636727e529cefc3ae3a099490d54982f88b12aca2dec21d93da425fffbbc7/result.json",
+      "byteLength": 42110,
+      "purpose": "actual C2 helper provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/worksite-command-execution/d77c8d6a7d7b853a3322202fd4249d46499c4297f5c4d0f5466e240c707acef4/371636727e529cefc3ae3a099490d54982f88b12aca2dec21d93da425fffbbc7/task.json",
+      "byteLength": 3042027,
+      "purpose": "actual C2 helper provenance"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/worksite-command-execution/d77c8d6a7d7b853a3322202fd4249d46499c4297f5c4d0f5466e240c707acef4/371636727e529cefc3ae3a099490d54982f88b12aca2dec21d93da425fffbbc7/launch.json",
+      "byteLength": 3191,
+      "purpose": "actual C2 helper launch input"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/resources/events/runtime.events.jsonl",
+      "byteLength": 353742824,
+      "purpose": "genuine closed Opus04 journal; one original streaming archive/hash read; no parsing"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/return.md",
+      "byteLength": 4341,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/selection.json",
+      "byteLength": 7141,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/ordinary-input.json",
+      "byteLength": 13961,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/prepare-failure-physical.json",
+      "byteLength": 967,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/prepare-process.json",
+      "byteLength": 343,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/prepare-timing.json",
+      "byteLength": 59,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/prepare.stderr",
+      "byteLength": 1524,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-03/caller/receipts/02-install-core17.process-failure.json",
+      "byteLength": 460,
+      "purpose": "small closed pre-Run timeout/selection evidence; old journal/lock/partial target excluded"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/artifacts/odd-glc-route-one-typescript-0.2.0-dev.8.tgz",
+      "byteLength": 17462,
+      "purpose": "exact dev8 archive, once; Root selected retention after prior bank metadata had no raw member"
+    }
+  ],
+  "expectedFrozenMembers": {
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-output.txt": {
+      "sha256": "2e126cb8ba7f4dcca5883188b65e6e1d17783b17be21e944442052a5cf0231d8",
+      "byteLength": 3880
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-prompt.txt": {
+      "sha256": "87747840ab1f794a021440c78c114360c1313ebf773347be5f218c00961b3e8f",
+      "byteLength": 103006
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-085bdcc81cc2390d-stdout.log": {
+      "sha256": "cd63281095a73525904c394d51c8b40b7fd495e0c0221f824958ce6912ae6c12",
+      "byteLength": 876553
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-output.txt": {
+      "sha256": "66cb425cb1aa471601f3a84643526a5462307b3ca23cbaf3b47500742f9229d0",
+      "byteLength": 14997
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-prompt.txt": {
+      "sha256": "f47529f2000d108a65f123109bd2c27177b16211fc452f681c5d4b83d98aa5e9",
+      "byteLength": 106420
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7335d8abf048cb09-stdout.log": {
+      "sha256": "99a8c27f45c308725e29cadb2d45a4b3aaa8b4c07b1a0605380ea88f525af61a",
+      "byteLength": 742786
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-output.txt": {
+      "sha256": "0e4ab1dd8200d3654d56e36d9b1b6dd734eec200026893821e2bd9555f2c9924",
+      "byteLength": 4371
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-prompt.txt": {
+      "sha256": "755222137955343eda30b0b7c835d9a45592362ccf7d1c23f984fe81d534d820",
+      "byteLength": 104061
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-4f72444b24a76542-stdout.log": {
+      "sha256": "4c2dfb407a6749f46df1324b61b1edfd252a7a986464e64d25137b4110df6242",
+      "byteLength": 1312441
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-output.txt": {
+      "sha256": "0920143e9ed562b484ea19ac43487abb741e8cdc5e1af23bed5530902a7a3776",
+      "byteLength": 16651
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-prompt.txt": {
+      "sha256": "30079a8fc3764a7c9154c2588e84e41a5f7764c558492d30dc1b1ba530e296ad",
+      "byteLength": 107831
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-a4dfc06adeede4c4-stdout.log": {
+      "sha256": "673ef990b34b84f473d996b6bf989bd38b1b63346698d496a9f6012ae4e0a283",
+      "byteLength": 995606
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-output.txt": {
+      "sha256": "2179fc22594e9ac9448d36c4dad9324a850642cb404462aa3016ea2439763964",
+      "byteLength": 4363
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-prompt.txt": {
+      "sha256": "39f4cf24cc85944aa9d2bf78651e573f7f80623a2816aae1ceaeb3b06b6e298f",
+      "byteLength": 105642
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-978d74e005f7d26d-stdout.log": {
+      "sha256": "2c2135376e2f89cf411c68efbfab9251bc515aea47befeab99d09ae5f3a794d9",
+      "byteLength": 2016864
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-output.txt": {
+      "sha256": "b2b80dc7a6d4e03291b122beb7d0aca59c29100b27d39a270b73bed361eba91a",
+      "byteLength": 14369
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-prompt.txt": {
+      "sha256": "9fe3d1c77fd10eb816d768b10097ba61a47c9117de1c2f1368c646d7f180511c",
+      "byteLength": 111514
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-6a8cc7c7c4aed3ba-stdout.log": {
+      "sha256": "5eb6471e1c4b46388b652bc3029c2f9dee55d94e52385b4c7f0f9329f0ab968d",
+      "byteLength": 1310681
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-output.txt": {
+      "sha256": "04623c8e3bc09edd83d9b25cbbb3e1f5718d0d7cb2fced458813085ef2a114fd",
+      "byteLength": 4717
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-prompt.txt": {
+      "sha256": "fe27e64bd478077aa6d328b2944a493c50075bc3069e756c55624419920717ce",
+      "byteLength": 132301
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e3be697e26140f4f-stdout.log": {
+      "sha256": "9510ca8cea0d9e1b9353273f524525fe995a1e226a3ba574bd4965672a51c699",
+      "byteLength": 2463910
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-output.txt": {
+      "sha256": "5babd60989d7f8b7b6b3990a059e53418214b58b99e3da4f29fa1751a053c830",
+      "byteLength": 30034
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-prompt.txt": {
+      "sha256": "a8064aee380846d800d13039f465677fb07ea1e64ba12f4705c5d37af1e3cc2b",
+      "byteLength": 127290
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-99d96ce30ff160f8-stdout.log": {
+      "sha256": "66fa2d45d4c85eed645dd4abe20392350a4118bd599306575822e9007f605110",
+      "byteLength": 2391673
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-output.txt": {
+      "sha256": "cefc18080cec3cfb1655dcf5f40627d0f6a09ba52d6a2b437cf3e1ed2ea62d7a",
+      "byteLength": 4464
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-prompt.txt": {
+      "sha256": "21a7adf8b49c4dae7b8437d5203a3f432fd807bae1603312c08d777c9e1f637b",
+      "byteLength": 247546
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-e7624e97a2cba842-stdout.log": {
+      "sha256": "79f05fb0f9501cd83ca101a1dfdfb5ab3aa49463bad64714f8cf2d1141bf45a4",
+      "byteLength": 623535
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-output.txt": {
+      "sha256": "f84939327fcb71bd4eeab10b458929b82314c89ede1cabdac11e093e657d0895",
+      "byteLength": 635
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-prompt.txt": {
+      "sha256": "8ff67c2da782575489cfc83c63052031051a634a24a4ffd5f5edd0417bb57b3f",
+      "byteLength": 51202
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-7f898f7b2ad42b49-stdout.log": {
+      "sha256": "0c89ac00641153fa90571db11e0b07638b2e8247d6272013baae6646ec712f47",
+      "byteLength": 115949
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-output.txt": {
+      "sha256": "0e32e434c475ee316404c600b1ad682e55ff0d6284c535ba84d19db9410efa5b",
+      "byteLength": 4701
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-prompt.txt": {
+      "sha256": "bab6e9476d2a4db43836958fd6978ab5eca93ac0a0e8723f52b09b34cc5c32b1",
+      "byteLength": 144152
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-1e268d62186e7cca-stdout.log": {
+      "sha256": "5293dc88362d70bf2338de4afc5022f90d96691d27861939956cea7f239ef791",
+      "byteLength": 2110233
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-output.txt": {
+      "sha256": "6dde899151c7aaf2a5d2cac24970388b23b770f4a5092be2cfd4ea8949548560",
+      "byteLength": 26043
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-prompt.txt": {
+      "sha256": "83442dddc3c57ac1506bcab862f2c9d4e7101997839d6851dc5c894ac09cfc97",
+      "byteLength": 149684
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/fp-d6ccf265eca2e571-stdout.log": {
+      "sha256": "34b79130f31859f9fdabe242b19ad317e03a5576723f4a3ed76c6ccba0fe1aa7",
+      "byteLength": 1994092
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/specification/project-conformance.md": {
+      "sha256": "ecdd3558f67e26a724659370c3f89137f427cca79e8409555b3bec3272f2e489",
+      "byteLength": 2171
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/design/implementation-design.md": {
+      "sha256": "77c746d77ad4a767b52e86896dac1108db34fccdfb6f0465c35780989326f620",
+      "byteLength": 1867
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/generated/hello-world.mjs": {
+      "sha256": "28f2a389bcd8996da86d6ca79e0df4d2c17a003a78df09a440fb3aa4ff09f261",
+      "byteLength": 41
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/design/test-design.md": {
+      "sha256": "dee95de2d49eedd17cee5dc836f65297c58a9239938f09f4b19e4e1defeed0b2",
+      "byteLength": 3336
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/test/component/hello-cli.test.mjs": {
+      "sha256": "a335548b2b1b9d810d56bad993c5cddab1d78470d894f73ef6ee163af757f928",
+      "byteLength": 510
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/test/uat/hello-cli.uat.test.mjs": {
+      "sha256": "7011423813b0b7724047937bc530d10573953d070b093bec71cd073949c4e21e",
+      "byteLength": 503
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/test-execution-plan.json": {
+      "sha256": "4e08ff50b2a870392b9a62b2d456385d4f426b23182371780ce7b8d2c5f4e552",
+      "byteLength": 241
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/original-basic-cli-declaration.txt": {
+      "sha256": "ce602ce2cc0fcefaba288623a675a770d11bc14d224b90045aebbe031330172f",
+      "byteLength": 4325
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-0.json": {
+      "sha256": "c889664c369db05a5213215a4eb54b0a51c64b80459468037628b2e539f89d20",
+      "byteLength": 36909
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-1.json": {
+      "sha256": "c7c2c70c89660d3ee66f49b7fe6dc4bac6a4a29dacd616d15fd9684a0e0339f0",
+      "byteLength": 55863
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-2.json": {
+      "sha256": "744102b0137dc35771879294484d90e7d43cc1f685f3c1e7380faf68d06b6764",
+      "byteLength": 118799
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-3.json": {
+      "sha256": "7ecd7b379440eba8799644f24c16c8630c89dd6a38cd6daab8e2a15e779aaa56",
+      "byteLength": 129539
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-04-stage-4.json": {
+      "sha256": "3e78f895e8d345e6d85f858d1da4c82cf34773f9bd7792db703f7615b4789df0",
+      "byteLength": 108413
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-0.json": {
+      "sha256": "c9bd6ca0b24ddc87d9c0d426b5b14353b845abf4ff01a9d6f921818fe5d72b90",
+      "byteLength": 31155
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-1.json": {
+      "sha256": "cf5bb34d8152f7a88db059ce767d8b5c129ea8caa0a55edbc6849feb8d904b06",
+      "byteLength": 51317
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-2.json": {
+      "sha256": "645149a6dc437ee3315ccde42937f3ff367d3ce75a6fc7975af728f44be002c2",
+      "byteLength": 104052
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/opus-01-stage-3.json": {
+      "sha256": "b85276ed0cdcb79607552b4c5c4df14f417004455a1d1b38b719e98ec7bfb3ac",
+      "byteLength": 116724
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/stage-0.json": {
+      "sha256": "b250fc72a3b0cbdad56298759e55b5e39a19bac38eb4b478f3d050c3cac66fff",
+      "byteLength": 27333
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/subject-basic-cli/semantic-assets/lifecycle-rubric.json": {
+      "sha256": "c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+      "byteLength": 16810
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/worksite-command-execution/d77c8d6a7d7b853a3322202fd4249d46499c4297f5c4d0f5466e240c707acef4/371636727e529cefc3ae3a099490d54982f88b12aca2dec21d93da425fffbbc7/result.json": {
+      "sha256": "f91ff79e8b73c803cf4506761e3e4cbf2d0e2bdd9001b1f2f839219b9bb4b7fc",
+      "byteLength": 42110
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/archives/worksite-command-execution/d77c8d6a7d7b853a3322202fd4249d46499c4297f5c4d0f5466e240c707acef4/371636727e529cefc3ae3a099490d54982f88b12aca2dec21d93da425fffbbc7/task.json": {
+      "sha256": "12f3e251b79ec612e57793c761f2eac0eeffa342dc7cf19dcc316684b0defd27",
+      "byteLength": 3042027
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/resources/events/runtime.events.jsonl": {
+      "sha256": "d19bfa943757107e5d0ca47e340f821c684aac539aa1b5402ca71c64c7aadd66",
+      "byteLength": 353742824
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/artifacts/odd-glc-route-one-typescript-0.2.0-dev.8.tgz": {
+      "sha256": "aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "byteLength": 17462
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/return.md": {
+      "sha256": "a5c85c1d028bcf6906b137ab8b8028f91baf22ef6315730721e6c409e7c05c4d",
+      "byteLength": 5322
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/review-01/return.md": {
+      "sha256": "cd56945f4d2fce1ffa9b91f77b9bf8bae8edb22ceef1aa89ff5ff7ec694f6321",
+      "byteLength": 9044
+    },
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/observational-parser-01/projection.json": {
+      "sha256": "53fbe236599d9477771f2af7dbaa99bf9986c303a76417d7f7bcde072064e93c",
+      "byteLength": 10868
+    }
+  },
+  "originalJournalReadPolicy": "One streaming archive/hash copy; no parse, owner acquisition, SDK replay or tests. Archive reconstruction verification reads only the new transport.",
+  "journal": {
+    "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/resources/events/runtime.events.jsonl",
+    "close": {
+      "coordinateDigest": "sha256:06e8c20644dff44de8cc9b2a34a44774386e3f59d45b1d6da980732e49d501c1",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/resources/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:d19bfa943757107e5d0ca47e340f821c684aac539aa1b5402ca71c64c7aadd66",
+      "prefixLength": 353742824,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459234334
+      }
+    },
+    "preArchiveStat": {
+      "bytes": 353742824,
+      "device": 16777230,
+      "inode": 459234334,
+      "mtimeNs": 1790233889750239200
+    }
+  },
+  "coreArchiveReuse": {
+    "catalog": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-14/transport-01/catalog.json",
+    "catalogSha256": "753fe6ea38e5e7a9a51bc96c90c63fa4a31a56ed332f2aebbec77a407e1cc37a",
+    "asset": {
+      "id": "raw-b921450fddfdd959949da23af516c771506f4f6ae8bc697b3ca8120e190063e6",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 10146654,
+      "sha256": "b921450fddfdd959949da23af516c771506f4f6ae8bc697b3ca8120e190063e6",
+      "parts": [
+        {
+          "path": "payloads/raw-b921450fddfdd959949da23af516c771506f4f6ae8bc697b3ca8120e190063e6.part0000",
+          "byteLength": 10146654,
+          "sha256": "b921450fddfdd959949da23af516c771506f4f6ae8bc697b3ca8120e190063e6"
+        }
+      ]
+    },
+    "archive": {
+      "artifactDigest": "sha256:b921450fddfdd959949da23af516c771506f4f6ae8bc697b3ca8120e190063e6",
+      "productContentDigest": "sha256:f8e00472f8f1878f61f177cab885d48811a006c4de78706d4993dfbb8671b68f",
+      "manifestDigest": "sha256:29a47c181eae5134bdf285b16cb519acc080414ac0a1fd013accdea9c033d636",
+      "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+      "packageName": "@abiogenesis/typescript-tenant",
+      "packageVersion": "5.0.0-rc.1"
+    }
+  },
+  "dev8Archive": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/resources/artifacts/odd-glc-route-one-typescript-0.2.0-dev.8.tgz",
+    "sha256": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+    "disposition": "one exact retained archive, no installed/package tree copied"
+  },
+  "exclusions": [
+    "canonical parser/caller/source changes being edited by peer",
+    "all installed Products, node_modules and package trees",
+    "Opus03 old shared journal/append lock/partial install",
+    "other historical journals and optional detailed replay",
+    "duplicate lifecycle-start.jsonl, derived readback-basis.json and outer run.stdout; originals preserved",
+    "large setup request mirrors; genuine setup receipts, selected invocation, journal and immutable archive bases retained"
+  ],
+  "commitStage": "not staged or committed; combined source checkpoint awaits remaining-case source review",
+  "helperLaunchIdentityBoundary": "The retained launch.json is archived by its own streamed byte hash; helperPlan.toolInputDigest identifies Bash tool input, not the launch file."
+}

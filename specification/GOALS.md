@@ -9,7 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) records failed Opus02 after ten successful actors and C2, the accepted native Evidence correction and compiled17, and Opus03 setup stopped at the existing install-helper ceiling before any Run/actor. Owner/lock diagnosis proceeds without retry or timeout increase. Full installed Evidence admission, independent assessment and lifecycle/oracle outcome remain pending. Basic-cli’s earlier C1→C2 supporting proof is unchanged; five other reduced cases were not launched. Data Mapper stays held. Full GLC delivery, fifteen-family ABG completion, qualification and RC1 remain open.
+Current delivery tracking: [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) owns Executive acceptance of Opus04’s complete basic-cli full native outcome and the accepted remaining-five caller source with five successful Public setups. All five independent stage assessments, C2 and fresh Public reads passed on core17/dev8. Native non-closing fields stay unchanged; no further basic-cli execution is required. No remaining-case native or paid actor started. Root holds paid launches for holistic graph/context/event/readback cause review; prepared cases remain intact and no setup repetition is selected. Data Mapper, full GLC delivery, fifteen-family ABG completion, qualification and RC1 remain open.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
@@ -213,4 +213,4 @@ folds and re-entry. GLC supplies meaning, policy and interpretation without a
 controller, requirement compiler or proof ledger. Reuse valid retained work;
 do not reset the original instance or relabel reduced output as full success.
 
-The current frontier is T-043’s bounded current-native fresh-start source/HOW implementation for the actual full odd_glc Hello sandbox. Existing continuation and supporting C1→C2 results keep their exact scopes. New source acceptance, package and paid full-sandbox launch remain unselected; Data Mapper remains held. Q07 is prepared/incomplete, operator-stop readback remains pending at the release boundary, and release qualification/RC1 stay open.
+[T-043 Current bounded selection](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) is the sole current frontier: accepted Opus04 basic-cli outcome and accepted remaining-five caller source with all five Public setups passed and paid launches held for holistic cause review; zero native/paid actors started and runtime outcomes remain pending. Data Mapper stays held; Q07 is prepared/incomplete, operator-stop readback is pending at the release boundary, and qualification/RC1 remain open.

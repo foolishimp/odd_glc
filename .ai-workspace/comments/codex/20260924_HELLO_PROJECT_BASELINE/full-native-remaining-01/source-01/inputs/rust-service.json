@@ -1,0 +1,137 @@
+{
+  "kind": "semantic_job_input",
+  "schemaVersion": "5.0.0",
+  "lifecycleRef": "declaration://odd-glc/generic-lifecycle/stages@5",
+  "sourceRoleRef": "context-role://abiogenesis/semantic-stage/job-source@5",
+  "members": [
+    {
+      "memberRef": "urn:sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d",
+      "path": "original-rust-service-declaration.txt",
+      "sourceLocator": "repo://odd_glc/build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs#bytes=25509-29684",
+      "base64": "ICBzZGxjQ29tcGxpYW5jZVNjZW5hcmlvKHsKICAgIGtleTogInJ1c3Qtc2VydmljZSIsCiAgICBzY2VuYXJpb0lkOiAiU0NOLUdMQy1IRUxMTy1XT1JMRC1SVVNULVNFUlZJQ0UiLAogICAga2luZDogInJ1c3Rfc2VydmljZSIsCiAgICBleHBlY3RlZFN0ZG91dDogbnVsbCwKICAgIGV4cGVjdGVkUmV0dXJuVmFsdWU6ICJIZWxsbywgd29ybGQhIiwKICAgIHN0YWdlUGxhbjogWwogICAgICB7CiAgICAgICAgc3RhZ2U6ICJjb25mb3JtYW5jZV9wcm9qZWN0IiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJzcGVjaWZpY2F0aW9uL3Byb2plY3QtY29uZm9ybWFuY2UubWQiXSwKICAgICAgICBpbnN0cnVjdGlvbnM6IFsKICAgICAgICAgICJXcml0ZSBvbmx5IHNwZWNpZmljYXRpb24vcHJvamVjdC1jb25mb3JtYW5jZS5tZC4iLAogICAgICAgICAgIkRlY2xhcmUgYSBSdXN0IHNlcnZpY2UgSGVsbG8gV29ybGQgc29mdHdhcmUtYnVpbGQgdHJhdmVyc2FsLiIsCiAgICAgICAgICAiVGhlIHNvdXJjZSBzdXJmYWNlIG11c3QgaW5jbHVkZSBzcmMvc2VydmljZS5ycy4iLAogICAgICAgICAgIlRoZSB0ZXN0IHNvdXJjZSBtdXN0IGNvbXBpbGUgdGhlIHNlcnZpY2Ugd2l0aCBydXN0Yywgc3RhcnQgaXQgb24gMTI3LjAuMC4xIHVzaW5nIGEgc3lzdGVtLWFzc2lnbmVkIHBvcnQsIHNlbmQgb25lIEhUVFAgcmVxdWVzdCwgYW5kIG9ic2VydmUgcmVzcG9uc2UgYm9keSBleGFjdGx5IFwiSGVsbG8sIHdvcmxkIVxcblwiLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogImltcGxlbWVudGF0aW9uX2Rlc2lnbiIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsiZGVzaWduL2ltcGxlbWVudGF0aW9uLWRlc2lnbi5tZCJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgZGVzaWduL2ltcGxlbWVudGF0aW9uLWRlc2lnbi5tZC4iLAogICAgICAgICAgIkRlZmluZSBhIHNpbmdsZS1maWxlIFJ1c3QgVENQIEhUVFAgc2VydmljZSBpbiBzcmMvc2VydmljZS5ycy4iLAogICAgICAgICAgIlRoZSBzZXJ2aWNlIG11c3QgYWNjZXB0IG9uZSBjb21tYW5kLWxpbmUgYXJndW1lbnQ6IGEgcG9ydC1maWxlIHBhdGguIiwKICAgICAgICAgICJJdCBtdXN0IGJpbmQgMTI3LjAuMC4xOjAsIHdyaXRlIHRoZSBzZWxlY3RlZCBwb3J0IHRvIHRoZSBwb3J0IGZpbGUsIGhhbmRsZSBvbmUgSFRUUCByZXF1ZXN0LCByZXR1cm4gMjAwIE9LIHdpdGggYm9keSBcIkhlbGxvLCB3b3JsZCFcXG5cIiwgdGhlbiBleGl0IGNsZWFubHkuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAic291cmNlIiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJzcmMvc2VydmljZS5ycyJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgc3JjL3NlcnZpY2UucnMuIiwKICAgICAgICAgICJVc2Ugb25seSBSdXN0IHN0YW5kYXJkIGxpYnJhcnkgbW9kdWxlcy4iLAogICAgICAgICAgIkltcGxlbWVudCB0aGUgc2VydmljZSBkZXNjcmliZWQgYnkgdGhlIGltcGxlbWVudGF0aW9uX2Rlc2lnbiBhcnRpZmFjdC4iLAogICAgICAgICAgIlRoZSByZXNwb25zZSBib2R5IG11c3QgYmUgZXhhY3RseSBcIkhlbGxvLCB3b3JsZCFcXG5cIi4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJ0ZXN0X2Rlc2lnbiIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsiZGVzaWduL3Rlc3QtZGVzaWduLm1kIl0sCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiV3JpdGUgb25seSBkZXNpZ24vdGVzdC1kZXNpZ24ubWQuIiwKICAgICAgICAgICJTcGVjaWZ5IGEgY29tcG9uZW50IHRlc3QgYW5kIFVBVCB0ZXN0IGZvciBjb21waWxpbmcgdGhlIFJ1c3Qgc2VydmljZSwgc3RhcnRpbmcgaXQsIG1ha2luZyBhIHJlYWwgSFRUUCByZXF1ZXN0LCBhbmQgYXNzZXJ0aW5nIHN0YXR1cyAyMDAgYW5kIGJvZHkgZXhhY3RseSBcIkhlbGxvLCB3b3JsZCFcXG5cIi4iLAogICAgICAgICAgIlRoZSB0ZXN0cyBtdXN0IHVzZSBhIHRlbXBvcmFyeSBwb3J0IGZpbGUgYW5kIHRlcm1pbmF0ZSBvbmx5IGFmdGVyIHRoZSBzZXJ2aWNlIGV4aXRzLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogImNvbXBvbmVudF90ZXN0X3NvdXJjZSIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsidGVzdC9jb21wb25lbnQvcnVzdC1zZXJ2aWNlLnRlc3QubWpzIl0sCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiV3JpdGUgb25seSB0ZXN0L2NvbXBvbmVudC9ydXN0LXNlcnZpY2UudGVzdC5tanMuIiwKICAgICAgICAgICJVc2Ugbm9kZTp0ZXN0LCBub2RlOmFzc2VydC9zdHJpY3QsIG5vZGU6Y2hpbGRfcHJvY2VzcyBzcGF3bi9zcGF3blN5bmMsIG5vZGU6ZnMvcHJvbWlzZXMsIG5vZGU6b3MsIGFuZCBub2RlOnBhdGguIiwKICAgICAgICAgICJDb21waWxlIHNyYy9zZXJ2aWNlLnJzIHdpdGggcnVzdGMgdG8gYSB0ZW1wb3JhcnkgYmluYXJ5LiIsCiAgICAgICAgICAiU3RhcnQgdGhlIGJpbmFyeSB3aXRoIGEgdGVtcG9yYXJ5IHBvcnQtZmlsZSBwYXRoLCB3YWl0IGZvciB0aGUgcG9ydCBmaWxlLCBmZXRjaCBodHRwOi8vMTI3LjAuMC4xOiR7cG9ydH0vaGVsbG8sIGFuZCBhc3NlcnQgcmVzcG9uc2Ugc3RhdHVzIDIwMCBhbmQgYm9keSBleGFjdGx5IFwiSGVsbG8sIHdvcmxkIVxcblwiLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogInVhdF90ZXN0X3NvdXJjZSIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsidGVzdC91YXQvcnVzdC1zZXJ2aWNlLnVhdC50ZXN0Lm1qcyJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgdGVzdC91YXQvcnVzdC1zZXJ2aWNlLnVhdC50ZXN0Lm1qcy4iLAogICAgICAgICAgIlVzZSBub2RlOnRlc3QgYW5kIHRoZSBzYW1lIHNlcnZpY2Utc3RhcnQvcmVxdWVzdCBwYXR0ZXJuIGFzIHRoZSBjb21wb25lbnQgdGVzdC4iLAogICAgICAgICAgIkFzc2VydCB0aGUgdXNlci12aXNpYmxlIHNlcnZpY2UgY29udHJhY3Q6IGFuIEhUVFAgR0VUIHRvIC9oZWxsbyByZXR1cm5zIDIwMCBhbmQgYm9keSBleGFjdGx5IFwiSGVsbG8sIHdvcmxkIVxcblwiLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogInRlc3RfZXhlY3V0aW9uX3BsYW4iLAogICAgICAgIGZpbGVzVG9Qcm9kdWNlOiBbInRlc3QtZXhlY3V0aW9uLXBsYW4uanNvbiJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgdGVzdC1leGVjdXRpb24tcGxhbi5qc29uLiIsCiAgICAgICAgICAiVGhlIEpTT04gY29tbWFuZCBtdXN0IGJlIG5vZGUuIiwKICAgICAgICAgICJUaGUgYXJncyBtdXN0IGJlIFtcIi0tdGVzdFwiLCBcInRlc3QvY29tcG9uZW50L3J1c3Qtc2VydmljZS50ZXN0Lm1qc1wiLCBcInRlc3QvdWF0L3J1c3Qtc2VydmljZS51YXQudGVzdC5tanNcIl0uIiwKICAgICAgICAgICJleHBlY3RlZFRlc3RQYXNzQ291bnQgbXVzdCBiZSBhdCBsZWFzdCAyLCBtYXRjaGluZyB0aGUgYWRtaXR0ZWQgY29tcG9uZW50IGFuZCBVQVQgY292ZXJhZ2UgZmxvb3IuIiwKICAgICAgICAgICJleHBlY3RlZFN0ZG91dE1hdGNoIG11c3QgaW5jbHVkZSBzdGFibGUgemVyby1mYWlsdXJlIGV2aWRlbmNlIHN1Y2ggYXMgZmFpbCAwOyBkbyBub3QgcGluIGFuIGV4YWN0IHBhc3MtY291bnQgZnJhZ21lbnQgd2hlbiB0aGUgZ2VuZXJhdGVkIHRlc3RzIGFkZCBkZXB0aCBjb3ZlcmFnZS4iLAogICAgICAgICAgImFzc2VydGVkUmV0dXJuVmFsdWUgbXVzdCBiZSBcIkhlbGxvLCB3b3JsZCFcIi4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJ0ZXN0X2V4ZWN1dGlvbl9yZXN1bHQiLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIlByb2R1Y2Ugbm8gZmlsZXMuIiwKICAgICAgICAgICJBY2NlcHQgb25seSBpZiBib3RoIHNlcnZpY2UgdGVzdHMgcGFzc2VkLCBvYnNlcnZlZFRlc3RQYXNzQ291bnQgaXMgYXQgbGVhc3QgdGhlIHByaW9yIHRlc3RfZXhlY3V0aW9uX3BsYW4gZXhwZWN0ZWRUZXN0UGFzc0NvdW50LCBhbmQgcGxhblNhdGlzZmllZCBpcyB0cnVlLiIKICAgICAgICBdCiAgICAgIH0KICAgIF0KICB9KSw="
+    }
+  ],
+  "taskData": {
+    "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+    "originalSource": {
+      "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+      "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+      "startByte": 25509,
+      "endByte": 29684,
+      "selectedDigest": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d"
+    },
+    "request": "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success.",
+    "nativeLifecycle": {
+      "assets": [
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/intent@5",
+          "path": "semantic-assets/stage-0.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/product@5",
+          "path": "semantic-assets/stage-1.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/requirements@5",
+          "path": "semantic-assets/stage-2.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/design@5",
+          "path": "semantic-assets/stage-3.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5",
+          "path": "semantic-assets/stage-4.json"
+        }
+      ],
+      "rubricPath": "semantic-assets/lifecycle-rubric.json"
+    }
+  },
+  "evaluationData": {
+    "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
+    "purpose": "Independent evaluation of the complete unchanged original rust-service declaration.",
+    "sourceSelection": {
+      "key": "rust-service",
+      "digest": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d"
+    },
+    "cases": [
+      {
+        "observationKind": "http_response",
+        "method": "GET",
+        "host": "127.0.0.1",
+        "portSelection": "system_assigned",
+        "path": "/hello",
+        "status": 200,
+        "body": "Hello, world!\n",
+        "cleanExitAfterRequests": 1
+      }
+    ],
+    "minimumTestPasses": 2,
+    "requiredArtifacts": [
+      "specification/project-conformance.md",
+      "design/implementation-design.md",
+      "src/service.rs",
+      "design/test-design.md",
+      "test/component/rust-service.test.mjs",
+      "test/uat/rust-service.uat.test.mjs",
+      "test-execution-plan.json"
+    ],
+    "requiredTestFiles": [
+      "test/component/rust-service.test.mjs",
+      "test/uat/rust-service.uat.test.mjs"
+    ],
+    "requiredTestRoles": [
+      "component",
+      "user_acceptance"
+    ],
+    "requiredStageMeanings": [
+      "conformance_project",
+      "implementation_design",
+      "source",
+      "test_design",
+      "component_test_source",
+      "uat_test_source",
+      "test_execution_plan",
+      "test_execution_result"
+    ],
+    "requiredHostTools": [
+      "node",
+      "rustc"
+    ],
+    "assessment": "Use only Rust standard library modules. Both tests must compile the service with rustc, start it with a temporary port-file path, read its system-assigned loopback port, make a real HTTP request, assert 200 and the exact body, and finish after clean service exit. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
+  },
+  "worksiteScope": {
+    "readRoots": [
+      "."
+    ],
+    "writeRoots": [
+      "."
+    ],
+    "parentWriteRoots": [
+      "."
+    ],
+    "evidenceWriteRoots": [
+      "execution-evidence"
+    ],
+    "executableCapabilities": [
+      {
+        "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+        "relativeCwdRoots": [
+          "."
+        ],
+        "environment": {},
+        "maxTimeoutMs": 120000,
+        "maxTerminationGraceMs": 1000
+      },
+      {
+        "executable": "/Users/jim/.cargo/bin/rustc",
+        "relativeCwdRoots": [
+          "."
+        ],
+        "environment": {},
+        "maxTimeoutMs": 120000,
+        "maxTerminationGraceMs": 1000
+      }
+    ]
+  }
+}

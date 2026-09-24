@@ -1,0 +1,22 @@
+{
+  "observation": "Small read-only version commands completed during source preparation; no installs or global changes.",
+  "node": {
+    "path": "/opt/homebrew/bin/node",
+    "selectedExecutable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+    "version": "v24.7.0"
+  },
+  "cargo": {
+    "path": "/Users/jim/.cargo/bin/cargo",
+    "version": "cargo 1.82.0 (8f40fc59f 2024-08-21)"
+  },
+  "rustc": {
+    "path": "/Users/jim/.cargo/bin/rustc",
+    "version": "rustc 1.82.0 (f6e511eec 2024-10-15)"
+  },
+  "claude": {
+    "path": "/Users/jim/.local/share/claude/versions/2.1.280",
+    "version": "2.1.280 (Claude Code)"
+  },
+  "rustInvocationPaths": "Preserve cargo/rustc invocation names for rustup dispatch, without changing symlinks.",
+  "socketRequirement": "rust-service needs loopback bind/connect and temporary port/binary files inside its admitted worker test execution; no socket probe or service was launched."
+}

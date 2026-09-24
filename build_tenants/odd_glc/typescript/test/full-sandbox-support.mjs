@@ -9,7 +9,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { tmpdir } from "node:os";
 import { definitionCall, publicReadDefinition } from "./generic-live-workflow-support.mjs";
 import { materializeD1Publication } from "./d1-lifecycle-declarations.mjs";
-import { constructFullHelloInputs, constructOrdinaryJobInput, constructFullSandboxPackage, FULL_SANDBOX_IDS,
+import { constructFullHelloInputs, constructOrdinaryJobInput, constructFullSandboxPackage, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
   nativeFullSandboxPublications, constructFullSandboxManagementEnvironment,
   FULL_SANDBOX_MANAGEMENT_PATHS, FULL_SANDBOX_MANAGEMENT_SOURCE_BASIS, FULL_SANDBOX_MANAGEMENT_SOURCE_MANIFEST } from "./full-sandbox-declarations.mjs";
 
@@ -259,19 +259,25 @@ export async function readFullSandboxCandidate(candidatePath) {
   }
   return candidate;
 }
-export async function fullHelloInputs(product) {
+export async function fullHelloInputs(product, key = "basic-cli") {
+  assert.ok(Object.hasOwn(FULL_HELLO_CASES, key), "known original full Hello key");
   const originalSourceBytes = await readFile(join(tenantRoot, "test/glc-software-build-overlay-live.test.mjs"));
-  const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/basic-cli.oracle.json"), "utf8"));
-  return constructFullHelloInputs({ product, originalSourceBytes, oracle });
+  const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/" + key + ".oracle.json"), "utf8"));
+  return constructFullHelloInputs({ product, originalSourceBytes, oracle, key });
 }
-export async function ordinarySandboxInputs(product) {
-  const path = "build_tenants/odd_glc/typescript/test/fixtures/generic-job/integer-addition.md";
-  const bytes = await readFile(join(repoRoot, path));
-  const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/integer-addition.oracle.json"), "utf8"));
-  return [await fullHelloInputs(product), { key: "integer-addition", scenarioId: oracle.scenarioId,
-    members: [{ memberRef: "urn:" + product.sha256Bytes(bytes), path: "integer-addition.md", sourceLocator: "repo://odd_glc/" + path, base64: bytes.toString("base64") }],
-    taskData: { scenarioId: oracle.scenarioId, request: "Implement the complete ordinary request. Derive and assess its requirements and design through the native lifecycle; preserve unresolved meaning." },
-    evaluationData: oracle }];
+export async function ordinarySandboxInputs(product, selectedJobKeys = ["basic-cli", "integer-addition"]) {
+  assert.ok(Array.isArray(selectedJobKeys) && selectedJobKeys.length > 0 && new Set(selectedJobKeys).size === selectedJobKeys.length, "distinct selected ordinary jobs");
+  assert.ok(selectedJobKeys.every(key => key === "integer-addition" || Object.hasOwn(FULL_HELLO_CASES, key)), "known selected ordinary job");
+  return Promise.all(selectedJobKeys.map(async key => {
+    if (key !== "integer-addition") return fullHelloInputs(product, key);
+    const path = "build_tenants/odd_glc/typescript/test/fixtures/generic-job/integer-addition.md";
+    const bytes = await readFile(join(repoRoot, path));
+    const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/integer-addition.oracle.json"), "utf8"));
+    return { key, scenarioId: oracle.scenarioId,
+      members: [{ memberRef: "urn:" + product.sha256Bytes(bytes), path: "integer-addition.md", sourceLocator: "repo://odd_glc/" + path, base64: bytes.toString("base64") }],
+      taskData: { scenarioId: oracle.scenarioId, request: "Implement the complete ordinary request. Derive and assess its requirements and design through the native lifecycle; preserve unresolved meaning." },
+      evaluationData: oracle };
+  }));
 }
 
 /** Optional preparation data authoring, never runtime observation. Each cohort
@@ -372,6 +378,7 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
   const configuration = JSON.parse(await readFile(configurationPath, "utf8"));
   const freshNative = configuration.freshNative === true, ids = configuration.consumerIdentity ?? FULL_SANDBOX_IDS;
   assert.deepEqual(Object.keys(configuration).sort(), [...(configuration.runEnvironment === undefined ? ["transport"] : ["transport", "runEnvironment", "runEnvironmentResources"]),
+    ...(configuration.executableCapabilities === undefined ? [] : ["executableCapabilities"]),
     ...(freshNative ? ["freshNative", "consumerIdentity", "selectedJobKeys"] : [])].sort(), "closed preparation configuration");
   if (freshNative) {
     assert.ok(configuration.runEnvironment && configuration.runEnvironmentResources, "fresh native assessors require an explicitly selected role environment and physical resources");
@@ -452,14 +459,14 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
   const publications = [...nativeFullSandboxPublications(gtl, abiArtifact, freshNative), publication];
   const lifecycle = publication.semanticJobLifecycle;
   assert.ok(lifecycle && !publication.semanticLifecycle && !publication.requirementHandoffs);
-  const availableInputs = await ordinarySandboxInputs(product), executable = await realpath(process.execPath);
+  const availableInputs = await ordinarySandboxInputs(product, freshNative ? configuration.selectedJobKeys : undefined), executable = await realpath(process.execPath);
   const inputs = freshNative ? configuration.selectedJobKeys.map(key => { const rows = availableInputs.filter(row => row.key === key); assert.equal(rows.length, 1, "exact selected ordinary job"); return rows[0]; }) : availableInputs;
   const jobs = [];
   // Static workspace/install/catalog/conformance setup only. This loop does
   // not run intake, a semantic stage, C0, C1 or C2.
   for (const ordinary of inputs) {
     const jobRoot = join(scratch, "jobs", ordinary.key), workspaceRoot = join(scratch, "subject-" + ordinary.key);
-    const input = constructOrdinaryJobInput({ product, gtl, input: ordinary, executable, ...(freshNative ? { lifecycle } : {}) });
+    const input = constructOrdinaryJobInput({ product, gtl, input: ordinary, executable, executableCapabilities: configuration.executableCapabilities, ...(freshNative ? { lifecycle } : {}) });
     await save(jobRoot, "ordinary-input.json", input);
     const created = await invoke(await authorized(product.WORKSPACE_OPERATION_SOURCE_DECLARATIONS.create.clean,
       { targetRoot: workspaceRoot, createPolicy: "clean", scaffoldPolicy: "none" },
@@ -564,9 +571,9 @@ export async function continueFullSandboxPreparation({ runRoot, candidatePath, c
   const actor = { actor: coord(actorRef), attribution: coord("attribution://odd-glc/full-sandbox") };
   const boundSlots = { workspace_binding: bound.ownerOutput.value.binding, product_set: environment.productInstalls.map(product.productInstallCoordinate), dependency_lock: lock, actor };
   const jobRoot = join(scratch, "jobs", key), workspaceRoot = environment.workspaceAuthorityBasis.canonicalRoot, roots = environment.workspaceBinding.roots;
-  const ordinary = (await ordinarySandboxInputs(product)).find(input => input.key === key); assert.ok(ordinary);
+  const ordinary = (await ordinarySandboxInputs(product, [key])).find(input => input.key === key); assert.ok(ordinary);
   const input = await read(join(jobRoot, "ordinary-input.json"));
-  assert.deepEqual(input, constructOrdinaryJobInput({ product, gtl, input: ordinary, executable: await realpath(process.execPath), lifecycle }));
+  assert.deepEqual(input, constructOrdinaryJobInput({ product, gtl, input: ordinary, executable: await realpath(process.execPath), executableCapabilities: configuration.executableCapabilities, lifecycle }));
   for (const member of input.members) assert.deepEqual(await readFile(join(workspaceRoot, member.path)), Buffer.from(member.base64, "base64"));
   assert.equal(await readFile(join(workspaceRoot, input.taskData.nativeLifecycle.rubricPath), "utf8"), product.canonicalJson(lifecycle) + "\n");
   const runEnvironment = gtl.constructRunEnvironmentDeclaration(configuration.runEnvironment);
@@ -701,6 +708,10 @@ export function evaluateOrdinaryJobObservation({ output, input, workspaceRoot })
   const direct = commands.filter(command => executables.includes(command.executable) && command.args.length > 0 &&
     !command.args[0].startsWith("-") && implementations.includes(resolvedArgument(command, command.args[0])));
   const cases = oracle.cases.map((wanted, ordinal) => {
+    if (wanted.observationKind !== undefined && wanted.observationKind !== "cli_stdout") return {
+      ordinal, observationKind: wanted.observationKind, disposition: "unexecuted_probe", observations: [],
+      semanticReview: "required", reason: "outside_direct_cli_interpretation", expected: structuredClone(wanted),
+    };
     const observed = direct.filter(command => JSON.stringify(command.args.slice(1)) === JSON.stringify(wanted.arguments));
     const observations = observed.map(command => {
       const failures = [];
@@ -716,7 +727,7 @@ export function evaluateOrdinaryJobObservation({ output, input, workspaceRoot })
       observations };
   });
   const testCommands = commands.filter(command => executables.includes(command.executable) && command.args.includes("--test")).map(command => {
-    const stdout = text(command.stdout), pass = stdout.match(/^# pass (\d+)$/mu), fail = stdout.match(/^# fail (\d+)$/mu);
+    const stdout = text(command.stdout), pass = stdout.match(/^(?:#|ℹ) pass (\d+)$/mu), fail = stdout.match(/^(?:#|ℹ) fail (\d+)$/mu);
     return { observationRef: command.observationRef, args: command.args, relativeCwd: command.relativeCwd,
       disposition: !normal(command) || command.exitStatus !== 0 || fail !== null && Number(fail[1]) > 0 ? "observed_fail" : "observed_pass",
       testPasses: pass === null ? null : Number(pass[1]), testFailures: fail === null ? null : Number(fail[1]) };

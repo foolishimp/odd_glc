@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "checks": [
+    "git diff --check -- specification/GOALS.md .ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md",
+    "git diff --check -- specification/GOALS.md .ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md"
+  ],
+  "runtimeTestsOrSourceChecks": false,
+  "sourceChangesStaged": false
+}

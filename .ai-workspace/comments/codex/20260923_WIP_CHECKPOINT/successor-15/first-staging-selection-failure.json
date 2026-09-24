@@ -1,0 +1,10 @@
+{
+  "status": "preserved_caller_metadata_failure",
+  "phase": "optional_direct_closed_summary_selection_before_GLC_staging",
+  "attemptedPath": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/full-result-proof.json",
+  "actual": "file does not exist at proposed direct path",
+  "firstCause": "AssertionError at direct-file existence check",
+  "resourceOrSourceEffects": false,
+  "ABIState": "16 exact paths staged and verified, no commit or push yet",
+  "correction": "Remove this optional duplicate direct-summary reference; required proof is already retained in the CLOSED 153-member bank. No archive expansion, original evidence read or proof reopening."
+}

@@ -1,0 +1,532 @@
+--- build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs (preimage)
++++ build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs (postimage)
+@@ -25,11 +25,23 @@
+   "component_test_source", "uat_test_source", "test_execution_plan", "test_execution_result",
+ ]);
+ 
+-export function selectOriginalHelloDeclaration(sourceBytes, product) {
+-  const text = sourceBytes.toString("utf8"), marker = '  sdlcComplianceScenario({\n    key: "basic-cli",';
++// Exact original caller inputs, not Program declarations or runtime authority.
++export const FULL_HELLO_CASES = Object.freeze(Object.fromEntries([
++  ["basic-cli", "CLI-BASIC", "ce602ce2cc0fcefaba288623a675a770d11bc14d224b90045aebbe031330172f"],
++  ["js-tenant-test", "JS-TENANT-TEST", "3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9"],
++  ["js-sdlc-bootstrap", "JS-SDLC-BOOTSTRAP", "c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4"],
++  ["rust-cli", "RUST-CLI", "d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81"],
++  ["rust-service", "RUST-SERVICE", "a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d"],
++  ["parallel-js", "PARALLEL-JS", "d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053"],
++].map(([key, suffix, digest]) => [key, Object.freeze({ scenarioId: "SCN-GLC-HELLO-WORLD-" + suffix, sourceDigest: "sha256:" + digest })])));
++
++export function selectOriginalHelloDeclaration(sourceBytes, product, key = "basic-cli") {
++  assert.ok(Object.hasOwn(FULL_HELLO_CASES, key), "known original full Hello key");
++  const text = sourceBytes.toString("utf8"), marker = '  sdlcComplianceScenario({\n    key: "' + key + '",';
+   const start = text.indexOf(marker), end = text.indexOf('\n  sdlcComplianceScenario({', start + marker.length);
+-  assert.ok(start >= 0 && end > start && text.indexOf(marker, start + 1) === -1, "one original basic-cli declaration");
++  assert.ok(start >= 0 && end > start && text.indexOf(marker, start + 1) === -1, "one original " + key + " declaration");
+   const selected = Buffer.from(text.slice(start, end));
++  assert.equal(product.sha256Bytes(selected), FULL_HELLO_CASES[key].sourceDigest, "unchanged original " + key + " declaration");
+   for (const stage of FULL_HELLO_STAGE_MEANINGS) assert.ok(selected.includes('stage: "' + stage + '"'), "original " + stage + " retained");
+   return { bytes: selected, provenance: { path: "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+     wholeFileDigest: product.sha256Bytes(sourceBytes), startByte: Buffer.byteLength(text.slice(0, start)),
+@@ -45,25 +57,30 @@
+     gtl.constructSelfConformanceModulePublication, ...(freshNative ? [gtl.constructNativeWorkspaceWorkModulePublication] : [])].map(construct => construct(basis));
+ }
+ 
+-export function constructFullHelloInputs({ product, originalSourceBytes, oracle }) {
+-  const original = selectOriginalHelloDeclaration(originalSourceBytes, product);
+-  return { key: "basic-cli", scenarioId: "SCN-GLC-HELLO-WORLD-CLI-BASIC", original,
+-    members: [{ memberRef: "urn:" + original.provenance.selectedDigest, path: "original-basic-cli-declaration.txt",
++export function constructFullHelloInputs({ product, originalSourceBytes, oracle, key = "basic-cli" }) {
++  const original = selectOriginalHelloDeclaration(originalSourceBytes, product, key), scenarioId = FULL_HELLO_CASES[key].scenarioId;
++  assert.equal(oracle.scenarioId, scenarioId, "oracle belongs to the selected original case");
++  if (oracle.sourceSelection !== undefined) {
++    assert.equal(oracle.sourceSelection.key, key, "oracle source key");
++    assert.equal(oracle.sourceSelection.digest, original.provenance.selectedDigest, "oracle exact original source");
++  }
++  return { key, scenarioId, original,
++    members: [{ memberRef: "urn:" + original.provenance.selectedDigest, path: "original-" + key + "-declaration.txt",
+       sourceLocator: "repo://odd_glc/" + original.provenance.path + "#bytes=" + original.provenance.startByte + "-" + original.provenance.endByte,
+       base64: original.bytes.toString("base64") }],
+-    taskData: { scenarioId: "SCN-GLC-HELLO-WORLD-CLI-BASIC", originalSource: original.provenance,
++    taskData: { scenarioId, originalSource: original.provenance,
+       request: "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success." },
+     evaluationData: structuredClone(oracle) };
+ }
+ 
+-export function constructOrdinaryJobInput({ product, gtl, input, executable, lifecycle }) {
++export function constructOrdinaryJobInput({ product, gtl, input, executable, executableCapabilities, lifecycle }) {
+   return product.constructSemanticJobInput({ kind: "semantic_job_input", schemaVersion: "5.0.0",
+     lifecycleRef: FULL_SANDBOX_IDS.lifecycleDeclarationRef, sourceRoleRef: gtl.SEMANTIC_STAGE_IDS.jobSourceContextRoleRef,
+     members: structuredClone(input.members), taskData: { ...structuredClone(input.taskData), ...(lifecycle === undefined ? {} : { nativeLifecycle: {
+       assets: lifecycle.stages.map((stage, i) => ({ stageRef: stage.declarationRef, path: `semantic-assets/stage-${i}.json` })),
+       rubricPath: "semantic-assets/lifecycle-rubric.json" } }) }, evaluationData: structuredClone(input.evaluationData),
+     worksiteScope: { readRoots: ["."], writeRoots: ["."], parentWriteRoots: ["."], evidenceWriteRoots: ["execution-evidence"],
+-      executableCapabilities: [{ executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }] } });
++      executableCapabilities: structuredClone(executableCapabilities ?? [{ executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }]) } });
+ }
+ 
+ export const FULL_SANDBOX_MANAGEMENT_SOURCE_BASIS = "stdo://releases/v2.5.0-rc.7/";
+--- build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs (preimage)
++++ build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs (postimage)
+@@ -9,7 +9,7 @@
+ import { tmpdir } from "node:os";
+ import { definitionCall, publicReadDefinition } from "./generic-live-workflow-support.mjs";
+ import { materializeD1Publication } from "./d1-lifecycle-declarations.mjs";
+-import { constructFullHelloInputs, constructOrdinaryJobInput, constructFullSandboxPackage, FULL_SANDBOX_IDS,
++import { constructFullHelloInputs, constructOrdinaryJobInput, constructFullSandboxPackage, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
+   nativeFullSandboxPublications, constructFullSandboxManagementEnvironment,
+   FULL_SANDBOX_MANAGEMENT_PATHS, FULL_SANDBOX_MANAGEMENT_SOURCE_BASIS, FULL_SANDBOX_MANAGEMENT_SOURCE_MANIFEST } from "./full-sandbox-declarations.mjs";
+ 
+@@ -259,19 +259,25 @@
+   }
+   return candidate;
+ }
+-export async function fullHelloInputs(product) {
++export async function fullHelloInputs(product, key = "basic-cli") {
++  assert.ok(Object.hasOwn(FULL_HELLO_CASES, key), "known original full Hello key");
+   const originalSourceBytes = await readFile(join(tenantRoot, "test/glc-software-build-overlay-live.test.mjs"));
+-  const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/basic-cli.oracle.json"), "utf8"));
+-  return constructFullHelloInputs({ product, originalSourceBytes, oracle });
+-}
+-export async function ordinarySandboxInputs(product) {
+-  const path = "build_tenants/odd_glc/typescript/test/fixtures/generic-job/integer-addition.md";
+-  const bytes = await readFile(join(repoRoot, path));
+-  const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/integer-addition.oracle.json"), "utf8"));
+-  return [await fullHelloInputs(product), { key: "integer-addition", scenarioId: oracle.scenarioId,
+-    members: [{ memberRef: "urn:" + product.sha256Bytes(bytes), path: "integer-addition.md", sourceLocator: "repo://odd_glc/" + path, base64: bytes.toString("base64") }],
+-    taskData: { scenarioId: oracle.scenarioId, request: "Implement the complete ordinary request. Derive and assess its requirements and design through the native lifecycle; preserve unresolved meaning." },
+-    evaluationData: oracle }];
++  const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/" + key + ".oracle.json"), "utf8"));
++  return constructFullHelloInputs({ product, originalSourceBytes, oracle, key });
++}
++export async function ordinarySandboxInputs(product, selectedJobKeys = ["basic-cli", "integer-addition"]) {
++  assert.ok(Array.isArray(selectedJobKeys) && selectedJobKeys.length > 0 && new Set(selectedJobKeys).size === selectedJobKeys.length, "distinct selected ordinary jobs");
++  assert.ok(selectedJobKeys.every(key => key === "integer-addition" || Object.hasOwn(FULL_HELLO_CASES, key)), "known selected ordinary job");
++  return Promise.all(selectedJobKeys.map(async key => {
++    if (key !== "integer-addition") return fullHelloInputs(product, key);
++    const path = "build_tenants/odd_glc/typescript/test/fixtures/generic-job/integer-addition.md";
++    const bytes = await readFile(join(repoRoot, path));
++    const oracle = JSON.parse(await readFile(join(tenantRoot, "test/fixtures/generic-job/integer-addition.oracle.json"), "utf8"));
++    return { key, scenarioId: oracle.scenarioId,
++      members: [{ memberRef: "urn:" + product.sha256Bytes(bytes), path: "integer-addition.md", sourceLocator: "repo://odd_glc/" + path, base64: bytes.toString("base64") }],
++      taskData: { scenarioId: oracle.scenarioId, request: "Implement the complete ordinary request. Derive and assess its requirements and design through the native lifecycle; preserve unresolved meaning." },
++      evaluationData: oracle };
++  }));
+ }
+ 
+ /** Optional preparation data authoring, never runtime observation. Each cohort
+@@ -372,6 +378,7 @@
+   const configuration = JSON.parse(await readFile(configurationPath, "utf8"));
+   const freshNative = configuration.freshNative === true, ids = configuration.consumerIdentity ?? FULL_SANDBOX_IDS;
+   assert.deepEqual(Object.keys(configuration).sort(), [...(configuration.runEnvironment === undefined ? ["transport"] : ["transport", "runEnvironment", "runEnvironmentResources"]),
++    ...(configuration.executableCapabilities === undefined ? [] : ["executableCapabilities"]),
+     ...(freshNative ? ["freshNative", "consumerIdentity", "selectedJobKeys"] : [])].sort(), "closed preparation configuration");
+   if (freshNative) {
+     assert.ok(configuration.runEnvironment && configuration.runEnvironmentResources, "fresh native assessors require an explicitly selected role environment and physical resources");
+@@ -452,14 +459,14 @@
+   const publications = [...nativeFullSandboxPublications(gtl, abiArtifact, freshNative), publication];
+   const lifecycle = publication.semanticJobLifecycle;
+   assert.ok(lifecycle && !publication.semanticLifecycle && !publication.requirementHandoffs);
+-  const availableInputs = await ordinarySandboxInputs(product), executable = await realpath(process.execPath);
++  const availableInputs = await ordinarySandboxInputs(product, freshNative ? configuration.selectedJobKeys : undefined), executable = await realpath(process.execPath);
+   const inputs = freshNative ? configuration.selectedJobKeys.map(key => { const rows = availableInputs.filter(row => row.key === key); assert.equal(rows.length, 1, "exact selected ordinary job"); return rows[0]; }) : availableInputs;
+   const jobs = [];
+   // Static workspace/install/catalog/conformance setup only. This loop does
+   // not run intake, a semantic stage, C0, C1 or C2.
+   for (const ordinary of inputs) {
+     const jobRoot = join(scratch, "jobs", ordinary.key), workspaceRoot = join(scratch, "subject-" + ordinary.key);
+-    const input = constructOrdinaryJobInput({ product, gtl, input: ordinary, executable, ...(freshNative ? { lifecycle } : {}) });
++    const input = constructOrdinaryJobInput({ product, gtl, input: ordinary, executable, executableCapabilities: configuration.executableCapabilities, ...(freshNative ? { lifecycle } : {}) });
+     await save(jobRoot, "ordinary-input.json", input);
+     const created = await invoke(await authorized(product.WORKSPACE_OPERATION_SOURCE_DECLARATIONS.create.clean,
+       { targetRoot: workspaceRoot, createPolicy: "clean", scaffoldPolicy: "none" },
+@@ -564,9 +571,9 @@
+   const actor = { actor: coord(actorRef), attribution: coord("attribution://odd-glc/full-sandbox") };
+   const boundSlots = { workspace_binding: bound.ownerOutput.value.binding, product_set: environment.productInstalls.map(product.productInstallCoordinate), dependency_lock: lock, actor };
+   const jobRoot = join(scratch, "jobs", key), workspaceRoot = environment.workspaceAuthorityBasis.canonicalRoot, roots = environment.workspaceBinding.roots;
+-  const ordinary = (await ordinarySandboxInputs(product)).find(input => input.key === key); assert.ok(ordinary);
++  const ordinary = (await ordinarySandboxInputs(product, [key])).find(input => input.key === key); assert.ok(ordinary);
+   const input = await read(join(jobRoot, "ordinary-input.json"));
+-  assert.deepEqual(input, constructOrdinaryJobInput({ product, gtl, input: ordinary, executable: await realpath(process.execPath), lifecycle }));
++  assert.deepEqual(input, constructOrdinaryJobInput({ product, gtl, input: ordinary, executable: await realpath(process.execPath), executableCapabilities: configuration.executableCapabilities, lifecycle }));
+   for (const member of input.members) assert.deepEqual(await readFile(join(workspaceRoot, member.path)), Buffer.from(member.base64, "base64"));
+   assert.equal(await readFile(join(workspaceRoot, input.taskData.nativeLifecycle.rubricPath), "utf8"), product.canonicalJson(lifecycle) + "\n");
+   const runEnvironment = gtl.constructRunEnvironmentDeclaration(configuration.runEnvironment);
+@@ -701,6 +708,10 @@
+   const direct = commands.filter(command => executables.includes(command.executable) && command.args.length > 0 &&
+     !command.args[0].startsWith("-") && implementations.includes(resolvedArgument(command, command.args[0])));
+   const cases = oracle.cases.map((wanted, ordinal) => {
++    if (wanted.observationKind !== undefined && wanted.observationKind !== "cli_stdout") return {
++      ordinal, observationKind: wanted.observationKind, disposition: "unexecuted_probe", observations: [],
++      semanticReview: "required", reason: "outside_direct_cli_interpretation", expected: structuredClone(wanted),
++    };
+     const observed = direct.filter(command => JSON.stringify(command.args.slice(1)) === JSON.stringify(wanted.arguments));
+     const observations = observed.map(command => {
+       const failures = [];
+--- build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs (preimage)
++++ build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs (postimage)
+@@ -3,7 +3,7 @@
+ import { resolve, dirname, join } from "node:path";
+ import { fileURLToPath, pathToFileURL } from "node:url";
+ import test from "node:test";
+-import { constructFullSandboxPackage, constructOrdinaryJobInput, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS,
++import { constructFullSandboxPackage, constructOrdinaryJobInput, constructFullHelloInputs, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
+   FULL_HELLO_TARGETS, FULL_HELLO_STAGE_MEANINGS, nativeFullSandboxPublications } from "./full-sandbox-declarations.mjs";
+ import { readFullSandboxCandidate, installedFullSandboxApis, ordinarySandboxInputs, evaluateOrdinaryJobObservation } from "./full-sandbox-support.mjs";
+ import { D1_WITNESS_IDS, D1_FROZEN_INPUT_SHA256 } from "./d1-lifecycle-declarations.mjs";
+@@ -79,6 +79,45 @@
+   assert.equal(hello.members[0].base64, selected.bytes.toString("base64"));
+   assert.equal(hello.members[0].sourceLocator.endsWith("#bytes=" + selected.provenance.startByte + "-" + selected.provenance.endByte), true);
+   assert.throws(() => selectOriginalHelloDeclaration(Buffer.from("no selected source"), product));
++});
++
++const remainingHelloKeys = ["js-tenant-test", "js-sdlc-bootstrap", "rust-cli", "rust-service", "parallel-js"];
++const callerApis = { skip: product ? false : "select the existing source build for caller value checks" };
++test("remaining full Hello selections preserve original sources, oracles and capability data", callerApis, async () => {
++  const bytes = await readFile(join(root, "test/glc-software-build-overlay-live.test.mjs"));
++  const selected = await ordinarySandboxInputs(product, remainingHelloKeys);
++  assert.deepEqual(selected.map(input => input.key), remainingHelloKeys);
++  for (const input of selected) {
++    const { startByte, endByte, selectedDigest } = input.original.provenance;
++    assert.equal(input.members[0].base64, bytes.subarray(startByte, endByte).toString("base64"));
++    assert.equal(selectedDigest, FULL_HELLO_CASES[input.key].sourceDigest);
++    assert.deepEqual(input.evaluationData.requiredStageMeanings, FULL_HELLO_STAGE_MEANINGS);
++    assert.equal(input.evaluationData.sourceSelection.digest, selectedDigest);
++    assert.ok(input.evaluationData.requiredArtifacts.includes("design/test-design.md"));
++    const executableCapabilities = [process.execPath, "/unit-only/cargo"].map(executable => ({
++      executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }));
++    const job = constructOrdinaryJobInput({ product, gtl, input, executable: process.execPath, executableCapabilities });
++    assert.equal(product.isSemanticJobInput(job), true);
++    assert.deepEqual(job.members, input.members); assert.deepEqual(job.evaluationData, input.evaluationData);
++    assert.deepEqual(job.worksiteScope.executableCapabilities, executableCapabilities);
++  }
++  assert.deepEqual((await ordinarySandboxInputs(product)).map(input => input.key), ["basic-cli", "integer-addition"]);
++});
++
++test("remaining full Hello selection rejects unknown, crossed and altered original inputs", callerApis, async () => {
++  const bytes = await readFile(join(root, "test/glc-software-build-overlay-live.test.mjs"));
++  const oracle = JSON.parse(await readFile(join(root, "test/fixtures/generic-job/js-tenant-test.oracle.json"), "utf8"));
++  assert.throws(() => selectOriginalHelloDeclaration(bytes, product, "unknown"), /known original full Hello key/u);
++  await assert.rejects(ordinarySandboxInputs(product, ["unknown"]), /known selected ordinary job/u);
++  await assert.rejects(ordinarySandboxInputs(product, ["rust-cli", "rust-cli"]), /distinct selected ordinary jobs/u);
++  assert.throws(() => constructFullHelloInputs({ product, originalSourceBytes: bytes, oracle, key: "rust-cli" }), /oracle belongs/u);
++  const wrongDigest = { ...oracle, sourceSelection: { ...oracle.sourceSelection, digest: "sha256:" + "0".repeat(64) } };
++  assert.throws(() => constructFullHelloInputs({ product, originalSourceBytes: bytes, oracle: wrongDigest, key: "js-tenant-test" }), /oracle exact original source/u);
++  const selected = selectOriginalHelloDeclaration(bytes, product, "js-tenant-test");
++  const altered = Buffer.from(bytes); altered[selected.provenance.startByte] = 9;
++  assert.throws(() => selectOriginalHelloDeclaration(altered, product, "js-tenant-test"), /one original/u);
++  const changedBody = Buffer.from(bytes); changedBody[selected.provenance.startByte + selected.bytes.indexOf("Hello, world!")] = 74;
++  assert.throws(() => selectOriginalHelloDeclaration(changedBody, product, "js-tenant-test"), /unchanged original/u);
+ });
+ 
+ test("native generic declaration contains full topology and no fixed source declaration or input", native, () => {
+@@ -199,6 +238,21 @@
+ }
+ const passingDiscovery = () => commandObservation(["--test"], { stdout: "# pass 2\n# fail 0\n", ref: "unit-node-discovery" });
+ 
++test("remaining full Hello non-CLI outcomes stay explicitly unobserved pending semantic review", async () => {
++  for (const key of remainingHelloKeys) {
++    const oracle = JSON.parse(await readFile(join(root, "test/fixtures/generic-job/" + key + ".oracle.json"), "utf8"));
++    const fixture = await observationFixture("basic-cli", [
++      commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }), passingDiscovery(),
++    ]);
++    fixture.input.evaluationData.cases = oracle.cases;
++    const value = evaluateOrdinaryJobObservation(fixture);
++    assert.ok(value.cases.every(row => row.disposition === "unexecuted_probe" && row.reason === "outside_direct_cli_interpretation"));
++    assert.deepEqual(value.cases.map(row => row.expected), oracle.cases);
++    assert.equal(value.applicationQualification, "unqualified_missing_independent_coverage");
++    assert.equal(value.semanticReview.disposition, "required");
++  }
++});
++
+ test("native evidence targets use exact protected artifact observations without a legacy worksite", async () => {
+   const fixture = await observationFixture("basic-cli", [
+     commandObservation(["generated/hello-world.mjs"], { stdout: "Hello, world!\n" }), passingDiscovery(),
+--- /dev/null
++++ build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-tenant-test.oracle.json
+@@ -0,0 +1,50 @@
++{
++  "scenarioId": "SCN-GLC-HELLO-WORLD-JS-TENANT-TEST",
++  "purpose": "Independent evaluation of the complete unchanged original js-tenant-test declaration.",
++  "sourceSelection": {
++    "key": "js-tenant-test",
++    "digest": "sha256:3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9"
++  },
++  "cases": [
++    {
++      "observationKind": "module_return",
++      "modulePath": "src/hello.mjs",
++      "exportName": "helloWorld",
++      "arguments": [],
++      "returnValue": "Hello, world!"
++    }
++  ],
++  "minimumTestPasses": 2,
++  "requiredArtifacts": [
++    "specification/project-conformance.md",
++    "design/implementation-design.md",
++    "package.json",
++    "src/hello.mjs",
++    "design/test-design.md",
++    "test/component/hello.test.mjs",
++    "test/uat/hello.uat.test.mjs",
++    "test-execution-plan.json"
++  ],
++  "requiredTestFiles": [
++    "test/component/hello.test.mjs",
++    "test/uat/hello.uat.test.mjs"
++  ],
++  "requiredTestRoles": [
++    "component",
++    "user_acceptance"
++  ],
++  "requiredStageMeanings": [
++    "conformance_project",
++    "implementation_design",
++    "source",
++    "test_design",
++    "component_test_source",
++    "uat_test_source",
++    "test_execution_plan",
++    "test_execution_result"
++  ],
++  "requiredHostTools": [
++    "node"
++  ],
++  "assessment": "Both component and UAT tests must import helloWorld and assert its exact return value. Preserve a private type:module package and all eight original lifecycle surfaces. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
++}
+--- /dev/null
++++ build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-sdlc-bootstrap.oracle.json
+@@ -0,0 +1,50 @@
++{
++  "scenarioId": "SCN-GLC-HELLO-WORLD-JS-SDLC-BOOTSTRAP",
++  "purpose": "Independent evaluation of the complete unchanged original js-sdlc-bootstrap declaration.",
++  "sourceSelection": {
++    "key": "js-sdlc-bootstrap",
++    "digest": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4"
++  },
++  "cases": [
++    {
++      "observationKind": "module_return",
++      "modulePath": "src/hello.mjs",
++      "exportName": "helloWorld",
++      "arguments": [],
++      "returnValue": "Hello, world!"
++    }
++  ],
++  "minimumTestPasses": 2,
++  "requiredArtifacts": [
++    "specification/project-conformance.md",
++    "design/implementation-design.md",
++    "package.json",
++    "src/hello.mjs",
++    "design/test-design.md",
++    "test/component/hello.test.mjs",
++    "test/uat/hello.uat.test.mjs",
++    "test-execution-plan.json"
++  ],
++  "requiredTestFiles": [
++    "test/component/hello.test.mjs",
++    "test/uat/hello.uat.test.mjs"
++  ],
++  "requiredTestRoles": [
++    "component",
++    "user_acceptance"
++  ],
++  "requiredStageMeanings": [
++    "conformance_project",
++    "implementation_design",
++    "source",
++    "test_design",
++    "component_test_source",
++    "uat_test_source",
++    "test_execution_plan",
++    "test_execution_result"
++  ],
++  "requiredHostTools": [
++    "node"
++  ],
++  "assessment": "Preserve the explicit conformance-to-design-to-source-to-test-design dependencies and both component/UAT import assertions. Keep the historical eight-vector witness and parity rule as source; the current native lifecycle is not evidence of identical legacy traversal. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
++}
+--- /dev/null
++++ build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-cli.oracle.json
+@@ -0,0 +1,55 @@
++{
++  "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-CLI",
++  "purpose": "Independent evaluation of the complete unchanged original rust-cli declaration.",
++  "sourceSelection": {
++    "key": "rust-cli",
++    "digest": "sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81"
++  },
++  "cases": [
++    {
++      "observationKind": "command_stdout",
++      "command": "cargo",
++      "arguments": [
++        "run",
++        "--quiet"
++      ],
++      "stdout": "Hello, world!\n",
++      "exitStatus": 0
++    }
++  ],
++  "minimumTestPasses": 2,
++  "requiredArtifacts": [
++    "specification/project-conformance.md",
++    "design/implementation-design.md",
++    "Cargo.toml",
++    "src/main.rs",
++    "design/test-design.md",
++    "test/component/rust-cli.test.mjs",
++    "test/uat/rust-cli.uat.test.mjs",
++    "test-execution-plan.json"
++  ],
++  "requiredTestFiles": [
++    "test/component/rust-cli.test.mjs",
++    "test/uat/rust-cli.uat.test.mjs"
++  ],
++  "requiredTestRoles": [
++    "component",
++    "user_acceptance"
++  ],
++  "requiredStageMeanings": [
++    "conformance_project",
++    "implementation_design",
++    "source",
++    "test_design",
++    "component_test_source",
++    "uat_test_source",
++    "test_execution_plan",
++    "test_execution_result"
++  ],
++  "requiredHostTools": [
++    "node",
++    "cargo",
++    "rustc"
++  ],
++  "assessment": "Preserve the dependency-free Rust 2021 package glc_hello_world_rust version 0.0.0. Component and UAT tests must each actually execute cargo run --quiet, asserting status 0 and exact stdout; conserve all original lifecycle surfaces. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
++}
+--- /dev/null
++++ build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-service.oracle.json
+@@ -0,0 +1,53 @@
++{
++  "scenarioId": "SCN-GLC-HELLO-WORLD-RUST-SERVICE",
++  "purpose": "Independent evaluation of the complete unchanged original rust-service declaration.",
++  "sourceSelection": {
++    "key": "rust-service",
++    "digest": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d"
++  },
++  "cases": [
++    {
++      "observationKind": "http_response",
++      "method": "GET",
++      "host": "127.0.0.1",
++      "portSelection": "system_assigned",
++      "path": "/hello",
++      "status": 200,
++      "body": "Hello, world!\n",
++      "cleanExitAfterRequests": 1
++    }
++  ],
++  "minimumTestPasses": 2,
++  "requiredArtifacts": [
++    "specification/project-conformance.md",
++    "design/implementation-design.md",
++    "src/service.rs",
++    "design/test-design.md",
++    "test/component/rust-service.test.mjs",
++    "test/uat/rust-service.uat.test.mjs",
++    "test-execution-plan.json"
++  ],
++  "requiredTestFiles": [
++    "test/component/rust-service.test.mjs",
++    "test/uat/rust-service.uat.test.mjs"
++  ],
++  "requiredTestRoles": [
++    "component",
++    "user_acceptance"
++  ],
++  "requiredStageMeanings": [
++    "conformance_project",
++    "implementation_design",
++    "source",
++    "test_design",
++    "component_test_source",
++    "uat_test_source",
++    "test_execution_plan",
++    "test_execution_result"
++  ],
++  "requiredHostTools": [
++    "node",
++    "rustc"
++  ],
++  "assessment": "Use only Rust standard library modules. Both tests must compile the service with rustc, start it with a temporary port-file path, read its system-assigned loopback port, make a real HTTP request, assert 200 and the exact body, and finish after clean service exit. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
++}
+--- /dev/null
++++ build_tenants/odd_glc/typescript/test/fixtures/generic-job/parallel-js.oracle.json
+@@ -0,0 +1,66 @@
++{
++  "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
++  "purpose": "Independent evaluation of the complete unchanged original parallel-js declaration.",
++  "sourceSelection": {
++    "key": "parallel-js",
++    "digest": "sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053"
++  },
++  "cases": [
++    {
++      "observationKind": "module_return",
++      "modulePath": "src/hello.mjs",
++      "exportName": "helloPart",
++      "arguments": [],
++      "returnValue": "Hello"
++    },
++    {
++      "observationKind": "module_return",
++      "modulePath": "src/world.mjs",
++      "exportName": "worldPart",
++      "arguments": [],
++      "returnValue": "world"
++    },
++    {
++      "observationKind": "module_return",
++      "modulePath": "src/index.mjs",
++      "exportName": "helloWorld",
++      "arguments": [],
++      "returnValue": "Hello, world!"
++    }
++  ],
++  "minimumTestPasses": 3,
++  "requiredArtifacts": [
++    "specification/project-conformance.md",
++    "design/implementation-design.md",
++    "package.json",
++    "src/hello.mjs",
++    "src/world.mjs",
++    "src/index.mjs",
++    "design/test-design.md",
++    "test/component/parallel-branches.test.mjs",
++    "test/uat/parallel-fanin.uat.test.mjs",
++    "test-execution-plan.json"
++  ],
++  "requiredTestFiles": [
++    "test/component/parallel-branches.test.mjs",
++    "test/uat/parallel-fanin.uat.test.mjs"
++  ],
++  "requiredTestRoles": [
++    "component",
++    "user_acceptance"
++  ],
++  "requiredStageMeanings": [
++    "conformance_project",
++    "implementation_design",
++    "source",
++    "test_design",
++    "component_test_source",
++    "uat_test_source",
++    "test_execution_plan",
++    "test_execution_result"
++  ],
++  "requiredHostTools": [
++    "node"
++  ],
++  "assessment": "Preserve private:true/type:module, distinct Hello and World branches and a fan-in that composes those functions. Component tests must assert each branch in separate test blocks; UAT must assert composed exported behavior. This is product-level branch shape, not ABG branch-frontier traversal. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
++}

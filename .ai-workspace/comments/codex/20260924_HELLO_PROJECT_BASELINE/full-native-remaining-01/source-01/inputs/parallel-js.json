@@ -1,0 +1,141 @@
+{
+  "kind": "semantic_job_input",
+  "schemaVersion": "5.0.0",
+  "lifecycleRef": "declaration://odd-glc/generic-lifecycle/stages@5",
+  "sourceRoleRef": "context-role://abiogenesis/semantic-stage/job-source@5",
+  "members": [
+    {
+      "memberRef": "urn:sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053",
+      "path": "original-parallel-js-declaration.txt",
+      "sourceLocator": "repo://odd_glc/build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs#bytes=29685-33970",
+      "base64": "ICBzZGxjQ29tcGxpYW5jZVNjZW5hcmlvKHsKICAgIGtleTogInBhcmFsbGVsLWpzIiwKICAgIHNjZW5hcmlvSWQ6ICJTQ04tR0xDLUhFTExPLVdPUkxELVBBUkFMTEVMLUpTIiwKICAgIGtpbmQ6ICJwYXJhbGxlbF9qcyIsCiAgICBleHBlY3RlZFN0ZG91dDogbnVsbCwKICAgIGV4cGVjdGVkUmV0dXJuVmFsdWU6ICJIZWxsbywgd29ybGQhIiwKICAgIHN0YWdlUGxhbjogWwogICAgICB7CiAgICAgICAgc3RhZ2U6ICJjb25mb3JtYW5jZV9wcm9qZWN0IiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJzcGVjaWZpY2F0aW9uL3Byb2plY3QtY29uZm9ybWFuY2UubWQiXSwKICAgICAgICBpbnN0cnVjdGlvbnM6IFsKICAgICAgICAgICJXcml0ZSBvbmx5IHNwZWNpZmljYXRpb24vcHJvamVjdC1jb25mb3JtYW5jZS5tZC4iLAogICAgICAgICAgIkRlY2xhcmUgYSBKYXZhU2NyaXB0IEhlbGxvIFdvcmxkIHByb2R1Y3Qgd2l0aCBwYXJhbGxlbCBicmFuY2ggaW1wbGVtZW50YXRpb24gcHJlc3N1cmUuIiwKICAgICAgICAgICJUaGUgc291cmNlIHN1cmZhY2UgbXVzdCBoYXZlIGEgaGVsbG8gYnJhbmNoLCBhIHdvcmxkIGJyYW5jaCwgYW5kIGEgZmFuLWluIG1vZHVsZSB0aGF0IGNvbXBvc2VzIHRoZSBncmVldGluZy4iLAogICAgICAgICAgIlRoZSBleGVjdXRpb24gcHJvb2YgbXVzdCBwcm92ZSBicmFuY2ggYmVoYXZpb3IgYW5kIGNvbXBvc2VkIGJlaGF2aW9yLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogImltcGxlbWVudGF0aW9uX2Rlc2lnbiIsCiAgICAgICAgZmlsZXNUb1Byb2R1Y2U6IFsiZGVzaWduL2ltcGxlbWVudGF0aW9uLWRlc2lnbi5tZCJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgZGVzaWduL2ltcGxlbWVudGF0aW9uLWRlc2lnbi5tZC4iLAogICAgICAgICAgIkRlZmluZSBhIHR5cGU6bW9kdWxlIHBhY2thZ2Ugd2l0aCBzcmMvaGVsbG8ubWpzIGV4cG9ydGluZyBoZWxsb1BhcnQoKSwgc3JjL3dvcmxkLm1qcyBleHBvcnRpbmcgd29ybGRQYXJ0KCksIGFuZCBzcmMvaW5kZXgubWpzIGV4cG9ydGluZyBoZWxsb1dvcmxkKCkuIiwKICAgICAgICAgICJoZWxsb1dvcmxkKCkgbXVzdCBjb21wb3NlIHRoZSBicmFuY2ggZnVuY3Rpb25zIGFuZCByZXR1cm4gZXhhY3RseSBcIkhlbGxvLCB3b3JsZCFcIi4iLAogICAgICAgICAgIlN0YXRlIHRoYXQgdGhpcyBzY2VuYXJpbyBwcm92ZXMgcHJvZHVjdC1sZXZlbCBwYXJhbGxlbCBicmFuY2ggc2hhcGUgaW5zaWRlIHRoZSByZXVzYWJsZSBTRExDIGdyYXBoOyBpdCBkb2VzIG5vdCBjbGFpbSBBQkcgYnJhbmNoLWZyb250aWVyIHRyYXZlcnNhbC4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJzb3VyY2UiLAogICAgICAgIGZpbGVzVG9Qcm9kdWNlOiBbInBhY2thZ2UuanNvbiIsICJzcmMvaGVsbG8ubWpzIiwgInNyYy93b3JsZC5tanMiLCAic3JjL2luZGV4Lm1qcyJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgcGFja2FnZS5qc29uLCBzcmMvaGVsbG8ubWpzLCBzcmMvd29ybGQubWpzLCBhbmQgc3JjL2luZGV4Lm1qcy4iLAogICAgICAgICAgInBhY2thZ2UuanNvbiBtdXN0IGJlIHByaXZhdGU6dHJ1ZSBhbmQgdHlwZTptb2R1bGUuIiwKICAgICAgICAgICJzcmMvaGVsbG8ubWpzIG11c3QgZXhwb3J0IGhlbGxvUGFydCgpIHJldHVybmluZyBcIkhlbGxvXCIuIiwKICAgICAgICAgICJzcmMvd29ybGQubWpzIG11c3QgZXhwb3J0IHdvcmxkUGFydCgpIHJldHVybmluZyBcIndvcmxkXCIuIiwKICAgICAgICAgICJzcmMvaW5kZXgubWpzIG11c3QgZXhwb3J0IGhlbGxvV29ybGQoKSByZXR1cm5pbmcgZXhhY3RseSBcIkhlbGxvLCB3b3JsZCFcIiBieSBjb21wb3NpbmcgaGVsbG9QYXJ0IGFuZCB3b3JsZFBhcnQuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAidGVzdF9kZXNpZ24iLAogICAgICAgIGZpbGVzVG9Qcm9kdWNlOiBbImRlc2lnbi90ZXN0LWRlc2lnbi5tZCJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgZGVzaWduL3Rlc3QtZGVzaWduLm1kLiIsCiAgICAgICAgICAiU3BlY2lmeSBzZXBhcmF0ZSBjb21wb25lbnQgY2hlY2tzIGZvciBoZWxsb1BhcnQgYW5kIHdvcmxkUGFydCBwbHVzIGEgVUFUIGNoZWNrIGZvciBoZWxsb1dvcmxkLiIsCiAgICAgICAgICAiVGhlIFVBVCBjaGVjayBtdXN0IHByb3ZlIHRoZSBjb21wb3NlZCBleHBvcnRlZCBiZWhhdmlvciByZXR1cm5zIGV4YWN0bHkgXCJIZWxsbywgd29ybGQhXCIuIgogICAgICAgIF0KICAgICAgfSwKICAgICAgewogICAgICAgIHN0YWdlOiAiY29tcG9uZW50X3Rlc3Rfc291cmNlIiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJ0ZXN0L2NvbXBvbmVudC9wYXJhbGxlbC1icmFuY2hlcy50ZXN0Lm1qcyJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgdGVzdC9jb21wb25lbnQvcGFyYWxsZWwtYnJhbmNoZXMudGVzdC5tanMuIiwKICAgICAgICAgICJVc2Ugbm9kZTp0ZXN0IGFuZCBub2RlOmFzc2VydC9zdHJpY3QuIiwKICAgICAgICAgICJJbXBvcnQgaGVsbG9QYXJ0IGZyb20gLi4vLi4vc3JjL2hlbGxvLm1qcyBhbmQgd29ybGRQYXJ0IGZyb20gLi4vLi4vc3JjL3dvcmxkLm1qcy4iLAogICAgICAgICAgIkFzc2VydCBoZWxsb1BhcnQoKSByZXR1cm5zIFwiSGVsbG9cIiBhbmQgd29ybGRQYXJ0KCkgcmV0dXJucyBcIndvcmxkXCIgaW4gc2VwYXJhdGUgdGVzdCgpIGJsb2Nrcy4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJ1YXRfdGVzdF9zb3VyY2UiLAogICAgICAgIGZpbGVzVG9Qcm9kdWNlOiBbInRlc3QvdWF0L3BhcmFsbGVsLWZhbmluLnVhdC50ZXN0Lm1qcyJdLAogICAgICAgIGluc3RydWN0aW9uczogWwogICAgICAgICAgIldyaXRlIG9ubHkgdGVzdC91YXQvcGFyYWxsZWwtZmFuaW4udWF0LnRlc3QubWpzLiIsCiAgICAgICAgICAiVXNlIG5vZGU6dGVzdCBhbmQgbm9kZTphc3NlcnQvc3RyaWN0LiIsCiAgICAgICAgICAiSW1wb3J0IHRoZSBuYW1lZCBleHBvcnQgZXhhY3RseSBhczogaW1wb3J0IHsgaGVsbG9Xb3JsZCB9IGZyb20gXCIuLi8uLi9zcmMvaW5kZXgubWpzXCIuIiwKICAgICAgICAgICJBc3NlcnQgaGVsbG9Xb3JsZCgpIHJldHVybnMgZXhhY3RseSBcIkhlbGxvLCB3b3JsZCFcIi4iCiAgICAgICAgXQogICAgICB9LAogICAgICB7CiAgICAgICAgc3RhZ2U6ICJ0ZXN0X2V4ZWN1dGlvbl9wbGFuIiwKICAgICAgICBmaWxlc1RvUHJvZHVjZTogWyJ0ZXN0LWV4ZWN1dGlvbi1wbGFuLmpzb24iXSwKICAgICAgICBpbnN0cnVjdGlvbnM6IFsKICAgICAgICAgICJXcml0ZSBvbmx5IHRlc3QtZXhlY3V0aW9uLXBsYW4uanNvbi4iLAogICAgICAgICAgIlRoZSBKU09OIGNvbW1hbmQgbXVzdCBiZSBub2RlLiIsCiAgICAgICAgICAiVGhlIGFyZ3MgbXVzdCBiZSBbXCItLXRlc3RcIiwgXCJ0ZXN0L2NvbXBvbmVudC9wYXJhbGxlbC1icmFuY2hlcy50ZXN0Lm1qc1wiLCBcInRlc3QvdWF0L3BhcmFsbGVsLWZhbmluLnVhdC50ZXN0Lm1qc1wiXS4iLAogICAgICAgICAgImV4cGVjdGVkVGVzdFBhc3NDb3VudCBtdXN0IGJlIGF0IGxlYXN0IDMsIG1hdGNoaW5nIHRoZSBhZG1pdHRlZCBicmFuY2ggYW5kIGZhbi1pbiBjb3ZlcmFnZSBmbG9vci4iLAogICAgICAgICAgImV4cGVjdGVkU3Rkb3V0TWF0Y2ggbXVzdCBpbmNsdWRlIHN0YWJsZSB6ZXJvLWZhaWx1cmUgZXZpZGVuY2Ugc3VjaCBhcyBmYWlsIDA7IGRvIG5vdCBwaW4gYW4gZXhhY3QgcGFzcy1jb3VudCBmcmFnbWVudCB3aGVuIHRoZSBnZW5lcmF0ZWQgdGVzdHMgYWRkIGRlcHRoIGNvdmVyYWdlLiIsCiAgICAgICAgICAiYXNzZXJ0ZWRSZXR1cm5WYWx1ZSBtdXN0IGJlIFwiSGVsbG8sIHdvcmxkIVwiLiIKICAgICAgICBdCiAgICAgIH0sCiAgICAgIHsKICAgICAgICBzdGFnZTogInRlc3RfZXhlY3V0aW9uX3Jlc3VsdCIsCiAgICAgICAgaW5zdHJ1Y3Rpb25zOiBbCiAgICAgICAgICAiUHJvZHVjZSBubyBmaWxlcy4iLAogICAgICAgICAgIkFjY2VwdCBvbmx5IGlmIHRoZSBicmFuY2ggYW5kIGZhbi1pbiB0ZXN0cyBwYXNzZWQsIG9ic2VydmVkVGVzdFBhc3NDb3VudCBpcyBhdCBsZWFzdCB0aGUgcHJpb3IgdGVzdF9leGVjdXRpb25fcGxhbiBleHBlY3RlZFRlc3RQYXNzQ291bnQsIGFuZCBwbGFuU2F0aXNmaWVkIGlzIHRydWUuIgogICAgICAgIF0KICAgICAgfQogICAgXQogIH0pLA=="
+    }
+  ],
+  "taskData": {
+    "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+    "originalSource": {
+      "path": "build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs",
+      "wholeFileDigest": "sha256:99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+      "startByte": 29685,
+      "endByte": 33970,
+      "selectedDigest": "sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053"
+    },
+    "request": "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success.",
+    "nativeLifecycle": {
+      "assets": [
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/intent@5",
+          "path": "semantic-assets/stage-0.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/product@5",
+          "path": "semantic-assets/stage-1.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/requirements@5",
+          "path": "semantic-assets/stage-2.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/design@5",
+          "path": "semantic-assets/stage-3.json"
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5",
+          "path": "semantic-assets/stage-4.json"
+        }
+      ],
+      "rubricPath": "semantic-assets/lifecycle-rubric.json"
+    }
+  },
+  "evaluationData": {
+    "scenarioId": "SCN-GLC-HELLO-WORLD-PARALLEL-JS",
+    "purpose": "Independent evaluation of the complete unchanged original parallel-js declaration.",
+    "sourceSelection": {
+      "key": "parallel-js",
+      "digest": "sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053"
+    },
+    "cases": [
+      {
+        "observationKind": "module_return",
+        "modulePath": "src/hello.mjs",
+        "exportName": "helloPart",
+        "arguments": [],
+        "returnValue": "Hello"
+      },
+      {
+        "observationKind": "module_return",
+        "modulePath": "src/world.mjs",
+        "exportName": "worldPart",
+        "arguments": [],
+        "returnValue": "world"
+      },
+      {
+        "observationKind": "module_return",
+        "modulePath": "src/index.mjs",
+        "exportName": "helloWorld",
+        "arguments": [],
+        "returnValue": "Hello, world!"
+      }
+    ],
+    "minimumTestPasses": 3,
+    "requiredArtifacts": [
+      "specification/project-conformance.md",
+      "design/implementation-design.md",
+      "package.json",
+      "src/hello.mjs",
+      "src/world.mjs",
+      "src/index.mjs",
+      "design/test-design.md",
+      "test/component/parallel-branches.test.mjs",
+      "test/uat/parallel-fanin.uat.test.mjs",
+      "test-execution-plan.json"
+    ],
+    "requiredTestFiles": [
+      "test/component/parallel-branches.test.mjs",
+      "test/uat/parallel-fanin.uat.test.mjs"
+    ],
+    "requiredTestRoles": [
+      "component",
+      "user_acceptance"
+    ],
+    "requiredStageMeanings": [
+      "conformance_project",
+      "implementation_design",
+      "source",
+      "test_design",
+      "component_test_source",
+      "uat_test_source",
+      "test_execution_plan",
+      "test_execution_result"
+    ],
+    "requiredHostTools": [
+      "node"
+    ],
+    "assessment": "Preserve private:true/type:module, distinct Hello and World branches and a fan-in that composes those functions. Component tests must assert each branch in separate test blocks; UAT must assert composed exported behavior. This is product-level branch shape, not ABG branch-frontier traversal. Require genuine governing/design/test-design/plan content and admitted worker execution of the original node:test plan, its pass floor, zero failures and plan satisfaction. Counts and file presence alone are not semantic acceptance; admitted native C2 and assessed Evidence carry execution-result meaning, with no prewritten success."
+  },
+  "worksiteScope": {
+    "readRoots": [
+      "."
+    ],
+    "writeRoots": [
+      "."
+    ],
+    "parentWriteRoots": [
+      "."
+    ],
+    "evidenceWriteRoots": [
+      "execution-evidence"
+    ],
+    "executableCapabilities": [
+      {
+        "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+        "relativeCwdRoots": [
+          "."
+        ],
+        "environment": {},
+        "maxTimeoutMs": 120000,
+        "maxTerminationGraceMs": 1000
+      }
+    ]
+  }
+}

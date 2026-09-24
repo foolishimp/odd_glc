@@ -1,0 +1,203 @@
+{
+  "kind": "odd_glc_observational_projection_successor",
+  "schemaVersion": "1.0.0",
+  "predecessor": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/full-result-proof.json",
+    "digest": "sha256:52c18d8db519f5a1e7d62626d910c479a167e0408bf5a867021231daf4fcd767",
+    "status": "unqualified_missing_independent_coverage"
+  },
+  "source": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/caller/jobs/basic-cli/read-run_result.json",
+    "digest": "sha256:6798cf7d88155c214f36843ecc62f7f4a5793f05202bc80f1dac9c5799d2e454",
+    "terminalValueDigest": "sha256:25d23c2ba1cdae14d60097abf3a070bd33b3330fcdaa778979d104a6483d6b10",
+    "producer": {
+      "cCallRef": "c-call:sha256:bf0b9017c3c14c471cb715e921e03d6d6acbb6472d007611806c033671bbb270",
+      "executionBasis": {
+        "digest": "sha256:ef910fa4a048498a373775c85e65bdf14e6728f82fca1b82d0e71db0e00e9e69",
+        "ref": "execution-basis://abiogenesis/ef910fa4a048498a373775c85e65bdf14e6728f82fca1b82d0e71db0e00e9e69"
+      },
+      "graphCallRef": "graph-call://abiogenesis/13c7f9fd8982bdd68820eec13a81887bba2c54fcc58157ec6f8584bced7fd156",
+      "graphFunction": {
+        "digest": "sha256:a0555252a3e40c74501f342cfe101b5b4e0098e72f6861478b46a0f23c587811",
+        "ref": "graph-function://odd-glc/generic-lifecycle-witness@5"
+      },
+      "invocationAdmissionRef": "invocation-admission://abiogenesis/3d35da8496bf62fb516284f5b28c39a497ba50653f700c2e59bd5ee5356154d1",
+      "judgmentAdmissionEventRef": "event://abiogenesis/f09406f25f40ea47fadc33c72eadb757f9dc1b2bfca77c9ef5a0e3450e53ae96",
+      "judgmentRef": "judgment://abiogenesis/218b8085fa443c6306a696dfc353ee22cbb4ead3272d04b3900bc32db534ab9c",
+      "program": {
+        "digest": "sha256:dbd93bf34f8ce3ffd9332cb0a436bf31a7e465437a2fae20b9c13b7b2021909c",
+        "ref": "program://odd-glc/generic-lifecycle-witness@5"
+      },
+      "resultAdmissionEventRef": "event://abiogenesis/5bc98725e167581381b73236ce98066aee8f154fe760f6377edf7c62448d984c",
+      "runRef": "run://abiogenesis/08b5322ec8633eaff50a40a11aeaa57e17fe0f672ce9cadf308796535783d421",
+      "terminalRoute": {
+        "digest": "sha256:efdc2d8e7424ca20db871d4e15b514bf436a3067ab6fbc1de556454b903504f1",
+        "ref": "traversal-route://abiogenesis/efdc2d8e7424ca20db871d4e15b514bf436a3067ab6fbc1de556454b903504f1"
+      }
+    },
+    "run": {
+      "digest": "sha256:9dc23f7fd354b22a5a2de5a37a59cafd6f6da798205c1de3b345440c44d034d9",
+      "ref": "run://abiogenesis/08b5322ec8633eaff50a40a11aeaa57e17fe0f672ce9cadf308796535783d421"
+    },
+    "result": {
+      "digest": "sha256:ae6a2a452d58e83c573a031061674e8fa740593341d8bbea942a149f31e13be2",
+      "ref": "result://abiogenesis/ae6a2a452d58e83c573a031061674e8fa740593341d8bbea942a149f31e13be2"
+    },
+    "prefix": {
+      "coordinateDigest": "sha256:06e8c20644dff44de8cc9b2a34a44774386e3f59d45b1d6da980732e49d501c1",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/opus-successor-04/resources/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:d19bfa943757107e5d0ca47e340f821c684aac539aa1b5402ca71c64c7aadd66",
+      "prefixLength": 353742824,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459234334
+      }
+    }
+  },
+  "status": "unqualified_pending_independent_semantic_review",
+  "interpreted": {
+    "kind": "ordinary_job_observation_check",
+    "disposition": "observed_pass",
+    "applicationQualification": "unqualified_pending_independent_semantic_review",
+    "cases": [
+      {
+        "ordinal": 0,
+        "arguments": [],
+        "disposition": "observed_pass",
+        "observations": [
+          {
+            "observationRef": "worksite-command-observation://abiogenesis/9be3d1a3a06a124e9e41b4572c076ab72b2ba94695c5bbedd2b2a0373fa2e254",
+            "failures": []
+          }
+        ]
+      }
+    ],
+    "testCommands": [
+      {
+        "observationRef": "worksite-command-observation://abiogenesis/cfa816abc1f80b052a435a543b54bfb32ccbc8bdcad7dcdae9f8a86948877acd",
+        "args": [
+          "--test",
+          "test/component/hello-cli.test.mjs",
+          "test/uat/hello-cli.uat.test.mjs"
+        ],
+        "relativeCwd": ".",
+        "disposition": "observed_pass",
+        "testPasses": 2,
+        "testFailures": 0
+      },
+      {
+        "observationRef": "worksite-command-observation://abiogenesis/c7e997c6af451ead29da485382cc8808b545aa71b2b0bd6966973650e3b696e0",
+        "args": [
+          "--test",
+          "test/component/hello-cli.test.mjs"
+        ],
+        "relativeCwd": ".",
+        "disposition": "observed_pass",
+        "testPasses": 1,
+        "testFailures": 0
+      },
+      {
+        "observationRef": "worksite-command-observation://abiogenesis/9766296a319270051a86bb4cd3d5620894b6d28bc2e703170508f75b58b29314",
+        "args": [
+          "--test",
+          "test/uat/hello-cli.uat.test.mjs"
+        ],
+        "relativeCwd": ".",
+        "disposition": "observed_pass",
+        "testPasses": 1,
+        "testFailures": 0
+      }
+    ],
+    "minimumTestPasses": {
+      "required": 2,
+      "observed": 4,
+      "disposition": "met"
+    },
+    "artifactCoverage": [
+      {
+        "relativePath": "specification/project-conformance.md",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "design/implementation-design.md",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "generated/hello-world.mjs",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "design/test-design.md",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "test/component/hello-cli.test.mjs",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "test/uat/hello-cli.uat.test.mjs",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "test-execution-plan.json",
+        "disposition": "present_in_admitted_evidence"
+      }
+    ],
+    "requiredTestFiles": [
+      {
+        "relativePath": "test/component/hello-cli.test.mjs",
+        "disposition": "present_in_admitted_evidence"
+      },
+      {
+        "relativePath": "test/uat/hello-cli.uat.test.mjs",
+        "disposition": "present_in_admitted_evidence"
+      }
+    ],
+    "verifierArtifacts": [
+      {
+        "relativePath": "test/component/hello-cli.test.mjs",
+        "base64": "aW1wb3J0IHsgdGVzdCB9IGZyb20gIm5vZGU6dGVzdCI7CmltcG9ydCBhc3NlcnQgZnJvbSAibm9kZTphc3NlcnQvc3RyaWN0IjsKaW1wb3J0IHsgc3Bhd25TeW5jIH0gZnJvbSAibm9kZTpjaGlsZF9wcm9jZXNzIjsKCnRlc3QoIkNMSSB3cml0ZXMgZXhhY3RseSBIZWxsbywgd29ybGQhIGFuZCBvbmUgbmV3bGluZSB0byBzdGRvdXQgYW5kIGV4aXRzIDAiLCAoKSA9PiB7CiAgY29uc3QgcmVzdWx0ID0gc3Bhd25TeW5jKHByb2Nlc3MuZXhlY1BhdGgsIFsiZ2VuZXJhdGVkL2hlbGxvLXdvcmxkLm1qcyJdLCB7CiAgICBjd2Q6IG5ldyBVUkwoIi4uLy4uLyIsIGltcG9ydC5tZXRhLnVybCksCiAgICBlbmNvZGluZzogInV0ZjgiLAogIH0pOwoKICBhc3NlcnQuc3RyaWN0RXF1YWwocmVzdWx0LmVycm9yLCB1bmRlZmluZWQpOwogIGFzc2VydC5zdHJpY3RFcXVhbChyZXN1bHQuc3RhdHVzLCAwKTsKICBhc3NlcnQuc3RyaWN0RXF1YWwocmVzdWx0LnN0ZG91dCwgIkhlbGxvLCB3b3JsZCFcbiIpOwp9KTsK",
+        "observationRef": "worksite-observation://abiogenesis/ee11387d56c06d28a6da28457b61bc05d4d20ae2b5f981f1587a2cea4b602a2e",
+        "role": "verifier_artifact",
+        "subjectRef": "worksite-subject://abiogenesis/3437c59b39b6c879f02dbc5bcfd9a159805430cf9591d9c9208a2d2320f9be5a"
+      },
+      {
+        "relativePath": "test/uat/hello-cli.uat.test.mjs",
+        "base64": "aW1wb3J0IHsgdGVzdCB9IGZyb20gIm5vZGU6dGVzdCI7CmltcG9ydCBhc3NlcnQgZnJvbSAibm9kZTphc3NlcnQvc3RyaWN0IjsKaW1wb3J0IHsgc3Bhd25TeW5jIH0gZnJvbSAibm9kZTpjaGlsZF9wcm9jZXNzIjsKCnRlc3QoImEgdXNlciBydW5uaW5nIHRoZSBDTEkgc2VlcyBleGFjdGx5IEhlbGxvLCB3b3JsZCEgYW5kIGEgbmV3bGluZSIsICgpID0+IHsKICBjb25zdCByZXN1bHQgPSBzcGF3blN5bmMocHJvY2Vzcy5leGVjUGF0aCwgWyJnZW5lcmF0ZWQvaGVsbG8td29ybGQubWpzIl0sIHsKICAgIGN3ZDogbmV3IFVSTCgiLi4vLi4vIiwgaW1wb3J0Lm1ldGEudXJsKSwKICAgIGVuY29kaW5nOiAidXRmOCIsCiAgfSk7CgogIGFzc2VydC5zdHJpY3RFcXVhbChyZXN1bHQuZXJyb3IsIHVuZGVmaW5lZCk7CiAgYXNzZXJ0LnN0cmljdEVxdWFsKHJlc3VsdC5zdGF0dXMsIDApOwogIGFzc2VydC5zdHJpY3RFcXVhbChyZXN1bHQuc3Rkb3V0LCAiSGVsbG8sIHdvcmxkIVxuIik7Cn0pOwo=",
+        "observationRef": "worksite-observation://abiogenesis/c3ebb0813c561ec5bb79e46a624d338ba8b523a98d511bee65a9e4ae99528fc0",
+        "role": "verifier_artifact",
+        "subjectRef": "worksite-subject://abiogenesis/25d5f3c5603b9810f2bab103f25cb7d26d3f8c0ae99ae381cd478e5730d71cea"
+      }
+    ],
+    "semanticReview": {
+      "disposition": "required",
+      "requiredTestRoles": [
+        "component",
+        "user_acceptance"
+      ],
+      "commandObservationRefs": [
+        "worksite-command-observation://abiogenesis/cfa816abc1f80b052a435a543b54bfb32ccbc8bdcad7dcdae9f8a86948877acd",
+        "worksite-command-observation://abiogenesis/c7e997c6af451ead29da485382cc8808b545aa71b2b0bd6966973650e3b696e0",
+        "worksite-command-observation://abiogenesis/9766296a319270051a86bb4cd3d5620894b6d28bc2e703170508f75b58b29314",
+        "worksite-command-observation://abiogenesis/9be3d1a3a06a124e9e41b4572c076ab72b2ba94695c5bbedd2b2a0373fa2e254"
+      ],
+      "questions": [
+        "Do the protected verifier artifacts actually exercise the application and required behaviors?",
+        "Did the admitted execution select and execute the required component/UAT verification, including lawful discovery?",
+        "Do governing/design artifacts preserve all original obligations, and which independent probes remain absent?"
+      ]
+    },
+    "boundary": "Unexecuted_probe means no independently recognizable same-input observation, not proof the application failed or a probe never ran inside a verifier. Discovery and other valid vectors remain admitted evidence for semantic review. Counts, artifact presence and observed_pass do not accept the application; missing probes require separate authorized qualification."
+  },
+  "applicationCoverage": "non_closing",
+  "remainingGaps": [
+    "full_source_semantic_completeness_unassessed",
+    "application_requirements_not_closed",
+    "proof_depth_and_strength_unassessed"
+  ],
+  "countMeaning": "Existing classifier sums 2 + 1 + 1 passes across three invocations; this is not four distinct tests or semantic acceptance.",
+  "boundary": "Offline caller interpretation of the unchanged retained Public typed value. No installed read, journal access, actor, runtime admission or residual waiver."
+}

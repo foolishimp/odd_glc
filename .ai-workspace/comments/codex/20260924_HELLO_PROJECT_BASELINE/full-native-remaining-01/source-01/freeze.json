@@ -1,0 +1,11 @@
+{
+  "sourceSubjectSha256": "cbbf51195934fc074169d617727cf1903d7d9ba69d7a633cea15922c2e23c068",
+  "sourceFiles": 8,
+  "addedLines": 384,
+  "removedLines": 28,
+  "selectedInputsSha256": "090674602fd86bbf11a771fb9129df882f2969bfadfcc225ec3eab6e6d086e9a",
+  "executionPlanSha256": "88963e73c854b014a95d426439e207fb02ffa889614a68f3a33639b275e4616c",
+  "checksSha256": "b32e09583e308027f928d390aeb4db3c8aaaafeeee0e77598966b6f1f1c56265",
+  "preservedOriginalSourceSha256": "99fc72437adf7b359e97d13bd1493c31681f63a620181baafa682bed51c468f2",
+  "preservedBasicOracleSha256": "028073e4cb24bd7444dd15d48b0e16d37df236edf7a003cb3ca26286aca6c585"
+}
