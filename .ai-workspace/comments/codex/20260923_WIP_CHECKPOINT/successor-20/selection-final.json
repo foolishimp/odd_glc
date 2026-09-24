@@ -1,0 +1,99 @@
+{
+  "directExpected": {
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/activation.json": {
+      "sha256": "625d0147f7c565d11c2dc7388a7d7401f71dfb7ee7122b60306cf55c25b49c8d",
+      "byteLength": 280
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/closed-selection.json": {
+      "sha256": "8ed98be33e3966a33b0a240519d502357695dbc94992863739aacea62a0731d6",
+      "byteLength": 294
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/direct-selection.json": {
+      "sha256": "f9f00f649ce9c22d39d9755b2c4c56f5a6f8aba243c0e6cf5066a021af6890ce",
+      "byteLength": 103
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/exclusions.json": {
+      "sha256": "65c12b2d9b1346dd546cd1c91ddfbd1a622aaa2c72b69642be46babe193d4433",
+      "byteLength": 522
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/freeze-expectations.json": {
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356",
+      "byteLength": 3
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/frozen-member-correspondence.json": {
+      "sha256": "207d4790b9c644572ff75785261f17b6a40f6b7089fcb984957b53b6df068980",
+      "byteLength": 211
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/pack_incremental.py": {
+      "sha256": "ebad815e6f47eefaaa76d69422f597ea9255c3c25cba3c58346155f2b3de323a",
+      "byteLength": 1706
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/remote-precheck.json": {
+      "sha256": "bb1fee01cf1250cff254a88b4fb9ec057d44781d99c247b2350b3239ff959f25",
+      "byteLength": 207
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/root-disposition.json": {
+      "sha256": "5c0208a12bf4ee4f6f248e26e4052360192f1c47079ce77e00632dbd7fbefc08",
+      "byteLength": 1031
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/selected-archive-paths.nul": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/source-correspondence.json": {
+      "sha256": "907d6403d53eea00c80b4c9f170fc0f041ca4a31396a01d54aa054c53e9678d5",
+      "byteLength": 811
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/stage_checkpoint.py": {
+      "sha256": "31b9f8c29449a6b02812ea4e1370b7e1effe2dbeb0205bd56cd271637cf5dbf9",
+      "byteLength": 3301
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/catalog.json": {
+      "sha256": "8617388c5956bb35069ede21f17b969f8cbd8f7f0ddcb721fa1b52c42454ae67",
+      "byteLength": 745
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/credential-shape-findings.json": {
+      "sha256": "44e87b2569a514609f5111491d1d0e0605c6a81f56db5ab4bdf0fe5812b7c55e",
+      "byteLength": 121
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/direct-paths.nul": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/exclusions.json": {
+      "sha256": "3974c18bd3617177301413f9dac88a296e227621726113ca3aa9e9ec8d227c36",
+      "byteLength": 348
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/members.jsonl.gz": {
+      "sha256": "7678f17423906b502590ab02a5c7f356afc28d7537ce0625d6aba10e5755e7fd",
+      "byteLength": 39
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/path-reconciliation.jsonl.gz": {
+      "sha256": "ba264d243205cf84be19aa6723d333f3239c79a28960685743be74f4f79cb095",
+      "byteLength": 51
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/pending.json": {
+      "sha256": "5db967ae83d28d1f4d0cee865718f7c69ff1604472fe889e2211f1d9509b1fe8",
+      "byteLength": 248
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/restoration-verification.json": {
+      "sha256": "fe625b547683bcdce399e2ae49fdc5570cf5b5c29a47ce8b1bf02146eee4fa91",
+      "byteLength": 474
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/verification.json": {
+      "sha256": "fe625b547683bcdce399e2ae49fdc5570cf5b5c29a47ce8b1bf02146eee4fa91",
+      "byteLength": 474
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-reuse.json": {
+      "sha256": "3f8a3aeb5dc6e68aaf609dea80abb5218c62e3a39389b1d2bda2ca4c36db96bb",
+      "byteLength": 568
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "4c564b548d79b6923ca1efa26d7e0d176840716550b9192eb9d8e2f829782fa7",
+      "byteLength": 63286
+    }
+  },
+  "newArchive": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-20/transport-01/catalog.json",
+  "excludedRuntimeScope": "see exclusions.json",
+  "previousO4Bank": "reference only; no historical bytes reprocessed"
+}

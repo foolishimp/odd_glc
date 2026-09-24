@@ -1,0 +1,8 @@
+{
+  "role": "Worker/Writer",
+  "model": "astra",
+  "effort": "xhigh",
+  "grant": "Root-directed closure and paired checkpoint of corrected installed intake failure; no repair/retry",
+  "headBefore": "d7fa098981de6af22e46e0bdcaa7e5bcf29cb230",
+  "productionSourceChanged": false
+}
