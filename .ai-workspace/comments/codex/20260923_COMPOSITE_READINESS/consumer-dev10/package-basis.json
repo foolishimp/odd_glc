@@ -1,0 +1,56 @@
+{
+  "packageName": "@odd-glc/route-one-typescript",
+  "packageVersion": "0.2.0-dev.10",
+  "productId": "product://odd_glc/route-one-typescript@0.2.0-dev.10",
+  "moduleRef": "module://odd-glc/generic-lifecycle-witness@5",
+  "programRef": "program://odd-glc/generic-lifecycle-witness@5",
+  "graphFunctionRef": "graph-function://odd-glc/generic-lifecycle-witness@5",
+  "graphRef": "graph://odd-glc/generic-lifecycle-witness@5",
+  "startRef": "start://odd-glc/generic-lifecycle-witness@5",
+  "closureContractRef": "contract://odd-glc/generic-lifecycle-witness/closure@5",
+  "descriptorRef": "descriptor://odd_glc/route-one-typescript@0.2.0-dev.10",
+  "contributionManifestRef": "contribution-manifest://odd_glc/route-one-typescript@0.2.0-dev.10",
+  "catalogRef": "catalog://odd_glc/public-contracts@0.2.0-dev.10",
+  "provenanceRef": "provenance://odd_glc/route-one-typescript@0.2.0-dev.10",
+  "sourceDeclarationRef": "declaration://odd-glc/generic-lifecycle/source@5",
+  "sourceGraphFunctionRef": "graph-function://odd-glc/generic-lifecycle/source@5",
+  "sourceModuleRef": "module://odd-glc/generic-lifecycle-source-setup@5",
+  "sourceProgramRef": "program://odd-glc/generic-lifecycle-source-setup@5",
+  "sourceClosureContractRef": "contract://odd-glc/generic-lifecycle/source/closure@5",
+  "lifecycleDeclarationRef": "declaration://odd-glc/generic-lifecycle/stages@5",
+  "artifactDigest": "sha256:c0b59ec38cdb8f2fa7b1f6ad8ff9f754355ce3d22b9849bd42c483590a481f3c",
+  "productContentDigest": "sha256:4c105349e296a1578f2f8246de193efe9a9aa086ec6adc4084087fc79f19c051",
+  "manifestDigest": "sha256:c7954005f46a6748a647f56ba04bad78b84aa6675d649a47d8726aabb2e7ebf8",
+  "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/artifacts/odd-glc-route-one-typescript-0.2.0-dev.10.tgz",
+  "packageRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/development-product",
+  "payloadInventory": [
+    {
+      "path": "build/native-continuation-contracts.mjs",
+      "sha256": "sha256:98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886"
+    },
+    {
+      "path": "build/native-continuation-declarations.mjs",
+      "sha256": "sha256:31447f63a40a22794a82f9f68eddc70cfac79169be339647e6e1ae2010c2d901"
+    },
+    {
+      "path": "build/native-intent-declarations.mjs",
+      "sha256": "sha256:5630d1d25802a8ad1bd3c81d6f68155b439c5edb4cad5e4135650afdf1077ea9"
+    },
+    {
+      "path": "build/native-lifecycle-declarations.mjs",
+      "sha256": "sha256:b8dcaa7f4444addaeb556133169a403270dc7a9a69674e8f28aff2d398234599"
+    },
+    {
+      "path": "build/publication.json",
+      "sha256": "sha256:ad8fc12b0472333ba4e85ef450df376b7dd4478b62061ad92f87ac13b257d78b"
+    },
+    {
+      "path": "contracts/public-contract-catalog.schema.json",
+      "sha256": "sha256:a69db2dd825711aba598d29d8880b20df39aa8ac691fa25b5d7c058eed964646"
+    },
+    {
+      "path": "package.json",
+      "sha256": "sha256:986028025e8b7fff314ab65c16b7af2d0a71d0a9327e5c43e328b864e2d11618"
+    }
+  ]
+}

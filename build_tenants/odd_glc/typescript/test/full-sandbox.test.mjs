@@ -35,9 +35,9 @@ if (candidatePath) {
 const native = { skip: candidatePath ? false : "PENDING: exact frozen successor ABI package not selected; current default pin is not used" };
 const managedNative = { skip: candidatePath && managementConfigurationPath ? false : "PENDING: exact candidate and frozen management configuration both required" };
 
-function validateDeclaredProgram(publication, freshNative = false) {
+function validateDeclaredProgram(publication, freshNative = false, selectedProgram = publication.programs[0]) {
   const nativePublications = nativeFullSandboxPublications(gtl, artifact, freshNative), publications = [...nativePublications, publication];
-  const program = publication.programs[0], admit = (value, kind, contract) => {
+  const program = selectedProgram, admit = (value, kind, contract) => {
     const row = validator.rawAdmitValue(value, kind, "contract://abiogenesis/gtl/" + contract + "@5");
     assert.equal(row.kind, "raw_admitted_value", JSON.stringify(row)); return row;
   };
@@ -413,4 +413,56 @@ test("fresh native retention permits only the exact constructed graph and ABI ad
   const changed = structuredClone(graph); changed.template.nodes.find(n => n.term.kind === 'c_of').term.requirement.implementationBindingRef = 'implementation-binding://foreign';
   assert.equal(check(changed), false);
   assert.equal(check({ ...graph, declarations: {} }), false);
+});
+
+// The governance Context below is declared component data, not STDO admission.
+// GTL, exact factory retention, and Program/role admission run their real owners.
+test("native D2 declares public intake and every selected whole suffix with exact GTL and role owners", {skip:!sourceRoot}, async()=>{
+ const {constructFreshNativeLifecyclePublication,constructFreshNativeLifecycleEnvironmentRoles,selectNativeSemanticRevisionStart}=await import('../src/native-lifecycle-declarations.mjs');
+ const rolesOwner=await import(pathToFileURL(join(sourceRoot,'build/code/src/gtl/stdo_run_environment.js')).href);
+ const retention=await import(pathToFileURL(join(sourceRoot,'build/code/src/product/execution_resolution.js')).href);
+ const nativePublications=nativeFullSandboxPublications(gtl,artifact,true),semantic=nativePublications.find(p=>p.moduleRef===gtl.SEMANTIC_STAGE_IDS.moduleRef),revision=nativePublications.find(p=>p.moduleRef===gtl.SEMANTIC_REVISION_IDS.moduleRef);
+ const original=constructFreshNativeLifecyclePublication({gtl,product,ids:FULL_SANDBOX_IDS,semanticPublication:semantic});
+ const bytes=Buffer.from('Generic component governance; no live authority claim.\n'),digest=product.sha256Bytes(bytes);
+ const member={path:'policy.txt',type:'file',digest,target:null},contextMember={memberRef:'member:component',path:member.path,byteCount:bytes.length,digest};
+ const binding={contextRef:'context:component',memberRef:contextMember.memberRef,memberDigest:digest,startByte:0,endByte:bytes.length,spanDigest:digest};
+ const sourceSelections=Object.fromEntries(['common','worker','reviewer','intent','product','requirements','design','construction','evidence','execution'].map(name=>[name,[binding]]));
+ const roles=constructFreshNativeLifecycleEnvironmentRoles({gtl,product,publication:original,nativePublications,sourceSelections,accessRefs:[],sourceBasisRef:'generic://component/'});
+ const environment=gtl.constructRunEnvironmentDeclaration({kind:'run_environment_declaration',schemaVersion:'5.0.0',declarationRef:'environment:component',
+  dependencies:[{dependencyRef:'dependency:component',basisRef:'generic://component/',recordRef:'record:component',recordDigest:digest,recordFormat:'member_inventory@1',inventoryDigest:gtl.stdoInventoryDigest([member]),members:[member]}],
+  contexts:[{contextRef:binding.contextRef,sourceLocator:'generic://component/',inventoryDigest:product.sha256Canonical([contextMember]),members:[contextMember]}],corpusAccess:null,accesses:[],roles});
+ const publication=constructFreshNativeLifecyclePublication({gtl,product,ids:FULL_SANDBOX_IDS,semanticPublication:semantic,runEnvironment:environment});
+ assert.equal(publication.programs.length,8,'fresh, intake, five declared stages and construction repair');
+ const coordinate={cCallRef:'component:call',resultRef:'component:result',resultDigest:digest,resultAdmissionEventRef:'component:admission',judgmentEventRef:'component:judgment'};
+ const request={kind:'semantic_revision_request',schemaVersion:'5.0.0',parent:coordinate,causes:[coordinate],selection:coordinate,currentWorksite:null};
+ assert.equal(selectNativeSemanticRevisionStart({product,publication,request}),null,'historical requests do not invent a returned choice');
+ for(const selectionChoice of [{mode:'construction_repair',selectedStageRef:null},...publication.semanticJobLifecycle.stages.map(stage=>({mode:'stage_revision',selectedStageRef:stage.declarationRef}))]){
+  const terminalValue=JSON.parse(JSON.stringify({...request,selectionChoice}));
+  const start=selectNativeSemanticRevisionStart({product,publication,request:terminalValue});assert(start);
+  const program=publication.programs.find(p=>p.programRef===start.programRef);assert(program.starts.some(s=>s.startRef===start.startRef&&s.graphFunctionRef===start.graphFunctionRef));
+  const root=publication.graphFunctions.find(g=>g.name===start.graphFunctionRef),first=root.template.nodes.find(n=>n.nodeRef===root.template.startNodeRef);
+  assert.equal(publication.graphFunctions.find(g=>g.name===first.term.graphFunctionRef).declarations['abg.semantic_native_revision_entry'],selectionChoice.mode==='construction_repair'?'construction_repair':selectionChoice.selectedStageRef);
+  assert.equal(selectNativeSemanticRevisionStart({product,publication:{...publication,programs:[...publication.programs,program]},request:terminalValue}),null,'ambiguous starts do not choose an arbitrary route');
+ }
+ assert.equal(selectNativeSemanticRevisionStart({product,publication,request:{...request,selectionChoice:{mode:'stage_revision',selectedStageRef:'stage:unknown'}}}),null);
+ const allGraphs=[...publication.graphFunctions,...nativePublications.flatMap(p=>p.graphFunctions)];
+ for(const program of publication.programs){const checked=validateDeclaredProgram(publication,true,program);
+  assert.equal(checked.kind,'program_validation',JSON.stringify(checked.diagnostics));assert.equal(checked.disposition,'valid',program.programRef+JSON.stringify(checked.diagnostics));
+  assert.equal(rolesOwner.validRunEnvironmentProgram(publication,program,allGraphs),true,program.programRef);
+  const selected=rolesOwner.runEnvironmentForProgram(publication,program);assert(selected && selected.roles.every(r=>program.callableMembership.includes(r.graphFunctionRef)));
+ }
+ const intake=publication.programs.find(p=>p.programRef==='program://odd-glc/native-semantic-revision/intake@5');assert(intake);
+ const selection=publication.graphFunctions.find(g=>g.declarations['abg.semantic_revision_selection']);
+ const selectedLeaf=gtl.cLeafTerms(selection.template.nodes[0].term).find(l=>l.fibre==='F_P');assert.equal(gtl.nativeContextLeafFamily(selection,selectedLeaf),'assessor');
+ const unknown=structuredClone(selectedLeaf);unknown.requirement.implementationBindingRef='implementation-binding://foreign';assert.equal(gtl.nativeContextLeafFamily(selection,unknown),null);
+ const wrong=structuredClone(publication);wrong.runEnvironments.find(e=>e.declarationRef===intake.policies[gtl.RUN_ENVIRONMENT_POLICY]).roles[0].role='author';assert.equal(rolesOwner.validRunEnvironmentProgram(wrong,intake,allGraphs),false);
+ for(const stage of publication.semanticJobLifecycle.stages){const projection=publication.graphFunctions.find(g=>g.declarations['abg.semantic_native_revision_entry']===stage.declarationRef);assert(projection);}
+ const graph=publication.graphFunctions.find(g=>g.declarations['abg.semantic_native_revision_construction']);assert(graph);
+ const graphOwner={productId:publication.owningProductId,moduleRef:publication.moduleRef,publicationDigest:product.modulePublicationSemanticDigest(publication),installId:'component:glc'};
+ const entry={productId:product.ABI5_PRODUCT_ID,moduleRef:revision.moduleRef,publicationDigest:product.modulePublicationSemanticDigest(revision),installId:'component:abi'};
+ const semantics={...entry,moduleRef:semantic.moduleRef,publicationDigest:product.modulePublicationSemanticDigest(semantic)};
+ assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,graph,graphOwner,entry,entry,semantics),true);
+ assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,graph,graphOwner,entry,{...entry,installId:'component:foreign'},semantics),false);
+ const changed=structuredClone(graph);changed.template.nodes[0].term.requirement.implementationBindingRef='implementation-binding://foreign';assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,changed,graphOwner,entry,entry,semantics),false);
+ assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,graph,graphOwner,entry,entry,{...semantics,installId:'component:other'}),false);
 });

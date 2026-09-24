@@ -1,0 +1,98 @@
+{
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/artifacts/odd-glc-route-one-typescript-0.2.0-dev.10.tgz": {
+    "sha256": "c0b59ec38cdb8f2fa7b1f6ad8ff9f754355ce3d22b9849bd42c483590a481f3c",
+    "byteLength": 89928
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/configuration-source.json": {
+    "sha256": "f4705ba649097cb4221b18d7af6240426e8377510bb86c3053415d13b1dec3ad",
+    "byteLength": 2251
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/construct-consumer.mjs": {
+    "sha256": "b10c38148b83561797939b092fcee9602390a28b2d2ec234690de860c4ff78e1",
+    "byteLength": 5324
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/construction-timing.json": {
+    "sha256": "c0d1df27872a423c01e5f8a9f2f37503d8650db7be7bcdeb887654b1ff9a84d7",
+    "byteLength": 321
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/install.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/install.stdout": {
+    "sha256": "712b6c338e4340aeda594ef0ec4d03d0516d992d84dc9391b531eaf4b911591e",
+    "byteLength": 26
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/installed-consumer.json": {
+    "sha256": "e953926128c024fcbf9f50cfd93618187e6735c2f9e4ca018886948078c9d94f",
+    "byteLength": 3059
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/member-correspondence.json": {
+    "sha256": "de1f80c60c75c2daeb9e23d011106c8efa0d26aa27c72bac73084b7253489eeb",
+    "byteLength": 1650
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/pack.stderr": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "byteLength": 0
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/pack.stdout": {
+    "sha256": "5d76f8cd0f4b55bdca25e2a6823466a0b4dbd2bead9db502e32e12d61c96678d",
+    "byteLength": 1525
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/package-basis.json": {
+    "sha256": "e301543141b26a9a79aa7ba69876e9b0049fc7eb7658198fff7f04b3f24d5f98",
+    "byteLength": 3087
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-1.json": {
+    "sha256": "3867c65645a8c5cce8b05290ea0761f1fc9b5427f2e49758777e25c0da6605a5",
+    "byteLength": 88730
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-2.json": {
+    "sha256": "783acb836ae774d4293a953a1ebfc89009fdf3fd70269d33000e95d64585258b",
+    "byteLength": 52353
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-3.json": {
+    "sha256": "0f29990227b09e009847bec2c652e5cca66fd64d602db5c7ef7be9bdd12ddcda",
+    "byteLength": 56116
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-4.json": {
+    "sha256": "d0c0cc5e5ef7da59c689e70710933ac6ea197b5ac968fe57a95ba57912d755db",
+    "byteLength": 42435
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-5.json": {
+    "sha256": "6e2fe0c7c577a01738ede66babc960f08038b67b1b46086dcf9773e99c450991",
+    "byteLength": 67553
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-6.json": {
+    "sha256": "84760343c417ec876f7df36fb617cc0cb561962b2ce5965b3ff0c43d413d8d68",
+    "byteLength": 63755
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-7.json": {
+    "sha256": "79de5462de560043d36fc8ac72027c11c85aab58096cb49b8bb7ca9e3880e29f",
+    "byteLength": 59973
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-8.json": {
+    "sha256": "074e11a495c6615729ea71f00fe1b67c5f6c953b388b22b315db321cf3f9963c",
+    "byteLength": 40532
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation.json": {
+    "sha256": "2e05b67faa43b00dac3a3074471fba72747e3aa615eb9a76c078dfa7d69d5d90",
+    "byteLength": 484412
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/selection.json": {
+    "sha256": "240bb39ac2d7e8a7e826abcf4d49b5ba0e89a5ab06b185baedad760ea5c92d77",
+    "byteLength": 2087
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/tooling-source-correspondence.json": {
+    "sha256": "5d17c509e5c5b04d5671db2d7abf7b6828888967d6818ea53ec28f9feb4d3ab7",
+    "byteLength": 1119
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/verification-summary.json": {
+    "sha256": "c7de463dad3dfa9c2f508ed9bafa1c5cbd9e210d222b98247ab37d5a342b2032",
+    "byteLength": 6103
+  },
+  ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/verify-consumer.mjs": {
+    "sha256": "cee51109ec6a96ea71abe111622627521b6eddbfea209fd3bd338d8aa93069a6",
+    "byteLength": 5078
+  }
+}

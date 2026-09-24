@@ -1,0 +1,171 @@
+{
+  "directExpected": {
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/installed-consumer.json": {
+      "sha256": "e953926128c024fcbf9f50cfd93618187e6735c2f9e4ca018886948078c9d94f",
+      "byteLength": 3059
+    },
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/member-correspondence.json": {
+      "sha256": "de1f80c60c75c2daeb9e23d011106c8efa0d26aa27c72bac73084b7253489eeb",
+      "byteLength": 1650
+    },
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/package-basis.json": {
+      "sha256": "e301543141b26a9a79aa7ba69876e9b0049fc7eb7658198fff7f04b3f24d5f98",
+      "byteLength": 3087
+    },
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation.json": {
+      "sha256": "2e05b67faa43b00dac3a3074471fba72747e3aa615eb9a76c078dfa7d69d5d90",
+      "byteLength": 484412
+    },
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/selection.json": {
+      "sha256": "240bb39ac2d7e8a7e826abcf4d49b5ba0e89a5ab06b185baedad760ea5c92d77",
+      "byteLength": 2087
+    },
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/tooling-source-correspondence.json": {
+      "sha256": "5d17c509e5c5b04d5671db2d7abf7b6828888967d6818ea53ec28f9feb4d3ab7",
+      "byteLength": 1119
+    },
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/verification-summary.json": {
+      "sha256": "c7de463dad3dfa9c2f508ed9bafa1c5cbd9e210d222b98247ab37d5a342b2032",
+      "byteLength": 6103
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/activation.json": {
+      "sha256": "8b33d48cd1f9f31d078168d81b2d1ab859f703975e6e0426a98fc070bf49e402",
+      "byteLength": 748
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/canonical-selection.json": {
+      "sha256": "001271b98fdafa51d5c126a26129ea95e141b9a18a818ec6a30e4961a41df1e7",
+      "byteLength": 355
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/closed-selection.json": {
+      "sha256": "699baad942140a131b4ce761cc717026f79353a5b8fd7b500246a86975db2151",
+      "byteLength": 4092
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/direct-selection.json": {
+      "sha256": "4484196b5a6bc3e0d60f1a2c8bc717551330f089db147dea18c1cda9811a9dd2",
+      "byteLength": 1085
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/exclusions.json": {
+      "sha256": "c4d641d83c51f49c42996db606c4a76e81db19f1157de74c0d6cb8c445a8e484",
+      "byteLength": 485
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/freeze-expectations.json": {
+      "sha256": "3356bb18b53d4db90e00e8da65b24ab45769507501f8b1d66e53f3d697db2484",
+      "byteLength": 5147
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/frozen-member-correspondence.json": {
+      "sha256": "f3aa867685c44f7c396fe665091ae7b001652805ff4f2ed50908e7cb78757bec",
+      "byteLength": 2716
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/pack_incremental.py": {
+      "sha256": "ace3e73fb0aaa225bd8b455e34a65cbd80bbd22f012ef5bc4c42fd02c1704ecd",
+      "byteLength": 1706
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/prestage-correspondence.json": {
+      "sha256": "005afc695494690ffbdd9e9715cf3ebef86c0540c91cd59e8fd9cf742c510698",
+      "byteLength": 147
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/root-disposition.json": {
+      "sha256": "a52ce45bd54de23438f9dfdb6aac3e2b90cfabb949e3f024850c416b81324501",
+      "byteLength": 935
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/selected-archive-paths.nul": {
+      "sha256": "a80efe0b7ee5fcec450b7ec750c228d659ad50f830c7c3bf93301d3945d134f0",
+      "byteLength": 2334
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/source-correspondence.json": {
+      "sha256": "ead764f82988d29bb9284216d4181af3e86d04762deed9e671e0e06bbd0855e6",
+      "byteLength": 5659
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/stage_checkpoint.py": {
+      "sha256": "3dabbdcaa73f97f69285b00b207c720e16d715e6abd77bacd49cdd62b51c7c41",
+      "byteLength": 3301
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/tracking-preimages.json": {
+      "sha256": "8f85f710ef963e15f7743291f61ae31dfb09113f7229dd059fb85181c6d81ef6",
+      "byteLength": 368
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/tracking-preimages/GOALS.md": {
+      "sha256": "cf4dcb11e979d2d7654cc2d465d04d1ce9f4a1238f6be0eb30a8f6041ab81517",
+      "byteLength": 20226
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/tracking-preimages/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "eeebd6ca4216d70d8178a13b996f41e8be5a48aef314a1ec34f0b2b9e45a0a08",
+      "byteLength": 62002
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/tracking-projection.json": {
+      "sha256": "e809db1d101948b4994f8406d0ead6d1550e8201266fa8e1e5e437dff8f2a924",
+      "byteLength": 1226
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/catalog.json": {
+      "sha256": "9fa9609827883d186bb7bd2d611a0976f1ba4414527f7d5bb6776b5c77fc0a50",
+      "byteLength": 1797
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/credential-shape-findings.json": {
+      "sha256": "44e87b2569a514609f5111491d1d0e0605c6a81f56db5ab4bdf0fe5812b7c55e",
+      "byteLength": 121
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/direct-paths.nul": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "byteLength": 0
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/exclusions.json": {
+      "sha256": "3974c18bd3617177301413f9dac88a296e227621726113ca3aa9e9ec8d227c36",
+      "byteLength": 348
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/members.jsonl.gz": {
+      "sha256": "7bceeb5ce093bdbfe94fd7a93a2f8f56c514a6d4460a45baca5b61da8b562cb0",
+      "byteLength": 1508
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/path-reconciliation.jsonl.gz": {
+      "sha256": "d04907b47c7a5f3a5bb802652765b72ba378d922b88de80b7b50073cb8626fca",
+      "byteLength": 387
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/payloads/family-0000.tar.gz.part0000": {
+      "sha256": "ff41112bc16750a0152689e1c6cabfa2978273afcaaa3a10bf32aa78e4775753",
+      "byteLength": 328325
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/payloads/raw-c0b59ec38cdb8f2fa7b1f6ad8ff9f754355ce3d22b9849bd42c483590a481f3c.part0000": {
+      "sha256": "c0b59ec38cdb8f2fa7b1f6ad8ff9f754355ce3d22b9849bd42c483590a481f3c",
+      "byteLength": 89928
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/pending.json": {
+      "sha256": "5db967ae83d28d1f4d0cee865718f7c69ff1604472fe889e2211f1d9509b1fe8",
+      "byteLength": 248
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/restoration-verification.json": {
+      "sha256": "7574fa287e087970d0317d21eb4b1c01e72c1fed5adadd98f735e96a47ffcc29",
+      "byteLength": 480
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/verification.json": {
+      "sha256": "7574fa287e087970d0317d21eb4b1c01e72c1fed5adadd98f735e96a47ffcc29",
+      "byteLength": 480
+    },
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-reuse.json": {
+      "sha256": "140965c3b4433c497f2b4f83d7a4220baaca462a20939a7e2869742eb2283565",
+      "byteLength": 364
+    },
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+      "sha256": "e23d9c34af63a051549fea5e6fdbb487ef5774cf173c7aca4fcd9efe33e63a46",
+      "byteLength": 62535
+    },
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md": {
+      "sha256": "d4a3f28aefad5a6343f909ee3e1b2a77c1f347bb6a8516666abce0727a4d64fc",
+      "byteLength": 38777
+    },
+    "build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs": {
+      "sha256": "b8dcaa7f4444addaeb556133169a403270dc7a9a69674e8f28aff2d398234599",
+      "byteLength": 34704
+    },
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs": {
+      "sha256": "17b3e5b3ac822b34c81908ed3bb21d33f5ef7d7f4f50cacae3276c9b41516035",
+      "byteLength": 40359
+    },
+    "specification/GOALS.md": {
+      "sha256": "2060088e78b81ee2e04d8fe7427e3e8374c9143548e0a811a23124891cb0982f",
+      "byteLength": 20533
+    }
+  },
+  "newArchive": ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-18/transport-01/catalog.json",
+  "excludedRuntimeScope": "see exclusions.json",
+  "previousO4Bank": "reference only; no historical bytes reprocessed"
+}

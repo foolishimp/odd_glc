@@ -1,0 +1,22 @@
+[
+  {
+    "sourcePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs",
+    "packagePath": "build/native-lifecycle-declarations.mjs",
+    "sha256": "sha256:b8dcaa7f4444addaeb556133169a403270dc7a9a69674e8f28aff2d398234599"
+  },
+  {
+    "sourcePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/native-intent-declarations.mjs",
+    "packagePath": "build/native-intent-declarations.mjs",
+    "sha256": "sha256:5630d1d25802a8ad1bd3c81d6f68155b439c5edb4cad5e4135650afdf1077ea9"
+  },
+  {
+    "sourcePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/native-continuation-declarations.mjs",
+    "packagePath": "build/native-continuation-declarations.mjs",
+    "sha256": "sha256:31447f63a40a22794a82f9f68eddc70cfac79169be339647e6e1ae2010c2d901"
+  },
+  {
+    "sourcePath": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs",
+    "packagePath": "build/native-continuation-contracts.mjs",
+    "sha256": "sha256:98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886"
+  }
+]

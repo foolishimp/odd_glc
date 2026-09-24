@@ -1,0 +1,9 @@
+{
+  "paths": [
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+    "build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs",
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs",
+    "specification/GOALS.md"
+  ]
+}

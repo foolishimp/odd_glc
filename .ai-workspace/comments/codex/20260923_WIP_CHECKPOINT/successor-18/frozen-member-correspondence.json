@@ -1,0 +1,32 @@
+{
+  "status": "all selected original freeze identities exact",
+  "checked": 24,
+  "paths": [
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/artifacts/odd-glc-route-one-typescript-0.2.0-dev.10.tgz",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/configuration-source.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/construct-consumer.mjs",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/construction-timing.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/install.stderr",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/install.stdout",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/installed-consumer.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/member-correspondence.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/pack.stderr",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/pack.stdout",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/package-basis.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-1.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-2.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-3.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-4.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-5.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-6.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-7.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation-8.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/program-validation.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/selection.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/tooling-source-correspondence.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/verification-summary.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev10/verify-consumer.mjs"
+  ],
+  "noRuntimeResourceMutation": true,
+  "restoration": "/private/tmp/20260924-checkpoint-successor18-odd_glc-90674"
+}

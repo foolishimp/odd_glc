@@ -1,0 +1,51 @@
+{
+  "status": "exact source/archive/install correspondence",
+  "members": [
+    {
+      "path": "contracts/capabilities/capability-definition-graph.json",
+      "bytes": 247,
+      "sha256": "f664ed939704a5573a2f5151eccb86532c777eda6d5b927454f65ca839363bd0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 266,
+      "sha256": "986028025e8b7fff314ab65c16b7af2d0a71d0a9327e5c43e328b864e2d11618"
+    },
+    {
+      "path": "product-toolchain-manifest.json",
+      "bytes": 28331,
+      "sha256": "f22a2f8e6117616046a7573e44b96fc0b48f071d2e72e229eef0ef6d79eb65e5"
+    },
+    {
+      "path": "contracts/public-contract-catalog.schema.json",
+      "bytes": 145,
+      "sha256": "a69db2dd825711aba598d29d8880b20df39aa8ac691fa25b5d7c058eed964646"
+    },
+    {
+      "path": "build/publication.json",
+      "bytes": 808366,
+      "sha256": "ad8fc12b0472333ba4e85ef450df376b7dd4478b62061ad92f87ac13b257d78b"
+    },
+    {
+      "path": "build/native-continuation-contracts.mjs",
+      "bytes": 13664,
+      "sha256": "98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886"
+    },
+    {
+      "path": "build/native-continuation-declarations.mjs",
+      "bytes": 15184,
+      "sha256": "31447f63a40a22794a82f9f68eddc70cfac79169be339647e6e1ae2010c2d901"
+    },
+    {
+      "path": "build/native-intent-declarations.mjs",
+      "bytes": 6877,
+      "sha256": "5630d1d25802a8ad1bd3c81d6f68155b439c5edb4cad5e4135650afdf1077ea9"
+    },
+    {
+      "path": "build/native-lifecycle-declarations.mjs",
+      "bytes": 34704,
+      "sha256": "b8dcaa7f4444addaeb556133169a403270dc7a9a69674e8f28aff2d398234599"
+    }
+  ],
+  "extraInstalledMembers": 0
+}

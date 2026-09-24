@@ -1,5 +1,56 @@
 # Bounded native source-to-IntentAsset binding
 
+## Native semantic-job D2 entry (NATIVE-D2-01)
+
+The generic native semantic-job lifecycle declares an ordinary two-invocation
+D2 route. `program://odd-glc/native-semantic-revision/intake@5` accepts the
+public original Run `{ref,digest}` plus durable prefix. Existing ABG owners
+acquire one eligible failure, one advancing semantic predecessor, original
+job/root and current workspace context; absent or ambiguous joins refuse.
+F_P assesses affectedness only among those admitted alternatives. F_D seals
+the existing SemanticRevisionRequest, which ordinary terminal read returns
+with `selectionChoice: {mode, selectedStageRef}` projected from that admission.
+
+The caller then invokes the declared `construction-repair`, `from-intent`,
+`from-product`, `from-requirements`, `from-design` or `from-evidence` Program
+under `program://odd-glc/native-semantic-revision/<name>@5`. The projection
+requires its entry to match the actual admitted selection. Each Program
+contains the complete suffix; GLC adds no caller traversal or runtime.
+`selectNativeSemanticRevisionStart` is a pure lookup over the returned request
+and public Program/GraphFunction declarations: it matches the declared first
+projection's entry and requires one start. It neither discovers history nor
+judges affectedness. A missing historical choice, absent entry or ambiguous
+start returns no selection. ABG still authenticates the returned choice against
+the referenced admitted decision and the selected suffix; modifying the field
+cannot authorize another eligible stage.
+
+Before construction, the actual rejected native candidate/assessment is cause
+and the accepted semantic predecessor remains parent. There is no constructed
+worksite or target selection to manufacture. After construction, actual native
+origins and affected/unaffected targets are conserved. Existing D2 semantic
+actors correct the selected meaning; native construction/C2 and fresh Evidence
+carry application effects and proof. Evidence-only re-entry uses the retained
+native evidence. Original source, evaluator-only oracle, job/root, historical
+assets and outstanding obligations remain exact. Current execution capacity
+is retained separately from the original job and supplied through the existing
+ABG/Product budget owner for new work, including old jobs without that field.
+
+Each Program selects only its exact existing STDO role bindings and context
+rows. Selection uses the existing assessor role. The fresh lifecycle retains
+its original three native families. Existing native-continuation carriers and
+Programs remain a separate supported route; they are not promoted into a
+SemanticJobEnvelope or migrated by this relation.
+
+Historical lifecycle byte equality is retained. The fresh convenience factory
+constructs its current lifecycle declaration, so an older Run whose lifecycle
+bytes differ is not automatically launchable. An exact retained lifecycle
+must be explicitly selected in the authored publication through existing GTL
+declaration/factory owners and validated with the new suffix; no definition
+successor or reinterpretation of historical assessment is implied. Source
+readiness and synthetic component checks are not installed correction or S06
+qualification.
+
+
 Status: accepted bounded source-to-Intent design under T-043 / T-287 NW5. The odd_glc source basis remains STDO `v2.5.0-rc.4`, manifest `4fa2556d0127bebce8f7184cc4a3cb708a175b2e40552c55cb211f2426d5049e`, and `live-llm-mvp:2`. The external ABI qualification activation uses RC1 without migrating odd_glc's method, default dependency or entry.
 
 ## Smallest lawful re-entry
