@@ -1,0 +1,257 @@
+{
+  "status": "CLOSED_preparation_all_five_passed",
+  "firstCallerFailure": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/failed-setup-boundary.json",
+  "cases": [
+    {
+      "key": "js-tenant-test",
+      "status": "prepared_native_authorized_not_yet_started",
+      "preparedPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/prepared.json",
+      "preparedFileSha256": "cd2ae9d841ce70b312a925bd061bffd204c30d1bbcc9cd73ce3a9b3fbc32c0cc",
+      "launchDigest": "sha256:613381e9e7e6b8aeb8dc1696652b0d3133663adb17438ad3e0806af4836a4fb9",
+      "coreArtifactDigest": "sha256:64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArtifactDigest": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "inputDigest": "sha256:db64b1d652185f72c196650a6beb441f1f27022cb56a9bba17817dc7a760f9c2",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test",
+      "setupPrefix": {
+        "coordinateDigest": "sha256:7b93461c8b93913168492b31d94e781895441f31be6c08352fa41a5ae1decd41",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:2a2ae8cdb88be4d9dbbce94047d5b8cb5f922be9ec03f81bb2d7ae025f79e32a",
+        "prefixLength": 2310357,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405016
+        }
+      },
+      "transport": {
+        "kind": "odd_glc_full_sandbox_transport",
+        "schemaVersion": "1",
+        "configuration": {
+          "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+          "expectedVersion": "2.1.280 (Claude Code)",
+          "model": "claude-opus-5-5",
+          "effort": "xhigh",
+          "extraArgs": [
+            "--max-budget-usd",
+            "5"
+          ],
+          "inactivityMs": 300000,
+          "absoluteMs": 900000,
+          "terminationGraceMs": 1000,
+          "wholeRunMs": 5400000
+        },
+        "resolvedCommand": "/Users/jim/.local/share/claude/versions/2.1.280",
+        "executableDigest": "sha256:387a5c5dcdbb815085edf0baf79591f9d8894efe922bceaf3d75b1b08055229d",
+        "reportedVersion": "2.1.280 (Claude Code)",
+        "transportDigest": "sha256:64d2a2e971603ad180dab7a009392bb71004f4cec7ce85e525bdda386e2bab44"
+      },
+      "tailElapsedSeconds": 97.7217026669532,
+      "tailPeakRssBytes": 3228254208,
+      "successfulPublicCalls": 8,
+      "commandsPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/js-tenant-test/commands-tail.json"
+    },
+    {
+      "key": "js-sdlc-bootstrap",
+      "status": "prepared_native_authorized_not_yet_started",
+      "preparedPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/prepared.json",
+      "preparedFileSha256": "8a8dc8d3bdc2be4e88e013e9eda8d3d0a897e50149e7b10e854225e005e09159",
+      "launchDigest": "sha256:d744e03818357bd04244715df3c03f2eb9fe86c29b8596d64b2af6d882a8e2fd",
+      "coreArtifactDigest": "sha256:64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArtifactDigest": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "inputDigest": "sha256:5b642eaceb26413bef4f6abe7121a17f7d6d1da5488a26ab9856a8e1f8ac40c6",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap",
+      "setupPrefix": {
+        "coordinateDigest": "sha256:532fe6ff6623c7d1cbb8805951fe65e1c0485172b9f253663c935ee4fe930638",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:b4f58b334d137f652a6b7d4581daff4df77319c39db9b28ab58e04f978572a80",
+        "prefixLength": 2310399,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405010
+        }
+      },
+      "transport": {
+        "kind": "odd_glc_full_sandbox_transport",
+        "schemaVersion": "1",
+        "configuration": {
+          "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+          "expectedVersion": "2.1.280 (Claude Code)",
+          "model": "claude-opus-5-5",
+          "effort": "xhigh",
+          "extraArgs": [
+            "--max-budget-usd",
+            "5"
+          ],
+          "inactivityMs": 300000,
+          "absoluteMs": 900000,
+          "terminationGraceMs": 1000,
+          "wholeRunMs": 5400000
+        },
+        "resolvedCommand": "/Users/jim/.local/share/claude/versions/2.1.280",
+        "executableDigest": "sha256:387a5c5dcdbb815085edf0baf79591f9d8894efe922bceaf3d75b1b08055229d",
+        "reportedVersion": "2.1.280 (Claude Code)",
+        "transportDigest": "sha256:64d2a2e971603ad180dab7a009392bb71004f4cec7ce85e525bdda386e2bab44"
+      },
+      "tailElapsedSeconds": 97.73070625029504,
+      "tailPeakRssBytes": 3121037312,
+      "successfulPublicCalls": 8,
+      "commandsPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/js-sdlc-bootstrap/commands-tail.json"
+    },
+    {
+      "key": "rust-cli",
+      "status": "prepared_native_authorized_not_yet_started",
+      "preparedPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/prepared.json",
+      "preparedFileSha256": "b0ee6e63c33d9808d298f5cc1c0156abe4e56a75987b8f318bd5b067c0ad91b5",
+      "launchDigest": "sha256:a7b73935ab5ea50e0e7729df1bff530c3bfbe5f610faefc6efd23369f9e04737",
+      "coreArtifactDigest": "sha256:64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArtifactDigest": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "inputDigest": "sha256:d655a68cfd105a87c887f46756e1294899f10c0a9b8f65701f485e052c6606d6",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli",
+      "setupPrefix": {
+        "coordinateDigest": "sha256:7ed53742d5531624a1bdbc77fa50b20e09b39db33c583f6f06d763eaac20a561",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:f7115db55980d75a57d78cc2c280e5c008ca1ea58de73449c50f7b1d72ca950d",
+        "prefixLength": 2310273,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405031
+        }
+      },
+      "transport": {
+        "kind": "odd_glc_full_sandbox_transport",
+        "schemaVersion": "1",
+        "configuration": {
+          "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+          "expectedVersion": "2.1.280 (Claude Code)",
+          "model": "claude-opus-5-5",
+          "effort": "xhigh",
+          "extraArgs": [
+            "--max-budget-usd",
+            "5"
+          ],
+          "inactivityMs": 300000,
+          "absoluteMs": 900000,
+          "terminationGraceMs": 1000,
+          "wholeRunMs": 5400000
+        },
+        "resolvedCommand": "/Users/jim/.local/share/claude/versions/2.1.280",
+        "executableDigest": "sha256:387a5c5dcdbb815085edf0baf79591f9d8894efe922bceaf3d75b1b08055229d",
+        "reportedVersion": "2.1.280 (Claude Code)",
+        "transportDigest": "sha256:64d2a2e971603ad180dab7a009392bb71004f4cec7ce85e525bdda386e2bab44"
+      },
+      "tailElapsedSeconds": 97.70137379085645,
+      "tailPeakRssBytes": 3074113536,
+      "successfulPublicCalls": 8,
+      "commandsPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/rust-cli/commands-tail.json"
+    },
+    {
+      "key": "rust-service",
+      "status": "prepared_native_authorized_not_yet_started",
+      "preparedPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/prepared.json",
+      "preparedFileSha256": "27e7bf0edcc91b4c98f18b3d5999f5dcfe6d25129e10cb0fb21ae253fce253df",
+      "launchDigest": "sha256:7c5762a1ce680e66b44e0d9effbf40e00738b6d4891629b4725b447aec16a1ef",
+      "coreArtifactDigest": "sha256:64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArtifactDigest": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "inputDigest": "sha256:d95dfac85c7373496a7a112ac5f4622a6a30f340d15937b1bf4a64cf9c79ca30",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service",
+      "setupPrefix": {
+        "coordinateDigest": "sha256:9765358efb1bd9d06efcfe796025b156650c7d346a9d971f695e362b912369bb",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:30041be2a645dc6980da7ccb5e691200accce5a7a6263f5899c30ae66dfeb2cb",
+        "prefixLength": 2310329,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405021
+        }
+      },
+      "transport": {
+        "kind": "odd_glc_full_sandbox_transport",
+        "schemaVersion": "1",
+        "configuration": {
+          "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+          "expectedVersion": "2.1.280 (Claude Code)",
+          "model": "claude-opus-5-5",
+          "effort": "xhigh",
+          "extraArgs": [
+            "--max-budget-usd",
+            "5"
+          ],
+          "inactivityMs": 300000,
+          "absoluteMs": 900000,
+          "terminationGraceMs": 1000,
+          "wholeRunMs": 5400000
+        },
+        "resolvedCommand": "/Users/jim/.local/share/claude/versions/2.1.280",
+        "executableDigest": "sha256:387a5c5dcdbb815085edf0baf79591f9d8894efe922bceaf3d75b1b08055229d",
+        "reportedVersion": "2.1.280 (Claude Code)",
+        "transportDigest": "sha256:64d2a2e971603ad180dab7a009392bb71004f4cec7ce85e525bdda386e2bab44"
+      },
+      "tailElapsedSeconds": 97.53865241678432,
+      "tailPeakRssBytes": 3251912704,
+      "successfulPublicCalls": 8,
+      "commandsPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/rust-service/commands-tail.json"
+    },
+    {
+      "key": "parallel-js",
+      "status": "prepared_native_authorized_not_yet_started",
+      "preparedPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/prepared.json",
+      "preparedFileSha256": "54aaeaae3f01740e7ff4e03cc000ff8d27554661a1d20d0dd977bf8a0f173c51",
+      "launchDigest": "sha256:36ad9f36b2c75412f7c32fa256211f8c57a945201ba3d32ea079f8e9d2e361dc",
+      "coreArtifactDigest": "sha256:64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArtifactDigest": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "inputDigest": "sha256:edf4a3a9bd301c4741536515fcfad4dcb49b179ad8d5af995e05be686f59859f",
+      "workspaceRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js",
+      "setupPrefix": {
+        "coordinateDigest": "sha256:af947a602edcf85f6b1410657741f50c0b7192934c29495c77ef18a38a7e7320",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:46b3ed96204ac30d1583116c38f898e3bf1b719150f6c05ed0e8cd64183c9fd4",
+        "prefixLength": 2310315,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405026
+        }
+      },
+      "transport": {
+        "kind": "odd_glc_full_sandbox_transport",
+        "schemaVersion": "1",
+        "configuration": {
+          "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+          "expectedVersion": "2.1.280 (Claude Code)",
+          "model": "claude-opus-5-5",
+          "effort": "xhigh",
+          "extraArgs": [
+            "--max-budget-usd",
+            "5"
+          ],
+          "inactivityMs": 300000,
+          "absoluteMs": 900000,
+          "terminationGraceMs": 1000,
+          "wholeRunMs": 5400000
+        },
+        "resolvedCommand": "/Users/jim/.local/share/claude/versions/2.1.280",
+        "executableDigest": "sha256:387a5c5dcdbb815085edf0baf79591f9d8894efe922bceaf3d75b1b08055229d",
+        "reportedVersion": "2.1.280 (Claude Code)",
+        "transportDigest": "sha256:64d2a2e971603ad180dab7a009392bb71004f4cec7ce85e525bdda386e2bab44"
+      },
+      "tailElapsedSeconds": 97.56732733314857,
+      "tailPeakRssBytes": 3200286720,
+      "successfulPublicCalls": 8,
+      "commandsPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/parallel-js/commands-tail.json"
+    }
+  ],
+  "rootDisposition": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/execution-disposition.json"
+}

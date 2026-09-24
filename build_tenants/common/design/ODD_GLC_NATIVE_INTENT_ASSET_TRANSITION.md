@@ -440,3 +440,19 @@ Assets live at supplied workspace paths. Authors receive full governing source a
 The full-sandbox entry preserves its complete original Hello source and independent oracle as ordinary data. Historical cumulative-response declarations and reduced C1/C2 evidence remain historical distinct routes. This selection authorizes source realization and focused owner checks only; package identity and finite live policy require the subsequent Root selection.
 
 The opt-in full-sandbox configuration selects `freshNative: true`, one explicit successor consumer identity, `selectedJobKeys` and the existing exact role environment/resources. The generic declaration reuses three native actor families for twelve sequential occurrences: five author/independent-assessor pairs, one constructor and one C2 executor. The Evidence author binds actual source/effect evidence; the separate final assessor alone receives the independent oracle. This is one declared Program with no recursive stage call or host progression loop. Original input/oracle bytes are conserved, and package/default selectors remain unchanged until separately selected.
+
+The ordinary fresh-native caller retains its frozen transport configuration's
+inactivity and absolute limits as `taskData.nativeLifecycle.commandExecutionLimits`.
+Its existing environment mapping supplies those same values to the enclosing
+ABI process. ABI preparation checks the current selection; native task and fold
+correspondence uses the retained job values even under a later host environment.
+Legacy jobs without this optional selection remain explicit unknown-capacity
+inputs; historical selections are not inferred or backfilled.
+
+ABI's existing C2 owner supplies the shared aggregate budget calculation and
+strict compatibility check. Both Design roles receive that projection. GLC's
+generic Design instructions and rubric require warranted command/probe bounds,
+complete obligation conservation, and honest unknown readiness when capacity
+is insufficient. Neither role may lower bounds without support, omit required
+work or increase executor controls to obtain a pass. This bounded design
+reframe adds no GLC arithmetic, executor, retry or new Public operation.

@@ -5,7 +5,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
 import { constructFullSandboxPackage, constructOrdinaryJobInput, constructFullHelloInputs, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
   FULL_HELLO_TARGETS, FULL_HELLO_STAGE_MEANINGS, nativeFullSandboxPublications } from "./full-sandbox-declarations.mjs";
-import { readFullSandboxCandidate, installedFullSandboxApis, ordinarySandboxInputs, evaluateOrdinaryJobObservation } from "./full-sandbox-support.mjs";
+import { readFullSandboxCandidate, installedFullSandboxApis, ordinarySandboxInputs, evaluateOrdinaryJobObservation,
+  fullSandboxTransportEnvironment } from "./full-sandbox-support.mjs";
 import { D1_WITNESS_IDS, D1_FROZEN_INPUT_SHA256 } from "./d1-lifecycle-declarations.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -83,6 +84,23 @@ test("native source input retains the complete unchanged original selected bytes
 
 const remainingHelloKeys = ["js-tenant-test", "js-sdlc-bootstrap", "rust-cli", "rust-service", "parallel-js"];
 const callerApis = { skip: product ? false : "select the existing source build for caller value checks" };
+test("native command budget selection matches the frozen transport environment without changing controls", callerApis, async () => {
+  const { constructNativeLifecycleDeclaration } = await import("../src/native-lifecycle-declarations.mjs");
+  const lifecycle = constructNativeLifecycleDeclaration({ gtl, product, ids: FULL_SANDBOX_IDS });
+  const transport = { configuration: { inactivityMs: 300000, absoluteMs: 900000, terminationGraceMs: 5000,
+    model: "component-model", extraArgs: [], effort: "component-effort" }, resolvedCommand: "/component-only/unlaunched" };
+  const before = structuredClone(transport), environment = fullSandboxTransportEnvironment(transport, { ABG_TS_FP_TIMEOUT_MS: "1" });
+  const commandExecutionLimits = { inactivityTimeoutMs: transport.configuration.inactivityMs, absoluteTimeoutMs: transport.configuration.absoluteMs };
+  const input = inputs[1], job = constructOrdinaryJobInput({ product, gtl, input, executable: process.execPath, lifecycle, commandExecutionLimits });
+  assert.equal(job.taskData.nativeLifecycle.commandExecutionLimits.inactivityTimeoutMs, Number(environment.ABG_TS_FP_TIMEOUT_MS));
+  assert.equal(job.taskData.nativeLifecycle.commandExecutionLimits.absoluteTimeoutMs, Number(environment.ABG_TS_FP_ABSOLUTE_TIMEOUT_MS));
+  assert.deepEqual(transport, before);assert.deepEqual(job.members,input.members);assert.deepEqual(job.evaluationData,input.evaluationData);
+  const legacy = constructOrdinaryJobInput({ product, gtl, input, executable: process.execPath, lifecycle });
+  assert.equal("commandExecutionLimits" in legacy.taskData.nativeLifecycle, false, "no selection is invented for legacy inputs");
+  const design = lifecycle.stages.find(stage => stage.bodyCapabilities.includes("worksite_design"));
+  assert.ok(design.requiredContent.some(text => text.includes("execution-capacity") && text.includes("unknown")));
+  assert.ok(design.rubric.some(row => row.instruction.includes("execution-capacity") && row.instruction.includes("warranted")));
+});
 test("remaining full Hello selections preserve original sources, oracles and capability data", callerApis, async () => {
   const bytes = await readFile(join(root, "test/glc-software-build-overlay-live.test.mjs"));
   const selected = await ordinarySandboxInputs(product, remainingHelloKeys);

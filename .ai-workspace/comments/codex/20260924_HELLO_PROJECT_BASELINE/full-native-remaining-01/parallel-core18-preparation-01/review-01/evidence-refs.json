@@ -1,0 +1,2135 @@
+{
+  "kind": "closed_hello_two_case_product_use_review_refs",
+  "scope": [
+    "js-tenant-test",
+    "rust-service"
+  ],
+  "method": "Read and compare closed artifacts only; no new test, build, actor, provider call, journal read or replay. Raw file digests and admitted semantic coordinates are distinct domains.",
+  "workerReturn": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/return.md",
+    "byteLength": 9658,
+    "rawFileDigest": "sha256:40d4d81ef6a0db5c6e79a131aea140c14f06667cddd4a8ef50877a8bc0695a84"
+  },
+  "metrics": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/observed-metrics.json",
+    "byteLength": 72832,
+    "rawFileDigest": "sha256:fe4537989c49a184f3740ecd3bfe6d2a145c0038b0c0cc2da670a5a984475efb"
+  },
+  "selectedAuthority": {
+    "abiogenesisSTDO": "v2.5.1-rc.1",
+    "abiogenesisSTDOCommit": "dc4742d08af0a1c42c437a4ce645ea7ca55f3a3a",
+    "abiogenesisSTDOManifest": "sha256:5d306da13994e69aa9f215d4c1cd2d0be96283c1e33a652b58e6e9262d036b64",
+    "oddGlcSTDO": "v2.5.0-rc.4",
+    "oddGlcSTDOManifest": "sha256:4fa2556d0127bebce8f7184cc4a3cb708a175b2e40552c55cb211f2426d5049e",
+    "basis": "Previously read selected authority, not migration or requalification."
+  },
+  "cases": [
+    {
+      "key": "js-tenant-test",
+      "selection": {
+        "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/js-tenant-test/selection.json",
+        "byteLength": 5579,
+        "rawFileDigest": "sha256:05b3777f16bd3fa9fcf0d66320b59fc3b48938f328748550d3692f2d3482d6fd"
+      },
+      "input": {
+        "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/js-tenant-test.json",
+        "byteLength": 9436,
+        "rawFileDigest": "sha256:bf2bf6945c3c0e83865c4ca04f7e3a06c71909524def1a86d88dbb52d7d13ffa"
+      },
+      "coreArchiveDigest": "64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArchiveDigest": "aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "closedEvidenceFiles": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/closed-outcome.json",
+          "byteLength": 18069,
+          "rawFileDigest": "sha256:ecdb34982a1ae5e6959daf8e159a23df6a8fac2f458822dddd14d873cf7629fd"
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/full-result-proof.json",
+          "byteLength": 17763,
+          "rawFileDigest": "sha256:ac11f30110a619ed4c8b71a5a6ecd58a3a35433df0dc007c0e3e9e01e9038b68"
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/live-receipt.json",
+          "byteLength": 8937745,
+          "rawFileDigest": "sha256:7ec236586adf738bd8c09befa51d8d378de71b6669958e1eff0f76bebd901898"
+        }
+      ],
+      "publicReads": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/read-run_result.json",
+          "byteLength": 3342166,
+          "rawFileDigest": "sha256:995bc4452d31e5cc0b925fa0f402471080095a626bc8ed27cafc98fb95261d62",
+          "memberKey": "run_result",
+          "matchesClosedProofDigest": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/read-run_replay.json",
+          "byteLength": 3341823,
+          "rawFileDigest": "sha256:e05a26222f6ad77633a59e049186b3dd7eedfae637f247a298e68d569c55f390",
+          "memberKey": "run_replay",
+          "matchesClosedProofDigest": true
+        }
+      ],
+      "run": {
+        "digest": "sha256:e29cf95f6b66ec45e6ae6c386c8c3db2c72830ff3a353c45dfb68d3353f1ca36",
+        "ref": "run://abiogenesis/38e63bcb54ea33cdd6b786b13a3e3a4eba99c5bf60a3384c179949da0328715d"
+      },
+      "result": {
+        "digest": "sha256:576c4da5f7be7a41eb9a458c97c7781b60dab5f50252161f9a65100bcacdc73c",
+        "ref": "result://abiogenesis/576c4da5f7be7a41eb9a458c97c7781b60dab5f50252161f9a65100bcacdc73c"
+      },
+      "program": {
+        "digest": "sha256:dbd93bf34f8ce3ffd9332cb0a436bf31a7e465437a2fae20b9c13b7b2021909c",
+        "ref": "program://odd-glc/generic-lifecycle-witness@5"
+      },
+      "terminalValueDigest": "sha256:1d2d28efbfb7ba8914358a042b6511f653326cefce744f6323b452a4dd9637fc",
+      "terminalValueCanonicalDigestRecomputed": true,
+      "resultAndReplayTerminalObjectsEqual": true,
+      "replayStatus": "closed",
+      "originalSource": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/original-js-tenant-test-declaration.txt",
+          "byteLength": 3655,
+          "rawFileDigest": "sha256:3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9",
+          "memberRef": "urn:sha256:3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9",
+          "sourceLocator": "repo://odd_glc/build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs#bytes=11915-15570",
+          "equalsAdmittedMemberBytes": true
+        }
+      ],
+      "ordinaryTaskRequest": "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success.",
+      "oracle": {
+        "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-tenant-test.oracle.json",
+        "byteLength": 1782,
+        "rawFileDigest": "sha256:55658e3343d7b27a553dbf38118052e60f9b27d977c3992ea13131ce5eebd58e",
+        "canonicalJsonDigest": "sha256:93f39d5e1cb13efdba66da134b1998ba7418f96d335ab4a627752f8b58af6e52",
+        "equalsAdmittedEvaluationData": true
+      },
+      "rubric": {
+        "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/lifecycle-rubric.json",
+        "byteLength": 16810,
+        "rawFileDigest": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+        "equalsAdmittedDeclaration": true
+      },
+      "stages": [
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/intent@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-0.json",
+            "byteLength": 22271,
+            "rawFileDigest": "sha256:97f7e9a65ee20f6247391a548c00967208d7424a11f7dfa6ab1d4c15e4510a55"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:9efd5b27682947598ecf5424b00acb6c9922a83d38719db75905b14524961707",
+            "adapterInputDigest": "sha256:09e443a948b90d8cc2fb0536d1ab3a1007301ef614e6a339e7fa1c7be7a0562b",
+            "assetDigest": "sha256:97f7e9a65ee20f6247391a548c00967208d7424a11f7dfa6ab1d4c15e4510a55",
+            "assetPath": "semantic-assets/stage-0.json",
+            "observationDigest": "sha256:06fb57ad823b1548367e91528ca5878772dd36914fbf25656208f1a1594cb696",
+            "observationRef": "native-work-observation://abiogenesis/06fb57ad823b1548367e91528ca5878772dd36914fbf25656208f1a1594cb696"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/953f5986a19d8ae5bcdb458368ff40e070be5e019aedf635cf640d25383d97c9",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/9b57edf9e19c6137ab2ff63036b565449e3f58c6be9ce2ae5076b259a3782c54",
+            "cCallRef": "c-call:sha256:a1f36a80b56d12c46acfdef9f82f2499c68a80dda4bbd71fbe010e0792876b7b",
+            "inputDigest": "sha256:997cf97e3af63375083a24e6edf0828bc0afdf397fd3570ddad9e909090049c4",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:367e7ccf8df039e534f09aa6ad25147f31612922a1534316ae8f1e63a11cac4f",
+              "adapterInputDigest": "sha256:f41077c4447632b836272670d1c929c50f1d6afd7bf8e1fec881b46b99b23f5d",
+              "assetDigest": "sha256:97f7e9a65ee20f6247391a548c00967208d7424a11f7dfa6ab1d4c15e4510a55",
+              "assetPath": "semantic-assets/stage-0.json",
+              "observationDigest": "sha256:84b622a8c28668fd9585cdf76b413906c4127fb77ad3ef4732d2eb9f63f873fa",
+              "observationRef": "native-work-observation://abiogenesis/84b622a8c28668fd9585cdf76b413906c4127fb77ad3ef4732d2eb9f63f873fa"
+            },
+            "promptDigest": "sha256:656c66dc5ee2cee0f6993b00160d457f3b9fc8fa3ce6dd9c81bce7b59151b64f",
+            "transportDigest": "sha256:178f23ef4a44081360b5c7a2e3d623ea916d197fc1535a3aceb93666e9bc9158"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/bounded-claim@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/product@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-1.json",
+            "byteLength": 35752,
+            "rawFileDigest": "sha256:d44eaf5873533c9f5930e25e54d7937c1557fc75983887c8c7d2c818924af040"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:d915335fa2660d0aa9ca91bcd6d562f823752cd1e376ef34ed10bf01826e3cf2",
+            "adapterInputDigest": "sha256:3aad6152fef9d44cea058516c1f22aac6954da5f1b57586f8dcee9b30771268d",
+            "assetDigest": "sha256:d44eaf5873533c9f5930e25e54d7937c1557fc75983887c8c7d2c818924af040",
+            "assetPath": "semantic-assets/stage-1.json",
+            "observationDigest": "sha256:8ad79f7c7e2fdc71773873c00312241dafd582fc3893ab10b121136485b0aba4",
+            "observationRef": "native-work-observation://abiogenesis/8ad79f7c7e2fdc71773873c00312241dafd582fc3893ab10b121136485b0aba4"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/d9794d8064820613a5a6d512b77f428bb012dcfb2dcbe6a05378270fa9217714",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/a292bba856c5b452792b20c5da11ba34744cf7c1af6b1691df592b3cd6ac1258",
+            "cCallRef": "c-call:sha256:ed29b7a2a02d4bd8580173fde89c4d70b3a228765db6f0b66c46ea12abf6a1d1",
+            "inputDigest": "sha256:1ea48ef2499f12e467795cb632f6d2a476102286e388d7c8786979d88e5246a9",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:b48200a683ace34c1732209a9c212084f0cfaebef57478e59f9ecf6ddeb1cff3",
+              "adapterInputDigest": "sha256:e4049a2e6d6dd330a28ac9f48fe6e08cc4dcae18964f36fb35c3ac02d5f00e63",
+              "assetDigest": "sha256:d44eaf5873533c9f5930e25e54d7937c1557fc75983887c8c7d2c818924af040",
+              "assetPath": "semantic-assets/stage-1.json",
+              "observationDigest": "sha256:828d9df428c64e296f5cd2b6b6d7592d4bf79903fee2656b1363b9a3d80ff40d",
+              "observationRef": "native-work-observation://abiogenesis/828d9df428c64e296f5cd2b6b6d7592d4bf79903fee2656b1363b9a3d80ff40d"
+            },
+            "promptDigest": "sha256:9d1e7580f10c7da32ba2e8b91842e20ed7240290e6f3ffe6bffad920865b727e",
+            "transportDigest": "sha256:4297e61f030319142569d6d24fc4be08be99de7052c3ea832b819f0a5d2284ba"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/bounded-claim@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/requirements@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-2.json",
+            "byteLength": 78600,
+            "rawFileDigest": "sha256:a3c41035eeac128abfb61ba5a69bf25a25e3eec12e98b21b2b468ac492c0e35c"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:408662cbb1926724875cc4e6e61dcefdcb03c5806dc53df6d94e199045fa80fc",
+            "adapterInputDigest": "sha256:594da871105d2d288bf23f9bea6f66dbc72193db5c4b97185979264d8573a116",
+            "assetDigest": "sha256:a3c41035eeac128abfb61ba5a69bf25a25e3eec12e98b21b2b468ac492c0e35c",
+            "assetPath": "semantic-assets/stage-2.json",
+            "observationDigest": "sha256:35cb4daa66e3b1a2bf979083c2eb980de46dd501c4e6570ffb819ad192d7f06e",
+            "observationRef": "native-work-observation://abiogenesis/35cb4daa66e3b1a2bf979083c2eb980de46dd501c4e6570ffb819ad192d7f06e"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/58aaf70ec1800dd44d80ca824220f6c24323dabfd2ed1a55d20027dd0c1bf4d2",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/7bd15e4dc84867dfba0cbe27104dc36c42c9eb15dee013a940fb6769015cac72",
+            "cCallRef": "c-call:sha256:6c415f68fa49928837adbe87b9ae180f337d3ce62b0ccf49a5af86408f1db08f",
+            "inputDigest": "sha256:b36d93d35adc8bf997115a885867e72f77c42dc026b2ad3dc4fc46e71e82538f",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:ab160278c20ba20a82787028b2a6e5945141acda90c4c454e3e746755495986c",
+              "adapterInputDigest": "sha256:0926f98658c6de78c3d4d2b474d17cb8c7d8e53f52275b03bb4626ab26237e79",
+              "assetDigest": "sha256:a3c41035eeac128abfb61ba5a69bf25a25e3eec12e98b21b2b468ac492c0e35c",
+              "assetPath": "semantic-assets/stage-2.json",
+              "observationDigest": "sha256:811df628e70d6acf6421f21647a1a1baa90f7b48a6c3cc4c654149012898df7e",
+              "observationRef": "native-work-observation://abiogenesis/811df628e70d6acf6421f21647a1a1baa90f7b48a6c3cc4c654149012898df7e"
+            },
+            "promptDigest": "sha256:6e4f4cd403866efa779381f689b2b05dd8c77e7f2816aba1b1b5d2cce5a45aef",
+            "transportDigest": "sha256:5837eb126d6a0a0f049acf54e8ed0e24defe055203e2937c8476cc8e8c673de7"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/bounded-claim@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/design@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-3.json",
+            "byteLength": 92577,
+            "rawFileDigest": "sha256:a189e47fe619306db3ecddbf66992de8a1fb01e405cb311b3f3d076d70637052"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:e00e89013420bd93d7890a0a4c276e8df7b7b87c45d41388cc52ff81e6622b56",
+            "adapterInputDigest": "sha256:03465a155ff1f3afffb862a84980ef8b93538a713acd38c50ff7f6e91b5a0fde",
+            "assetDigest": "sha256:a189e47fe619306db3ecddbf66992de8a1fb01e405cb311b3f3d076d70637052",
+            "assetPath": "semantic-assets/stage-3.json",
+            "observationDigest": "sha256:6d00e854c9eef4c6f480c0428366b39d32b1074f1100b5458a8fa7b710dc56ce",
+            "observationRef": "native-work-observation://abiogenesis/6d00e854c9eef4c6f480c0428366b39d32b1074f1100b5458a8fa7b710dc56ce"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/91f2d892bbe10616149fd44844835a50a4b7b3ab1ce74a8b691d8e12415c113a",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/0691675cb7f43c27b802020513fa0ce614a2ca0f25db551c906b32ac47eef7d3",
+            "cCallRef": "c-call:sha256:aaa33f8ca7ed185fe702a2f028e040ab2b585242767a2983da1fff0b8bfc0188",
+            "inputDigest": "sha256:5946eb43ed21e7734f9c9c5b3d86f33e5d015cc3795b82247a3c49ee62277804",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:ec6bda7c3ce8b90768ebde7a4d192b96dffa4a996e82201ccbddd4a84560675b",
+              "adapterInputDigest": "sha256:dcbd7b0d83545208134351ffff066df0a3fb39d0289ba9f8b8f0f212a3ac6d8a",
+              "assetDigest": "sha256:a189e47fe619306db3ecddbf66992de8a1fb01e405cb311b3f3d076d70637052",
+              "assetPath": "semantic-assets/stage-3.json",
+              "observationDigest": "sha256:1bcb178ff564f6be41070c7d0ff6411b1c92460276338d7c05b3bf89726d3e56",
+              "observationRef": "native-work-observation://abiogenesis/1bcb178ff564f6be41070c7d0ff6411b1c92460276338d7c05b3bf89726d3e56"
+            },
+            "promptDigest": "sha256:88ca75192301d9a493cdbfb68637d515d17958c37f915611f3d803dc35a4076f",
+            "transportDigest": "sha256:358ab3f6ead87c73f7a7ab61cc645374aded2b2e08eb7d9f35abb17c56c37e21"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/bounded-claim@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/executable-proof@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-4.json",
+            "byteLength": 85026,
+            "rawFileDigest": "sha256:1b4bc625594e7b4d9428cc7a24b58c7f33393e02d6d896c5ba5b8989e1cb13bd"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:2ae6dafd679d5f613018ef9b34f18ff2d81fea92a0f56924620abcbd4810f496",
+            "adapterInputDigest": "sha256:b7d4be517ba5fb690c97901a07973f35ece5e8df9e4d959e0295ec37777eac56",
+            "assetDigest": "sha256:1b4bc625594e7b4d9428cc7a24b58c7f33393e02d6d896c5ba5b8989e1cb13bd",
+            "assetPath": "semantic-assets/stage-4.json",
+            "observationDigest": "sha256:9d997a20ab262d956d929ae9a972a843be6d4701c8edfb06e0a64a4377ae90f8",
+            "observationRef": "native-work-observation://abiogenesis/9d997a20ab262d956d929ae9a972a843be6d4701c8edfb06e0a64a4377ae90f8"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/e6fbfb2b161dfcaee2bc3813660d819ed547cb9af8334eb37b461a71e2ece6b4",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/641ff055f07217d75ea3aa82cc8e5455c68801a01ac8397b02fcf4cc028eeff7",
+            "cCallRef": "c-call:sha256:bb88072730a2ec904ec6260c36ec37206f5ccd1b07670e2a12b9c5d339a1309e",
+            "inputDigest": "sha256:915d088d39395766125a0ad2d9e69a361652df8c4565d9a129c61c22ea827749",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:28de6a02219fff0695bbcaeadf8f3ff5765bbb36f53699b613723a805be03e52",
+              "adapterInputDigest": "sha256:144b6372c8ed20905fcb029efa93b687450465f167eb4feae24d5d2af7fc56a5",
+              "assetDigest": "sha256:1b4bc625594e7b4d9428cc7a24b58c7f33393e02d6d896c5ba5b8989e1cb13bd",
+              "assetPath": "semantic-assets/stage-4.json",
+              "observationDigest": "sha256:f7475fdd7df7992660c8ebc63abc460cbc17336da3fa935c209038dd3dc92f99",
+              "observationRef": "native-work-observation://abiogenesis/f7475fdd7df7992660c8ebc63abc460cbc17336da3fa935c209038dd3dc92f99"
+            },
+            "promptDigest": "sha256:d01d93955028f7f184e9d1c3fe0d4865b0556156cfdca9d182999230cc5ccd08",
+            "transportDigest": "sha256:41ca19125382a9ecac1513757dd69d349c672ac27506adad1b6626080bdfa096"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/bounded-claim@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/independent-oracle@5",
+              "disposition": "satisfied"
+            }
+          ]
+        }
+      ],
+      "distinctActorInvocationRefs": [
+        "actor-invocation://abiogenesis/953f5986a19d8ae5bcdb458368ff40e070be5e019aedf635cf640d25383d97c9",
+        "actor-invocation://abiogenesis/9b57edf9e19c6137ab2ff63036b565449e3f58c6be9ce2ae5076b259a3782c54",
+        "actor-invocation://abiogenesis/d9794d8064820613a5a6d512b77f428bb012dcfb2dcbe6a05378270fa9217714",
+        "actor-invocation://abiogenesis/a292bba856c5b452792b20c5da11ba34744cf7c1af6b1691df592b3cd6ac1258",
+        "actor-invocation://abiogenesis/58aaf70ec1800dd44d80ca824220f6c24323dabfd2ed1a55d20027dd0c1bf4d2",
+        "actor-invocation://abiogenesis/7bd15e4dc84867dfba0cbe27104dc36c42c9eb15dee013a940fb6769015cac72",
+        "actor-invocation://abiogenesis/91f2d892bbe10616149fd44844835a50a4b7b3ab1ce74a8b691d8e12415c113a",
+        "actor-invocation://abiogenesis/0691675cb7f43c27b802020513fa0ce614a2ca0f25db551c906b32ac47eef7d3",
+        "actor-invocation://abiogenesis/e6fbfb2b161dfcaee2bc3813660d819ed547cb9af8334eb37b461a71e2ece6b4",
+        "actor-invocation://abiogenesis/641ff055f07217d75ea3aa82cc8e5455c68801a01ac8397b02fcf4cc028eeff7",
+        "actor-invocation://abiogenesis/ef57e93795d99662ee6cbd15929f9ecbc54c4e331dc19f4d7cca262815779daf",
+        "actor-invocation://abiogenesis/caeeaa3f1bb5d46ac985b59a05521cd38ec45909e807e531f92b0ab02d3f57dd"
+      ],
+      "applicationArtifacts": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/specification/project-conformance.md",
+          "byteLength": 1629,
+          "rawFileDigest": "sha256:3cc8fb39cd6ae8b4d699ed97d87b7bff57f6bdbf2e581f78ba3256a4453e48c3",
+          "relativePath": "specification/project-conformance.md",
+          "subjectRef": "worksite-subject://abiogenesis/849e926d8363fee828b0199d875736c1035e495c68cdbdc47c93429c3bec921d",
+          "observationRef": "worksite-observation://abiogenesis/629bdab313ca0340a1fdd5aaeabbf22b85c820d4d572d8eac2ac76ed1fe92f22",
+          "observationDigest": "sha256:629bdab313ca0340a1fdd5aaeabbf22b85c820d4d572d8eac2ac76ed1fe92f22",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/design/implementation-design.md",
+          "byteLength": 1255,
+          "rawFileDigest": "sha256:41c71719f4c7f781ff88a3e14455df39081be09473972aa47b218f3d9e9dffaf",
+          "relativePath": "design/implementation-design.md",
+          "subjectRef": "worksite-subject://abiogenesis/0c5c4715af156332cc093f8807c9efa304526777d4e7181faaba3937023def78",
+          "observationRef": "worksite-observation://abiogenesis/25d3478db0c0b88a37956112f576c344760623d1e9b4b93b8050ea97f5921814",
+          "observationDigest": "sha256:25d3478db0c0b88a37956112f576c344760623d1e9b4b93b8050ea97f5921814",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/package.json",
+          "byteLength": 42,
+          "rawFileDigest": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8",
+          "relativePath": "package.json",
+          "subjectRef": "worksite-subject://abiogenesis/ae12c2ec9126fddfa085b487b29c9c8606d587324fd07df310b9ac2c23e971d7",
+          "observationRef": "worksite-observation://abiogenesis/4bc4e657bca481ea954d7ea16e7ed8632687ade568c026c31eeda5063d93576b",
+          "observationDigest": "sha256:4bc4e657bca481ea954d7ea16e7ed8632687ade568c026c31eeda5063d93576b",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/src/hello.mjs",
+          "byteLength": 59,
+          "rawFileDigest": "sha256:de6b9985072776a0c39f2862dc64c27f56e28ca72eb8a18f83c1e26fb0610e68",
+          "relativePath": "src/hello.mjs",
+          "subjectRef": "worksite-subject://abiogenesis/77042c6fd93ac77c2bdcf6826139437b3a516f06f0a9ffc4cb91e9361e995e1f",
+          "observationRef": "worksite-observation://abiogenesis/c2d0e299541be914e8bd94eeab7c1b5102dd4df79b9f6abe9cd9b290d7b9ca3e",
+          "observationDigest": "sha256:c2d0e299541be914e8bd94eeab7c1b5102dd4df79b9f6abe9cd9b290d7b9ca3e",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/design/test-design.md",
+          "byteLength": 1235,
+          "rawFileDigest": "sha256:792d0aa4519f06c0332e96571822f9dbc56e8a60a8af40bd7109b7072009cc05",
+          "relativePath": "design/test-design.md",
+          "subjectRef": "worksite-subject://abiogenesis/d0396fbbd25a35cdf65c0973aeeb1ab123533b534e03e33de8b30e0bc696c30b",
+          "observationRef": "worksite-observation://abiogenesis/f16088dee4fffd3764cf25b7adae8c40a33fccc5dfd9ed693a312e394173be28",
+          "observationDigest": "sha256:f16088dee4fffd3764cf25b7adae8c40a33fccc5dfd9ed693a312e394173be28",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/test/component/hello.test.mjs",
+          "byteLength": 253,
+          "rawFileDigest": "sha256:3ce47697d27f95428fc79d7e9108f3d66aa0589fe2d18998fe0c5ddd1c35e203",
+          "relativePath": "test/component/hello.test.mjs",
+          "subjectRef": "worksite-subject://abiogenesis/367064b7fee5b0916354cd9e0c453c51097e64b96a4a55dde9986cb5badb7f33",
+          "observationRef": "worksite-observation://abiogenesis/746f34e99593467626297ed9595437226e49e67901e8627bac58a03a1eecb87b",
+          "observationDigest": "sha256:746f34e99593467626297ed9595437226e49e67901e8627bac58a03a1eecb87b",
+          "evidenceRole": "verifier_artifact",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/test/uat/hello.uat.test.mjs",
+          "byteLength": 264,
+          "rawFileDigest": "sha256:519f77c0efc1fada0f5b32b07919151a4214b05159c363115526dfff637050a4",
+          "relativePath": "test/uat/hello.uat.test.mjs",
+          "subjectRef": "worksite-subject://abiogenesis/61994ecdddcee3e2d6f69cb9099dc9588e4592045702c9346c5da8953dba45f8",
+          "observationRef": "worksite-observation://abiogenesis/886eff6b327aa3200b24d8f8de684b7a141e654293376ca3543a0a210949ba92",
+          "observationDigest": "sha256:886eff6b327aa3200b24d8f8de684b7a141e654293376ca3543a0a210949ba92",
+          "evidenceRole": "verifier_artifact",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/test-execution-plan.json",
+          "byteLength": 217,
+          "rawFileDigest": "sha256:4f2fccd656ae883f860ffd80c697b6110332ac3ad28d4026585996efdf2bffb0",
+          "relativePath": "test-execution-plan.json",
+          "subjectRef": "worksite-subject://abiogenesis/1c1fbb740aa769958de1b96a48d57f7b156eb041e348b19adc16e27fbd773a46",
+          "observationRef": "worksite-observation://abiogenesis/60c113b1869094d136052175a7308b28650374790fb73d0bb359b134cd3951a0",
+          "observationDigest": "sha256:60c113b1869094d136052175a7308b28650374790fb73d0bb359b134cd3951a0",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/verification/lifecycle-surface-content.check.mjs",
+          "byteLength": 4763,
+          "rawFileDigest": "sha256:2a417167520c44c962a7d24401a56b0f126b011c6ff4c9bc3591d1aba31528e8",
+          "relativePath": "verification/lifecycle-surface-content.check.mjs",
+          "subjectRef": "worksite-subject://abiogenesis/e5c5b15e43d4fd6a4e0fc028453edd78b5e06f14520864a0326504f30b6f8872",
+          "observationRef": "worksite-observation://abiogenesis/6a27b8c9c3019f5498c09324b0e581d7c01dbb6de24a58fbba82353b2603e9d0",
+          "observationDigest": "sha256:6a27b8c9c3019f5498c09324b0e581d7c01dbb6de24a58fbba82353b2603e9d0",
+          "evidenceRole": "verifier_artifact",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        }
+      ],
+      "execution": {
+        "observationRef": "worksite-command-execution-observation://abiogenesis/28eb3f85c7e1a1ea67441be905c6b76d0f0ded98e4c27c3f18093bf61c2bd953",
+        "observationDigest": "sha256:28eb3f85c7e1a1ea67441be905c6b76d0f0ded98e4c27c3f18093bf61c2bd953",
+        "executionResultRef": "result://abiogenesis/717b8985d714f5592e3b2ffb4f0e203b4bb19fca8915ee25497bbe9e4dc75fc7",
+        "executionResultDigest": "sha256:717b8985d714f5592e3b2ffb4f0e203b4bb19fca8915ee25497bbe9e4dc75fc7",
+        "constructionResultRef": "result://abiogenesis/4b5a5f5b61bebb1bd897026f980d88407f259e390769545992a59ced4c58a74a",
+        "constructionResultDigest": "sha256:4b5a5f5b61bebb1bd897026f980d88407f259e390769545992a59ced4c58a74a",
+        "taskManifest": {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/worksite-command-execution/1948f77f0c49230b43a0562400e499d260d88367f3b8ae6dcc2856d1f66d0b95/b5a513aa26635664e1ac330ec379ec96404eadbe145701f3b7af4cbec448daca/task.json",
+          "byteLength": 1182274,
+          "rawFileDigest": "sha256:744a4bbebecca8a1311d071a4cc9620c6398b9a8ebb8235127e8b20bd8936ed4",
+          "equalsAdmittedTask": true
+        },
+        "helperArtifact": {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/worksite-command-execution/1948f77f0c49230b43a0562400e499d260d88367f3b8ae6dcc2856d1f66d0b95/b5a513aa26635664e1ac330ec379ec96404eadbe145701f3b7af4cbec448daca/result.json",
+          "byteLength": 48049,
+          "rawFileDigest": "sha256:20d92e4fce437c0d58208127f22f21be70ce0cf3836b5c3c64f5f701ab814758",
+          "admittedArtifactRef": "worksite-command-helper-artifact://abiogenesis/b8bb68c36306e8bada7ce132beff1da35f8e32a203e2195928ae8e7c7a3fe8af",
+          "admittedArtifactDigest": "sha256:b8bb68c36306e8bada7ce132beff1da35f8e32a203e2195928ae8e7c7a3fe8af",
+          "semanticCoordinateCheck": "Coordinates equal admitted provenance; owner artifactDigest is not asserted to be raw-file SHA256.",
+          "commandsPredicatesSnapshotsEqualAdmittedObservation": true,
+          "protectedBeforeEqualsAfter": true,
+          "snapshotRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/worksite-command-execution/1948f77f0c49230b43a0562400e499d260d88367f3b8ae6dcc2856d1f66d0b95/b5a513aa26635664e1ac330ec379ec96404eadbe145701f3b7af4cbec448daca/sandbox",
+          "snapshotRootEqualsHelperPlanSandboxRoot": true,
+          "disposition": "success"
+        },
+        "commands": [
+          {
+            "commandId": "planned-node-test",
+            "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+            "args": [
+              "--test",
+              "test/component/hello.test.mjs",
+              "test/uat/hello.uat.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "environment": [
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "HOME",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LANG",
+                "schemaVersion": "5.0.0",
+                "value": "en_AU.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LC_ALL",
+                "schemaVersion": "5.0.0",
+                "value": "C.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "PATH",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim/.pyenv/versions/3.11.5/bin:/opt/homebrew/Cellar/pyenv/2.6.7/libexec:/opt/homebrew/Cellar/pyenv/2.6.7/plugins/python-build/bin:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/Library/TeX/texbin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/shims:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/jim/.codex-alt/tmp/arg0/codex-arg0lswucm:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/Users/jim/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin/flutter:/opt/homebrew/bin/flutter"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "TMPDIR",
+                "schemaVersion": "5.0.0",
+                "value": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/"
+              }
+            ],
+            "observationRef": "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+            "observationDigest": "sha256:cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+            "exitStatus": 0,
+            "processSignal": null,
+            "timedOut": false,
+            "terminationConfirmed": true,
+            "timeoutMs": 60000,
+            "terminationGraceMs": 1000,
+            "stdout": {
+              "byteLength": 271,
+              "digest": "sha256:3eb057533598c4eaaca7f3569f88f14c481f202a30603b1e187045e2e399d141",
+              "encoding": "base64"
+            },
+            "stderr": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            }
+          },
+          {
+            "commandId": "component-suite-node-test",
+            "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+            "args": [
+              "--test",
+              "test/component/hello.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "environment": [
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "HOME",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LANG",
+                "schemaVersion": "5.0.0",
+                "value": "en_AU.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LC_ALL",
+                "schemaVersion": "5.0.0",
+                "value": "C.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "PATH",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim/.pyenv/versions/3.11.5/bin:/opt/homebrew/Cellar/pyenv/2.6.7/libexec:/opt/homebrew/Cellar/pyenv/2.6.7/plugins/python-build/bin:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/Library/TeX/texbin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/shims:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/jim/.codex-alt/tmp/arg0/codex-arg0lswucm:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/Users/jim/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin/flutter:/opt/homebrew/bin/flutter"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "TMPDIR",
+                "schemaVersion": "5.0.0",
+                "value": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/"
+              }
+            ],
+            "observationRef": "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+            "observationDigest": "sha256:25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+            "exitStatus": 0,
+            "processSignal": null,
+            "timedOut": false,
+            "terminationConfirmed": true,
+            "timeoutMs": 60000,
+            "terminationGraceMs": 1000,
+            "stdout": {
+              "byteLength": 185,
+              "digest": "sha256:66b00bbdcc2d21f2866cda6eab8afa75e5cd645309aea95725ab2f8dcecee352",
+              "encoding": "base64"
+            },
+            "stderr": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            }
+          },
+          {
+            "commandId": "uat-suite-node-test",
+            "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+            "args": [
+              "--test",
+              "test/uat/hello.uat.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "environment": [
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "HOME",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LANG",
+                "schemaVersion": "5.0.0",
+                "value": "en_AU.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LC_ALL",
+                "schemaVersion": "5.0.0",
+                "value": "C.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "PATH",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim/.pyenv/versions/3.11.5/bin:/opt/homebrew/Cellar/pyenv/2.6.7/libexec:/opt/homebrew/Cellar/pyenv/2.6.7/plugins/python-build/bin:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/Library/TeX/texbin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/shims:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/jim/.codex-alt/tmp/arg0/codex-arg0lswucm:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/Users/jim/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin/flutter:/opt/homebrew/bin/flutter"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "TMPDIR",
+                "schemaVersion": "5.0.0",
+                "value": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/"
+              }
+            ],
+            "observationRef": "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+            "observationDigest": "sha256:cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+            "exitStatus": 0,
+            "processSignal": null,
+            "timedOut": false,
+            "terminationConfirmed": true,
+            "timeoutMs": 60000,
+            "terminationGraceMs": 1000,
+            "stdout": {
+              "byteLength": 198,
+              "digest": "sha256:ecb32139383b8464028c6c427dbe4515fbb6af39d48c28ff8657238aa1b9fb97",
+              "encoding": "base64"
+            },
+            "stderr": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            }
+          },
+          {
+            "commandId": "lifecycle-surface-content-check",
+            "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+            "args": [
+              "--test",
+              "verification/lifecycle-surface-content.check.mjs"
+            ],
+            "relativeCwd": ".",
+            "environment": [
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "HOME",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LANG",
+                "schemaVersion": "5.0.0",
+                "value": "en_AU.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LC_ALL",
+                "schemaVersion": "5.0.0",
+                "value": "C.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "PATH",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim/.pyenv/versions/3.11.5/bin:/opt/homebrew/Cellar/pyenv/2.6.7/libexec:/opt/homebrew/Cellar/pyenv/2.6.7/plugins/python-build/bin:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/Library/TeX/texbin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/shims:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/jim/.codex-alt/tmp/arg0/codex-arg0lswucm:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/Users/jim/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin/flutter:/opt/homebrew/bin/flutter"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "TMPDIR",
+                "schemaVersion": "5.0.0",
+                "value": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/"
+              }
+            ],
+            "observationRef": "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+            "observationDigest": "sha256:bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+            "exitStatus": 0,
+            "processSignal": null,
+            "timedOut": false,
+            "terminationConfirmed": true,
+            "timeoutMs": 60000,
+            "terminationGraceMs": 1000,
+            "stdout": {
+              "byteLength": 915,
+              "digest": "sha256:b8ea4716913025f1ca8c850f46afccd92419cca15b4d6429dfe1819f8d8a459d",
+              "encoding": "base64"
+            },
+            "stderr": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            }
+          }
+        ],
+        "declaredPredicates": [
+          {
+            "declaration": {
+              "equals": 0,
+              "validationCommandId": "planned-node-test"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 0,
+            "predicateId": "planned-node-test-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "greaterThanOrEqual": 2,
+              "validationCommandId": "planned-node-test"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 1,
+            "predicateId": "planned-node-test-pass-floor",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "equals": 0,
+              "validationCommandId": "component-suite-node-test"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 2,
+            "predicateId": "component-suite-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "greaterThanOrEqual": 1,
+              "validationCommandId": "component-suite-node-test"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 3,
+            "predicateId": "component-suite-pass",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "equals": 0,
+              "validationCommandId": "uat-suite-node-test"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 4,
+            "predicateId": "uat-suite-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "greaterThanOrEqual": 1,
+              "validationCommandId": "uat-suite-node-test"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 5,
+            "predicateId": "uat-suite-pass",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "equals": 0,
+              "validationCommandId": "lifecycle-surface-content-check"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 6,
+            "predicateId": "lifecycle-surface-content-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "greaterThanOrEqual": 9,
+              "validationCommandId": "lifecycle-surface-content-check"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 7,
+            "predicateId": "lifecycle-surface-content-pass",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "equals": "Hello, world!",
+              "export": "helloWorld",
+              "path": "src/hello.mjs"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 8,
+            "predicateId": "greeting-export-return-exact",
+            "predicateKind": "module_export_return_exact",
+            "schemaVersion": "5.0.0"
+          }
+        ],
+        "predicateObservations": [
+          {
+            "evidence": [
+              {
+                "digest": "sha256:cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 0,
+            "ordinal": 0,
+            "predicateId": "planned-node-test-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 2,
+            "ordinal": 1,
+            "predicateId": "planned-node-test-pass-floor",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 0,
+            "ordinal": 2,
+            "predicateId": "component-suite-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 1,
+            "ordinal": 3,
+            "predicateId": "component-suite-pass",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 0,
+            "ordinal": 4,
+            "predicateId": "uat-suite-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 1,
+            "ordinal": 5,
+            "predicateId": "uat-suite-pass",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 0,
+            "ordinal": 6,
+            "predicateId": "lifecycle-surface-content-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 9,
+            "ordinal": 7,
+            "predicateId": "lifecycle-surface-content-pass",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:c2d0e299541be914e8bd94eeab7c1b5102dd4df79b9f6abe9cd9b290d7b9ca3e",
+                "kind": "worksite_observation_coordinate",
+                "ref": "worksite-observation://abiogenesis/c2d0e299541be914e8bd94eeab7c1b5102dd4df79b9f6abe9cd9b290d7b9ca3e",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-observation://abiogenesis/c2d0e299541be914e8bd94eeab7c1b5102dd4df79b9f6abe9cd9b290d7b9ca3e"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": "Hello, world!",
+            "ordinal": 8,
+            "predicateId": "greeting-export-return-exact",
+            "predicateKind": "module_export_return_exact",
+            "schemaVersion": "5.0.0"
+          }
+        ],
+        "exactlyOneObservationPerDeclaredPredicate": true,
+        "allowedWriteTerritories": [
+          {
+            "kind": "worksite_command_write_territory",
+            "ordinal": 0,
+            "pathKind": "subtree",
+            "purpose": "execution_evidence",
+            "relativePath": "execution-evidence",
+            "schemaVersion": "5.0.0",
+            "territoryDigest": "sha256:ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1",
+            "territoryRef": "worksite-command-write-territory://abiogenesis/ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1"
+          }
+        ],
+        "productDelta": [],
+        "worksiteDelta": [],
+        "originalPlan": {
+          "command": "node",
+          "args": [
+            "--test",
+            "test/component/hello.test.mjs",
+            "test/uat/hello.uat.test.mjs"
+          ],
+          "expectedTestPassCount": 2,
+          "expectedStdoutMatch": "fail 0",
+          "assertedReturnValue": "Hello, world!"
+        },
+        "originalPlanObserved": {
+          "commandObservationRef": "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+          "passes": 2,
+          "failures": 0,
+          "planArgsMatch": true,
+          "stdoutExpectationMatch": true,
+          "exitStatus": 0,
+          "stderrByteLength": 0,
+          "assertedReturnValue": "Hello, world!"
+        }
+      },
+      "preservedNativeStatus": {
+        "status": "unqualified_missing_independent_coverage",
+        "applicationCoverage": "non_closing",
+        "remainingGaps": [
+          "full_source_semantic_completeness_unassessed",
+          "application_requirements_not_closed",
+          "proof_depth_and_strength_unassessed"
+        ],
+        "ordinaryOracleInterpretation": [
+          {
+            "ordinal": 0,
+            "observationKind": "module_return",
+            "disposition": "unexecuted_probe",
+            "observations": [],
+            "semanticReview": "required",
+            "reason": "outside_direct_cli_interpretation",
+            "expected": {
+              "observationKind": "module_return",
+              "modulePath": "src/hello.mjs",
+              "exportName": "helloWorld",
+              "arguments": [],
+              "returnValue": "Hello, world!"
+            }
+          }
+        ]
+      },
+      "boundedSemanticDispositionRecommendation": "accept_original_case_outcome",
+      "limits": "One completed attempt; no general ABG/GLC qualification, stochastic reliability or rewrite of native terminal status."
+    },
+    {
+      "key": "rust-service",
+      "selection": {
+        "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/cases/rust-service/selection.json",
+        "byteLength": 5745,
+        "rawFileDigest": "sha256:88fd1ffb229e0ba6d0166fe59c24c6fad9a0d3ebcfb4eccad3371c3d4d7a0f77"
+      },
+      "input": {
+        "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/source-01/inputs/rust-service.json",
+        "byteLength": 10536,
+        "rawFileDigest": "sha256:f78c4b715f02d731c101a88ed180750a76c4274c44484b13a15c53dfea0dfdd0"
+      },
+      "coreArchiveDigest": "64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+      "consumerArchiveDigest": "aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+      "closedEvidenceFiles": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/closed-outcome.json",
+          "byteLength": 15768,
+          "rawFileDigest": "sha256:e38904eb94eff7148f3e4c28eed147384b1535c68aedb3b6369ab0edb5813a07"
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/full-result-proof.json",
+          "byteLength": 21087,
+          "rawFileDigest": "sha256:ee0f3cdedf4810c2dcfe39fc8b61697fa3252d87ae023adef35f6436e4ea90f6"
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/live-receipt.json",
+          "byteLength": 14111352,
+          "rawFileDigest": "sha256:84d453be96fa577c883c52d6fa5cb6648893fdffd1413c9ef4a7bbba77ccd86f"
+        }
+      ],
+      "publicReads": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/read-run_result.json",
+          "byteLength": 3906105,
+          "rawFileDigest": "sha256:7cd341e288efeb530c73c062e99362e745a72b907af6a4fb81da7dd488e037e5",
+          "memberKey": "run_result",
+          "matchesClosedProofDigest": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/read-run_replay.json",
+          "byteLength": 3905762,
+          "rawFileDigest": "sha256:b9bd4bf4f8594ce136baf4562520848eaebce5cbd0696eabe9241969b508efd9",
+          "memberKey": "run_replay",
+          "matchesClosedProofDigest": true
+        }
+      ],
+      "run": {
+        "digest": "sha256:a686e5dd08462b9cc310f32a2c175f63608f06c9b90e8b5dfbfb5dbb87651e1d",
+        "ref": "run://abiogenesis/996cc4b1c4f99b912cc062783237d98c8f95ddd890e07939ea3ebbb8970f847d"
+      },
+      "result": {
+        "digest": "sha256:582935c0d568c42c10160f619f7f399eb2a3ab4af02172c44656fa396a8c6242",
+        "ref": "result://abiogenesis/582935c0d568c42c10160f619f7f399eb2a3ab4af02172c44656fa396a8c6242"
+      },
+      "program": {
+        "digest": "sha256:dbd93bf34f8ce3ffd9332cb0a436bf31a7e465437a2fae20b9c13b7b2021909c",
+        "ref": "program://odd-glc/generic-lifecycle-witness@5"
+      },
+      "terminalValueDigest": "sha256:ceb1bd07ad74727542e1b73a9fc95109499e055c324c77ec8cc465f2e469d870",
+      "terminalValueCanonicalDigestRecomputed": true,
+      "resultAndReplayTerminalObjectsEqual": true,
+      "replayStatus": "closed",
+      "originalSource": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/original-rust-service-declaration.txt",
+          "byteLength": 4175,
+          "rawFileDigest": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d",
+          "memberRef": "urn:sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d",
+          "sourceLocator": "repo://odd_glc/build_tenants/odd_glc/typescript/test/glc-software-build-overlay-live.test.mjs#bytes=25509-29684",
+          "equalsAdmittedMemberBytes": true
+        }
+      ],
+      "ordinaryTaskRequest": "Implement the complete selected original source. Preserve all source obligations and unresolved meaning. The predecessor vector mechanism is not runtime authority: use the current native lifecycle. Admitted native execution and Evidence replace the old hand-written execution-result representation; do not prewrite claimed execution success.",
+      "oracle": {
+        "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-service.oracle.json",
+        "byteLength": 1966,
+        "rawFileDigest": "sha256:eaced4b57ccdb33b85006b79502ef773aaa396b8ace5689085cbd9d1296d5d9c",
+        "canonicalJsonDigest": "sha256:100a3595db7942e7da295e17b4a807ae8b8377c5480dbf91335e8d7b0fdbdb35",
+        "equalsAdmittedEvaluationData": true
+      },
+      "rubric": {
+        "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/lifecycle-rubric.json",
+        "byteLength": 16810,
+        "rawFileDigest": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+        "equalsAdmittedDeclaration": true
+      },
+      "stages": [
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/intent@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-0.json",
+            "byteLength": 25966,
+            "rawFileDigest": "sha256:9c4c54baef4b7df84d42ccbdf0a157c6470d9c14cbfc807aa480d83dd4b8e76f"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:b7a8f7da532276a5960bdd82c621103bbdccbbddb52b0c0f82020b942d9e54f8",
+            "adapterInputDigest": "sha256:9f020679bd75dfc6e580fdd19b4ef0ff5682802a6ab2acb0ce6f2f66685c2755",
+            "assetDigest": "sha256:9c4c54baef4b7df84d42ccbdf0a157c6470d9c14cbfc807aa480d83dd4b8e76f",
+            "assetPath": "semantic-assets/stage-0.json",
+            "observationDigest": "sha256:15707ee4037c09303bd763de6449065cd20824c28a2995bc6e1bee2eaba3eea3",
+            "observationRef": "native-work-observation://abiogenesis/15707ee4037c09303bd763de6449065cd20824c28a2995bc6e1bee2eaba3eea3"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/96ae73c0baea6980d96c7dfb708f35c69757e418968925ab115f3ef83a1bcbee",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/3df771bd395352998d0cc56c5387137fa611d027cc917c74e58656ef713d6a3b",
+            "cCallRef": "c-call:sha256:46ef0c9b8d5a31401ac1210cc8eddfc4fb601074e4170d258103264807361669",
+            "inputDigest": "sha256:36523666c0bb55bf5768e16b2172ac790aa8a96774f50676b903854941f0cc0b",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:e147bc3bf3bee42d82768484b0e03c84a679a315dd5caff5ad608feafff20194",
+              "adapterInputDigest": "sha256:af83404feb06bd4f1d4ba1a2e64a21305ff0bfda854ecad0f1c2d6cf2d9bbe99",
+              "assetDigest": "sha256:9c4c54baef4b7df84d42ccbdf0a157c6470d9c14cbfc807aa480d83dd4b8e76f",
+              "assetPath": "semantic-assets/stage-0.json",
+              "observationDigest": "sha256:15a4e14a4c1984c863e72282b6fc2ef1c3da81223798b5a385638b295aacf804",
+              "observationRef": "native-work-observation://abiogenesis/15a4e14a4c1984c863e72282b6fc2ef1c3da81223798b5a385638b295aacf804"
+            },
+            "promptDigest": "sha256:49b56e5b3d6d1f0be8cb2aa7fecc41fedfebf08f51a53d1d914c3a404a1ffa51",
+            "transportDigest": "sha256:d42998020d3f2717d4f12ad87f6b0508ae7e93271b5245af00b6e4e1c8aa7dcc"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/intent/bounded-claim@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/product@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-1.json",
+            "byteLength": 39373,
+            "rawFileDigest": "sha256:1b13b4f5ff330694f2e26686aed848a04cba1218bdae42d891bbfe09fffdd708"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:2f5e0d261a6104b42b7ce65a2b803f19136d98e6e6974c75fe58d5484bd8841f",
+            "adapterInputDigest": "sha256:a5adbf4b3f828c115dd08a1ddcef466f4042188100148ae8932f9c01e1df39ee",
+            "assetDigest": "sha256:1b13b4f5ff330694f2e26686aed848a04cba1218bdae42d891bbfe09fffdd708",
+            "assetPath": "semantic-assets/stage-1.json",
+            "observationDigest": "sha256:6cf9b6218dce81a8e65f5d76cad2a260cea26420e024f6f5eeb2db3383a92306",
+            "observationRef": "native-work-observation://abiogenesis/6cf9b6218dce81a8e65f5d76cad2a260cea26420e024f6f5eeb2db3383a92306"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/b2b79e7866ab9f82d67f7b8f969d0ed4db7a1103b7d8106843d1909cf4247133",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/15023feb30031706db31fc082ed9693602b4fbf9849ac37740267f2ad2931450",
+            "cCallRef": "c-call:sha256:74a135f70316290ec3522f905c38eaa075c78a3fcaafb8f2eacb7cfa27d1726a",
+            "inputDigest": "sha256:aa178b3d505690864b8631deee4aacf79ce2ddad015278453fccf84668915fa3",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:8ece0b883c4590a3169048ea722f3c9279cdce4b8afe911b5f87a9eadf6b2266",
+              "adapterInputDigest": "sha256:95bf029e840744a57f105a07923f1d88a9c1971a5709b7d52b3f3a127bda03c4",
+              "assetDigest": "sha256:1b13b4f5ff330694f2e26686aed848a04cba1218bdae42d891bbfe09fffdd708",
+              "assetPath": "semantic-assets/stage-1.json",
+              "observationDigest": "sha256:22e7e3c0338d927662ef6e7115debd3868dc162a2364bb614b4e41aba8c1dc8c",
+              "observationRef": "native-work-observation://abiogenesis/22e7e3c0338d927662ef6e7115debd3868dc162a2364bb614b4e41aba8c1dc8c"
+            },
+            "promptDigest": "sha256:2835fcddd6ec0bf470b720182bd5900f8b7310866e04e73fef78d96a9f3694b3",
+            "transportDigest": "sha256:ba6f0009d42379552633b4f9cccf113afa22be524db0f755ef6c3570647f9586"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/product/bounded-claim@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/requirements@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-2.json",
+            "byteLength": 95166,
+            "rawFileDigest": "sha256:3fc1452a8d0a00230c59daa4cdc9e3d68c2ccdb96fd0ded2877de46e708e418c"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:964764ad078ea736c21c130010886aae592ebd777c6e56117329be8f26a6cbe1",
+            "adapterInputDigest": "sha256:bfd0f6a1ce515d8ba006cf29168cb464986bfdb424bcac0a775da2ad451d506a",
+            "assetDigest": "sha256:3fc1452a8d0a00230c59daa4cdc9e3d68c2ccdb96fd0ded2877de46e708e418c",
+            "assetPath": "semantic-assets/stage-2.json",
+            "observationDigest": "sha256:709f2640974cb890655a1e92e90ffdc713917ef2dd1c4de74530f8fc001747ae",
+            "observationRef": "native-work-observation://abiogenesis/709f2640974cb890655a1e92e90ffdc713917ef2dd1c4de74530f8fc001747ae"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/bab2ec45d79eb3bf4840c9ead6056b89da04ace5bc64f9aae82809f6eb61e1a3",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/5d0d33319bcdd7a69c13755c78d9434bf580deae1937f7b181b73875003971b2",
+            "cCallRef": "c-call:sha256:7f4338ebdb7ae2cf8187d782686de53b09bc4a2ec0200d38269145cf045cfb58",
+            "inputDigest": "sha256:dcda7f5dddd5f0351963524fc3778193fdfe9334be779af30c170c7b038dfb3f",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:602eb6a120d4c07f63fd70d29f463f685d4bb1747f65ea9c36c296b523cfd3cc",
+              "adapterInputDigest": "sha256:ba6ac8a8c659f573d4110ed81e812c5dd3c066e4fced3ab745adcc09d2f612a4",
+              "assetDigest": "sha256:3fc1452a8d0a00230c59daa4cdc9e3d68c2ccdb96fd0ded2877de46e708e418c",
+              "assetPath": "semantic-assets/stage-2.json",
+              "observationDigest": "sha256:d1251e4e7a6b2801e7a3fab854eab12481ebed46eaa0db9c8f182f2fb2dcf211",
+              "observationRef": "native-work-observation://abiogenesis/d1251e4e7a6b2801e7a3fab854eab12481ebed46eaa0db9c8f182f2fb2dcf211"
+            },
+            "promptDigest": "sha256:6378c53d54b76ecca290cd953adfaa64e4dc9a0252f3e9f09e51f89da198dc10",
+            "transportDigest": "sha256:f97ee805effc67c9387bf93946668890dc2a6c7ca2dfb972399696651931ed3b"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/requirements/bounded-claim@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/design@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-3.json",
+            "byteLength": 99896,
+            "rawFileDigest": "sha256:a7f96742a9ff8855a0ad058dbc827379fc0800ed9de394699ef0d213b0fbd3a2"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:33aaaf94cd85e1f745f90f6dea86324aa89bf567ad1ba0068270cc35ce57bb3c",
+            "adapterInputDigest": "sha256:1b4cdd2f101cddb8464188f37eb3bbbbb277db8ca00a7153bbfa49a58c4e8cd1",
+            "assetDigest": "sha256:a7f96742a9ff8855a0ad058dbc827379fc0800ed9de394699ef0d213b0fbd3a2",
+            "assetPath": "semantic-assets/stage-3.json",
+            "observationDigest": "sha256:5698c60561ede80981db830ff15f3f8785c5249b2117f258600e0fc915f8a6f8",
+            "observationRef": "native-work-observation://abiogenesis/5698c60561ede80981db830ff15f3f8785c5249b2117f258600e0fc915f8a6f8"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/cb7fdbf8a31b22c29e2714052666abdeb0c7801b92e38f1530863b5e7d0a866e",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/971b6d4b8db55e4728cde3a750f126b9daa68873842d7413eba29639f3e49734",
+            "cCallRef": "c-call:sha256:987c3fffbc998ccf0e1929a6e1aaca1eaac30b1d0365d8a427d5912659af62cd",
+            "inputDigest": "sha256:ffaf3a689e6b28e28f6e618bc17921c6085c872a0c0559d4446a3e26f34fda90",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:88774dc0c1ccc4df48fef6af6c055e34a0ade80bea9fc2fbb7d3974230f1cb0e",
+              "adapterInputDigest": "sha256:804849e15f1fb556b28eae5441d81479d1262152780c2f94a5cfe6346e316563",
+              "assetDigest": "sha256:a7f96742a9ff8855a0ad058dbc827379fc0800ed9de394699ef0d213b0fbd3a2",
+              "assetPath": "semantic-assets/stage-3.json",
+              "observationDigest": "sha256:b189e554ea0cac1f981e2b8c00623b77116cfc55ec2dbb8a75cae3b255218c03",
+              "observationRef": "native-work-observation://abiogenesis/b189e554ea0cac1f981e2b8c00623b77116cfc55ec2dbb8a75cae3b255218c03"
+            },
+            "promptDigest": "sha256:d9492ba949da66e21ee4edc108c4e5e3cff918088e56d371930378eb402fab03",
+            "transportDigest": "sha256:45f81d024b15fe8aa43fef510f3daf78d04f89b36c0fe1475d21b6aee5845be6"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/bounded-claim@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/design/executable-proof@5",
+              "disposition": "satisfied"
+            }
+          ]
+        },
+        {
+          "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5",
+          "candidateFile": {
+            "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-4.json",
+            "byteLength": 103657,
+            "rawFileDigest": "sha256:00605fabd8d043ee0c3e133f61357e20d40293c5948778e41c856230b65495e4"
+          },
+          "nativeWork": {
+            "adapterCCallRef": "c-call:sha256:7529fc8f9795c6e70391363a7b018984806f00a1be215538e7577b41c9e4a0f0",
+            "adapterInputDigest": "sha256:df4035b3e7a80e3ade5d2fd47f16cc6191cb984c32b400f63a79fe171efd9b68",
+            "assetDigest": "sha256:00605fabd8d043ee0c3e133f61357e20d40293c5948778e41c856230b65495e4",
+            "assetPath": "semantic-assets/stage-4.json",
+            "observationDigest": "sha256:98f023210db76839fef2c291b765dbf9d4f116c53692c99a925bd6100976a957",
+            "observationRef": "native-work-observation://abiogenesis/98f023210db76839fef2c291b765dbf9d4f116c53692c99a925bd6100976a957"
+          },
+          "authorActorInvocationRef": "actor-invocation://abiogenesis/dab846a418bcb5954778f3242d96c5b8dfb799fe1265869c5878a63e386cc798",
+          "assessmentDisposition": "satisfied",
+          "assessorSource": {
+            "actorInvocationRef": "actor-invocation://abiogenesis/a84e570679ee37f60986add7d92dd45ec34b0a806510b18add0112cf28b7b624",
+            "cCallRef": "c-call:sha256:c0f90530612b7a7a22901730281b591c818372ea98e98573252b83334f1b8c2a",
+            "inputDigest": "sha256:a74411e44e4bc2ccc6100b3f36958e44fd813a21a269091da283fd86c59b7901",
+            "nativeWork": {
+              "adapterCCallRef": "c-call:sha256:04825e3c5814b85b84a87a18744ebef9581ef4e7c199f0c14c715ed7c0a26a6c",
+              "adapterInputDigest": "sha256:460daddcf75dacc8e60b97f8a5132c7722c10abeef4d1612b29d37b25d20fbef",
+              "assetDigest": "sha256:00605fabd8d043ee0c3e133f61357e20d40293c5948778e41c856230b65495e4",
+              "assetPath": "semantic-assets/stage-4.json",
+              "observationDigest": "sha256:6519bfee5a445fa813798eb30a6191b0a85f87831c073c80f26aef92296c72bd",
+              "observationRef": "native-work-observation://abiogenesis/6519bfee5a445fa813798eb30a6191b0a85f87831c073c80f26aef92296c72bd"
+            },
+            "promptDigest": "sha256:c8e97b50ce6d4839ea5b6658fca09b7df9857b78fb6951c0fb971321d7a4dc93",
+            "transportDigest": "sha256:076e30d4417522dd0e8fd3da8ab2e0f4987f796d38ed32f36b8dd2ce7c9b800d"
+          },
+          "criteria": [
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/source-faithfulness@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/modality-and-conflicts@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/obligation-conservation@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/bounded-claim@5",
+              "disposition": "satisfied"
+            },
+            {
+              "criterionRef": "criterion://odd-glc/generic-lifecycle/evidence/independent-oracle@5",
+              "disposition": "satisfied"
+            }
+          ]
+        }
+      ],
+      "distinctActorInvocationRefs": [
+        "actor-invocation://abiogenesis/96ae73c0baea6980d96c7dfb708f35c69757e418968925ab115f3ef83a1bcbee",
+        "actor-invocation://abiogenesis/3df771bd395352998d0cc56c5387137fa611d027cc917c74e58656ef713d6a3b",
+        "actor-invocation://abiogenesis/b2b79e7866ab9f82d67f7b8f969d0ed4db7a1103b7d8106843d1909cf4247133",
+        "actor-invocation://abiogenesis/15023feb30031706db31fc082ed9693602b4fbf9849ac37740267f2ad2931450",
+        "actor-invocation://abiogenesis/bab2ec45d79eb3bf4840c9ead6056b89da04ace5bc64f9aae82809f6eb61e1a3",
+        "actor-invocation://abiogenesis/5d0d33319bcdd7a69c13755c78d9434bf580deae1937f7b181b73875003971b2",
+        "actor-invocation://abiogenesis/cb7fdbf8a31b22c29e2714052666abdeb0c7801b92e38f1530863b5e7d0a866e",
+        "actor-invocation://abiogenesis/971b6d4b8db55e4728cde3a750f126b9daa68873842d7413eba29639f3e49734",
+        "actor-invocation://abiogenesis/dab846a418bcb5954778f3242d96c5b8dfb799fe1265869c5878a63e386cc798",
+        "actor-invocation://abiogenesis/a84e570679ee37f60986add7d92dd45ec34b0a806510b18add0112cf28b7b624",
+        "actor-invocation://abiogenesis/3d0d9790383f816038523ac812acf290db283bc39dad4efd4ea4d940b0a2d5c3",
+        "actor-invocation://abiogenesis/9040bbfb1a87d6a5ecbeeeb402e7710ff3f7ddfabab1e2d12fbb9ae3c9110a29"
+      ],
+      "applicationArtifacts": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/specification/project-conformance.md",
+          "byteLength": 3580,
+          "rawFileDigest": "sha256:9828c3379e20261c80fafbe6b2b51b971fc57da45b5fb516b6d28fe9d907b3e0",
+          "relativePath": "specification/project-conformance.md",
+          "subjectRef": "worksite-subject://abiogenesis/21e06881d1f2b2f23293323f80619b2bc35b60230ad2840a68b2237994137969",
+          "observationRef": "worksite-observation://abiogenesis/941e2d42dc7103c793b99b1ab0784325fa634a828d46c1a10e952093ed5318d9",
+          "observationDigest": "sha256:941e2d42dc7103c793b99b1ab0784325fa634a828d46c1a10e952093ed5318d9",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/design/implementation-design.md",
+          "byteLength": 4984,
+          "rawFileDigest": "sha256:cf916ece06871500621a695e2ee9b8e497cf47c5c2f64ec5b67374fb20b87896",
+          "relativePath": "design/implementation-design.md",
+          "subjectRef": "worksite-subject://abiogenesis/a1657b80d2d057120d1b72972f7e04692c0338cc28394f1bd92603b8ea9aac92",
+          "observationRef": "worksite-observation://abiogenesis/47aa19b7c856fa33e3a6360ef4335e2a8508d02fbb22cde5bcbabf3c272d4c3a",
+          "observationDigest": "sha256:47aa19b7c856fa33e3a6360ef4335e2a8508d02fbb22cde5bcbabf3c272d4c3a",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/src/service.rs",
+          "byteLength": 3611,
+          "rawFileDigest": "sha256:e83842332cd2dda4b7a28967bd5dd9f65ad0e55cd9134d0ae296d74c3dadebd5",
+          "relativePath": "src/service.rs",
+          "subjectRef": "worksite-subject://abiogenesis/1eb18c56bf8738d9565aa79dcb164674db82809257f7b9da5ea859c7753afbf1",
+          "observationRef": "worksite-observation://abiogenesis/cb43aade388509abff51e2ac2e7fd5f2b95e730a735889fc59ebe8abc821808b",
+          "observationDigest": "sha256:cb43aade388509abff51e2ac2e7fd5f2b95e730a735889fc59ebe8abc821808b",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/design/test-design.md",
+          "byteLength": 4458,
+          "rawFileDigest": "sha256:3184760f3494ff3ab936af77d99b22405a0b871dc4290203ad5a0f805e19bac4",
+          "relativePath": "design/test-design.md",
+          "subjectRef": "worksite-subject://abiogenesis/e90cee6fc479272b9dcbeb2bc1369526dbca13ef23032667869472f22015894b",
+          "observationRef": "worksite-observation://abiogenesis/3ef16068990f400b1b0e4209e51292210e15dd00971325919657a348cbe2cc5d",
+          "observationDigest": "sha256:3ef16068990f400b1b0e4209e51292210e15dd00971325919657a348cbe2cc5d",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/test/component/rust-service.test.mjs",
+          "byteLength": 4583,
+          "rawFileDigest": "sha256:698ae8847bc3f91f0e5ba9b9bc368b4f15322fd122cbfb50ad751285c6ff0aff",
+          "relativePath": "test/component/rust-service.test.mjs",
+          "subjectRef": "worksite-subject://abiogenesis/39dc22cb9b2775d799c22487aaf3981ab55721d9120463c5b285fec9d414e10c",
+          "observationRef": "worksite-observation://abiogenesis/9b30e914afc53e2440b9fcb0125f8483a3e57870f1ef89dbd5cc462fa6764221",
+          "observationDigest": "sha256:9b30e914afc53e2440b9fcb0125f8483a3e57870f1ef89dbd5cc462fa6764221",
+          "evidenceRole": "verifier_artifact",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/test/uat/rust-service.uat.test.mjs",
+          "byteLength": 4535,
+          "rawFileDigest": "sha256:697561681c28935ed82831b90b2f82e0fd97fc5f8b9f6d7782c9916520ea37fb",
+          "relativePath": "test/uat/rust-service.uat.test.mjs",
+          "subjectRef": "worksite-subject://abiogenesis/6827cd9b686d046018e1eed6f56d9588f118ab957f81ad2a0ffc1df8cb909871",
+          "observationRef": "worksite-observation://abiogenesis/6ee832b70058024d4b399f7577a7661d03b81decbda3aee0f5633d63789c5962",
+          "observationDigest": "sha256:6ee832b70058024d4b399f7577a7661d03b81decbda3aee0f5633d63789c5962",
+          "evidenceRole": "verifier_artifact",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/test-execution-plan.json",
+          "byteLength": 247,
+          "rawFileDigest": "sha256:c2d8a9d36af54bf7ad92735e5bcb32aeab1b6aaf3f0d116b0fc7c462dcd5faf9",
+          "relativePath": "test-execution-plan.json",
+          "subjectRef": "worksite-subject://abiogenesis/84845c12c687300f5ed03de15f638b1d68461181dbf09ed1a10a2b001609cdf1",
+          "observationRef": "worksite-observation://abiogenesis/5a2718f00e7da269176f34e4a76287b3118f8cee8112e30fba9edb862b6e6ef9",
+          "observationDigest": "sha256:5a2718f00e7da269176f34e4a76287b3118f8cee8112e30fba9edb862b6e6ef9",
+          "evidenceRole": "realization",
+          "identityChecks": {
+            "matchesClosedOutcome": true,
+            "matchesConstructionAfterBytes": true,
+            "matchesProtectedObservationDigest": true,
+            "matchesExecutionSnapshotDigest": true,
+            "snapshotLinksToProtectedObservation": true,
+            "evidenceArtifactLinksToSameSubjectAndObservation": true,
+            "helperProtectedBeforeEqualsAfter": true
+          }
+        }
+      ],
+      "execution": {
+        "observationRef": "worksite-command-execution-observation://abiogenesis/ee5ddb0a7d44ebbbc542cfb784627fd7d3fc2d06e034a22a2c75f750525b8760",
+        "observationDigest": "sha256:ee5ddb0a7d44ebbbc542cfb784627fd7d3fc2d06e034a22a2c75f750525b8760",
+        "executionResultRef": "result://abiogenesis/9fa32ec32a8d08926ee49b910f48699e4ff8cc8be3152e11621d321a471853cc",
+        "executionResultDigest": "sha256:9fa32ec32a8d08926ee49b910f48699e4ff8cc8be3152e11621d321a471853cc",
+        "constructionResultRef": "result://abiogenesis/aae3fca0bf99901e9aef5a9af8b749adc7ad42547600cfc83f54cf8a61c4ed6d",
+        "constructionResultDigest": "sha256:aae3fca0bf99901e9aef5a9af8b749adc7ad42547600cfc83f54cf8a61c4ed6d",
+        "taskManifest": {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/worksite-command-execution/f16e9c04781bc14825335f6856f0fb6182b6c9f7e6947253543c0f2eef544c74/df2b05248f2d1ad6b9bdb0cd5b0e175d13143957fea6096f29257e10700a9024/task.json",
+          "byteLength": 1363749,
+          "rawFileDigest": "sha256:5da1f5a832990e673706682f2472958dbbfdd5660eb5a82d385474cd0ca54732",
+          "equalsAdmittedTask": true
+        },
+        "helperArtifact": {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/worksite-command-execution/f16e9c04781bc14825335f6856f0fb6182b6c9f7e6947253543c0f2eef544c74/df2b05248f2d1ad6b9bdb0cd5b0e175d13143957fea6096f29257e10700a9024/result.json",
+          "byteLength": 35281,
+          "rawFileDigest": "sha256:e1b030737a8eb90720aca9eb012d62c756c49de0d54cb4ef82b68ea49c57e821",
+          "admittedArtifactRef": "worksite-command-helper-artifact://abiogenesis/d3cb883e519b071487154ad9ba47d859643d0566e49088f489e8e25d06236de1",
+          "admittedArtifactDigest": "sha256:d3cb883e519b071487154ad9ba47d859643d0566e49088f489e8e25d06236de1",
+          "semanticCoordinateCheck": "Coordinates equal admitted provenance; owner artifactDigest is not asserted to be raw-file SHA256.",
+          "commandsPredicatesSnapshotsEqualAdmittedObservation": true,
+          "protectedBeforeEqualsAfter": true,
+          "snapshotRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/worksite-command-execution/f16e9c04781bc14825335f6856f0fb6182b6c9f7e6947253543c0f2eef544c74/df2b05248f2d1ad6b9bdb0cd5b0e175d13143957fea6096f29257e10700a9024/sandbox",
+          "snapshotRootEqualsHelperPlanSandboxRoot": true,
+          "disposition": "success"
+        },
+        "commands": [
+          {
+            "commandId": "rustc-compile-service",
+            "executable": "/Users/jim/.cargo/bin/rustc",
+            "args": [
+              "--edition",
+              "2021",
+              "--crate-name",
+              "service",
+              "--out-dir",
+              "execution-evidence/rustc-check",
+              "src/service.rs"
+            ],
+            "relativeCwd": ".",
+            "environment": [
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "HOME",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LANG",
+                "schemaVersion": "5.0.0",
+                "value": "en_AU.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LC_ALL",
+                "schemaVersion": "5.0.0",
+                "value": "C.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "PATH",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim/.pyenv/versions/3.11.5/bin:/opt/homebrew/Cellar/pyenv/2.6.7/libexec:/opt/homebrew/Cellar/pyenv/2.6.7/plugins/python-build/bin:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/Library/TeX/texbin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/shims:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/jim/.codex-alt/tmp/arg0/codex-arg0lswucm:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/Users/jim/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin/flutter:/opt/homebrew/bin/flutter"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "TMPDIR",
+                "schemaVersion": "5.0.0",
+                "value": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/"
+              }
+            ],
+            "observationRef": "worksite-command-observation://abiogenesis/ed6f8a7d69eca21588b54f7971ee0e28ba1fba27f091917e546ee4d281fc5952",
+            "observationDigest": "sha256:ed6f8a7d69eca21588b54f7971ee0e28ba1fba27f091917e546ee4d281fc5952",
+            "exitStatus": 0,
+            "processSignal": null,
+            "timedOut": false,
+            "terminationConfirmed": true,
+            "timeoutMs": 120000,
+            "terminationGraceMs": 1000,
+            "stdout": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            },
+            "stderr": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            }
+          },
+          {
+            "commandId": "node-test-plan",
+            "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+            "args": [
+              "--test",
+              "test/component/rust-service.test.mjs",
+              "test/uat/rust-service.uat.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "environment": [
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "HOME",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LANG",
+                "schemaVersion": "5.0.0",
+                "value": "en_AU.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "LC_ALL",
+                "schemaVersion": "5.0.0",
+                "value": "C.UTF-8"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "PATH",
+                "schemaVersion": "5.0.0",
+                "value": "/Users/jim/.pyenv/versions/3.11.5/bin:/opt/homebrew/Cellar/pyenv/2.6.7/libexec:/opt/homebrew/Cellar/pyenv/2.6.7/plugins/python-build/bin:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/Library/TeX/texbin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/shims:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/Users/jim/.codex-alt/tmp/arg0/codex-arg0lswucm:/opt/homebrew/lib/node_modules/@openai/codex/node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/codex-path:/Users/jim/.grok/bin:/Users/jim/.bun/bin:/Users/jim/google-cloud-sdk/bin:/opt/homebrew/opt/openjdk/bin:/Users/jim/bin:/usr/local/opt/openjdk@17/bin:/Users/jim/.pyenv/bin:/opt/homebrew/opt/curl/bin:/opt/homebrew/opt/openssl/bin:/Users/jim/.local/bin:/opt/homebrew/bin:/Users/jim/.cargo/bin:/Applications/iTerm.app/Contents/Resources/utilities:/opt/homebrew/bin/flutter:/opt/homebrew/bin/flutter"
+              },
+              {
+                "kind": "worksite_command_environment_entry",
+                "name": "TMPDIR",
+                "schemaVersion": "5.0.0",
+                "value": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/"
+              }
+            ],
+            "observationRef": "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+            "observationDigest": "sha256:6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+            "exitStatus": 0,
+            "processSignal": null,
+            "timedOut": false,
+            "terminationConfirmed": true,
+            "timeoutMs": 120000,
+            "terminationGraceMs": 1000,
+            "stdout": {
+              "byteLength": 317,
+              "digest": "sha256:54f2ce541e15bb1d744d04b31ba209e1d4e233154318c40361bd16b61996da23",
+              "encoding": "base64"
+            },
+            "stderr": {
+              "byteLength": 0,
+              "digest": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "encoding": "base64"
+            }
+          }
+        ],
+        "declaredPredicates": [
+          {
+            "declaration": {
+              "equals": 0,
+              "validationCommandId": "rustc-compile-service"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 0,
+            "predicateId": "rustc-compile-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "equals": 0,
+              "validationCommandId": "node-test-plan"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 1,
+            "predicateId": "node-test-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "greaterThanOrEqual": 2,
+              "validationCommandId": "node-test-plan"
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 2,
+            "predicateId": "node-test-pass-floor",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "declaration": {
+              "equals": 1,
+              "selector": {
+                "includeSubstrings": [],
+                "includeSuffixes": [
+                  ".rs"
+                ],
+                "source": "protected_paths"
+              }
+            },
+            "kind": "worksite_outcome_predicate",
+            "ordinal": 3,
+            "predicateId": "single-rust-source-file",
+            "predicateKind": "file_count",
+            "schemaVersion": "5.0.0"
+          }
+        ],
+        "predicateObservations": [
+          {
+            "evidence": [
+              {
+                "digest": "sha256:ed6f8a7d69eca21588b54f7971ee0e28ba1fba27f091917e546ee4d281fc5952",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/ed6f8a7d69eca21588b54f7971ee0e28ba1fba27f091917e546ee4d281fc5952",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/ed6f8a7d69eca21588b54f7971ee0e28ba1fba27f091917e546ee4d281fc5952"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 0,
+            "ordinal": 0,
+            "predicateId": "rustc-compile-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 0,
+            "ordinal": 1,
+            "predicateId": "node-test-exit-zero",
+            "predicateKind": "process_exit",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+                "kind": "worksite_command_observation_coordinate",
+                "ref": "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 2,
+            "ordinal": 2,
+            "predicateId": "node-test-pass-floor",
+            "predicateKind": "test_pass_count",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "evidence": [
+              {
+                "digest": "sha256:cb43aade388509abff51e2ac2e7fd5f2b95e730a735889fc59ebe8abc821808b",
+                "kind": "worksite_observation_coordinate",
+                "ref": "worksite-observation://abiogenesis/cb43aade388509abff51e2ac2e7fd5f2b95e730a735889fc59ebe8abc821808b",
+                "schemaVersion": "5.0.0"
+              }
+            ],
+            "evidenceRefs": [
+              "worksite-observation://abiogenesis/cb43aade388509abff51e2ac2e7fd5f2b95e730a735889fc59ebe8abc821808b"
+            ],
+            "kind": "worksite_predicate_observation",
+            "observedValue": 1,
+            "ordinal": 3,
+            "predicateId": "single-rust-source-file",
+            "predicateKind": "file_count",
+            "schemaVersion": "5.0.0"
+          }
+        ],
+        "exactlyOneObservationPerDeclaredPredicate": true,
+        "allowedWriteTerritories": [
+          {
+            "kind": "worksite_command_write_territory",
+            "ordinal": 0,
+            "pathKind": "subtree",
+            "purpose": "execution_evidence",
+            "relativePath": "execution-evidence",
+            "schemaVersion": "5.0.0",
+            "territoryDigest": "sha256:ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1",
+            "territoryRef": "worksite-command-write-territory://abiogenesis/ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1"
+          }
+        ],
+        "productDelta": [],
+        "worksiteDelta": [
+          {
+            "after": {
+              "byteLength": null,
+              "digest": "sha256:333178788eae3e0b14c9b07bbbb6232bfa4689c7f134eeaa9daae60aba96de53",
+              "kind": "worksite_path_observation",
+              "nodeKind": "directory",
+              "relativePath": "execution-evidence",
+              "schemaVersion": "5.0.0",
+              "symlinkTarget": null
+            },
+            "before": null,
+            "changeKind": "created",
+            "kind": "worksite_path_delta",
+            "matchedTerritoryRef": "worksite-command-write-territory://abiogenesis/ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1",
+            "ordinal": 0,
+            "relativePath": "execution-evidence",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "after": {
+              "byteLength": null,
+              "digest": "sha256:333178788eae3e0b14c9b07bbbb6232bfa4689c7f134eeaa9daae60aba96de53",
+              "kind": "worksite_path_observation",
+              "nodeKind": "directory",
+              "relativePath": "execution-evidence/rustc-check",
+              "schemaVersion": "5.0.0",
+              "symlinkTarget": null
+            },
+            "before": null,
+            "changeKind": "created",
+            "kind": "worksite_path_delta",
+            "matchedTerritoryRef": "worksite-command-write-territory://abiogenesis/ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1",
+            "ordinal": 1,
+            "relativePath": "execution-evidence/rustc-check",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "after": {
+              "byteLength": 525320,
+              "digest": "sha256:ec45eae2ebf21fe3369a354cadbd44f5d4a5853dad7e52e7b62ec6b44126df6d",
+              "kind": "worksite_path_observation",
+              "nodeKind": "file",
+              "relativePath": "execution-evidence/rustc-check/service",
+              "schemaVersion": "5.0.0",
+              "symlinkTarget": null
+            },
+            "before": null,
+            "changeKind": "created",
+            "kind": "worksite_path_delta",
+            "matchedTerritoryRef": "worksite-command-write-territory://abiogenesis/ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1",
+            "ordinal": 2,
+            "relativePath": "execution-evidence/rustc-check/service",
+            "schemaVersion": "5.0.0"
+          },
+          {
+            "after": {
+              "byteLength": null,
+              "digest": "sha256:333178788eae3e0b14c9b07bbbb6232bfa4689c7f134eeaa9daae60aba96de53",
+              "kind": "worksite_path_observation",
+              "nodeKind": "directory",
+              "relativePath": "execution-evidence/tmp",
+              "schemaVersion": "5.0.0",
+              "symlinkTarget": null
+            },
+            "before": null,
+            "changeKind": "created",
+            "kind": "worksite_path_delta",
+            "matchedTerritoryRef": "worksite-command-write-territory://abiogenesis/ff4d0d486e43cfde78ee22bac417206db5bdf8f6231675000f5bd071166e05c1",
+            "ordinal": 3,
+            "relativePath": "execution-evidence/tmp",
+            "schemaVersion": "5.0.0"
+          }
+        ],
+        "originalPlan": {
+          "command": "node",
+          "args": [
+            "--test",
+            "test/component/rust-service.test.mjs",
+            "test/uat/rust-service.uat.test.mjs"
+          ],
+          "expectedTestPassCount": 2,
+          "expectedStdoutMatch": "fail 0",
+          "assertedReturnValue": "Hello, world!"
+        },
+        "originalPlanObserved": {
+          "commandObservationRef": "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+          "passes": 2,
+          "failures": 0,
+          "planArgsMatch": true,
+          "stdoutExpectationMatch": true,
+          "exitStatus": 0,
+          "stderrByteLength": 0,
+          "assertedReturnValue": "Hello, world!"
+        }
+      },
+      "preservedNativeStatus": {
+        "status": "unqualified_missing_independent_coverage",
+        "applicationCoverage": "non_closing",
+        "remainingGaps": [
+          "full_source_semantic_completeness_unassessed",
+          "application_requirements_not_closed",
+          "proof_depth_and_strength_unassessed"
+        ],
+        "ordinaryOracleInterpretation": [
+          {
+            "ordinal": 0,
+            "observationKind": "http_response",
+            "disposition": "unexecuted_probe",
+            "observations": [],
+            "semanticReview": "required",
+            "reason": "outside_direct_cli_interpretation",
+            "expected": {
+              "observationKind": "http_response",
+              "method": "GET",
+              "host": "127.0.0.1",
+              "portSelection": "system_assigned",
+              "path": "/hello",
+              "status": 200,
+              "body": "Hello, world!\n",
+              "cleanExitAfterRequests": 1
+            }
+          }
+        ]
+      },
+      "boundedSemanticDispositionRecommendation": "accept_original_case_outcome",
+      "limits": "One completed attempt; no general ABG/GLC qualification, stochastic reliability or rewrite of native terminal status."
+    }
+  ],
+  "authorityRefs": [
+    {
+      "path": "/Users/jim/src/apps/AGENTS.md",
+      "rawFileDigest": "sha256:158a3f7a48e0cc21f9251a59439f81c299eb851d1d2f7a0ea06c5ba7f9a7556a",
+      "relevantSelection": null
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/AGENTS.md",
+      "rawFileDigest": "sha256:06304989adf8e27244946493c7554ebcbd84a229e9354815f8dbcc8a5a94b26c",
+      "relevantSelection": null
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/AGENTS.md",
+      "rawFileDigest": "sha256:a186502d178617742dbdab05a6a636aaaa45d5754bc1eec1aa75e6fc90c305f2",
+      "relevantSelection": null
+    },
+    {
+      "path": "/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript/design/ABI5_PROJECT_REFERENCE_FRAME_BASIS.md",
+      "rawFileDigest": "sha256:ff10c44e9efe12757e0babf5c5c19c0acf7cf699afd92f96bba08dac2c5230b8",
+      "relevantSelection": "f-end-to-end-interface-integration"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+      "rawFileDigest": "sha256:70b91e438ab58907b21b638d788fad94b5bd8f1518fdae6b293a1994903bb134",
+      "relevantSelection": "434-442"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/specification/requirements/REQ-GLC-WORKSITE-LIFECYCLE.md",
+      "rawFileDigest": "sha256:244db21118afa33e343bec0399c0701fecea6e181511e531cb5f3d10fc24d142",
+      "relevantSelection": "REQ-GLC-WORKSITE-LIFECYCLE-013"
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/specification/requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md",
+      "rawFileDigest": "sha256:895ea02f39bf1ec100e72084229f46ca49ec31cf456eaa0e0addc194cbe6e03b",
+      "relevantSelection": "REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS-018 through -023"
+    }
+  ]
+}

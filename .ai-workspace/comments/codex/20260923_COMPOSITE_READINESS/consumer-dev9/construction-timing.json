@@ -1,0 +1,13 @@
+{
+  "nominalCoreVerificationMs": 8785.639542,
+  "constructionAndPackMs": 157.8941249999989,
+  "offlineInstallMs": 139.5220419999987,
+  "totalMs": 9084.371125,
+  "memory": {
+    "rss": 1421344768,
+    "heapTotal": 1169342464,
+    "heapUsed": 1044414920,
+    "external": 78123723,
+    "arrayBuffers": 75735004
+  }
+}

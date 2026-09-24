@@ -1,0 +1,270 @@
+{
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/events/runtime.events.jsonl": {
+    "sha256": "bce5aace14970d88daf66212fe515c81bb2137042438d3e58d646a76f36208d4",
+    "byteLength": 159173174
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/original-js-tenant-test-declaration.txt": {
+    "sha256": "3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9",
+    "byteLength": 3655
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/lifecycle-rubric.json": {
+    "sha256": "c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+    "byteLength": 16810
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-0.json": {
+    "sha256": "97f7e9a65ee20f6247391a548c00967208d7424a11f7dfa6ab1d4c15e4510a55",
+    "byteLength": 22271
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-1.json": {
+    "sha256": "d44eaf5873533c9f5930e25e54d7937c1557fc75983887c8c7d2c818924af040",
+    "byteLength": 35752
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-2.json": {
+    "sha256": "a3c41035eeac128abfb61ba5a69bf25a25e3eec12e98b21b2b468ac492c0e35c",
+    "byteLength": 78600
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-3.json": {
+    "sha256": "a189e47fe619306db3ecddbf66992de8a1fb01e405cb311b3f3d076d70637052",
+    "byteLength": 92577
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/stage-4.json": {
+    "sha256": "1b4bc625594e7b4d9428cc7a24b58c7f33393e02d6d896c5ba5b8989e1cb13bd",
+    "byteLength": 85026
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/specification/project-conformance.md": {
+    "sha256": "3cc8fb39cd6ae8b4d699ed97d87b7bff57f6bdbf2e581f78ba3256a4453e48c3",
+    "byteLength": 1629
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/design/implementation-design.md": {
+    "sha256": "41c71719f4c7f781ff88a3e14455df39081be09473972aa47b218f3d9e9dffaf",
+    "byteLength": 1255
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/package.json": {
+    "sha256": "609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8",
+    "byteLength": 42
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/src/hello.mjs": {
+    "sha256": "de6b9985072776a0c39f2862dc64c27f56e28ca72eb8a18f83c1e26fb0610e68",
+    "byteLength": 59
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/design/test-design.md": {
+    "sha256": "792d0aa4519f06c0332e96571822f9dbc56e8a60a8af40bd7109b7072009cc05",
+    "byteLength": 1235
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/test/component/hello.test.mjs": {
+    "sha256": "3ce47697d27f95428fc79d7e9108f3d66aa0589fe2d18998fe0c5ddd1c35e203",
+    "byteLength": 253
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/test/uat/hello.uat.test.mjs": {
+    "sha256": "519f77c0efc1fada0f5b32b07919151a4214b05159c363115526dfff637050a4",
+    "byteLength": 264
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/test-execution-plan.json": {
+    "sha256": "4f2fccd656ae883f860ffd80c697b6110332ac3ad28d4026585996efdf2bffb0",
+    "byteLength": 217
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/verification/lifecycle-surface-content.check.mjs": {
+    "sha256": "2a417167520c44c962a7d24401a56b0f126b011c6ff4c9bc3591d1aba31528e8",
+    "byteLength": 4763
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl": {
+    "sha256": "0bf8b684c95e256f9daa40c25abaa0a9d945a974b12d6a93d572b8a9bcc7e2e9",
+    "byteLength": 104482827
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/original-js-sdlc-bootstrap-declaration.txt": {
+    "sha256": "c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4",
+    "byteLength": 6120
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/semantic-assets/lifecycle-rubric.json": {
+    "sha256": "c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+    "byteLength": 16810
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/semantic-assets/stage-0.json": {
+    "sha256": "9f9003ed19bdeb7a43616baa2c5c28daaeabc2b932947db52a302e6773a82ffa",
+    "byteLength": 32404
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/semantic-assets/stage-1.json": {
+    "sha256": "37cd402698f52fd722a6f00b20566e03c8037daeef7ce10fb5f53744c26fec9a",
+    "byteLength": 47430
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/semantic-assets/stage-2.json": {
+    "sha256": "bb93b54aed07ea9c68a91d1aa152b80f972d08ee4523ffc0421cc68b0d7d5fc1",
+    "byteLength": 106895
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/events/runtime.events.jsonl": {
+    "sha256": "fd4fcb9db374bc13f166f6e302cfdf35f24f0685122c008468030333f5de4ed6",
+    "byteLength": 86849309
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/original-rust-cli-declaration.txt": {
+    "sha256": "d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81",
+    "byteLength": 3816
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/semantic-assets/lifecycle-rubric.json": {
+    "sha256": "c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+    "byteLength": 16810
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/semantic-assets/stage-0.json": {
+    "sha256": "c281108b3e2e0f0d10984dc9a62ea0cd5dab4928ffc82cccf17a189d27e9c3ac",
+    "byteLength": 27110
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/semantic-assets/stage-1.json": {
+    "sha256": "cdcef8794f20341cd858c26d630a5d9b2954eb3ff271106a99f2335a53c4bd1d",
+    "byteLength": 39977
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/semantic-assets/stage-2.json": {
+    "sha256": "1af1b125549c0ec0711bf50710c4a50cd57d5e5d3aa0b57a8bafe43e0596e84e",
+    "byteLength": 77251
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/events/runtime.events.jsonl": {
+    "sha256": "a03fa7f5275f3f69b622746128c10e0f7ac2b182aeda8a6279a99939c99c006b",
+    "byteLength": 247887147
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/original-rust-service-declaration.txt": {
+    "sha256": "a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d",
+    "byteLength": 4175
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/lifecycle-rubric.json": {
+    "sha256": "c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+    "byteLength": 16810
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-0.json": {
+    "sha256": "9c4c54baef4b7df84d42ccbdf0a157c6470d9c14cbfc807aa480d83dd4b8e76f",
+    "byteLength": 25966
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-1.json": {
+    "sha256": "1b13b4f5ff330694f2e26686aed848a04cba1218bdae42d891bbfe09fffdd708",
+    "byteLength": 39373
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-2.json": {
+    "sha256": "3fc1452a8d0a00230c59daa4cdc9e3d68c2ccdb96fd0ded2877de46e708e418c",
+    "byteLength": 95166
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-3.json": {
+    "sha256": "a7f96742a9ff8855a0ad058dbc827379fc0800ed9de394699ef0d213b0fbd3a2",
+    "byteLength": 99896
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/stage-4.json": {
+    "sha256": "00605fabd8d043ee0c3e133f61357e20d40293c5948778e41c856230b65495e4",
+    "byteLength": 103657
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/specification/project-conformance.md": {
+    "sha256": "9828c3379e20261c80fafbe6b2b51b971fc57da45b5fb516b6d28fe9d907b3e0",
+    "byteLength": 3580
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/design/implementation-design.md": {
+    "sha256": "cf916ece06871500621a695e2ee9b8e497cf47c5c2f64ec5b67374fb20b87896",
+    "byteLength": 4984
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/src/service.rs": {
+    "sha256": "e83842332cd2dda4b7a28967bd5dd9f65ad0e55cd9134d0ae296d74c3dadebd5",
+    "byteLength": 3611
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/design/test-design.md": {
+    "sha256": "3184760f3494ff3ab936af77d99b22405a0b871dc4290203ad5a0f805e19bac4",
+    "byteLength": 4458
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/test/component/rust-service.test.mjs": {
+    "sha256": "698ae8847bc3f91f0e5ba9b9bc368b4f15322fd122cbfb50ad751285c6ff0aff",
+    "byteLength": 4583
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/test/uat/rust-service.uat.test.mjs": {
+    "sha256": "697561681c28935ed82831b90b2f82e0fd97fc5f8b9f6d7782c9916520ea37fb",
+    "byteLength": 4535
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/test-execution-plan.json": {
+    "sha256": "c2d8a9d36af54bf7ad92735e5bcb32aeab1b6aaf3f0d116b0fc7c462dcd5faf9",
+    "byteLength": 247
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/events/runtime.events.jsonl": {
+    "sha256": "8f95788842dc8dfe6a02554a33c408f53b70fdce1ef82a0b4f78e5a3f6260c9b",
+    "byteLength": 151460939
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/original-parallel-js-declaration.txt": {
+    "sha256": "d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053",
+    "byteLength": 4285
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/semantic-assets/lifecycle-rubric.json": {
+    "sha256": "c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+    "byteLength": 16810
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/semantic-assets/stage-0.json": {
+    "sha256": "b079f6f3ba1b291db18952699cec347ea3da8bcd3fa922e625c6745403747acb",
+    "byteLength": 26082
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/semantic-assets/stage-1.json": {
+    "sha256": "b842bf5073490a355154ccc389f0b2ee991d1c290a761b4c822e6580b5c12b98",
+    "byteLength": 37726
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/semantic-assets/stage-2.json": {
+    "sha256": "1201d000abf21ae544e5429e2ae3bf7079ea4cd3be60d87d4b519feb4c7b50c2",
+    "byteLength": 91236
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/semantic-assets/stage-3.json": {
+    "sha256": "c70df08889f3616de2b7780c166b04c2ddc00611abcdfb03713e043a34add1ae",
+    "byteLength": 88062
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/specification/project-conformance.md": {
+    "sha256": "e94abd3e8ee154d2f5c11c780f24d144fe647d4b5615244a890f0e49b6e95568",
+    "byteLength": 1984
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/design/implementation-design.md": {
+    "sha256": "299b4a8a3819e8dc8f8d08225fd4afb4980aaab44f643510a69c308aa57678d3",
+    "byteLength": 2654
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/design/test-design.md": {
+    "sha256": "e5a65683bd1c0bbe8d4391b192fea6bc0471fa40cb7925900b222d9f39d0e880",
+    "byteLength": 5423
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/package.json": {
+    "sha256": "d02836298858858f52f01f58c6afc45f02db04d86adad0fb3bba92ed1abb53f0",
+    "byteLength": 36
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/src/hello.mjs": {
+    "sha256": "a323daa9a6350fd4daf91a9408ca817a76958c8d86337fdab3b7e44a14ba640b",
+    "byteLength": 50
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/src/world.mjs": {
+    "sha256": "8610f0b8243c0ce4df2ab78062af84bb1533d90048f61eb52ef615b4202f6885",
+    "byteLength": 50
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/src/index.mjs": {
+    "sha256": "c9013482fcef8e86024865ae98b86129082d5711e35f234460c56b52c5788ea4",
+    "byteLength": 165
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/component/parallel-branches.test.mjs": {
+    "sha256": "4f23bf2cf8d72f96968e7dc8d17ac3d5a8096f664789da21a90fd637bdc7748a",
+    "byteLength": 375
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/uat/parallel-fanin.uat.test.mjs": {
+    "sha256": "a08c8025b8049434a299b9e0b1c62ef2d572a7cfe634efa20d5387c4c49a0552",
+    "byteLength": 244
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test-execution-plan.json": {
+    "sha256": "931e3f9d9b422c52295ad13563a7e6277b0046909095b35a2117b6e9417f23d9",
+    "byteLength": 240
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/conformance/fan-in-composition.test.mjs": {
+    "sha256": "1d595e65779b8ef2fad250931638df624b425f16ac03820095b99e08501dc5d4",
+    "byteLength": 1846
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/conformance/source-layout.test.mjs": {
+    "sha256": "19ed870d824e5b16ee73cf27993ceeaaef8aa355c34eb6df5a5f3ab52cc9f442",
+    "byteLength": 2055
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/conformance/package-manifest.test.mjs": {
+    "sha256": "6f666338a7a427f332a0c908f2ef4b26df1a52ed1ebb56819af260557d240201",
+    "byteLength": 789
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/conformance/subject-documents.test.mjs": {
+    "sha256": "add0d5e34fd708eeccabb6afd2c520e3bcae6af8cd5726fcd9e96b884874ff83",
+    "byteLength": 1469
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/conformance/verifier-structure.test.mjs": {
+    "sha256": "35c1781e39809583a04eb0363d231c488348ec3514b53002284cf6b1bc7fb72f",
+    "byteLength": 1847
+  },
+  ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/test/conformance/execution-plan.test.mjs": {
+    "sha256": "624301a9bd8aa0b31d92c71bcb3ec177a956f75dbd4f201345832e9175ad7d8d",
+    "byteLength": 1408
+  }
+}

@@ -466,7 +466,9 @@ export async function prepareFullSandbox({ runRoot, candidatePath, configuration
   // not run intake, a semantic stage, C0, C1 or C2.
   for (const ordinary of inputs) {
     const jobRoot = join(scratch, "jobs", ordinary.key), workspaceRoot = join(scratch, "subject-" + ordinary.key);
-    const input = constructOrdinaryJobInput({ product, gtl, input: ordinary, executable, executableCapabilities: configuration.executableCapabilities, ...(freshNative ? { lifecycle } : {}) });
+    const input = constructOrdinaryJobInput({ product, gtl, input: ordinary, executable, executableCapabilities: configuration.executableCapabilities,
+      ...(freshNative ? { lifecycle, commandExecutionLimits: { inactivityTimeoutMs: transport.configuration.inactivityMs,
+        absoluteTimeoutMs: transport.configuration.absoluteMs } } : {}) });
     await save(jobRoot, "ordinary-input.json", input);
     const created = await invoke(await authorized(product.WORKSPACE_OPERATION_SOURCE_DECLARATIONS.create.clean,
       { targetRoot: workspaceRoot, createPolicy: "clean", scaffoldPolicy: "none" },
@@ -573,12 +575,14 @@ export async function continueFullSandboxPreparation({ runRoot, candidatePath, c
   const jobRoot = join(scratch, "jobs", key), workspaceRoot = environment.workspaceAuthorityBasis.canonicalRoot, roots = environment.workspaceBinding.roots;
   const ordinary = (await ordinarySandboxInputs(product, [key])).find(input => input.key === key); assert.ok(ordinary);
   const input = await read(join(jobRoot, "ordinary-input.json"));
-  assert.deepEqual(input, constructOrdinaryJobInput({ product, gtl, input: ordinary, executable: await realpath(process.execPath), executableCapabilities: configuration.executableCapabilities, lifecycle }));
+  const transport = await assertFullSandboxTransportUnchanged(await read(join(scratch, "transport-basis.json")), { product, abg });
+  assert.deepEqual(input, constructOrdinaryJobInput({ product, gtl, input: ordinary, executable: await realpath(process.execPath), executableCapabilities: configuration.executableCapabilities, lifecycle,
+    ...(input.taskData.nativeLifecycle.commandExecutionLimits === undefined ? {} : { commandExecutionLimits: {
+      inactivityTimeoutMs: transport.configuration.inactivityMs, absoluteTimeoutMs: transport.configuration.absoluteMs } }) }));
   for (const member of input.members) assert.deepEqual(await readFile(join(workspaceRoot, member.path)), Buffer.from(member.base64, "base64"));
   assert.equal(await readFile(join(workspaceRoot, input.taskData.nativeLifecycle.rubricPath), "utf8"), product.canonicalJson(lifecycle) + "\n");
   const runEnvironment = gtl.constructRunEnvironmentDeclaration(configuration.runEnvironment);
   assert.deepEqual(publication.runEnvironments, [runEnvironment]);
-  const transport = await assertFullSandboxTransportUnchanged(await read(join(scratch, "transport-basis.json")), { product, abg });
   const cliPath = join(abiRoot, "build/code/src/public/cli.js");
   const callerState = { ordinal: 10, closeHandoff, calls, cliPath, product, installedPublic, retainedFailures: 1 };
   const setup = fullSandboxSetupCalls({ scratch, abiArtifact, abiRequest, hash, coord, calls, state: callerState });

@@ -1,0 +1,91 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "e7cc69fcd8a7c10a4cf13f0ec40915b64bae9d8d",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 711
+  },
+  "archiveMemberCount": 711,
+  "archiveMemberBytes": 2302309983,
+  "transportBytes": 319344613,
+  "assets": [
+    {
+      "id": "raw-59fc3d6c8c0d3251e384e1af3f0c3a5e2084f1f9200a75c9d68d875e26ed2cf5",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 17707,
+      "sha256": "59fc3d6c8c0d3251e384e1af3f0c3a5e2084f1f9200a75c9d68d875e26ed2cf5",
+      "parts": [
+        {
+          "path": "payloads/raw-59fc3d6c8c0d3251e384e1af3f0c3a5e2084f1f9200a75c9d68d875e26ed2cf5.part0000",
+          "byteLength": 17707,
+          "sha256": "59fc3d6c8c0d3251e384e1af3f0c3a5e2084f1f9200a75c9d68d875e26ed2cf5"
+        }
+      ]
+    },
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS",
+      "byteLength": 44799,
+      "sha256": "001051f1556943f6008794487796b0586f24d5dd25e344a84d5c8d0a8b2b0b1e",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 44799,
+          "sha256": "001051f1556943f6008794487796b0586f24d5dd25e344a84d5c8d0a8b2b0b1e"
+        }
+      ]
+    },
+    {
+      "id": "family-0001",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE",
+      "byteLength": 319282107,
+      "sha256": "2176f033acaef7b694b506e2794798499ead8d0c659be4c3dd4f418b96247a6e",
+      "parts": [
+        {
+          "path": "payloads/family-0001.tar.gz.part0000",
+          "byteLength": 51380224,
+          "sha256": "ab1a8237558b1f99eeae4acc9ddbcc6f2cfdcb847f7f5ef2d7c9bb580901c16c"
+        },
+        {
+          "path": "payloads/family-0001.tar.gz.part0001",
+          "byteLength": 51380224,
+          "sha256": "1294e7b8c39c0d0962eff4e39461b18b5add7aa889ddc4e24358e99af3ccb32e"
+        },
+        {
+          "path": "payloads/family-0001.tar.gz.part0002",
+          "byteLength": 51380224,
+          "sha256": "37e39ae46730367dd3882a8ea084355c81e227eadafaec83e8cf552880b7e353"
+        },
+        {
+          "path": "payloads/family-0001.tar.gz.part0003",
+          "byteLength": 51380224,
+          "sha256": "25cb42541d6a4dd564467eb9136aa7041d64e6b6c618e244dade4910d864a5e3"
+        },
+        {
+          "path": "payloads/family-0001.tar.gz.part0004",
+          "byteLength": 51380224,
+          "sha256": "6cba09840ea48f5d9b3c5cfd86c56653e699af2c70209cc1af187756ebcf8988"
+        },
+        {
+          "path": "payloads/family-0001.tar.gz.part0005",
+          "byteLength": 51380224,
+          "sha256": "22a0dd7e128d742b7cfb26a89d6c3faedcfb8634300ad690d335843ae5da49b5"
+        },
+        {
+          "path": "payloads/family-0001.tar.gz.part0006",
+          "byteLength": 11000763,
+          "sha256": "b033e5f3f1494b5cfd098079f7f4908dc2e263dd90f119006b0ddec7e519b349"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "d64881ee77fb52a56ec11b896e8e2a2d04edc35999b635c50aff2a5034330ba6",
+  "reconciliationSha256": "673c03e134b20c4d5bb7a30df2ee8cd0bed808ad37fb1a019d9f12866ac2a9bb",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

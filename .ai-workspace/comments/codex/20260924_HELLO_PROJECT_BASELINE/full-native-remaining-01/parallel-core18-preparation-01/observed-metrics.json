@@ -1,0 +1,1373 @@
+{
+  "status": "CLOSED",
+  "closedAt": "2026-09-24T11:30:12.293782+00:00",
+  "scope": "Five original full Hello native starts on core18/dev8; no retries. Typed outcome, process exit and observational qualification remain distinct.",
+  "coreArchiveDigest": "sha256:64093fb74a474c7e246333975c556c4cb34797326dbc81d1c5929455a69498bb",
+  "consumerArchiveDigest": "sha256:aef3df7a43da5d8af620c624a4c88f5eb30b6de26437458a8fd81156b6d877c9",
+  "actorsTotal": 44,
+  "reportedCostUsdTotal": 80.09306819999999,
+  "costScope": "Provider list-cost report, not billing. No fallback or automatic API retries.",
+  "cases": [
+    {
+      "key": "js-tenant-test",
+      "status": "CLOSED",
+      "nativeDisposition": "completed",
+      "run": {
+        "digest": "sha256:e29cf95f6b66ec45e6ae6c386c8c3db2c72830ff3a353c45dfb68d3353f1ca36",
+        "ref": "run://abiogenesis/38e63bcb54ea33cdd6b786b13a3e3a4eba99c5bf60a3384c179949da0328715d"
+      },
+      "result": {
+        "digest": "sha256:576c4da5f7be7a41eb9a458c97c7781b60dab5f50252161f9a65100bcacdc73c",
+        "ref": "result://abiogenesis/576c4da5f7be7a41eb9a458c97c7781b60dab5f50252161f9a65100bcacdc73c"
+      },
+      "stop": null,
+      "entryPrefix": {
+        "coordinateDigest": "sha256:7b93461c8b93913168492b31d94e781895441f31be6c08352fa41a5ae1decd41",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:2a2ae8cdb88be4d9dbbce94047d5b8cb5f922be9ec03f81bb2d7ae025f79e32a",
+        "prefixLength": 2310357,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405016
+        }
+      },
+      "closePrefix": {
+        "coordinateDigest": "sha256:7e3a810d64f3be893cf58f3f250e827242c3f3ab4429409fc64b61266f293089",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:bce5aace14970d88daf66212fe515c81bb2137042438d3e58d646a76f36208d4",
+        "prefixLength": 159173174,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405016
+        }
+      },
+      "journalGrowthBytes": 156862817,
+      "processes": {
+        "setup": {
+          "key": "js-tenant-test",
+          "exitCode": 1,
+          "startedAt": "2026-09-24T10:07:13.747606+00:00",
+          "finishedAt": "2026-09-24T10:08:44.505172+00:00",
+          "elapsedSeconds": 90.76025179214776,
+          "peakRssBytes": 2825043968
+        },
+        "setup-tail": {
+          "key": "js-tenant-test",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:10:36.979873+00:00",
+          "finishedAt": "2026-09-24T10:12:14.698683+00:00",
+          "elapsedSeconds": 97.7217026669532,
+          "peakRssBytes": 3228254208
+        },
+        "run": {
+          "key": "js-tenant-test",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:12:54.246923+00:00",
+          "finishedAt": "2026-09-24T11:16:08.975180+00:00",
+          "elapsedSeconds": 3794.523085374851,
+          "peakRssBytes": 4116611072
+        },
+        "readback": {
+          "key": "js-tenant-test",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T11:17:14.930956+00:00",
+          "finishedAt": "2026-09-24T11:19:32.580325+00:00",
+          "elapsedSeconds": 137.6498944577761,
+          "peakRssBytes": 2469986304
+        }
+      },
+      "actorCount": 12,
+      "actorDurationSeconds": 3585.847,
+      "apiDurationSeconds": 3323.513,
+      "nonActorDurationRemainderSeconds": 208.67608537485057,
+      "remainderScope": "Subtraction of provider-reported actor durations from launcher elapsed; not isolated attribution. API time is nested in actor duration.",
+      "reportedCostUsd": 22.150928399999998,
+      "apiRetryCount": 0,
+      "providerModels": [
+        "claude-opus-5-5"
+      ],
+      "actorTransports": [
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-1899603e6278570f-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-37ec4d01fbf0c99e-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-78bdab0eb073caea-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-585a1dcd7f3f94f1-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-0c64f35191519724-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-79428b5317f989b4-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-a1a7a8556b0c052e-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-de8c85dbf3bd3825-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-95f31500f08401bd-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-fbc2d6c590e4d749-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-9e257e7bc101edc6-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/archives/fp-8ddbf185414089d7-transport.json"
+      ],
+      "actorStdoutBytes": 15421929,
+      "protectedInputs": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/original-js-tenant-test-declaration.txt",
+          "sha256": "sha256:3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9",
+          "currentSha256": "sha256:3dcf38f9d4e0ddbbdc2124d3b0deeb2aa87a1b7a2284ef0246a7e2ebfdade7b9",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-tenant-test/subject-js-tenant-test/semantic-assets/lifecycle-rubric.json",
+          "sha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "currentSha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-tenant-test.oracle.json",
+          "sha256": "sha256:55658e3343d7b27a553dbf38118052e60f9b27d977c3992ea13131ce5eebd58e",
+          "unchanged": true
+        }
+      ],
+      "createdSemanticDestinations": [
+        {
+          "path": "semantic-assets/stage-0.json",
+          "byteLength": 22271,
+          "sha256": "sha256:97f7e9a65ee20f6247391a548c00967208d7424a11f7dfa6ab1d4c15e4510a55"
+        },
+        {
+          "path": "semantic-assets/stage-1.json",
+          "byteLength": 35752,
+          "sha256": "sha256:d44eaf5873533c9f5930e25e54d7937c1557fc75983887c8c7d2c818924af040"
+        },
+        {
+          "path": "semantic-assets/stage-2.json",
+          "byteLength": 78600,
+          "sha256": "sha256:a3c41035eeac128abfb61ba5a69bf25a25e3eec12e98b21b2b468ac492c0e35c"
+        },
+        {
+          "path": "semantic-assets/stage-3.json",
+          "byteLength": 92577,
+          "sha256": "sha256:a189e47fe619306db3ecddbf66992de8a1fb01e405cb311b3f3d076d70637052"
+        },
+        {
+          "path": "semantic-assets/stage-4.json",
+          "byteLength": 85026,
+          "sha256": "sha256:1b4bc625594e7b4d9428cc7a24b58c7f33393e02d6d896c5ba5b8989e1cb13bd"
+        }
+      ],
+      "applicationFiles": [
+        {
+          "path": "specification/project-conformance.md",
+          "byteLength": 1629,
+          "sha256": "sha256:3cc8fb39cd6ae8b4d699ed97d87b7bff57f6bdbf2e581f78ba3256a4453e48c3"
+        },
+        {
+          "path": "design/implementation-design.md",
+          "byteLength": 1255,
+          "sha256": "sha256:41c71719f4c7f781ff88a3e14455df39081be09473972aa47b218f3d9e9dffaf"
+        },
+        {
+          "path": "package.json",
+          "byteLength": 42,
+          "sha256": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8"
+        },
+        {
+          "path": "src/hello.mjs",
+          "byteLength": 59,
+          "sha256": "sha256:de6b9985072776a0c39f2862dc64c27f56e28ca72eb8a18f83c1e26fb0610e68"
+        },
+        {
+          "path": "design/test-design.md",
+          "byteLength": 1235,
+          "sha256": "sha256:792d0aa4519f06c0332e96571822f9dbc56e8a60a8af40bd7109b7072009cc05"
+        },
+        {
+          "path": "test/component/hello.test.mjs",
+          "byteLength": 253,
+          "sha256": "sha256:3ce47697d27f95428fc79d7e9108f3d66aa0589fe2d18998fe0c5ddd1c35e203"
+        },
+        {
+          "path": "test/uat/hello.uat.test.mjs",
+          "byteLength": 264,
+          "sha256": "sha256:519f77c0efc1fada0f5b32b07919151a4214b05159c363115526dfff637050a4"
+        },
+        {
+          "path": "test-execution-plan.json",
+          "byteLength": 217,
+          "sha256": "sha256:4f2fccd656ae883f860ffd80c697b6110332ac3ad28d4026585996efdf2bffb0"
+        },
+        {
+          "path": "verification/lifecycle-surface-content.check.mjs",
+          "byteLength": 4763,
+          "sha256": "sha256:2a417167520c44c962a7d24401a56b0f126b011c6ff4c9bc3591d1aba31528e8"
+        }
+      ],
+      "commandResults": [
+        {
+          "commandId": "planned-node-test",
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "args": [
+            "--test",
+            "test/component/hello.test.mjs",
+            "test/uat/hello.uat.test.mjs"
+          ],
+          "exitStatus": 0,
+          "timedOut": false,
+          "terminationConfirmed": true,
+          "timeoutMs": 60000,
+          "terminationGraceMs": 1000
+        },
+        {
+          "commandId": "component-suite-node-test",
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "args": [
+            "--test",
+            "test/component/hello.test.mjs"
+          ],
+          "exitStatus": 0,
+          "timedOut": false,
+          "terminationConfirmed": true,
+          "timeoutMs": 60000,
+          "terminationGraceMs": 1000
+        },
+        {
+          "commandId": "uat-suite-node-test",
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "args": [
+            "--test",
+            "test/uat/hello.uat.test.mjs"
+          ],
+          "exitStatus": 0,
+          "timedOut": false,
+          "terminationConfirmed": true,
+          "timeoutMs": 60000,
+          "terminationGraceMs": 1000
+        },
+        {
+          "commandId": "lifecycle-surface-content-check",
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "args": [
+            "--test",
+            "verification/lifecycle-surface-content.check.mjs"
+          ],
+          "exitStatus": 0,
+          "timedOut": false,
+          "terminationConfirmed": true,
+          "timeoutMs": 60000,
+          "terminationGraceMs": 1000
+        }
+      ],
+      "publicReadback": {
+        "prefix": {
+          "coordinateDigest": "sha256:7e3a810d64f3be893cf58f3f250e827242c3f3ab4429409fc64b61266f293089",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/events/runtime.events.jsonl",
+          "kind": "durable_prefix_coordinate",
+          "prefixDigest": "sha256:bce5aace14970d88daf66212fe515c81bb2137042438d3e58d646a76f36208d4",
+          "prefixLength": 159173174,
+          "schemaVersion": "5.0.0",
+          "storeIdentity": {
+            "device": 16777230,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "inode": 459405016
+          }
+        },
+        "publicReads": [
+          {
+            "memberKey": "run_result",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 67817.96245800001,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/read-run_result.json",
+            "resultDigest": "sha256:995bc4452d31e5cc0b925fa0f402471080095a626bc8ed27cafc98fb95261d62"
+          },
+          {
+            "memberKey": "run_replay",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 68939.18370899999,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/read-run_replay.json",
+            "resultDigest": "sha256:e05a26222f6ad77633a59e049186b3dd7eedfae637f247a298e68d569c55f390"
+          }
+        ]
+      },
+      "observationalStatus": "unqualified_missing_independent_coverage",
+      "applicationCoverage": "non_closing",
+      "remainingGaps": [
+        "full_source_semantic_completeness_unassessed",
+        "application_requirements_not_closed",
+        "proof_depth_and_strength_unassessed"
+      ],
+      "assessedStageRefs": [
+        "stage://odd-glc/generic-lifecycle/intent@5",
+        "stage://odd-glc/generic-lifecycle/product@5",
+        "stage://odd-glc/generic-lifecycle/requirements@5",
+        "stage://odd-glc/generic-lifecycle/design@5",
+        "stage://odd-glc/generic-lifecycle/evidence@5"
+      ],
+      "ordinaryObservation": {
+        "disposition": "unqualified",
+        "applicationQualification": "unqualified_missing_independent_coverage",
+        "cases": [
+          {
+            "ordinal": 0,
+            "observationKind": "module_return",
+            "disposition": "unexecuted_probe",
+            "observations": [],
+            "semanticReview": "required",
+            "reason": "outside_direct_cli_interpretation",
+            "expected": {
+              "observationKind": "module_return",
+              "modulePath": "src/hello.mjs",
+              "exportName": "helloWorld",
+              "arguments": [],
+              "returnValue": "Hello, world!"
+            }
+          }
+        ],
+        "testCommands": [
+          {
+            "observationRef": "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+            "args": [
+              "--test",
+              "test/component/hello.test.mjs",
+              "test/uat/hello.uat.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "disposition": "observed_pass",
+            "testPasses": 2,
+            "testFailures": 0
+          },
+          {
+            "observationRef": "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+            "args": [
+              "--test",
+              "test/component/hello.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "disposition": "observed_pass",
+            "testPasses": 1,
+            "testFailures": 0
+          },
+          {
+            "observationRef": "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+            "args": [
+              "--test",
+              "test/uat/hello.uat.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "disposition": "observed_pass",
+            "testPasses": 1,
+            "testFailures": 0
+          },
+          {
+            "observationRef": "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883",
+            "args": [
+              "--test",
+              "verification/lifecycle-surface-content.check.mjs"
+            ],
+            "relativeCwd": ".",
+            "disposition": "observed_pass",
+            "testPasses": 9,
+            "testFailures": 0
+          }
+        ],
+        "minimumTestPasses": {
+          "required": 2,
+          "observed": 13,
+          "disposition": "met"
+        },
+        "semanticReview": {
+          "disposition": "required",
+          "requiredTestRoles": [
+            "component",
+            "user_acceptance"
+          ],
+          "commandObservationRefs": [
+            "worksite-command-observation://abiogenesis/cef6a0fefe3c255c132fc62071cf680792decc51ee153c881734a14bf0ae1911",
+            "worksite-command-observation://abiogenesis/25e5954752c01ed57dcbda057551a955eda5a7f7e560081b57edbab4bbfed08e",
+            "worksite-command-observation://abiogenesis/cc533c01167835b0eca6280edbea429d753041c4ba9c55815fbd683bea5589a7",
+            "worksite-command-observation://abiogenesis/bbb59c991fcc22c32ea451b23c8ad03d62838cb3f37b9697b6e4d8c465259883"
+          ],
+          "questions": [
+            "Do the protected verifier artifacts actually exercise the application and required behaviors?",
+            "Did the admitted execution select and execute the required component/UAT verification, including lawful discovery?",
+            "Do governing/design artifacts preserve all original obligations, and which independent probes remain absent?"
+          ]
+        }
+      },
+      "evidencePaths": {
+        "liveReceipt": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/live-receipt.json",
+        "publicReadback": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/public-readback.json",
+        "fullResultProof": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-tenant-test/jobs/js-tenant-test/full-result-proof.json",
+        "causalCapsule": null
+      },
+      "nativeBudgetMs": 5400000,
+      "readbackBudgetMs": 600000,
+      "limitsUnchanged": true
+    },
+    {
+      "key": "js-sdlc-bootstrap",
+      "status": "CLOSED",
+      "nativeDisposition": "blocked",
+      "run": {
+        "digest": "sha256:e338bb18f7d07f6f2e417873b65ebdd5ec1a20192eb689ad88a0c910bcbcacad",
+        "ref": "run://abiogenesis/3b04b7d2ca1e969fd8f6591d8ac013f1cec7338c7291d5807b45884b9af5df9e"
+      },
+      "result": null,
+      "stop": {
+        "digest": "sha256:35062961e3693a56027519524c532e1d5ff82edeee7d6bd07ef85f91cd76ae02",
+        "ref": "event://abiogenesis/4a5a68b3022525e6cb33f7d03b04ed51834b0f8f5253488db7482306abdead63"
+      },
+      "entryPrefix": {
+        "coordinateDigest": "sha256:532fe6ff6623c7d1cbb8805951fe65e1c0485172b9f253663c935ee4fe930638",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:b4f58b334d137f652a6b7d4581daff4df77319c39db9b28ab58e04f978572a80",
+        "prefixLength": 2310399,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405010
+        }
+      },
+      "closePrefix": {
+        "coordinateDigest": "sha256:0db32d448006dbd43d3a303eea9648002798fa1bca8e5e1c4bec5a733433a7d1",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:0bf8b684c95e256f9daa40c25abaa0a9d945a974b12d6a93d572b8a9bcc7e2e9",
+        "prefixLength": 104482827,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405010
+        }
+      },
+      "journalGrowthBytes": 102172428,
+      "processes": {
+        "setup": {
+          "key": "js-sdlc-bootstrap",
+          "exitCode": 1,
+          "startedAt": "2026-09-24T10:07:13.725495+00:00",
+          "finishedAt": "2026-09-24T10:08:43.907978+00:00",
+          "elapsedSeconds": 90.18515195837244,
+          "peakRssBytes": 2904997888
+        },
+        "setup-tail": {
+          "key": "js-sdlc-bootstrap",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:10:37.000498+00:00",
+          "finishedAt": "2026-09-24T10:12:14.728320+00:00",
+          "elapsedSeconds": 97.73070625029504,
+          "peakRssBytes": 3121037312
+        },
+        "run": {
+          "key": "js-sdlc-bootstrap",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:12:54.270150+00:00",
+          "finishedAt": "2026-09-24T10:43:35.784759+00:00",
+          "elapsedSeconds": 1841.5686876252294,
+          "peakRssBytes": 2230484992
+        },
+        "readback": {
+          "key": "js-sdlc-bootstrap",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:45:43.923048+00:00",
+          "finishedAt": "2026-09-24T10:47:08.578858+00:00",
+          "elapsedSeconds": 84.65830933395773,
+          "peakRssBytes": 1501462528
+        }
+      },
+      "actorCount": 6,
+      "actorDurationSeconds": 1746.076,
+      "apiDurationSeconds": 1596.0,
+      "nonActorDurationRemainderSeconds": 95.49268762522934,
+      "remainderScope": "Subtraction of provider-reported actor durations from launcher elapsed; not isolated attribution. API time is nested in actor duration.",
+      "reportedCostUsd": 10.1771134,
+      "apiRetryCount": 0,
+      "providerModels": [
+        "claude-opus-5-5"
+      ],
+      "actorTransports": [
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/archives/fp-f40a65c45af978c9-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/archives/fp-d6051816dc97f410-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/archives/fp-3fbaf691a0869294-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/archives/fp-139ecec43a6105a1-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/archives/fp-fa71974e9d9722cc-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/archives/fp-3e6cd7ba47a0a5f2-transport.json"
+      ],
+      "actorStdoutBytes": 7311713,
+      "protectedInputs": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/original-js-sdlc-bootstrap-declaration.txt",
+          "sha256": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4",
+          "currentSha256": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/js-sdlc-bootstrap/subject-js-sdlc-bootstrap/semantic-assets/lifecycle-rubric.json",
+          "sha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "currentSha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/js-sdlc-bootstrap.oracle.json",
+          "sha256": "sha256:a448f2400c1052892ebd78183cfb564e5db08da84402308a183d3c86e6100f6f",
+          "unchanged": true
+        }
+      ],
+      "createdSemanticDestinations": [
+        {
+          "path": "semantic-assets/stage-0.json",
+          "byteLength": 32404,
+          "sha256": "sha256:9f9003ed19bdeb7a43616baa2c5c28daaeabc2b932947db52a302e6773a82ffa"
+        },
+        {
+          "path": "semantic-assets/stage-1.json",
+          "byteLength": 47430,
+          "sha256": "sha256:37cd402698f52fd722a6f00b20566e03c8037daeef7ce10fb5f53744c26fec9a"
+        },
+        {
+          "path": "semantic-assets/stage-2.json",
+          "byteLength": 106895,
+          "sha256": "sha256:bb93b54aed07ea9c68a91d1aa152b80f972d08ee4523ffc0421cc68b0d7d5fc1"
+        }
+      ],
+      "applicationFiles": [],
+      "commandResults": [],
+      "publicReadback": {
+        "prefix": {
+          "coordinateDigest": "sha256:0db32d448006dbd43d3a303eea9648002798fa1bca8e5e1c4bec5a733433a7d1",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "kind": "durable_prefix_coordinate",
+          "prefixDigest": "sha256:0bf8b684c95e256f9daa40c25abaa0a9d945a974b12d6a93d572b8a9bcc7e2e9",
+          "prefixLength": 104482827,
+          "schemaVersion": "5.0.0",
+          "storeIdentity": {
+            "device": 16777230,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "inode": 459405010
+          }
+        },
+        "publicReads": [
+          {
+            "memberKey": "run_result",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 41293.372166999994,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/read-run_result.json",
+            "resultDigest": "sha256:64910995081e4c34f2edd9ffa9e4b345c95cb14f5c45025215bb349b8fe17eb9",
+            "observation": "result_absent_not_found"
+          },
+          {
+            "memberKey": "run_replay",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 42546.986833999996,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/read-run_replay.json",
+            "resultDigest": "sha256:225856776ce4c957d78aebf250d51727f37e2bf0f58bc2cb2b71765070b0c362"
+          }
+        ]
+      },
+      "observationalStatus": "no_terminal_result",
+      "applicationCoverage": "not_completed",
+      "remainingGaps": [],
+      "assessedStageRefs": [],
+      "ordinaryObservation": null,
+      "evidencePaths": {
+        "liveReceipt": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/live-receipt.json",
+        "publicReadback": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/public-readback.json",
+        "fullResultProof": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/jobs/js-sdlc-bootstrap/full-result-proof.json",
+        "causalCapsule": null
+      },
+      "nativeBudgetMs": 5400000,
+      "readbackBudgetMs": 600000,
+      "limitsUnchanged": true
+    },
+    {
+      "key": "rust-cli",
+      "status": "CLOSED",
+      "nativeDisposition": "runtime_failed",
+      "run": {
+        "digest": "sha256:d3940c7b88dbed2adc0828e9997804ba7899b993f3098e6b991e14f54ffec640",
+        "ref": "run://abiogenesis/84ec2569874f79689baa568c1c7f604cd8b478a9d08fd7c83da287fb7d06c459"
+      },
+      "result": null,
+      "stop": {
+        "digest": "sha256:ff6119ec007144c4dce7fee9c5f051dd4a59de223b145ca4f60d587944f59664",
+        "ref": "event://abiogenesis/e98d5fb253aba6885365b32742b14d7f0d9f78c75dff9941e868473e253a736e"
+      },
+      "entryPrefix": {
+        "coordinateDigest": "sha256:7ed53742d5531624a1bdbc77fa50b20e09b39db33c583f6f06d763eaac20a561",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:f7115db55980d75a57d78cc2c280e5c008ca1ea58de73449c50f7b1d72ca950d",
+        "prefixLength": 2310273,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405031
+        }
+      },
+      "closePrefix": {
+        "coordinateDigest": "sha256:b4d147f72083bacba870ee5b7c75a98c864f6eeb8d04aaf04001236effe3948f",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:fd4fcb9db374bc13f166f6e302cfdf35f24f0685122c008468030333f5de4ed6",
+        "prefixLength": 86849309,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405031
+        }
+      },
+      "journalGrowthBytes": 84539036,
+      "processes": {
+        "setup": {
+          "key": "rust-cli",
+          "exitCode": 1,
+          "startedAt": "2026-09-24T10:07:13.776974+00:00",
+          "finishedAt": "2026-09-24T10:08:44.634386+00:00",
+          "elapsedSeconds": 90.8600972504355,
+          "peakRssBytes": 2855206912
+        },
+        "setup-tail": {
+          "key": "rust-cli",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:10:37.033116+00:00",
+          "finishedAt": "2026-09-24T10:12:14.731609+00:00",
+          "elapsedSeconds": 97.70137379085645,
+          "peakRssBytes": 3074113536
+        },
+        "run": {
+          "key": "rust-cli",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:12:54.300341+00:00",
+          "finishedAt": "2026-09-24T10:36:55.924787+00:00",
+          "elapsedSeconds": 1441.6667923326604,
+          "peakRssBytes": 1704673280
+        },
+        "readback": {
+          "key": "rust-cli",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:37:54.351988+00:00",
+          "finishedAt": "2026-09-24T10:39:05.777816+00:00",
+          "elapsedSeconds": 71.42794504202902,
+          "peakRssBytes": 1162592256
+        },
+        "evidence": {
+          "key": "rust-cli",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:41:30.556902+00:00",
+          "finishedAt": "2026-09-24T10:42:07.685077+00:00",
+          "elapsedSeconds": 37.129286292009056,
+          "peakRssBytes": 1110720512
+        }
+      },
+      "actorCount": 5,
+      "actorDurationSeconds": 1361.791,
+      "apiDurationSeconds": 1250.743,
+      "nonActorDurationRemainderSeconds": 79.87579233266047,
+      "remainderScope": "Subtraction of provider-reported actor durations from launcher elapsed; not isolated attribution. API time is nested in actor duration.",
+      "reportedCostUsd": 7.636480000000001,
+      "apiRetryCount": 0,
+      "providerModels": [
+        "claude-opus-5-5"
+      ],
+      "actorTransports": [
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/archives/fp-fa3d33fd9d5dfeb2-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/archives/fp-abca59d888ed0eb5-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/archives/fp-99c202ca754b2eca-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/archives/fp-94af21416b802385-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/archives/fp-d9c699d6019788b6-transport.json"
+      ],
+      "actorStdoutBytes": 5949771,
+      "protectedInputs": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/original-rust-cli-declaration.txt",
+          "sha256": "sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81",
+          "currentSha256": "sha256:d6f2ffff4e3ae4889be374367208a575664eb9b094c442d7ca303ebaa9ad6a81",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-cli/subject-rust-cli/semantic-assets/lifecycle-rubric.json",
+          "sha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "currentSha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-cli.oracle.json",
+          "sha256": "sha256:fca13e707df3c3ff3653e5c715a048e86518fc9c4a091ebe8b828f8b8649b25e",
+          "unchanged": true
+        }
+      ],
+      "createdSemanticDestinations": [
+        {
+          "path": "semantic-assets/stage-0.json",
+          "byteLength": 27110,
+          "sha256": "sha256:c281108b3e2e0f0d10984dc9a62ea0cd5dab4928ffc82cccf17a189d27e9c3ac"
+        },
+        {
+          "path": "semantic-assets/stage-1.json",
+          "byteLength": 39977,
+          "sha256": "sha256:cdcef8794f20341cd858c26d630a5d9b2954eb3ff271106a99f2335a53c4bd1d"
+        },
+        {
+          "path": "semantic-assets/stage-2.json",
+          "byteLength": 77251,
+          "sha256": "sha256:1af1b125549c0ec0711bf50710c4a50cd57d5e5d3aa0b57a8bafe43e0596e84e"
+        }
+      ],
+      "applicationFiles": [],
+      "commandResults": [],
+      "publicReadback": {
+        "prefix": {
+          "coordinateDigest": "sha256:b4d147f72083bacba870ee5b7c75a98c864f6eeb8d04aaf04001236effe3948f",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/events/runtime.events.jsonl",
+          "kind": "durable_prefix_coordinate",
+          "prefixDigest": "sha256:fd4fcb9db374bc13f166f6e302cfdf35f24f0685122c008468030333f5de4ed6",
+          "prefixLength": 86849309,
+          "schemaVersion": "5.0.0",
+          "storeIdentity": {
+            "device": 16777230,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "inode": 459405031
+          }
+        },
+        "publicReads": [
+          {
+            "memberKey": "run_result",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 35049.396542,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/read-run_result.json",
+            "resultDigest": "sha256:8ae927e6615d1ea5fdf8f8593506ed66066e3fe3f7a3b4a9c2623c06893d2e2d",
+            "observation": "result_absent_not_found"
+          },
+          {
+            "memberKey": "run_replay",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 35547.865208999996,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/read-run_replay.json",
+            "resultDigest": "sha256:1ae8b75a6b2050ee37067a9607477b10cbe8dfccb552a852c84b55f3ab7896e2"
+          }
+        ]
+      },
+      "observationalStatus": "no_terminal_result",
+      "applicationCoverage": "not_completed",
+      "remainingGaps": [],
+      "assessedStageRefs": [],
+      "ordinaryObservation": null,
+      "evidencePaths": {
+        "liveReceipt": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/live-receipt.json",
+        "publicReadback": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/public-readback.json",
+        "fullResultProof": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/full-result-proof.json",
+        "causalCapsule": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-cli/jobs/rust-cli/causal-capsule.json"
+      },
+      "nativeBudgetMs": 5400000,
+      "readbackBudgetMs": 600000,
+      "limitsUnchanged": true
+    },
+    {
+      "key": "rust-service",
+      "status": "CLOSED",
+      "nativeDisposition": "completed",
+      "run": {
+        "digest": "sha256:a686e5dd08462b9cc310f32a2c175f63608f06c9b90e8b5dfbfb5dbb87651e1d",
+        "ref": "run://abiogenesis/996cc4b1c4f99b912cc062783237d98c8f95ddd890e07939ea3ebbb8970f847d"
+      },
+      "result": {
+        "digest": "sha256:582935c0d568c42c10160f619f7f399eb2a3ab4af02172c44656fa396a8c6242",
+        "ref": "result://abiogenesis/582935c0d568c42c10160f619f7f399eb2a3ab4af02172c44656fa396a8c6242"
+      },
+      "stop": null,
+      "entryPrefix": {
+        "coordinateDigest": "sha256:9765358efb1bd9d06efcfe796025b156650c7d346a9d971f695e362b912369bb",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:30041be2a645dc6980da7ccb5e691200accce5a7a6263f5899c30ae66dfeb2cb",
+        "prefixLength": 2310329,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405021
+        }
+      },
+      "closePrefix": {
+        "coordinateDigest": "sha256:f0eed0d090aa9dfd9a5f5167f92bde4c969ee5dd91cd8730840c378e92952235",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:a03fa7f5275f3f69b622746128c10e0f7ac2b182aeda8a6279a99939c99c006b",
+        "prefixLength": 247887147,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405021
+        }
+      },
+      "journalGrowthBytes": 245576818,
+      "processes": {
+        "setup": {
+          "key": "rust-service",
+          "exitCode": 1,
+          "startedAt": "2026-09-24T10:07:13.807423+00:00",
+          "finishedAt": "2026-09-24T10:08:44.496160+00:00",
+          "elapsedSeconds": 90.69141966709867,
+          "peakRssBytes": 2901868544
+        },
+        "setup-tail": {
+          "key": "rust-service",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:10:37.065240+00:00",
+          "finishedAt": "2026-09-24T10:12:14.601003+00:00",
+          "elapsedSeconds": 97.53865241678432,
+          "peakRssBytes": 3251912704
+        },
+        "run": {
+          "key": "rust-service",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:12:54.333671+00:00",
+          "finishedAt": "2026-09-24T11:20:54.166327+00:00",
+          "elapsedSeconds": 4079.6289918329567,
+          "peakRssBytes": 4545380352
+        },
+        "readback": {
+          "key": "rust-service",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T11:22:49.494901+00:00",
+          "finishedAt": "2026-09-24T11:26:57.082199+00:00",
+          "elapsedSeconds": 247.58821641700342,
+          "peakRssBytes": 4179443712
+        }
+      },
+      "actorCount": 12,
+      "actorDurationSeconds": 3801.856,
+      "apiDurationSeconds": 3525.333,
+      "nonActorDurationRemainderSeconds": 277.77299183295645,
+      "remainderScope": "Subtraction of provider-reported actor durations from launcher elapsed; not isolated attribution. API time is nested in actor duration.",
+      "reportedCostUsd": 23.1827616,
+      "apiRetryCount": 0,
+      "providerModels": [
+        "claude-opus-5-5"
+      ],
+      "actorTransports": [
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-2e71e06f55212008-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-c4062fbb3b260c00-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-5c5603b9251fd03d-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-be9c69b9d9863985-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-045f751f64839307-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-66483c54a841650e-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-d054a36ada80a54e-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-897f0e8b6bd517f2-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-a18c541b79abc82f-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-96fe46ca7d079fbe-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-dc68596c2e6c82d0-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/archives/fp-baaf19e09608fda0-transport.json"
+      ],
+      "actorStdoutBytes": 15996290,
+      "protectedInputs": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/original-rust-service-declaration.txt",
+          "sha256": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d",
+          "currentSha256": "sha256:a50c11d4e4eee0dc1e983c484cd2733bd665409b5c0cadfa545596e43574cb5d",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/rust-service/subject-rust-service/semantic-assets/lifecycle-rubric.json",
+          "sha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "currentSha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/rust-service.oracle.json",
+          "sha256": "sha256:eaced4b57ccdb33b85006b79502ef773aaa396b8ace5689085cbd9d1296d5d9c",
+          "unchanged": true
+        }
+      ],
+      "createdSemanticDestinations": [
+        {
+          "path": "semantic-assets/stage-0.json",
+          "byteLength": 25966,
+          "sha256": "sha256:9c4c54baef4b7df84d42ccbdf0a157c6470d9c14cbfc807aa480d83dd4b8e76f"
+        },
+        {
+          "path": "semantic-assets/stage-1.json",
+          "byteLength": 39373,
+          "sha256": "sha256:1b13b4f5ff330694f2e26686aed848a04cba1218bdae42d891bbfe09fffdd708"
+        },
+        {
+          "path": "semantic-assets/stage-2.json",
+          "byteLength": 95166,
+          "sha256": "sha256:3fc1452a8d0a00230c59daa4cdc9e3d68c2ccdb96fd0ded2877de46e708e418c"
+        },
+        {
+          "path": "semantic-assets/stage-3.json",
+          "byteLength": 99896,
+          "sha256": "sha256:a7f96742a9ff8855a0ad058dbc827379fc0800ed9de394699ef0d213b0fbd3a2"
+        },
+        {
+          "path": "semantic-assets/stage-4.json",
+          "byteLength": 103657,
+          "sha256": "sha256:00605fabd8d043ee0c3e133f61357e20d40293c5948778e41c856230b65495e4"
+        }
+      ],
+      "applicationFiles": [
+        {
+          "path": "specification/project-conformance.md",
+          "byteLength": 3580,
+          "sha256": "sha256:9828c3379e20261c80fafbe6b2b51b971fc57da45b5fb516b6d28fe9d907b3e0"
+        },
+        {
+          "path": "design/implementation-design.md",
+          "byteLength": 4984,
+          "sha256": "sha256:cf916ece06871500621a695e2ee9b8e497cf47c5c2f64ec5b67374fb20b87896"
+        },
+        {
+          "path": "src/service.rs",
+          "byteLength": 3611,
+          "sha256": "sha256:e83842332cd2dda4b7a28967bd5dd9f65ad0e55cd9134d0ae296d74c3dadebd5"
+        },
+        {
+          "path": "design/test-design.md",
+          "byteLength": 4458,
+          "sha256": "sha256:3184760f3494ff3ab936af77d99b22405a0b871dc4290203ad5a0f805e19bac4"
+        },
+        {
+          "path": "test/component/rust-service.test.mjs",
+          "byteLength": 4583,
+          "sha256": "sha256:698ae8847bc3f91f0e5ba9b9bc368b4f15322fd122cbfb50ad751285c6ff0aff"
+        },
+        {
+          "path": "test/uat/rust-service.uat.test.mjs",
+          "byteLength": 4535,
+          "sha256": "sha256:697561681c28935ed82831b90b2f82e0fd97fc5f8b9f6d7782c9916520ea37fb"
+        },
+        {
+          "path": "test-execution-plan.json",
+          "byteLength": 247,
+          "sha256": "sha256:c2d8a9d36af54bf7ad92735e5bcb32aeab1b6aaf3f0d116b0fc7c462dcd5faf9"
+        }
+      ],
+      "commandResults": [
+        {
+          "commandId": "rustc-compile-service",
+          "executable": "/Users/jim/.cargo/bin/rustc",
+          "args": [
+            "--edition",
+            "2021",
+            "--crate-name",
+            "service",
+            "--out-dir",
+            "execution-evidence/rustc-check",
+            "src/service.rs"
+          ],
+          "exitStatus": 0,
+          "timedOut": false,
+          "terminationConfirmed": true,
+          "timeoutMs": 120000,
+          "terminationGraceMs": 1000
+        },
+        {
+          "commandId": "node-test-plan",
+          "executable": "/opt/homebrew/Cellar/node/24.7.0/bin/node",
+          "args": [
+            "--test",
+            "test/component/rust-service.test.mjs",
+            "test/uat/rust-service.uat.test.mjs"
+          ],
+          "exitStatus": 0,
+          "timedOut": false,
+          "terminationConfirmed": true,
+          "timeoutMs": 120000,
+          "terminationGraceMs": 1000
+        }
+      ],
+      "publicReadback": {
+        "prefix": {
+          "coordinateDigest": "sha256:f0eed0d090aa9dfd9a5f5167f92bde4c969ee5dd91cd8730840c378e92952235",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/events/runtime.events.jsonl",
+          "kind": "durable_prefix_coordinate",
+          "prefixDigest": "sha256:a03fa7f5275f3f69b622746128c10e0f7ac2b182aeda8a6279a99939c99c006b",
+          "prefixLength": 247887147,
+          "schemaVersion": "5.0.0",
+          "storeIdentity": {
+            "device": 16777230,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "inode": 459405021
+          }
+        },
+        "publicReads": [
+          {
+            "memberKey": "run_result",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 122303.183292,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/read-run_result.json",
+            "resultDigest": "sha256:7cd341e288efeb530c73c062e99362e745a72b907af6a4fb81da7dd488e037e5"
+          },
+          {
+            "memberKey": "run_replay",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 124367.82979200002,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/read-run_replay.json",
+            "resultDigest": "sha256:b9bd4bf4f8594ce136baf4562520848eaebce5cbd0696eabe9241969b508efd9"
+          }
+        ]
+      },
+      "observationalStatus": "unqualified_missing_independent_coverage",
+      "applicationCoverage": "non_closing",
+      "remainingGaps": [
+        "full_source_semantic_completeness_unassessed",
+        "application_requirements_not_closed",
+        "proof_depth_and_strength_unassessed"
+      ],
+      "assessedStageRefs": [
+        "stage://odd-glc/generic-lifecycle/intent@5",
+        "stage://odd-glc/generic-lifecycle/product@5",
+        "stage://odd-glc/generic-lifecycle/requirements@5",
+        "stage://odd-glc/generic-lifecycle/design@5",
+        "stage://odd-glc/generic-lifecycle/evidence@5"
+      ],
+      "ordinaryObservation": {
+        "disposition": "unqualified",
+        "applicationQualification": "unqualified_missing_independent_coverage",
+        "cases": [
+          {
+            "ordinal": 0,
+            "observationKind": "http_response",
+            "disposition": "unexecuted_probe",
+            "observations": [],
+            "semanticReview": "required",
+            "reason": "outside_direct_cli_interpretation",
+            "expected": {
+              "observationKind": "http_response",
+              "method": "GET",
+              "host": "127.0.0.1",
+              "portSelection": "system_assigned",
+              "path": "/hello",
+              "status": 200,
+              "body": "Hello, world!\n",
+              "cleanExitAfterRequests": 1
+            }
+          }
+        ],
+        "testCommands": [
+          {
+            "observationRef": "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b",
+            "args": [
+              "--test",
+              "test/component/rust-service.test.mjs",
+              "test/uat/rust-service.uat.test.mjs"
+            ],
+            "relativeCwd": ".",
+            "disposition": "observed_pass",
+            "testPasses": 2,
+            "testFailures": 0
+          }
+        ],
+        "minimumTestPasses": {
+          "required": 2,
+          "observed": 2,
+          "disposition": "met"
+        },
+        "semanticReview": {
+          "disposition": "required",
+          "requiredTestRoles": [
+            "component",
+            "user_acceptance"
+          ],
+          "commandObservationRefs": [
+            "worksite-command-observation://abiogenesis/ed6f8a7d69eca21588b54f7971ee0e28ba1fba27f091917e546ee4d281fc5952",
+            "worksite-command-observation://abiogenesis/6530714b31cb467629445c7abb815bb2f2a47e3bcf9e024b8b5e096a3420ff9b"
+          ],
+          "questions": [
+            "Do the protected verifier artifacts actually exercise the application and required behaviors?",
+            "Did the admitted execution select and execute the required component/UAT verification, including lawful discovery?",
+            "Do governing/design artifacts preserve all original obligations, and which independent probes remain absent?"
+          ]
+        }
+      },
+      "evidencePaths": {
+        "liveReceipt": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/live-receipt.json",
+        "publicReadback": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/public-readback.json",
+        "fullResultProof": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/rust-service/jobs/rust-service/full-result-proof.json",
+        "causalCapsule": null
+      },
+      "nativeBudgetMs": 5400000,
+      "readbackBudgetMs": 600000,
+      "limitsUnchanged": true
+    },
+    {
+      "key": "parallel-js",
+      "status": "CLOSED",
+      "nativeDisposition": "runtime_failed",
+      "run": {
+        "digest": "sha256:3a71b4dec99e72bccb3c949e1cc59cd178d3dcbbe0ba87a40cae40cba701c332",
+        "ref": "run://abiogenesis/806560a8c38708499f27d12699ce855f35da18087dd8ab25520b2df02993928b"
+      },
+      "result": null,
+      "stop": {
+        "digest": "sha256:4851ed99db3bbd9ffde833c9bb75f76ea087b0ce74697d69f9139b21ff875609",
+        "ref": "event://abiogenesis/ded19decd3b9a3032d86421e46efd92f78f96c3b47f47d9227902398ccb7e7dd"
+      },
+      "entryPrefix": {
+        "coordinateDigest": "sha256:af947a602edcf85f6b1410657741f50c0b7192934c29495c77ef18a38a7e7320",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:46b3ed96204ac30d1583116c38f898e3bf1b719150f6c05ed0e8cd64183c9fd4",
+        "prefixLength": 2310315,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405026
+        }
+      },
+      "closePrefix": {
+        "coordinateDigest": "sha256:7e88c742fbfecf3c473ce15ceabee44013554408919ab5e74e699c34445d19e8",
+        "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/events/runtime.events.jsonl",
+        "kind": "durable_prefix_coordinate",
+        "prefixDigest": "sha256:8f95788842dc8dfe6a02554a33c408f53b70fdce1ef82a0b4f78e5a3f6260c9b",
+        "prefixLength": 151460939,
+        "schemaVersion": "5.0.0",
+        "storeIdentity": {
+          "device": 16777230,
+          "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+          "inode": 459405026
+        }
+      },
+      "journalGrowthBytes": 149150624,
+      "processes": {
+        "setup": {
+          "key": "parallel-js",
+          "exitCode": 1,
+          "startedAt": "2026-09-24T10:07:13.839064+00:00",
+          "finishedAt": "2026-09-24T10:08:44.444614+00:00",
+          "elapsedSeconds": 90.60822991607711,
+          "peakRssBytes": 2852044800
+        },
+        "setup-tail": {
+          "key": "parallel-js",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:10:37.096281+00:00",
+          "finishedAt": "2026-09-24T10:12:14.660725+00:00",
+          "elapsedSeconds": 97.56732733314857,
+          "peakRssBytes": 3200286720
+        },
+        "run": {
+          "key": "parallel-js",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T10:12:54.366370+00:00",
+          "finishedAt": "2026-09-24T11:03:14.909727+00:00",
+          "elapsedSeconds": 3020.334073207807,
+          "peakRssBytes": 3134046208
+        },
+        "readback": {
+          "key": "parallel-js",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T11:03:45.492588+00:00",
+          "finishedAt": "2026-09-24T11:06:05.621638+00:00",
+          "elapsedSeconds": 140.12926037516445,
+          "peakRssBytes": 1869004800
+        },
+        "evidence": {
+          "key": "parallel-js",
+          "exitCode": 0,
+          "startedAt": "2026-09-24T11:07:13.492739+00:00",
+          "finishedAt": "2026-09-24T11:08:26.921694+00:00",
+          "elapsedSeconds": 73.42906874977052,
+          "peakRssBytes": 1993818112
+        }
+      },
+      "actorCount": 9,
+      "actorDurationSeconds": 2855.763,
+      "apiDurationSeconds": 2665.466,
+      "nonActorDurationRemainderSeconds": 164.57107320780688,
+      "remainderScope": "Subtraction of provider-reported actor durations from launcher elapsed; not isolated attribution. API time is nested in actor duration.",
+      "reportedCostUsd": 16.945784800000002,
+      "apiRetryCount": 0,
+      "providerModels": [
+        "claude-opus-5-5"
+      ],
+      "actorTransports": [
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-9b72791a7859e8c0-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-3a96d3f8c5b48efc-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-0d77a5bb6b98b024-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-e8382d30dd95f49d-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-af2f46167b78bef0-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-f5754e67450092bb-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-31381405ff6d54be-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-29e8b87e062999e6-transport.json",
+        "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/archives/fp-e1df3241a1d7c80b-transport.json"
+      ],
+      "actorStdoutBytes": 11324396,
+      "protectedInputs": [
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/original-parallel-js-declaration.txt",
+          "sha256": "sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053",
+          "currentSha256": "sha256:d8cc8105e4d16eea10fa8f908656a2c82e5690fc145cfb91e70ed00f84aa6053",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-js/subject-parallel-js/semantic-assets/lifecycle-rubric.json",
+          "sha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "currentSha256": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+          "unchanged": true
+        },
+        {
+          "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/generic-job/parallel-js.oracle.json",
+          "sha256": "sha256:82a35700c78d9a9c85d18b2727b6de6f9fcb1fbb6a44910f2e46825fbcc2527c",
+          "unchanged": true
+        }
+      ],
+      "createdSemanticDestinations": [
+        {
+          "path": "semantic-assets/stage-0.json",
+          "byteLength": 26082,
+          "sha256": "sha256:b079f6f3ba1b291db18952699cec347ea3da8bcd3fa922e625c6745403747acb"
+        },
+        {
+          "path": "semantic-assets/stage-1.json",
+          "byteLength": 37726,
+          "sha256": "sha256:b842bf5073490a355154ccc389f0b2ee991d1c290a761b4c822e6580b5c12b98"
+        },
+        {
+          "path": "semantic-assets/stage-2.json",
+          "byteLength": 91236,
+          "sha256": "sha256:1201d000abf21ae544e5429e2ae3bf7079ea4cd3be60d87d4b519feb4c7b50c2"
+        },
+        {
+          "path": "semantic-assets/stage-3.json",
+          "byteLength": 88062,
+          "sha256": "sha256:c70df08889f3616de2b7780c166b04c2ddc00611abcdfb03713e043a34add1ae"
+        }
+      ],
+      "applicationFiles": [
+        {
+          "path": "specification/project-conformance.md",
+          "byteLength": 1984,
+          "sha256": "sha256:e94abd3e8ee154d2f5c11c780f24d144fe647d4b5615244a890f0e49b6e95568"
+        },
+        {
+          "path": "design/implementation-design.md",
+          "byteLength": 2654,
+          "sha256": "sha256:299b4a8a3819e8dc8f8d08225fd4afb4980aaab44f643510a69c308aa57678d3"
+        },
+        {
+          "path": "design/test-design.md",
+          "byteLength": 5423,
+          "sha256": "sha256:e5a65683bd1c0bbe8d4391b192fea6bc0471fa40cb7925900b222d9f39d0e880"
+        },
+        {
+          "path": "package.json",
+          "byteLength": 36,
+          "sha256": "sha256:d02836298858858f52f01f58c6afc45f02db04d86adad0fb3bba92ed1abb53f0"
+        },
+        {
+          "path": "src/hello.mjs",
+          "byteLength": 50,
+          "sha256": "sha256:a323daa9a6350fd4daf91a9408ca817a76958c8d86337fdab3b7e44a14ba640b"
+        },
+        {
+          "path": "src/world.mjs",
+          "byteLength": 50,
+          "sha256": "sha256:8610f0b8243c0ce4df2ab78062af84bb1533d90048f61eb52ef615b4202f6885"
+        },
+        {
+          "path": "src/index.mjs",
+          "byteLength": 165,
+          "sha256": "sha256:c9013482fcef8e86024865ae98b86129082d5711e35f234460c56b52c5788ea4"
+        },
+        {
+          "path": "test/component/parallel-branches.test.mjs",
+          "byteLength": 375,
+          "sha256": "sha256:4f23bf2cf8d72f96968e7dc8d17ac3d5a8096f664789da21a90fd637bdc7748a"
+        },
+        {
+          "path": "test/uat/parallel-fanin.uat.test.mjs",
+          "byteLength": 244,
+          "sha256": "sha256:a08c8025b8049434a299b9e0b1c62ef2d572a7cfe634efa20d5387c4c49a0552"
+        },
+        {
+          "path": "test-execution-plan.json",
+          "byteLength": 240,
+          "sha256": "sha256:931e3f9d9b422c52295ad13563a7e6277b0046909095b35a2117b6e9417f23d9"
+        },
+        {
+          "path": "test/conformance/fan-in-composition.test.mjs",
+          "byteLength": 1846,
+          "sha256": "sha256:1d595e65779b8ef2fad250931638df624b425f16ac03820095b99e08501dc5d4"
+        },
+        {
+          "path": "test/conformance/source-layout.test.mjs",
+          "byteLength": 2055,
+          "sha256": "sha256:19ed870d824e5b16ee73cf27993ceeaaef8aa355c34eb6df5a5f3ab52cc9f442"
+        },
+        {
+          "path": "test/conformance/package-manifest.test.mjs",
+          "byteLength": 789,
+          "sha256": "sha256:6f666338a7a427f332a0c908f2ef4b26df1a52ed1ebb56819af260557d240201"
+        },
+        {
+          "path": "test/conformance/subject-documents.test.mjs",
+          "byteLength": 1469,
+          "sha256": "sha256:add0d5e34fd708eeccabb6afd2c520e3bcae6af8cd5726fcd9e96b884874ff83"
+        },
+        {
+          "path": "test/conformance/verifier-structure.test.mjs",
+          "byteLength": 1847,
+          "sha256": "sha256:35c1781e39809583a04eb0363d231c488348ec3514b53002284cf6b1bc7fb72f"
+        },
+        {
+          "path": "test/conformance/execution-plan.test.mjs",
+          "byteLength": 1408,
+          "sha256": "sha256:624301a9bd8aa0b31d92c71bcb3ec177a956f75dbd4f201345832e9175ad7d8d"
+        }
+      ],
+      "commandResults": [],
+      "publicReadback": {
+        "prefix": {
+          "coordinateDigest": "sha256:7e88c742fbfecf3c473ce15ceabee44013554408919ab5e74e699c34445d19e8",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/events/runtime.events.jsonl",
+          "kind": "durable_prefix_coordinate",
+          "prefixDigest": "sha256:8f95788842dc8dfe6a02554a33c408f53b70fdce1ef82a0b4f78e5a3f6260c9b",
+          "prefixLength": 151460939,
+          "schemaVersion": "5.0.0",
+          "storeIdentity": {
+            "device": 16777230,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "inode": 459405026
+          }
+        },
+        "publicReads": [
+          {
+            "memberKey": "run_result",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 69765.408375,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/read-run_result.json",
+            "resultDigest": "sha256:88c1cefbb06f0f61221ccfc8ce6467ba02b85b30cd341b05ae3e465b330738b7",
+            "observation": "result_absent_not_found"
+          },
+          {
+            "memberKey": "run_replay",
+            "disposition": "preserved_and_checked",
+            "elapsedMs": 69488.33279100001,
+            "resultPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/read-run_replay.json",
+            "resultDigest": "sha256:cac3722f7a50ef393da230f577c760a6bdfb2410b39f8328fafca880529e4944"
+          }
+        ]
+      },
+      "observationalStatus": "no_terminal_result",
+      "applicationCoverage": "not_completed",
+      "remainingGaps": [],
+      "assessedStageRefs": [],
+      "ordinaryObservation": null,
+      "evidencePaths": {
+        "liveReceipt": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/live-receipt.json",
+        "publicReadback": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/public-readback.json",
+        "fullResultProof": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/full-result-proof.json",
+        "causalCapsule": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/parallel-js/jobs/parallel-js/causal-capsule.json"
+      },
+      "nativeBudgetMs": 5400000,
+      "readbackBudgetMs": 600000,
+      "limitsUnchanged": true
+    }
+  ]
+}

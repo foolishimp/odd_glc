@@ -1,0 +1,31 @@
+{
+  "status": "exact source/archive/install",
+  "members": [
+    {
+      "path": "contracts/capabilities/capability-definition-graph.json",
+      "bytes": 247,
+      "sha256": "f664ed939704a5573a2f5151eccb86532c777eda6d5b927454f65ca839363bd0"
+    },
+    {
+      "path": "package.json",
+      "bytes": 200,
+      "sha256": "a82b67ec7d8651bcf66f7a5f93cc8834f1a4e9f932c97f3f6690ce74230dbe26"
+    },
+    {
+      "path": "product-toolchain-manifest.json",
+      "bytes": 11566,
+      "sha256": "fa4bb070586052b760849de1b20ab0497d9d41979338fa4e56e23ed786e87ae9"
+    },
+    {
+      "path": "contracts/public-contract-catalog.schema.json",
+      "bytes": 145,
+      "sha256": "a69db2dd825711aba598d29d8880b20df39aa8ac691fa25b5d7c058eed964646"
+    },
+    {
+      "path": "build/publication.json",
+      "bytes": 160016,
+      "sha256": "c2ea64cf95af68cc9672b3a54f08b30e8e33273eceaed8977e9aaefb75f042d5"
+    }
+  ],
+  "extraInstalledMembers": 0
+}

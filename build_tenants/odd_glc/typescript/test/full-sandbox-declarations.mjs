@@ -73,12 +73,13 @@ export function constructFullHelloInputs({ product, originalSourceBytes, oracle,
     evaluationData: structuredClone(oracle) };
 }
 
-export function constructOrdinaryJobInput({ product, gtl, input, executable, executableCapabilities, lifecycle }) {
+export function constructOrdinaryJobInput({ product, gtl, input, executable, executableCapabilities, lifecycle, commandExecutionLimits }) {
   return product.constructSemanticJobInput({ kind: "semantic_job_input", schemaVersion: "5.0.0",
     lifecycleRef: FULL_SANDBOX_IDS.lifecycleDeclarationRef, sourceRoleRef: gtl.SEMANTIC_STAGE_IDS.jobSourceContextRoleRef,
     members: structuredClone(input.members), taskData: { ...structuredClone(input.taskData), ...(lifecycle === undefined ? {} : { nativeLifecycle: {
       assets: lifecycle.stages.map((stage, i) => ({ stageRef: stage.declarationRef, path: `semantic-assets/stage-${i}.json` })),
-      rubricPath: "semantic-assets/lifecycle-rubric.json" } }) }, evaluationData: structuredClone(input.evaluationData),
+      rubricPath: "semantic-assets/lifecycle-rubric.json",
+      ...(commandExecutionLimits === undefined ? {} : { commandExecutionLimits: structuredClone(commandExecutionLimits) }) } }) }, evaluationData: structuredClone(input.evaluationData),
     worksiteScope: { readRoots: ["."], writeRoots: ["."], parentWriteRoots: ["."], evidenceWriteRoots: ["execution-evidence"],
       executableCapabilities: structuredClone(executableCapabilities ?? [{ executable, relativeCwdRoots: ["."], environment: {}, maxTimeoutMs: 120000, maxTerminationGraceMs: 1000 }]) } });
 }

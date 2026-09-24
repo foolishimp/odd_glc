@@ -1,0 +1,21 @@
+{
+  "paths": [
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev9/construction-timing.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev9/installed-consumer.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev9/member-correspondence.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev9/selection.json",
+    ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/consumer-dev9/verification-summary.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/observed-metrics.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/prepared-boundary.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/return.md",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/review-01/evidence-refs.json",
+    ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/review-01/review.md",
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+    "build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs",
+    "build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs",
+    "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs",
+    "specification/GOALS.md"
+  ]
+}

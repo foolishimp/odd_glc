@@ -1,0 +1,10 @@
+{
+  "specification/GOALS.md": {
+    "sha256": "b56423eeaf0bb055ddf7dfe6221ed455b1ce8bc4ea6bbcc984093abba67b4c17",
+    "byteLength": 19905
+  },
+  ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md": {
+    "sha256": "50287229df6e3bf55c8f22772f83b428eddbefcbd92d85df2a7923bf00e0f371",
+    "byteLength": 60538
+  }
+}
