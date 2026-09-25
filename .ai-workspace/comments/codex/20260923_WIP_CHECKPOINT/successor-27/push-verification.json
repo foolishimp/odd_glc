@@ -1,0 +1,8 @@
+{
+  "verifiedAtUtc": "2026-09-25T16:30:48.965614+00:00",
+  "localHead": "96aed6d1b68139340e11f21fccc5a017c995f41a",
+  "actualRemoteMain": "96aed6d1b68139340e11f21fccc5a017c995f41a",
+  "equal": true,
+  "evidence": "Successful normal push and subsequent git ls-remote origin refs/heads/main observed by Root",
+  "pendingWork": "DR01 source/HOW correction excluded; no claim that working tree is clean"
+}

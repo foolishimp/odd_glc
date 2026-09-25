@@ -27,14 +27,14 @@
 - release_status: unselected
 - current_activation: NATIVE_D2_01_LOCK_GRAPH_REUSE_AND_DESIGN_REQUEST_DIAGNOSIS
 - current_re_entry: ABI_existing_assembly_realization_refactor_and_native_intake_design_reframe_GLC_dev15_unchanged
-- current_activation_status: core31_closed_DR01_response_correction_selected_no_native_retry
+- current_activation_status: core33_DR01_reviewed_package_caller_accepted_awaiting_checkpoint28_push
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#accepted-owner-correction-and-core31-continuation
 - last_execution_result: CLOSED_core31_dev15_intake_pass_Design_author_absolute_timeout_no_decoded_result_all_fresh_reads_complete
 - current_activation_record: ../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#admission-boundary-execution-checklist
 
 ## Current bounded selection
 
-Current frontier: [Root's core31 terminal disposition](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core31-terminal-boundary-and-design-request-review) records actual admitted Design selection and successful dispatch, followed by the unchanged900s author timeout with no decoded result. Fresh readbacks are complete; Requirements and all15 obligations remain. The closed retained-request review selects ABI DR01: extend its existing typed Design response using exact revision domains before another native attempt. GLC RC4/dev15 and original job/root/oracle remain; ABI's independently reviewed lock/graph correction and core32 package are accepted. Installed cost reduction remains unproved.
+Current frontier: [Root's accepted core33 selection](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#accepted-core33-preserved-continuation) conjoins the reviewed lock/graph and exact revision-domain response corrections with the package and caller. Checkpoint28 push precedes one preserved installed continuation, with a setup CPU profile and fresh terminal reads. Core31 remains closed-failed at Design; original source/job/oracle, Requirements and15 obligations remain. GLC RC4/dev15 is unchanged. Installed timing improvement and native completion are unproved.
 
 The [native Evidence correction](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/return.md), [independent source review](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/review-01/return.md), and [compiled17 construction](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-17/return.md) are accepted. It retains exact native C2 observations and removes the synthetic legacy C1 task/territory. GLC remains on RC4.
 
