@@ -15,7 +15,7 @@
 - re_entry_point: specification/GOALS.md#current-goal
 - triaged_at: 2026-09-09
 - created_at: 2026-09-01
-- updated_at: 2026-09-25
+- updated_at: 2026-09-26
 - selected_method: STDO v2.5.0-rc.4
 - selected_method_qualified_tag: refs/tags/specification_methodology/v2.5.0-rc.4
 - selected_method_tag_object: 032dac0c833111547f7dd4b290c5316ed9b70f97
@@ -25,16 +25,16 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: NATIVE_D2_01_CORE28_DEV15_INSTALLED_CONTINUATION
-- current_re_entry: realization_refactor_existing_native_lifecycle_role_declaration_factory
-- current_activation_status: GLC_source_independently_accepted_dev15_verified_one_installed_continuation_selected
+- current_activation: NATIVE_D2_01_CORE30_INSTALLED_CONTINUATION
+- current_re_entry: ABI_existing_assembly_realization_refactor_and_native_intake_design_reframe_GLC_dev15_unchanged
+- current_activation_status: source_review_package_caller_conjoined_selected_after_checkpoint_push
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#current-core28-boundary-and-glc-declaration-repair
-- last_execution_result: CLOSED_core28_selector_success_suffix_pre_actor_policy_refusal_full_cause_retained_fresh_reads_complete
+- last_execution_result: CLOSED_core28_dev15_runtime_failed_at_Design_maxPromptBytes_no_Design_actor_fresh_reads_complete
 - current_activation_record: ../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#admission-boundary-execution-checklist
 
 ## Current bounded selection
 
-Current frontier: [Root's core28 disposition](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#current-core28-boundary-and-glc-declaration-repair) accepts the independently reviewed GLC stage/role declaration correction and verified dev15 package, selecting one installed continuation on unchanged core28. The actual pre-actor refusal is retained; both GLC standards are present. Existing contracts and execution limits remain unchanged. Original lifecycle/source/oracle/job and prior outcomes remain conserved. The following execution records retain their historical scopes.
+Current frontier: [Root's core30 continuation selection](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#accepted-correction-and-core30-continuation). Source/component correction, independent review and exact core30/dev15 package/caller are conjoined. After checkpoint push, one installed intake and only its returned declared whole suffix may proceed from the latest failed Run, preserving admitted Requirements and original job/root/oracle. Existing actor controls and RC4/dev15 remain unchanged. Terminal installed evidence is still required.
 
 The [native Evidence correction](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/return.md), [independent source review](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/review-01/return.md), and [compiled17 construction](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-17/return.md) are accepted. It retains exact native C2 observations and removes the synthetic legacy C1 task/territory. GLC remains on RC4.
 
