@@ -1,0 +1,9 @@
+{
+  "role": "Writer",
+  "scope": "Paired T043 and GOALS projection; no GLC source or release change",
+  "abiCheckpoint": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-26",
+  "coreArchive": "fb13cf52d5733dc85ed5ca3c651182c0bb49073a3a9705d012b9a11903b29579",
+  "consumer": "dev15 unchanged",
+  "runtime": "Not yet started",
+  "releaseAccepted": false
+}

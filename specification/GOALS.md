@@ -9,7 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043 current frontier](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) selects one reviewed core30/dev15 continuation after checkpoint push. It starts from the latest failed Run and preserves admitted Requirements. GLC remains RC4/dev15. The goal remains generic full-lifecycle work and truthful correction with original source/oracle/job, rejected status, unaffected work and obligations conserved. Installed continuation, complete delivery, LIFE-01 and qualification remain open; Data Mapper is held.
+Current delivery tracking: [T-043 current frontier](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) records accepted ABI owner corrections, independent review and the exact core31 package/caller. Checkpoint26 push precedes the selected preserved continuation. GLC remains RC4/dev15; admitted Requirements and original source/oracle/job remain. Generic full-lifecycle delivery, native correction, LIFE-01 and qualification remain open; Data Mapper is held.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
