@@ -1,0 +1,17 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "679ff0c205755b0311296369c6c6c87249308182",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {},
+  "archiveMemberCount": 0,
+  "archiveMemberBytes": 0,
+  "transportBytes": 0,
+  "assets": [],
+  "indexSha256": "217955dda270cadf2a64b5fcc4cc881f8fa9da6a4717065221c15d581ee4241b",
+  "reconciliationSha256": "fc0848d105c08cf1988b4d17ebb8b167866975dc33fdf79415f342e284b35721",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

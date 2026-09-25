@@ -88,6 +88,35 @@ test("setup native lifetime retains actual successors and closes on result, refu
   }
 });
 
+test("setup retains compact conformance receipt and complete semantic outcome without echoing inputs", async () => {
+  // Controlled host results exercise only the existing caller's retention and
+  // refusal handling. The ABI conformance fixture covers actual owner admission.
+  for (const refused of [false, true]) {
+    const scratch = await mkdtemp(join(tmpdir(), "glc-conformance-receipt-")), calls = [];
+    const ref = name => ({ ref: `test://${name}`, digest: "sha256:" + "a".repeat(64) });
+    const invocation = { definitionKey: { operationId: "abg.operation.conformance.evaluate", memberKey: "gtl_program" }, invocationRef: "test://invocation" };
+    const receipt = { kind: "definition_host_receipt", schemaVersion: "5.0.0", invocationRef: invocation.invocationRef,
+      definitionKey: invocation.definitionKey, exitCode: refused ? 1 : 0, failure: null,
+      ownerOutput: refused ? { outcomeKind: "refusal", value: { code: "law_mismatch", issuePaths: ["/conformanceLaw"], evidenceRefs: [] } }
+        : { outcomeKind: "result", value: { program: ref("program"), inventory: ref("inventory"), assessment: ref("assessment"), disposition: "passed",
+          diagnostics: [], violatedAuthorities: [], evidence: [ref("assessment")], repairAffordances: [] } },
+      resources: { kind: "conformance_evaluation_resource_receipt", schemaVersion: "5.0.0", invocation: ref("invocation"), request: ref("request"), capabilityGrants: [ref("grant")] } };
+    const state = { ordinal: 0, installedPublic: { async runInstalledDefinitionCallTransport(acquisition) {
+      assert.equal(acquisition.kind, "eventless");return { kind: "installed_definition_call_transport_result", receipt };
+    } } };
+    const setup = fullSandboxSetupCalls({ scratch, calls, state });
+    try {
+      const action = setup.invoke({ invocation, resources: { packet: { retained: "standalone input" } } }, "conformance");
+      if (refused) await assert.rejects(action, /receipts\/00-conformance.json/);
+      else assert.deepEqual(await action, receipt);
+      const retained = JSON.parse(await readFile(join(scratch, "receipts/00-conformance.json"), "utf8"));
+      assert.deepEqual(retained.receipt, receipt);
+      assert.equal("packet" in retained.receipt.resources, false);
+      assert.equal(calls.length, refused ? 0 : 1);
+    } finally { await setup.close();await rm(scratch, { recursive: true, force: true }); }
+  }
+});
+
 function validateDeclaredProgram(publication, freshNative = false, selectedProgram = publication.programs[0]) {
   const nativePublications = nativeFullSandboxPublications(gtl, artifact, freshNative), publications = [...nativePublications, publication];
   const program = selectedProgram, admit = (value, kind, contract) => {
