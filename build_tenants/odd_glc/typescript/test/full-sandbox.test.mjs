@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { resolve, dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import test from "node:test";
+import { SourceTextModule, SyntheticModule } from "node:vm";
 import { constructFullSandboxPackage, constructOrdinaryJobInput, constructFullHelloInputs, selectOriginalHelloDeclaration, FULL_SANDBOX_IDS, FULL_HELLO_CASES,
   FULL_HELLO_TARGETS, FULL_HELLO_STAGE_MEANINGS, nativeFullSandboxPublications } from "./full-sandbox-declarations.mjs";
 import { readFullSandboxCandidate, installedFullSandboxApis, ordinarySandboxInputs, evaluateOrdinaryJobObservation,
@@ -547,4 +548,76 @@ test("native D2 declares public intake and every selected whole suffix with exac
  assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,graph,graphOwner,entry,{...entry,installId:'component:foreign'},semantics),false);
  const changed=structuredClone(graph);changed.template.nodes[0].term.requirement.implementationBindingRef='implementation-binding://foreign';assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,changed,graphOwner,entry,entry,semantics),false);
  assert.equal(retention.nativeSemanticRetentionOwnersMatch(publication,graph,graphOwner,entry,entry,{...semantics,installId:'component:other'}),false);
+});
+
+// Same native assembly owner as the supported closed-author path. Historical
+// admission/currentness and the later C2 observation are explicit component
+// premises; this does not synthesize a Run, leaf proof or runtime input.
+test("native D2 stage role policies reach assembly and preserve required-content refusals", {skip:!sourceRoot}, async t=>{
+ const {constructFreshNativeLifecyclePublication,constructFreshNativeLifecycleEnvironmentRoles,constructNativeRevisionEnvironmentRoles}=await import('../src/native-lifecycle-declarations.mjs');
+ const nativePublications=nativeFullSandboxPublications(gtl,artifact,true),semantic=nativePublications.find(p=>p.moduleRef===gtl.SEMANTIC_STAGE_IDS.moduleRef);
+ const publication=process.env.ODD_GLC_NATIVE_D2_PUBLICATION
+  ? JSON.parse(await readFile(process.env.ODD_GLC_NATIVE_D2_PUBLICATION,'utf8'))
+  : constructFreshNativeLifecyclePublication({gtl,product,ids:FULL_SANDBOX_IDS,semanticPublication:semantic});
+ const sourceSelections=Object.fromEntries(['common','worker','reviewer','intent','product','requirements','design','construction','evidence','execution'].map(name=>[name,[]]));
+ const roles=constructFreshNativeLifecycleEnvironmentRoles({gtl,product,publication,nativePublications,sourceSelections,accessRefs:[],sourceBasisRef:'generic://component/'});
+ const revisionGraphs=publication.graphFunctions.filter(g=>g.declarations['abg.semantic_revision_stage']);
+ const unchanged=roles.filter(r=>!revisionGraphs.some(g=>g.name===r.graphFunctionRef));
+ assert(unchanged.length>0);
+ assert(unchanged.every(r=>JSON.stringify(r.contextPolicy.selectors)===JSON.stringify(r.role==='command_executor'?['current_worksite','admitted_execution_evidence']:['current_worksite'])));
+ assert.deepEqual(constructNativeRevisionEnvironmentRoles({publication,roles}),roles,'declaration construction is idempotent');
+ assert(constructNativeRevisionEnvironmentRoles({publication,roles:unchanged}).every((r,i)=>r===unchanged[i]),'native workspace and selector rows stay exact');
+ const changed=structuredClone(publication),graph=changed.graphFunctions.find(g=>g.declarations['abg.semantic_revision_stage']);
+ graph.declarations['abg.semantic_revision_stage']='stage:absent';
+ assert.throws(()=>constructNativeRevisionEnvironmentRoles({publication:changed,roles}),/one revision stage/);
+ const wrong=structuredClone(roles);wrong.find(r=>revisionGraphs.some(g=>g.name===r.graphFunctionRef)).programLocusRef='locus:unrelated';
+ assert.throws(()=>constructNativeRevisionEnvironmentRoles({publication,roles:wrong}),/declared stage locus/);
+ const hash=product.sha256Canonical, sourceText='Complete ordinary source: preserve this entire obligation and all unresolved pressure.\n';
+ let owner,selectedContext;
+ const path=join(sourceRoot,'build/code/src/abg/instruction_assembly.js'),module=new SourceTextModule(await readFile(path,'utf8'),{identifier:path});
+ const overrides={
+  './execution_basis.js':{constructNativeInstructionAssemblyBasis:value=>value},
+  './semantic_job.js':{authenticateSemanticJobBasis:()=>owner},
+  './semantic_revision.js':{semanticJobRevisionInputMatchesBasis:()=>true,projectJobRevisionSubject:()=>({currentWorksite:null,origins:[]})},
+  '../product/semantic_revision.js':{isSemanticJobRevisionEnvelope:()=>true},
+  './stdo_environment.js':{projectRunEnvironmentRoleEvidence:()=>selectedContext},
+  '../product/worksite_command_execution.js':{isNativeWorksiteCommandExecutionObservation:value=>value?.kind==='component_admitted_c2'},
+ };
+ await module.link(async spec=>{const actual=await import(spec.startsWith('node:')?spec:new URL(spec,pathToFileURL(path)).href),values={...actual,...overrides[spec]};
+  return new SyntheticModule(Object.keys(values),function(){for(const[k,v]of Object.entries(values))this.setExport(k,v);});});await module.evaluate();
+ let checked=0;
+ for(const stage of publication.semanticJobLifecycle.stages)for(const role of ['author','assessor']){
+  const graph=revisionGraphs.find(g=>g.declarations['abg.semantic_revision_stage']===stage.declarationRef);
+  const row=roles.find(r=>r.graphFunctionRef===graph.name&&r.role===role);assert(row);
+  const asset={assetRef:'asset:component',assetDigest:hash('candidate'),stageRef:stage.declarationRef,groundedTerms:[],assessment:null,
+   candidate:{asset:{statements:[],requirementCandidates:[],worksiteDesign:null,pressure:[]},bindings:[],design:null}};
+  const input={job:{members:[{memberRef:'member:source',path:'request.txt',sourceLocator:'input:ordinary',base64:Buffer.from(sourceText).toString('base64')}],taskData:{},evaluationData:{sentinel:'EVALUATOR_ONLY_D2_POLICY_493ad'},worksiteScope:{readRoots:['.'],writeRoots:['app']}},
+   declaration:publication.semanticJobLifecycle,basis:{jobRef:'job:component',jobDigest:hash('job'),declarationDigest:hash(publication.semanticJobLifecycle)},
+   assets:role==='author'?[]:[asset],bindingVersions:[],context:{observationRef:'context:component',observationDigest:hash('context'),entries:[]},
+   evidence:stage.bodyCapabilities.includes('application_assessment')?{executionObservation:{kind:'component_admitted_c2',commandResults:[]},artifacts:[]}:null,applicationCoverage:'non_closing',remainingGaps:['component_scope']};
+  const supplied={current:input,revisionBasis:{basisRef:'revision:component',basisDigest:hash('revision'),retainedTerms:[],historicalAssets:[],
+   request:{kind:'semantic_revision_request',schemaVersion:'5.0.0',parent:{ref:'parent:component'},causes:[],selection:{ref:'selection:component'},currentWorksite:null}}};
+  const leaf=graph.template.nodes.flatMap(n=>gtl.cLeafTerms(n.term)).find(l=>l.fibre==='F_P'&&l.programLocusRef===row.programLocusRef);assert(leaf);
+  owner={role,stage,events:[],call:{programLocusRef:row.programLocusRef,graphFunctionRef:graph.name,cCallRef:'call:component',cCallDigest:hash('call'),inputContractRef:gtl.SEMANTIC_REVISION_IDS.envelopeContractRef,implementationRef:'implementation:component'},
+   inputRef:'input:component',inputDigest:hash(supplied),execution:{invocationAdmissionRef:'invocation:component',programRef:'program:component',basisRef:'basis:component',basisDigest:hash('basis')}};
+  const context={...row,invocationAdmissionRef:owner.execution.invocationAdmissionRef,contextPolicyDigest:hash(row.contextPolicy),environmentRef:'environment:component',environmentDigest:hash('environment'),evidenceDigest:hash('evidence'),
+   sourceContent:stage.assetSurface.standardsRefs.map(path=>({path,text:'Selected immutable component standard'})),accessContent:[]};
+  selectedContext=context;
+  const basis={publication,graphFunction:graph,cCall:owner.call,predecessorPrefix:{component:true}};
+  const evaluate=()=>module.namespace.evaluateNativeInstructionAssembly(basis,supplied),assembled=evaluate();
+  assert.equal(assembled.kind,'native_instruction_assembly',stage.declarationRef+'/'+role+JSON.stringify(assembled.kind==='native_instruction_assembly_refusal'?assembled:null));
+  assert.deepEqual(assembled.plan.selection.selectors,row.contextPolicy.selectors);
+  assert.equal(assembled.envelope.sections.source[0].text,sourceText);
+  assert.equal(assembled.request.prompt.includes('EVALUATOR_ONLY_D2_POLICY_493ad'),role==='assessor'&&stage.bodyCapabilities.includes('application_assessment'));
+  for(const selector of row.contextPolicy.selectors){selectedContext={...context,contextPolicy:{...row.contextPolicy,selectors:row.contextPolicy.selectors.filter(x=>x!==selector)}};
+   assert.equal(evaluate().cause,'unavailable_required_content','missing '+selector+' must refuse');}
+  selectedContext={...context,sourceContent:context.sourceContent.slice(1)};assert.equal(evaluate().cause,'unavailable_required_content','absent standard still refuses');
+  selectedContext=context;
+  if(row.contextPolicy.selectors.includes('current_worksite')){const saved=input.context;input.context=null;assert.equal(evaluate().cause,'unavailable_required_content');input.context=saved;}
+  if(row.contextPolicy.selectors.includes('admitted_execution_evidence')){const saved=input.evidence;input.evidence=null;assert.equal(evaluate().cause,'unavailable_required_content');input.evidence=saved;}
+  if(role==='author'){selectedContext={...context,contextPolicy:{...row.contextPolicy,selectors:[...row.contextPolicy.selectors,'assessor_evaluation_data']}};assert.equal(evaluate().cause,'unavailable_required_content');}
+  checked++;
+ }
+ assert.equal(checked,10);
+ t.diagnostic('All 10 D2 semantic stage/role assemblies checked with explicit upstream authentication/currentness and C2 observation premises. Actual Product actor/context projections, declared role discovery, required-content and evaluator withholding execute; no runtime admission or paid actor.');
 });

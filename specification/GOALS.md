@@ -9,7 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043 current frontier](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) owns the native lifecycle correction, exact candidate/evidence status and current source/installed execution disposition under unchanged GLC RC4, including the accepted selector outcome, closed correction refusal and accepted ABI refusal-admission repair; its ticket owns one current-bound intake and complete correction suffix. The outcome is generic full-lifecycle work and truthful correction with original source/oracle/job, rejected status, unaffected work and obligations conserved. Data Mapper is held; complete GLC delivery, LIFE-01 and qualification remain open.
+Current delivery tracking: [T-043 current frontier](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) owns the independently accepted GLC semantic stage/role correction, verified dev15 publication and selected installed continuation on unchanged core28. GLC remains on RC4. The goal remains generic full-lifecycle work and truthful correction, preserving original source/oracle/job, rejected status, unaffected work and obligations. Data Mapper is held; complete delivery, LIFE-01 and qualification remain open.
 
 Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,

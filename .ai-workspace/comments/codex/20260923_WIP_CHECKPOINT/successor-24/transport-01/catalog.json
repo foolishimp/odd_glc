@@ -1,0 +1,47 @@
+{
+  "kind": "wip_checkpoint_transport",
+  "repository": "/Users/jim/src/apps/odd_glc",
+  "headAtPreparation": "64e5f8053e45c833272ce224bc7cf55beb915920",
+  "scope": "Incremental WIP preservation only; accepted source, installed successes/failures and proposals retain their separate proof scopes; no release or qualification claim.",
+  "partLimit": 51380224,
+  "originalsModified": false,
+  "counts": {
+    "archive_backed": 52
+  },
+  "archiveMemberCount": 52,
+  "archiveMemberBytes": 15792921,
+  "transportBytes": 2059301,
+  "assets": [
+    {
+      "id": "raw-0d56f168bf4afbcffd0e264e298f6bd1429e9546b39d4c7823e0f3c086afc964",
+      "kind": "exact_original_compressed_file",
+      "byteLength": 91027,
+      "sha256": "0d56f168bf4afbcffd0e264e298f6bd1429e9546b39d4c7823e0f3c086afc964",
+      "parts": [
+        {
+          "path": "payloads/raw-0d56f168bf4afbcffd0e264e298f6bd1429e9546b39d4c7823e0f3c086afc964.part0000",
+          "byteLength": 91027,
+          "sha256": "0d56f168bf4afbcffd0e264e298f6bd1429e9546b39d4c7823e0f3c086afc964"
+        }
+      ]
+    },
+    {
+      "id": "family-0000",
+      "kind": "tar_gzip",
+      "sourceFamily": ".ai-workspace/comments/codex/20260923_COMPOSITE_READINESS",
+      "byteLength": 1968274,
+      "sha256": "8c7a35ce2dd2f645612cbf1bda055d330208740fc073d9fb99402abfc09bd671",
+      "parts": [
+        {
+          "path": "payloads/family-0000.tar.gz.part0000",
+          "byteLength": 1968274,
+          "sha256": "8c7a35ce2dd2f645612cbf1bda055d330208740fc073d9fb99402abfc09bd671"
+        }
+      ]
+    }
+  ],
+  "indexSha256": "397828c8c1bb5d4f1568de1e6e5792889b398dce831d58f3840dea9bf13bee89",
+  "reconciliationSha256": "2a41f67761329cea75abe01a2ea0e5d2aebbbd6649b5cc1628c961d51e95aab0",
+  "pendingActiveEvidence": [],
+  "credentialShapeFindingCount": 0
+}

@@ -36,7 +36,14 @@ is retained separately from the original job and supplied through the existing
 ABG/Product budget owner for new work, including old jobs without that field.
 
 Each Program selects only its exact existing STDO role bindings and context
-rows. Selection uses the existing assessor role. The fresh lifecycle retains
+rows. Closed semantic D2 author/assessor rows derive their selectors from the
+exact declared stage capabilities and role content policy: full source,
+predecessors and active bindings, the assessor's current candidate, required
+Design worksite context and Evidence execution facts. Evaluator-only data is
+selected only by the application-assessment assessor. The same declaration
+factory adapts retained historical lifecycle rows without changing their source
+spans or lifecycle bytes; workspace-native policies are not substituted for
+closed semantic policies. Selection uses the existing assessor role unchanged. The fresh lifecycle retains
 its original three native families. Existing native-continuation carriers and
 Programs remain a separate supported route; they are not promoted into a
 SemanticJobEnvelope or migrated by this relation.

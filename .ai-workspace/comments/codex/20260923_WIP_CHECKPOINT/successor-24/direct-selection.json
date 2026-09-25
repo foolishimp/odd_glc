@@ -1,0 +1,24 @@
+{
+  "paths": [
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-23/push-verification.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/paired-checkpoint.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/catalog.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/credential-shape-findings.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/direct-paths.nul",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/exclusions.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/members.jsonl.gz",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/path-reconciliation.jsonl.gz",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/payloads/family-0000.tar.gz.part0000",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/payloads/raw-0d56f168bf4afbcffd0e264e298f6bd1429e9546b39d4c7823e0f3c086afc964.part0000",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/pending.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-01/verification.json",
+    ".ai-workspace/comments/codex/20260923_WIP_CHECKPOINT/successor-24/transport-selection.json",
+    ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+    "build_tenants/common/design/ODD_GLC_NATIVE_INTENT_ASSET_TRANSITION.md",
+    "build_tenants/odd_glc/typescript/src/native-lifecycle-declarations.mjs",
+    "build_tenants/odd_glc/typescript/test/full-sandbox.test.mjs",
+    "build_tenants/odd_glc/typescript/test/management-environment.test.mjs",
+    "specification/GOALS.md"
+  ],
+  "activeRuntimeExcluded": true
+}

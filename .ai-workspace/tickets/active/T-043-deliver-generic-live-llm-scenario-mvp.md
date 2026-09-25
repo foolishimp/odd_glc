@@ -25,14 +25,16 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: NATIVE_D2_01_STEP6_CLOSED_SELECTOR_BUDGET_FAILURE
-- current_re_entry: design_reframe_existing_generic_native_lifecycle_correction_preconstruction_and_native_postconstruction
-- current_activation_status: STEP6_setup_public_root_witness_passed_intake_runtime_failed_provider_budget_exhausted_paid_HOLD_no_suffix
-- last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/step6-installed/return.md
-- last_execution_result: CLOSED_one_Opus55_selector_budget_exhausted_Result_absent_replay_failed_no_suffix_no_retry
+- current_activation: NATIVE_D2_01_CORE28_DEV15_INSTALLED_CONTINUATION
+- current_re_entry: realization_refactor_existing_native_lifecycle_role_declaration_factory
+- current_activation_status: GLC_source_independently_accepted_dev15_verified_one_installed_continuation_selected
+- last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#current-core28-boundary-and-glc-declaration-repair
+- last_execution_result: CLOSED_core28_selector_success_suffix_pre_actor_policy_refusal_full_cause_retained_fresh_reads_complete
 - current_activation_record: ../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#admission-boundary-execution-checklist
 
 ## Current bounded selection
+
+Current frontier: [Root's core28 disposition](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#current-core28-boundary-and-glc-declaration-repair) accepts the independently reviewed GLC stage/role declaration correction and verified dev15 package, selecting one installed continuation on unchanged core28. The actual pre-actor refusal is retained; both GLC standards are present. Existing contracts and execution limits remain unchanged. Original lifecycle/source/oracle/job and prior outcomes remain conserved. The following execution records retain their historical scopes.
 
 The [native Evidence correction](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/return.md), [independent source review](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/review-01/return.md), and [compiled17 construction](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-17/return.md) are accepted. It retains exact native C2 observations and removes the synthetic legacy C1 task/territory. GLC remains on RC4.
 

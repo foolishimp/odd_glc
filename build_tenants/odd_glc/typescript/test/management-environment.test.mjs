@@ -126,7 +126,10 @@ test("configuration projects exactly twelve native actors and no deterministic a
   // Identified structural family fixture only; native owner conformance is a
   // separate successor-package check, not replaced by this tiny graph fixture.
   const stages = ["intent", "product", "requirements", "design", "evidence"].map(name => ({
-    declarationRef: `stage://odd-glc/generic-lifecycle/${name}@5`, graphFunctionRef: "graph://" + name }));
+    declarationRef: `stage://odd-glc/generic-lifecycle/${name}@5`, graphFunctionRef: "graph://" + name,
+    bodyCapabilities: name === "design" ? ["worksite_design"] : name === "evidence" ? ["application_assessment"] : [],
+    assembly: { contentPolicy: "role_scoped_worksite", worksiteContentByRole: {
+      author: name === "design" ? "current_inventory" : "not_required", assessor: name === "design" ? "current_inventory" : "not_required" } } }));
   const graph = (name, roles) => ({ name, template: { nodes: roles.map(role => ({ term: { fibre: role === "deterministic" ? "F_D" : "F_P",
     programLocusRef: name + "/" + role, role } })) } });
   const graphFunctions = stages.map(stage => graph(stage.graphFunctionRef, ["author", "assessor"]));

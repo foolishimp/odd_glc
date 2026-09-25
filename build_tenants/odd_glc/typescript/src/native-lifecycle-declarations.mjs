@@ -125,6 +125,34 @@ export function constructNativeLifecyclePublication({ gtl, product, ids, semanti
       programMembershipRefs: [ids.programRef], readinessPrerequisiteRefs: [ids.programRef], compatibilityRefs: ["compatibility://abiogenesis/major/5"], provenanceRefs: [placeholder, placeholder] })) });
 }
 
+function semanticStageContextSelectors(stage, role) {
+  if (!["author", "assessor"].includes(role)) throw new TypeError("semantic stage requires author or assessor");
+  const content = stage.assembly.contentPolicy === "role_scoped_worksite"
+    ? stage.assembly.worksiteContentByRole[role] : "full_source_and_predecessors";
+  return ["full_source", "declared_predecessor_semantics", "active_binding_semantics",
+    ...(role === "assessor" ? ["current_candidate"] : []),
+    ...(stage.bodyCapabilities.includes("worksite_design") || content === "current_inventory" ? ["current_worksite"] : []),
+    ...(stage.bodyCapabilities.includes("application_assessment")
+      ? ["admitted_execution_evidence", ...(role === "assessor" ? ["assessor_evaluation_data"] : [])] : [])];
+}
+
+/** Adapt only the declared closed-semantic D2 loci. Existing selected source
+ * spans, role instructions and workspace-native rows remain exact. This pure
+ * declaration construction also serves retained historical lifecycle inputs. */
+export function constructNativeRevisionEnvironmentRoles({ publication, roles }) {
+  return roles.map(row => {
+    const graphs = publication.graphFunctions.filter(graph => graph.name === row.graphFunctionRef);
+    if (graphs.length === 0) return row; // Borrowed native workspace/C2 family.
+    const graph = exactlyOne(graphs, "role graph"), ref = graph.declarations["abg.semantic_revision_stage"];
+    if (ref === undefined) return row;
+    const stage = exactlyOne(publication.semanticJobLifecycle.stages.filter(stage => stage.declarationRef === ref), "revision stage");
+    if (row.programLocusRef !== (row.role === "author" ? stage.authorLocusRef : stage.assessorLocusRef))
+      throw new TypeError("revision role requires its declared stage locus");
+    return { ...row, contextPolicy: { policyRef: `${stage.assembly.ruleRef}/${row.role}/context-selection@5`,
+      selectors: semanticStageContextSelectors(stage, row.role) } };
+  });
+}
+
 /** Native family discovery supplies identity; odd_glc supplies role policy data.
  * Exact source selections are configuration, never ordinary job/evaluation data.
  */
@@ -147,10 +175,7 @@ export function constructNativeLifecycleEnvironmentRoles({ gtl, product, publica
     const selectors = stage === undefined ? role === "constructor"
       ? ["full_source", "declared_predecessor_semantics", "active_binding_semantics", "current_worksite"]
       : ["current_worksite", "admitted_execution_evidence"]
-      : ["full_source", "declared_predecessor_semantics", "active_binding_semantics",
-        ...(role === "assessor" ? ["current_candidate"] : []),
-        ...(task === "design" ? ["current_worksite"] : []),
-        ...(task === "evidence" ? ["admitted_execution_evidence", ...(role === "assessor" ? ["assessor_evaluation_data"] : [])] : [])];
+      : semanticStageContextSelectors(stage, role);
     const text = `Apply the supplied exact ${posture} frame and ${task} source spans to the native ${role} contract. ` +
       "The native task and field domains fix this bounded outcome. Context access is evidence, not authority; retain source roles and unresolved obligations. " +
       (role === "constructor" ? "Return replacement bytes only; the native C0 owner performs application writes."
@@ -260,7 +285,7 @@ export function constructFreshNativeLifecycleEnvironmentRoles({ gtl, product, pu
       contextPolicy: { policyRef: `policy://odd-glc/fresh-native-lifecycle/${role}/selection@5`, selectors: role === "command_executor" ? ["current_worksite", "admitted_execution_evidence"] : ["current_worksite"] } };
   })));
   if (rows.filter(r=>r.role === "constructor").length !== 1 || rows.filter(r=>r.role === "command_executor").length !== 1) throw new TypeError("one native constructor and executor family required");
-  return rows;
+  return constructNativeRevisionEnvironmentRoles({ publication, roles: rows });
 }
 
 /** Pure public declaration lookup, not selection or runtime authority. The
