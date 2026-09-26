@@ -245,7 +245,7 @@ export function constructFreshNativeLifecyclePublication({ gtl, product, ids, se
     policies: { "abg.root_mode": "direct", "abg.compute_regime": "mixed", "abg.default_start_ref": ids.startRef,
       "abg.semantic_lifecycle": lifecycle.declarationRef,
       ...(runEnvironment === undefined ? {} : { [gtl.RUN_ENVIRONMENT_POLICY]: runEnvironment.declarationRef }) } };
-  const revision = nativeRevisionDeclarations({gtl,product,lifecycle,close,program});
+  const revision = constructNativeRevisionDeclarations({gtl,product,lifecycle,close,program});
   graphs.push(...revision.graphs);
   const programs = [program,...revision.programs];
   const environments = runEnvironment === undefined ? [] : programs.map((p,i) => {
@@ -294,13 +294,15 @@ export function selectNativeSemanticRevisionStart({ product, publication, reques
   if (!product.isSemanticRevisionRequest(request) || request.selectionChoice === undefined) return null;
   const choice = request.selectionChoice;
   const entry = choice.mode === "construction_repair" ? "construction_repair" : choice.selectedStageRef;
+  const entryRole = choice.mode === "stage_revision" ? choice.entryRole ?? "author" : "author";
   const matches = publication.programs.flatMap(program => program.starts.flatMap(start => {
     const roots = publication.graphFunctions.filter(graph => graph.name === start.graphFunctionRef);
     if (roots.length !== 1 || !program.callableMembership.includes(start.graphFunctionRef)) return [];
     const graph = roots[0], nodes = graph.template.nodes.filter(node => node.nodeRef === graph.template.startNodeRef);
     if (nodes.length !== 1 || nodes[0].term.kind !== "c_workflow") return [];
     const projections = publication.graphFunctions.filter(graph => graph.name === nodes[0].term.graphFunctionRef &&
-      program.callableMembership.includes(graph.name) && graph.declarations["abg.semantic_native_revision_entry"] === entry);
+      program.callableMembership.includes(graph.name) && graph.declarations["abg.semantic_native_revision_entry"] === entry &&
+      (graph.declarations["abg.semantic_native_revision_entry_role"] ?? "author") === entryRole);
     return projections.length === 1 ? [{ programRef: program.programRef, startRef: start.startRef, graphFunctionRef: start.graphFunctionRef }] : [];
   }));
   return matches.length === 1 ? Object.freeze(matches[0]) : null;
@@ -308,7 +310,7 @@ export function selectNativeSemanticRevisionStart({ product, publication, reques
 
 /** Whole declared suffixes. The caller chooses one ordinary start after reading
  * the admitted request; ABG's projection requires its exact selected entry. */
-function nativeRevisionDeclarations({gtl,product,lifecycle,close,program}) {
+export function constructNativeRevisionDeclarations({gtl,product,lifecycle,close,program}) {
   const r=gtl.SEMANTIC_REVISION_IDS,n=gtl.SEMANTIC_STAGE_IDS,w=gtl.NATIVE_WORKSPACE_WORK_IDS;
   const ref=name=>`graph-function://odd-glc/native-semantic-revision/${name}@5`;
   const graphs=[],programs=[];
@@ -347,5 +349,13 @@ function nativeRevisionDeclarations({gtl,product,lifecycle,close,program}) {
     const before=index<evidence?stages.slice(index,evidence):[];
     root(name,[projection,...before,...(entry===lifecycle.stages[evidence].declarationRef?[]:[construction]),...stages.slice(evidence),terminal],r.projectionPredicateRef,r.outputContractRef);
   }
+  // A declared assessment-first entry conserves the exact pending authored
+  // asset; it invokes the existing assessor, never a replacement author.
+  lifecycle.stages.slice(0,evidence).forEach((stage,index)=>{
+    const name="from-"+stage.declarationRef.split("/").at(-1).replace("@5","")+"-assessment";
+    const assessment=leaf("stage-"+index+"-assessment","projection",r.assessorPredicateRef,r.envelopeContractRef,{stage,stageEntryRole:"assessor"});
+    const projection=leaf(name+"-projection","projection",r.projectionPredicateRef,r.envelopeContractRef,{nativeEntry:stage.declarationRef,nativeEntryRole:"assessor"});
+    root(name,[projection,assessment,...stages.slice(index+1,evidence),construction,...stages.slice(evidence),terminal],r.projectionPredicateRef,r.outputContractRef);
+  });
   return {graphs,programs};
 }

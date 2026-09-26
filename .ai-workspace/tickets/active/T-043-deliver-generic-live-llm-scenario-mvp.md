@@ -25,16 +25,16 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: NATIVE_D2_01_CORE38_PRESERVED_STEEL_THREAD
-- current_re_entry: ABI_existing_assembly_realization_refactor_and_native_intake_design_reframe_GLC_dev15_unchanged
-- current_activation_status: native38_exact_prepared_sequence_active_intake12_suffix8
-- last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core38-acceptance-and-preserved-native-execution
-- last_execution_result: CLOSED_native37_suffix_blocked_result_contract_before_Design_assessor
+- current_activation: NATIVE_D2_01_CORE39_ASSESSMENT_FIRST_STEEL_THREAD
+- current_re_entry: ABI_D2_existing_HOW_and_GLC_declared_composition_bounded_assessor_preparation_continuation
+- current_activation_status: core39_dev16_source_review_package_caller_conjoined_native39_released
+- last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
+- last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
 - current_activation_record: ../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#admission-boundary-execution-checklist
 
 ## Current bounded selection
 
-Current frontier: core38's shared semantic-result materializer correction is accepted at source/component/package scope after independent review. Root selects the preserved native38 sequence: genuine setup/witness, one $12 intake and only its admitted $8-per-actor declared suffix with fresh reads. Core37's successful intake and Design provider outcome remain preserved; no prior raw response is promoted into admission. Original source/oracle, Requirements, worksite/history and GLC RC4/dev15 remain. Native D2, qualification and RC1 are open; T287 owns exact controls and state.
+Current frontier: core39/dev16 assessment-first correction is accepted at HOW/source/component/package scope after independent review. Root releases exact native39 setup, genuine source-root read and binding witness, one intake and only its returned declared whole suffix. Source is actual failed native38 Run31c1969a… at399209962B, preserving authored Design75ddeb06… with assessment:null and all prior accepted Requirements/source/job/oracle ancestry. The actual component successor fits994022/1048576B; independent native assessment and complete D2 remain unproved. No repeat author or cap increase. GLC stays on RC4; T287/root disposition owns controls. Qualification and RC1 remain open.
 
 The [native Evidence correction](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/return.md), [independent source review](../../../../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-evidence-territory-01/review-01/return.md), and [compiled17 construction](../../../../abiogenesis/.ai-workspace/comments/codex/20260923_COMPOSITE_READINESS/compiled-17/return.md) are accepted. It retains exact native C2 observations and removes the synthetic legacy C1 task/territory. GLC remains on RC4.
 

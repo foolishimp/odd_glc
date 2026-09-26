@@ -9,16 +9,23 @@ acquire one eligible failure, one advancing semantic predecessor, original
 job/root and current workspace context; absent or ambiguous joins refuse.
 F_P assesses affectedness only among those admitted alternatives. F_D seals
 the existing SemanticRevisionRequest, which ordinary terminal read returns
-with `selectionChoice: {mode, selectedStageRef}` projected from that admission.
+with `selectionChoice: {mode, selectedStageRef, entryRole?}` projected from that admission.
+The F_D owner alone derives a preconstruction operational entryRole from the
+exact preparation failure; the raw selector does not choose it. Historical
+omission retains author-first behavior.
 
 The caller then invokes the declared `construction-repair`, `from-intent`,
 `from-product`, `from-requirements`, `from-design` or `from-evidence` Program
 under `program://odd-glc/native-semantic-revision/<name>@5`. The projection
-requires its entry to match the actual admitted selection. Each Program
+requires its entry to match the actual admitted selection. For a genuine assessor preparation failure, the declared assessment-first
+Program preserves the exact admitted authored asset with assessment:null,
+starts at its existing assessor, and follows the complete remaining suffix.
+All earlier satisfied assets and original author provenance survive; an
+unsatisfied assessment still stops before construction. Each Program
 contains the complete suffix; GLC adds no caller traversal or runtime.
 `selectNativeSemanticRevisionStart` is a pure lookup over the returned request
 and public Program/GraphFunction declarations: it matches the declared first
-projection's entry and requires one start. It neither discovers history nor
+projection's stage and entry role and requires one start. It neither discovers history nor
 judges affectedness. A missing historical choice, absent entry or ambiguous
 start returns no selection. ABG still authenticates the returned choice against
 the referenced admitted decision and the selected suffix; modifying the field

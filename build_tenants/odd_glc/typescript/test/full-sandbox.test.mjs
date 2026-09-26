@@ -515,17 +515,19 @@ test("native D2 declares public intake and every selected whole suffix with exac
   dependencies:[{dependencyRef:'dependency:component',basisRef:'generic://component/',recordRef:'record:component',recordDigest:digest,recordFormat:'member_inventory@1',inventoryDigest:gtl.stdoInventoryDigest([member]),members:[member]}],
   contexts:[{contextRef:binding.contextRef,sourceLocator:'generic://component/',inventoryDigest:product.sha256Canonical([contextMember]),members:[contextMember]}],corpusAccess:null,accesses:[],roles});
  const publication=constructFreshNativeLifecyclePublication({gtl,product,ids:FULL_SANDBOX_IDS,semanticPublication:semantic,runEnvironment:environment});
- assert.equal(publication.programs.length,8,'fresh, intake, five declared stages and construction repair');
+ assert.equal(publication.programs.length,12,'fresh, intake, five author-first stages, construction repair and four preconstruction assessment-first entries');
  const coordinate={cCallRef:'component:call',resultRef:'component:result',resultDigest:digest,resultAdmissionEventRef:'component:admission',judgmentEventRef:'component:judgment'};
  const request={kind:'semantic_revision_request',schemaVersion:'5.0.0',parent:coordinate,causes:[coordinate],selection:coordinate,currentWorksite:null};
  assert.equal(selectNativeSemanticRevisionStart({product,publication,request}),null,'historical requests do not invent a returned choice');
- for(const selectionChoice of [{mode:'construction_repair',selectedStageRef:null},...publication.semanticJobLifecycle.stages.map(stage=>({mode:'stage_revision',selectedStageRef:stage.declarationRef}))]){
+ for(const selectionChoice of [{mode:'construction_repair',selectedStageRef:null},...publication.semanticJobLifecycle.stages.map(stage=>({mode:'stage_revision',selectedStageRef:stage.declarationRef})),...publication.semanticJobLifecycle.stages.slice(0,4).map(stage=>({mode:'stage_revision',selectedStageRef:stage.declarationRef,entryRole:'assessor'}))]){
   const terminalValue=JSON.parse(JSON.stringify({...request,selectionChoice}));
   const start=selectNativeSemanticRevisionStart({product,publication,request:terminalValue});assert(start);
   const program=publication.programs.find(p=>p.programRef===start.programRef);assert(program.starts.some(s=>s.startRef===start.startRef&&s.graphFunctionRef===start.graphFunctionRef));
   const root=publication.graphFunctions.find(g=>g.name===start.graphFunctionRef),first=root.template.nodes.find(n=>n.nodeRef===root.template.startNodeRef);
   assert.equal(publication.graphFunctions.find(g=>g.name===first.term.graphFunctionRef).declarations['abg.semantic_native_revision_entry'],selectionChoice.mode==='construction_repair'?'construction_repair':selectionChoice.selectedStageRef);
   assert.equal(selectNativeSemanticRevisionStart({product,publication:{...publication,programs:[...publication.programs,program]},request:terminalValue}),null,'ambiguous starts do not choose an arbitrary route');
+  const projected=publication.graphFunctions.find(g=>g.name===first.term.graphFunctionRef);assert.equal(projected.declarations['abg.semantic_native_revision_entry_role']??'author',selectionChoice.entryRole??'author');
+  if(selectionChoice.entryRole==='assessor'){const firstStage=publication.graphFunctions.find(g=>g.name===root.template.nodes[1].term.graphFunctionRef),leaves=firstStage.template.nodes.flatMap(n=>gtl.cLeafTerms(n.term));assert.equal(leaves.length,1);assert.equal(leaves[0].programLocusRef,publication.semanticJobLifecycle.stages.find(s=>s.declarationRef===selectionChoice.selectedStageRef).assessorLocusRef);}
  }
  assert.equal(selectNativeSemanticRevisionStart({product,publication,request:{...request,selectionChoice:{mode:'stage_revision',selectedStageRef:'stage:unknown'}}}),null);
  const allGraphs=[...publication.graphFunctions,...nativePublications.flatMap(p=>p.graphFunctions)];
@@ -586,9 +588,8 @@ test("native D2 stage role policies reach assembly and preserve required-content
  await module.link(async spec=>{const actual=await import(spec.startsWith('node:')?spec:new URL(spec,pathToFileURL(path)).href),values={...actual,...overrides[spec]};
   return new SyntheticModule(Object.keys(values),function(){for(const[k,v]of Object.entries(values))this.setExport(k,v);});});await module.evaluate();
  let checked=0;
- for(const stage of publication.semanticJobLifecycle.stages)for(const role of ['author','assessor']){
-  const graph=revisionGraphs.find(g=>g.declarations['abg.semantic_revision_stage']===stage.declarationRef);
-  const row=roles.find(r=>r.graphFunctionRef===graph.name&&r.role===role);assert(row);
+ for(const graph of revisionGraphs)for(const row of roles.filter(r=>r.graphFunctionRef===graph.name)){
+  const stage=publication.semanticJobLifecycle.stages.find(s=>s.declarationRef===graph.declarations['abg.semantic_revision_stage']),role=row.role;assert(stage);
   const asset={assetRef:'asset:component',assetDigest:hash('candidate'),stageRef:stage.declarationRef,groundedTerms:[],assessment:null,
    candidate:{asset:{statements:[],requirementCandidates:[],worksiteDesign:null,pressure:[]},bindings:[],design:null}};
   const input={job:{members:[{memberRef:'member:source',path:'request.txt',sourceLocator:'input:ordinary',base64:Buffer.from(sourceText).toString('base64')}],taskData:{},evaluationData:{sentinel:'EVALUATOR_ONLY_D2_POLICY_493ad'},worksiteScope:{readRoots:['.'],writeRoots:['app']}},
@@ -618,6 +619,6 @@ test("native D2 stage role policies reach assembly and preserve required-content
   if(role==='author'){selectedContext={...context,contextPolicy:{...row.contextPolicy,selectors:[...row.contextPolicy.selectors,'assessor_evaluation_data']}};assert.equal(evaluate().cause,'unavailable_required_content');}
   checked++;
  }
- assert.equal(checked,10);
- t.diagnostic('All 10 D2 semantic stage/role assemblies checked with explicit upstream authentication/currentness and C2 observation premises. Actual Product actor/context projections, declared role discovery, required-content and evaluator withholding execute; no runtime admission or paid actor.');
+ assert.equal(checked,14,'ten author-first role combinations plus four assessment-first assessor entries');
+ t.diagnostic('All 14 D2 semantic stage/role assemblies checked with explicit upstream authentication/currentness and C2 observation premises. Actual Product actor/context projections, declared role discovery, required-content and evaluator withholding execute; no runtime admission or paid actor.');
 });
