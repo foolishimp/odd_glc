@@ -1,0 +1,23 @@
+{
+  "status": "ordinary_node_resolution_verified",
+  "resolvedPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/products/core46/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+  "inputValid": true,
+  "payloads": [
+    {
+      "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+      "productContentDigest": "sha256:5ea793a0ca674277911dc18b1802a6d4c0fb8d9466b2828f68a9dec67e7c8113",
+      "matches": true
+    },
+    {
+      "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+      "productContentDigest": "sha256:a13c0d0995e536aefd682ce52e7808e17fe0bbf74d4121c771c1f9fa01985bd5",
+      "matches": true
+    },
+    {
+      "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+      "productContentDigest": "sha256:75a9d87bfca3d2e91cc39cb1376e219035f02c6f6f514bb77ba3c53c30b49f16",
+      "matches": true
+    }
+  ],
+  "usesCustomLoader": false
+}

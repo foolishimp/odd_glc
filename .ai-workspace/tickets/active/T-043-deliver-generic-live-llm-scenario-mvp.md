@@ -15,7 +15,7 @@
 - re_entry_point: specification/GOALS.md#current-goal
 - triaged_at: 2026-09-09
 - created_at: 2026-09-01
-- updated_at: 2026-09-26
+- updated_at: 2026-09-27
 - selected_method: STDO v2.5.0-rc.4
 - selected_method_qualified_tag: refs/tags/specification_methodology/v2.5.0-rc.4
 - selected_method_tag_object: 032dac0c833111547f7dd4b290c5316ed9b70f97
@@ -25,14 +25,200 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: NATIVE_D2_01_CORE39_ASSESSMENT_FIRST_STEEL_THREAD
-- current_re_entry: ABI_D2_existing_HOW_and_GLC_declared_composition_bounded_assessor_preparation_continuation
-- current_activation_status: core39_dev16_source_review_package_caller_conjoined_native39_released
+- current_activation: GLC_PROGRAM_CONSTRUCTION_01
+- current_re_entry: intent_reprice_product_reprice_requirement_reprice_then_bounded_design_and_realization
+- current_activation_status: bounded_evaluate_only_increment_accepted_G3_comparison_S06_open
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
-- current_activation_record: ../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#admission-boundary-execution-checklist
+- current_activation_record: '#problem-fitted-program-construction'
 
 ## Current bounded selection
+
+Current selection is [problem-fitted Program construction](#problem-fitted-program-construction),
+under the owner's 2026-09-27 implementation instruction. Its first evaluate-only
+increment is [accepted](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/return.md)
+on core46 after installed positive/refusal proof and independent review. Next
+resolve the original construction-input relation and comparison without
+repeating valid work. Native44 retains its accepted scope; S06 and ABG5
+qualification/RC1 remain open. The prior
+native39 selection and execution records below are historical, not new launch
+authority. The existing worksite, original task/oracle and valid work remain.
+
+### Problem-fitted Program construction
+
+- Outcome: one reusable odd_glc construction relation selects a bounded GTL
+  composition from the task, applicable obligations and actual evidence;
+  ordinary installed ABG executes it and exposes its admitted outcome.
+- Authority: owner "ok do it" after the reviewed ABG construction calculus.
+  Executive selects odd_glc as the lifecycle construction owner; explicit
+  Intent/Product re-entry replaces its blanket compiler exclusion only for
+  constructing ordinary GTL declarations above the interpreter. No local
+  requirements algebra, runtime, effect owner or closure ledger is selected.
+- Basis: GLC HEAD `eb65daa3ca38dfd6f5e5eeb614a3c700a4648d17`, verified STDO
+  `v2.5.0-rc.4`, Product/Owner/Design/Proof frames in
+  `specification/REFERENCE_FRAME_BASIS.md`; paired ABI T-287 uses verified
+  `v2.5.1-rc.1`. The [formal calculus](../../../../abiogenesis/specification/requirements/gtl/REQ-L-GTL3-SELECTION-BOUNDARY.md#program-construction-calculus)
+  is the semantic contract; the current installed activation below selects
+  exact core46, preserving the earlier core45 evidence.
+- Writer grant: `/root` explicitly enters Writer for this ticket, README,
+  AGENTS, Intent, Product, Goals, Reference-Frame Basis and the existing
+  Boundary-Authority, Worksite-Lifecycle and Requirements-Algebra-Consumption
+  requirements. Paired tracking effects are ABI Goals/T-287 only. Reconcile
+  current ownership and selection; preserve historic evidence and immutable
+  installs. Return to Executive after these effects. No runtime/code effect
+  follows from this documentation grant.
+- Worker: `/root/glc_program_construction`, Astra/xhigh, initially read-only
+  intake of existing declaration/API/evidence owners. Return the bounded HOW
+  and exact required source territory; implementation follows its admitted
+  grant and accepted design. Reviewer: one max independent checkpoint over the
+  changed contract/design, then focused implementation assurance as applicable.
+- Intake accepted: core45 supplies ordinary GTL factories and authenticated
+  historical-source proof. First supported evidence is native work/execution/
+  assessment within one historical-source resource. Arbitrary multi-Run joins
+  and observed-file C2 child execution remain gaps. The same Worker now has a
+  design-only write grant for
+  `build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md`; code and native
+  effects await the accepted-design implementation grant. Native44's missing
+  deterministic evaluator records must not be recast as paid LLM calculation.
+- Proof: distinguish construction, execution, assessment-only and already
+  established outcomes from the same governing task; retain stale/unknown and
+  negative/partial assessment cases. Use real GTL validation and installed ABG
+  admission/execution/readback; no core substitution. A deterministic witness
+  proves computation and composition only; semantic/native claims need their
+  own applicable evidence. Reuse the existing native44 evidence where valid.
+- Stops: missing upstream owner/contract, source-meaning change, unsupported
+  reuse/admission, hidden dispatch or excessive whole-history work returns to
+  Executive. No scenario-specific Program family, automatic retry, broad UAT,
+  S06 waiver or global graph optimizer is admitted by this increment.
+- Status: definition, source and supplied evaluator accepted at their bounded
+  scope; installed setup/conformance pass. Positive03 closes failed at native
+  reacquisition before evaluation; its original result and current worksite
+  match. The [owner diagnostic](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/binding-cover-diagnostic.json)
+  confirms the setup's root-basis cover does not cover the retained native
+  child. Executive selects caller `realization_refactor`: Root enters Writer
+  in `installed-04/` to admit the exact child/binding-pair witness through the
+  existing Public owner, prove its applicability, and prepare/execute one
+  successor positive and its admitted refusal companion. Reuse all installed
+  packages and original inputs; preserve failed Run, historical cover and all
+  genuine resource closes. No core, application, actor or provider changes.
+  Paired ticket/Goals tracking remains granted. The original-task and S06
+  residuals remain.
+- Installed checkpoint CLOSED: positive04 completes with five GraphCalls,
+  eight CCalls, zero actors, expected computed records and matching fresh
+  Public result/replay. The wrong-origin companion is blocked before
+  reacquisition/evaluation with two GraphCalls/two CCalls and matching fresh
+  absence/blocked reads. Executive accepts the bounded conjunction after max
+  review `14cd66e814872e05902a3b1e3f004b28430707bdad60dd532fca0346f4991a45`.
+  The prior Reviewer grant was only `installed-review-01/`, no execution or
+  source effects. Source/installed proof grants are exhausted. G3, comparison,
+  original-task and S06 remain open; timings remain debt, not a performance claim.
+- Checkpoint Writer grant: after the bounded evidence closes, Root may retain
+  exact receipts and source-fixture inputs in one compressed archive and
+  manifest under `installed-04/checkpoint/`, reconcile the paired tickets/Goals,
+  and commit/push this reviewed GLC source/design/definition increment and the
+  paired core46 repair with their evidence to the existing remotes. Preserve
+  unrelated work and all original evidence; do not create a release tag.
+- Closed checkpoint: [paired Product/design review](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/authority-design-review.md)
+  is satisfied, no actionable finding. Executive accepts the exact
+  [HOW](../../../build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md)
+  `cd3e6a34a28c7669055ab4797305df721f400cbd41f346aae4fd64a6a556e208`
+  for bounded implementation. Root enters Writer only to record this grant,
+  then returns to Executive.
+- Implementation grant: one Astra/xhigh Worker may edit tenant
+  `src/program-construction{,-contracts,-runtime}.mjs`, extend existing
+  `src/product-package.mjs` and `scripts/build-native-continuation-product.mjs`,
+  expose its package entry, and author
+  `test/program-construction.test.mjs`,
+  `test/abi5-installed-program-construction.test.mjs` and
+  `test/fixtures/program-construction/`. Local HOW realization detail may be
+  completed within the accepted relation; upstream meaning changes return to
+  Executive. Reuse existing code before adding common helpers. No ABI source,
+  provider calls, original worksite mutation or Git effects.
+- Checkpoint order: implement and run affected component/real-GTL checks;
+  freeze source and the exact supplied evaluator/oracle for focused independent
+  review; then package/install and execute the deterministic retained-evidence
+  thread. All cases and results keep their actual evidence scope. Current
+  native44 and its raw observations are immutable input; do not rerun them.
+- Source checkpoint: thirteen focused checks pass. The independent
+  [source review](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/review.md)
+  found one supplied-evaluator TAP attribution defect; its
+  [correction](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/delta-review.md)
+  is satisfied. The separate
+  [driver API correction](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/driver-delta-review.md)
+  is satisfied. Executive accepts source freeze
+  `78ede896b43533d20a8547d800d5d61dd96133b173d1d96878dcdb33af30f5d8`.
+- Installed Writer activation: Root may write the bounded setup caller,
+  packages, activation inputs and receipts under
+  `comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/`, and update this
+  work record. Use existing core45 Product/public admission owners and existing
+  native44 journal resource. Ordinary ABG appends beyond its preserved
+  623146192-byte prefix are authorized for setup and the positive/refusal Runs;
+  direct history rewriting, transplantation, original worksite edits, C2,
+  native actors and provider calls are excluded. Package/install/setup and
+  execution/readback are measured separately. Return the first actual refusal
+  for triage; no automatic retries or scope expansion. Root returns to Executive
+  for disposition after the bounded effects.
+- Installed refusal triage: catalog admission rejected the evaluator fixture's
+  absent Program membership and duplicate placeholder provenance. No Run began;
+  the genuine setup close is 625464300 bytes. Root explicitly enters Worker
+  for the fixture publication and its focused publication check, then Writer
+  for `implementation-04/` and `installed-02/` proof records. Preserve the
+  original refused package. Use a successor fixture identity and the actual
+  setup close; retain source/core and original native44 evidence. The changed
+  lock requires new matching install admissions. Review only the changed
+  publication before resuming the same installed discriminator.
+- Executive accepts the publication correction at source scope: freeze
+  `970aa5f75610d4eb1586b760604a0417fc42c0dc2e07223d2ce608b49c397443`,
+  independent review `b3a5e00f3261941f27227717de7c0e14b725c869fb050d3e4ea92efba3f9d9bf`.
+  Root resumes the already bounded installed Writer activation in `installed-02/`.
+
+- Executive accepts the paired ABI ordered-ProductSet correction after max
+  review `7de786bd9f15b3933f5d104c210304d59e341635ffb050f646b17fbed78ced1a`.
+  The same installed Writer grant extends to `installed-03/`, selecting exact
+  core46 archive `e2c2d053528fca7dd0e4988ec50772cd8a12f058d35076119c99cf8c4e7adbfb`
+  with unchanged GLC archives. Continue from genuine close 627782508 bytes.
+  Earlier refusals remain historical; original task, duties and proof limits
+  are unchanged. No sorting workaround or new application work is selected.
+
+- Package wiring repair: Executive classifies the missing evaluator dependency
+  and omitted published-provenance materialization as realization defects.
+  Root enters Worker for the existing emitter/builder, construction package
+  version, activation guidance and focused package-closure test. Add explicit
+  supplied Product dependencies through the existing manifest owner; use the
+  existing materializer. No new executor or evaluator policy. Writer territory
+  extends to `implementation-05/` and `installed-04/`. Check complete pure
+  declaration closure before another install; retain the current genuine close
+  (630100716 bytes), prior packages and all native evidence.
+  Executive selects installed-04 from freeze `b784c872abe81248f9cbfdfa2474024abac6cb5989eb48b45065ec71c35b2030`
+  after complete 57-row catalog/Program-closure preflight and 14 focused checks.
+  The packaging delta review runs concurrently; final acceptance requires its
+  closed return and the installed outcome. Prior semantic reviews remain valid;
+  this does not grant application or actor effects. Root is Writer for execution.
+
+
+- Installed-04 Public setup and conformance pass. The first launch is refused
+  by the CLI before resource acquisition: its caller pretty-printed a JSONL
+  record over several lines. Root enters Writer within the same proof territory
+  for a one-line, value-identical transport successor and its activation;
+  preserve the refused request/output. Reuse the actual installed setup and
+  genuine 632426397-byte close. No source/package or semantic change, no Run
+  retry, and no new installation is needed. Executive accepts the mechanical
+  equality check; the original installed execution discriminator remains open.
+
+
+- Native dependency correction: positive02 is refused `invalid_input` before
+  any Run and closes at the unchanged 632426397-byte prefix. Its separately
+  installed consumer resolves the bare ABI import to ancestor dev.286. Selected
+  core46 input admission passes; payloads themselves are unchanged. Executive
+  selects caller realization repair, and Root enters Writer for one normal Node
+  dependency link in `installed-04/products/node_modules/`, outside all Product
+  payloads, to the exact admitted core46 install. The bounded independent review
+  finds no boundary concern. Prove ordinary resolved module identity and unchanged
+  payloads, then reuse the genuine close and unchanged launch as positive03.
+  No custom loader, ancestor-repo mutation, installation, or new Product policy.
+
+### Retained native correction selections
+
 
 Current frontier: core39/dev16 assessment-first correction is accepted at HOW/source/component/package scope after independent review. Root releases exact native39 setup, genuine source-root read and binding witness, one intake and only its returned declared whole suffix. Source is actual failed native38 Run31c1969a… at399209962B, preserving authored Design75ddeb06… with assessment:null and all prior accepted Requirements/source/job/oracle ancestry. The actual component successor fits994022/1048576B; independent native assessment and complete D2 remain unproved. No repeat author or cap increase. GLC stays on RC4; T287/root disposition owns controls. Qualification and RC1 remain open.
 

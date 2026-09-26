@@ -8,6 +8,9 @@ as a general life-cycle construction framework.
 
 Downstream programs that use `odd_glc` must still use GTL/ABG as their graph,
 runtime, admission, evidence, fold, residual, and re-entry substrate.
+Its [Program construction contract](specification/PRODUCT.md#problem-fitted-program-construction)
+fits ordinary GTL to the task and applicable evidence while preserving
+unresolved obligations. Goals and the active ticket record realization status.
 
 Start here:
 

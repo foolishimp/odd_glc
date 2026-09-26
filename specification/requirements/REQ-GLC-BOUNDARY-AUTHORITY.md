@@ -15,8 +15,8 @@
 
 ## Purpose
 
-Define the authority boundary that makes `odd_glc` a lifecycle interpretation
-product over GTL/ABG, not a second requirements algebra, runtime, closure
+Define the authority boundary that makes `odd_glc` a lifecycle construction and
+interpretation product over GTL/ABG, not a second requirements algebra, runtime, closure
 system, or software-domain method.
 
 This family is load-bearing for T-001. Ratified graph design must descend from
@@ -32,13 +32,16 @@ downstream specialization.
 - lifecycle vocabulary;
 - typed lifecycle assets;
 - lifecycle meaning over GTL/ABG system-function carriers;
+- construction of candidate ordinary GTL compositions under the selected
+  source/evidence contract;
 - read/query model interpretation;
 - proof, fold, residual, and re-entry interpretation;
 - downstream specialization contracts.
 
 `odd_glc` may not define:
 
-- a product-local requirement compiler;
+- a rival requirements algebra or lowering of admitted GTL into another
+  executable representation;
 - a writable requirement, evidence, closure, fold, residual, retry, or re-entry
   ledger;
 - a product-local runtime loop, replay authority, continuation controller, or
@@ -76,3 +79,44 @@ downstream specialization.
 **REQ-GLC-BOUNDARY-AUTHORITY-014**: T-001 slice-1 graph design may prove a forward Hello World lifecycle thread ending in one terminal disposition. General `odd_glc` design shall preserve cyclic re-entry semantics, where residual pressure can route through ABG re-entry facts back to an earlier lifecycle span.
 
 **REQ-GLC-BOUNDARY-AUTHORITY-015**: Ratified graph design shall not be authored or accepted before the boundary-authority and ABG-consumption requirement families identify the lawful substrate and non-closure gates for each consuming lifecycle binding, query, or GTL composition slot.
+
+## Program Construction
+
+**REQ-GLC-BOUNDARY-AUTHORITY-016**: Program construction shall consume the
+source, dependency, evidence and judgment relations of the
+[GTL construction calculus](../../../abiogenesis/specification/requirements/gtl/REQ-L-GTL3-SELECTION-BOUNDARY.md#program-construction-calculus)
+and emit ordinary GTL plus a non-authoritative work/evidence correspondence and
+remaining obligation references. Existing GTL requirement declarations and
+ABG-admitted evidence remain their owning carriers; a construction input/view
+shall not shadow them in a separately writable requirements or closure model.
+
+**REQ-GLC-BOUNDARY-AUTHORITY-017**: Construction shall distinguish missing
+artifact, missing execution, missing or unsatisfactory assessment, stale or
+unknown support and established completion from their applicable evidence
+relations. Reuse and completion shall consume the actual upstream admission
+and currentness relation, not caller-provided satisfaction booleans,
+schema-valid lookalikes or file existence. Unknown support shall retain its
+dependent claim; source semantics and reserved rulings retain their owners.
+
+**REQ-GLC-BOUNDARY-AUTHORITY-018**: Selected functions shall match their exact
+input/output, precondition, effect, context and evidence contracts. Candidate
+construction shall preserve unselected obligations and required independence;
+an assessment must establish the required scope and satisfactory verdict before
+its duty can be reported satisfied. Missing upstream capability is an explicit
+gap. It shall not be replaced by local dispatch, provenance or closure code.
+
+**REQ-GLC-BOUNDARY-AUTHORITY-019**: The same construction mechanism shall
+serve tasks independently of scenario names and implementation language.
+Composition identity shall follow actual GTL declarations; task labels shall
+not select a hidden workflow or bespoke Program. Generated declarations shall
+enter ordinary validation/publication/admission and direct HoG traversal.
+Changing topology shall not mutate a bound Program or rewrite prior evidence.
+
+**REQ-GLC-BOUNDARY-AUTHORITY-020**: Qualification shall distinguish at least
+construction/execution/assessment, execution/assessment, assessment-only,
+already-established and stale/unknown/unsatisfactory support cases. The actual
+ordinary installed path shall demonstrate the affected declarations,
+admission, effects and result/readback relation. Deterministic composition
+evidence does not establish semantic interpretation quality or live LLM use.
+Still-valid evidence may be reused under its exact basis; no new full-lifecycle
+UAT campaign follows from a local constructor change alone.

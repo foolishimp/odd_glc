@@ -1,0 +1,71 @@
+{
+  "scope": "historical_diagnostic_no_runtime_authority",
+  "run": {
+    "digest": "sha256:552ee4229f1a1937c0e60a663ad1c50ca232ff2228f182c3f72e05c81f4eaecc",
+    "ref": "run://abiogenesis/f9ecc8d34f7f4001ac39c27ee7aa5d97b42c7a9427270f69eb004c5d91e25669"
+  },
+  "prefix": {
+    "kind": "durable_prefix_coordinate",
+    "schemaVersion": "5.0.0",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "prefixLength": 678179065,
+    "prefixDigest": "sha256:0a9d52e84af0e2caa848b42597fccbbb872236491a8ed780082fc2e1f962a1c8",
+    "storeIdentity": {
+      "device": 16777230,
+      "inode": 459405010,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+    },
+    "coordinateDigest": "sha256:be2433983d21dfd3c89af6d4f910ea2213caaaad80641197af93a3f4176d6ae9"
+  },
+  "basis": {
+    "predecessorPrefix": {
+      "kind": "durable_prefix_coordinate",
+      "schemaVersion": "5.0.0",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "prefixLength": 678090626,
+      "prefixDigest": "sha256:72c7ca40a00cd14b0623f4902a678759ec4bfcf507dd28c518ba9c99c335a64b",
+      "storeIdentity": {
+        "device": 16777230,
+        "inode": 459405010,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+      },
+      "coordinateDigest": "sha256:82ceba25358e98a64052ee7bc3db9baa75e7630da72f507b78fd8562a5732323"
+    },
+    "cCallRef": "c-call:sha256:95ba96b6f79264bb87760c969a2e34263d4c75167354ce8c5fd116f53b8bb097"
+  },
+  "inputDigest": "sha256:7926631e475d8b28761035ed3cddb2ee7c842c8bccd0592996e3bcb5d3adfdd1",
+  "sourceTerminal": {
+    "producer": {
+      "runRef": "run://abiogenesis/a86e01c3b4f85bb53caca93af82add805baadf5c708ded9aa27e3257f1fe6989",
+      "graphCallRef": "graph-call://abiogenesis/15c231bbadf362c377c95d398e9b2bf8f1ee6371ffb5ad67941e56c2e3ad2988",
+      "invocationAdmissionRef": "invocation-admission://abiogenesis/1ce1fccdb5529fed293b9dd818daeacbb118baf287d9514c67e94788e1eaed21",
+      "program": {
+        "ref": "program://odd-glc/native-semantic-revision/from-design@5",
+        "digest": "sha256:32b358748277ea327c80243ce6bce2730a0155ef81af01d5bfcb477f21a41c5c"
+      },
+      "graphFunction": {
+        "ref": "graph-function://abiogenesis/worksite/native-work@5",
+        "digest": "sha256:e9e6be1e9760757671d188471c9a461957d8dc198fbe590a621472fb4e5cd2ef"
+      },
+      "executionBasis": {
+        "ref": "execution-basis://abiogenesis/bc9fcca1648e41dac7560cb95a7471236f5f724190626baae52fa05d14b43411",
+        "digest": "sha256:bc9fcca1648e41dac7560cb95a7471236f5f724190626baae52fa05d14b43411"
+      },
+      "cCallRef": "c-call:sha256:b28cfddce2e2c61abdeb4c654496bcfbb8f88a90a41bf98ba0a2eaee380f05ab",
+      "resultAdmissionEventRef": "event://abiogenesis/4f77a326bc111b88458c7f821e52eb633d01e093d3d750efddc4929cfb6c2141",
+      "judgmentRef": "judgment://abiogenesis/e4891664eacd11ee33bf0e51617c630c553ea6a7816c11aeb1367f783051f746",
+      "judgmentAdmissionEventRef": "event://abiogenesis/8266c54acc0fa305bd4f1271c89941a2394e49dc657ffca58e72ebbbda01aa89",
+      "terminalRoute": {
+        "ref": "traversal-route://abiogenesis/ff8304d1074732ed442cba486f7474e1e466b455995e2459ae05cb0ccc3ece10",
+        "digest": "sha256:ff8304d1074732ed442cba486f7474e1e466b455995e2459ae05cb0ccc3ece10"
+      }
+    },
+    "valueKind": "native_workspace_work_observation",
+    "equalsRequest": true,
+    "cCallAgrees": true
+  },
+  "derivedTask": null,
+  "owner": null,
+  "currentContext": true,
+  "elapsedMs": 65049.043083
+}

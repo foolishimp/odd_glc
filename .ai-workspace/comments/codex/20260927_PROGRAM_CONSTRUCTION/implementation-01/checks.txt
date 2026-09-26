@@ -1,0 +1,23 @@
+(node:54297) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./test/fixtures/program-construction/core-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ actual retained native projection selects only the missing computation, retaining the original population (620.73025ms)
+✔ real installed GTL validation accepts the ordinary generated acquisition/evaluation composition (683.426958ms)
+✔ missing artifact versus missing execution preserve necessity; absent published compositions stay gaps (32.613542ms)
+✔ assessment requires exact evidence/source, complete scope, satisfactory verdict and independence (2096.836ms)
+✔ all selected duties supported reports references without creating original-task completion (509.202666ms)
+✔ stale or unknown support blocks affected reuse and never infers rollback (355.117416ms)
+✔ missing historical construction input remains a prospective obligation (526.943958ms)
+✔ applicability unknown stays residual, false records basis, cycles refuse (498.812292ms)
+✔ actual incompatible effects/interfaces and ambiguous candidates refuse selection (743.698375ms)
+✔ irrelevant history and task labels do not change declaration identity or residual reduction (1247.517084ms)
+✔ first judgment refuses absent owner proof and forged retained source even when caller JSON is shaped (2353.83575ms)
+✔ actual retained streams compute exact reviewed-candidate records; pure checks grant no admission (1523.762666ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11674.956541

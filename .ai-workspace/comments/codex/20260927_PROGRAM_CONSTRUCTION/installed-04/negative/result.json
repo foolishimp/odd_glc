@@ -1,0 +1,67 @@
+{
+  "status": "installed_discriminator_observed",
+  "expectation": "source_refusal",
+  "run": {
+    "digest": "sha256:5db6029ae1ac098ab84b7054389a68be8a1f4b0e2c8adfb88f978b697b815842",
+    "ref": "run://abiogenesis/bc78344e8f0b1e1aa24e4709dffbc455934a197a5aa1db0b83704c3c1e42ff0f"
+  },
+  "result": null,
+  "preservedPrefix": {
+    "coordinateDigest": "sha256:b4ae8dc8b9819ca96dc379070b30e33437ca7e059c791c138c702e0b685a90c0",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:2b98525a32d67b03b1465d12b1cfd5831c31d658ff3a78f2fafeeecddce34db5",
+    "prefixLength": 623146192,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "prefix": {
+    "coordinateDigest": "sha256:d5cfda448163c4726e45bfe0d35eea805064fb657065dfeafc93753dc177871a",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:d416bd6bf93bde855f7de96ed4ae47675d52172b600d201aa44203b00601ff5f",
+    "prefixLength": 821849906,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "timings": {
+    "packageMs": 643.1481670000001,
+    "installMs": 31216.775792000004,
+    "setupMs": 42019.980125,
+    "graphExecutionMs": 100063.146375,
+    "fresh-run_resultMs": 67036.196958,
+    "fresh-run_replayMs": 67103.226333,
+    "ownerCountReadMs": 37669.51554200001
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/0c1f5f6100f937b7702d5947a402094e0f8fb1addcf20e671409206caaf454e1",
+    "projectionDigest": "sha256:0c1f5f6100f937b7702d5947a402094e0f8fb1addcf20e671409206caaf454e1",
+    "graphCallCount": 2,
+    "cCallCount": 2,
+    "actorEventCount": 0,
+    "actorOccurrenceCount": 0,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/988e0ba3badb4567876b40a7b579a37858af3342e4170f2cceb8ac170682f93d@5",
+      "graph-function://odd-glc/program-construction/authenticate@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:33f0b22f310590c6d3a16c6a2d1a8deb270aa3204988bd54dc18e1fded6152bd",
+      "c-call:sha256:d73375de1e7a745aa56bdc602c6e73569d2cc62771b8f18112fe29386f430b90"
+    ]
+  },
+  "log": {
+    "beforeBytes": 798901739,
+    "afterBytes": 821849906,
+    "appendedBytes": 22948167
+  },
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed"
+}

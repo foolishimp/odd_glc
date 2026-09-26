@@ -8,7 +8,7 @@
 - Product Definition: `urn:stdo:product-definition:odd-glc`;
 - owners: `specification/GOVERNANCE.md`, `specification/PRODUCT.md`, and
   `specification/GOALS.md`;
-- governed outcome: one reusable generic lifecycle composition preserves the
+- governed outcome: one reusable generic lifecycle construction contract preserves the
   complete selected specification through Intent/Product, Requirements, Design,
   working application evidence and targeted revision over ABIogenesis truth;
 - bounded/full claim distinction: a useful D1/D2 thread retains pending source

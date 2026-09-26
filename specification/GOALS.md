@@ -9,12 +9,12 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043 current frontier](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) owns the exact preserved correction, candidate, execution controls and evidence. Complete that steel thread through real construction, execution, independent assessment and fresh Public readback while retaining accepted Requirements, original source/oracle/job and valid completed work. GLC RC4 remains selected; Data Mapper stays held. ABI T287 owns the subsequent ABG5 qualification and RC1 sequence.
+Current delivery tracking: [T-043 Program construction](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#problem-fitted-program-construction) owns implementation of the reviewed construction calculus. Its first evaluate-only installed increment is accepted; complete the remaining original construction-input and comparison relations while retaining valid work and unresolved obligations. Deliver reusable evidence-sensitive GTL composition through ordinary installed ABG. GLC RC4 remains selected; ABI T-287 owns ABG5 qualification and the RC1 sequence. Core46 and native44 retain their bounded accepted scopes; S06 and Data Mapper remain open.
 
-Deliver one generic odd_glc lifecycle composition using real LLM Workers. It
+Deliver one generic odd_glc lifecycle construction mechanism using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,
 Design, a working application and admitted evidence, then uses failures or changed requirements
-to revise affected work from persisted state. Each traversal unpacks and
+or outstanding obligations to select necessary work from persisted state. Each traversal unpacks and
 preserves preceding meaning and complexity, exposing new and residual
 obligations. A steel thread orders work while keeping pending requirements.
 
@@ -104,9 +104,11 @@ one generic declaration/package from the ordinary full Hello and integer-
 addition inputs. Its [bounded handoff](../.ai-workspace/comments/codex/20260918_GENERIC_JOB_BINDING_REPAIR/implementation/return.md)
 does not qualify a successor install or run. The sequence remains accepted
 `design_reframe` -> native implementation -> frozen installed two-job proof.
-Static builder Product/Program must remain unchanged across
+For the same composition, builder Product/Program remain unchanged across
 different authenticated ordinary job inputs; generic names and data-only
-packaging do not prove reuse. The [downstream inventory](../.ai-workspace/comments/codex/20260918_GENERIC_JOB_BINDING_REPAIR/inventory.md)
+packaging do not prove reuse. A construction-selected topology change follows
+Product's ordinary GTL identity and admission contract, rather than a
+scenario-specific Program family. The [downstream inventory](../.ai-workspace/comments/codex/20260918_GENERIC_JOB_BINDING_REPAIR/inventory.md)
 preserves full Hello obligations and proposes the second job and one bounded
 correction check. T-043 stays active and the default dependency pin is unchanged.
 The [D2-carrier preparation](../.ai-workspace/comments/codex/20260918_GENERIC_JOB_BINDING_REPAIR/implementation/d2-carrier-prep/return.md)
@@ -209,8 +211,8 @@ structural, authority and runtime-liveness defects remain defects regardless of
 the scenario disposition.
 
 GTL declares; ABG owns traversal, workers, owner effects, admission, replay,
-folds and re-entry. GLC supplies meaning, policy and interpretation without a
-controller, requirement compiler or proof ledger. Reuse valid retained work;
+folds and re-entry. GLC supplies meaning, policy, ordinary GTL construction and
+interpretation without a controller, lowering compiler or proof ledger. Reuse valid retained work;
 do not reset the original instance or relabel reduced output as full success.
 
 [T-043 Current bounded selection](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#current-bounded-selection) is the sole current frontier and owns exact evidence, candidate selection, execution authority and remaining dependencies.

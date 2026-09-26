@@ -42,7 +42,9 @@ is comparison material only and never the operative basis.
 
 ## Boundary Rules
 
-- Do not implement a product-local requirement compiler.
+- Construct ordinary GTL only under Product's problem-fitted construction
+  contract. Do not implement a rival requirements algebra or lower admitted
+  GTL into a second executable representation.
 - Do not implement a second traversal runtime, retry loop, closure ledger, or
   continuation controller.
 - Do not copy, port, or reproduce `odd_sdlc` code, carriers, local phase-flow

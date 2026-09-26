@@ -1,0 +1,12 @@
+{
+  "changeClass": "delivery_metadata_only",
+  "before": "sha256:cd3e6a34a28c7669055ab4797305df721f400cbd41f346aae4fd64a6a556e208",
+  "after": "sha256:fcd9a38f9e35c0b29daad50bd27c1c0f8c4dabe17b4aea0a066efe3989252fca",
+  "changes": [
+    "Accepted status refers delivery to T043",
+    "Original reviewed core45 identified as original basis; candidate selection remains in tickets",
+    "Evaluator precondition stated without stale unbound status",
+    "Paths labeled realization rather than proposal"
+  ],
+  "semanticRelationsUnchanged": true
+}

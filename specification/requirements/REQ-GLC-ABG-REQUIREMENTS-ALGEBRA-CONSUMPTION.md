@@ -24,8 +24,9 @@ requirements-algebra truth.
 This family turns the bootstrap rule into requirement law: when ABG/GTL cannot
 answer a lifecycle question from real admitted carriers and wired runtime
 paths, `odd_glc` shall mark the dependency missing or defer the affected
-function. It shall not compensate with a product-local peer ledger, compiler,
-fold, residual, retry, or re-entry controller.
+function. It shall not compensate with a product-local peer ledger, lowering
+compiler, fold, residual, retry or re-entry controller. Ordinary GTL source
+construction remains governed by Product's construction boundary.
 
 ## Upstream Readiness States
 

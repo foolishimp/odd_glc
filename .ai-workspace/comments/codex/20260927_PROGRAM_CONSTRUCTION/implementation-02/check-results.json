@@ -1,0 +1,14 @@
+{
+  "command": [
+    "node",
+    "--loader",
+    "./test/fixtures/program-construction/core-loader.mjs",
+    "--test",
+    "test/program-construction.test.mjs"
+  ],
+  "cwd": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript",
+  "installedCoreRoot": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abi5-composite45-install-8cwe1b61/node_modules/@abiogenesis/typescript-tenant",
+  "exitCode": 0,
+  "elapsedMs": 13253.408,
+  "scope": "affected constructor/evaluator checks only; no installed ABG Run"
+}

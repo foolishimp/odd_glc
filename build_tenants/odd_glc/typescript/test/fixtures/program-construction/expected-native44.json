@@ -1,0 +1,27 @@
+{
+  "executionStatus": { "exitStatus": 0, "timedOut": false, "processSignal": null },
+  "commandAgreement": true,
+  "argumentAgreement": true,
+  "cwdAgreement": true,
+  "expectedStdoutMatch": "fail 0",
+  "stdoutMatch": true,
+  "observedTestPassCount": 2,
+  "expectedTestPassCount": 2,
+  "observedFailureCount": 0,
+  "observedCancelledCount": 0,
+  "stdoutDigest": "sha256:6f9ba47c6bf8b8a1c69878fd62f4214ae8f8cfec6f8db33ce2e7885343b021ec",
+  "perSuite": [
+    {"role":"component","path":"test/component/hello.test.mjs","digest":"sha256:4eefc99756ee34640b1e2c8baecb9ff4fa199d8d014d6ed935fe5bec7a9f031b",
+     "title":"component: helloWorld() returns exactly 'Hello, world!'","passed":true,
+     "commandObservationRef":"worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+     "stdoutDigest":"sha256:6f9ba47c6bf8b8a1c69878fd62f4214ae8f8cfec6f8db33ce2e7885343b021ec",
+     "witnesses":["✔ component: helloWorld() returns exactly 'Hello, world!' (0.28ms)"]},
+    {"role":"uat","path":"test/uat/hello.uat.test.mjs","digest":"sha256:42bf7e724edf073aeb23f0e9b1d5dabf66a63ce444c51c3502303fd9d3332e82",
+     "title":"uat: the user-visible greeting contract is exactly 'Hello, world!'","passed":true,
+     "commandObservationRef":"worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+     "stdoutDigest":"sha256:6f9ba47c6bf8b8a1c69878fd62f4214ae8f8cfec6f8db33ce2e7885343b021ec",
+     "witnesses":["✔ uat: the user-visible greeting contract is exactly 'Hello, world!' (0.27825ms)"]}
+  ],
+  "planSatisfied": true,
+  "conditions": { "componentPassed": true, "uatPassed": true, "planSatisfied": true, "passFloor": true }
+}

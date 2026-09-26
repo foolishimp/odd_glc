@@ -1,0 +1,22 @@
+✔ actual retained native projection selects only the missing computation, retaining the original population (601.037083ms)
+✔ real installed GTL validation accepts the ordinary generated acquisition/evaluation composition (678.084875ms)
+✔ packaging fixture publishes an admissible callable with exact Program membership (1.010167ms)
+✔ missing artifact versus missing execution preserve necessity; absent published compositions stay gaps (31.223792ms)
+✔ assessment requires exact evidence/source, complete scope, satisfactory verdict and independence (2115.543542ms)
+✔ all selected duties supported reports references without creating original-task completion (503.969959ms)
+✔ stale or unknown support blocks affected reuse and never infers rollback (371.823625ms)
+✔ missing historical construction input remains a prospective obligation (548.453333ms)
+✔ applicability unknown stays residual, false records basis, cycles refuse (518.2895ms)
+✔ actual incompatible effects/interfaces and ambiguous candidates refuse selection (757.882833ms)
+✔ irrelevant history and task labels do not change declaration identity or residual reduction (1243.95425ms)
+✔ first judgment refuses absent owner proof and forged retained source even when caller JSON is shaped (2387.258459ms)
+✔ actual retained streams compute exact reviewed-candidate records; pure checks grant no admission (1546.884125ms)
+✔ TAP headings are not results; role attribution still rejects absent, duplicate or conflicting results (1553.163334ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13324.383708

@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "command": [
+    "node",
+    "--experimental-loader",
+    "./test/fixtures/program-construction/core-loader.mjs",
+    "--test",
+    "--test-reporter=spec",
+    "test/program-construction.test.mjs"
+  ],
+  "cwd": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript",
+  "installedCoreRoot": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abi5-composite45-install-8cwe1b61/node_modules/@abiogenesis/typescript-tenant",
+  "exitCode": 0,
+  "elapsedMs": 11698.976708110422,
+  "syntax": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "boundary": "Pure/component checks and real installed declaration validation only; no packaging, install, owner runtime invocation, source history mutation or actor call."
+}

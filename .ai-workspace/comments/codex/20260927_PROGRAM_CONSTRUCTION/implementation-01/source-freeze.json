@@ -1,0 +1,111 @@
+{
+  "kind": "odd_glc_program_construction_source_candidate",
+  "status": "candidate_ready",
+  "sourceHead": "eb65daa3ca38dfd6f5e5eeb614a3c700a4648d17",
+  "acceptedDesignSha256": "cd3e6a34a28c7669055ab4797305df721f400cbd41f346aae4fd64a6a556e208",
+  "pairedReviewSha256": "ba1d18bf807ab6cf65e8d64be8a92db13b696e7b85730be011b68958f3da4e1d",
+  "installedCoreRoot": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abi5-composite45-install-8cwe1b61/node_modules/@abiogenesis/typescript-tenant",
+  "files": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "bytes": 18370,
+      "sha256": "sha256:df639d160a291e13ee48a00e227975162fbc201784834f8e983051fc49ba3a66"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "bytes": 3126,
+      "sha256": "sha256:f2732f3b2cd3f608a27715d11a2623e27492d9883b38fb1565fbcbd496f294c6"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "bytes": 10791,
+      "sha256": "sha256:d8098817fa74bec78b882d887070c5546891249fb9ee0ddc83d9cf5e522e6838"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "bytes": 6414,
+      "sha256": "sha256:a0080df2fdb68bbc58cb53cf8dae667205178620029ece82b6c11ea5735f2034"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "bytes": 13812,
+      "sha256": "sha256:ef786f2eae94b5f64b2bd3b916efc8aff8787d52fa84bf77f6c98de635fee3d0"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "bytes": 10163,
+      "sha256": "sha256:3ca6fda41e0cd6234576ff41bdb2e6b13d504253b76603e52469d8fc72b7b2df"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/activation.md",
+      "bytes": 5256,
+      "sha256": "sha256:8530cceee0b2bc8175afe07ec753a824d8d91d4a0e9831dd847f3aff8c1fd959"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "bytes": 863,
+      "sha256": "sha256:a21f9368e487a5c84080f1b9a9980397fb5fd51fe504311ba2590a94a373eda7"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md",
+      "bytes": 3344,
+      "sha256": "sha256:27e3e84a740ff42225d16536ebf90a1e2485b36ed2ad23fcc6ccf2f861b1f80f"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/expected-native44.json",
+      "bytes": 1727,
+      "sha256": "sha256:cadf27a132038b249a7aee7fd47063a3f860b9322ea4f54651f7e4d511aa8ba5"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "bytes": 13123,
+      "sha256": "sha256:f0f1b8db090215accccef549209a1cb7fe2057f03c865036728d8c6ca351db6e"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs",
+      "bytes": 6373,
+      "sha256": "sha256:89f8f59e713223fec11a0fbb588de0ade1dc357108df78f9557a0345e7d112f2"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "bytes": 2281,
+      "sha256": "sha256:a4e5a3d4e96081b0e5ee6d82e62beeffbd6d2062f2b1cc681ff888dc36b5f272"
+    }
+  ],
+  "reusedUnchanged": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/product-package.mjs",
+      "bytes": 4549,
+      "sha256": "sha256:4c9dd6ee36f7bff43995adee94901add62ef66f2ac25b221592fb595a1ecd3e0"
+    }
+  ],
+  "checks": [
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-01/checks.txt",
+      "bytes": 1812,
+      "sha256": "sha256:692440752197f631199a055c255868e25efd85f4e0f5e5dcb09e79ec6c140d71"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-01/check-results.json",
+      "bytes": 2192,
+      "sha256": "sha256:90c45cd8ee8af3d8cf613205f3ea46b60ea8e803bd6dcfbd4a4e59467dac4d24"
+    }
+  ],
+  "checkResult": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "syntaxFiles": 10,
+    "elapsedMs": 11698.976708110422
+  },
+  "notPerformed": [
+    "packaging",
+    "installation",
+    "ABG Run execution",
+    "native44 history or subject mutation",
+    "paid/native actor calls"
+  ],
+  "qualification": "pending independent evaluator/source-fit/expected-record review and installed activation",
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed"
+}

@@ -1,0 +1,54 @@
+{
+  "status": "prepared_not_launched",
+  "elapsedMs": 63540.972833,
+  "sourceBasis": {
+    "ref": "execution-basis://abiogenesis/bc9fcca1648e41dac7560cb95a7471236f5f724190626baae52fa05d14b43411",
+    "digest": "sha256:bc9fcca1648e41dac7560cb95a7471236f5f724190626baae52fa05d14b43411"
+  },
+  "previousSuppliedBasis": {
+    "ref": "execution-basis://abiogenesis/393d4a32f850f21f37e9cdb6ba6b5c38412f686270ae34236a99a6cdaf171406",
+    "digest": "sha256:393d4a32f850f21f37e9cdb6ba6b5c38412f686270ae34236a99a6cdaf171406"
+  },
+  "coverEventRefs": [
+    "event://abiogenesis/42c5d574c5968a2c3034b940c752c05dd6b0404009029d13e30908f9549e73cb"
+  ],
+  "calls": [
+    {
+      "label": "native-child-binding-cover",
+      "definitionKey": {
+        "operationId": "abg.operation.witness.admit",
+        "memberKey": "reprice"
+      },
+      "invocationRef": "invocation://abiogenesis/a71864ddd6cb98a11341185a4b11074600cf13755608320e332aac56d3b88a20"
+    }
+  ],
+  "closeHandoff": {
+    "prefix": {
+      "kind": "durable_prefix_coordinate",
+      "schemaVersion": "5.0.0",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "prefixLength": 678185859,
+      "prefixDigest": "sha256:4972dd160b46df72ede99be6abe99736c11a96df7fb0a04cb40b8cf279eebc9b",
+      "storeIdentity": {
+        "device": 16777230,
+        "inode": 459405010,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+      },
+      "coordinateDigest": "sha256:1529ab5b92fb40550a63e150fdd60390e6fab9bff35b86a07c52017ddef5849a"
+    },
+    "reopenAuthority": {
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "device": 16777230,
+      "inode": 459405010,
+      "eventLogDigest": "sha256:4972dd160b46df72ede99be6abe99736c11a96df7fb0a04cb40b8cf279eebc9b",
+      "durableByteLength": 678185859,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "authorityDigest": "sha256:e33e89003f589df6cf5aad26cf9711b338e97bbb7504b82699c73724c68c3f13"
+    }
+  },
+  "inputDigest": "sha256:b4aee6ef4539090f4a42f75f4df5589c78c0d9a731a420d649db715f2ea5465f",
+  "launchPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive-start04.jsonl",
+  "sourceAndPackages": "unchanged"
+}

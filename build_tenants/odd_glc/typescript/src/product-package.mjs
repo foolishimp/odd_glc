@@ -1,7 +1,7 @@
 // Pure canonical ABI5 emitter extracted from the existing full-sandbox producer.
 // There is no ordinary job input at this boundary.
 export function constructOddGlcProductPackage({product,gtl,ids,abiArtifact,consumerPublication,
- sourceFiles={},contractRows=[],packageExports={"./publication":"./build/publication.json"}}) {
+ sourceFiles={},contractRows=[],additionalDependencies=[],packageExports={"./publication":"./build/publication.json"}}) {
   const { kind: _kind, moduleVersion: _version, artifactDigest: _artifact,
     productContentDigest: _content, productManifestDigest: _manifest, ...publicationData } = structuredClone(consumerPublication);
   const schemaPath = "contracts/public-contract-catalog.schema.json";
@@ -38,7 +38,7 @@ export function constructOddGlcProductPackage({product,gtl,ids,abiArtifact,consu
     contributionManifestDigest: product.sha256Canonical(contributionManifest), contributionManifest, compatibilityRefs: [compatibilityRef],
     declaredDependencies: [{ kind: "requires", productId: abiArtifact.productId, packageVersion: abiArtifact.packageVersion, compatibilityRef,
       requiredContractRefs: ["abg.contract.gtl.root-declaration", "abg.schema.public-operation-invocation"],
-      requiredCapabilityRefs: ["abg.capability.catalog.invoke-graph-function@5", "abg.capability.gtl.declare@5"] }],
+      requiredCapabilityRefs: ["abg.capability.catalog.invoke-graph-function@5", "abg.capability.gtl.declare@5"] },...structuredClone(additionalDependencies)],
     provenanceRef: ids.provenanceRef, declaredCapabilityRefs: [],
     capabilityDefinitionGraph: { ...graphCoordinate, assetLocator: { path: product.CAPABILITY_DEFINITION_GRAPH_ASSET_PATH,
       mediaType: "application/json", schemaVersion: "5.0.0", contentDigest: product.sha256Bytes(graphBytes) } },

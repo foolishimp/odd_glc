@@ -1,0 +1,28 @@
+{
+  "kind": "bounded_complexity_observation",
+  "case": "program-construction installed04 positive03",
+  "scope": "deterministic retained-evidence increment; no LLM dispatch",
+  "run": {
+    "digest": "sha256:552ee4229f1a1937c0e60a663ad1c50ca232ff2228f182c3f72e05c81f4eaecc",
+    "ref": "run://abiogenesis/f9ecc8d34f7f4001ac39c27ee7aa5d97b42c7a9427270f69eb004c5d91e25669"
+  },
+  "outcome": "runtime_failed",
+  "requestBytes": 83059135,
+  "inputBytes": 22757679,
+  "sourceSelectionBytes": 20284717,
+  "historicalSourceResourceBytes": 20280000,
+  "catalogResourceBytes": 17224528,
+  "prefixBefore": 632426397,
+  "prefixAfter": 678179065,
+  "timings": {
+    "packageMs": 643.1481670000001,
+    "installMs": 31216.775792000004,
+    "setupMs": 42019.980125,
+    "graphExecutionMs": 107024.906333,
+    "fresh-run_resultMs": 50964.527959,
+    "fresh-run_replayMs": 50960.699124999985,
+    "ownerCountReadMs": 28132.171625000017
+  },
+  "attribution": "Large caller declaration/evidence carriers are directly measured. Timings include genuine cold acquisition of accumulated journal and ordinary runtime work; no isolated causality or saving claimed.",
+  "nextBoundary": "Keep finite source selectors separate from large declaration resources at existing owning adapters; assess required copying before additional framework work. Preserve authenticated original declarations and evidence."
+}

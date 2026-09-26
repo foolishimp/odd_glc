@@ -1,0 +1,1526 @@
+{
+  "scope": "retained exact proof inputs, receipts, failed attempts and closed journal; no new runtime authority",
+  "archive": "program-construction-evidence.tar.zst",
+  "archiveBytes": 29132104,
+  "archiveSha256": "f249f0178e542e6706feddd240a2a4fe01bab98d75d815be1718e2f8f83aa57e",
+  "memberCount": 296,
+  "uncompressedBytes": 2238594563,
+  "elapsedSeconds": 13.286158166825771,
+  "native44PreservedPrefix": {
+    "coordinateDigest": "sha256:b4ae8dc8b9819ca96dc379070b30e33437ca7e059c791c138c702e0b685a90c0",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:2b98525a32d67b03b1465d12b1cfd5831c31d658ff3a78f2fafeeecddce34db5",
+    "prefixLength": 623146192,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "finalClosedPrefix": {
+    "coordinateDigest": "sha256:d5cfda448163c4726e45bfe0d35eea805064fb657065dfeafc93753dc177871a",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:d416bd6bf93bde855f7de96ed4ae47675d52172b600d201aa44203b00601ff5f",
+    "prefixLength": 821849906,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "sourceFreezeVerified": true,
+  "excluded": [
+    "installed products/node_modules",
+    "package staging copies",
+    "independent final review (retained separately)",
+    "Final Executive disposition retained separately"
+  ],
+  "members": [
+    {
+      "path": "abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/read-run_result.json",
+      "bytes": 6091075,
+      "sha256": "c05c2d00472030bfd3a5f9e17765f3b1e83547c48ea6654b2f0cc7b111907172"
+    },
+    {
+      "path": "abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/suffix-terminal-value.json",
+      "bytes": 6471675,
+      "sha256": "c60f7662f4ed6371e55289dbbb4efd951afe722d15e80f9280741e710e7cf348"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "bytes": 821849906,
+      "sha256": "d416bd6bf93bde855f7de96ed4ae47675d52172b600d201aa44203b00601ff5f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260926_SCENARIO_CLOSURE/consumer-continuation-01/retained-coordinates.json",
+      "bytes": 73788,
+      "sha256": "eeb931d697854dc43a5fec702dc6cc2e0139a76a71fbef0e3fea9571c46c3adc"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/authority-design-review.md",
+      "bytes": 12603,
+      "sha256": "ba1d18bf807ab6cf65e8d64be8a92db13b696e7b85730be011b68958f3da4e1d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-01/check-results.json",
+      "bytes": 2192,
+      "sha256": "90c45cd8ee8af3d8cf613205f3ea46b60ea8e803bd6dcfbd4a4e59467dac4d24"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-01/checks.txt",
+      "bytes": 1812,
+      "sha256": "692440752197f631199a055c255868e25efd85f4e0f5e5dcb09e79ec6c140d71"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-01/return.md",
+      "bytes": 6951,
+      "sha256": "9fd46690f253ee10fdc65494dfcfb73a70ca59681456f578eef57ccc2fdd4fcf"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-01/source-freeze.json",
+      "bytes": 4592,
+      "sha256": "9478ca528da6445ef97f4dc8ee611a54758700800969a9b15855c8ae54a26024"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-02/check-results.json",
+      "bytes": 514,
+      "sha256": "4a4b3fcc29c050c056e8528d42bcc9e62cc085075ef1c2aeed6e2b82e43c461c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-02/checks.txt",
+      "bytes": 1929,
+      "sha256": "4353442d152f8d3adb028efa5a176969c28ff33a8e6464c1006b1fcc019fa23f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-02/return.md",
+      "bytes": 1373,
+      "sha256": "c18436ae56c4f36411bcebe7a26c5b0093feb9f5875adda5ef01c842c719d356"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-02/source-freeze.json",
+      "bytes": 4956,
+      "sha256": "e1a84ac00f9697a68c2373ecd25ed6fc5a89dee59cea8dcd1e5028aa46de902d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-03/return.md",
+      "bytes": 1487,
+      "sha256": "b24c8ce7ae73b6e8a5d1e181d20320f100d8dae9a2d1c6476cb1db99466b1f79"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-03/source-freeze.json",
+      "bytes": 5508,
+      "sha256": "78ede896b43533d20a8547d800d5d61dd96133b173d1d96878dcdb33af30f5d8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-04/checks.txt",
+      "bytes": 1647,
+      "sha256": "af6d7a02b1186aeaec2a6fbccdc7367dac739b0529adcf92ea1d20a07bd0af2d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-04/return.md",
+      "bytes": 552,
+      "sha256": "8145b046fdda57ab7037da9eec569035388d63c8d39ab5ef08c3a23ffa57cedb"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-04/source-freeze.json",
+      "bytes": 5228,
+      "sha256": "970aa5f75610d4eb1586b760604a0417fc42c0dc2e07223d2ce608b49c397443"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/accepted-design-preimage.md",
+      "bytes": 17248,
+      "sha256": "cd3e6a34a28c7669055ab4797305df721f400cbd41f346aae4fd64a6a556e208"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/checks.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/checks.txt",
+      "bytes": 2035,
+      "sha256": "25cef1fea5e34e97453091e538998709ab03f44e95454c0ff548751ef28a2d97"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/design-metadata-reconciliation.json",
+      "bytes": 544,
+      "sha256": "732f6e1c5c131ce54c0045829d6ff8a22b184ec65a2f9dc6f71214ed91b495c2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/return.md",
+      "bytes": 681,
+      "sha256": "0a8b87456591196bc0bcded228f744a4292889b549c6978cf4ddfc6cdb0b067e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/source-freeze.json",
+      "bytes": 5618,
+      "sha256": "b784c872abe81248f9cbfdfa2474024abac6cb5989eb48b45065ec71c35b2030"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/delta-review.md",
+      "bytes": 4512,
+      "sha256": "77f2862756ddf5681b5d564423e2de0a13925c87aeb8c877a39b6e317aa2a993"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/driver-delta-review.md",
+      "bytes": 4370,
+      "sha256": "0e270f0fb7dbe2ddb88ec81b18525e8755cdf1603f3b906bd84f6534bd3a253d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/native-link-review.md",
+      "bytes": 3720,
+      "sha256": "8f0b28fde910eabc12cebc38d4e20396dfbc8bcecb08ab748c41113c52663fef"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/package-wiring-review.md",
+      "bytes": 3286,
+      "sha256": "053bac803c8a18d43868c7c464dfce9a76eeba78f91a5bf2b85a178f2851ccec"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/publication-delta-review.md",
+      "bytes": 5110,
+      "sha256": "b3a5e00f3261941f27227717de7c0e14b725c869fb050d3e4ea92efba3f9d9bf"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-review-01/review.md",
+      "bytes": 8019,
+      "sha256": "ecbfb7809fc28871357aba99ae53ad5af548ab2ef46957f12bbef36cda2b586e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.1.tgz",
+      "bytes": 6199,
+      "sha256": "5b62d37d85bc7dd9b8d1293f6380d56122fb43fe9ea2ee60f859ea8061e8fb6c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/artifacts/odd-glc-route-one-typescript-0.3.0-dev.1.tgz",
+      "bytes": 11951,
+      "sha256": "8c031391a0d582b68c3796f8dbacbcbe921d933052344f0306e01f210adfc5a9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/first-cause.json",
+      "bytes": 2869,
+      "sha256": "6083f34e80655fd9d83c9232a8b297d30e1e0174e64e0b752467cb3b38f5167c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/pack-construction.json",
+      "bytes": 1391,
+      "sha256": "dd47870d5463a1e4830035379362b3869d526f239183bb258159cb065e4275a9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/pack-evaluator.json",
+      "bytes": 1180,
+      "sha256": "0ba3b592c191bfecaaa7461f1637345a770db363e7a32b449926348a400ed6e3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/prepare-02.stderr",
+      "bytes": 1696,
+      "sha256": "70f3e2355aec81877c08b0aa15f13bd6fcefc544e1f7b5e3df8e76071dd3f7c5"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/prepare-02.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/prepare.mjs",
+      "bytes": 21977,
+      "sha256": "0d3ba967083c3f596d6539b30333c6465b37ffcf45774149ab29d609b77a748c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/prepare.stderr",
+      "bytes": 1957,
+      "sha256": "708eef5770c79b159fad11849717074b0f7874bc4708748335fb83ce6e718aa5"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/prepare.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/00-verify-0.json",
+      "bytes": 25762254,
+      "sha256": "9325a1803175eec30d251c2abdd2d12dcc2fa4735462dda882c1aef82683c484"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/01-verify-1.json",
+      "bytes": 13152503,
+      "sha256": "cff2ae75e648218a204f93992dfd788a5da2afd0969b5923b0341b3ca300c861"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/02-verify-2.json",
+      "bytes": 13150409,
+      "sha256": "ba5f3026a6ebb99d276437ce36f11be371e73b7bdcc22e1ff860fc50bf1d5294"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/03-resolve.json",
+      "bytes": 26398327,
+      "sha256": "fd8ecdf411ec37ddd73cf361b07ebf010e07dcb14a5a3bedde21acae3ba4c478"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/04-install-0.json",
+      "bytes": 29329543,
+      "sha256": "de9647414c9f258df12009e7ffb1ed26268c9ab1e09e7ec6ff1f23a09cc28837"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/05-install-1.json",
+      "bytes": 16718642,
+      "sha256": "eb8d9fa23b4bcccdb1518336eacc3a78cfb603b66e391e6e2fbb006c74df17c4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/06-install-2.json",
+      "bytes": 16716526,
+      "sha256": "6be685a45a29aeda514828c6f1f0274426ecdc95b0bf313b97f82d3ebae113a0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/07-bind.json",
+      "bytes": 20160905,
+      "sha256": "e3cebb7dc740c66fbeed84ce2feafd033f568f047c5791bd57bb879e0a1c4be5"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/calls/08-catalog.json",
+      "bytes": 33587959,
+      "sha256": "a08a58197ac2c1e1ced725ce9cbba8732c24e8441f13557a03e6243d1053035c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/00-verify-0.json",
+      "bytes": 257095,
+      "sha256": "777dbdcd1d0ed367120089cec7999dcdfb626c538d40a4e2f12a9171d2896d89"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/01-verify-1.json",
+      "bytes": 1965,
+      "sha256": "3b30b6fab534f88b4f25567c23a977f0c577b67debcf5c94f82c37b6ed3886f3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/02-verify-2.json",
+      "bytes": 1973,
+      "sha256": "4a77730954a82620c20435745710fe99f180c44c127485896d88b26420745b70"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/03-resolve.json",
+      "bytes": 7692,
+      "sha256": "423ca555574fd9fc3d84ae5eacc5e51c333bb73b64dccb36cac067cfbbb75cb7"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/04-install-0.json",
+      "bytes": 6036,
+      "sha256": "1b7d29c555f9a5ad95e06e2954a969d5de7966e17839274aaa44071efed8f57f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/05-install-1.json",
+      "bytes": 6052,
+      "sha256": "f5e87a74f2f7b1fc8ade9d0e424231d0ce6777a1d543c05901d9a891e942aaef"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/06-install-2.json",
+      "bytes": 6091,
+      "sha256": "92fb21e79a6ad00efcaa37e1b426de71c6b09d43a565474faacffb4ecd6cf049"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/07-bind.json",
+      "bytes": 7610,
+      "sha256": "5053e76f183357ee6d86aa2af872abf9e7fa63324be5bd31fdf89ec97aadc90b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/receipts/08-catalog.json",
+      "bytes": 7936,
+      "sha256": "7b56849200a872ea0a91ca4f7ff78e7ca548ea098b6905933c01693ced5a9f0d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/setup-resource-close.json",
+      "bytes": 2577,
+      "sha256": "9961f0d123dd1b6893eb49bb51f0a77a3daaa0cc78e2d09111323fa857c170b8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/setup/setup-resource-entry.json",
+      "bytes": 885,
+      "sha256": "934df97fccb046c2adeee657c60c170e7066b1735e0192995c5d5a967d547f6c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/source-owner-projection.json",
+      "bytes": 4798,
+      "sha256": "bfb8c9e4019b21f6fe12c829dfc1e3ccd591867aa80c964be5f3e8760ece1342"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/bind.json",
+      "bytes": 139,
+      "sha256": "b5c0f81845ee30a600a9a86994753517339322794502609eb181b16260424658"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/catalog.json",
+      "bytes": 138,
+      "sha256": "b49b9cbf15e8e8b323a5d3d12aa2cec5a13d8c4823ea22ef76ed6ae373e96f49"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/install-0.json",
+      "bytes": 143,
+      "sha256": "1d7703d8e32b02c56ad622a3dfeab49f6b11907f3ea210b11cda3e27252e7ba8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/install-1.json",
+      "bytes": 142,
+      "sha256": "041f0ae4a39d4a79235363fc2965f485d6909f14bf9a17aad5e4eb1f54e3e5ff"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/install-2.json",
+      "bytes": 143,
+      "sha256": "2ddf473e5f61b305ecb749b299aa84226c1e3c5ae7ea309ea84773797c6b81f6"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/resolve.json",
+      "bytes": 142,
+      "sha256": "132ec3caaf135da4f2286034dc22fc0d8af242470013037097c0c248e6289668"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/verify-0.json",
+      "bytes": 141,
+      "sha256": "561c982115388d159a0fafeb89d9882c2376f13b1828cc02e9d0a9109401d27a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/verify-1.json",
+      "bytes": 140,
+      "sha256": "5b4c35d3d4b5ad1793347ad33ed0d3e2f9b058812d77105e3e336355dcc51c76"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/timings/verify-2.json",
+      "bytes": 140,
+      "sha256": "6384bc2e95313a802d48c954f234ca0b3b7ebc648c243db6b70267545dcc125e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/verification-0.json",
+      "bytes": 1056,
+      "sha256": "b562fda39ce4b0073c8a0e57c2efa9ea62f02ab19d8cec95df517c589fa0595e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/verification-1.json",
+      "bytes": 1002,
+      "sha256": "cadfe8ff25b327c6dca1af3c23b9ca1159908fafae99c083f1ab3718d03579c0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/verification-2.json",
+      "bytes": 1010,
+      "sha256": "d52debbac035f6689d2fbf1c9beec6b76087dfca730115d18c358f13260f0cb3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+      "bytes": 6470,
+      "sha256": "50c69adf4415d35879393b277aae07c0fbc825efcdd58511fbffc1702d8d59f1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/artifacts-before.json",
+      "bytes": 2406,
+      "sha256": "17a420f355707eaa15a56655e601c5a4a9352141f7f9220c0cea07cb08bda1c8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/first-cause.json",
+      "bytes": 2869,
+      "sha256": "f9831980a89fe2ebc5b0ff6ffaaae374726538d801868bdb1d4730ebc4ff4eaf"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/pack-evaluator.json",
+      "bytes": 1180,
+      "sha256": "9d61e440d1637815b36ffcb176416b8156d0ec07423e928933132060c4726ae6"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/prepare-negative.mjs",
+      "bytes": 2928,
+      "sha256": "a5854688b08ae932d8e97929373e9e366068705029e9a223fe70b88149246eeb"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/prepare.mjs",
+      "bytes": 22813,
+      "sha256": "281d0b5b9aa7b490acda47509049c188471a8efc0594d08f9fce67a13909ea75"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/prepare.stderr",
+      "bytes": 1696,
+      "sha256": "b0b8fadc039105c4ebe2ed84e98876171922fab98908347aaa708c43e4578708"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/prepare.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/00-verify-0.json",
+      "bytes": 25762254,
+      "sha256": "9325a1803175eec30d251c2abdd2d12dcc2fa4735462dda882c1aef82683c484"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/01-verify-1.json",
+      "bytes": 13152503,
+      "sha256": "cff2ae75e648218a204f93992dfd788a5da2afd0969b5923b0341b3ca300c861"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/02-verify-2.json",
+      "bytes": 13150565,
+      "sha256": "3be29d55493259ceaa7633164c1154d0de35d88aca2ce658d3caff6979a61d42"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/03-resolve.json",
+      "bytes": 26398499,
+      "sha256": "72e29a20e8a017560c931b28c9ea87a113bf0e7578a5bb45d1ae6f016935cbf8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/04-install-0.json",
+      "bytes": 29329715,
+      "sha256": "74d57a05a317b7462ce29a881da62dc8f890d31808fc6c29cc27f71fecd227f9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/05-install-1.json",
+      "bytes": 16718814,
+      "sha256": "7cbcd962c54f152d3a0e919bdf677ae39123a90e7474a1719fffa85a09a59491"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/06-install-2.json",
+      "bytes": 16716854,
+      "sha256": "81d924689032987bc3e42ac34b97ea5bf2db66367a2a4acb3576d37352729237"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/07-bind.json",
+      "bytes": 20161241,
+      "sha256": "9e54a2c06e92856520ed7afbe47c418cfb18b81c42b5dfff0e1b096fdad70be1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/calls/08-catalog.json",
+      "bytes": 33590677,
+      "sha256": "49f803a2d35a50086e0887a45b2a1986821f36b8d93ce2a0062f7aa833567b38"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/00-verify-0.json",
+      "bytes": 257095,
+      "sha256": "777dbdcd1d0ed367120089cec7999dcdfb626c538d40a4e2f12a9171d2896d89"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/01-verify-1.json",
+      "bytes": 1965,
+      "sha256": "3b30b6fab534f88b4f25567c23a977f0c577b67debcf5c94f82c37b6ed3886f3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/02-verify-2.json",
+      "bytes": 1973,
+      "sha256": "1d3d87c02b8c4171aabc92dca1c6913b95baaf149b8d0f594909be2d5a253afe"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/03-resolve.json",
+      "bytes": 7692,
+      "sha256": "6745b757c288e81350b676e7ffd633dbf5402d2341a15d96999872f47698e489"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/04-install-0.json",
+      "bytes": 6036,
+      "sha256": "f83a7681d219f5b4bf2690feb6a361c03f08102f360ea4434f746199563b0314"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/05-install-1.json",
+      "bytes": 6052,
+      "sha256": "f90157b4640970200e070ee040a1595945f4bbd6f4eb3ab9461833b96f3475f0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/06-install-2.json",
+      "bytes": 6091,
+      "sha256": "bd33b0623ab665cf5d430756389a41f13543755e5de96f9e56040af1edabf0f5"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/07-bind.json",
+      "bytes": 7610,
+      "sha256": "599d8b500bc0f868931b84076f22f3eced363ee31c3fddec9dbfeb514e4b065b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/receipts/08-catalog.json",
+      "bytes": 7925,
+      "sha256": "4e95ac406352a21f36fc1d27d1bfd66b529ca10ccb8876073ed27d2a44d4ee77"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/setup-resource-close.json",
+      "bytes": 2577,
+      "sha256": "4dfd45868f7d27d5c85be4f8ce74ef8d7bbdc870d112ec8c6f95d32710256bb3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/setup/setup-resource-entry.json",
+      "bytes": 887,
+      "sha256": "252717dd94f76ca2deeaf2197540ca6c4fc6cdefa5c81842b3bbd159202f5ddc"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/bind.json",
+      "bytes": 139,
+      "sha256": "f350f8bc15896cd8f630f88a757a08e7b3437b778ac9207d6da186ef780170bf"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/catalog.json",
+      "bytes": 137,
+      "sha256": "754a6935576a383e85c1910de936ce0b79aa4ef236466cd1b12b1a2eeec00448"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/install-0.json",
+      "bytes": 143,
+      "sha256": "79b5b563ab61f7d5db3875539978e4ab666f5434ec570fabbec7afb89fdda645"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/install-1.json",
+      "bytes": 142,
+      "sha256": "6939dde56a1f7f76d94d0d3d238f40b8d1c9c7f36c78fff4cbf72d4e996253b8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/install-2.json",
+      "bytes": 143,
+      "sha256": "a4fc4a06eea191ef746e82794f1dc3eb1d0801db04a0ee351aa89bce9f2c2636"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/resolve.json",
+      "bytes": 143,
+      "sha256": "1fea705e71a9cb397b56d72a8fa23bb9c8a75ee46a460faa8984ad13cb77f34a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/verify-0.json",
+      "bytes": 133,
+      "sha256": "8f26841e03f1a123bbf5627661ab72623e1fb3015805dd191b9cad99bd6346c8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/verify-1.json",
+      "bytes": 141,
+      "sha256": "65d7867f89d7419f148b3bf30be70c7da9f696b4395af0d3de044e3671b2e7f0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/timings/verify-2.json",
+      "bytes": 140,
+      "sha256": "f2f9438152c5ca5bcaed39c1eb7c6869e356486fc1791df727a73437b3aa27e1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/verification-0.json",
+      "bytes": 1056,
+      "sha256": "b562fda39ce4b0073c8a0e57c2efa9ea62f02ab19d8cec95df517c589fa0595e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/verification-1.json",
+      "bytes": 1002,
+      "sha256": "cadfe8ff25b327c6dca1af3c23b9ca1159908fafae99c083f1ab3718d03579c0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-02/verification-2.json",
+      "bytes": 1010,
+      "sha256": "def39cd082cdce863c9dfe4c80091b563eef8636858f3e40206028733be04431"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/first-cause.json",
+      "bytes": 3403,
+      "sha256": "98ac3639f445707a01515ddd693b493c1e119b169492948fa74f4bbb8a3008b8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/prepare-negative.mjs",
+      "bytes": 2928,
+      "sha256": "a5854688b08ae932d8e97929373e9e366068705029e9a223fe70b88149246eeb"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/prepare.mjs",
+      "bytes": 22230,
+      "sha256": "efbee92988b620cf27320bd9dae4cc70759c14059a760d071912519a67eed705"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/prepare.stderr",
+      "bytes": 1827,
+      "sha256": "a6d01858fb26f22a25f43a91340f7702123929c1a5757a2208564a4bc01f6001"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/prepare.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/00-verify-0.json",
+      "bytes": 25762254,
+      "sha256": "1f0dcd93038d48343f488cd55fdaadaea82624d70557dcd646ebe4373fe4c9f4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/01-verify-1.json",
+      "bytes": 13152503,
+      "sha256": "41cb07199083f4667ceb087f293184f1a406e498a3a75021c371474888f74b88"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/02-verify-2.json",
+      "bytes": 13150565,
+      "sha256": "473f21b41529a13e8863bc59bb4b569909a225597fc9fee1451b7c67d8b1cf1f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/03-resolve.json",
+      "bytes": 26398499,
+      "sha256": "5c2ab444bcae145f1623652884a79dff2efa6a15694a782051288917a74349aa"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/04-install-0.json",
+      "bytes": 29329715,
+      "sha256": "2b728cb1852cdb005c5e2f99f236ae8eb7a7647fbbbd6863be738ac6641a9c95"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/05-install-1.json",
+      "bytes": 16718814,
+      "sha256": "d0f34116dc2fcc0a1a0e17c87bcf947b67a435d66b8a91ebb7a11d66050a7fe8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/06-install-2.json",
+      "bytes": 16716854,
+      "sha256": "b704ecc7ee059fac2058d6da57b68ab2aa6130370c8271060243c5db87d2120d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/07-bind.json",
+      "bytes": 20161241,
+      "sha256": "283eaebdf42101ef6926f6574171e25a381a9d38354e692c922acb6cf5154d7d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/08-catalog.json",
+      "bytes": 33590677,
+      "sha256": "7637ad9d5a2c439789f7cdaf7b93da69bc925fdab29b92c7997a8d0c176548c8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/09-view.json",
+      "bytes": 35837441,
+      "sha256": "acc144ce6927589eec99effb562ad72325b4cd78815a4b94f959b3d6828c0110"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/calls/10-conformance.json",
+      "bytes": 36988385,
+      "sha256": "82538038dace8348c30ef4780994bba5d624e6eee70a4b221f47bcab1781360e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/00-verify-0.json",
+      "bytes": 257095,
+      "sha256": "73f9e4e768e7fa59cfbc0b3c47eb8002833180b5598a5f7bfdc23fe7ea8dd130"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/01-verify-1.json",
+      "bytes": 1965,
+      "sha256": "69973826d79ff0a4043780d34e1ca8535193980966fde05185d1fcf467b6f06a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/02-verify-2.json",
+      "bytes": 1973,
+      "sha256": "44cc6f1e413d7d666a94eff5a508b0d3e8d27cb01e29b2b3c1db66b1618336dd"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/03-resolve.json",
+      "bytes": 7692,
+      "sha256": "00c3ea17c0d32c3e5a2d88fa8b01bcbcfb7fa3af321fa2a420f04390f7aa2152"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/04-install-0.json",
+      "bytes": 6036,
+      "sha256": "7725c663866c684c893f9ba17066d0e036997708f808ebfa8306ef7203fdeda1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/05-install-1.json",
+      "bytes": 6052,
+      "sha256": "867db6271651ae68e4786e8b0ff18341fc7edc4542360c205ef38b059b57e27f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/06-install-2.json",
+      "bytes": 6091,
+      "sha256": "0a7568d308bef624e0f7a90f0b76bd51d35a7a3afa5468ed499116cd3f86cc61"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/07-bind.json",
+      "bytes": 7610,
+      "sha256": "0f6d5f9cd8b9eade79e7abbb4aa688b276c246b7b370fc51a68dbc5c02e5daef"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/08-catalog.json",
+      "bytes": 226289,
+      "sha256": "e1eeaa45fa3984eee4ce59bee394a1f2b8733c4c75b5d1622bf6c65f0d15c905"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/09-view.json",
+      "bytes": 1494,
+      "sha256": "990ed78ff4fa057fd142a6b0151055457a7429530f516efa41aa15efb6a46484"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/receipts/10-conformance.json",
+      "bytes": 1422,
+      "sha256": "5274ff91880412601b1d2deeda56cebe249c6132a778ac6ccdb181858d9e32c3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/setup-resource-close.json",
+      "bytes": 2578,
+      "sha256": "d5a62dc110235a26a98ea8b029678a9bd7e2fa59f9efc33724ee5f3e52c2f96e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/setup/setup-resource-entry.json",
+      "bytes": 887,
+      "sha256": "6e4363e8debfb2edd5358231854bc98412af6b52577452a31c9e3dd077545c1f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/bind.json",
+      "bytes": 139,
+      "sha256": "ac123b12b6e23c5f64c84f3acfc420c52aa2982a9b0f48604dbe4d3890459d89"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/catalog.json",
+      "bytes": 139,
+      "sha256": "4f92832904c233838e36217d763fce3b6bb7bd4e38b1848b4d985f6138fc23f1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/conformance.json",
+      "bytes": 151,
+      "sha256": "5b6b0b59f219c2d898ae56234715cd0cd559d85e830dcf2f52e89336917d55e0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/install-0.json",
+      "bytes": 143,
+      "sha256": "568ba319397ed63cc6371e7305944c69f2bd11a7d42e8c7776aafe9f2c37ada1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/install-1.json",
+      "bytes": 143,
+      "sha256": "6590d260cecf8ebaf014a3f220e6f37d7298cee15791e09bbac805c3af80fba2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/install-2.json",
+      "bytes": 143,
+      "sha256": "226623a50558ece548f3b2e2568fa7019e2ec395a11060fe70acecea0380014b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/resolve.json",
+      "bytes": 143,
+      "sha256": "f8ab34c68090e1854cbbfc57c1b4d1f1a930b705b1803717ea7445ad2d22878f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/verify-0.json",
+      "bytes": 141,
+      "sha256": "04c05d9d052e5b5afaacdf9516dda843dc7187a994dd4391171f6dafcb0e6a5a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/verify-1.json",
+      "bytes": 140,
+      "sha256": "f0bd68b3274edeb82d01c52f8c5714cc05bb234928c58dca1d4841c17bbccf53"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/verify-2.json",
+      "bytes": 140,
+      "sha256": "d1fe3942715a18261936fbfed9710d81026fb5041f87d8f82d04877074ddafc9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/timings/view.json",
+      "bytes": 141,
+      "sha256": "09b1aaeffdbd45bd08e31ab5344cf0ef429c24a55beaa03dcc9bbe341e6c5297"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/verification-0.json",
+      "bytes": 1056,
+      "sha256": "6b66682ddce03f0c464fed1e1fa6f26b32c7cb2c1265d232a7f429e60c0c7d3b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/verification-1.json",
+      "bytes": 1002,
+      "sha256": "cadfe8ff25b327c6dca1af3c23b9ca1159908fafae99c083f1ab3718d03579c0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-03/verification-2.json",
+      "bytes": 1010,
+      "sha256": "def39cd082cdce863c9dfe4c80091b563eef8636858f3e40206028733be04431"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/activation-negative.json",
+      "bytes": 15900043,
+      "sha256": "ca3fb81f9dbee7374f43d1dfeef9873dc2739c3d1a3f9a32d603b5bcfc2ff0fd"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/activation-positive.json",
+      "bytes": 15899621,
+      "sha256": "6ba1e63d726770f91db614819e2f2bcee8d8c92fa6a468809ead1aa979ba8f53"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/activation-positive02.json",
+      "bytes": 15902819,
+      "sha256": "a68fe5cf5570c1410b42fdf463e8f09a06dd7141bb7628a73d5685e6274168a5"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/activation-positive03.json",
+      "bytes": 15902819,
+      "sha256": "1e5e78f9f90d5ebacb20819a9ed1f4d0e8d268131c3ca9b8e04f6dfbeb36e0da"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/activation-positive04.json",
+      "bytes": 15899705,
+      "sha256": "1b2bf1a20226ecaf2f0aab6226c0b87dc63e404ca58246667feefe6b49078f23"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+      "bytes": 11978,
+      "sha256": "de5415bd04cccfcce0d5461dd341d89bb8491e91f4c8881f419d44374e13ee7e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01/calls/00-native-child-binding-cover.json",
+      "bytes": 13149802,
+      "sha256": "524fa700b50782098d13602699abda0333f4d0c09b6a479dca566dc7423746ed"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01/receipts/00-native-child-binding-cover.json",
+      "bytes": 3708,
+      "sha256": "f68c9cde1dce65177a465dc6d2f0d16e939ea3c81ad07e916fbf15769a2d8c33"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01/return.json",
+      "bytes": 2725,
+      "sha256": "3a2509e0e06df9382dc383ded1e3617f00bee4e35f04417c2fcd11c1c219bacc"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01/setup-resource-close.json",
+      "bytes": 2576,
+      "sha256": "7952fde05653ffd8b351d1e6003f424251072a9d6df6406c856789c033ddd507"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01/setup-resource-entry.json",
+      "bytes": 893,
+      "sha256": "37da5d5470f2b8b9e4dad32dff41d2bccb091d7cfc72b4381180e0c4a86614b4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01.stderr",
+      "bytes": 87,
+      "sha256": "b3b3e0a308982ef42a205d7c8ecfb76ac57746dbe9503c20e582c2c081505a87"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/caller-correction01.stdout",
+      "bytes": 2392,
+      "sha256": "e3278a2411440048c655390b3369b2cb161601d5af3d6c4b12ab0db0b6881d6e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/complexity-observation.json",
+      "bytes": 1383,
+      "sha256": "b57fc590990a57ab29a48ac156f3f8a61173220156ce0ee9a61aae1cf2779cc0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/diagnose-binding-cover.mjs",
+      "bytes": 4053,
+      "sha256": "da634a55e349878319f7d28e8411a3ce952fe9f064763e1a7233cb2e536168fe"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/diagnose-reacquisition-held.mjs",
+      "bytes": 3606,
+      "sha256": "be4bcd27e0013ea9dd42e5f3a91c797666615f4f9ce8f0d1fd75eafe07afae26"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/diagnose-reacquisition.mjs",
+      "bytes": 2663,
+      "sha256": "32301c7948c23b57227caeb3a2c4d29570cfa57c0aea61e84084bdbeb102dc6b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/execution-resolution.json",
+      "bytes": 28490,
+      "sha256": "2cd25909dc3d7d941b3ccfce227186ac4d693420e965f21d40e739526cb4108e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/native-dependency-link.json",
+      "bytes": 482,
+      "sha256": "42eeedbfa2e6effadb38e587db948a58766d6f1dc927d8c6498a99fb844b0901"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/native-dependency-proof.json",
+      "bytes": 983,
+      "sha256": "5c5c0b2b31ed5d4bd560b8d5ee36a4a429bc395c5f73a09c81d6aeaf6a3c481f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/fresh-run_replay.json",
+      "bytes": 3709,
+      "sha256": "539fd2801d310baf27ce15c111db6d840288e7f2e6090bbdd2dd846d134792e2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/fresh-run_replay.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/fresh-run_result-process-failure.json",
+      "bytes": 415,
+      "sha256": "3c2facb2b5a143814cc3dd85d695e88c9fc462e91fa68d81077becc754df13f9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/fresh-run_result.json",
+      "bytes": 2744,
+      "sha256": "367b5f824899ecfe04b99ff921c5fbb1b1bab340eda86be300662cb0e0ebb382"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/fresh-run_result.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/graphExecution.json",
+      "bytes": 13274,
+      "sha256": "02d0721ba2b14f5afc11d458b369730c1c5d496439d1e162220ef39db09645b8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/graphExecution.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/result.json",
+      "bytes": 2994,
+      "sha256": "c9248cdcde641af869731ff430ab088869d5d2786ab4120351f0184f21be0bd3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/run_replay.jsonl",
+      "bytes": 10108,
+      "sha256": "6e2403cb9e600f2d6e24487ffe4cfd457807435fa744b2815d7860e7c22cd2c7"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative/run_result.jsonl",
+      "bytes": 10069,
+      "sha256": "3dbd8c6a430273b64e3720c0e9594290d775b2e8996f2e17333bd092e40d4629"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative-driver.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative-driver.stdout",
+      "bytes": 2631,
+      "sha256": "1d09ab6e57047a0cadf0cf49384ee6e72fa790fcd47f407ba1506ecfcfea557a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative-preparation.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative-preparation.stdout",
+      "bytes": 827,
+      "sha256": "fae265083d79fa71fbf369f31798343ee31913eab2722e9e9587574e9e0d4641"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/negative-start.jsonl",
+      "bytes": 83059135,
+      "sha256": "3a71bf20d37dbca4dcdade36384543391a189444dd7818e7018c26080fcbf550"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/package-result.json",
+      "bytes": 2228,
+      "sha256": "1bde4dd90f4cef35830ecd496e7acc8d34391a0012d96ecc6cfdd5fb54fccaf4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/package.mjs",
+      "bytes": 7019,
+      "sha256": "049c003cdbc3d4a97df499dc9e1e9c19a9553775762ebd8496c507af06f2b5ed"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/package.stderr",
+      "bytes": 387,
+      "sha256": "975034c4263a7a5e95fb85a21f0d5a786ade1cbeddd7248bcfeb401bc66c7c4f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/package.stdout",
+      "bytes": 1963,
+      "sha256": "3d35e025f90154fb3257b953b01df23ec4dc7e38da633c29125f52adc5be4292"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive/first-cause.json",
+      "bytes": 653,
+      "sha256": "33ff095fe38b3003689f07bd10340ead362b48cadeaf1dccb32631a18be9f751"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive/graphExecution-process-failure.json",
+      "bytes": 410,
+      "sha256": "e8c77a074042963f5ea7b18db659dc4b15179471aaf0b25ef7f070e338d6e1d0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive/graphExecution.json",
+      "bytes": 192,
+      "sha256": "8e3f9a884f1bf20a5f25bf6a005713d92fe8cd012f4c8e485913061b73b113e2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive/graphExecution.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive-driver.stderr",
+      "bytes": 636,
+      "sha256": "b94c69faa615d73ae2be4a835e4ea790ed45dcd1ca1cc7e30c649b505d2604de"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive-driver.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive-start.jsonl",
+      "bytes": 121078650,
+      "sha256": "49cf9c8e41ddb09cb90d27dafb34530802238a6cc015de71ae2b1d819499f4a1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive-start02.jsonl",
+      "bytes": 83059135,
+      "sha256": "ff6f0faac2f64531cfd1c69e4a12463b9d6e4ee190bfd7259efd00d6f09243b2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive-start04.jsonl",
+      "bytes": 83059135,
+      "sha256": "db2ff8c422db61d003f6744ee24f1d0616364c2c4901f3de8a2de8ee2cd7ea08"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive02/first-cause.json",
+      "bytes": 825,
+      "sha256": "2c1cffd52ce5aaf30d7f7be21968069714418896b251fb28d33ead5b51c347c5"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive02/graphExecution-process-failure.json",
+      "bytes": 412,
+      "sha256": "9250790cedcf65aaed4a6ab8f4e59b859d8fd95e5d2f81084349b7e51e1aaca9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive02/graphExecution.json",
+      "bytes": 2833,
+      "sha256": "ecbcac63243cf224dd0e30357e818fd9c3aa023f24a9006149bf4b0cf8fbcbf2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive02/graphExecution.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive02-driver.stderr",
+      "bytes": 602,
+      "sha256": "33a138372f420b5a72e01f16d455425a32befbaf7202ae466069fcb17866ea7f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive02-driver.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/binding-cover-diagnostic.json",
+      "bytes": 1738,
+      "sha256": "78ae8c114be9980a145875ce82fa3067501b6033ab6ea736b8a42cf5949ebae6"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/binding-cover-resource-close.json",
+      "bytes": 2437,
+      "sha256": "80e627aeb35d632d9b64ea59162ad3722f7be3b83ae3394f390d3fcaa66ac103"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/binding-cover.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/binding-cover.stdout",
+      "bytes": 1562,
+      "sha256": "261823ea2170b309b4ef1db5db5a1c757307da3b116f51f28423f665816ae5b1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/diagnostic-abort.md",
+      "bytes": 528,
+      "sha256": "788ac29fb16b9be09bbe7db697c5d02aba58bc460b77b78a7778485f977d0bdd"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/diagnostic-dispositions.json",
+      "bytes": 24877,
+      "sha256": "96f51afbf615d85a19c2b41c02a9981ae728deb28ece3786dc5edd4b030e75c3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/diagnostic-events.json",
+      "bytes": 5356,
+      "sha256": "4d9359bd15d419ff86b485c8126a44fafad0b7b78a964bb3ff1a80eaead032d6"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/diagnostic-held.stderr",
+      "bytes": 159,
+      "sha256": "4faf94d03a26e4408311dcc93cd0d085e4fbb527cf80067e6a7669e6e2408e0d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/diagnostic-held.stdout",
+      "bytes": 3421,
+      "sha256": "86e8df347c09bca7c9b2e331c0b38ab64e088985da82059caa352572d979260b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/diagnostic-resource-close.json",
+      "bytes": 2437,
+      "sha256": "80e627aeb35d632d9b64ea59162ad3722f7be3b83ae3394f390d3fcaa66ac103"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/first-cause.json",
+      "bytes": 22697,
+      "sha256": "b749b2f17315fb6f377361f9071daef2ac454bb720083a7ab36cf01708ed01b4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/fresh-run_evidence.json",
+      "bytes": 5559,
+      "sha256": "8affd740c30262f75f2628a1b0788dd2d8c03fd808e4fd8b3e3f4dfe8bfba9d9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/fresh-run_replay.json",
+      "bytes": 3708,
+      "sha256": "9e1bf5ff048a0e7229408b01b3141ae33e19017e4320a13a48eae19a5c34bcc6"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/fresh-run_replay.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/fresh-run_result-process-failure.json",
+      "bytes": 417,
+      "sha256": "3506ac64512b8fb8cbba21f7663bb19e3908f57d49a83299c71bf3fb7f121a28"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/fresh-run_result.json",
+      "bytes": 2744,
+      "sha256": "12fda972d2b758c28fe37144ab919e37c83016aa6ea5172105bcbbdffbac4b0c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/fresh-run_result.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/graphExecution.json",
+      "bytes": 21113,
+      "sha256": "ca8ccb3649b8704e176fc8fc8583440816f3ad66ae7054179c46a95e84d46723"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/graphExecution.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/reacquisition-held-diagnostic.json",
+      "bytes": 3892,
+      "sha256": "d5322fe81b4947c901156c682e035e09904e141b77a93d8303ac15df6e3eaf25"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/run_evidence-timing.json",
+      "bytes": 27,
+      "sha256": "7870af73940bd1bb25cde6e1e988baa797633b7ad605bf770c497ef79472d3a7"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/run_evidence.jsonl",
+      "bytes": 10085,
+      "sha256": "4bf8e8d7c13a3fdffc0d74ffba30b2c5a8151c67b750c81f840dc26d0902fd1a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/run_replay.jsonl",
+      "bytes": 10108,
+      "sha256": "91c56c3da2c0eda19af33d076db071980b0860057967252fd43c4a913aff340a"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/run_result.jsonl",
+      "bytes": 10069,
+      "sha256": "cca4f1605deba887365c94cb003f63f3ecc82986dae586321039ef1500ac3a5c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03-driver.stderr",
+      "bytes": 662,
+      "sha256": "258fbbafd84892151eff169357ea6e46092853a0aa489fd1ea9fc89a23453717"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03-driver.stdout",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/fresh-run_replay.json",
+      "bytes": 13014,
+      "sha256": "87cf41909186c337634839ded7172d742e2d32ce4fa1683cf46f33b5425d9a5d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/fresh-run_replay.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/fresh-run_result.json",
+      "bytes": 13357,
+      "sha256": "ce0c02d014b48230b44bee08082a90a28aae0c815f5abb05b80310dd4fe0bdf2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/fresh-run_result.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/graphExecution.json",
+      "bytes": 47503,
+      "sha256": "58b2e8cc002522cc0807b02035094293abda5bd66af1e5e2d15ebb10aab7a1b0"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/graphExecution.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/result.json",
+      "bytes": 3948,
+      "sha256": "f3c13455d052f55e13ed4a2f9cfd552757a170a1e37f9720c9c585e597783fbd"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/run_replay.jsonl",
+      "bytes": 10108,
+      "sha256": "ccce2a67a9cf7929294d4d2cfd8e0f38c12bd9d7905e8bcc9170664f2d2b252c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04/run_result.jsonl",
+      "bytes": 10069,
+      "sha256": "2caa90144510bc4679d6415e351124fb79a793ae8bf74a8ff4165fbb66c0c677"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04-driver.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive04-driver.stdout",
+      "bytes": 3507,
+      "sha256": "9958c0fa432e64e4a9feb3e7d431effc59056cdf326bf7ffd6586a98aab2809b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/prepare-negative.mjs",
+      "bytes": 2934,
+      "sha256": "630ade0884cdf854ec6201b796e01246822ec7907ef542d739e860767ece1311"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/prepare.mjs",
+      "bytes": 21776,
+      "sha256": "bc0e52cb035036aab05e4e12df60b5722310a8219ed056f04a473a7e58ae273d"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/prepare.stderr",
+      "bytes": 1240,
+      "sha256": "b5036b81b28ebf356c5e9733deaa6bdc094f662955f8c3dc3b47e45b8e516f95"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/prepare.stdout",
+      "bytes": 936,
+      "sha256": "d44a03ea2d1c1bb8bc9fd6bfc8e6859288023ffd9c418e0d198cbca10703d4b3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/prepared.json",
+      "bytes": 8567,
+      "sha256": "aca9d0d70ba03ba75f82858e3e244038ee761766dcd26e65bd4b69c4d06460cb"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/repair-child-cover.mjs",
+      "bytes": 5230,
+      "sha256": "2b282e0efbd9c3bd9406a59d3f5a6e4ee13c880f44b82563e043b7d3c93b6fa9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/00-verify-0.json",
+      "bytes": 25762254,
+      "sha256": "1f0dcd93038d48343f488cd55fdaadaea82624d70557dcd646ebe4373fe4c9f4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/01-verify-1.json",
+      "bytes": 13153510,
+      "sha256": "d32c413bcd9eaad111f209cb23a414c5b189eb28271dedcce93ff098ea3b3aae"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/02-verify-2.json",
+      "bytes": 13150565,
+      "sha256": "473f21b41529a13e8863bc59bb4b569909a225597fc9fee1451b7c67d8b1cf1f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/03-resolve.json",
+      "bytes": 26398856,
+      "sha256": "b1ff1d38b6eb8e405e382f1ffc7593442c90d2accba17292f4da94e43bcaabcb"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/04-install-0.json",
+      "bytes": 29330532,
+      "sha256": "73f069a2dbfd2913c683eeb59c613c46aea16ba7d06019661bf2ce9cc9c36dc3"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/05-install-1.json",
+      "bytes": 16719956,
+      "sha256": "7ad6ec6f1fd77f3364a4afc2ce9fb50cd08dcc5b63b0b76543e877add0821fbb"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/06-install-2.json",
+      "bytes": 16717671,
+      "sha256": "264aee1056695436250d81cd58d2e348fccaffe3eec40ad56388cdb52d927288"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/07-bind.json",
+      "bytes": 20162399,
+      "sha256": "366b762226bf5ec5c8918c436c8478e9e321d0982dba281ed9cedeb546b8e44e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/08-catalog.json",
+      "bytes": 33592275,
+      "sha256": "1dfde76ea82595f4d54d340712a1d99d0c69317770416696746d830334a26a37"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/09-view.json",
+      "bytes": 35885357,
+      "sha256": "144ff5c2f0286ea3a0675a58a24237a8293b25bc7c4e55298afebf954e3378d8"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/10-conformance.json",
+      "bytes": 37074880,
+      "sha256": "529f7008de1bae37393ee2148bc601a4eb5108672663ddb12f1846aa79cf4177"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/calls/11-retained-constructor-binding-cover.json",
+      "bytes": 13149900,
+      "sha256": "1ba3e9c86d247a4a0872c50ccf4a0fafccdca60cd8f275764f951467d98bffa4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/00-verify-0.json",
+      "bytes": 257095,
+      "sha256": "73f9e4e768e7fa59cfbc0b3c47eb8002833180b5598a5f7bfdc23fe7ea8dd130"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/01-verify-1.json",
+      "bytes": 1965,
+      "sha256": "86e64ab64d4e5cd27d4fe4ad0f943017f1fccae33179caa2e809cd71a7b5dc85"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/02-verify-2.json",
+      "bytes": 1973,
+      "sha256": "44cc6f1e413d7d666a94eff5a508b0d3e8d27cb01e29b2b3c1db66b1618336dd"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/03-resolve.json",
+      "bytes": 8172,
+      "sha256": "059a257f1765f5e5de41c2408da29055f6d9d446711404aa69a273f5716a4ccd"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/04-install-0.json",
+      "bytes": 6036,
+      "sha256": "a4cbc9d697e1853a9ab30d162ce0b1e1fd1ef90fd461cbac7ed0cf1397bf6125"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/05-install-1.json",
+      "bytes": 6052,
+      "sha256": "f542e10d0c61d4893b158eac4561e6fb8084fe91624a9bd296ba110371011abc"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/06-install-2.json",
+      "bytes": 6091,
+      "sha256": "a154021385aa631e8f072076c85512c87483312fec5d9c1cf31afa3b3c57bb26"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/07-bind.json",
+      "bytes": 7610,
+      "sha256": "fa80ec0e9e909a191c321d633245280547deaa008c2a4da69ddd141b2830c148"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/08-catalog.json",
+      "bytes": 225430,
+      "sha256": "4940be23066147804b59de3d3dafcdc0e2caf41435f69862c7a995cf658af7c1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/09-view.json",
+      "bytes": 1774,
+      "sha256": "d97902fd479d7c483c547cf725435fd02f837cfb7b70c8628a6fabc3bcaaf8e9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/10-conformance.json",
+      "bytes": 2525,
+      "sha256": "34396307cdbd64b319b4f60b0117f6bbc10f0ee5371e52dbc35b35bdecce5f37"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/receipts/11-retained-constructor-binding-cover.json",
+      "bytes": 3708,
+      "sha256": "5c2b937b4bc6214e18ead4bab9e5bfc3e72a3db3c66f7f1cf1cf4ecd45720eed"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/setup-resource-close.json",
+      "bytes": 2577,
+      "sha256": "73b229c46af67ba03ddffeff9559cdbfb09efcbb70a19c987fdb9c3e84ee4212"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup/setup-resource-entry.json",
+      "bytes": 887,
+      "sha256": "b00e90cbab1b43ad360e8593020fdac7dc67a3a953544a1350cc46be636990b2"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/setup-receipt.json",
+      "bytes": 6306,
+      "sha256": "3ccc1af9b164c458134d9884c9c7456a304c0ae2c8caeee8a3dbe34699ddbd3b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/bind.json",
+      "bytes": 138,
+      "sha256": "69f7d1777fc8bda4a3b5a8de046f51a86de46ab1adbd8e9806f4f6fa7568c47c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/catalog.json",
+      "bytes": 138,
+      "sha256": "453eb99b2afac9e64ed5d8631ed1ba512a4f286142a3b5da5d84be9cd6ba41c4"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/conformance.json",
+      "bytes": 151,
+      "sha256": "da39d38a9df77fcc873da8fd5a641d9429e7f4bc358f97d2e963d9ce9b3b7f34"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/install-0.json",
+      "bytes": 143,
+      "sha256": "c707363bf668838d323ba2eabc57e7d6e22ad1a4dbb7f43c9d99ac233df5da4e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/install-1.json",
+      "bytes": 143,
+      "sha256": "60847e68f93e6ad5a5d71f88c507f63814b1d748d6b34fc4add11f56bf1677e1"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/install-2.json",
+      "bytes": 143,
+      "sha256": "237cd77556319eecde5e397a3d8eb335d18840dfdbce9a7ddd66a51b2532a866"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/resolve.json",
+      "bytes": 143,
+      "sha256": "f4c05ee3dba1fcc1bd65a4da225efba52f69c6a555c3d8cb1df64f2f72549262"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/retained-constructor-binding-cover.json",
+      "bytes": 141,
+      "sha256": "56c8dfce7ae5f93c8801b8af2688dee0968a7abbba11f3c4934c8bfbd3c4250f"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/verify-0.json",
+      "bytes": 141,
+      "sha256": "7eb5a9c1140574e3bba18385870ee5c4d5c25df218e5da474a0d7d3b92b8aa1c"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/verify-1.json",
+      "bytes": 140,
+      "sha256": "bcaf34e446688c3f754b5639c7c5a5744533c9bd4a97f35b4e91d10f7906fafe"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/verify-2.json",
+      "bytes": 140,
+      "sha256": "b12ed2680021c02e26661e472be1d574c6f2f344abd1970191635172e8fef174"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/timings/view.json",
+      "bytes": 141,
+      "sha256": "d98ef96cdf877e873a10d0dfab8346c0ae707abcf384fe4da6e6cc7c9e333dad"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/transport-correction.json",
+      "bytes": 706,
+      "sha256": "db73345d311a9da81599f9398936995c1b2dc53aefb49fc8ba50e155033877a9"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/verification-0.json",
+      "bytes": 1056,
+      "sha256": "6b66682ddce03f0c464fed1e1fa6f26b32c7cb2c1265d232a7f429e60c0c7d3b"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/verification-1.json",
+      "bytes": 1002,
+      "sha256": "a8c7de1330a70a79dd7f06147b50b139643d45bbdd3aeb102e075f671e396a6e"
+    },
+    {
+      "path": "odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/verification-2.json",
+      "bytes": 1010,
+      "sha256": "def39cd082cdce863c9dfe4c80091b563eef8636858f3e40206028733be04431"
+    }
+  ],
+  "compression": "zstd level6 long27",
+  "recompressionSeconds": 1.924318749923259
+}

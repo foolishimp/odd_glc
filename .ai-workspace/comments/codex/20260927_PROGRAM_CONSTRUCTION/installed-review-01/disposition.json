@@ -1,0 +1,292 @@
+{
+  "kind": "odd_glc_program_construction_installed_review",
+  "status": "closed",
+  "reviewerResult": "satisfied",
+  "findings": [],
+  "findingsTriage": "not_applicable",
+  "executiveDisposition": "reserved_to_Root",
+  "productFrame": "T-043 evaluate-only ordinary Program within fixed ABI 15-family GTL/HoG/ABG boundary",
+  "sourceFreezeSha256": "b784c872abe81248f9cbfdfa2474024abac6cb5989eb48b45065ec71c35b2030",
+  "selectedProgram": {
+    "ref": "program://odd-glc/construction/988e0ba3badb4567876b40a7b579a37858af3342e4170f2cceb8ac170682f93d@5",
+    "digest": "sha256:1f394aab0684d4bafa9ac2c98e52cc659ffae184d7c5c0cab7610ac3c96c2022"
+  },
+  "archiveSha256": {
+    "core46": "e2c2d053528fca7dd0e4988ec50772cd8a12f058d35076119c99cf8c4e7adbfb",
+    "constructorDev2": "de5415bd04cccfcce0d5461dd341d89bb8491e91f4c8881f419d44374e13ee7e",
+    "evaluatorDev2": "50c69adf4415d35879393b277aae07c0fbc825efcdd58511fbffc1702d8d59f1"
+  },
+  "acceptedScope": [
+    "actual install/bind/catalog/conformance and selected execution resolution",
+    "ordinary Node resolution to admitted core46 with retained payload proof",
+    "actual Public witness for exact retained native child binding cover",
+    "installed positive computes reviewed bindings10/11 records from authenticated retained evidence",
+    "one-field false execution coordinate blocks before reacquisition/evaluator",
+    "fresh result/replay agreement at each selected close",
+    "zero actor occurrences and no C2/new native-work execution"
+  ],
+  "positive": {
+    "run": {
+      "digest": "sha256:15a4caf3bfadf2ba3923a481b421583a12830aab93a3ee3e165fc46df1be2ecf",
+      "ref": "run://abiogenesis/4eeb3e367d9453dce6e242cd057980271219dd3fa84125819f28d469c2681088"
+    },
+    "result": {
+      "digest": "sha256:45dcbe00e7c047eaa4dff244890fc012490862f33d524fc1124971be4f00eb32",
+      "ref": "result://abiogenesis/45dcbe00e7c047eaa4dff244890fc012490862f33d524fc1124971be4f00eb32"
+    },
+    "prefix": {
+      "coordinateDigest": "sha256:ee514c7823d13076df995056d65eb81af78726344daf7dc947a4caeb3555e0b6",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:95bd1c3ce48520de1ebbfca2ed51da5a431b192f20b89fe0cd4a19e9bbee2562",
+      "prefixLength": 798901739,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "counts": {
+      "projectionRef": "run-semantic-relation://abiogenesis/deddd8bb276836518fc6948379d5e1188e60b8032b79743e7e48ce11deb70340",
+      "projectionDigest": "sha256:deddd8bb276836518fc6948379d5e1188e60b8032b79743e7e48ce11deb70340",
+      "graphCallCount": 5,
+      "cCallCount": 8,
+      "actorEventCount": 0,
+      "actorOccurrenceCount": 0,
+      "graphFunctions": [
+        "graph-function://odd-glc/construction/988e0ba3badb4567876b40a7b579a37858af3342e4170f2cceb8ac170682f93d@5",
+        "graph-function://odd-glc/program-construction/authenticate@5",
+        "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+        "graph-function://odd-glc/program-construction/prepare-evaluation@5",
+        "graph-function://odd-glc/qualification/native-records@5"
+      ],
+      "cCallRefs": [
+        "c-call:sha256:05eb2a954b2366d4802dacc66721962dbc58c0de7264ab6743b4b015196158ff",
+        "c-call:sha256:6a626aced1c2e33911f78f67d62de8114cf13f3eb6168e990267f3a99a716a90",
+        "c-call:sha256:1f58988fd7f8e669e47b90c6b1a69deb8ed4accb072e4f35e0e474dffb9b9aa7",
+        "c-call:sha256:351c88bb19898608dd51bbd012d1be7907ed8c1940feea0cbe3ebc608e2c3a19",
+        "c-call:sha256:6b82bd8de93eb946a5752ddbd9ac1c8033596bb3614caade4c357ef6de9f2cd6",
+        "c-call:sha256:17f484e06f8553ab56c9e0280b4a8d3c91d69c307243cdc9e4da54e2f2adcd2a",
+        "c-call:sha256:4f8a442b210f86f959e24c54f78daef87fee630a8efbb7d3f31f12a5db54cfd3",
+        "c-call:sha256:e58f0c963018c1ae9855514cb89630b37c54a1a9e3d1aa8e8c336b4291917521"
+      ]
+    },
+    "timingsMs": {
+      "packageMs": 643.1481670000001,
+      "installMs": 31216.775792000004,
+      "setupMs": 42019.980125,
+      "graphExecutionMs": 218541.94829099998,
+      "fresh-run_resultMs": 73674.76708299998,
+      "fresh-run_replayMs": 74637.53620799998,
+      "ownerCountReadMs": 46187.24220799998
+    },
+    "log": {
+      "beforeBytes": 678185859,
+      "afterBytes": 798901739,
+      "appendedBytes": 120715880
+    },
+    "terminalEquality": "immediate = fresh run_result = fresh run_replay",
+    "expectedRecords": "all reviewed expected fields match",
+    "carriedBindings": "exact original 15 minus selected two"
+  },
+  "negative": {
+    "run": {
+      "digest": "sha256:5db6029ae1ac098ab84b7054389a68be8a1f4b0e2c8adfb88f978b697b815842",
+      "ref": "run://abiogenesis/bc78344e8f0b1e1aa24e4709dffbc455934a197a5aa1db0b83704c3c1e42ff0f"
+    },
+    "result": null,
+    "prefix": {
+      "coordinateDigest": "sha256:d5cfda448163c4726e45bfe0d35eea805064fb657065dfeafc93753dc177871a",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:d416bd6bf93bde855f7de96ed4ae47675d52172b600d201aa44203b00601ff5f",
+      "prefixLength": 821849906,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "counts": {
+      "projectionRef": "run-semantic-relation://abiogenesis/0c1f5f6100f937b7702d5947a402094e0f8fb1addcf20e671409206caaf454e1",
+      "projectionDigest": "sha256:0c1f5f6100f937b7702d5947a402094e0f8fb1addcf20e671409206caaf454e1",
+      "graphCallCount": 2,
+      "cCallCount": 2,
+      "actorEventCount": 0,
+      "actorOccurrenceCount": 0,
+      "graphFunctions": [
+        "graph-function://odd-glc/construction/988e0ba3badb4567876b40a7b579a37858af3342e4170f2cceb8ac170682f93d@5",
+        "graph-function://odd-glc/program-construction/authenticate@5"
+      ],
+      "cCallRefs": [
+        "c-call:sha256:33f0b22f310590c6d3a16c6a2d1a8deb270aa3204988bd54dc18e1fded6152bd",
+        "c-call:sha256:d73375de1e7a745aa56bdc602c6e73569d2cc62771b8f18112fe29386f430b90"
+      ]
+    },
+    "timingsMs": {
+      "packageMs": 643.1481670000001,
+      "installMs": 31216.775792000004,
+      "setupMs": 42019.980125,
+      "graphExecutionMs": 100063.146375,
+      "fresh-run_resultMs": 67036.196958,
+      "fresh-run_replayMs": 67103.226333,
+      "ownerCountReadMs": 37669.51554200001
+    },
+    "log": {
+      "beforeBytes": 798901739,
+      "afterBytes": 821849906,
+      "appendedBytes": 22948167
+    },
+    "intervention": {
+      "path": "input.origin.execution.digest",
+      "before": "sha256:5f743236d9c21a82eb4da9d1fff8590403ae087db386f1a32d7d6c39b46ac8f5",
+      "after": "sha256:a06349bc4ca2ff77a8a04c7dc2d61639d7ceafb98dc25ffc5b72ad65e22864ea",
+      "semanticInputDifferences": 1
+    },
+    "runDisposition": "blocked",
+    "freshResult": "not_found",
+    "freshReplay": "blocked; no terminal Result"
+  },
+  "preservedHistoricalSelection": {
+    "coordinateDigest": "sha256:b4ae8dc8b9819ca96dc379070b30e33437ca7e059c791c138c702e0b685a90c0",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:2b98525a32d67b03b1465d12b1cfd5831c31d658ff3a78f2fafeeecddce34db5",
+    "prefixLength": 623146192,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "remainingClaims": [
+    "G3 / historical construction-input relations",
+    "binding14 comparison",
+    "required semantic assessment and independence",
+    "full obligation satisfaction",
+    "original task / owner acceptance",
+    "S06 closure",
+    "other compositions",
+    "general native dependency isolation / portable installation"
+  ],
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed",
+  "latencyImprovement": "not_claimed",
+  "proportionalityDebt": "retained invocation/read/append measurements; no optimization claim",
+  "independentFinalArchivePrefixHash": "outside this Reviewer checkpoint; Root-owned",
+  "reviewerOperations": {
+    "runtimeCalls": 0,
+    "journalReads": 0,
+    "tests": 0,
+    "sourceMutations": 0,
+    "writes": [
+      "installed-review-01/review.md",
+      "installed-review-01/disposition.json"
+    ]
+  },
+  "evidence": [
+    {
+      "path": "implementation-05/source-freeze.json",
+      "bytes": 5618,
+      "sha256": "b784c872abe81248f9cbfdfa2474024abac6cb5989eb48b45065ec71c35b2030"
+    },
+    {
+      "path": "installed-04/package-result.json",
+      "bytes": 2228,
+      "sha256": "1bde4dd90f4cef35830ecd496e7acc8d34391a0012d96ecc6cfdd5fb54fccaf4"
+    },
+    {
+      "path": "installed-04/native-dependency-proof.json",
+      "bytes": 983,
+      "sha256": "5c5c0b2b31ed5d4bd560b8d5ee36a4a429bc395c5f73a09c81d6aeaf6a3c481f"
+    },
+    {
+      "path": "installed-04/positive03/binding-cover-diagnostic.json",
+      "bytes": 1738,
+      "sha256": "78ae8c114be9980a145875ce82fa3067501b6033ab6ea736b8a42cf5949ebae6"
+    },
+    {
+      "path": "installed-04/caller-correction01/return.json",
+      "bytes": 2725,
+      "sha256": "3a2509e0e06df9382dc383ded1e3617f00bee4e35f04417c2fcd11c1c219bacc"
+    },
+    {
+      "path": "installed-04/caller-correction01/calls/00-native-child-binding-cover.json",
+      "bytes": 13149802,
+      "sha256": "524fa700b50782098d13602699abda0333f4d0c09b6a479dca566dc7423746ed"
+    },
+    {
+      "path": "installed-04/caller-correction01/receipts/00-native-child-binding-cover.json",
+      "bytes": 3708,
+      "sha256": "f68c9cde1dce65177a465dc6d2f0d16e939ea3c81ad07e916fbf15769a2d8c33"
+    },
+    {
+      "path": "installed-04/activation-positive04.json",
+      "bytes": 15899705,
+      "sha256": "1b2bf1a20226ecaf2f0aab6226c0b87dc63e404ca58246667feefe6b49078f23"
+    },
+    {
+      "path": "installed-04/positive-start04.jsonl",
+      "bytes": 83059135,
+      "sha256": "db2ff8c422db61d003f6744ee24f1d0616364c2c4901f3de8a2de8ee2cd7ea08"
+    },
+    {
+      "path": "installed-04/positive04/result.json",
+      "bytes": 3948,
+      "sha256": "f3c13455d052f55e13ed4a2f9cfd552757a170a1e37f9720c9c585e597783fbd"
+    },
+    {
+      "path": "installed-04/positive04/graphExecution.json",
+      "bytes": 47503,
+      "sha256": "58b2e8cc002522cc0807b02035094293abda5bd66af1e5e2d15ebb10aab7a1b0"
+    },
+    {
+      "path": "installed-04/positive04/fresh-run_result.json",
+      "bytes": 13357,
+      "sha256": "ce0c02d014b48230b44bee08082a90a28aae0c815f5abb05b80310dd4fe0bdf2"
+    },
+    {
+      "path": "installed-04/positive04/fresh-run_replay.json",
+      "bytes": 13014,
+      "sha256": "87cf41909186c337634839ded7172d742e2d32ce4fa1683cf46f33b5425d9a5d"
+    },
+    {
+      "path": "installed-04/activation-negative.json",
+      "bytes": 15900043,
+      "sha256": "ca3fb81f9dbee7374f43d1dfeef9873dc2739c3d1a3f9a32d603b5bcfc2ff0fd"
+    },
+    {
+      "path": "installed-04/negative-start.jsonl",
+      "bytes": 83059135,
+      "sha256": "3a71bf20d37dbca4dcdade36384543391a189444dd7818e7018c26080fcbf550"
+    },
+    {
+      "path": "installed-04/negative/result.json",
+      "bytes": 2994,
+      "sha256": "c9248cdcde641af869731ff430ab088869d5d2786ab4120351f0184f21be0bd3"
+    },
+    {
+      "path": "installed-04/negative/graphExecution.json",
+      "bytes": 13274,
+      "sha256": "02d0721ba2b14f5afc11d458b369730c1c5d496439d1e162220ef39db09645b8"
+    },
+    {
+      "path": "installed-04/negative/fresh-run_result.json",
+      "bytes": 2744,
+      "sha256": "367b5f824899ecfe04b99ff921c5fbb1b1bab340eda86be300662cb0e0ebb382"
+    },
+    {
+      "path": "installed-04/negative/fresh-run_replay.json",
+      "bytes": 3709,
+      "sha256": "539fd2801d310baf27ce15c111db6d840288e7f2e6090bbdd2dd846d134792e2"
+    }
+  ],
+  "review": {
+    "path": "installed-review-01/review.md",
+    "bytes": 6357,
+    "sha256": "14cd66e814872e05902a3b1e3f004b28430707bdad60dd532fca0346f4991a45"
+  }
+}

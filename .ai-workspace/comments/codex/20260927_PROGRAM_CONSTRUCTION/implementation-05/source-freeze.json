@@ -1,0 +1,125 @@
+{
+  "kind": "odd_glc_program_construction_source_candidate",
+  "status": "package_dependency_wiring_ready",
+  "sourceHead": "eb65daa3ca38dfd6f5e5eeb614a3c700a4648d17",
+  "acceptedDesignSha256": "cd3e6a34a28c7669055ab4797305df721f400cbd41f346aae4fd64a6a556e208",
+  "pairedReviewSha256": "ba1d18bf807ab6cf65e8d64be8a92db13b696e7b85730be011b68958f3da4e1d",
+  "installedCoreRoot": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abi5-composite46-install-5a2ikry3/node_modules/@abiogenesis/typescript-tenant",
+  "files": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "bytes": 18370,
+      "sha256": "sha256:df639d160a291e13ee48a00e227975162fbc201784834f8e983051fc49ba3a66"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "bytes": 3126,
+      "sha256": "sha256:259f2c2b8c490281b04d7508e7275f1ed74a6b8af48f8f6ac58f83a635289f38"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "bytes": 10791,
+      "sha256": "sha256:d8098817fa74bec78b882d887070c5546891249fb9ee0ddc83d9cf5e522e6838"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "bytes": 6604,
+      "sha256": "sha256:647b42240d85d7ba7bcb54a7020cf421b9316fa5aada872253ea38f9ee830409"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "bytes": 16131,
+      "sha256": "sha256:65c6d8bd0afd9426f2cb61dad5f10ec842ade786d6b35e3308828c4be191f0fc"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "bytes": 10176,
+      "sha256": "sha256:f29630b77cb3df2ce3ae652bed3deba73701e957c5434c6c3cdd0e857ec2266f"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/activation.md",
+      "bytes": 5777,
+      "sha256": "sha256:fd60ff223b006feca1e07ec7460bd76f84a5e42668abc1a55029abb25e4a530f"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "bytes": 863,
+      "sha256": "sha256:a21f9368e487a5c84080f1b9a9980397fb5fd51fe504311ba2590a94a373eda7"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md",
+      "bytes": 3344,
+      "sha256": "sha256:27e3e84a740ff42225d16536ebf90a1e2485b36ed2ad23fcc6ccf2f861b1f80f"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/expected-native44.json",
+      "bytes": 1727,
+      "sha256": "sha256:cadf27a132038b249a7aee7fd47063a3f860b9322ea4f54651f7e4d511aa8ba5"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "bytes": 13989,
+      "sha256": "sha256:4bbb98f21035ae41153ea171b128ec1bd49669a50926556d88d06a9fde6515bb"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs",
+      "bytes": 6373,
+      "sha256": "sha256:89f8f59e713223fec11a0fbb588de0ade1dc357108df78f9557a0345e7d112f2"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "bytes": 2281,
+      "sha256": "sha256:a4e5a3d4e96081b0e5ee6d82e62beeffbd6d2062f2b1cc681ff888dc36b5f272"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/product-package.mjs",
+      "bytes": 4619,
+      "sha256": "sha256:c3662c18a7d4d2965225aeb683907d9a733b4d7488bfd28c73cdd1e6492b4041"
+    }
+  ],
+  "reusedUnchanged": [],
+  "checks": [
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-05/checks.txt",
+      "bytes": 2035,
+      "sha256": "sha256:25cef1fea5e34e97453091e538998709ab03f44e95454c0ff548751ef28a2d97"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/package-result.json",
+      "bytes": 2228,
+      "sha256": "sha256:1bde4dd90f4cef35830ecd496e7acc8d34391a0012d96ecc6cfdd5fb54fccaf4"
+    }
+  ],
+  "checkResult": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "elapsedMs": 13395.334334
+  },
+  "notPerformed": [
+    "ABG Run execution",
+    "paid/native actor calls",
+    "original worksite mutation"
+  ],
+  "qualification": "package/declaration-closure preflight passed; source delta review and installed execution pending",
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed",
+  "predecessorFreeze": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/implementation-04/source-freeze.json",
+  "changedPaths": [
+    "build_tenants/odd_glc/typescript/src/product-package.mjs",
+    "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+    "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+    "build_tenants/odd_glc/typescript/test/fixtures/program-construction/activation.md"
+  ],
+  "initialReview": "implementation-review-01/review.md",
+  "reusedFocusedChecks": "implementation-02/check-results.json",
+  "driverSyntaxCheck": {
+    "command": "node --check test/abi5-installed-program-construction.test.mjs",
+    "exitCode": 0
+  },
+  "ownerApiProbe": {
+    "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/source-owner-projection.json",
+    "sha256": "sha256:bfb8c9e4019b21f6fe12c829dfc1e3ccd591867aa80c964be5f3e8760ece1342",
+    "scope": "actual exported core45 owners over retained native42 at native44 prefix; no new Run or append"
+  }
+}

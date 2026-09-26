@@ -1,0 +1,22 @@
+Product Frame: the selected odd_glc increment derives new binding10/11 records from retained native44 execution through an ordinary authenticated GTL composition. This readback evaluates only the fixture-local F1 correction and reuses the unaffected initial source/evaluator review.
+
+**Closed result: `satisfied`. F1 is resolved on the exact successor; no actionable finding remains within the bounded source-review claim.** Finding-level severity and triage are `not_applicable`. Executive retains acceptance, priority, disposition and the next operation grant.
+
+Activation: `GLC_PROGRAM_CONSTRUCTION_F1_DELTA_REVIEW_01`, 2026-09-27; independent Reviewer `/root/program_construction_source_review`. Basis remains GLC STDO `v2.5.0-rc.4`, manifest `4fa2556d0127bebce8f7184cc4a3cb708a175b2e40552c55cb211f2426d5049e`, the selected project Reviewer/Product/Owner/Design/Proof frames, and accepted HOW SHA-256 `cd3e6a34a28c7669055ab4797305df721f400cbd41f346aae4fd64a6a556e208`.
+
+The subject is [implementation-02](../implementation-02/return.md), with [source-freeze.json](../implementation-02/source-freeze.json) SHA-256 `e1a84ac00f9697a68c2373ecd25ed6fc5a89dee59cea8dcd1e5028aa46de902d`. All thirteen source/fixture/driver files, the reused emitter and the new check receipts match that freeze. Only these source members changed:
+
+- `test/fixtures/program-construction/native-records-evaluator.mjs`: `48c5c8ef6f323953629109490f700d2ea8eb15aa5ddf9c3377c5224e72abd5c2`.
+- `test/program-construction.test.mjs`: `f60c63e0d7d0df867750f1724c2f4f9c7bf12457d5af3dd5b0ebea794c06311e`.
+
+Paths above are under `build_tenants/odd_glc/typescript/`. I independently reconstructed each predecessor in memory by removing the exact parser replacement or appended test; both reconstructed hashes equal implementation-01. The unchanged evaluator contract, expected native44 records, remaining eleven files, emitter and HOW retain their prior basis. [The initial review](review.md), SHA-256 `ecbfb7809fc28871357aba99ae53ad5af548ab2ef46957f12bbef36cda2b586e`, is preserved and remains the historical falsified result for implementation-01.
+
+At evaluator lines 48-53, witness selection now recognizes actual reporter result lines and matches the exact selected title, allowing the existing numeric timing suffix. A TAP `# Subtest` heading cannot enter the witness population. Passing and failing result lines both enter that population, so missing, duplicate or conflicting results cannot establish a suite pass. Execution status, timeout/signal, pass floor, zero failures and zero cancellations remain unchanged. The native44 checkmark witnesses remain byte-identical in the expected record.
+
+The appended test at lines 139-159 directly exercises F1: standard TAP headings plus one passing result per title yield all four true conditions and one witness per suite. It also checks absent, duplicate, conflicting and unrelated-title results while preserving the unaffected UAT result. Its altered stdout is explicitly an unadmitted parser premise. It does not fabricate replacement native evidence or claim historical authentication.
+
+I read and reused the matching [check receipt](../implementation-02/check-results.json) and [output](../implementation-02/checks.txt): 13 passed, zero failures/skips, 13.253 seconds through the selected real core45 public imports. The original twelve checks are included. No additional executable check or broad rerun was needed for this readback.
+
+**Acceptance scope:** this result supports Executive acceptance of the frozen source candidate and supplied evaluator's bounded source fit, including F1's declared TAP tolerance. It does not accept a package, install, catalog admission, current historical-source binding, physical reacquisition, ABG Run, performance result or fresh-process installed readback. Those remain the next separate proof boundary. The original source, five assessments, fourteen artifacts and construction/execution identities retain their prior scope; binding12, binding14, remaining semantic duties and original-task/S06 acceptance remain open. New F_D records remain computed evidence, not C2 observations or semantic verdicts.
+
+The sole write for this readback is this carrier. No source, original evidence, history, Git, package/install, native/provider or ABG runtime effect occurred. Material successor, authority, evaluator-contract, expected-record, evidence-population or claim changes invalidate the affected evaluation. Reviewer is CLOSED and returns to Executive.
