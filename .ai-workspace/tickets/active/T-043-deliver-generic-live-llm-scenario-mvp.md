@@ -27,9 +27,9 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: PC05_08_core49_setup_and_one_assessment_selected
-- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-07/activation.json
-- last_execution_result: CLOSED_PC05_07_runtime_failed_malformed_assessment_no_terminal_Result
+- current_activation_status: paired_schema_default_and_portable_authoring_correction_selected
+- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/activation.json
+- last_execution_result: CLOSED_PC05_08_runtime_failed_host_schema_refusal_no_terminal_Result
 - current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection
@@ -59,7 +59,12 @@ No author/C2 repeat, source/oracle weakening, budget increase or blind retry.
 PC06's fifteen-binding evidence join remains prepared; original-task disposition
 is open. The [corrected core49 response route](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-structured-response-repair-02-review.md)
 is source/package accepted; one installed PC05-08 assessment is selected.
-No actor has launched for that selection yet.
+Its [installed invocation](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/execution-return.md)
+closed failed on host refusal of the draft-2020-12 schema declaration. Fresh
+Result/replay agree. Closed portability triage selects paired fixed-default ABI
+admission and GLC schema authoring without the optional dialect marker. All
+instance constraints remain; no transport stripping or further attempt is selected.
+No actor remains active.
 
 Core47's [installed no-actor discriminator](../../comments/codex/20260928_DECLARATION_RESOURCE/installed-01/return.md)
 is accepted: wrong predecessor refuses at actual preparation; fresh result/replay
@@ -145,7 +150,7 @@ exact scope.
 | PC02 — Construct through the native handoff | Source complete; installed no-actor refusal [causally reproduced](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/return.md) | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md) | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
 | PC04 — Connect independent assessment | Source/review accepted; [WP-01 corrected and independently verified](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md); prior [8 affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
-| PC05 — Prove the installed complete path | Prior runtime proof accepted; latest native assessment failed JSON; core49 repair accepted and one installed check selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC05 — Prove the installed complete path | Prior runtime proof accepted; response repair accepted; latest installed attempt refused host schema dialect; portability triage selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Fifteen-binding join prepared; final disposition pending corrected PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
 Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,

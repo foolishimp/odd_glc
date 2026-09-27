@@ -1,0 +1,83 @@
+{
+  "timings": {
+    "run_resultMs": 98184.068417,
+    "run_resultProcessMs": 98737.057042,
+    "run_replayMs": 98895.967833,
+    "ownerCountReadMs": 401.0663329999952,
+    "run_replayProcessMs": 99675.817083
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/b0b558f6af1d2834a9ed8615621ec5263a21511da16785964ca363a90002270f",
+    "projectionDigest": "sha256:b0b558f6af1d2834a9ed8615621ec5263a21511da16785964ca363a90002270f",
+    "graphCallCount": 11,
+    "cCallCount": 18,
+    "actorEventCount": 7,
+    "actorOccurrenceCount": 1,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+      "graph-function://odd-glc/program-construction/authenticate-preserved-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+      "graph-function://odd-glc/program-construction/evaluation-child@5",
+      "graph-function://odd-glc/qualification/native-records@5",
+      "graph-function://odd-glc/program-construction/join-evaluation@5",
+      "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+      "graph-function://odd-glc/program-construction/assessment-child@5",
+      "graph-function://odd-glc/program-construction/prepare-assessment-task@5",
+      "graph-function://abiogenesis/worksite/native-work/assessment@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:ad9f9d8ae959f39815e0b68219b07a4a5c935673cc81be200c3fec52329152ea",
+      "c-call:sha256:da67bc7c26087283ebdc0e5da3717f6d54b1d36f8ad1692953e16146ce8ecdd3",
+      "c-call:sha256:affe1f63eab8410db217fcbc751ca122ec3581e9f46dd08d248ca63bab9ec873",
+      "c-call:sha256:86b0bdc679144c9149ad1fc4fbc9cbc610ec819211b0d7dbceaf559d3579c00b",
+      "c-call:sha256:07d9d5bb348d7467331e3d28f1f601b97366d722821497d9be9b6a77151426f1",
+      "c-call:sha256:7b0e652b9ca4351e4ed4158ee32c247cabe4fb700b1b6834578421d550a28cb2",
+      "c-call:sha256:9be0fa6e5dfa96aa82b9ee8bcb8fc46b53781fec8d5f837c1f04bb8df914bbcf",
+      "c-call:sha256:b105a4c3fecdedbdf762f18a240b9de89c422a596d964a48e7003ca08e10a5ef",
+      "c-call:sha256:a396ede8b9254d54148460b3d68e31788dfe4abb91a95768d3743557c385a642",
+      "c-call:sha256:b9d354af27bcba4e3cd2f30658574431603b5a37c208706ea6c1af3bb0fc6cb8",
+      "c-call:sha256:56aa6fc1f39efef84f8ee3d31ae36df3874da565b6af1b25a99294056d8646c7",
+      "c-call:sha256:7220a681fe6eecba63ca5676be383b1b1953b9b4635c44ed1b05974361ffaefa",
+      "c-call:sha256:c0e602fcc7e79ba75fd4dc32a19cc20d0154021b24c3a62471bf4685ede2fb29",
+      "c-call:sha256:4e4b5dd4682c9a7794eb0c07b1db201306137e4a8bc774acc48df446d02e1e73",
+      "c-call:sha256:796da5e8f91e33721301d93c4be744b9db3fe2e082502fb64c0d23432fd81bfa",
+      "c-call:sha256:918130a3bad37d267310fefab3bb8025f512b517c32337459bc7e09ff6916dba",
+      "c-call:sha256:cf6c6cb91dad3afb0d504083d6ccd5ef75cb1baf3dc551c983f5bf2e9ebc891e",
+      "c-call:sha256:ebef42eca8f295bc3a1c0fd0ca042a43a01468f88e02b6f5e3332b203b780bae"
+    ],
+    "failures": []
+  },
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:4222dc3ba916d002290b5f75ae8134630cca1413e8f04af5d1ff4d70e4b0c94d",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:6b56bcb19f3d19a0f39a34ba9e4b47ad6250d1079163cd4ef132be88507c83e1",
+      "prefixLength": 1354273180,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:890225242f895abbb8662d4cde099a204edfd92cd25004d75263a5a0cbd3518b",
+      "device": 16777230,
+      "durableByteLength": 1354273180,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:6b56bcb19f3d19a0f39a34ba9e4b47ad6250d1079163cd4ef132be88507c83e1",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "acquisitions": 2,
+  "projections": [
+    "run_result",
+    "run_replay"
+  ],
+  "boundary": "Two existing Public reopen/close calls in separate fresh processes; counts reuse replay owner prefix. No third recovery or journal copy."
+}

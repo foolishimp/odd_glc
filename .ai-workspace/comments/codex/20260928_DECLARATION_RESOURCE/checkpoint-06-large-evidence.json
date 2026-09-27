@@ -1,0 +1,102 @@
+{
+  "scope": "Closed PC05-08 installed host-schema refusal, setup, native transport and fresh readback. Excludes expanded installed/packages/cache trees. Original mutable journal remains local, not a self-contained replay archive. Small files retained directly.",
+  "archive": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-06-large-evidence.tgz",
+  "archiveBytes": 55196296,
+  "archiveSha256": "6bd88cf634dac4f52bb7b3030f581eacf9b24fdc42f980a068ce5590bf2c608c",
+  "parts": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-06-large-evidence.tgz.part00",
+      "bytes": 48000000,
+      "sha256": "6665aece8df3933054498806092711a7b6455d6f023c522130679e4dea43a35a"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-06-large-evidence.tgz.part01",
+      "bytes": 7196296,
+      "sha256": "519c45ac3019e1b46645741a9cb7da3a7d313ed59b623e821108b694939673da"
+    }
+  ],
+  "members": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/activation-pending-review.json",
+      "bytes": 15927605,
+      "sha256": "5d5b1f665d5df20e0d481e9bae37bc3180b10d093fe9ee8a2fd2ee8622561c97"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/activation.json",
+      "bytes": 15931281,
+      "sha256": "fa4f6350957995567437bdaec5bf441e74852f01b3a35fbbbc710b7effd06bfc"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/preserved-source.json",
+      "bytes": 4560290,
+      "sha256": "4594903d072f3961cfa81f176c5c9b0b4562f08727878e601913c72a99f0d6a2"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/00-verify-0.json",
+      "bytes": 25804428,
+      "sha256": "4b3dae64942ebc1ff4402bd8c6a9329b3596490c395ef98e197fe1049b29f8c1"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/01-verify-1.json",
+      "bytes": 13181354,
+      "sha256": "4204305c8507403620e28646f7deeea5dcea086ff2310b5c29cf1c7ca7973016"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/02-verify-2.json",
+      "bytes": 13171697,
+      "sha256": "cb9160cb0a297b3fe6131b648b007d8c49b7b1497687a641484d47910e571e74"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/03-resolve.json",
+      "bytes": 26448297,
+      "sha256": "5bcc1da9415b4bd2fceb835d707813efcf9295aadb7e95b005fb42f9e677ca15"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/04-install-0.json",
+      "bytes": 29379897,
+      "sha256": "79f2779c78d1c4eb2889d2b15201803341b411560dc2f68fc7a850dd97bc45b3"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/05-install-1.json",
+      "bytes": 16754991,
+      "sha256": "8b9e37f4194e040f2e1ed32593a0ad73b3e05ffd2927494e9941168a0b7c78ea"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/06-install-2.json",
+      "bytes": 16745994,
+      "sha256": "c4bc0b532975d6ebb1064b3127ab9858b60cc2de6803b391cd533fc1a647e407"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/07-bind.json",
+      "bytes": 20197603,
+      "sha256": "e275b6f055f9297b9251975b70336f430a4d17b4d5f7486c1b2a48e6066cea91"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/08-catalog.json",
+      "bytes": 33752508,
+      "sha256": "a926c4d0940eb24a18c9fdd90dd25805a4d4b34d8fc50b64e9b673c9538994a7"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/09-view.json",
+      "bytes": 36231713,
+      "sha256": "b7dcce581fdde1a0b32933cf50037c1a224d623a9d8459b2f1e0b0ca5f376e31"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/10-conformance.json",
+      "bytes": 37700598,
+      "sha256": "81b7153b5151ef10611c2f66ab045b1d03fbaa8364ce33c37b5a4dc1014dc509"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/setup/calls/11-native-child-binding-cover.json",
+      "bytes": 13171235,
+      "sha256": "95e7198c56ecd57d113969092a9cce85b103aeb33aabe0d40f313c5ec6fc7a23"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/start.jsonl",
+      "bytes": 44650516,
+      "sha256": "6ba87694f614c8e01c7fa1accca73f8d57eb9c2d15b2401a9f1a5ac526028064"
+    }
+  ],
+  "verification": "Every decompressed member length and digest verified; no replay or journal read.",
+  "elapsedSeconds": 1.788
+}

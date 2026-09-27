@@ -1,0 +1,15 @@
+(node:2828) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:
+--import 'data:text/javascript,import { register } from "node:module"; import { pathToFileURL } from "node:url"; register("./build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs", pathToFileURL("./"));'
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"phase":"full_sandbox_public_setup","ordinal":1,"label":"verify-0"}
+{"phase":"full_sandbox_public_setup","ordinal":2,"label":"verify-1"}
+{"phase":"full_sandbox_public_setup","ordinal":3,"label":"verify-2"}
+{"phase":"full_sandbox_public_setup","ordinal":4,"label":"resolve"}
+{"phase":"full_sandbox_public_setup","ordinal":5,"label":"install-0"}
+{"phase":"full_sandbox_public_setup","ordinal":6,"label":"install-1"}
+{"phase":"full_sandbox_public_setup","ordinal":7,"label":"install-2"}
+{"phase":"full_sandbox_public_setup","ordinal":8,"label":"bind"}
+{"phase":"full_sandbox_public_setup","ordinal":9,"label":"catalog"}
+{"phase":"full_sandbox_public_setup","ordinal":10,"label":"view"}
+{"phase":"full_sandbox_public_setup","ordinal":11,"label":"conformance"}
+{"phase":"full_sandbox_public_setup","ordinal":12,"label":"native-child-binding-cover"}
