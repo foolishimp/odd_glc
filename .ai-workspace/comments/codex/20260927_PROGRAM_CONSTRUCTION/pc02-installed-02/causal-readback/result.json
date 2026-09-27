@@ -1,0 +1,106 @@
+{
+  "status": "incomplete_guard_identity_not_exposed",
+  "ownerProjection": {
+    "kind": "run_semantic_relation_view",
+    "viewRef": "run-semantic-relation://abiogenesis/dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+    "viewDigest": "sha256:dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+    "runId": "run://abiogenesis/39ca8cc226494392680b3d716e849ccc5f62c04b9c23ed2a4936f54ed4a3ea6e",
+    "eventCount": 138,
+    "runtimeStatus": "failed",
+    "lifecycle": {
+      "traversalCursorPresent": true,
+      "terminalReached": false,
+      "frameClosed": false,
+      "graphCallClosed": false,
+      "runClosed": false,
+      "runStopped": true,
+      "runStoppedDisposition": "failed",
+      "invocationRefused": false,
+      "runtimeFailed": false
+    },
+    "outcome": {
+      "routeKinds": [
+        "terminal",
+        "advance",
+        "terminal",
+        "advance",
+        "failed",
+        "failed"
+      ],
+      "cCallStatuses": [
+        "judged",
+        "judged",
+        "judged",
+        "judged",
+        "judged",
+        "judged"
+      ],
+      "continuationStatuses": [],
+      "fanOutCompletionKinds": []
+    },
+    "prefix": {
+      "coordinateDigest": "sha256:89c2f4a21b18733de0da12a2485d0a9def2f01d0d5c4942c56a53b42bbc415a2",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:23b26b3d1f55891f736d553c2357104a320d58271cf28dcc2c53187d64c128dc",
+      "prefixLength": 991116806,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "elapsedMs": 57876.209583,
+    "publicExports": [
+      "projectRuntimePrefixesAtDurablePrefix",
+      "projectRunSemanticReplayProjection"
+    ],
+    "ownerFactKeys": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "relevantAtomCount": 27,
+    "relevantOwnerRows": 5,
+    "retention": "Exact prepare child and enclosing failed-call propagation, plus selected acquired-input relation excerpt. No full historical envelopes retained."
+  },
+  "prepareGraphCallRef": "graph-call://abiogenesis/76e03e27116ddfb66b344a57f9b6174ac6d60590cb5941018c69e5b328d86e3f",
+  "prepareCCallRef": "c-call:sha256:c2150319c8bb0bde41d9050c82f2c658525b398340afd4b649309ea0bb90ff5b",
+  "admittedFailure": {
+    "cCallPhase": "judged",
+    "prepareRoute": "failed",
+    "enclosingRoute": "failed",
+    "runStoppedDisposition": "failed",
+    "runtimeFailureObserved": false
+  },
+  "admittedInputRelation": {
+    "path": "specification/project-conformance.md",
+    "declaredDigest": "sha256:b331df7341f0c907c9fb50d67e03ad31350c4a58c5cd9efda1764ca373dad558",
+    "acquiredDigest": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a",
+    "mismatch": true,
+    "ownerAtom": "r96",
+    "retainedInputSubjectDigest": "sha256:2c002d0719cc577ef3ffb3aee2dc78a62d49d52bfeedcf6415da09d6c9ae92e1"
+  },
+  "causalLimit": "The public semantic projection exposes phase, route and event payload digests, not admitted result/judgment body or diagnostic text. Exact earlier stale-basis guard is not established by this read.",
+  "decodedDataUris": 0,
+  "ownerReadSequences": 1,
+  "newRunCalls": 0,
+  "eventAppends": 0,
+  "evidence": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/causal-readback/causal-rows.json",
+    "digest": "sha256:844d2232931667e798d658db87347bce3ea691c4dc58581050bdc4a3fdf25e0f",
+    "byteLength": 56967
+  },
+  "originalReturnPreserved": true
+}

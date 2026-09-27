@@ -1,0 +1,187 @@
+{
+  "status": "incomplete_exact_first_cause_not_projected",
+  "workerResult": "incomplete",
+  "claim": "prepare-construction and zero-actor boundary observed; exact predecessor refusal cause remains unestablished",
+  "run": {
+    "digest": "sha256:1f118153d0cae390da2d74b4a51e5cdd2b7039a91b9b8287b3b4cb903853ca19",
+    "ref": "run://abiogenesis/39ca8cc226494392680b3d716e849ccc5f62c04b9c23ed2a4936f54ed4a3ea6e"
+  },
+  "sourceCommit": "35046f424cd6cc976c92213a565487f06d9b6305",
+  "readinessDigest": "sha256:bd6514505aab766177b747dd88c64502df5bd5082de09944182952a36994bde4",
+  "activationDigest": "sha256:33445b35da858c8adeb0aef7069116dc74e25a169cc35c0c29ffe49aa34f77a6",
+  "checks": {
+    "frozenDriverExitCode": 0,
+    "prepareConstructionReached": true,
+    "completedTerminalAbsent": true,
+    "actorEvents": 0,
+    "actorOccurrences": 0,
+    "nativeConstructorCalls": 0,
+    "nativeAssessorCalls": 0,
+    "c2Calls": 0,
+    "freshResult": "not_found",
+    "freshReplay": "failed",
+    "sameGenuineClose": true,
+    "exactPredecessorMismatchCause": "not_established"
+  },
+  "firstCauseBoundary": {
+    "surface": "installed Public run_evidence",
+    "projectionKind": "run_evidence_projection",
+    "availableKeys": [
+      "eventAtoms",
+      "evidence",
+      "kind",
+      "replay",
+      "subject"
+    ],
+    "runtimeFailuresFieldPresent": false,
+    "requestedMessage": "declared predecessor does not match current context: specification/project-conformance.md",
+    "disposition": "retain evidence gap; no raw journal or private owner read; no retry"
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+    "projectionDigest": "sha256:dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+    "graphCallCount": 4,
+    "cCallCount": 6,
+    "actorEventCount": 0,
+    "actorOccurrenceCount": 0,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/2bce52bfb744987eadc4d633f0f7d97638ade0ae336baf8899a8af90c8bc068f@5",
+      "graph-function://odd-glc/program-construction/authenticate-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-construction@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:d3660075e455050e429b6d8c037c4a7218cb97dc0b4c36bd4c920470eb041353",
+      "c-call:sha256:bcb445572dd4de3bf9f772cf1a206c0a156aecda01b50ca247bf48d56dab3370",
+      "c-call:sha256:0d751aa3f43e64ab1a1edfc4916dea85ee3c92a9ef77cbf3d7835f7f350da906",
+      "c-call:sha256:43e17028974bf4a6abc8ec6657b3dbfac9d48adebb3e8927f9102cc41126a798",
+      "c-call:sha256:87d32bd6f4131593b2bf1911cad151fa3ea7d8f5aa5f525db5b68bbbb4627b94",
+      "c-call:sha256:c2150319c8bb0bde41d9050c82f2c658525b398340afd4b649309ea0bb90ff5b"
+    ]
+  },
+  "timings": {
+    "packageMs": 7693.6404999999995,
+    "installMs": 40263.892709,
+    "setupMs": 65799.05670700001,
+    "graphExecutionMs": 250771.173709,
+    "fresh-run_resultMs": 91008.46766599998,
+    "fresh-run_replayMs": 91275.45649999997,
+    "ownerCountReadMs": 57978.40933300002,
+    "fresh-run_evidenceMs": 146054.731875,
+    "staticPreflightMs": 12034.294666,
+    "driverProcessMs": 492148.9121248014
+  },
+  "historicalSourceLookupMs": 23167.635875,
+  "bytes": {
+    "archive": 26399,
+    "launch": 83331584,
+    "validInput": 30737143,
+    "entryContext": 328015,
+    "journalBeforeSetup": 821849906,
+    "journalAfterSetup": 824169381,
+    "setupAppended": 2319475,
+    "journalAfterExecution": 991116806,
+    "executionAppended": 166947425,
+    "publicResult": 2744,
+    "publicReplay": 3708,
+    "publicEvidence": 6509
+  },
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:89c2f4a21b18733de0da12a2485d0a9def2f01d0d5c4942c56a53b42bbc415a2",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:23b26b3d1f55891f736d553c2357104a320d58271cf28dcc2c53187d64c128dc",
+      "prefixLength": 991116806,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:1df1fb84c03e75c951cd5c18e7dc776f7b4759422a7195e6019c691354ba29d1",
+      "device": 16777230,
+      "durableByteLength": 991116806,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:23b26b3d1f55891f736d553c2357104a320d58271cf28dcc2c53187d64c128dc",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "files": [
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/case-ready.json",
+      "digest": "sha256:bd6514505aab766177b747dd88c64502df5bd5082de09944182952a36994bde4",
+      "byteLength": 3331495
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/case-ready.md",
+      "digest": "sha256:1e73b025e400cf46c96ea431d55dce8f6ac413ff3e3af624095b79302780dd3c",
+      "byteLength": 5356
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/activation-reviewed.json",
+      "digest": "sha256:33445b35da858c8adeb0aef7069116dc74e25a169cc35c0c29ffe49aa34f77a6",
+      "byteLength": 15900048
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/native-dependency-link.json",
+      "digest": "sha256:7d0b822532fc43ceb0ea5d38cf23a460f835db8f3188b7bf349508f4db38f139",
+      "byteLength": 897
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/driver-process.json",
+      "digest": "sha256:851a37f3f945111b0384bbd2f429195baa6a6c033d83e77fa4cddb09dec2fce8",
+      "byteLength": 410
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/read-first-cause.mjs",
+      "digest": "sha256:0012e778824d68c1edc80ccee30eeb69a6c9c056e38e7d6a6bb38da0ec0f8a21",
+      "byteLength": 2537
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/result.json",
+      "digest": "sha256:c685cd4fb5417b6450f2e6fbedbb12b00fdfb3cf82ed3f7b1bd9b131b16bf37c",
+      "byteLength": 3562
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/graphExecution.json",
+      "digest": "sha256:d7dda7bed2bfa85d6f1bb00f5715b0f1fffbef736f6a24728b01e2d2f1e0c682",
+      "byteLength": 28945
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/fresh-run_result.json",
+      "digest": "sha256:e362cf7c76ed8f518eb2f6e12845ade9a22d58846e40d125fc6eb5a6f7fb600d",
+      "byteLength": 2744
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/fresh-run_replay.json",
+      "digest": "sha256:0b861796e986fc0276864fc35c81670aeb5107c1b171294f160dae1ae406479e",
+      "byteLength": 3708
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/fresh-run_evidence.json",
+      "digest": "sha256:5e04e5b1b91ceb7ce17ef52d975d05a05df2509bd03f0d176261131c451d3c60",
+      "byteLength": 6509
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/first-cause-owner-projection.json",
+      "digest": "sha256:bab7916062ce9b60b0e11a2ae4f20bef461d8cf4df20c8135f27c1c3731cbf39",
+      "byteLength": 4767
+    },
+    {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/negative/run_evidence-timing.json",
+      "digest": "sha256:57b544e9aed2fa242cbed103dd9c7161b2f925250b170e3c276781f85d1e810e",
+      "byteLength": 33
+    }
+  ],
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed",
+  "liveClaim": false,
+  "sourceEdited": false,
+  "runAttempts": 1
+}

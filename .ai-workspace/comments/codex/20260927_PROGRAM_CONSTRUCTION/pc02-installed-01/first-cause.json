@@ -1,0 +1,121 @@
+{
+  "status": "preparation_refused_not_case_ready",
+  "phase": "pure_static_program_validation_after_package_emission",
+  "sourceCommit": "35046f424cd6cc976c92213a565487f06d9b6305",
+  "sourceFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-01/source-freeze.json",
+    "digest": "sha256:fafde049eafd5c23e1051af8164db85428008d5c24d9209347852110ee50baa6"
+  },
+  "diagnostic": {
+    "kind": "static_validation_refusal",
+    "schemaVersion": "5.0.0",
+    "disposition": "invalid",
+    "stage": "program",
+    "subjectDigest": "sha256:872e18b77a7e022fe93636314cf03befb616c65f05e31fd62e7810a0c5eef47f",
+    "diagnostics": [
+      {
+        "code": "invalid_reference",
+        "path": "$.runEnvironments",
+        "message": "STDO environment must cover every supported dependent semantic or worksite leaf exactly once"
+      }
+    ]
+  },
+  "firstCause": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-01/package.stderr",
+    "digest": "sha256:7c7cd1c853167b9b33f9c1679e7e5d608111c5d634544c2c0e4cbf22727c9677"
+  },
+  "process": {
+    "command": [
+      "node",
+      "--loader",
+      "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-01/package.mjs"
+    ],
+    "exitCode": 1,
+    "elapsedMs": 19478.317165747285
+  },
+  "candidateArchive": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-01/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+    "digest": "sha256:eb27c48fb1da9486029d00d0143899b15fec978c888173c67a31a333c1119e46",
+    "byteLength": 26923
+  },
+  "candidatePackage": {
+    "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+    "packageName": "@odd-glc/route-one-typescript",
+    "packageVersion": "0.3.0-dev.2",
+    "productContentDigest": "sha256:59cdd7bc4022a4888d9d67ceee95df518563072e27a9cd072a0b055c5a597f2b"
+  },
+  "manifestFile": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-01/packages/construction/product-toolchain-manifest.json",
+    "digest": "sha256:5acddee668c74427e494485734a0f6d3c486fb17afd6a48470c66e0edbf689e4"
+  },
+  "configuration": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/preparation/configuration.json",
+    "digest": "sha256:f6e11fa3359b9e2bb9f7957ca97b3422a95c69030a27cc4fd0bd33238babb450",
+    "roles": [
+      {
+        "graphFunctionRef": "graph-function://abiogenesis/worksite/command-execution@5",
+        "programLocusRef": "node://abiogenesis/worksite/command-execution/fp@5",
+        "role": "command_executor"
+      },
+      {
+        "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work/assessment@5",
+        "programLocusRef": "node://abiogenesis/worksite/native-work/assessment@5",
+        "role": "assessor"
+      },
+      {
+        "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work@5",
+        "programLocusRef": "node://abiogenesis/worksite/native-work@5",
+        "role": "constructor"
+      }
+    ]
+  },
+  "program": {
+    "callableMembership": [
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://abiogenesis/worksite/native-work@5",
+      "graph-function://odd-glc/construction/fae42f3ac04e2c459861802f482f095070f0a5a78941a1f282badf9401018a95@5",
+      "graph-function://odd-glc/program-construction/authenticate-construction@5",
+      "graph-function://odd-glc/program-construction/construction-child@5",
+      "graph-function://odd-glc/program-construction/join-native-output@5",
+      "graph-function://odd-glc/program-construction/prepare-construction@5",
+      "graph-function://odd-glc/program-construction/prepare-native-task@5"
+    ],
+    "closureContractRef": "contract://odd-glc/program-construction/closure@5",
+    "kind": "gtl_program",
+    "moduleRef": "module://odd-glc/program-construction/library@5",
+    "policies": {
+      "abg.compute_regime": "mixed",
+      "abg.default_start_ref": "start://odd-glc/construction/fae42f3ac04e2c459861802f482f095070f0a5a78941a1f282badf9401018a95@5",
+      "abg.root_mode": "direct",
+      "abg.run_environment": "environment://odd-glc/full-sandbox/fresh-native-rc4@5"
+    },
+    "programRef": "program://odd-glc/construction/fae42f3ac04e2c459861802f482f095070f0a5a78941a1f282badf9401018a95@5",
+    "starts": [
+      {
+        "graphFunctionRef": "graph-function://odd-glc/construction/fae42f3ac04e2c459861802f482f095070f0a5a78941a1f282badf9401018a95@5",
+        "startRef": "start://odd-glc/construction/fae42f3ac04e2c459861802f482f095070f0a5a78941a1f282badf9401018a95@5"
+      }
+    ],
+    "version": "5.0.0"
+  },
+  "effects": {
+    "publicSetupCalls": 0,
+    "installs": 0,
+    "runCalls": 0,
+    "actors": 0,
+    "nativeConstructor": 0,
+    "nativeAssessor": 0,
+    "c2": 0,
+    "providerCalls": 0,
+    "worksiteWrites": 0,
+    "journalBytesAppended": 0
+  },
+  "retainedJournalBytes": 821849906,
+  "readback": "not_applicable_no_Run",
+  "launch": "not_created",
+  "activation": "not_created",
+  "sourceFrozen": true,
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed"
+}

@@ -1,0 +1,3 @@
+PC02 checkpoint preserves both preparation attempts, frozen launch/driver, receipts, causal readbacks and the closed journal. Read ../executive-disposition.md first: exact guard attribution remains residual. No live construction or task/release closure is claimed.
+
+The zstd archive uses paths relative to the apps workspace. Its member inventory and hashes are in archive-manifest.zstd.json. Installed dependency copies are excluded; exact candidate archives and the predecessor installed-04 checkpoint identify them. Source code is committed separately. The final journal digest matches its genuine close, and zstd integrity verification passes. Extract only into a separate inspection directory; historical coordinates do not authorize resuming a restored copy.

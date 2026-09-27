@@ -1,0 +1,74 @@
+{
+  "status": "installed_discriminator_observed",
+  "mode": "construction_only",
+  "expectation": "predecessor_refusal",
+  "run": {
+    "digest": "sha256:1f118153d0cae390da2d74b4a51e5cdd2b7039a91b9b8287b3b4cb903853ca19",
+    "ref": "run://abiogenesis/39ca8cc226494392680b3d716e849ccc5f62c04b9c23ed2a4936f54ed4a3ea6e"
+  },
+  "result": null,
+  "preservedPrefix": {
+    "coordinateDigest": "sha256:b4ae8dc8b9819ca96dc379070b30e33437ca7e059c791c138c702e0b685a90c0",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:2b98525a32d67b03b1465d12b1cfd5831c31d658ff3a78f2fafeeecddce34db5",
+    "prefixLength": 623146192,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "prefix": {
+    "coordinateDigest": "sha256:89c2f4a21b18733de0da12a2485d0a9def2f01d0d5c4942c56a53b42bbc415a2",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:23b26b3d1f55891f736d553c2357104a320d58271cf28dcc2c53187d64c128dc",
+    "prefixLength": 991116806,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "timings": {
+    "packageMs": 7693.6404999999995,
+    "installMs": 40263.892709,
+    "setupMs": 65799.05670700001,
+    "graphExecutionMs": 250771.173709,
+    "fresh-run_resultMs": 91008.46766599998,
+    "fresh-run_replayMs": 91275.45649999997,
+    "ownerCountReadMs": 57978.40933300002
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+    "projectionDigest": "sha256:dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+    "graphCallCount": 4,
+    "cCallCount": 6,
+    "actorEventCount": 0,
+    "actorOccurrenceCount": 0,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/2bce52bfb744987eadc4d633f0f7d97638ade0ae336baf8899a8af90c8bc068f@5",
+      "graph-function://odd-glc/program-construction/authenticate-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-construction@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:d3660075e455050e429b6d8c037c4a7218cb97dc0b4c36bd4c920470eb041353",
+      "c-call:sha256:bcb445572dd4de3bf9f772cf1a206c0a156aecda01b50ca247bf48d56dab3370",
+      "c-call:sha256:0d751aa3f43e64ab1a1edfc4916dea85ee3c92a9ef77cbf3d7835f7f350da906",
+      "c-call:sha256:43e17028974bf4a6abc8ec6657b3dbfac9d48adebb3e8927f9102cc41126a798",
+      "c-call:sha256:87d32bd6f4131593b2bf1911cad151fa3ea7d8f5aa5f525db5b68bbbb4627b94",
+      "c-call:sha256:c2150319c8bb0bde41d9050c82f2c658525b398340afd4b649309ea0bb90ff5b"
+    ]
+  },
+  "log": {
+    "beforeBytes": 824169381,
+    "afterBytes": 991116806,
+    "appendedBytes": 166947425
+  },
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed"
+}
