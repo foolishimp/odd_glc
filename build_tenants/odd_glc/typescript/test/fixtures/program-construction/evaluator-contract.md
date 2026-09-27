@@ -43,10 +43,56 @@ execution/result/observation and producer identities are retained in the actual
 output; ABG provides the new evaluator invocation/result provenance. The output
 labels its role `computed_derivation` and original-task completion `not_claimed`.
 It neither overwrites old observations nor invents missing raw argument/type
-fields. Binding12 historical input provenance, binding14, remaining semantic
-assessment and owner/S06 acceptance are outside this selected increment.
+fields. In this evaluate-only selection, binding12 historical input provenance,
+binding14, remaining semantic assessment and owner/S06 acceptance remain outside
+the computed command records.
 
 The fixture's exact raw source, full retained execution, currentness and source
 fit remain separate proof duties. Pure expected-record tests do not establish
 ABG admission or physical currentness. Installed qualification must enter the
 generated ordinary Program and authenticate/reobserve with the real owners.
+
+The construction/evaluation selection uses the same supplied evaluator through
+an ordinary child. Its retained input contains the authenticated original
+predicate declarations/observations, protected observations, execution provenance
+and command/snapshot records, alongside actual new construction observations.
+The child returns its actual computed output with that input for PC04; it does
+not authenticate caller-supplied copies of accepted bindings10/11. Those accepted
+results require a separate owner conjunction. No command records are recomputed
+for this selection.
+
+Each selected dependent/predecessor pair produces an edge record containing its
+obligation/binding, actual producer and observation, dependent after-digest,
+predecessor before/current digests and declared read path. Future predecessors
+resolve through the earlier actual child. Every condition is `true`, `false`
+or `unknown`; conjunction cannot turn false/unknown into true. The fixture's
+content consistency rule is deliberately limited: JSON `derivedFrom` includes
+the predecessor path, or the text contains that path. This checks a declared
+reference, not faithful semantic derivation. Independent assessment remains
+required even for a true edge record.
+
+An explicit comparison selector chooses binding14's obligation/binding and the
+`hello-world-return-exact` / `module_export_return_exact` / ordinal 6 predicate.
+Exactly one declaration and observation must match all three coordinates. Its
+evidence must resolve uniquely to the protected `src/hello.mjs` observation;
+protected length/digest, original snapshot and current bytes must agree. The
+comparison preserves the predicate's actual observed value and declared expected
+value and parses `assertedReturnValue` from the digest-bound observed
+`test-execution-plan.json`. Missing/duplicate evidence, disagreement, or missing
+raw values cannot satisfy the conjunction.
+
+The returned type is explicitly derived from `observedValue`, distinguishing
+null and arrays. The no-argument fact is also derived: the narrow reviewed
+module grammar must establish the actual exported zero-parameter `helloWorld`
+function, and the owning `implementation/worksite_command_helper.ts` rule calls
+callable exports as `exported()` (lines 1217–1222 in the inspected source). The
+rule also permits a non-callable export value, so the predicate observation
+alone does not prove invocation. Source outside this narrow fixture grammar
+leaves callability unknown. Neither derived fact is inserted into the original
+observation. Its absent raw argument-list/type fields remain explicit residuals
+requiring owner disposition for strict raw-field compliance.
+
+All construction/comparison records remain `computed_derivation`, with semantic
+closure and original-task completion `not_claimed`. The complete duty population,
+carried duties and bindings stay on the retained evaluation input; PC04 owns the
+independent assessment join and interpretation of these records.

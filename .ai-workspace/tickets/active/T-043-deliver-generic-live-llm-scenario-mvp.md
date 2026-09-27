@@ -25,9 +25,9 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PROGRAM_CONSTRUCTION_PC03_SOURCE_01
+- current_activation: GLC_PROGRAM_CONSTRUCTION_PC04_SOURCE_01
 - current_re_entry: realization_refactor
-- current_activation_status: PC03_source_active_PC02_installed_boundary_observed_exact_guard_residual
+- current_activation_status: PC03_source_complete_PC04_selected_PC02_exact_guard_residual
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
 - current_activation_record: '#modular-completion-plan'
@@ -41,7 +41,8 @@ on core46 after installed positive/refusal proof and independent review. The
 [modular completion plan](#modular-completion-plan) sequences implementation
 and tests of the [accepted completion HOW](#completion-design-re-entry). PC01
 source is complete; PC02 source and the installed no-actor boundary are established,
-with exact guard attribution residual. PC03 source is active. The sequence closes the original construction-input relation and comparison
+with exact guard attribution residual. PC03 source is complete; PC04 is selected.
+The sequence closes the original construction-input relation and comparison
 without repeating valid work. Native44 retains its accepted scope; S06 and ABG5
 qualification/RC1 remain open. The prior
 native39 selection and execution records below are historical, not new launch
@@ -56,15 +57,15 @@ at SHA-256 `9dd3233fb54402c73970bbefcce44f3e31618d158bad393f4a47104c9ed1f83f`.
 The completed design and evaluate-only installed proof are the reusable baseline.
 PC01/PC02 source increments are complete; PC02's installed check reached the
 selected mismatch and failed before actors, with exact guard attribution still
-residual. PC03 source is active; PC04–PC06 await dependencies. The accepted
+residual. PC03 source is complete; PC04 is selected; PC05–PC06 await dependencies. The accepted
 baseline remains closed; no new live result is claimed.
 
 | Task | Status / dependency | Module and outcome | Exit test |
 | --- | --- | --- | --- |
 | PC01 — Select work and bind dependencies | Source complete; [20/20 focused checks](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc01/return.md) | Extend the existing pure constructor/contracts. Preserve duties, independent assessment and carried residuals. Distinguish observed `{path,digest}` inputs from future `{producerDutyRef,path}` outputs. | Present, missing, stale and unknown evidence select the warranted work or explicit gap. Missing/ambiguous producers and cycles refuse. Future digests are never invented. Accepted evaluate-only behavior still passes. |
 | PC02 — Construct through the native handoff | Source complete; [installed disposition](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/executive-disposition.md): no-actor boundary established, exact guard attribution residual | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
-| PC03 — Compute evidence and comparison | Source active on PC01/PC02 interfaces; PC02 residual retained | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
-| PC04 — Connect independent assessment | Pending PC03 | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
+| PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md); PC02 residual retained | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
+| PC04 — Connect independent assessment | Source selected on frozen PC03 | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
 | PC05 — Prove the installed complete path | Pending PC01–PC04 | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Pending PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
@@ -220,6 +221,31 @@ against the same exact core46; return changed hashes, checks, costs and seams
 for PC04. No Product/HOW, ticket/Git, installed/Run/provider, original-worksite
 or ABG-source effects. Assessment and installed complete-path proof remain
 PC04/PC05. Missing governing meaning returns to Executive before expansion.
+
+PC03 disposition: Executive accepts the bounded source return at SHA-256
+`6956404ebe1b85705e9bc433227917224cb5c667c5173a1d62cbb5403efcb54e`;
+all six changed-file hashes match. Ten distinct affected cases passed across
+fourteen executions (240.982 s), including complete snapshot invalidation,
+comparison negatives and publication compatibility. This is component evidence;
+actual evaluator input/output now reaches `lifecycle_evaluation_state`. Independent
+assessment, accepted-result conjunction, raw-field residuals and installed proof
+remain. Root enters Writer for this record, paired T-287 routing and scoped
+commit/push of these tickets, six Worker files and the return, then Executive.
+
+PC04 source grant: the same Astra/xhigh Worker owns one coherent assessment
+increment under the accepted HOW and Product/Design/Owner/Proof frame. Extend
+the three `src/program-construction` modules; factor the existing checker in
+`src/native-continuation-runtime.mjs`; use affected tests/fixtures in
+`test/program-construction.test.mjs`, `test/native-continuation.test.mjs`,
+`test/fixtures/program-construction/`, and the existing emitter only if needed.
+Write the frozen return to `pc04/return.md` under this evidence directory.
+Bind exact computed labels/text, criterion/role mappings, actual producer and
+read-only independent assessment through ordinary GTL joins. Preserve original
+duties, raw-field and owner-conjunction residuals, and negative/unknown results.
+Reuse exact core46 and still-valid checks; use minimal valid fixtures for the
+new checker matrix. No source/HOW expansion, ABG change, install/Run/provider,
+original-worksite, ticket or Git effects. Return before any missing governing
+relation is invented. The single whole-path review precedes PC05 live proof.
 
 ### Completion design re-entry
 

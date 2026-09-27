@@ -34,6 +34,7 @@ export function isEvaluatorInput(input) {return input?.kind==='lifecycle_evaluat
   input.originalTaskCompletion==='not_claimed';}
 export function deriveNativeRecords(input) {
   need(isEvaluatorInput(input),'selected native evaluator input required');
+  if(input.constructionObservations)return deriveConstructionRecords(input);
   const p=input.evaluator.parameters,e=input.executionRecord;
   const plan=JSON.parse(file(input,p.plan.path,p.plan.digest));
   need(typeof plan.command==='string'&&Array.isArray(plan.args)&&Number.isSafeInteger(plan.expectedTestPassCount)&&
@@ -72,6 +73,96 @@ export function deriveNativeRecords(input) {
         interpretation:input.interpretation,acquisition:input.acquisition},
       absentHistoricalFields:['computed records were not fields of the original command observation'],
       residuals:['historical construction-input relations','binding14 comparison unless separately selected','required semantic assessment','original task and owner acceptance']}};
+}
+const verdict=(value,reason)=>({value:value===null?'unknown':value?'true':'false',reason});
+const conjunction=conditions=>Object.values(conditions).some(c=>c.value==='false')?'false':Object.values(conditions).some(c=>c.value==='unknown')?'unknown':'true';
+const one=rows=>rows.length===1?rows[0]:null;
+const observedFile=(context,path)=>one(context.entries.filter(e=>e.relativePath===path&&e.state==='file'));
+const coordinate=o=>({ref:o.observationRef,digest:o.observationDigest});
+function constructionEdges(input) {
+  return input.constructionEdges.flatMap(edge=>edge.dependentPaths.flatMap(path=>edge.dependencies.map(dependency=>{
+    const producers=input.constructionObservations.filter(row=>row.dutyRefs.includes(edge.dutyRef)),row=one(producers),observation=row?.observation;
+    const resolved=one(row?.resolvedDependencies.filter(d=>d.dutyRef===edge.dutyRef&&d.path===dependency.path)??[]);
+    const before=observation&&observedFile(observation.before,dependency.path),after=observation&&observedFile(observation.after,path);
+    const current=observedFile(input.currentContext,dependency.path),dependentCurrent=observedFile(input.currentContext,path);
+    const predecessorRows=dependency.producerDutyRef?input.constructionObservations.filter(r=>r.dutyRefs.includes(dependency.producerDutyRef)):[];
+    const predecessor=one(predecessorRows),predecessorFile=predecessor&&observedFile(predecessor.observation.after,dependency.path);
+    const expected=dependency.digest??predecessorFile?.digest;
+    let declares=null;
+    if(after) {
+      const body=text({payload:after.bytes,byteLength:after.byteLength,digest:after.digest});
+      try {declares=path.endsWith('.json')?JSON.parse(body).derivedFrom?.includes(dependency.path)===true:body.includes(dependency.path);}catch{declares=false;}
+    }
+    const conditions={uniqueProducer:verdict(producers.length===1,'exact selected duty producer'),
+      predecessorBinding:verdict(!resolved||!before||!expected?null:resolved.digest===expected&&before.digest===expected&&
+        (!dependency.producerDutyRef||same(resolved.observation,coordinate(predecessor.observation))),'declared or actual earlier child predecessor digest'),
+      predecessorCurrent:verdict(!before||!current?null:before.digest===current.digest&&before.byteLength===current.byteLength,'consumed predecessor remains current'),
+      dependentCurrent:verdict(!after||!dependentCurrent?null:after.digest===dependentCurrent.digest&&after.byteLength===dependentCurrent.byteLength,'actual dependent output remains current'),
+      declaredRead:verdict(observation?observation.task.readFirst.includes(dependency.path):null,'actual native task declares predecessor readFirst'),
+      declaresPredecessor:verdict(declares,'fixture derivedFrom or textual predecessor reference; faithful derivation requires assessment'),
+      completeReport:verdict(observation?observation.report.gaps.length===0:null,'native author reports no remaining gaps')};
+    return {dutyRef:edge.dutyRef,obligationRef:edge.obligationRef,bindingRef:edge.bindingRef,dependent:{path,afterDigest:after?.digest??null},
+      predecessor:{path:dependency.path,declaredDigest:dependency.digest??null,producerDutyRef:dependency.producerDutyRef??null,
+        beforeDigest:before?.digest??null,currentDigest:current?.digest??null,producerObservation:predecessor?coordinate(predecessor.observation):null},
+      declaredReadPath:dependency.path,observation:observation?coordinate(observation):null,producer:observation?.provenance??null,
+      cardinality:{producers:producers.length,predecessorProducers:predecessorRows.length},conditions,verdict:conjunction(conditions)};
+  })));
+}
+function comparison(input) {
+  const selected=input.evaluator.parameters.comparison,e=input.executionRecord,p=input.evaluator.parameters;
+  if(!selected)return null;
+  const matches=row=>['predicateId','predicateKind','ordinal'].every(k=>row[k]===selected[k]);
+  const declarations=e.outcomePredicates.filter(matches),observations=e.predicateObservations.filter(matches),declaration=one(declarations),observation=one(observations);
+  const d=declaration?.declaration,path=d?.path,evidence=observation?.evidence??[];
+  const protectedRows=e.protectedObservations.filter(r=>r.subject.relativePath===path&&evidence.some(c=>
+    c.kind==='worksite_observation_coordinate'&&c.ref===r.observation.observationRef&&c.digest===r.observation.observationDigest));
+  const protectedRow=one(protectedRows),snapshot=one(e.snapshotMembers.filter(m=>m.relativePath===path));
+  const current=path?observedFile(input.currentContext,path):null,planFile=observedFile(input.currentContext,p.plan.path);
+  const planSnapshot=one(e.snapshotMembers.filter(m=>m.relativePath===p.plan.path));
+  let plan=null,callable=null;
+  try {if(planFile)plan=JSON.parse(text({payload:planFile.bytes,byteLength:planFile.byteLength,digest:planFile.digest}));}catch{}
+  if(current&&d?.export==='helloWorld') {
+    const body=text({payload:current.bytes,byteLength:current.byteLength,digest:current.digest});
+    // Narrow reviewed fixture grammar: an exported zero-parameter function.
+    // Do not execute the module or infer callability from the return observation.
+    callable=/^\s*(?:\/\/[^\n]*\n\s*)*export function helloWorld\(\)\s*\{\s*return ["']Hello, world!["'];\s*\}\s*$/u.test(body)?true:null;
+  }
+  const hasValue=observation&&Object.hasOwn(observation,'observedValue'),hasExpected=d&&Object.hasOwn(d,'equals');
+  const derivedType=hasValue?(observation.observedValue===null?'null':Array.isArray(observation.observedValue)?'array':typeof observation.observedValue):null;
+  const conditions={selectedDuty:verdict(input.dutyPopulation.some(d=>input.selectedDutyRefs.includes(d.ref)&&d.role==='evaluate'&&
+      d.bindingRef===selected.bindingRef&&d.obligationRef===selected.obligationRef),'comparison belongs to an explicitly selected evaluation duty'),
+    uniquePredicate:verdict(declarations.length===1&&observations.length===1,'unique predicateId, predicateKind and ordinal join'),
+    predicateMeaning:verdict(declaration?declaration.predicateKind==='module_export_return_exact'&&d.export==='helloWorld'&&path==='src/hello.mjs':null,'selected fixture callable-export predicate'),
+    protectedEvidence:verdict(!observation?null:protectedRows.length===1&&evidence.length===1&&same(observation.evidenceRefs,evidence.map(c=>c.ref)), 'predicate evidence resolves to exactly one protected module observation'),
+    moduleCurrent:verdict(!protectedRow||!snapshot||!current?null:protectedRow.observation.fileDigest===snapshot.digest&&snapshot.digest===current.digest&&
+      protectedRow.observation.byteLength===snapshot.byteLength&&snapshot.byteLength===current.byteLength,'protected module, retained snapshot and current bytes agree'),
+    planCurrent:verdict(!planFile||!planSnapshot?null:planFile.digest===p.plan.digest&&planSnapshot.digest===planFile.digest&&planSnapshot.byteLength===planFile.byteLength,'asserted value comes from current retained plan bytes'),
+    observedEqualsDeclared:verdict(!hasValue||!hasExpected?null:same(observation.observedValue,d.equals),'actual observedValue equals predicate declaration'),
+    observedEqualsPlan:verdict(!hasValue||!plan||!Object.hasOwn(plan,'assertedReturnValue')?null:same(observation.observedValue,plan.assertedReturnValue),'actual observedValue equals observed plan assertedReturnValue'),
+    observedType:verdict(derivedType===null?null:derivedType==='string','type derived from actual observedValue'),
+    noArguments:verdict(callable,'source-backed callable export plus owning module_export_return_exact exported() rule')};
+  return {obligationRef:selected.obligationRef,bindingRef:selected.bindingRef,selection:{predicateId:selected.predicateId,predicateKind:selected.predicateKind,ordinal:selected.ordinal},
+    execution:input.execution,executionObservation:e.observation,provenance:e.provenance,
+    predicateDeclaration:declaration??null,predicateObservation:observation??null,evidence,protectedObservation:protectedRow??null,
+    cardinality:{declarations:declarations.length,observations:observations.length,protectedObservations:protectedRows.length},
+    module:{path:path??null,snapshotDigest:snapshot?.digest??null,currentDigest:current?.digest??null},
+    plan:{path:p.plan.path,declaredDigest:p.plan.digest,currentDigest:planFile?.digest??null,assertedValue:plan?.assertedReturnValue??null},
+    observedValue:hasValue?observation.observedValue:null,declaredExpected:hasExpected?d.equals:null,
+    derived:{type:{value:derivedType,basis:'typeof actual observedValue (null and array distinguished); not a raw observation field'},
+      noArguments:{value:callable===true?'true':'unknown',basis:'reviewed module source and implementation/worksite_command_helper.ts module_export_return_exact: callable exported() without arguments; non-callable exports also permitted'}},
+    conditions,verdict:conjunction(conditions),residuals:['raw argument-list and raw type fields are absent from the original predicate observation; strict raw-field compliance needs owner disposition']};
+}
+function deriveConstructionRecords(input) {
+  const edges=constructionEdges(input),compared=comparison(input),conditions={constructionEdges:verdict(edges.length?edges.every(r=>r.verdict==='true')?true:edges.some(r=>r.verdict==='false')?false:null:null,'all selected construction edge conditions'),
+    ...(compared?{comparison:verdict(compared.verdict==='unknown'?null:compared.verdict==='true','selected retained predicate comparison')}: {})};
+  return {kind:'lifecycle_computed_records',schemaVersion:'5.0.0',taskRef:input.taskRef,sourceResult:input.sourceResult,
+    execution:input.execution,construction:input.construction,sourceRefs:input.sourceRefs,interpretation:input.interpretation,
+    evaluator:input.evaluator.graphFunction,selectedDutyRefs:input.selectedDutyRefs,selectedObligationRefs:input.selectedObligationRefs,
+    carriedDutyRefs:input.carriedDutyRefs,carriedBindingRefs:input.carriedBindingRefs,evidenceRole:'computed_derivation',originalTaskCompletion:'not_claimed',
+    records:{constructionEdges:edges,comparison:compared,conditions,verdict:conjunction(conditions),
+      acceptedResultsDisposition:'requires_separate_owner_conjunction',semanticClosure:'not_claimed',
+      residuals:[...(compared?.residuals??['binding14 comparison not selected']),'faithful derivation requires independent semantic assessment',
+        'accepted bindings10/11 require separate owner conjunction','carried duties and original task acceptance remain open']}};
 }
 const binding={kind:'implementation_binding',bindingRef:fixtureIds.bindingRef,implementationRef:fixtureIds.implementationRef,
   packageName:fixtureIds.packageName,packageVersion:fixtureIds.packageVersion,modulePath:'build/native-records-evaluator.mjs',

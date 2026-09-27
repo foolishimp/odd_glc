@@ -7,7 +7,7 @@ import * as validator from '@abiogenesis/typescript-tenant/validator';
 import {constructLifecycleProgram,constructProgramConstructionLibrary,selectLifecycleWork,projectNativeSource} from '../src/program-construction.mjs';
 import {ids,stages,constructionStages,dependencyKind} from '../src/program-construction-contracts.mjs';
 import {isConstructionInput,isNativeConstructionInput,constructNativeConstructionInput,constructionState,isConstructionState,nativeConstructionTask,constructionOutput,
-  authenticSource,reacquisitionRequest,evaluationInput,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
+  authenticSource,reacquisitionRequest,evaluationInput,constructedEvaluationInput,evaluationOutput,isEvaluationState,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
 import {loadNative44Fixture,constructNative44Candidate} from './fixtures/program-construction/native44-input.mjs';
 import {evaluatorPublication,deriveNativeRecords,evaluateNativeRecords,EVALUATOR_SEMANTICS,fixtureIds} from './fixtures/program-construction/native-records-evaluator.mjs';
 import {checkInstalledConstructionTopology} from './abi5-installed-program-construction.test.mjs';
@@ -350,6 +350,132 @@ test('group coverage, future child boundaries and native effect contracts reject
   const {input,route}=nativeFixture();route.permittedEffects=[];
   assert.equal(constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,
     constructionGroups:input.constructionGroups,routes:[route]}).gaps[0].cause,'effect_not_permitted');
+});
+function combinedFixture() {
+  const fixture=nativeFixture(),{input,sibling}=fixture;
+  const duty=input.model.duties.find(d=>d.ref==='duty://component/prospective-evaluation'),binding=f.terminalValue.current.bindingVersions[14];
+  duty.bindingRef=binding.versionRef;duty.obligationRef=binding.binding.obligationRef;
+  input.selectedDutyRefs=[duty.ref,sibling.ref];input.evaluator=structuredClone(f.input.evaluator);
+  input.evaluator.parameters.comparison={obligationRef:duty.obligationRef,bindingRef:duty.bindingRef,
+    predicateId:'hello-world-return-exact',predicateKind:'module_export_return_exact',ordinal:6};
+  const library=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:true,evaluationGraph:evaluator.graphFunctions[0]});
+  const selection=select(input);
+  fixture.route={...fixture.route,roles:[...new Set(selection.work.map(d=>d.role))],obligationRefs:[...new Set(selection.work.map(d=>d.obligationRef))],
+    publications:[library,core,fixture.native,evaluator],graphFunctionRefs:[...fixture.route.graphFunctionRefs,ids.prepareConstructedEvaluationGraphFunctionRef,ids.evaluationChildGraphFunctionRef],
+    retainEntryAfter:[1,2+input.constructionGroups.length]};
+  return {...fixture,duty};
+}
+function completedConstruction(input,lastFiles={}) {
+  let state=constructionState(product.constructRetainedGraphInput(input,acquiredFor(input)));
+  for(const [index,group] of input.constructionGroups.entries()) {
+    const files=Object.fromEntries(group.dutyRefs.flatMap(ref=>{
+      const duty=input.model.duties.find(d=>d.ref===ref);
+      return duty.dependentPaths.map(path=>[path,'Derived from '+duty.dependencies.map(d=>d.path).join(', ')+'.\n']);
+    }));
+    state=constructionOutput(product.constructRetainedGraphInput(state,componentObservation(nativeConstructionTask(state),
+      {...files,...(index===input.constructionGroups.length-1?lastFiles:{})},[],'combined-'+index)));
+  }
+  return state;
+}
+test('PC03 ordinary construction and supplied evaluator children validate with actual retention operands',()=>{
+  const {input,route,native}=combinedFixture();assert(isNativeConstructionInput(input));
+  const candidate=constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,
+    constructionGroups:input.constructionGroups,routes:[route]});
+  assert.equal(candidate.kind,'candidate');const checked=validation(candidate,[native]);assert.equal(checked.kind,'program_validation',JSON.stringify(checked));
+  const raw=(x,k)=>validator.rawAdmitValue(x,k,'contract://abiogenesis/gtl/'+k.replaceAll('_','-')+'@5');
+  const published=validator.validatePublication(raw(candidate.publication,'module_publication'),candidate.publication.contributions.map(c=>raw(c,'catalog_contribution')));
+  assert.equal(published.kind,'publication_validation',JSON.stringify(published));
+  const root=candidate.publication.graphFunctions.find(g=>g.name===candidate.start.graphFunctionRef),child=candidate.publication.graphFunctions.find(g=>g.name===ids.evaluationChildGraphFunctionRef);
+  assert.deepEqual(root.template.edges.at(-2).inputBinding,product.graphInputRetentionBinding(ids.nativeInputContractRef,ids.constructionStateContractRef));
+  assert.deepEqual(child.template.edges[0].inputBinding,product.graphInputRetentionBinding(ids.evaluatorInputContractRef,fixtureIds.outputContractRef));
+  assert.deepEqual(child.template.nodes.map(n=>n.term.graphFunctionRef),[fixtureIds.graphFunctionRef,ids.joinEvaluationGraphFunctionRef]);
+  const membership=candidate.publication.programs[0].callableMembership;
+  assert(membership.includes(fixtureIds.graphFunctionRef));assert(!membership.includes(product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef));
+  assert(!membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
+});
+test('PC03 actual construction/evaluator join conserves original records and retains the PC04 seam',()=>{
+  const {input}=combinedFixture(),original=product.canonicalJson(input.origin),state=completedConstruction(input);
+  const view=constructedEvaluationInput(product.constructRetainedGraphInput(input,state));
+  assert.deepEqual(evaluationInput(product.constructRetainedGraphInput(input,state)),view);
+  assert.deepEqual(view.constructionObservations,state.constructionObservations);assert.deepEqual(view.currentContext,state.currentContext);
+  for(const key of ['commandResults','snapshotMembers','predicateObservations','provenance'])assert.deepEqual(view.executionRecord[key],input.origin.observation[key]);
+  for(const key of ['outcomePredicates','protectedObservations'])assert.deepEqual(view.executionRecord[key],input.origin.observation.task[key]);
+  assert.equal(product.canonicalJson(input.origin),original);assert.deepEqual(view.construction,input.origin.construction);
+  assert.deepEqual(view.dutyPopulation,input.model.duties);assert.deepEqual(view.carriedDuties,select(input).carriedDuties);
+  assert(!Object.hasOwn(state.entry.origin,'observation'));assert(!Object.hasOwn(view,'origin'));
+  const computed=deriveNativeRecords(view),joined=evaluationOutput(product.constructRetainedGraphInput(view,computed));assert(isEvaluationState(joined));
+  assert.deepEqual(joined.computedRecords,computed);assert.deepEqual(joined.evaluationInput,view);
+  assert.equal(joined.assessmentDisposition,'not_performed');assert.equal(joined.originalTaskCompletion,'not_claimed');
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.constructedEvaluationPredicateRef).evaluate(input,joined),true);
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.evaluationChildPredicateRef).evaluate(view,joined),true);
+  const copied=structuredClone(input);copied.acceptedBindings10And11={verdict:'satisfied'};assert.equal(isNativeConstructionInput(copied),false);
+  assert.equal(computed.records.acceptedResultsDisposition,'requires_separate_owner_conjunction');
+  assert.equal(Object.hasOwn(computed.records,'planSatisfied'),false,'combined computation does not repeat accepted 10/11 records');
+  const wrongOutput=structuredClone(computed);wrongOutput.execution.digest=hash('different original execution');
+  assert.throws(()=>evaluationOutput(product.constructRetainedGraphInput(view,wrongOutput)),/conserved computed/);
+  const altered=structuredClone(joined);altered.evaluationInput.executionRecord.predicateObservations[6].observedValue='root-copy substitution';
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.constructedEvaluationPredicateRef).evaluate(input,altered),false);
+  assert.throws(()=>constructedEvaluationInput(product.constructRetainedGraphInput(input,input.origin.observation.task.sourceNativeWork)),/completed construction/);
+});
+test('PC03 every retained snapshot dependency and selected predecessor stays current before evaluation',()=>{
+  for(const member of f.input.origin.observation.snapshotMembers) {
+    const {input}=combinedFixture();input.constructionGroups.at(-1).writeRoots.push(member.relativePath);
+    const state=completedConstruction(input,{[member.relativePath]:'changed consumed bytes'});
+    assert(state.gaps.some(g=>g.path===member.relativePath&&g.cause==='retained_execution_stale'),member.relativePath);
+    assert.throws(()=>constructedEvaluationInput(product.constructRetainedGraphInput(input,state)),/partial or stale/);
+  }
+  const {input,producer}=combinedFixture();input.constructionGroups.at(-1).writeRoots.push(producer.dependentPaths[0]);
+  const stale=completedConstruction(input,{[producer.dependentPaths[0]]:'changed selected predecessor'});
+  assert.throws(()=>constructedEvaluationInput(product.constructRetainedGraphInput(input,stale)),/partial or stale/);
+});
+test('PC03 construction edge records derive from actual before/after and cannot promote false or unknown',()=>{
+  const {input}=combinedFixture(),view=constructedEvaluationInput(product.constructRetainedGraphInput(input,completedConstruction(input))),records=deriveNativeRecords(view).records;
+  assert.equal(records.constructionEdges.length,3);assert(records.constructionEdges.every(r=>r.verdict==='true'));
+  const future=records.constructionEdges.find(r=>r.predecessor.producerDutyRef);assert(future.predecessor.producerObservation);
+  for(const mutate of [v=>{v.constructionObservations[0].observation.task.readFirst=[];},
+    v=>{v.constructionObservations[0].resolvedDependencies[0].digest=hash('wrong');},
+    v=>{v.constructionObservations[0].observation.report.gaps=['partial'];}]) {
+    const altered=structuredClone(view);mutate(altered);assert.equal(deriveNativeRecords(altered).records.verdict,'false');
+  }
+  const unknown=structuredClone(view);unknown.constructionObservations[0].observation.before.entries=[];
+  assert.equal(deriveNativeRecords(unknown).records.conditions.constructionEdges.value,'unknown');
+  const absent=structuredClone(view);absent.constructionObservations=[];assert.notEqual(deriveNativeRecords(absent).records.verdict,'true');
+});
+test('PC03 binding14 joins exact predicate, protected module and observed plan while preserving raw-field residuals',()=>{
+  const {input}=combinedFixture(),view=constructedEvaluationInput(product.constructRetainedGraphInput(input,completedConstruction(input)));
+  const output=deriveNativeRecords(view),comparison=output.records.comparison;
+  assert.equal(comparison.verdict,'true');assert.equal(comparison.observedValue,'Hello, world!');assert.equal(comparison.derived.type.value,'string');
+  assert.equal(comparison.derived.noArguments.value,'true');assert.equal(comparison.cardinality.declarations,1);assert.equal(comparison.cardinality.observations,1);
+  assert(comparison.residuals.some(r=>r.includes('raw argument-list')));assert.equal(output.records.semanticClosure,'not_claimed');
+  assert.equal(Object.hasOwn(view.executionRecord.predicateObservations[6],'observedType'),false);
+  assert.deepEqual(evaluateNativeRecords(view).resultCandidate,output);
+  for(const mutate of [v=>{v.executionRecord.outcomePredicates[6].declaration.equals='different';},
+    v=>{v.executionRecord.predicateObservations[6].observedValue=42;},
+    v=>{v.executionRecord.predicateObservations.push(structuredClone(v.executionRecord.predicateObservations[6]));},
+    v=>{v.executionRecord.predicateObservations[6].ordinal=99;},
+    v=>{v.executionRecord.predicateObservations[6].predicateId='other';},
+    v=>{v.executionRecord.predicateObservations[6].predicateKind='process_exit';},
+    v=>{v.executionRecord.predicateObservations[6].evidence[0].digest=hash('wrong evidence');},
+    v=>{v.executionRecord.snapshotMembers.find(m=>m.relativePath==='src/hello.mjs').digest=hash('stale module');},
+    v=>{v.evaluator.parameters.plan.digest=hash('stale plan');},
+    v=>{v.evaluator.parameters.comparison.bindingRef='binding://unselected';}]) {
+    const changed=structuredClone(view);mutate(changed);assert.equal(deriveNativeRecords(changed).records.comparison.verdict,'false');
+  }
+  const absent=structuredClone(view);delete absent.executionRecord.predicateObservations[6].observedValue;
+  assert.equal(deriveNativeRecords(absent).records.comparison.verdict,'unknown');
+  const changedPlan=structuredClone(view),planPath=view.evaluator.parameters.plan.path;
+  const plan=JSON.parse(Buffer.from(view.currentContext.entries.find(e=>e.relativePath===planPath).bytes,'base64').toString());
+  plan.assertedReturnValue='different observed plan assertion';
+  const task=path=>product.constructNativeWorkspaceWorkTask({...input.authority,context:view.currentContext,outcome:'Unadmitted parser premise',
+    instructions:['Component observation only.'],readFirst:[],writeRoots:[path],checks:[]});
+  changedPlan.currentContext=componentObservation(task(planPath),{[planPath]:JSON.stringify(plan)}).after;
+  const planComparison=deriveNativeRecords(changedPlan).records.comparison;
+  assert.equal(planComparison.conditions.observedEqualsPlan.value,'false');assert.equal(planComparison.conditions.planCurrent.value,'false');
+  const noncallable=structuredClone(view);noncallable.currentContext=componentObservation(task('src/hello.mjs'),{'src/hello.mjs':'export const helloWorld = "Hello, world!";'}).after;
+  const noCall=deriveNativeRecords(noncallable).records.comparison;
+  assert.equal(noCall.conditions.noArguments.value,'unknown');assert.notEqual(noCall.verdict,'true');
+  const altered=structuredClone(output);altered.records.comparison.conditions.observedEqualsDeclared.value='false';
+  assert.equal(EVALUATOR_SEMANTICS.resolveJudgmentRelation(fixtureIds.predicateRef).evaluate(view,altered),false);
 });
 test('applicability unknown stays residual, false records basis, cycles refuse',()=>{
   for(const [value,expected] of [['unknown','gap'],['false','report_refs']]) {
