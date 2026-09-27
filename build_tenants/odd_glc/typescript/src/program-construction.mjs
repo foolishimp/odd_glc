@@ -1,5 +1,5 @@
 import {isDeepStrictEqual as same} from 'node:util';
-import {ids, stages, bindingFor, contract, inputContract, evaluatorInputContract, VERSION, PACKAGE_NAME, PACKAGE_VERSION, roles, dependencyKind} from './program-construction-contracts.mjs';
+import {ids, stages, constructionStages, bindingFor, contract, inputContract, evaluatorInputContract, nativeConstructionInputContract, constructionStateContract, VERSION, PACKAGE_NAME, PACKAGE_VERSION, roles, dependencyKind} from './program-construction-contracts.mjs';
 export const need = (condition, message) => { if (!condition) throw new TypeError(message); };
 const text = x => typeof x === 'string' && x.trim().length > 0;
 const unique = xs => Array.isArray(xs) && xs.every(text) && new Set(xs).size === xs.length;
@@ -140,8 +140,31 @@ export function selectLifecycleWork({product,model,basis,selectedDutyRefs}) {
     disposition:gaps.length?'gap':work.length?'candidate':'report_refs',originalTaskCompletion:'not_claimed'});
 }
 
+/** The group order becomes ordinary child occurrences at author time. */
+export function checkConstructionGroups(model,selection,groups) {
+  need(Array.isArray(groups)&&groups.length>0&&unique(groups.map(g=>g.ref)),'explicit unique construction groups required');
+  const refs=groups.flatMap(g=>g.dutyRefs??[]),workRefs=selection.work.map(w=>w.dutyRef);
+  need(unique(refs)&&same([...refs].sort(),[...workRefs].sort()),'each selected work duty requires exactly one producer group');
+  for(const [index,group] of groups.entries()) {
+    need(same(Object.keys(group).sort(),['ref','dutyRefs','fitJudgment','outcome','instructions','readFirst','writeRoots','checks'].sort())&&
+      unique(group.dutyRefs)&&group.dutyRefs.length>0&&coordinate(group.fitJudgment)&&text(group.outcome)&&
+      Array.isArray(group.instructions)&&group.instructions.every(text)&&unique(group.readFirst)&&unique(group.writeRoots)&&group.writeRoots.length>0&&
+      Array.isArray(group.checks)&&group.checks.length===0,'exact bounded native construction parameters required');
+    for(const ref of group.dutyRefs) {
+      const duty=model.duties.find(d=>d.ref===ref);
+      need(duty?.role==='provenance'&&duty.dependentPaths?.length>0,'prospective provenance duty required');
+      for(const prerequisite of duty.requires.filter(r=>refs.includes(r)))
+        need(groups.findIndex(g=>g.dutyRefs.includes(prerequisite))<index,'construction groups must be dependency ready across child boundaries');
+      need(duty.dependencies.every(d=>group.readFirst.includes(d.path)),'each declared predecessor must be read first');
+      need(duty.dependentPaths.every(path=>group.writeRoots.some(root=>root==='.'||path===root||path.startsWith(root+'/'))),
+        'every dependent must be within the selected write roots');
+    }
+  }
+  return groups;
+}
+
 /** Exact published routes are source construction material, never a runtime plan. */
-export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyRefs,routes,artifact,runEnvironment}) {
+export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyRefs,routes,artifact,runEnvironment,constructionGroups}) {
   const selection=selectLifecycleWork({product,model,basis,selectedDutyRefs});
   if(selection.gaps.length)return {kind:'gap',selection,gaps:selection.gaps};
   if(selection.disposition==='report_refs')return {kind:'report_refs',selection,support:selection.support};
@@ -149,8 +172,13 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
   const eligible=routes.filter(route=>same(route.roles,needed)&&coordinate(route.fitJudgment)&&
     unique(route.obligationRefs)&&selection.work.every(w=>route.obligationRefs.includes(model.duties.find(d=>d.ref===w.dutyRef).obligationRef)));
   if(eligible.length!==1)return {kind:'gap',selection,gaps:[{cause:eligible.length?'ambiguous_compatible_composition':'compatible_published_composition_absent',requiredRoles:needed}]};
-  if(!same(needed,['evaluate']))return {kind:'gap',selection,gaps:[{cause:'executable_evidence_regime_not_supported',requiredRoles:needed}]};
+  const native=same(needed,['provenance'])&&constructionGroups!==undefined;
+  if(!same(needed,['evaluate'])&&!native)return {kind:'gap',selection,gaps:[{cause:'executable_evidence_regime_not_supported',requiredRoles:needed}]};
+  if(native)checkConstructionGroups(model,selection,constructionGroups);
   const route=eligible[0];
+  if(native)need(same(route.graphFunctionRefs,[ids.nativeAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
+    ids.prepareConstructionGraphFunctionRef,...constructionGroups.map(()=>ids.constructionChildGraphFunctionRef)])&&same(route.retainEntryAfter,[1]),
+    'exact declared construction child occurrences and acquisition join required');
   need(route.publications.length>0 && route.graphFunctionRefs.length>0 && unique(route.permittedEffects), 'explicit published route/effect contract required');
   const publications=route.publications;
   const graphs=route.graphFunctionRefs.map(ref=>{const rows=publications.flatMap(p=>p.graphFunctions).filter(g=>g.name===ref);
@@ -174,40 +202,45 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
     term:gtl.workflow.C(gtl.cGraphFunctionRef({graphFunctionRef:g.name,input:gtl.cCarrier(g.inputs[0]),output:gtl.cCarrier(g.outputs[0])}))}));
   const declarations={'abg.compute_regime':'mixed','abg.closure_contract':ids.closureContractRef,
     'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,
-    'abg.judgment_predicate':ids.stepPredicateRef,'abg.transition_contract':ids.transitionContractRef};
+    'abg.judgment_predicate':native?ids.nativeStepPredicateRef:ids.stepPredicateRef,'abg.transition_contract':ids.transitionContractRef};
   const root={kind:'graph_function',name:rootRef,version:VERSION,inputs:[input],outputs:[output],
     environment:{requires:[input],provides:[...new Set(graphs.flatMap(g=>g.outputs))],carries:[input]},effects,tags:['lifecycle-construction'],declarations,
     template:{kind:'inline_graph',graphRef:`graph://odd-glc/construction/${suffix}@5`,startNodeRef:nodes[0].nodeRef,
       terminalNodeRefs:[nodes.at(-1).nodeRef],nodes,edges:nodes.slice(1).map((n,i)=>gtl.graphEdge({fromNodeRef:nodes[i].nodeRef,toNodeRef:n.nodeRef,
         ...(retentions.includes(i)?{inputBinding:product.graphInputRetentionBinding(input,graphs[i].outputs[0])}:{})})),applications:[]}};
-  const own=constructProgramConstructionLibrary({gtl,product,artifact});
-  const closure={kind:'closure_contract',closureContractRef:ids.closureContractRef,predicateRef:ids.completionPredicateRef,
+  const own=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:native});
+  const closure={kind:'closure_contract',closureContractRef:ids.closureContractRef,predicateRef:native?ids.nativeCompletionPredicateRef:ids.completionPredicateRef,
     evidenceContractRef:ids.evidenceContractRef,resultContractRef:output,refusalContractRef:ids.refusalContractRef,
     refusalValueKind:'lifecycle_construction_refusal',judgmentContractRef:ids.judgmentContractRef,rejectionContractRef:ids.failureContractRef,
     transitionContractRef:ids.transitionContractRef,replayProjectionRef:'projection://odd-glc/construction@5',terminalKind:'completed',closureScope:'run',
     eventKindRefs:['terminal_reached','frame_closed','graph_call_closed','run_closed']};
   const startRef=`start://odd-glc/construction/${suffix}@5`;
   const publication=gtl.modulePublication({...own,programs:[{kind:'gtl_program',programRef,version:VERSION,moduleRef:ids.moduleRef,
-    starts:[{startRef,graphFunctionRef:rootRef}],callableMembership:[rootRef,...graphs.map(g=>g.name)],closureContractRef:ids.closureContractRef,
+    starts:[{startRef,graphFunctionRef:rootRef}],callableMembership:[...new Set([rootRef,...graphs.map(g=>g.name),...(native?
+      [ids.prepareNativeTaskGraphFunctionRef,product.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef,ids.joinNativeOutputGraphFunctionRef]:[])])],closureContractRef:ids.closureContractRef,
     policies:{'abg.root_mode':'direct','abg.compute_regime':'mixed','abg.default_start_ref':startRef,...(runEnvironment?{'abg.run_environment':runEnvironment.declarationRef}:{})}}],
     runEnvironments:runEnvironment?[gtl.constructRunEnvironmentDeclaration(structuredClone(runEnvironment))]:[],
     graphFunctions:[...own.graphFunctions,root],closureContracts:[...own.closureContracts,closure],
     contributions:[...own.contributions.map(c=>({...c,programMembershipRefs:[programRef],readinessPrerequisiteRefs:[programRef]})),{handle:rootRef,kind:'graph_function',declarationOrContractRef:rootRef,owningProductId:ids.productId,
-      programMembershipRefs:[programRef],readinessPrerequisiteRefs:[programRef],compatibilityRefs:['compatibility://abiogenesis/major/5'],provenanceRefs:[artifact.artifactDigest,artifact.manifestDigest]}]});
+      programMembershipRefs:[programRef],readinessPrerequisiteRefs:[programRef],compatibilityRefs:['compatibility://abiogenesis/major/5'],provenanceRefs:[...new Set([artifact.artifactDigest,artifact.manifestDigest])]}]});
   return freeze({kind:'candidate',publication,selection,start:{programRef,startRef,graphFunctionRef:rootRef},
-    correspondence:selection.work.map(w=>({dutyRef:w.dutyRef,producerRefs:route.graphFunctionRefs,fitJudgment:route.fitJudgment}))});
+    correspondence:selection.work.map(w=>({dutyRef:w.dutyRef,producerRefs:route.graphFunctionRefs,fitJudgment:route.fitJudgment,
+      ...(native?{groupRef:constructionGroups.find(g=>g.dutyRefs.includes(w.dutyRef)).ref,
+        producerNodeRef:nodes[3+constructionGroups.findIndex(g=>g.dutyRefs.includes(w.dutyRef))].nodeRef}: {})}))});
 }
 
-export function constructProgramConstructionLibrary({gtl,product,artifact}) {
-  const base=[inputContract,evaluatorInputContract,
+export function constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction=false}) {
+  const libraryStages=includeNativeConstruction?constructionStages:stages;
+  const base=[inputContract,evaluatorInputContract,...(includeNativeConstruction?[nativeConstructionInputContract,constructionStateContract,
+    contract(ids.constructionChildClosureRef,'closure','lifecycle_construction_child_closure')]:[]),
     contract(ids.evidenceContractRef,'evidence','deterministic_evidence_candidate'),contract(ids.failureContractRef,'failure','lifecycle_construction_failure'),
     contract(ids.refusalContractRef,'refusal','lifecycle_construction_refusal'),contract(ids.judgmentContractRef,'judgment','lifecycle_construction_judgment'),
     contract(ids.transitionContractRef,'transition','lifecycle_construction_transition'),contract(ids.closureContractRef,'closure','lifecycle_construction_closure')];
-  const closures=stages.map(s=>({kind:'closure_contract',closureContractRef:s.closureRef,predicateRef:s.predicateRef,evidenceContractRef:ids.evidenceContractRef,
+  const closures=libraryStages.map(s=>({kind:'closure_contract',closureContractRef:s.closureRef,predicateRef:s.predicateRef,evidenceContractRef:ids.evidenceContractRef,
     resultContractRef:s.output,refusalContractRef:ids.refusalContractRef,refusalValueKind:'lifecycle_construction_refusal',judgmentContractRef:ids.judgmentContractRef,
     rejectionContractRef:ids.failureContractRef,transitionContractRef:ids.transitionContractRef,replayProjectionRef:'projection://odd-glc/construction@5',
     terminalKind:'completed',closureScope:'graph_call',eventKindRefs:['terminal_reached','frame_closed','graph_call_closed']}));
-  const graphFunctions=stages.map(s=>({kind:'graph_function',name:s.graphFunctionRef,version:VERSION,inputs:[s.input],outputs:[s.output],
+  const graphFunctions=libraryStages.map(s=>({kind:'graph_function',name:s.graphFunctionRef,version:VERSION,inputs:[s.input],outputs:[s.output],
     environment:{requires:[s.input],provides:[s.output],carries:[]},effects:[],tags:['lifecycle-construction','pure-adapter'],
     declarations:{'abg.compute_regime':'F_D','abg.closure_contract':s.closureRef,'abg.child_closure_contract':s.closureRef,
       'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,'abg.judgment_predicate':s.predicateRef,'abg.transition_contract':ids.transitionContractRef},
@@ -216,13 +249,28 @@ export function constructProgramConstructionLibrary({gtl,product,artifact}) {
         judgmentPredicateRef:s.predicateRef,resultBearing:true,requirement:{kind:'executable_leaf_requirement',implementationBindingRef:s.bindingRef,
           inputContractRef:s.input,outputContractRef:s.output,evidenceContractRef:ids.evidenceContractRef,failureContractRef:ids.failureContractRef,
           refusalContractRef:ids.refusalContractRef,judgmentContractRef:ids.judgmentContractRef}})}]}}));
+  if(includeNativeConstruction) {
+    const n=product.NATIVE_WORKSPACE_WORK_IDS,state=ids.constructionStateContractRef;
+    const calls=[[ids.prepareNativeTaskGraphFunctionRef,state,n.taskContractRef],[n.graphFunctionRef,n.taskContractRef,n.observationContractRef],
+      [ids.joinNativeOutputGraphFunctionRef,product.RETAINED_GRAPH_INPUT_CONTRACT.contractRef,state]];
+    const nodes=calls.map(([graphFunctionRef,input,output],index)=>({nodeRef:ids.constructionChildGraphFunctionRef.replace('graph-function:','node:')+'/'+index,nodeKind:'c_locus',
+      term:gtl.workflow.C(gtl.cGraphFunctionRef({graphFunctionRef,input:gtl.cCarrier(input),output:gtl.cCarrier(output)}))}));
+    graphFunctions.push({kind:'graph_function',name:ids.constructionChildGraphFunctionRef,version:VERSION,inputs:[state],outputs:[state],
+      environment:{requires:[state],provides:[n.taskContractRef,n.observationContractRef,state],carries:[state]},effects:[n.effectUri],tags:['lifecycle-construction','native-work'],
+      declarations:{'abg.compute_regime':'mixed','abg.closure_contract':ids.constructionChildClosureRef,'abg.child_closure_contract':ids.constructionChildClosureRef,
+        'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,'abg.judgment_predicate':ids.nativeStepPredicateRef,'abg.transition_contract':ids.transitionContractRef},
+      template:{kind:'inline_graph',graphRef:ids.constructionChildGraphFunctionRef.replace('graph-function:','graph:'),startNodeRef:nodes[0].nodeRef,
+        terminalNodeRefs:[nodes.at(-1).nodeRef],nodes,applications:[],edges:[gtl.graphEdge({fromNodeRef:nodes[0].nodeRef,toNodeRef:nodes[1].nodeRef}),
+          gtl.graphEdge({fromNodeRef:nodes[1].nodeRef,toNodeRef:nodes[2].nodeRef,inputBinding:product.graphInputRetentionBinding(state,n.observationContractRef)})]}});
+    closures.push({...closures[0],closureContractRef:ids.constructionChildClosureRef,predicateRef:ids.constructionChildPredicateRef,resultContractRef:state});
+  }
   return gtl.modulePublication({kind:'module_publication',moduleRef:ids.moduleRef,moduleVersion:VERSION,owningProductId:ids.productId,
     artifactDigest:artifact.artifactDigest,productContentDigest:artifact.productContentDigest,productManifestDigest:artifact.manifestDigest,
     descriptorRef:ids.descriptorRef,contributionManifestRef:ids.contributionManifestRef,
     productSemanticsBinding:{kind:'product_semantics_binding',bindingRef:ids.semanticsBindingRef,packageName:PACKAGE_NAME,packageVersion:PACKAGE_VERSION,
       modulePath:'build/program-construction-runtime.mjs',namedSymbol:'PROGRAM_CONSTRUCTION_SEMANTICS'},
-    contracts:[...base,...stages.map(s=>contract(s.closureRef,'closure','lifecycle_construction_child_closure'))],
-    implementationBindings:stages.map(bindingFor),closureContracts:closures,graphFunctions,programs:[],rules:[],evaluators:[],
+    contracts:[...base,...libraryStages.map(s=>contract(s.closureRef,'closure','lifecycle_construction_child_closure'))],
+    implementationBindings:libraryStages.map(bindingFor),closureContracts:closures,graphFunctions,programs:[],rules:[],evaluators:[],
     contributions:graphFunctions.map(g=>({handle:g.name,kind:'graph_function',declarationOrContractRef:g.name,owningProductId:ids.productId,
-      programMembershipRefs:[],readinessPrerequisiteRefs:[],compatibilityRefs:['compatibility://abiogenesis/major/5'],provenanceRefs:[artifact.artifactDigest,artifact.manifestDigest]}))});
+      programMembershipRefs:[],readinessPrerequisiteRefs:[],compatibilityRefs:['compatibility://abiogenesis/major/5'],provenanceRefs:[...new Set([artifact.artifactDigest,artifact.manifestDigest])]}))});
 }

@@ -16,6 +16,39 @@ async function installedApis(root){const pkg=await read(join(root,'package.json'
   return [name==='public'?'installedPublic':name,await import(pathToFileURL(join(root,path)).href)];})));}
 const save=(root,name,value)=>writeFile(join(root,name),typeof value==='string'?value:JSON.stringify(value,null,2)+'\n',{flag:'wx'});
 
+// The reviewed mode selects an ordinary declared topology, never a test-time
+// traversal controller. This helper performs no native or filesystem operation.
+export function checkInstalledConstructionTopology({product,activation,input,catalog,programRef}) {
+ const mode=activation.mode??'evaluate_only';assert(['evaluate_only','construction_only'].includes(mode));
+ const program=catalog.boundPublications.flatMap(p=>p.programs).find(p=>p.programRef===programRef);assert(program);
+ const root=catalog.boundPublications.flatMap(p=>p.graphFunctions).find(g=>g.name===program.starts[0].graphFunctionRef);assert(root);
+ const ref=name=>'graph-function://odd-glc/program-construction/'+name+'@5';
+ let expectedCalls;
+ if(mode==='evaluate_only') {
+  assert.equal(input.kind,'lifecycle_construction_input');
+  expectedCalls=[ref('authenticate'),product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,ref('prepare-evaluation'),input.evaluator.graphFunction.ref];
+  assert.deepEqual(root.effects,[]);
+  const evaluator=catalog.boundPublications.flatMap(p=>p.graphFunctions).find(g=>g.name===input.evaluator.graphFunction.ref);
+  assert.equal(product.sha256Canonical(evaluator),input.evaluator.graphFunction.digest);
+ }else {
+  assert.equal(input.kind,'lifecycle_native_construction_input');assert.equal(activation.expectation,'predecessor_refusal');
+  assert(input.constructionGroups.length>0);
+  expectedCalls=[ref('authenticate-construction'),product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,ref('prepare-construction'),
+    ...input.constructionGroups.map(()=>ref('construction-child'))];
+  assert.deepEqual(root.effects,[product.NATIVE_WORKSPACE_WORK_IDS.effectUri]);
+  const children=catalog.boundPublications.flatMap(p=>p.graphFunctions).filter(g=>g.name===ref('construction-child'));assert.equal(children.length,1);
+  const child=children[0];assert.deepEqual(child.template.nodes.map(n=>n.term.graphFunctionRef),
+    [ref('prepare-native-task'),product.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef,ref('join-native-output')]);
+  assert.deepEqual(child.template.edges[1].inputBinding,product.graphInputRetentionBinding(
+    'contract://odd-glc/program-construction/construction-state@5',product.NATIVE_WORKSPACE_WORK_IDS.observationContractRef));
+  assert(program.callableMembership.includes(product.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef));
+  assert(!program.callableMembership.includes(product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef));
+  assert(!program.callableMembership.includes(product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
+ }
+ assert.deepEqual(root.template.nodes.map(n=>n.term.graphFunctionRef),expectedCalls,'only the reviewed ordinary child composition may enter');
+ return {mode,root,expectedCalls};
+}
+
 // This reads the installed owner's projection; it never opens/parses the journal.
 export function occurrenceCounts(abg,prefix,run){
  const selected=abg.projectRuntimePrefixesAtDurablePrefix(prefix,run.ref);
@@ -34,7 +67,8 @@ export function occurrenceCounts(abg,prefix,run){
 export async function runInstalledConstruction(activationPath){
  const activation=await read(activationPath),{product,gtl,abg,installedPublic}=await installedApis(activation.coreRoot);
  assert.equal(activation.kind,'reviewed_program_construction_activation');
- for(const row of [activation.sourceFreeze,activation.evaluatorReview])assert.equal(await product.sha256File(row.path),row.digest);
+ for(const row of [activation.sourceFreeze,activation.mode==='construction_only'?activation.constructionReview:activation.evaluatorReview])
+  assert.equal(await product.sha256File(row.path),row.digest);
  assert.equal(await product.sha256File(activation.launchPath),activation.launchDigest);
  // The setup receipt reports actual separately timed operations. No duration is inferred.
  const setup=await read(activation.setupReceiptPath);
@@ -44,22 +78,13 @@ export async function runInstalledConstruction(activationPath){
  assert.equal(call.invocation.definitionKey.operationId,'abg.operation.run.invoke');
  assert.equal(call.invocation.definitionKey.memberKey,'start');
  assert.equal(request.rootMode,'direct');assert.equal(request.scope,'program');
- assert.equal(input.kind,'lifecycle_construction_input');
  assert.deepEqual(resources.historicalSource.terminal,input.historicalSelection);
  assert.equal(resources.historicalSource.kind,'abg_historical_graph_call_source_resource');
  assert.equal(input.sourceSelection.prefix.eventLogRef,activation.preservedPrefix.eventLogRef);
  assert.equal(resources.eventResource.closeHandoff.prefix.eventLogRef,activation.preservedPrefix.eventLogRef);
  assert(resources.eventResource.closeHandoff.prefix.prefixLength>=activation.preservedPrefix.prefixLength);
  assert(!input.sourceSelection.graphCallRef.includes('component/'),'no structural component premise is a launch selector');
- const program=catalog.boundPublications.flatMap(p=>p.programs).find(p=>p.programRef===request.program.ref);assert(program);
- const root=catalog.boundPublications.flatMap(p=>p.graphFunctions).find(g=>g.name===program.starts[0].graphFunctionRef);assert(root);
- const expectedCalls=['graph-function://odd-glc/program-construction/authenticate@5',
-  product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,'graph-function://odd-glc/program-construction/prepare-evaluation@5',input.evaluator.graphFunction.ref];
- assert.deepEqual(root.template.nodes.map(n=>n.term.graphFunctionRef),expectedCalls,
-  'only the reviewed four callable composition may enter');
- assert.deepEqual(root.effects,[]);
- const evaluator=catalog.boundPublications.flatMap(p=>p.graphFunctions).find(g=>g.name===input.evaluator.graphFunction.ref);
- assert.equal(product.sha256Canonical(evaluator),input.evaluator.graphFunction.digest);
+ const {mode,root,expectedCalls}=checkInstalledConstructionTopology({product,activation,input,catalog,programRef:request.program.ref});
  assert.equal(product.sha256Canonical(input),request.input.valueDigest);
  for(const install of activation.environment.productInstalls)assert.equal(await product.installedProductContentMatches(install),true);
  const rootDir=resolve(activation.outputRoot);await mkdir(rootDir,{recursive:false});
@@ -95,6 +120,7 @@ export async function runInstalledConstruction(activationPath){
   assert(!counts.graphFunctions.includes(gtl.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
   const value=reads.run_result.ownerOutput.value.projection?.terminalResult?.value;
   if(activation.expectation==='computed_records'){
+   assert.equal(mode,'evaluate_only');
    assert.equal(receipt.ownerOutput.value.disposition,'completed');assert(value);
    assert.equal(value.evidenceRole,'computed_derivation');assert.equal(value.originalTaskCompletion,'not_claimed');
    assert.deepEqual(value.execution,input.origin.execution);assert.deepEqual(value.construction,input.origin.construction);
@@ -106,11 +132,14 @@ export async function runInstalledConstruction(activationPath){
    assert.deepEqual(counts.graphFunctions,[root.name,...expectedCalls]);
    assert.deepEqual(reads.run_result.ownerOutput.value.projection.terminalResult,reads.run_replay.ownerOutput.value.projection.terminalResult);
   }else{
-   assert.equal(activation.expectation,'source_refusal');assert.notEqual(receipt.ownerOutput.value.disposition,'completed');
-   assert.equal(value,undefined);assert(!counts.graphFunctions.includes(input.evaluator.graphFunction.ref));
+   assert.equal(activation.expectation,mode==='construction_only'?'predecessor_refusal':'source_refusal');
+   assert.notEqual(receipt.ownerOutput.value.disposition,'completed');assert.equal(value,undefined);
+   if(mode==='construction_only')assert(counts.graphFunctions.includes('graph-function://odd-glc/program-construction/prepare-construction@5'),
+     'the wrong predecessor must reach actual acquired-context preparation');
+   else assert(!counts.graphFunctions.includes(input.evaluator.graphFunction.ref));
   }
   const after=(await stat(fileURLToPath(activation.preservedPrefix.eventLogRef))).size;
-  const result={status:'installed_discriminator_observed',expectation:activation.expectation,run,result:receipt.ownerOutput.value.result??null,
+  const result={status:'installed_discriminator_observed',mode,expectation:activation.expectation,run,result:receipt.ownerOutput.value.result??null,
    preservedPrefix:activation.preservedPrefix,prefix:closeHandoff.prefix,timings,counts,log:{beforeBytes:before,afterBytes:after,appendedBytes:after-before},
    originalTaskCompletion:'not_claimed',s06Closure:'not_claimed'};
   await save(rootDir,'result.json',result);return result;

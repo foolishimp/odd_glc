@@ -17,10 +17,23 @@ export const ids = Object.freeze({
   stepPredicateRef: ref('predicate', 'step'), completionPredicateRef: ref('predicate', 'computed-increment'),
   authenticateGraphFunctionRef: ref('graph-function', 'authenticate'),
   prepareGraphFunctionRef: ref('graph-function', 'prepare-evaluation'),
+  nativeInputContractRef: ref('contract','native-construction-input'),
+  constructionStateContractRef: ref('contract','construction-state'),
+  nativeAuthenticateGraphFunctionRef: ref('graph-function','authenticate-construction'),
+  prepareConstructionGraphFunctionRef: ref('graph-function','prepare-construction'),
+  prepareNativeTaskGraphFunctionRef: ref('graph-function','prepare-native-task'),
+  joinNativeOutputGraphFunctionRef: ref('graph-function','join-native-output'),
+  constructionChildGraphFunctionRef: ref('graph-function','construction-child'),
+  constructionChildClosureRef: ref('contract','construction-child/closure'),
+  constructionChildPredicateRef: ref('predicate','construction-child'),
+  nativeStepPredicateRef: ref('predicate','native-construction-step'),
+  nativeCompletionPredicateRef: ref('predicate','construction-observed'),
 });
 export const contract = (contractRef, contractKind, valueKind) => Object.freeze({contractRef, contractVersion: VERSION, contractKind, valueKind});
 export const inputContract = contract(ids.inputContractRef, 'input', 'lifecycle_construction_input');
 export const evaluatorInputContract = contract(ids.evaluatorInputContractRef, 'input', 'lifecycle_evaluation_input');
+export const nativeConstructionInputContract = contract(ids.nativeInputContractRef,'input','lifecycle_native_construction_input');
+export const constructionStateContract = contract(ids.constructionStateContractRef,'input','lifecycle_construction_state');
 export const stages = Object.freeze([
   {name:'authenticate', symbol:'prepareReacquisition', input:ids.inputContractRef,
     output:'contract://abiogenesis/worksite/native-command-reacquisition-request@5', graphFunctionRef:ids.authenticateGraphFunctionRef},
@@ -29,6 +42,17 @@ export const stages = Object.freeze([
 ].map(s => Object.freeze({...s, nodeRef:ref('node',s.name), bindingRef:ref('implementation-binding',s.name),
   implementationRef:ref('implementation',s.name), predicateRef:ref('predicate',s.name),
   closureRef:ref('contract',s.name+'/closure')})));
+export const constructionStages = Object.freeze([
+  {name:'authenticate-construction',symbol:'prepareNativeReacquisition',input:ids.nativeInputContractRef,
+    output:'contract://abiogenesis/worksite/native-command-reacquisition-request@5',graphFunctionRef:ids.nativeAuthenticateGraphFunctionRef},
+  {name:'prepare-construction',symbol:'prepareConstruction',input:'contract://abiogenesis/worksite/retained-graph-input@5',
+    output:ids.constructionStateContractRef,graphFunctionRef:ids.prepareConstructionGraphFunctionRef},
+  {name:'prepare-native-task',symbol:'prepareNativeTask',input:ids.constructionStateContractRef,
+    output:'contract://abiogenesis/worksite/native-work/task@5',graphFunctionRef:ids.prepareNativeTaskGraphFunctionRef},
+  {name:'join-native-output',symbol:'joinNativeOutput',input:'contract://abiogenesis/worksite/retained-graph-input@5',
+    output:ids.constructionStateContractRef,graphFunctionRef:ids.joinNativeOutputGraphFunctionRef},
+].map(s=>Object.freeze({...s,nodeRef:ref('node',s.name),bindingRef:ref('implementation-binding',s.name),
+  implementationRef:ref('implementation',s.name),predicateRef:ref('predicate',s.name),closureRef:ref('contract',s.name+'/closure')})));
 export const bindingFor = s => ({kind:'implementation_binding', bindingRef:s.bindingRef,
   implementationRef:s.implementationRef, packageName:PACKAGE_NAME, packageVersion:PACKAGE_VERSION,
   modulePath:'build/program-construction-runtime.mjs', namedSymbol:s.symbol, computeRegime:'F_D',

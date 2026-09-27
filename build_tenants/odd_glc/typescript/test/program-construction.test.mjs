@@ -5,10 +5,12 @@ import * as product from '@abiogenesis/typescript-tenant/product';
 import * as gtl from '@abiogenesis/typescript-tenant/gtl';
 import * as validator from '@abiogenesis/typescript-tenant/validator';
 import {constructLifecycleProgram,constructProgramConstructionLibrary,selectLifecycleWork,projectNativeSource} from '../src/program-construction.mjs';
-import {ids,stages,dependencyKind} from '../src/program-construction-contracts.mjs';
-import {isConstructionInput,authenticSource,reacquisitionRequest,evaluationInput,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
+import {ids,stages,constructionStages,dependencyKind} from '../src/program-construction-contracts.mjs';
+import {isConstructionInput,isNativeConstructionInput,constructNativeConstructionInput,constructionState,isConstructionState,nativeConstructionTask,constructionOutput,
+  authenticSource,reacquisitionRequest,evaluationInput,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
 import {loadNative44Fixture,constructNative44Candidate} from './fixtures/program-construction/native44-input.mjs';
 import {evaluatorPublication,deriveNativeRecords,evaluateNativeRecords,EVALUATOR_SEMANTICS,fixtureIds} from './fixtures/program-construction/native-records-evaluator.mjs';
+import {checkInstalledConstructionTopology} from './abi5-installed-program-construction.test.mjs';
 const hash=product.sha256Canonical,z='sha256:'+'0'.repeat(64),version='5.0.0';
 const artifact={productId:product.ABI5_PRODUCT_ID,packageName:product.ABI5_PACKAGE_NAME,packageVersion:product.ABI5_PACKAGE_VERSION,
   artifactDigest:z,productContentDigest:z,manifestDigest:z,productManifestDigest:z};
@@ -21,7 +23,7 @@ const route={roles:['evaluate'],fitJudgment:{ref:'judgment://component/contract-
   obligationRefs:f.input.model.duties.filter(d=>d.role==='evaluate').map(d=>d.obligationRef),permittedEffects:[],
   publications:[library,core,evaluator],graphFunctionRefs:[ids.authenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,ids.prepareGraphFunctionRef,fixtureIds.graphFunctionRef],retainEntryAfter:[1]};
 const construct=(input=f.input,routes=[route])=>constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,routes});
-function validation(candidate){const pubs=[candidate.publication,core,evaluator];const raw=(x,k)=>validator.rawAdmitValue(x,k,'contract://component/'+k);
+function validation(candidate,extra=[]){const pubs=[candidate.publication,core,evaluator,...extra];const raw=(x,k)=>validator.rawAdmitValue(x,k,'contract://component/'+k);
   return validator.validateProgram({declarationBasisDigest:hash(pubs),programPublication:raw(candidate.publication,'module_publication'),program:raw(candidate.publication.programs[0],'gtl_program'),
     graphFunctions:pubs.flatMap(p=>p.graphFunctions).map(x=>raw(x,'graph_function')),contracts:pubs.flatMap(p=>p.contracts).map(x=>raw(x,'contract_declaration')),
     implementationBindings:pubs.flatMap(p=>p.implementationBindings).map(x=>raw(x,'implementation_binding')),closureContracts:pubs.flatMap(p=>p.closureContracts).map(x=>raw(x,'closure_contract')),rules:[],evaluators:[]});}
@@ -213,6 +215,141 @@ test('excluded producer cannot supply a future output; excluded consumer selects
   excluded.consumer.applicability={value:'false',basisRefs:['ruling://consumer/inapplicable']};
   const skipped=select(excluded.input);assert.equal(skipped.disposition,'report_refs');assert.equal(skipped.work.length,0);
   assert(skipped.carriedDutyRefs.includes(excluded.producer.ref));
+});
+
+function nativeFixture() {
+  const {input,producer,consumer}=prospectiveInput();delete input.evaluator;input.kind='lifecycle_native_construction_input';
+  const sibling={...producer,ref:producer.ref+'/sibling',dependentPaths:['prospective-second.md']};input.model.duties.push(sibling);
+  input.selectedDutyRefs=[consumer.ref,sibling.ref];
+  input.constructionGroups=[{ref:'group://component/first',dutyRefs:[producer.ref,sibling.ref],fitJudgment:input.model.interpretation,
+    outcome:'Derive the two selected dependent artifacts from their current source.',instructions:['Component task parameters; no native execution is authorized by this fixture.'],
+    readFirst:producer.dependencies.map(d=>d.path),writeRoots:[...producer.dependentPaths,...sibling.dependentPaths],checks:[]},
+    {ref:'group://component/second',dutyRefs:[consumer.ref],fitJudgment:input.model.interpretation,
+    outcome:'Derive the selected source from the preceding actual design output.',instructions:['Component task parameters.'],
+    readFirst:consumer.dependencies.map(d=>d.path),writeRoots:consumer.dependentPaths,checks:[]}];
+  const native=gtl.constructNativeWorkspaceWorkModulePublication(artifact),library=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:true});
+  const route={roles:['provenance'],fitJudgment:input.model.interpretation,obligationRefs:[...new Set([producer,sibling,consumer].map(d=>d.obligationRef))],
+    permittedEffects:[product.NATIVE_WORKSPACE_WORK_IDS.effectUri],publications:[library,core,native],
+    graphFunctionRefs:[ids.nativeAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
+      ids.prepareConstructionGraphFunctionRef,...input.constructionGroups.map(()=>ids.constructionChildGraphFunctionRef)],retainEntryAfter:[1]};
+  return {input,producer,consumer,sibling,native,route};
+}
+function acquiredFor(input) {
+  const request=reacquisitionRequest(input);
+  return product.constructNativeWorksiteCommandExecutionTask({...request,sourceReacquisition:{request,
+    nativeBasis:{predecessorPrefix:request.source.prefix,cCallRef:'c-call://component/unadmitted-reacquisition'},bindingCoverEventRefs:[]}});
+}
+// Explicit unadmitted component premises. Public native validation checks their
+// shape; only the installed native owner can establish actual observation truth.
+function componentObservation(task,files={},gaps=[],occurrence='first') {
+  const after=structuredClone(task.context);
+  for(const [path,text] of Object.entries(files)) {
+    const bytes=Buffer.from(text),entry={relativePath:path,state:'file',fileIdentity:'component-file://'+path,
+      byteLength:bytes.length,digest:product.sha256Bytes(bytes),encoding:'base64',bytes:bytes.toString('base64')};
+    const index=after.entries.findIndex(e=>e.relativePath===path);if(index<0)after.entries.push(entry);else after.entries[index]=entry;
+    const parent=path.includes('/')?path.slice(0,path.lastIndexOf('/')):'.',name=path.slice(path.lastIndexOf('/')+1),directory=after.entries.find(e=>e.relativePath===parent&&e.state==='directory');
+    if(directory)directory.members=[...new Set([...directory.members,name])].sort();
+  }
+  after.entries.sort((a,b)=>a.relativePath<b.relativePath?-1:1);
+  const {kind,schemaVersion,observationRef,observationDigest,...contextBody}=after;
+  after.observationDigest=hash(contextBody);after.observationRef='worksite-context-observation://abiogenesis/'+after.observationDigest.slice(7);
+  assert(product.isWorksiteContextObservation(after));
+  const before=task.context,paths=[...new Set([...before.entries,...after.entries].map(e=>e.relativePath))].sort();
+  const body={kind:'native_workspace_work_observation',schemaVersion:version,task,before,after,
+    changedPaths:paths.filter(path=>JSON.stringify(before.entries.find(e=>e.relativePath===path))!==JSON.stringify(after.entries.find(e=>e.relativePath===path))),
+    report:{summary:'Unadmitted component observation',gaps},provenance:{...f.input.origin.observation.task.sourceNativeWork.provenance,
+      cCallRef:'c-call://component/'+occurrence,actorInvocationRef:'actor://component/'+occurrence}};
+  const digest=hash(body),result={...body,observationDigest:digest,observationRef:'native-work-observation://abiogenesis/'+digest.slice(7)};
+  assert(product.isNativeWorkspaceWorkObservation(result));return result;
+}
+test('construction groups become ordinary GTL children with exact membership and retained output joins',()=>{
+  const {input,native,route}=nativeFixture();assert(isNativeConstructionInput(input));
+  const candidate=constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,
+    constructionGroups:input.constructionGroups,routes:[route]});
+  assert.equal(candidate.kind,'candidate');const validated=validation(candidate,[native]);
+  assert.equal(validated.kind,'program_validation',JSON.stringify(validated));
+  const raw=(x,k)=>validator.rawAdmitValue(x,k,'contract://abiogenesis/gtl/'+k.replaceAll('_','-')+'@5');
+  const published=validator.validatePublication(raw(candidate.publication,'module_publication'),candidate.publication.contributions.map(c=>raw(c,'catalog_contribution')));
+  assert.equal(published.kind,'publication_validation',JSON.stringify(published));
+  const root=candidate.publication.graphFunctions.find(g=>g.name===candidate.start.graphFunctionRef),child=candidate.publication.graphFunctions.find(g=>g.name===ids.constructionChildGraphFunctionRef);
+  assert.equal(root.template.nodes.length,5);assert.deepEqual(root.effects,[product.NATIVE_WORKSPACE_WORK_IDS.effectUri]);
+  assert.equal(child.template.nodes.length,3);assert.equal(child.template.edges.filter(e=>e.inputBinding).length,1);
+  assert.equal(new Set(candidate.correspondence.map(c=>c.producerNodeRef)).size,2,'two grouped duties share their one actual child occurrence');
+  const membership=candidate.publication.programs[0].callableMembership;
+  assert(membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef));assert.equal(membership.length,new Set(membership).size);
+  assert(!membership.includes(product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef));assert(!membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
+  const topology=checkInstalledConstructionTopology({product,activation:{mode:'construction_only',expectation:'predecessor_refusal'},input,
+    catalog:{boundPublications:[candidate.publication,core,native]},programRef:candidate.start.programRef});
+  assert.deepEqual(topology.expectedCalls,root.template.nodes.map(n=>n.term.graphFunctionRef));
+  const tampered=structuredClone(candidate.publication);tampered.graphFunctions.find(g=>g.name===ids.constructionChildGraphFunctionRef).template.edges[1].inputBinding=
+    product.graphInputRetentionBinding(ids.nativeInputContractRef,product.NATIVE_WORKSPACE_WORK_IDS.observationContractRef);
+  assert.throws(()=>checkInstalledConstructionTopology({product,activation:{mode:'construction_only',expectation:'predecessor_refusal'},input,
+    catalog:{boundPublications:[tampered,core,native]},programRef:candidate.start.programRef}));
+});
+test('actual acquisition and child outputs provide current native tasks and future producer digests',()=>{
+  const {input,producer,consumer}=nativeFixture(),original=structuredClone(input.origin);
+  const state=constructionState(product.constructRetainedGraphInput(input,acquiredFor(input)));assert(isConstructionState(state));
+  const task=nativeConstructionTask(state);assert.deepEqual(task.context,input.currentContext);assert.deepEqual(task.checks,[]);
+  assert(!task.instructions.some(text=>text.includes('commandResults')),'historical envelopes are not native task instructions');
+  const observed=componentObservation(task,{'prospective-design.md':'new design','prospective-second.md':'second design'});
+  const next=constructionOutput(product.constructRetainedGraphInput(state,observed));assert(isConstructionState(next));
+  const nextTask=nativeConstructionTask(next);assert.deepEqual(nextTask.context,observed.after);
+  assert(nextTask.readFirst.includes(producer.dependentPaths[0]));
+  const result=constructionOutput(product.constructRetainedGraphInput(next,componentObservation(nextTask,{'prospective-source.mjs':'new source'},[],'second')));
+  assert.equal(result.disposition,'observed');assert.equal(result.evaluationDisposition,'not_performed');assert.equal(result.assessmentDisposition,'not_performed');
+  assert.deepEqual(result.entry.origin,{construction:original.construction,execution:original.execution});assert.deepEqual(input.origin,original);
+  assert.equal(Object.hasOwn(result.entry.origin,'observation'),false,'children do not repeat the retained historical envelope');
+  assert(result.pendingDutyRefs.includes(consumer.ref));
+  const dependency=result.constructionObservations[1].resolvedDependencies[0];
+  assert.equal(dependency.producerDutyRef,producer.ref);assert.equal(dependency.digest,observed.after.entries.find(e=>e.relativePath===producer.dependentPaths[0]).digest);
+  assert.deepEqual(dependency.observation,{ref:observed.observationRef,digest:observed.observationDigest});
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.nativeCompletionPredicateRef).evaluate(input,result),true);
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.nativeCompletionPredicateRef).evaluate(input,state),false);
+  assert.throws(()=>nativeConstructionTask(result),/current acquired/);
+});
+test('wrong predecessor, acquisition, task and root substitutions refuse before dependent preparation',()=>{
+  const {input,producer}=nativeFixture(),acquired=acquiredFor(input),state=constructionState(product.constructRetainedGraphInput(input,acquired));
+  const wrong=structuredClone(input);wrong.model.duties.find(d=>d.ref===producer.ref).dependencies[0].digest=hash('wrong predecessor');
+  assert(isNativeConstructionInput(wrong),'shape admission preserves the actual acquired-context discriminator');
+  assert.throws(()=>constructionState(product.constructRetainedGraphInput(wrong,acquiredFor(wrong))),/predecessor basis/);
+  const relation=PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(constructionStages[1].predicateRef);
+  assert.equal(relation.evaluate(product.constructRetainedGraphInput(wrong,acquiredFor(wrong)),state),false);
+  const different=structuredClone(input);different.constructionGroups[0].outcome+=' changed';
+  assert.throws(()=>constructionState(product.constructRetainedGraphInput(input,acquiredFor({...input,sourceSelection:{...input.sourceSelection,graphCallRef:'graph-call://wrong'}}))),/exact original construction entry/);
+  const observed=componentObservation(nativeConstructionTask(state),{'prospective-design.md':'new','prospective-second.md':'new'});
+  const altered=constructionState(product.constructRetainedGraphInput(different,acquiredFor(different)));
+  assert.throws(()=>constructionOutput(product.constructRetainedGraphInput(altered,observed)),/exact prepared task/);
+  assert.throws(()=>constructionOutput(product.constructRetainedGraphInput(state,input.origin.observation.task.sourceNativeWork)),/exact prepared task/);
+  assert.throws(()=>constructionOutput(product.constructRetainedGraphInput(input,observed)),/child input\/output join/);
+  const forged=structuredClone(state);forged.currentContext=observed.after;assert.equal(isConstructionState(forged),false);
+  const premature=structuredClone(state);premature.constructionObservations=[{groupRef:input.constructionGroups[1].ref,dutyRefs:input.constructionGroups[1].dutyRefs,observation:observed,resolvedDependencies:[]}];
+  assert.equal(isConstructionState(premature),false);
+});
+test('partial output and stale retained execution remain explicit without inventing an after-context',()=>{
+  const {input}=nativeFixture(),state=constructionState(product.constructRetainedGraphInput(input,acquiredFor(input))),task=nativeConstructionTask(state);
+  for(const [files,gaps] of [[{},[]],[{'prospective-design.md':'partial'},['remaining work']]]) {
+    const result=constructionOutput(product.constructRetainedGraphInput(state,componentObservation(task,files,gaps)));
+    assert.equal(result.disposition,'partial');assert(result.gaps.length>0);assert.equal(result.originalTaskCompletion,'not_claimed');
+    assert.throws(()=>nativeConstructionTask(result),/current acquired/);
+  }
+  const changed=structuredClone(input),member=changed.origin.observation.snapshotMembers[0];
+  changed.constructionGroups[0].writeRoots.push(member.relativePath);
+  const changedState=constructionState(product.constructRetainedGraphInput(changed,acquiredFor(changed)));
+  const result=constructionOutput(product.constructRetainedGraphInput(changedState,componentObservation(nativeConstructionTask(changedState),
+    {'prospective-design.md':'new','prospective-second.md':'new',[member.relativePath]:'changed retained execution input'})));
+  assert(result.gaps.some(g=>g.cause==='retained_execution_stale'));assert.deepEqual(result.entry.origin.execution,input.origin.execution);
+  const unavailable={...componentObservation(task),after:null};
+  assert.throws(()=>constructionOutput(product.constructRetainedGraphInput(state,unavailable)),/exact prepared task/);
+});
+test('group coverage, future child boundaries and native effect contracts reject ambiguous construction',()=>{
+  for(const modify of [x=>{x.input.constructionGroups[0].dutyRefs.push(x.consumer.ref);},
+    x=>{x.input.constructionGroups.reverse();},x=>{x.input.constructionGroups[0].readFirst=[];},
+    x=>{x.input.constructionGroups[0].writeRoots=['outside.md'];},x=>{x.input.constructionGroups[0].checks=['node run.mjs'];}]) {
+    const x=nativeFixture();modify(x);assert.equal(isNativeConstructionInput(x.input),false);
+  }
+  const {input,route}=nativeFixture();route.permittedEffects=[];
+  assert.equal(constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,
+    constructionGroups:input.constructionGroups,routes:[route]}).gaps[0].cause,'effect_not_permitted');
 });
 test('applicability unknown stays residual, false records basis, cycles refuse',()=>{
   for(const [value,expected] of [['unknown','gap'],['false','report_refs']]) {
