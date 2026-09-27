@@ -30,7 +30,6 @@ export const bindingFor = stage => ({kind:"implementation_binding",bindingRef:st
  inputContractRef:stage.inputContractRef,outputContractRef:stage.outputContractRef,failureContractRef:ids.failureContractRef,refusalContractRef:ids.refusalContractRef});
 
 export const ASSESSMENT_SCHEMA = {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "contract://odd-glc/native-continuation/criterion-verdicts@5",
   "type": "object",
   "additionalProperties": false,

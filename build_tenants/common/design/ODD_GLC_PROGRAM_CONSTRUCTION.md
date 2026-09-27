@@ -555,6 +555,13 @@ and actor/C-call provenance, as the existing assessment contract permits.
 Require assessor independence from that author and any other producer named by
 the selected duty. No new assessment file is needed.
 
+The shared criterion-verdict schema is authored without the optional `$schema`
+marker and uses portable validation vocabulary. ABI's assessment owner gives
+that exact schema its fixed draft-2020-12 interpretation; `$id`, closed objects,
+required fields and every instance constraint remain declared. The same authored
+bytes reach native admission and the host. No transport strips metadata or
+converts dialects; unsupported host/schema combinations still refuse.
+
 Native admission establishes schema/response/provenance. GLC additionally
 checks the exact prepared task, unchanged read-only subject, complete required
 criterion/evidence-role coverage and satisfactory verdict. Assessment considers

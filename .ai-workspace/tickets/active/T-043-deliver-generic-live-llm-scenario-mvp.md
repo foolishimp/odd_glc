@@ -27,9 +27,9 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: paired_schema_default_and_portable_authoring_correction_selected
-- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/activation.json
-- last_execution_result: CLOSED_PC05_08_runtime_failed_host_schema_refusal_no_terminal_Result
+- current_activation_status: paired_schema_default_and_portable_authoring_accepted_PC05_09_selected
+- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/activation.json
+- last_execution_result: PC05_09_setup_selected_no_Run_yet
 - current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection
@@ -58,13 +58,16 @@ repair recorded by T-287; GLC's exact consumer schema and interpretation remain.
 No author/C2 repeat, source/oracle weakening, budget increase or blind retry.
 PC06's fifteen-binding evidence join remains prepared; original-task disposition
 is open. The [corrected core49 response route](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-structured-response-repair-02-review.md)
-is source/package accepted; one installed PC05-08 assessment is selected.
+is source/package accepted; its selected installed PC05-08 assessment is closed.
 Its [installed invocation](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/execution-return.md)
 closed failed on host refusal of the draft-2020-12 schema declaration. Fresh
 Result/replay agree. Closed portability triage selects paired fixed-default ABI
 admission and GLC schema authoring without the optional dialect marker. All
-instance constraints remain; no transport stripping or further attempt is selected.
-No actor remains active.
+instance constraints remain. The [closed paired review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-schema-compatibility-repair-review.md)
+and exact core50 package are accepted. One installed PC05-09 setup/assessment is
+selected with source freeze aa2dedac… and caller freeze 283dc064…; original04 author,
+05 selection, completed C2, twelve reports and all checks remain. No transport
+stripping, blind retry or release claim. PC06 original-condition conjunction follows.
 
 Core47's [installed no-actor discriminator](../../comments/codex/20260928_DECLARATION_RESOURCE/installed-01/return.md)
 is accepted: wrong predecessor refuses at actual preparation; fresh result/replay
