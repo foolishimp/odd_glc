@@ -1,0 +1,445 @@
+{
+  "subject": "PC05-02 repaired composite declarations; original case and unexecuted Public prepare caller",
+  "core": {
+    "artifactDigest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+    "productContentDigest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535",
+    "manifestDigest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b",
+    "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "5.0.0-rc.1"
+  },
+  "files": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/candidate.mjs",
+      "sha256": "sha256:34ea9e3b170d7e750d05778723b92e71bab641d86ad4aed7e7acf1b67ca9e707",
+      "bytes": 13501
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/package.mjs",
+      "sha256": "sha256:31e007fe565c2c52dfc969e57fc3d8c298e30a0c2c5338b34d542567f2c04402",
+      "bytes": 11205
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/prepare.mjs",
+      "sha256": "sha256:9d44e078f09d9097dc9055894a796f5a66c950627896049bbca5bcd6ac31a9e1",
+      "bytes": 26058
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/package-result.json",
+      "sha256": "sha256:6de4b261324c7a0ff72bab6fe61dd102f9985bd39425b8333f9fa21c69acfb50",
+      "bytes": 6362
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/package-descriptors.json",
+      "sha256": "sha256:d190f462afef78b7d91d781b9236684a4b4158e350971a14d050b7ab03fe819e",
+      "bytes": 871
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/evaluator-check.json",
+      "sha256": "sha256:6d3270cb2f9696802b6dab5defdcba43fec35b5810029f216a462ddfed2691e9",
+      "bytes": 7512
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/evaluator-return.md",
+      "sha256": "sha256:9c99f4282d0043d0926600a94f013b79417596ef7fc5eaeec9494eeea514cda7",
+      "bytes": 5504
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/return.md",
+      "sha256": "sha256:23b1037e4da533953bf271ce4dced07813d2752fb161fa293c35c2f101833cae",
+      "bytes": 7760
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/check-result.json",
+      "sha256": "sha256:1d2da5e1af009de53accb8ba5b21534117c7c9e57610e26f57d60ea9a759bbb5",
+      "bytes": 13309
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "sha256": "sha256:8e74fb765276c38cc3b173704c7bf8d579f60b620a3f7620609a6f3d5e7095a9",
+      "bytes": 34792
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "sha256": "sha256:d92796ea364d106cb9c01d62cd4dcbc363949a5f4181991641f4da7c5b8cd37c",
+      "bytes": 9385
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "sha256": "sha256:3a6386752c139df6c1742475af07503dc523a9a3624e80e2bb7e66b3327edeaa",
+      "bytes": 52528
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs",
+      "sha256": "sha256:98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886",
+      "bytes": 13664
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs",
+      "sha256": "sha256:83deaeaa8317bbf69898b2749e7a72893705ddac7caffd95773fd96bc9efecb4",
+      "bytes": 70707
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/product-package.mjs",
+      "sha256": "sha256:c3662c18a7d4d2965225aeb683907d9a733b4d7488bfd28c73cdd1e6492b4041",
+      "bytes": 4619
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "sha256": "sha256:84f8f351a8f8253783b9928800ecbfc570edea06718ff2b293782232e0687a92",
+      "bytes": 7643
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs",
+      "sha256": "sha256:89f8f59e713223fec11a0fbb588de0ade1dc357108df78f9557a0345e7d112f2",
+      "bytes": 6373
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "sha256": "sha256:dd017a8366691b34d846d679bab5fc364f58214a76a20106f9f1421755486dda",
+      "bytes": 24781
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md",
+      "sha256": "sha256:4650e3b08948894a3bba3745550ee9a56004d52cde3e90f04f9aac853d9b6add",
+      "bytes": 8290
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "sha256": "sha256:a4e5a3d4e96081b0e5ee6d82e62beeffbd6d2062f2b1cc681ff888dc36b5f272",
+      "bytes": 2281
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "sha256": "sha256:a21f9368e487a5c84080f1b9a9980397fb5fd51fe504311ba2590a94a373eda7",
+      "bytes": 863
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+      "sha256": "sha256:63a10082c83899da949384d0c0ee796218d11093cd5cd26832e862ae84d112b8",
+      "bytes": 82912
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs",
+      "sha256": "sha256:3a5152f4ac99ca8ae27c1e6417e32c483f6addd0eeb2f4392e5dda38c5336e6a",
+      "bytes": 15968
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs",
+      "sha256": "sha256:b71f3550a9a8c0f15533b59adc568d6cb07b290db85b6e19053572efd9c0411b",
+      "bytes": 30749
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "sha256": "sha256:8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "bytes": 87990
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/package-preflight.json",
+      "sha256": "sha256:549293150a66a9c3c1887e8926fbf3140bb37edce8481b1c7fd5fc3ec98a2e2a",
+      "bytes": 3047
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/script-reuse.json",
+      "sha256": "sha256:8b15613e5a5ca97f6502f3dd6331d8af049529bbeaa8c6ce666f927b2a1756d1",
+      "bytes": 1017
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/package-process.json",
+      "sha256": "sha256:6f3b774320dd717d62d8d57e9012b77f17873ae395313ee7970b3331f43404d7",
+      "bytes": 348
+    },
+    {
+      "path": "build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md",
+      "sha256": "sha256:8b4fdb908cc8e30f565e7746e316fe439fe2cc664fcbdd4cbe2b3de48136cbed",
+      "bytes": 37913
+    }
+  ],
+  "reusedUnchanged": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/candidate.mjs",
+      "sha256": "sha256:0649a4dff87b5a4f8af5df2a18a66cee7981b0eb4c4ffa9dcd4e1297ceacce5c",
+      "bytes": 1077
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/candidate.mjs",
+      "sha256": "sha256:c7fba8d29ebeb1658c3a02bc180aa282b67b22b2600158fad5e413c7b749a54c",
+      "bytes": 7575
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-01/source-owner-projection.json",
+      "sha256": "sha256:bfb8c9e4019b21f6fe12c829dfc1e3ccd591867aa80c964be5f3e8760ece1342",
+      "bytes": 4798
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260926_SCENARIO_CLOSURE/consumer-continuation-01/retained-coordinates.json",
+      "sha256": "sha256:eeb931d697854dc43a5fec702dc6cc2e0139a76a71fbef0e3fea9571c46c3adc",
+      "bytes": 73788
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/positive03/binding-cover-diagnostic.json",
+      "sha256": "sha256:78ae8c114be9980a145875ce82fa3067501b6033ab6ea736b8a42cf5949ebae6",
+      "bytes": 1738
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/suffix-terminal-value.json",
+      "sha256": "sha256:c60f7662f4ed6371e55289dbbb4efd951afe722d15e80f9280741e710e7cf348",
+      "bytes": 6471675
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/read-run_result.json",
+      "sha256": "sha256:c05c2d00472030bfd3a5f9e17765f3b1e83547c48ea6654b2f0cc7b111907172",
+      "bytes": 6091075
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/suffix-start.jsonl",
+      "sha256": "sha256:ee93ec6a107c7cb596b86e0bc758376077854cfac9ac18dff3afee1361945303",
+      "bytes": 28802943
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native42/suffix-01/suffix-start.jsonl",
+      "sha256": "sha256:ccc30126b52f39da3d11f361119c1d6a5946b6fd44f9bdc8e2a94dbb338b6c8b",
+      "bytes": 28727679
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/witness-01/result.json",
+      "sha256": "sha256:2632606e04433962fb70261f9ce7e9987c885075fef501e0048b174d91d66232",
+      "bytes": 4735
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/preparation/configuration.json",
+      "sha256": "sha256:f6e11fa3359b9e2bb9f7957ca97b3422a95c69030a27cc4fd0bd33238babb450",
+      "bytes": 61263
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/selected-core.json",
+      "sha256": "sha256:b269356ca3268dfcdff07cda76f5a50d5daf20448d63f1398bfdb61f5abf1bc0",
+      "bytes": 1006
+    },
+    {
+      "path": "../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant/product-toolchain-manifest.json",
+      "sha256": "sha256:df24d17e06ab7ca5defe59ae91f09c314f39ad79537f8563a2a3c633cc47cbe2",
+      "bytes": 2384496
+    },
+    {
+      "path": "../../../Library/Application Support/STDO/releases/v2.5.0-rc.4/manifest.json",
+      "sha256": "sha256:4fa2556d0127bebce8f7184cc4a3cb708a175b2e40552c55cb211f2426d5049e",
+      "bytes": 12434
+    },
+    {
+      "path": "../../../Library/Application Support/STDO Representation/releases/v2.5.0-rc.4/releases/v2.5.0.md",
+      "sha256": "sha256:d91028fa2f52f86511a989cbacaaa32bff8a0a2fe71a3e380aad0e0630d597af",
+      "bytes": 12348
+    },
+    {
+      "path": "../../../Library/Application Support/Axiom Indexer/releases/v2.5.0-rc.4/releases/v2.5.0.md",
+      "sha256": "sha256:2f4643a5b184a33ab9cd65c1de09b53ffee747012cd1108b795fc6df92263e8d",
+      "bytes": 9835
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-01/context/local-record.json",
+      "sha256": "sha256:7ec33a2e2e9575e8c54ff985db70f29b5e74915547a6142171dabe0998053c11",
+      "bytes": 465
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/preparation/context-inventory.json",
+      "sha256": "sha256:6e9ef04403ef97a0c1c50d10a1bedfab4a1a928e6dfd44fa560d14a6dbf1370a",
+      "bytes": 465
+    },
+    {
+      "path": "../../../Library/Application Support/STDO/releases/v2.5.0-rc.4/standards/DESIGN_MODULE_METHOD.md",
+      "sha256": "sha256:6fb49e186c15a3ebd48dec6b2728a397f1cd5199c4c0d112a0d0c70a2d6346fc",
+      "bytes": 118793
+    },
+    {
+      "path": "../../../Library/Application Support/STDO/releases/v2.5.0-rc.4/standards/SPEC_METHOD.md",
+      "sha256": "sha256:80a66946d4767b1ff857aad4bbaba696b591cd7e7529324c2ece8ced9754ced5",
+      "bytes": 142481
+    },
+    {
+      "path": "../../../Library/Application Support/STDO/releases/v2.5.0-rc.4/standards/STDO_REFERENCE_FRAME_BASELINE.md",
+      "sha256": "sha256:6013e42693066127d729580ac3d01d31c2a82f00adea9d0fb1af3494b4ad9c3e",
+      "bytes": 109711
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-01/context/local/reference-frame.md",
+      "sha256": "sha256:0dbe3a5ad2ebdf900e13eb138e57e2bfa87fad0b572773ef59010a98bda3d216",
+      "bytes": 9591
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260921_NATIVE_WORK_BOUNDARY/application-consumer-01/context/local/worksite-lifecycle.md",
+      "sha256": "sha256:244db21118afa33e343bec0399c0701fecea6e181511e531cb5f3d10fc24d142",
+      "bytes": 4341
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/preparation/context/specification/requirements/REQ-GLC-LIFECYCLE-VOCABULARY-ASSETS.md",
+      "sha256": "sha256:895ea02f39bf1ec100e72084229f46ca49ec31cf456eaa0e0addc194cbe6e03b",
+      "bytes": 13840
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/preparation/context/specification/requirements/REQ-GLC-ABG-REQUIREMENTS-ALGEBRA-CONSUMPTION.md",
+      "sha256": "sha256:23ab6a435eb3ff4c610f73b4a9569b43c24a86a7f160628ee3848a0fe23dc27e",
+      "bytes": 14008
+    }
+  ],
+  "generatedPayloads": [
+    {
+      "name": "construction",
+      "manifest": {
+        "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/packages/construction/product-toolchain-manifest.json",
+        "sha256": "sha256:b7fa2172003ede79ea6c7ec0158472c463e7dad4b6cdd2ce431f7ca4ec00c636",
+        "bytes": 13748
+      },
+      "publication": {
+        "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/packages/construction/build/publication.json",
+        "sha256": "sha256:d459b06deb7973ea11d181f2101884b9ed2fb695191223793fb471ff38fb5fe6",
+        "bytes": 116833
+      },
+      "artifact": {
+        "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+        "sha256": "sha256:d99afd89329e9a9a9259f60b1e8f606fd3b0cd76420577c640053d51878b6eea",
+        "bytes": 53776
+      }
+    },
+    {
+      "name": "evaluator",
+      "manifest": {
+        "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/packages/evaluator/product-toolchain-manifest.json",
+        "sha256": "sha256:0d647c00381b174c4ce5120444f0f70c726bdcc07dc8f5f4fca2864c696de460",
+        "bytes": 3873
+      },
+      "publication": {
+        "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/packages/evaluator/build/publication.json",
+        "sha256": "sha256:e134f95d048abf3e6f6baa3826bb5417c576ada62aed6495643a052adfe2e7db",
+        "bytes": 8159
+      },
+      "artifact": {
+        "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+        "sha256": "sha256:3d122f553ea34dfb342488903c08130018e46bd424eb8467d92db85340c4924d",
+        "bytes": 9328
+      }
+    }
+  ],
+  "expectedRootCalls": [
+    "graph-function://odd-glc/program-construction/authenticate-construction@5",
+    "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+    "graph-function://odd-glc/program-construction/prepare-construction@5",
+    "graph-function://odd-glc/program-construction/construction-child@5",
+    "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+    "graph-function://odd-glc/program-construction/evaluation-child@5",
+    "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+    "graph-function://odd-glc/program-construction/assessment-child@5"
+  ],
+  "programRef": "program://odd-glc/construction/4b729c4f946b4b53d2a6011055b27ea23e5c7aba57d4f54ff231503208f3cba8@5",
+  "selectedWriteRoots": [
+    "design/implementation-design.md",
+    "package.json",
+    "src/hello.mjs",
+    "design/test-design.md",
+    "test/component/hello.test.mjs",
+    "test/uat/hello.uat.test.mjs",
+    "test-execution-plan.json"
+  ],
+  "transport": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+    "expectedVersion": "2.1.278 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "actorRoles": [
+    {
+      "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work/assessment@5",
+      "programLocusRef": "node://abiogenesis/worksite/native-work/assessment@5",
+      "role": "assessor",
+      "frameRefs": [
+        "stdo://releases/v2.5.0-rc.4/standards/STDO_REFERENCE_FRAME_BASELINE.md#derived-reviewer-frame"
+      ],
+      "policy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/assessor@5",
+        "text": "Independently assess the admitted current candidate against the complete source, exact stage rubric and observed evidence. Remain read-only; report rejection and gaps honestly.",
+        "digest": "sha256:2264575e6428e31527b1dc01f03a5cdbafb17da4c2e2a833baa860af2cae16b2"
+      },
+      "accessRefs": [
+        "access://odd-glc/application/rc4-validate@5"
+      ],
+      "contextPolicy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/assessor/selection@5",
+        "selectors": [
+          "current_worksite"
+        ]
+      },
+      "sourceBindingsDigest": "sha256:64d3d53b2f476f39660dd149b0c252ce036cf14b3a2c7b3c7aa2505641539798"
+    },
+    {
+      "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work@5",
+      "programLocusRef": "node://abiogenesis/worksite/native-work@5",
+      "role": "constructor",
+      "frameRefs": [
+        "stdo://releases/v2.5.0-rc.4/standards/STDO_REFERENCE_FRAME_BASELINE.md#derived-worker-frame"
+      ],
+      "policy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/constructor@5",
+        "text": "Carry out the admitted stage task in the native workspace. Write only its declared asset or construction paths, preserving higher source and every unaffected obligation. Return only the native report, never accumulated semantic envelopes.",
+        "digest": "sha256:97856c61a077151c38d7fd4b8476fcde40881e28ce4fd771cd4b3b451e729d83"
+      },
+      "accessRefs": [
+        "access://odd-glc/application/rc4-validate@5"
+      ],
+      "contextPolicy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/constructor/selection@5",
+        "selectors": [
+          "current_worksite"
+        ]
+      },
+      "sourceBindingsDigest": "sha256:6130eaef1a49dc96750db196b98296fdd6838234dc41951ccb87ebef6d35e4cf"
+    }
+  ],
+  "context": {
+    "retainedTerminalPath": "../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/suffix-terminal-value.json",
+    "originalContextBytes": 328015,
+    "contextFileBytes": 240774,
+    "maxBytes": 4194304,
+    "maxFiles": 1024,
+    "readRoots": [
+      "."
+    ],
+    "oracleDigest": "sha256:091ca27cb92d7e80422272f1b0d71d5ae7fd7dfc299d037dfef1c71b1b924e99",
+    "runEnvironmentDigest": "sha256:30f82d044df829a437856646cfbe2981f49a56c787131dcd2bc426ac622103fc"
+  },
+  "currentInputDigest": "sha256:18bf9f16661d1d752ecdee1a1778b3f9bfc29a13f82e72f8e02c9dc8adf0d363",
+  "interpretation": {
+    "ref": "interpretation://odd-glc/T-043/pc05-original-source/construction-comparison-assessment",
+    "digest": "sha256:80a77925fee9961f7e11c4c09e55f1cc50d0e5e052d561e0042d8e40aeb883fd"
+  },
+  "excluded": "Root-owned execute.mjs and final execution/readback review freeze are separate; no journal/Run/setup receipt is manufactured here",
+  "provenance": {
+    "priorSourceFreeze": {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/source-freeze.json",
+      "sha256": "sha256:2cd639ae06fee36e8de3ea0c6789a289eee1404f5ad3b4f28ad1c33d26ebaa61",
+      "bytes": 18872
+    },
+    "repairReturnSha256": "sha256:95137dc2010229cd478af4ce64cb01fcccbc8f34a25a6c353189188bf8046463",
+    "acceptedSourceReview": {
+      "reference": "ABI current composite-declaration-review.md",
+      "sha256": "sha256:947b8deaaa1ffae9cd4e007d93c7601c791607cfc2355a7505a515357bdb90ed",
+      "disposition": "SOURCE-READY; Executive accepted bounded repair",
+      "basis": "Executive handoff"
+    },
+    "caseAndPrepare": "PC05-01 byte-identical; prior case/evaluator/caller reviews retained",
+    "packageScript": "Only phase timing instrumentation added",
+    "packagedChangedFiles": [
+      "product-toolchain-manifest.json",
+      "build/publication.json",
+      "build/program-construction.mjs"
+    ],
+    "publicationDelta": "Three explicit failure declarations plus derived Program/root/node/start/edge and membership identities; exact original input, context, interpretation, call sequence and transport conserved"
+  }
+}

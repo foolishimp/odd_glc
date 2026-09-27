@@ -1,0 +1,43 @@
+{
+  "checks": {"command":"ABI5_COMPONENT_ROOT=/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant node --experimental-loader ./build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs --test --test-reporter=spec --test-name-pattern='PC05 predecessor text|PC03 construction edge records|PC04 actual PC03 state' ./build_tenants/odd_glc/typescript/test/program-construction.test.mjs","initial":{"exitCode":1,"output":"✔ PC03 construction edge records derive from actual before/after and cannot promote false or unknown (2302.930625ms)\n✖ PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join (135.320208ms)\n✔ PC04 actual PC03 state joins complete original rubric/oracle and ordinary native assessment with no C2 (5890.215208ms)\nℹ tests 3\nℹ suites 0\nℹ pass 2\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 8813.148666\n\n✖ failing tests:\n\ntest at build_tenants/odd_glc/typescript/test/program-construction.test.mjs:475:1\n✖ PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join (135.320208ms)\n  TypeError [Error]: supported construction input required\n      at need (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/program-construction.mjs:4:69)\n      at reacquisitionRequest (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs:67:3)\n      at acquiredFor (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/program-construction.test.mjs:243:17)\n      at completedConstruction (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/program-construction.test.mjs:400:73)\n      at evaluate (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/program-construction.test.mjs:478:93)\n      at TestContext.<anonymous> (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/program-construction.test.mjs:479:15)\n      at Test.runInAsyncScope (node:async_hooks:214:14)\n      at Test.run (node:internal/test_runner/test:1106:25)\n      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n      at Test.postRun (node:internal/test_runner/test:1235:19)\n"},"testOnlyCorrections":["Updated prospective evaluation/assessment dependency paths when selecting the JSON component output.","Cloned the frozen evaluator view before applying the crossed-digest negative control."],"firstFocusedRerun":{"exitCode":1,"output":"✖ PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join (4348.379625ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4825.49575\n\n✖ failing tests:\n\ntest at build_tenants/odd_glc/typescript/test/program-construction.test.mjs:475:1\n✖ PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join (4348.379625ms)\n  TypeError [Error]: Cannot assign to read only property 'digest' of object '#<Object>'\n      at TestContext.<anonymous> (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/program-construction.test.mjs:491:42)\n      at Test.runInAsyncScope (node:async_hooks:214:14)\n      at Test.run (node:internal/test_runner/test:1106:25)\n      at Test.start (node:internal/test_runner/test:1003:17)\n      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)\n"},"finalFocusedRerun":{"command":"ABI5_COMPONENT_ROOT=/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant node --experimental-loader ./build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs --test --test-reporter=spec --test-name-pattern='PC05 predecessor text' ./build_tenants/odd_glc/typescript/test/program-construction.test.mjs","exitCode":0,"output":"✔ PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join (4302.795125ms)\nℹ tests 1\nℹ suites 0\nℹ pass 1\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 4790.482375\n"},"accepted":"All three requested tests pass: unchanged PC03/PC04 passed initial selection; final corrected new test passes separately. No implementation change between those passes.","diffCheck":"passed"},
+  "status": "supplemental_current_fixture_source_basis_no_run",
+  "reentry": "realization_refactor",
+  "core": {
+    "artifactDigest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+    "productContentDigest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535",
+    "manifestDigest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b",
+    "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "5.0.0-rc.1"
+  },
+  "sourceHashes": {
+    "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs": "sha256:dd017a8366691b34d846d679bab5fc364f58214a76a20106f9f1421755486dda",
+    "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md": "sha256:4650e3b08948894a3bba3745550ee9a56004d52cde3e90f04f9aac853d9b6add",
+    "build_tenants/odd_glc/typescript/test/program-construction.test.mjs": "sha256:231765c4244f411c2aa5e060c49c89bef856b0775e551f489fcf5e9a9836c776",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/candidate.mjs": "sha256:34ea9e3b170d7e750d05778723b92e71bab641d86ad4aed7e7acf1b67ca9e707",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/return.md": "sha256:23b1037e4da533953bf271ce4dced07813d2752fb161fa293c35c2f101833cae",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/check-result.json": "sha256:1d2da5e1af009de53accb8ba5b21534117c7c9e57610e26f57d60ea9a759bbb5"
+  },
+  "preimages": {
+    "evaluator": "sha256:a1ecc4fc8db8b34f249839a3015857432487a7338267514ba24ee7bc05f05c73",
+    "contract": "sha256:2c6a6ccca6714563e8cb6fb2acd25ff6ed117c2d7e9606340aa46c01291612d0",
+    "tests": "sha256:2f1eeb3ce2a23d6271b9677337fd671b35a5f615070d16d6a397995e40adf1b3"
+  },
+  "sourceFit": {
+    "ref": "interpretation://odd-glc/T-043/pc05-original-source/construction-comparison-assessment",
+    "digest": "sha256:80a77925fee9961f7e11c4c09e55f1cc50d0e5e052d561e0042d8e40aeb883fd"
+  },
+  "evaluator": {
+    "ref": "graph-function://odd-glc/qualification/native-records@5",
+    "digest": "sha256:13b263db610a4773badee44466f1f3e92fc6e9d887f33eeabce2d6529e59404b"
+  },
+  "program": "program://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5",
+  "inputDigest": "sha256:18bf9f16661d1d752ecdee1a1778b3f9bfc29a13f82e72f8e02c9dc8adf0d363",
+  "oracleDigest": "sha256:091ca27cb92d7e80422272f1b0d71d5ae7fd7dfc299d037dfef1c71b1b924e99",
+  "duties": 38,
+  "bindings": 15,
+  "edgeRecords": 14,
+  "assessmentRecords": 15,
+  "supplementalConstructionMs": 916.9134160000001,
+  "scope": "Constructed existing pure PC05 case with current fixture contract; no extra declaration validation, fabricated observations, execution, effect or installed claim"
+}

@@ -1,0 +1,194 @@
+{
+  "packageMs": null,
+  "installMs": 47024.845375,
+  "setupMs": 52746.09916599999,
+  "sourceLookupMs": 0,
+  "retainedSourceLookupMs": 23167.635875,
+  "sourceLookupDisposition": "retained owner projection reused; no new historical lookup",
+  "installedDescriptorMs": 276.0115000000078,
+  "calls": [
+    {
+      "label": "verify-0",
+      "definitionKey": {
+        "operationId": "abg.operation.product.verify",
+        "memberKey": "verify"
+      },
+      "invocationRef": "invocation://abiogenesis/fb2e91105c945ccf2e15146eed8f3c6e31aba2d70c74f0ce2f3803bf7ea97e89"
+    },
+    {
+      "label": "verify-1",
+      "definitionKey": {
+        "operationId": "abg.operation.product.verify",
+        "memberKey": "verify"
+      },
+      "invocationRef": "invocation://abiogenesis/1a304f392673784f88c51f86ae196f213a7b1290e7a4150512408cb353694ab8"
+    },
+    {
+      "label": "verify-2",
+      "definitionKey": {
+        "operationId": "abg.operation.product.verify",
+        "memberKey": "verify"
+      },
+      "invocationRef": "invocation://abiogenesis/2b6d13b79cd790f316298ec47d2d9acf7b9416642ee1203e1cca2c09ecd8d19d"
+    },
+    {
+      "label": "resolve",
+      "definitionKey": {
+        "operationId": "abg.operation.product.resolve",
+        "memberKey": "resolve"
+      },
+      "invocationRef": "invocation://abiogenesis/e1d6f83caefe5f749679f724951c368fac9dd4a37b4e8ab3bf09bb0294226365"
+    },
+    {
+      "label": "install-0",
+      "definitionKey": {
+        "operationId": "abg.operation.product.install",
+        "memberKey": "install"
+      },
+      "invocationRef": "invocation://abiogenesis/3bd0c27984cb98f61897f6646dd9a9983d7964690616445051c7e5e0fe92f958"
+    },
+    {
+      "label": "install-1",
+      "definitionKey": {
+        "operationId": "abg.operation.product.install",
+        "memberKey": "install"
+      },
+      "invocationRef": "invocation://abiogenesis/07c9e17116e2d357bb72b2e7af149651730c236a150e3231843cc856ea011d8e"
+    },
+    {
+      "label": "install-2",
+      "definitionKey": {
+        "operationId": "abg.operation.product.install",
+        "memberKey": "install"
+      },
+      "invocationRef": "invocation://abiogenesis/04c4961c9960e8bc1d71e1917eb26ad27094c848c6668516b5df2e9a745c3bff"
+    },
+    {
+      "label": "bind",
+      "definitionKey": {
+        "operationId": "abg.operation.workspace.bind",
+        "memberKey": "bind"
+      },
+      "invocationRef": "invocation://abiogenesis/b9e240d2a33e536f6bcf212bc525a4ddce8292a37ea36a0c3e9a00151c5bb5c6"
+    },
+    {
+      "label": "catalog",
+      "definitionKey": {
+        "operationId": "abg.operation.catalog.admit",
+        "memberKey": "admit"
+      },
+      "invocationRef": "invocation://abiogenesis/d208dfd8b339a60af948302e448c9cb8018ff7a524d5773677793992552dc14b"
+    },
+    {
+      "label": "view",
+      "definitionKey": {
+        "operationId": "abg.operation.catalog.view",
+        "memberKey": "allowlist"
+      },
+      "invocationRef": "invocation://abiogenesis/cff0ab03ea0dcb01006822b2f3ff08b3e286b9adff075563ee1afd7e007a6c04"
+    },
+    {
+      "label": "conformance",
+      "definitionKey": {
+        "operationId": "abg.operation.conformance.evaluate",
+        "memberKey": "gtl_program"
+      },
+      "invocationRef": "invocation://abiogenesis/f5183e492861f2ce2b7c2b6fae6d40096d497dc77a07f5e4d200b146f45b91f8"
+    },
+    {
+      "label": "native-child-binding-cover",
+      "definitionKey": {
+        "operationId": "abg.operation.witness.admit",
+        "memberKey": "reprice"
+      },
+      "invocationRef": "invocation://abiogenesis/124a4b1dc7f8575ee30c9a2165770111e77278d05ea1f90bcec046eb5fa17262"
+    }
+  ],
+  "closeHandoff": {
+    "prefix": {
+      "kind": "durable_prefix_coordinate",
+      "schemaVersion": "5.0.0",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "prefixLength": 1020732234,
+      "prefixDigest": "sha256:401b9cb8c88687e3a53d4f0da83192144e33a01731db2e38e4424bb99ca5b736",
+      "storeIdentity": {
+        "device": 16777230,
+        "inode": 459405010,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+      },
+      "coordinateDigest": "sha256:49f1f1f42e2bd523283ff9102677fe1b2dcdaeef093fb512aa2b250a28d52a4b"
+    },
+    "reopenAuthority": {
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "device": 16777230,
+      "inode": 459405010,
+      "eventLogDigest": "sha256:401b9cb8c88687e3a53d4f0da83192144e33a01731db2e38e4424bb99ca5b736",
+      "durableByteLength": 1020732234,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "authorityDigest": "sha256:95ed867ec87939ffe07d5198d47c78baa5525b4a7d174d406cac0264b15249d2"
+    }
+  },
+  "witness": {
+    "outcomeKind": "result",
+    "value": {
+      "act": "reprice",
+      "witnessedAct": {
+        "ref": "witnessed-act://abiogenesis/6afe64a99181833b8efcf60e5f0e60a704f0edade334f5f6c0aa5010bdedce2c",
+        "digest": "sha256:6afe64a99181833b8efcf60e5f0e60a704f0edade334f5f6c0aa5010bdedce2c"
+      },
+      "admittedEvent": {
+        "ref": "event://abiogenesis/5d0bdb0f3ecfb8225f316da68cea16bc65cb3f0dd25ae176b00c3feeb5dc3d86",
+        "digest": "sha256:5d0bdb0f3ecfb8225f316da68cea16bc65cb3f0dd25ae176b00c3feeb5dc3d86"
+      },
+      "evidence": [
+        {
+          "ref": "workspace-binding://abiogenesis/3f9a41f25da6f0fb297ec7c28a86be51005069bb6082dbd809cca38885f678e9",
+          "digest": "sha256:3f9a41f25da6f0fb297ec7c28a86be51005069bb6082dbd809cca38885f678e9"
+        },
+        {
+          "ref": "workspace-binding://abiogenesis/13bf9bfe3e78668f3f4ae90e8207ddd5f1c85c295f42a185a4c59d7250041590",
+          "digest": "sha256:13bf9bfe3e78668f3f4ae90e8207ddd5f1c85c295f42a185a4c59d7250041590"
+        }
+      ]
+    }
+  },
+  "entryPrefix": {
+    "coordinateDigest": "sha256:b22151a30a2de0b4b25b64b6a1fb7487384b9c93c1c4a68c0b0695366b10bd20",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:f839456ad479ee299a002e2c3cadc9bfed4bc4b881a85f2901f66ceab9e90e6a",
+    "prefixLength": 1018398367,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "setupAppendedBytes": 2333867,
+  "configuration": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/fresh-native-01/preparation/configuration.json",
+    "digest": "sha256:f6e11fa3359b9e2bb9f7957ca97b3422a95c69030a27cc4fd0bd33238babb450"
+  },
+  "entryReceipt": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/graphExecution.json",
+    "digest": "sha256:1acb3f8f141c78f4cf31a5c4e5dbd5f52d90bb0d0da170aa402680785a90e9a0"
+  },
+  "transport": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+    "expectedVersion": "2.1.278 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "packageTimingLimitation": "Initial wrapper failed before timing persistence; those durations are unavailable. Final fresh descriptor check is separately measured. Do not report its duration as total packaging."
+}

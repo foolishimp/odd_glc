@@ -1,0 +1,134 @@
+{
+  "status": "three_products_verified_pure_conformance_passed_no_install",
+  "mode": "construction_evaluation_assessment",
+  "core": {
+    "packageRoot": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant",
+    "artifactPath": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+    "artifactRef": "file:///Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+    "basis": {
+      "artifactDigest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+      "productContentDigest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535",
+      "manifestDigest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b",
+      "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+      "packageName": "@abiogenesis/typescript-tenant",
+      "packageVersion": "5.0.0-rc.1"
+    }
+  },
+  "candidateArtifacts": [
+    {
+      "name": "construction",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:d99afd89329e9a9a9259f60b1e8f606fd3b0cd76420577c640053d51878b6eea",
+        "productContentDigest": "sha256:d9f82e1b3554e94fa6b94ebb3393e30701f22322b60f4e4fcc0c873138306e98",
+        "manifestDigest": "sha256:a132d7eee3218f2dc23dac13474e8fd5e4217a5c746c82ec47ae365ec1b2c1a9",
+        "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+        "packageName": "@odd-glc/route-one-typescript",
+        "packageVersion": "0.3.0-dev.2"
+      },
+      "bytes": 53776,
+      "payloadBytes": 313496
+    },
+    {
+      "name": "evaluator",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:3d122f553ea34dfb342488903c08130018e46bd424eb8467d92db85340c4924d",
+        "productContentDigest": "sha256:9c4315084c3e280f275763c2461bd3a4db57018807e80d51db89a635fda5e584",
+        "manifestDigest": "sha256:574384df4489d6f91eb743ae1eebcf64cfcb6e9a4b911d3dbcd0e6ade589a47b",
+        "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+        "packageName": "@odd-glc/program-construction-fixture",
+        "packageVersion": "0.1.0-dev.2"
+      },
+      "bytes": 9328,
+      "payloadBytes": 37466
+    }
+  ],
+  "evaluatorDependency": {
+    "kind": "requires",
+    "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+    "packageVersion": "0.1.0-dev.2",
+    "compatibilityRef": "compatibility://abiogenesis/major/5",
+    "requiredContractRefs": [],
+    "requiredCapabilityRefs": []
+  },
+  "timings": {
+    "caseBasisMs": 90.37958299999997,
+    "caseConstructionMs": 812.1622499999999,
+    "payloadGenerationMs": 12.592041999999992,
+    "archivePackMs": {
+      "construction": 143.87983299999996,
+      "evaluator": 127.55429200000003
+    },
+    "packageMs": 1186.5813750000002,
+    "archiveVerificationMs": [
+      {
+        "artifactPath": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+        "elapsedMs": 8835.859625
+      },
+      {
+        "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+        "elapsedMs": 12.382583999999042
+      },
+      {
+        "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+        "elapsedMs": 8.854542000000947
+      }
+    ],
+    "verificationMs": 8857.112792,
+    "pureConformanceMs": 3094.451000000001,
+    "freshPackageDescriptorMs": 249.06370799999968
+  },
+  "packageMs": 1186.5813750000002,
+  "preflightMs": 12200.6275,
+  "programRef": "program://odd-glc/construction/4b729c4f946b4b53d2a6011055b27ea23e5c7aba57d4f54ff231503208f3cba8@5",
+  "declarationClosure": "sha256:962b37deb4bf9aaa8a90a867879efaaeac79bc8950593088ae58547bba037b7e",
+  "catalogRows": 67,
+  "inputDigest": "sha256:18bf9f16661d1d752ecdee1a1778b3f9bfc29a13f82e72f8e02c9dc8adf0d363",
+  "interpretation": {
+    "ref": "interpretation://odd-glc/T-043/pc05-original-source/construction-comparison-assessment",
+    "digest": "sha256:80a77925fee9961f7e11c4c09e55f1cc50d0e5e052d561e0042d8e40aeb883fd"
+  },
+  "contextDigest": "sha256:9ee6107d3845d06c6c0de8632fa05107b0df76b2c7ca5a9b0d1539a0e4a2de5d",
+  "runEnvironmentDigest": "sha256:30f82d044df829a437856646cfbe2981f49a56c787131dcd2bc426ac622103fc",
+  "transport": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+    "expectedVersion": "2.1.278 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "originalGrant": [
+    "specification/project-conformance.md",
+    "design/implementation-design.md",
+    "package.json",
+    "src/hello.mjs",
+    "design/test-design.md",
+    "test/component/hello.test.mjs",
+    "test/uat/hello.uat.test.mjs",
+    "test-execution-plan.json",
+    "verification/check-inventory.mjs",
+    "verification/check-package.mjs",
+    "verification/check-documents.mjs",
+    "verification/check-verifier-structure.mjs",
+    "verification/check-plan.mjs",
+    "verification/check-derivation.mjs"
+  ],
+  "selectedWriteRoots": [
+    "design/implementation-design.md",
+    "package.json",
+    "src/hello.mjs",
+    "design/test-design.md",
+    "test/component/hello.test.mjs",
+    "test/uat/hello.uat.test.mjs",
+    "test-execution-plan.json"
+  ],
+  "scope": "Actual archives verified; hypothetical candidate set used once for pure declaration conformance. Public setup, actual installs, admitted descriptor checks and Run are pending."
+}

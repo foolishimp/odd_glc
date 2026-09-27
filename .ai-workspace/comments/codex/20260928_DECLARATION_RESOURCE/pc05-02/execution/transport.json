@@ -1,0 +1,22 @@
+{
+  "kind": "odd_glc_full_sandbox_transport",
+  "schemaVersion": "1",
+  "configuration": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+    "expectedVersion": "2.1.278 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "resolvedCommand": "/Users/jim/.local/share/claude/versions/2.1.278",
+  "executableDigest": "sha256:bd245662fb8a0e321b3bf133e930371d6563c387527885f30b2613aef3ba14d6",
+  "reportedVersion": "2.1.278 (Claude Code)",
+  "transportDigest": "sha256:3e6ca182a7a6c36dce1737d9caaec5066abd9816b35c427c91b0ca7c7b5a0714"
+}

@@ -1,0 +1,20 @@
+{
+  "message": "preserve the first owner refusal if no Run was admitted",
+  "stack": "AssertionError [ERR_ASSERTION]: preserve the first owner refusal if no Run was admitted\n    at runInstalledConstruction (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:147:3)\n    at async file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:188:29",
+  "timings": {
+    "packageMs": 789.8689999999999,
+    "installMs": 43483.907458999995,
+    "setupMs": 50902.916832,
+    "graphExecutionMs": 64251.951875000006
+  },
+  "receiptDisposition": {
+    "outcomeKind": "refusal",
+    "value": {
+      "code": "invalid_graph_function",
+      "evidenceRefs": [],
+      "issuePaths": [
+        "/program"
+      ]
+    }
+  }
+}

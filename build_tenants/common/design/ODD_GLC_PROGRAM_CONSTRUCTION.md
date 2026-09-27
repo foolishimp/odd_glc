@@ -127,6 +127,15 @@ publication, including exact original task, source and required obligation
 population. Copied JSON with valid hashes cannot pass in place of that join.
 GLC does not import an event store, read a journal or reproduce R10.
 
+New caller entry values carry an exact declaration reference for the original
+native constructor. The existing `historicalSource` resource supplies the full
+proof for its terminal source and any distinct constructor proof in explicit
+`declarationDependencies`. ABI owns reference construction, resolution and
+authentication. GLC forwards that selector unchanged and retains both bases
+when they differ. It does not embed the Catalog/readiness preimage in semantic
+work values or re-establish an admitted preparation at later handoffs. Historical
+inline-proof inputs retain their recorded identities under ABI's owning law.
+
 For current retained native evidence, the declared acquisition uses
 `nativeWorkReacquisitionGraphFunction()`. Its owner authenticates the exact
 native child from the selected source Run and current binding cover, then
@@ -351,6 +360,14 @@ entry -> authenticate -> native reacquisition -> prepare current work
   -> evaluation child (supplied evaluator -> retain actual input/output)
   -> assessment child (prepare task -> native assessor -> conserve result)
 ```
+
+Construction, evaluation and assessment composites have no local implementation
+rows. Each therefore declares `abg.failure_contract` as the existing published
+`contract://odd-glc/program-construction/failure@5`, following the substrate's
+[pure-child failure relation](../../../../abiogenesis/build_tenants/abiogenesis/typescript/design/T287_W2_R3_C1_LIVE_LLM_WORKSITE_CONSTRUCTION_DESIGN.md#pure-child-failure-contract).
+This callable failure contract remains distinct from closure
+`rejectionContractRef`; inner native/evaluator failures retain their own admitted
+results and causal foldback evidence.
 
 The evaluate-only route remains available; established work is reused and other
 unsupported role combinations remain gaps. No C2 node is added here. Use

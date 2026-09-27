@@ -1,0 +1,1 @@
+Immutable historical caller evidence. The preimage was recovered by reversing only the one-line invocation-count correction and matches the exact SHA-256 frozen in PC05-01/02 caller-freeze.json. It is not an independently maintained driver. Current implementation remains in the canonical test path.

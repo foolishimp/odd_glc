@@ -1,0 +1,109 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.product.install",
+      "memberKey": "install"
+    },
+    "invocationRef": "invocation://abiogenesis/b37c62abdcda5f7d6d9712680f1fa31e32e5e97b3450bc7584bc7d45281d7359",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "disposition": "materialized",
+        "installedProduct": {
+          "ref": "product-install://@abiogenesis/typescript-tenant/5.0.0-rc.1/3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535/4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6",
+          "digest": "sha256:d29970145022bc736a057421dec5c415a0628d8bc6ad3ef66bff3915c3b04dae"
+        },
+        "installManifest": {
+          "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant/product-toolchain-manifest.json",
+          "digest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b"
+        },
+        "installerManifest": {
+          "ref": "artifact-truth-projection://abiogenesis/c15fe1c19bf1c83ba3448b491b0a1c261e6c597b5e34d47e31348d086d8536cb",
+          "digest": "sha256:c15fe1c19bf1c83ba3448b491b0a1c261e6c597b5e34d47e31348d086d8536cb"
+        },
+        "resolvedLock": {
+          "ref": "product-lock://abiogenesis/4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6",
+          "digest": "sha256:4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6"
+        },
+        "provenance": [
+          {
+            "ref": "artifact-truth-projection://abiogenesis/c15fe1c19bf1c83ba3448b491b0a1c261e6c597b5e34d47e31348d086d8536cb",
+            "digest": "sha256:c15fe1c19bf1c83ba3448b491b0a1c261e6c597b5e34d47e31348d086d8536cb"
+          }
+        ]
+      }
+    },
+    "resources": {
+      "kind": "product_install_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_completion",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 991116806,
+          "prefixDigest": "sha256:23b26b3d1f55891f736d553c2357104a320d58271cf28dcc2c53187d64c128dc",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:89c2f4a21b18733de0da12a2485d0a9def2f01d0d5c4942c56a53b42bbc415a2"
+        },
+        "successor": {
+          "kind": "acquired_abg_event_resource_selection",
+          "schemaVersion": "5.0.0",
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 993420933,
+            "prefixDigest": "sha256:1cc322425ffa86db77fc8706c3d0869cf4189272ce652c4e31e64cc8cab3cb84",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:777b93a4c96430f8786707f31b5d50274012588c58d9f2843fdaa26a265f6794"
+          }
+        },
+        "receiptDigest": "sha256:21285ebe61bb7486807ecfa1b2f2d1f87cbb6f4ad134da33af35416af6107085"
+      },
+      "packedArtifact": {
+        "ref": "abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+        "digest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9"
+      },
+      "resolvedLock": {
+        "ref": "product-lock://abiogenesis/4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6",
+        "digest": "sha256:4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6"
+      },
+      "targetRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47",
+      "installCandidate": {
+        "ref": "product-install://@abiogenesis/typescript-tenant/5.0.0-rc.1/3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535/4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6",
+        "digest": "sha256:d29970145022bc736a057421dec5c415a0628d8bc6ad3ef66bff3915c3b04dae"
+      },
+      "installedProduct": {
+        "ref": "product-install://@abiogenesis/typescript-tenant/5.0.0-rc.1/3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535/4e48b40be2dcfd1355811c97a9ef01c2e07896e234521ed2c20cc257943dd1c6",
+        "digest": "sha256:d29970145022bc736a057421dec5c415a0628d8bc6ad3ef66bff3915c3b04dae"
+      },
+      "installManifest": {
+        "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant/product-toolchain-manifest.json",
+        "digest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b"
+      },
+      "installerManifest": {
+        "ref": "artifact-truth-projection://abiogenesis/c15fe1c19bf1c83ba3448b491b0a1c261e6c597b5e34d47e31348d086d8536cb",
+        "digest": "sha256:c15fe1c19bf1c83ba3448b491b0a1c261e6c597b5e34d47e31348d086d8536cb"
+      }
+    },
+    "failure": null
+  }
+}

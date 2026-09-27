@@ -99,12 +99,13 @@ function constructionEdges(input) {
       predecessorCurrent:verdict(!before||!current?null:before.digest===current.digest&&before.byteLength===current.byteLength,'consumed predecessor remains current'),
       dependentCurrent:verdict(!after||!dependentCurrent?null:after.digest===dependentCurrent.digest&&after.byteLength===dependentCurrent.byteLength,'actual dependent output remains current'),
       declaredRead:verdict(observation?observation.task.readFirst.includes(dependency.path):null,'actual native task declares predecessor readFirst'),
-      declaresPredecessor:verdict(declares,'fixture derivedFrom or textual predecessor reference; faithful derivation requires assessment'),
       completeReport:verdict(observation?observation.report.gaps.length===0:null,'native author reports no remaining gaps')};
     return {recordKind:'construction_record',dutyRef:edge.dutyRef,obligationRef:edge.obligationRef,bindingRef:edge.bindingRef,dependent:{path,afterDigest:after?.digest??null},
       predecessor:{path:dependency.path,declaredDigest:dependency.digest??null,producerDutyRef:dependency.producerDutyRef??null,
         beforeDigest:before?.digest??null,currentDigest:current?.digest??null,producerObservation:predecessor?coordinate(predecessor.observation):null},
       declaredReadPath:dependency.path,observation:observation?coordinate(observation):null,producer:observation?.provenance??null,
+      contentObservations:{declaresPredecessor:{...verdict(declares,'JSON derivedFrom or literal predecessor path; neither proves nor is required for faithful derivation'),
+        evidenceRole:'non_closing_content_observation'}},
       cardinality:{producers:producers.length,predecessorProducers:predecessorRows.length},conditions,verdict:conjunction(conditions)};
   })));
 }

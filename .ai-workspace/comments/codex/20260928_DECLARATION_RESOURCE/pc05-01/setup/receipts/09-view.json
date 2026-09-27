@@ -1,0 +1,54 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.catalog.view",
+      "memberKey": "allowlist"
+    },
+    "invocationRef": "invocation://abiogenesis/cff0ab03ea0dcb01006822b2f3ff08b3e286b9adff075563ee1afd7e007a6c04",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "view": {
+          "ref": "graph-function-catalog-view://abiogenesis/3bfbfe6d0656c5fab02b70d387679b3eca967ac7e4d347b5f3b06aa9a78edb04",
+          "digest": "sha256:3bfbfe6d0656c5fab02b70d387679b3eca967ac7e4d347b5f3b06aa9a78edb04"
+        },
+        "effectiveHandles": [
+          "graph-function://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5",
+          "graph-function://odd-glc/program-construction/assessment-child@5",
+          "graph-function://odd-glc/program-construction/authenticate-construction@5",
+          "graph-function://odd-glc/program-construction/construction-child@5",
+          "graph-function://odd-glc/program-construction/evaluation-child@5",
+          "graph-function://odd-glc/program-construction/join-assessment@5",
+          "graph-function://odd-glc/program-construction/join-evaluation@5",
+          "graph-function://odd-glc/program-construction/join-native-output@5",
+          "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+          "graph-function://odd-glc/program-construction/prepare-assessment-task@5",
+          "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+          "graph-function://odd-glc/program-construction/prepare-construction@5",
+          "graph-function://odd-glc/program-construction/prepare-native-task@5"
+        ],
+        "residuals": []
+      }
+    },
+    "resources": {
+      "kind": "catalog_view_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "disposition": "read_only_unchanged",
+      "catalog": {
+        "ref": "graph-function-catalog://abiogenesis/14189d8a70b0458a941e2d6643f42f7a2ddb0e7a8888f88ed4bfa0c2b533af4d",
+        "digest": "sha256:14189d8a70b0458a941e2d6643f42f7a2ddb0e7a8888f88ed4bfa0c2b533af4d"
+      },
+      "view": {
+        "ref": "graph-function-catalog-view://abiogenesis/3bfbfe6d0656c5fab02b70d387679b3eca967ac7e4d347b5f3b06aa9a78edb04",
+        "digest": "sha256:3bfbfe6d0656c5fab02b70d387679b3eca967ac7e4d347b5f3b06aa9a78edb04"
+      }
+    },
+    "failure": null
+  }
+}

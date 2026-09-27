@@ -1,0 +1,12 @@
+{
+  "cause": "Caller omitted the selected ordinary dependency link; ambient repo core was loaded. Preparation component loader had hidden the missing host binding.",
+  "link": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/node_modules/@abiogenesis/typescript-tenant",
+  "target": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+  "actualProductResolution": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+  "descriptors": 11,
+  "loadMs": 16.791166999999973,
+  "payloadsChanged": false,
+  "priorAttempt": "negative",
+  "priorRunAdmitted": false,
+  "retryScope": "same frozen archives/launch; host dependency binding corrected; no source/evaluator/LLM work"
+}

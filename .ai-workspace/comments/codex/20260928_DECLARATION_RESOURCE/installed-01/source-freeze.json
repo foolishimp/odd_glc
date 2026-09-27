@@ -1,0 +1,55 @@
+{
+  "kind": "declaration_resource_caller_freeze",
+  "commit": "95f07271af4a81c9dfacb73189a18fa09efa5bc0",
+  "files": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "sha256": "sha256:788576f3f87f253e676501d21cad1558628c68df63c70ba0f70a8d622f8806d8"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "sha256": "sha256:d92796ea364d106cb9c01d62cd4dcbc363949a5f4181991641f4da7c5b8cd37c"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "sha256": "sha256:3a6386752c139df6c1742475af07503dc523a9a3624e80e2bb7e66b3327edeaa"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "sha256": "sha256:2f1eeb3ce2a23d6271b9677337fd671b35a5f615070d16d6a397995e40adf1b3"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": "sha256:271efa4796a8bf2048e763e4fe39d6cedf6cfd7bbc67e6040f821c264399ff58"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "sha256": "sha256:3fb2d7f3148b53b3960c9078b8528b106b2eec55cd6f4873c0944d6de3759c31"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+      "sha256": "sha256:63a10082c83899da949384d0c0ee796218d11093cd5cd26832e862ae84d112b8"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "sha256": "sha256:84f8f351a8f8253783b9928800ecbfc570edea06718ff2b293782232e0687a92"
+    },
+    {
+      "path": "build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md",
+      "sha256": "sha256:fbb19582aa1cdb9b8ebb6c188b5ea58e84dc566fa96ac557f5ebf2b1fc289300"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/candidate.mjs",
+      "sha256": "sha256:0649a4dff87b5a4f8af5df2a18a66cee7981b0eb4c4ffa9dcd4e1297ceacce5c"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/package.mjs",
+      "sha256": "sha256:15fc00bb9b9b25eca3e6dd86dceb9fc9c6058b4bd174294952fd6f9b05cc22bd"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/prepare.mjs",
+      "sha256": "sha256:7be44897f47818dff8234f432dbf9ec7745fb7d82c51d79e8a85e7edbdc88c63"
+    }
+  ],
+  "reusedUnchanged": []
+}

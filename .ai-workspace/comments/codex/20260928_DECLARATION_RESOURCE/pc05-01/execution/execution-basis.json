@@ -1,0 +1,26 @@
+{
+  "activationPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/activation.json",
+  "activationDigest": "sha256:403eaebe32ef4db5a01767fc04e21a87c8c535d42f78cb51a8fdce46033f1e41",
+  "sourceFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/source-freeze.json",
+    "digest": "sha256:2cd639ae06fee36e8de3ea0c6789a289eee1404f5ad3b4f28ad1c33d26ebaa61"
+  },
+  "constructionReview": {
+    "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/caller-source-review.md",
+    "digest": "sha256:7853850b5bf133dd8d2526a7cbfb7f5ac23f92043993979f8ff50bd7a1306c4e"
+  },
+  "callerFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/caller-freeze.json",
+    "digest": "sha256:ee027e75e9a4d503adbe721c018dc4a7a89e0e1fea24339543250023fc078ae1"
+  },
+  "launchDigest": "sha256:3370a58af0bdf331cc8c3333880ca506e57e558a5d32b19e1ac87a9deb962a25",
+  "beforeBytes": 1020732234,
+  "startedAt": "2026-09-27T18:49:39.126Z",
+  "transportDigest": "sha256:3e6ca182a7a6c36dce1737d9caaec5066abd9816b35c427c91b0ca7c7b5a0714",
+  "setup": {
+    "packageMs": null,
+    "installMs": 47024.845375,
+    "setupMs": 52746.09916599999,
+    "timingLimitation": "Initial wrapper failed before timing persistence; those durations are unavailable. Final fresh descriptor check is separately measured. Do not report its duration as total packaging."
+  }
+}

@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: preserve the first owner refusal if no Run was admitted
+    at runInstalledConstruction (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:147:3)
+    at async file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:188:29 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.7.0

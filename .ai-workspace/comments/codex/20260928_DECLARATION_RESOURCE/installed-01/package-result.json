@@ -1,0 +1,65 @@
+{
+  "selectedDuty": {
+    "ref": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/provenance",
+    "role": "provenance",
+    "obligationRef": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681",
+    "bindingRef": "semantic-job-binding://abiogenesis/cb7429bf44731786a71f9940e54cfe88464f9e9388f4f0f60fd3180c74429336",
+    "requires": [],
+    "scopeRefs": [
+      "policy://abiogenesis/semantic-job/c81808c3c99bc8f9e7196d13c8a31ef5b800190b19bfc8f701f6328242656074",
+      "proof-shape://abiogenesis/semantic-job/c81808c3c99bc8f9e7196d13c8a31ef5b800190b19bfc8f701f6328242656074"
+    ],
+    "applicability": {
+      "value": "true",
+      "basisRefs": [
+        "policy://abiogenesis/semantic-job/c81808c3c99bc8f9e7196d13c8a31ef5b800190b19bfc8f701f6328242656074"
+      ]
+    },
+    "dependencies": [
+      {
+        "path": "specification/project-conformance.md",
+        "digest": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a"
+      }
+    ],
+    "dependentPaths": [
+      "design/implementation-design.md"
+    ]
+  },
+  "originalGrant": [
+    "specification/project-conformance.md",
+    "design/implementation-design.md",
+    "package.json",
+    "src/hello.mjs",
+    "design/test-design.md",
+    "test/component/hello.test.mjs",
+    "test/uat/hello.uat.test.mjs",
+    "test-execution-plan.json",
+    "verification/check-inventory.mjs",
+    "verification/check-package.mjs",
+    "verification/check-documents.mjs",
+    "verification/check-verifier-structure.mjs",
+    "verification/check-plan.mjs",
+    "verification/check-derivation.mjs"
+  ],
+  "mode": "construction_only",
+  "status": "packaged_and_static_closure_verified",
+  "candidateArtifacts": [
+    {
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:92ba639bcb7cae314aab9741c4ca3029c3d7e5aa7995698dc6f511aace1c6f57",
+        "productContentDigest": "sha256:8d75d222841114dea5952f423afa6b5b53dd1e10c067f03af6394f217061a427",
+        "manifestDigest": "sha256:a6c1a68e2d1cd2ae2c68133d392772ac0887be03ec846a4de721d0feec2bc3c4",
+        "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+        "packageName": "@odd-glc/route-one-typescript",
+        "packageVersion": "0.3.0-dev.2"
+      }
+    }
+  ],
+  "packageMs": 789.8689999999999,
+  "preflightMs": 11766.32475,
+  "programRef": "program://odd-glc/construction/2bce52bfb744987eadc4d633f0f7d97638ade0ae336baf8899a8af90c8bc068f@5",
+  "catalogRows": 59,
+  "declarationClosure": "sha256:d047d02b661dfb4a11cd6d94ade76959354f58dee764cfa8576f5af958bdd1e7",
+  "scope": "hypothetical install candidates test pure declaration closure; actual install, ABG admission and execution unproved"
+}

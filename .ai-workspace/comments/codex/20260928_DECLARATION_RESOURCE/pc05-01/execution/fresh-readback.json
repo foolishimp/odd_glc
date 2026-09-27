@@ -1,0 +1,79 @@
+{
+  "timings": {
+    "run_resultMs": 72698.534917,
+    "run_resultProcessMs": 73061.063083,
+    "run_replayMs": 72224.764583,
+    "ownerCountReadMs": 228.04554200000712,
+    "run_replayProcessMs": 72815.03112500001
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/7a23decbece9f9351a35e3bfe0de3d12e481ab022c0047c9a70ef032a1289780",
+    "projectionDigest": "sha256:7a23decbece9f9351a35e3bfe0de3d12e481ab022c0047c9a70ef032a1289780",
+    "graphCallCount": 4,
+    "cCallCount": 6,
+    "actorEventCount": 0,
+    "actorOccurrenceCount": 0,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5",
+      "graph-function://odd-glc/program-construction/authenticate-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-construction@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:3e7d6e6dc6524380bb2992ae09bf305db3fdde2afb9d25795b5eea05f922dada",
+      "c-call:sha256:265be5004d1b81af73f2725f7f78c8cd0ffb1010b4b4de732659450e92c78a57",
+      "c-call:sha256:e3c543bdc9d70f96316f4bd4b11fb6e1fac15aaeaa65c6682820507d16c95dd1",
+      "c-call:sha256:9bac91a348403e096d5b95122ad6fba8dba265911d66d0e8b98dcdbf336d3285",
+      "c-call:sha256:9a1b2876f2485a86dcf27d0b9ceba4cc1eedeef5d04f70646341636a460b2c7c",
+      "c-call:sha256:4b461b1885a39a80ddc34f737f3d3c2299c29be8af8f7fb3f874d5f43ed905fb"
+    ],
+    "failures": [
+      {
+        "eventId": "event://abiogenesis/4dc35732655a11a163aad3cca7950acce04c671e8426a3f6604ba158efcdb2d1",
+        "payload": {
+          "basisId": "execution-basis://abiogenesis/3cca12fb2e33429c9fed89dfaea972b39fa7de067ca2bc6684884a19fc8841a7",
+          "diagnosticRef": "diagnostic://abiogenesis/hog/workflow-failure-contract-ambiguous@5",
+          "failureDigest": "sha256:6e690580cb01319ee1ab8a255ec328819317cc987624b79ee1d0942610d2266a",
+          "failureRef": "runtime-failure://abiogenesis/6e690580cb01319ee1ab8a255ec328819317cc987624b79ee1d0942610d2266a",
+          "frameId": "frame://abiogenesis/f8fa20679f28da60193d6db098b4b0944d77d5b265f27e7b592673b304b23fe0",
+          "graphCallId": "graph-call://abiogenesis/606559727771738fe89e0b78cd2ee80d56dab8a4bd73aa691e13017b7a4ab5aa",
+          "runId": "run://abiogenesis/56c91358a5afca7b1a186cba9c4cca316441a42f192b4967ec218224dcee93d0",
+          "stage": "hog_traversal",
+          "subjectDigest": "sha256:8316266fd1448a801bdfa93a600303cf48234bfdceda6e3729ec8e30baa3b8c9"
+        }
+      }
+    ]
+  },
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:56772758a92c292bc043c5cff724f03d1d9c349cf03a029444fe0e6f6be4fecc",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:002b59f751186bee135018088f71bf1f7db972164e30d1706d57155011bb26d4",
+      "prefixLength": 1046610874,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:ea5f870e82fd8cb5ee2bf5e99af7999e33ccf03e428601a39c43a7ae638365e5",
+      "device": 16777230,
+      "durableByteLength": 1046610874,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:002b59f751186bee135018088f71bf1f7db972164e30d1706d57155011bb26d4",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "acquisitions": 2,
+  "projections": [
+    "run_result",
+    "run_replay"
+  ],
+  "boundary": "Two existing Public reopen/close calls in separate fresh processes; counts reuse replay owner prefix. No third recovery or journal copy."
+}

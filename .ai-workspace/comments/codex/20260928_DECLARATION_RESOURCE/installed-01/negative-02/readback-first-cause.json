@@ -1,0 +1,9 @@
+{
+  "message": "Cannot read properties of null (reading 'outcomeKind')",
+  "stack": "TypeError: Cannot read properties of null (reading 'outcomeKind')\n    at readInstalledConstruction (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:91:32)\n    at async file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:199:29",
+  "timings": {
+    "acquireMs": 25027.763583,
+    "run_resultMs": 2.7484589999985474,
+    "closeMs": 0.33383299999695737
+  }
+}

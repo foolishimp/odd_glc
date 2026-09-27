@@ -1,0 +1,47 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.catalog.view",
+      "memberKey": "allowlist"
+    },
+    "invocationRef": "invocation://abiogenesis/df197a01728e8f9a22f05b61fbabf537348c5dbf02f0e0bae072cd0e280d798e",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "view": {
+          "ref": "graph-function-catalog-view://abiogenesis/b18426a2b583005cbad23a9520c4235129027b052cfa9a2a2972674463626397",
+          "digest": "sha256:b18426a2b583005cbad23a9520c4235129027b052cfa9a2a2972674463626397"
+        },
+        "effectiveHandles": [
+          "graph-function://odd-glc/construction/2bce52bfb744987eadc4d633f0f7d97638ade0ae336baf8899a8af90c8bc068f@5",
+          "graph-function://odd-glc/program-construction/authenticate-construction@5",
+          "graph-function://odd-glc/program-construction/construction-child@5",
+          "graph-function://odd-glc/program-construction/join-native-output@5",
+          "graph-function://odd-glc/program-construction/prepare-construction@5",
+          "graph-function://odd-glc/program-construction/prepare-native-task@5"
+        ],
+        "residuals": []
+      }
+    },
+    "resources": {
+      "kind": "catalog_view_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "disposition": "read_only_unchanged",
+      "catalog": {
+        "ref": "graph-function-catalog://abiogenesis/62832f6e8e61ceafee2c3eac422df60a99668352bb7ffec95a3e858376f1e7ce",
+        "digest": "sha256:62832f6e8e61ceafee2c3eac422df60a99668352bb7ffec95a3e858376f1e7ce"
+      },
+      "view": {
+        "ref": "graph-function-catalog-view://abiogenesis/b18426a2b583005cbad23a9520c4235129027b052cfa9a2a2972674463626397",
+        "digest": "sha256:b18426a2b583005cbad23a9520c4235129027b052cfa9a2a2972674463626397"
+      }
+    },
+    "failure": null
+  }
+}

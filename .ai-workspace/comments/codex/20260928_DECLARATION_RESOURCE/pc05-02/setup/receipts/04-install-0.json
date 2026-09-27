@@ -1,0 +1,109 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.product.install",
+      "memberKey": "install"
+    },
+    "invocationRef": "invocation://abiogenesis/258236d2afaca33ce70790c85f37098334a9f3d8543de91e1b3d5ce5787e674e",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "disposition": "materialized",
+        "installedProduct": {
+          "ref": "product-install://@abiogenesis/typescript-tenant/5.0.0-rc.1/3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535/ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be",
+          "digest": "sha256:212659d58ea550c3fbea1609b6804fcf9c3429ca37a0b6f2d6841ea6eac38c9f"
+        },
+        "installManifest": {
+          "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/products/core47/node_modules/@abiogenesis/typescript-tenant/product-toolchain-manifest.json",
+          "digest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b"
+        },
+        "installerManifest": {
+          "ref": "artifact-truth-projection://abiogenesis/17db743d8f50f24629c2215bcd2cb8972570d45ee8b28b989ccd29dc3926a90c",
+          "digest": "sha256:17db743d8f50f24629c2215bcd2cb8972570d45ee8b28b989ccd29dc3926a90c"
+        },
+        "resolvedLock": {
+          "ref": "product-lock://abiogenesis/ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be",
+          "digest": "sha256:ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be"
+        },
+        "provenance": [
+          {
+            "ref": "artifact-truth-projection://abiogenesis/17db743d8f50f24629c2215bcd2cb8972570d45ee8b28b989ccd29dc3926a90c",
+            "digest": "sha256:17db743d8f50f24629c2215bcd2cb8972570d45ee8b28b989ccd29dc3926a90c"
+          }
+        ]
+      }
+    },
+    "resources": {
+      "kind": "product_install_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_completion",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 1046610874,
+          "prefixDigest": "sha256:002b59f751186bee135018088f71bf1f7db972164e30d1706d57155011bb26d4",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:56772758a92c292bc043c5cff724f03d1d9c349cf03a029444fe0e6f6be4fecc"
+        },
+        "successor": {
+          "kind": "acquired_abg_event_resource_selection",
+          "schemaVersion": "5.0.0",
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 1048925597,
+            "prefixDigest": "sha256:9c53aeb86cb6702e9515892cbd5ede1d19d9026858c7e1b9ea3722ba4aa63729",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:3d9b1cd29f047d777aeae287f51fefda20fae67b52b50dad4501b8db053d77ac"
+          }
+        },
+        "receiptDigest": "sha256:4d63ef42fba887571090616fb582702ee0f6f2371bdf27876800244ac1790c82"
+      },
+      "packedArtifact": {
+        "ref": "abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+        "digest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9"
+      },
+      "resolvedLock": {
+        "ref": "product-lock://abiogenesis/ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be",
+        "digest": "sha256:ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be"
+      },
+      "targetRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/products/core47",
+      "installCandidate": {
+        "ref": "product-install://@abiogenesis/typescript-tenant/5.0.0-rc.1/3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535/ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be",
+        "digest": "sha256:212659d58ea550c3fbea1609b6804fcf9c3429ca37a0b6f2d6841ea6eac38c9f"
+      },
+      "installedProduct": {
+        "ref": "product-install://@abiogenesis/typescript-tenant/5.0.0-rc.1/3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535/ce038d5072c33af77d638d7ec0f66104de736ae747a6989ecfdaa144f5cbc5be",
+        "digest": "sha256:212659d58ea550c3fbea1609b6804fcf9c3429ca37a0b6f2d6841ea6eac38c9f"
+      },
+      "installManifest": {
+        "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/products/core47/node_modules/@abiogenesis/typescript-tenant/product-toolchain-manifest.json",
+        "digest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b"
+      },
+      "installerManifest": {
+        "ref": "artifact-truth-projection://abiogenesis/17db743d8f50f24629c2215bcd2cb8972570d45ee8b28b989ccd29dc3926a90c",
+        "digest": "sha256:17db743d8f50f24629c2215bcd2cb8972570d45ee8b28b989ccd29dc3926a90c"
+      }
+    },
+    "failure": null
+  }
+}

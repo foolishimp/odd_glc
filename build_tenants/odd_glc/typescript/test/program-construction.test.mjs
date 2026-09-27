@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import * as product from '@abiogenesis/typescript-tenant/product';
 import * as gtl from '@abiogenesis/typescript-tenant/gtl';
 import * as validator from '@abiogenesis/typescript-tenant/validator';
+import {constructAbgHistoricalDeclarationReference} from '@abiogenesis/typescript-tenant/abg';
 import {constructLifecycleProgram,constructProgramConstructionLibrary,selectLifecycleWork,projectNativeSource} from '../src/program-construction.mjs';
 import {ids,stages,constructionStages,dependencyKind} from '../src/program-construction-contracts.mjs';
 import {isConstructionInput,isNativeConstructionInput,constructNativeConstructionInput,constructionState,isConstructionState,nativeConstructionTask,constructionOutput,
@@ -243,6 +244,32 @@ function acquiredFor(input) {
   return product.constructNativeWorksiteCommandExecutionTask({...request,sourceReacquisition:{request,
     nativeBasis:{predecessorPrefix:request.source.prefix,cCallRef:'c-call://component/unadmitted-reacquisition'},bindingCoverEventRefs:[]}});
 }
+test('declaration references cross construction handoffs without embedding proof or accepting a crossed source',()=>{
+  const {input}=nativeFixture(),legacyRequest=reacquisitionRequest(input);
+  // Explicit component declaration coordinates; only ABG's installed owner
+  // establishes the historical proof and its actual admitted preparation.
+  const catalogBasisDigest=hash('component constructor catalog');
+  const proof={kind:'abg_historical_declaration_proof',schemaVersion:version,
+    catalog:{basisDigest:catalogBasisDigest,readinessBasisDigest:hash('component constructor readiness')},
+    catalogView:{catalogBasisDigest,viewDigest:hash('component constructor view')}};
+  const {declarationProof,...selected}=input.sourceSelection;
+  input.sourceSelection={...selected,declarationReference:constructAbgHistoricalDeclarationReference(proof)};
+  const request=reacquisitionRequest(input),acquired=acquiredFor(input);
+  assert.deepEqual(request.source,input.sourceSelection);
+  assert.equal(Object.hasOwn(request.source,'declarationProof'),false);
+  const sourceFree=({source,requestRef,requestDigest,...rest})=>rest;
+  assert.deepEqual(sourceFree(request),sourceFree(legacyRequest));
+  assert.notEqual(request.requestDigest,legacyRequest.requestDigest);
+  assert(product.isNativeWorksiteCommandReacquisitionRequest(legacyRequest),'old inline representation remains valid');
+  const state=constructionState(product.constructRetainedGraphInput(input,acquired));
+  assert(isConstructionState(state));
+  assert.deepEqual(nativeConstructionTask(state).context,input.currentContext);
+  const crossed=structuredClone(input);
+  crossed.sourceSelection.declarationReference.viewDigest=hash('other constructor view');
+  assert.throws(()=>constructionState(product.constructRetainedGraphInput(crossed,acquired)),/exact original construction entry/);
+  const ambiguous=structuredClone(input);ambiguous.sourceSelection.declarationProof=declarationProof;
+  assert.throws(()=>reacquisitionRequest(ambiguous),/source selector|reacquisition/);
+});
 // Explicit unadmitted component premises. Public native validation checks their
 // shape; only the installed native owner can establish actual observation truth.
 function componentObservation(task,files={},gaps=[],occurrence='first') {
@@ -444,6 +471,28 @@ test('PC03 construction edge records derive from actual before/after and cannot 
   const unknown=structuredClone(view);unknown.constructionObservations[0].observation.before.entries=[];
   assert.equal(deriveNativeRecords(unknown).records.conditions.constructionEdges.value,'unknown');
   const absent=structuredClone(view);absent.constructionObservations=[];assert.notEqual(deriveNativeRecords(absent).records.verdict,'true');
+});
+test('PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join',()=>{
+  const {input,consumer}=combinedFixture(),path='prospective-package.json';
+  consumer.dependentPaths=[path];input.constructionGroups.at(-1).writeRoots=[path];
+  for(const duty of input.model.duties)for(const dependency of duty.dependencies)
+    if(dependency.producerDutyRef===consumer.ref)dependency.path=path;
+  const evaluate=body=>constructedEvaluationInput(product.constructRetainedGraphInput(input,completedConstruction(input,{[path]:body})));
+  const plain=evaluate(JSON.stringify({private:true,type:'module'})),output=deriveNativeRecords(plain);
+  const edge=output.records.constructionEdges.find(r=>r.dutyRef===consumer.ref);
+  assert.equal(edge.contentObservations.declaresPredecessor.value,'false');
+  assert.equal(edge.contentObservations.declaresPredecessor.evidenceRole,'non_closing_content_observation');
+  assert.equal(Object.hasOwn(edge.conditions,'declaresPredecessor'),false);
+  assert.equal(edge.verdict,'true','matching actual component before/after and declared read do not require decorative metadata');
+  assert.equal(output.records.semanticClosure,'not_claimed');
+  assert(output.records.residuals.includes('faithful derivation requires independent semantic assessment'));
+  const marked=structuredClone(evaluate(JSON.stringify({private:true,type:'module',derivedFrom:consumer.dependencies.map(d=>d.path)})));
+  const producer=marked.constructionObservations.find(r=>r.dutyRefs.includes(consumer.ref));
+  producer.resolvedDependencies[0].digest=hash('crossed predecessor');
+  const crossed=deriveNativeRecords(marked).records.constructionEdges.find(r=>r.dutyRef===consumer.ref);
+  assert.equal(crossed.contentObservations.declaresPredecessor.value,'true');
+  assert.equal(crossed.conditions.predecessorBinding.value,'false');
+  assert.equal(crossed.verdict,'false','a decorative marker cannot override the actual structural join');
 });
 test('PC03 binding14 joins exact predicate, protected module and observed plan while preserving raw-field residuals',()=>{
   const {input}=combinedFixture(),view=constructedEvaluationInput(product.constructRetainedGraphInput(input,completedConstruction(input)));

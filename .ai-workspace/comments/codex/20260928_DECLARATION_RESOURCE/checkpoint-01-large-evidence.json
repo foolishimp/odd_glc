@@ -1,0 +1,265 @@
+{
+  "scope": "Closed large evidence only; expanded installations/caches are reproducible from selected archives and excluded. Extract at repository root to restore original locators. Files remain unchanged locally. Active successor excluded.",
+  "archive": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-01-large-evidence.tgz",
+  "archiveBytes": 139323556,
+  "archiveSha256": "31b6026046cd15a141a605c04a9c37b247766416ca9914aa821b037108bf4772",
+  "members": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/activation-02.json",
+      "bytes": 15921437,
+      "sha256": "ca499f1d68fb8658c9b4460d5fa581cb0342e7ded1d837abdd82497c646593f1"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/activation-pending-review.json",
+      "bytes": 15917568,
+      "sha256": "058424103b574d2981fc2d8353153277d5eae177767fd6fcbb51c75c4a1bb506"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/activation.json",
+      "bytes": 15920974,
+      "sha256": "287d153dbf4a1e80fb69b8baf6e575f630736f6b14156641fef64e92e631d1ee"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-start.jsonl",
+      "bytes": 63069092,
+      "sha256": "0c27aa09468ba5fa6266d2edb9a418c071f4f054cd58c5b8074d62fccbbbae95"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/readback-recovery-selection.json",
+      "bytes": 12813912,
+      "sha256": "330d1d930955840f3273b5cfd5ca56348d84baf5f19a69166dc3dca40456fdb4"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/00-verify-0.json",
+      "bytes": 25804424,
+      "sha256": "fa6a72636b0bd6a5e7e1254b6500e6bb58bb28ec1c7cd80c3483b9f2dee1f28c"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/01-verify-1.json",
+      "bytes": 13176527,
+      "sha256": "f7319cb5b26c6d788a93cf282c89bc99788f7f660cf13519e7d62f27101d9093"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/02-resolve.json",
+      "bytes": 26432718,
+      "sha256": "363817cc2b9161250866eb77510c1c015d2868cc9e3bfb04e453d47019525865"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/03-install-0.json",
+      "bytes": 29369208,
+      "sha256": "ee7b46cd17cfe98307b7efb0d4ddcbaa2d77343f8f301866f32de1cca610266d"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/04-install-1.json",
+      "bytes": 16740161,
+      "sha256": "37733b69ad1f096449fbb2f23f3398fa2a30ed4e739c7a423dfbc8d8bb017a99"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/05-bind.json",
+      "bytes": 20175545,
+      "sha256": "4ca826223bc3ba08998eeb1142c90dfc3d6845182f66d8abe93ff2b4839a3f71"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/06-catalog.json",
+      "bytes": 33684427,
+      "sha256": "ce9da42904007a9316ea647b70cd02cbfccbe8278b261567c448e0e79e0655fd"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/07-view.json",
+      "bytes": 36072273,
+      "sha256": "e14aefe4b838186669cde475c7b62f04ec755baaf638a87620b20f019b3cca58"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/08-conformance.json",
+      "bytes": 37437664,
+      "sha256": "ef0f97a376620a27828c18c1739ca7941f768ab1a2e566efd8d535c1bf295127"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/setup/calls/09-native-child-binding-cover.json",
+      "bytes": 13170341,
+      "sha256": "a605c4682f60bafaef11c2ad52770d63166de2a65b68e981c15ceb75a7ba68dd"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/valid-input.json",
+      "bytes": 2628611,
+      "sha256": "128c5323e0384090ebc867ca5c48bccec724e8b8bd94e7aefa2f876055fdbb71"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/valid-rebound-input.json",
+      "bytes": 2628573,
+      "sha256": "a85775ea815a1e4a1173d8516ceeeb943cd32951f4415c3171144056d812862e"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/activation-pending-review.json",
+      "bytes": 15931519,
+      "sha256": "e421c2a9e50ff69b8d2d8fc232f272a5227ce9a28a18bf193a4a9e86d52547ff"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/activation.json",
+      "bytes": 15936604,
+      "sha256": "403eaebe32ef4db5a01767fc04e21a87c8c535d42f78cb51a8fdce46033f1e41"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/00-verify-0.json",
+      "bytes": 25804428,
+      "sha256": "4a457955778e4c43231ee25da0d90bfd4cae4dfddfbd316bc36b911ae8f24708"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/01-verify-1.json",
+      "bytes": 13185152,
+      "sha256": "a7d33ff9e90479d0c40b80ecbcbe31d48059332e71cc28f7eece89ff58de401e"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/02-verify-2.json",
+      "bytes": 13171697,
+      "sha256": "09b9628ee26b50e99aa5b9fd554d3d4a7d9ddcbc2207ad0f27ff4666d69d1691"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/03-resolve.json",
+      "bytes": 26452367,
+      "sha256": "b57299960befdd8a721f4ca9dbe0ebea3f78acab78bcd30d47f3b3599d74c0b8"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/04-install-0.json",
+      "bytes": 29383967,
+      "sha256": "9c00a077ea429eb5dcdfb261f1064d828bef3ceeedcec9c51a4883423860ce9a"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/05-install-1.json",
+      "bytes": 16762859,
+      "sha256": "7e272229fbe16e160ed586876856a77d4520d9cf054932574c23ceb7360cb0b8"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/06-install-2.json",
+      "bytes": 16750064,
+      "sha256": "0643e35eb9264149772faa22822786d786707bc10ee32ad65808f7cad6f28371"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/07-bind.json",
+      "bytes": 20205607,
+      "sha256": "5b0241714030a65ef8040164b9b7882568a69ecefe64e424b52ff7fdd845b721"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/08-catalog.json",
+      "bytes": 33810068,
+      "sha256": "4e783ee5e85ca4bc97fd47e621e9b9ae98916588cd00facdd74a3eb5a8a2c448"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/09-view.json",
+      "bytes": 36391093,
+      "sha256": "ffab420e4c45357ea8cac0fc14961b2b901996e4bb960311d726a6325066d75a"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/10-conformance.json",
+      "bytes": 38005927,
+      "sha256": "d731fc554ad87a6e8faef8a39e35242f8bd2b7be9f1280c2e424e28c869ec171"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/setup/calls/11-native-child-binding-cover.json",
+      "bytes": 13171303,
+      "sha256": "a5eb5773250b3deb842f1c46a9064b56f770777af31e614333515b4ba9889259"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/start.jsonl",
+      "bytes": 63408731,
+      "sha256": "3370a58af0bdf331cc8c3333880ca506e57e558a5d32b19e1ac87a9deb962a25"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/activation-pending-review.json",
+      "bytes": 15931519,
+      "sha256": "9b66a1e609e19b377f9d34a77baef79328e444e38b0f252a03e157ed652ac004"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/activation.json",
+      "bytes": 15936912,
+      "sha256": "cb9fc30eb1e5d30d17b7af50b5091782c3803454174ce2181e753f2579843969"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/00-verify-0.json",
+      "bytes": 25804428,
+      "sha256": "4a457955778e4c43231ee25da0d90bfd4cae4dfddfbd316bc36b911ae8f24708"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/01-verify-1.json",
+      "bytes": 13185152,
+      "sha256": "0cb7958c8387bb37c7e0f130b43e41bab2365f0af89b74eb8620525e21ac9106"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/02-verify-2.json",
+      "bytes": 13171697,
+      "sha256": "7833d823c4f6ad041f64011efd3a9269bc06427cadec6f37e66bae404548112a"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/03-resolve.json",
+      "bytes": 26452367,
+      "sha256": "b9a1f9f7652b0b57de0efe918bc4bf247e09f60c1894dc090d30cf722fb45201"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/04-install-0.json",
+      "bytes": 29383967,
+      "sha256": "ae600b2cb050c9e9cb7d9304884dfe7c5a37645557b5e9f722d8187e1ea0f6dd"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/05-install-1.json",
+      "bytes": 16762859,
+      "sha256": "4ab7aa7f15a11e78d20075f909ba466c725f0438df5e211d58f5d2c29bd1899c"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/06-install-2.json",
+      "bytes": 16750064,
+      "sha256": "3a893e10e2ac4e425f1e865953b40e8faaae0ef8d9251c327a678359959ecdda"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/07-bind.json",
+      "bytes": 20205607,
+      "sha256": "7071252f5e1353d155556a52101e52f2d978128e95f8abf9f247704c83f9f7ff"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/08-catalog.json",
+      "bytes": 33810341,
+      "sha256": "5c33eb62f3cf2cdc749dfc208d936d09da4f497d7c665638ac67e92ed90d366f"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/09-view.json",
+      "bytes": 36392203,
+      "sha256": "b4dd7dd8e876f90afc6a377acf11f16fe567dcc13373efe275823f04cf0ad2cc"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/10-conformance.json",
+      "bytes": 38008165,
+      "sha256": "064be896c4ed2a50dff2a29dce70dca6bc7c4e00eb61f3e4474575d057f4ba3e"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/setup/calls/11-native-child-binding-cover.json",
+      "bytes": 13171303,
+      "sha256": "f64bf06dfc3296394f095bc58d90c71feefe6ccdef5c99e515a06d700cce77d6"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/start.jsonl",
+      "bytes": 63410081,
+      "sha256": "7239125706a0310579b1d4553c1398473ae4ce0fc9907e7ac046b5430a522653"
+    }
+  ],
+  "rawBytes": 1137711506,
+  "verifiedEveryMember": true,
+  "elapsedSeconds": 8.82271850015968,
+  "archiveParts": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-01-large-evidence.tgz.part00",
+      "bytes": 48000000,
+      "sha256": "4da14c165ad31e2bb85b66500ceca4da582a368eace3411743fe7bf86dae3ba8"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-01-large-evidence.tgz.part01",
+      "bytes": 48000000,
+      "sha256": "1bcea44cbcf4d4523df967e48c6565d3a52ff6edaeaa2c873319d3db6eacf113"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-01-large-evidence.tgz.part02",
+      "bytes": 43323556,
+      "sha256": "e04127ab7f9482d0479fc05edf6e8791a8f3ac15055ae17a2f7ccf7308324221"
+    }
+  ],
+  "reassembly": "Concatenate archiveParts in order to archive; verify archiveSha256, then extract at repository root. The unsplit local copy is not added to Git.",
+  "splitElapsedSeconds": 0.12040020804852247
+}

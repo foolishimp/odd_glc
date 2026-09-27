@@ -60,8 +60,58 @@ export function occurrenceCounts(abg,prefix,run){
  const actorAtoms=atoms.filter(a=>a.eventKind.startsWith('actor_'));
  return {projectionRef:projected.viewRef,projectionDigest:projected.viewDigest,
   graphCallCount:calls.length,cCallCount:cCalls.length,actorEventCount:actorAtoms.length,
-  actorOccurrenceCount:new Set(actorAtoms.map(a=>a.aggregateId)).size,
-  graphFunctions:calls.map(a=>a.graphFunctionRef),cCallRefs:cCalls.map(a=>a.aggregateId)};
+  actorOccurrenceCount:new Set(actorAtoms.filter(a=>a.eventKind==='actor_invocation_started').map(a=>a.aggregateId)).size,
+  graphFunctions:calls.map(a=>a.graphFunctionRef),cCallRefs:cCalls.map(a=>a.aggregateId),
+  failures:selected.authorityPrefix.events.filter(e=>e.runId===run.ref&&e.kind==='runtime_failure_observed')
+   .map(e=>({eventId:e.eventId,payload:e.payload}))};
+}
+
+// Public project-read owns reopen/close. Each cold read gets its own process:
+// a completed first projection must not retain a second decoded history.
+export async function readInstalledConstructionMember(activationPath,receiptPath,rootDir,memberKey){
+ assert(['run_result','run_replay'].includes(memberKey));
+ const activation=await read(activationPath),{product,abg,installedPublic}=await installedApis(activation.coreRoot);
+ const receipt=(await read(receiptPath)).receipt,closeHandoff=receipt.resources.eventResource.closeHandoff;
+ const timings={};
+ try{
+  const definition=publicReadDefinition({product,abg,installedPublic,workspaceAuthorityBasis:activation.environment.workspaceAuthorityBasis,
+   workspaceBinding:activation.environment.workspaceBinding,admittedInstalls:activation.environment.productInstalls,
+   install:{verified:activation.abiArtifact}},{receipt,closeHandoff},memberKey);
+  const began=performance.now(),result=await installedPublic.runInstalledDefinitionCallTransport({kind:'reopen',closeHandoff},definition);
+  timings[memberKey+'Ms']=performance.now()-began;
+  await save(rootDir,'fresh-'+memberKey+'.json',result);
+  assert.equal(result.kind,'installed_definition_call_transport_result');
+  if(!result.receipt.ownerOutput)throw new Error('Public '+memberKey+' failed: '+JSON.stringify(result.receipt.failure));
+  const expectedAbsence=memberKey==='run_result'&&receipt.ownerOutput.value.disposition==='runtime_failed'&&
+   receipt.ownerOutput.value.result===null&&result.receipt.ownerOutput.outcomeKind==='refusal'&&
+   result.receipt.ownerOutput.value.code==='not_found';
+  if(expectedAbsence)assert.equal(result.receipt.exitCode,1);
+  else {assert.equal(result.receipt.ownerOutput.outcomeKind,'result');assert.equal(result.receipt.exitCode,0);}
+  const completion=result.receipt.resources.eventResource;
+  assert.equal(completion.kind,'abg_event_resource_receipt');assert.equal(completion.acquisitionKind,'reopen');
+  assert.deepEqual(completion.entryPrefix,closeHandoff.prefix);assert.deepEqual(completion.closeHandoff.prefix,closeHandoff.prefix);
+  let counts=null;
+  if(memberKey==='run_replay'){
+   const countStart=performance.now();counts=occurrenceCounts(abg,completion.entryPrefix,receipt.ownerOutput.value.run);
+   timings.ownerCountReadMs=performance.now()-countStart;
+  }
+  return {timings,counts,closeHandoff,acquisitions:1,memberKey};
+ }catch(error){await save(rootDir,memberKey+'-readback-first-cause.json',{message:error.message,stack:error.stack,timings});throw error;}
+}
+
+export async function readInstalledConstruction(activationPath,receiptPath,rootDir){
+ const activation=await read(activationPath),timings={};let replay;
+ for(const member of ['run_result','run_replay']){
+  const began=performance.now(),child=await exec(process.execPath,[fileURLToPath(import.meta.url),'--readback-member',activationPath,receiptPath,rootDir,member],
+   {cwd:rootDir,env:{...process.env,NODE_OPTIONS:'',ABG_TS_CLAUDE_COMMAND:'/unavailable/readback-has-no-actors'},timeout:activation.timeoutMs,maxBuffer:2*1024*1024});
+  await save(rootDir,'fresh-'+member+'.stderr',child.stderr);
+  const value=JSON.parse(child.stdout);assert.equal(value.acquisitions,1);Object.assign(timings,value.timings);
+  timings[member+'ProcessMs']=performance.now()-began;
+  if(member==='run_replay')replay=value;
+ }
+ const result={timings,counts:replay.counts,closeHandoff:replay.closeHandoff,acquisitions:2,projections:['run_result','run_replay'],
+  boundary:'Two existing Public reopen/close calls in separate fresh processes; counts reuse replay owner prefix. No third recovery or journal copy.'};
+ await save(rootDir,'fresh-readback.json',result);return result;
 }
 
 export async function runInstalledConstruction(activationPath){
@@ -103,17 +153,13 @@ export async function runInstalledConstruction(activationPath){
   receipt=await cli(activation.launchPath,'graphExecution');
   const closeHandoff=receipt.resources.eventResource.closeHandoff,run=receipt.ownerOutput.value.run;
   assert(run,'preserve the first owner refusal if no Run was admitted');
-  const reads={};
-  for(const memberKey of ['run_result','run_replay']){
-   const definition=publicReadDefinition({product,abg,installedPublic,workspaceAuthorityBasis:activation.environment.workspaceAuthorityBasis,
-    workspaceBinding:activation.environment.workspaceBinding,admittedInstalls:activation.environment.productInstalls,
-    install:{verified:activation.abiArtifact}}, {receipt,closeHandoff},memberKey);
-   const path=join(rootDir,memberKey+'.jsonl');
-   await writeFile(path,JSON.stringify({kind:'abg_cli_transport_request',schemaVersion:'5.0.0',acquisition:{kind:'reopen',closeHandoff},invocation:definition})+'\n',{flag:'wx'});
-   const fresh=await cli(path,'fresh-'+memberKey);assert.deepEqual(fresh.resources.eventResource.closeHandoff.prefix,closeHandoff.prefix);
-   reads[memberKey]=fresh;
-  }
-  const countStart=performance.now(),counts=occurrenceCounts(abg,closeHandoff.prefix,run);timings.ownerCountReadMs=performance.now()-countStart;
+  const readStart=performance.now();
+  const fresh=await exec(process.execPath,[fileURLToPath(import.meta.url),'--readback',activationPath,join(rootDir,'graphExecution.json'),rootDir],
+   {cwd:rootDir,env:{...process.env,NODE_OPTIONS:'',ABG_TS_CLAUDE_COMMAND:'/unavailable/program-construction-has-no-actors'},timeout:activation.timeoutMs,maxBuffer:1024*1024});
+  timings.freshReadbackMs=performance.now()-readStart;await save(rootDir,'fresh-readback.stderr',fresh.stderr);
+  const readback=JSON.parse(fresh.stdout);assert.equal(readback.acquisitions,2);assert.deepEqual(readback.closeHandoff.prefix,closeHandoff.prefix);
+  Object.assign(timings,readback.timings);const counts=readback.counts,reads={};
+  for(const memberKey of ['run_result','run_replay'])reads[memberKey]=(await read(join(rootDir,'fresh-'+memberKey+'.json'))).receipt;
   assert.equal(counts.actorEventCount,0);assert.equal(counts.actorOccurrenceCount,0);
   assert(!counts.graphFunctions.includes(product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef));
   assert(!counts.graphFunctions.includes(gtl.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef));
@@ -137,6 +183,11 @@ export async function runInstalledConstruction(activationPath){
    if(mode==='construction_only')assert(counts.graphFunctions.includes('graph-function://odd-glc/program-construction/prepare-construction@5'),
      'the wrong predecessor must reach actual acquired-context preparation');
    else assert(!counts.graphFunctions.includes(input.evaluator.graphFunction.ref));
+   if(activation.expectedDiagnostic){
+    const diagnostics=JSON.stringify(counts.failures);
+    assert(diagnostics.includes(activation.expectedDiagnostic)||diagnostics.includes(encodeURIComponent(activation.expectedDiagnostic)),
+     'the admitted runtime failure must retain the selected first cause');
+   }
   }
   const after=(await stat(fileURLToPath(activation.preservedPrefix.eventLogRef))).size;
   const result={status:'installed_discriminator_observed',mode,expectation:activation.expectation,run,result:receipt.ownerOutput.value.result??null,
@@ -148,4 +199,13 @@ export async function runInstalledConstruction(activationPath){
 if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)&&process.argv[2]==='--execute'){
  if(!process.argv[3]||process.argv[4])throw new TypeError('usage: --execute <reviewed-owner-activation.json>');
  console.log(JSON.stringify(await runInstalledConstruction(resolve(process.argv[3]))));
+}
+if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)&&process.argv[2]==='--readback'){
+ if(!process.argv[3]||!process.argv[4]||!process.argv[5]||process.argv[6])throw new TypeError('usage: --readback <activation.json> <run-receipt.json> <output-root>');
+ console.log(JSON.stringify(await readInstalledConstruction(resolve(process.argv[3]),resolve(process.argv[4]),resolve(process.argv[5]))));
+}
+
+if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)&&process.argv[2]==='--readback-member'){
+ if(!process.argv[3]||!process.argv[4]||!process.argv[5]||!process.argv[6]||process.argv[7])throw new TypeError('usage: --readback-member <activation.json> <run-receipt.json> <output-root> <member>');
+ console.log(JSON.stringify(await readInstalledConstructionMember(resolve(process.argv[3]),resolve(process.argv[4]),resolve(process.argv[5]),process.argv[6])));
 }

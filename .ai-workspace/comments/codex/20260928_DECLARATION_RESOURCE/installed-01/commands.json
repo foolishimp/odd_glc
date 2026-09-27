@@ -1,0 +1,15 @@
+{
+  "package": {
+    "environment": {
+      "ABI5_COMPONENT_ROOT": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant"
+    },
+    "command": [
+      "node",
+      "--loader",
+      "./build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/package.mjs"
+    ],
+    "exitCode": 0,
+    "predecessorRefusal": "package-first.stderr records the unselected default module root; no package/install/history mutation occurred before that loader correction"
+  }
+}

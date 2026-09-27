@@ -1,0 +1,20 @@
+{
+  "subject": "Root PC05 single-run caller and exact existing Public readback boundaries",
+  "files": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/execute.mjs",
+      "sha256": "sha256:684764338f380acaf6fa54cfa87a11077d96f2f05180380967066aa7e86d1252",
+      "bytes": 8910
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": "sha256:dce706c28d69eec4743b8c3762371f78ce95379a16210e63e01a3f792e88e029",
+      "bytes": 17433
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "sha256": "sha256:8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "bytes": 87990
+    }
+  ]
+}

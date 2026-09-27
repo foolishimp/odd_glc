@@ -1,0 +1,18 @@
+{
+  "command": "ABI5_COMPONENT_ROOT=/Users/jim/src/apps/abiogenesis/build_tenants/abiogenesis/typescript node --loader ./test/fixtures/program-construction/core-loader.mjs --test ./test/program-construction.test.mjs",
+  "cwd": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript",
+  "exitCode": 0,
+  "tests": 35,
+  "pass": 35,
+  "fail": 0,
+  "skip": 0,
+  "durationMs": 77179.436125,
+  "newReferenceCheckMs": 2573.755458,
+  "longestTest": {
+    "name": "PC03 every retained snapshot dependency and selected predecessor stays current before evaluation",
+    "durationMs": 34428.443708,
+    "work": "Independently constructs and refuses a changed state for every retained snapshot member, then a changed selected predecessor. Aggregate adversarial matrix, not one handoff."
+  },
+  "scope": "compiled-source components; installed/live proof pending",
+  "paidActors": 0
+}

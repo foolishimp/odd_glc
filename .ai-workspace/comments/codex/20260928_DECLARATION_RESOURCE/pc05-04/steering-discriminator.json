@@ -1,0 +1,18 @@
+{
+  "status": "exact_failed_relation_corrected",
+  "priorRefusedInvocation": "invocation://abiogenesis/c0020a867320f2790b50d87be5aeef0a61882eb763f5556abca162d37fdd5552",
+  "oldSteering": {
+    "ref": "transport-steering://abiogenesis/1a774996e144d95af4cfc74fecd08ef0b1b1e9ee5f9c7975d902292bcd7606e1",
+    "digest": "sha256:1a774996e144d95af4cfc74fecd08ef0b1b1e9ee5f9c7975d902292bcd7606e1"
+  },
+  "newSteering": {
+    "ref": "transport-steering://abiogenesis/9f95e381a4ccdf827b77e31a7124980653dc418b117dfd128f496e1850c389cf",
+    "digest": "sha256:9f95e381a4ccdf827b77e31a7124980653dc418b117dfd128f496e1850c389cf"
+  },
+  "currentResourceDigest": "sha256:9f95e381a4ccdf827b77e31a7124980653dc418b117dfd128f496e1850c389cf",
+  "nonSteeringSlots": "unchanged",
+  "request": "unchanged",
+  "productAuthority": "unchanged",
+  "publicAuthorityDigest": "sha256:42681d9292ba9f3c8d64a5c6f4f6396586f653cb4a1f200ef492d53fdd0b0a6b",
+  "scope": "Pure exact relation; actual admission remains pending"
+}

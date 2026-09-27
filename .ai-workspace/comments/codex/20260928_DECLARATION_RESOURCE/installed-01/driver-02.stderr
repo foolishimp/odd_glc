@@ -1,0 +1,38 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: Command failed: /opt/homebrew/Cellar/node/24.7.0/bin/node /Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs --readback /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/activation-02.json /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/graphExecution.json /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02
+file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:91
+    result.receipt.ownerOutput.outcomeKind==='refusal'&&result.receipt.ownerOutput.value.code==='not_found';
+                               ^
+
+TypeError: Cannot read properties of null (reading 'outcomeKind')
+    at readInstalledConstruction (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:91:32)
+    at async file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:199:29
+
+Node.js v24.7.0
+
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at ChildProcess.exithandler (node:child_process:417:12)
+    at ChildProcess.emit (node:events:508:28)
+    at maybeClose (node:internal/child_process:1101:16)
+    at ChildProcess._handle.onexit (node:internal/child_process:305:5) {
+  code: 1,
+  killed: false,
+  signal: null,
+  cmd: '/opt/homebrew/Cellar/node/24.7.0/bin/node /Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs --readback /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/activation-02.json /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/graphExecution.json /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02',
+  stdout: '',
+  stderr: 'file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:91\n' +
+    "    result.receipt.ownerOutput.outcomeKind==='refusal'&&result.receipt.ownerOutput.value.code==='not_found';\n" +
+    '                               ^\n' +
+    '\n' +
+    "TypeError: Cannot read properties of null (reading 'outcomeKind')\n" +
+    '    at readInstalledConstruction (file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:91:32)\n' +
+    '    at async file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs:199:29\n' +
+    '\n' +
+    'Node.js v24.7.0\n'
+}
+
+Node.js v24.7.0

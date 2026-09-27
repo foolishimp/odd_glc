@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "--experimental-loader",
+    "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+    "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/package.mjs"
+  ],
+  "exitCode": 0,
+  "processMs": 13703.150749672204
+}

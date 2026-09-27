@@ -1,0 +1,49 @@
+[
+  {
+    "kind": "actor_transport_binding_admitted",
+    "paths": {
+      "output": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-06b8aefb39f70668-output.txt",
+      "prompt": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-06b8aefb39f70668-prompt.txt",
+      "stderr": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-06b8aefb39f70668-stderr.log",
+      "stdout": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-06b8aefb39f70668-stdout.log",
+      "transport": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-06b8aefb39f70668-transport.json"
+    },
+    "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+    "args": [
+      "-p",
+      "--disable-slash-commands",
+      "--no-session-persistence",
+      "--output-format",
+      "stream-json",
+      "--include-partial-messages",
+      "--verbose",
+      "--permission-mode",
+      "bypassPermissions",
+      "--tools",
+      "Read,Edit,Write,Glob,Grep,Bash",
+      "--json-schema",
+      "{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"summary\",\"gaps\"],\"properties\":{\"summary\":{\"type\":\"string\"},\"gaps\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}}",
+      "--model",
+      "claude-opus-5-5",
+      "--max-budget-usd",
+      "5"
+    ]
+  },
+  {
+    "kind": "actor_result_artifact_observed",
+    "failureClass": "contract_failure",
+    "finalOutput": "API Error: 400 Claude Code 2.1.278 does not support this model; version 2.1.280 or newer is required. Run 'claude update', or update the Claude desktop app, then try again.",
+    "nativeResultAssessment": {
+      "disposition": "rejected",
+      "inputDigest": "sha256:bc54d20a9934c7cf4a5f6d7c7f8fdf78833dc3f01d15f11acb85f849b2644c41",
+      "kind": "native_worker_result_assessment",
+      "rawOutputDigest": "sha256:20592153af87f5b96eeddc2500bd85532b164ed976f58de341a0f4e6dab90313",
+      "resultContractRef": "contract://abiogenesis/worksite/native-work/worker-report@5",
+      "schemaVersion": "5.0.0",
+      "verification": null
+    },
+    "processStatus": 1,
+    "timedOut": false,
+    "toolCallCount": 0
+  }
+]

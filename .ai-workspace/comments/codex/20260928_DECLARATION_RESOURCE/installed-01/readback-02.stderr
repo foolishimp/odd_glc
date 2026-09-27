@@ -1,0 +1,90 @@
+
+<--- Last few GCs --->
+
+[46062:0xa4c80c000]   131969 ms: Scavenge (interleaved) 4047.6 (4078.6) -> 4046.6 (4082.6) MB, pooled: 0 MB, 2.38 / 0.00 ms  (average mu = 0.334, current mu = 0.356) allocation failure; 
+[46062:0xa4c80c000]   132182 ms: Mark-Compact (reduce) 4085.3 (4121.3) -> 3925.9 (3954.8) MB, pooled: 0 MB, 175.25 / 0.00 ms  (+ 1.3 ms in 1 steps since start of marking, biggest step 1.3 ms, walltime since start of marking 180 ms) (average mu = 0.281, cu
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+----- Native stack trace -----
+
+ 1: 0x1004e7814 node::OOMErrorHandler(char const*, v8::OOMDetails const&) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 2: 0x10062697c v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 3: 0x100626934 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, v8::OOMDetails const&) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 4: 0x100803550 v8::internal::Heap::stack() [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 5: 0x100805c90 v8::internal::Heap::OldGenerationConsumedBytes() const [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 6: 0x100805b30 v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector, v8::base::TimeTicks) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 7: 0x1008134bc v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1::operator()() const [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 8: 0x100813160 void heap::base::Stack::SetMarkerAndCallbackImpl<v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)::$_1>(heap::base::Stack*, void*, void const*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+ 9: 0x100f5b658 PushAllRegistersAndIterateStack [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+10: 0x100801b10 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+11: 0x1007f9718 v8::internal::HeapAllocator::AllocateRawWithRetryOrFailSlowPath(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+12: 0x1007e13a4 v8::internal::Factory::NewFillerObject(int, v8::internal::AllocationAlignment, v8::internal::AllocationType, v8::internal::AllocationOrigin) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+13: 0x100b53f78 v8::internal::Runtime_AllocateInYoungGeneration(int, unsigned long*, v8::internal::Isolate*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+14: 0x10101df74 Builtins_CEntry_Return1_ArgvOnStack_NoBuiltinExit [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+15: 0x101045df4 Builtins_ArrayPrototypeJoin [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+16: 0x1268e5f00 
+17: 0x10104da20 Builtins_ArrayMap [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+18: 0x1268e5eb8 
+19: 0x10104da20 Builtins_ArrayMap [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+20: 0x12677d45c 
+21: 0x1267bcc64 
+22: 0x1268bcc34 
+23: 0x12684861c 
+24: 0x1268ae744 
+25: 0x12684f304 
+26: 0x126893684 
+27: 0x126898ff4 
+28: 0x12696e1b4 
+29: 0x1268e2cd4 
+30: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+31: 0x1268e3570 
+32: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+33: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+34: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+35: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+36: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+37: 0x12682ac70 
+38: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+39: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+40: 0x12682ac70 
+41: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+42: 0x12682b09c 
+43: 0x12682b1b0 
+44: 0x12682b940 
+45: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+46: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+47: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+48: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+49: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+50: 0x101092b7c Builtins_PromiseConstructor [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+51: 0x100f81550 Builtins_InterpreterPushArgsThenFastConstructFunction [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+52: 0x101110d28 Builtins_ConstructHandler [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+53: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+54: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+55: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+56: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+57: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+58: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+59: 0x100f80bec Builtins_InterpreterEntryTrampoline [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+60: 0x100fbf648 Builtins_AsyncFunctionAwaitResolveClosure [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+61: 0x1010945f8 Builtins_PromiseFulfillReactionJob [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+62: 0x100faea50 Builtins_RunMicrotasks [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+63: 0x100f7e7b0 Builtins_JSRunMicrotasksEntry [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+64: 0x10075b7ac v8::internal::(anonymous namespace)::Invoke(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+65: 0x10075be58 v8::internal::(anonymous namespace)::InvokeWithTryCatch(v8::internal::Isolate*, v8::internal::(anonymous namespace)::InvokeParams const&) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+66: 0x10075bf48 v8::internal::Execution::TryRunMicrotasks(v8::internal::Isolate*, v8::internal::MicrotaskQueue*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+67: 0x100780b44 v8::internal::MicrotaskQueue::RunMicrotasks(v8::internal::Isolate*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+68: 0x100780960 v8::internal::MicrotaskQueue::PerformCheckpointInternal(v8::Isolate*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+69: 0x100434898 node::InternalCallbackScope::Close() [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+70: 0x10043472c node::InternalCallbackScope::~InternalCallbackScope() [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+71: 0x1004ea19c node::fs::FileHandle::CloseReq::Resolve() [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+72: 0x1004f0738 node::fs::FileHandle::ClosePromise()::$_0::__invoke(uv_fs_s*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+73: 0x1004e1ec8 node::MakeLibuvRequestCallback<uv_fs_s, void (*)(uv_fs_s*)>::Wrapper(uv_fs_s*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+74: 0x1056aed70 uv__work_done [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]
+75: 0x1056b258c uv__async_io [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]
+76: 0x1056c0e28 uv__io_poll [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]
+77: 0x1056b2a00 uv_run [/opt/homebrew/Cellar/libuv/1.51.0/lib/libuv.1.0.0.dylib]
+78: 0x1004353cc node::SpinEventLoopInternal(node::Environment*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+79: 0x100516cfc node::NodeMainInstance::Run(node::ExitCode*, node::Environment*) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+80: 0x100516a90 node::NodeMainInstance::Run() [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+81: 0x1004bd03c node::Start(int, char**) [/opt/homebrew/Cellar/node/24.7.0/bin/node]
+82: 0x18c7004e4 start [/usr/lib/dyld]

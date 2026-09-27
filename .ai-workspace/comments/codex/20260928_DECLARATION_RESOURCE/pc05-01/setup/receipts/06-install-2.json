@@ -1,0 +1,109 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.product.install",
+      "memberKey": "install"
+    },
+    "invocationRef": "invocation://abiogenesis/04c4961c9960e8bc1d71e1917eb26ad27094c848c6668516b5df2e9a745c3bff",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "disposition": "materialized",
+        "installedProduct": {
+          "ref": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/9c4315084c3e280f275763c2461bd3a4db57018807e80d51db89a635fda5e584/58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0",
+          "digest": "sha256:03e7234476986e599f18bc5171332d2248cf5c4d042ee5b9e4b61a8b3c829f3b"
+        },
+        "installManifest": {
+          "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/products/evaluator/node_modules/@odd-glc/program-construction-fixture/product-toolchain-manifest.json",
+          "digest": "sha256:574384df4489d6f91eb743ae1eebcf64cfcb6e9a4b911d3dbcd0e6ade589a47b"
+        },
+        "installerManifest": {
+          "ref": "artifact-truth-projection://abiogenesis/7f48f6cf823bce942f16c61249671f7de6b586d669b18e9bfa6745fdc650be61",
+          "digest": "sha256:7f48f6cf823bce942f16c61249671f7de6b586d669b18e9bfa6745fdc650be61"
+        },
+        "resolvedLock": {
+          "ref": "product-lock://abiogenesis/58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0",
+          "digest": "sha256:58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0"
+        },
+        "provenance": [
+          {
+            "ref": "artifact-truth-projection://abiogenesis/7f48f6cf823bce942f16c61249671f7de6b586d669b18e9bfa6745fdc650be61",
+            "digest": "sha256:7f48f6cf823bce942f16c61249671f7de6b586d669b18e9bfa6745fdc650be61"
+          }
+        ]
+      }
+    },
+    "resources": {
+      "kind": "product_install_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_completion",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 1020716466,
+          "prefixDigest": "sha256:6b501a5994a1661a3b85690f2c9d86d5c8c7026dbdbba58d145675fc5f6ba0b0",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:1288da3b036c6cb9f69fc43b087e6258231f5e71db4f886e57a87b1a985cd6d2"
+        },
+        "successor": {
+          "kind": "acquired_abg_event_resource_selection",
+          "schemaVersion": "5.0.0",
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 1020719895,
+            "prefixDigest": "sha256:2b7b3c918e890603feb24458bf718c1e222c97e6f561e401109f8c90040a38b4",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:a64e456cecddfd333ba0dfc0f76e7460743d0a66992471c7d90c51edb45e4570"
+          }
+        },
+        "receiptDigest": "sha256:ac0b97c5b040beaeaf0d2e663928db331594563232923afdceed94777331e891"
+      },
+      "packedArtifact": {
+        "ref": "odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+        "digest": "sha256:3d122f553ea34dfb342488903c08130018e46bd424eb8467d92db85340c4924d"
+      },
+      "resolvedLock": {
+        "ref": "product-lock://abiogenesis/58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0",
+        "digest": "sha256:58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0"
+      },
+      "targetRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/products/evaluator",
+      "installCandidate": {
+        "ref": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/9c4315084c3e280f275763c2461bd3a4db57018807e80d51db89a635fda5e584/58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0",
+        "digest": "sha256:03e7234476986e599f18bc5171332d2248cf5c4d042ee5b9e4b61a8b3c829f3b"
+      },
+      "installedProduct": {
+        "ref": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/9c4315084c3e280f275763c2461bd3a4db57018807e80d51db89a635fda5e584/58729d5067cc865c6c72fb6e3a1c3a12ea0d757429ae281b796e5d51c05aadc0",
+        "digest": "sha256:03e7234476986e599f18bc5171332d2248cf5c4d042ee5b9e4b61a8b3c829f3b"
+      },
+      "installManifest": {
+        "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/products/evaluator/node_modules/@odd-glc/program-construction-fixture/product-toolchain-manifest.json",
+        "digest": "sha256:574384df4489d6f91eb743ae1eebcf64cfcb6e9a4b911d3dbcd0e6ade589a47b"
+      },
+      "installerManifest": {
+        "ref": "artifact-truth-projection://abiogenesis/7f48f6cf823bce942f16c61249671f7de6b586d669b18e9bfa6745fdc650be61",
+        "digest": "sha256:7f48f6cf823bce942f16c61249671f7de6b586d669b18e9bfa6745fdc650be61"
+      }
+    },
+    "failure": null
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "path": "input.model.duties[32].dependencies[0].digest",
+  "before": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a",
+  "after": "sha256:b331df7341f0c907c9fb50d67e03ad31350c4a58c5cd9efda1764ca373dad558",
+  "expected": "prepare-construction refuses actual acquired-context predecessor before native constructor/assessor/C2/actor dispatch"
+}

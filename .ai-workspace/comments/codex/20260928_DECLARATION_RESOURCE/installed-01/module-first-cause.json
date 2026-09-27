@@ -1,0 +1,8 @@
+{
+  "selectedCore": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+  "actualProductResolution": "file:///Users/jim/src/apps/odd_glc/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+  "failure": {
+    "message": "product.graphInputRetentionBinding is not a function",
+    "stack": "TypeError: product.graphInputRetentionBinding is not a function\n    at file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript/build/native-continuation-runtime.mjs:26:41\n    at ModuleJob.run (node:internal/modules/esm/module_job:371:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:683:26)\n    at async file:///Users/jim/src/apps/odd_glc/[eval1]:6:5"
+  }
+}

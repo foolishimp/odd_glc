@@ -1,0 +1,73 @@
+{
+  "kind": "pc02_negative02_exact_input_deterministic_reproduction",
+  "receiptPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/graphExecution.json",
+  "runtimePath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs",
+  "runtimeSha256": "3a6386752c139df6c1742475af07503dc523a9a3624e80e2bb7e66b3327edeaa",
+  "coreRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+  "run": {
+    "digest": "sha256:5e01b0327758b47f009960d4c07624094df14303591af34a8fa945274277b89d",
+    "ref": "run://abiogenesis/171fc2a31eaa4dfbb6a8fc69e88f5b237b5174bbf524539fb7e92f6864c7331b"
+  },
+  "prefix": {
+    "coordinateDigest": "sha256:b22151a30a2de0b4b25b64b6a1fb7487384b9c93c1c4a68c0b0695366b10bd20",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:f839456ad479ee299a002e2c3cadc9bfed4bc4b881a85f2901f66ceab9e90e6a",
+    "prefixLength": 1018398367,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "projectionDigest": "sha256:f35ae745e77cec4b9f3e0f3b8509b45301f2b2b8e74f9cfa272af2c3fea3fbf2",
+  "ownerAtom": "r96",
+  "referenceBinding": {
+    "ref": "raw-admission://abiogenesis/5755c4e533a432746768b09feafcce60b40b4d9707a5966d72a491b0a56c025c",
+    "atom": "r96/raw_input"
+  },
+  "inputDigest": "sha256:fc03c6cc7489e3bb589d8f8bdc0687d2ab37df8c15b075b1ba8a13b0a4f297c6",
+  "inputBytes": 6987516,
+  "reproduced": {
+    "threw": true,
+    "name": "TypeError",
+    "message": "declared predecessor basis is stale or unavailable",
+    "stack": "TypeError: declared predecessor basis is stale or unavailable\n    at need (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction.mjs:4:69)\n    at Array.constructionState (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs:198:3)\n    at realizeConstruction (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs:472:94)\n    at Module.prepareConstruction (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs:475:104)\n    at file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/causal-01/reproduce.mjs:37:13"
+  },
+  "intervention": {
+    "jsonPath": "entry.model.duties[32].dependencies[0].digest",
+    "path": "specification/project-conformance.md",
+    "from": "sha256:b331df7341f0c907c9fb50d67e03ad31350c4a58c5cd9efda1764ca373dad558",
+    "to": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a"
+  },
+  "repairedVariant": {
+    "threw": false,
+    "kind": "leaf_realization_candidate",
+    "disposition": "success",
+    "resultKind": "lifecycle_construction_state"
+  },
+  "repairedInputDigest": "sha256:364e13728629f6ff2c051d0ca27ab7ef8063ad67e15c44677825428050660348",
+  "timings": {
+    "prefixesMs": 25619.438916,
+    "semanticProjectionMs": 9556.715417,
+    "ownerReadMs": 35199.754916000005,
+    "failureMs": 748.1891250000044,
+    "positiveMs": 907.8721250000017
+  },
+  "journal": {
+    "bytesBefore": 1018398367,
+    "bytesAfter": 1018398367,
+    "mtimeUnchanged": true,
+    "inodeUnchanged": true
+  },
+  "claims": {
+    "originalExceptionRetained": false,
+    "originalAdmittedInputReproduced": true,
+    "positiveVariantAdmitted": false,
+    "newRun": false,
+    "nativeCalls": 0,
+    "journalWrites": 0,
+    "readScope": "one cold owner prefix projection followed by semantic projection of that same in-memory authority prefix; no second journal read"
+  }
+}

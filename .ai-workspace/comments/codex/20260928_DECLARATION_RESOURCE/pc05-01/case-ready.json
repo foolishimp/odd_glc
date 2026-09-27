@@ -1,0 +1,176 @@
+{
+  "status": "packaged_caller_ready_pending_review_and_public_setup",
+  "sourceFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/source-freeze.json",
+    "digest": "sha256:2cd639ae06fee36e8de3ea0c6789a289eee1404f5ad3b4f28ad1c33d26ebaa61"
+  },
+  "prepare": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/prepare.mjs",
+    "digest": "sha256:9d44e078f09d9097dc9055894a796f5a66c950627896049bbca5bcd6ac31a9e1",
+    "executed": false,
+    "argument": "exact latest genuine graphExecution.json receipt path supplied by Root",
+    "command": "ABI5_COMPONENT_ROOT=/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant node --experimental-loader ./build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/prepare.mjs <latest-genuine-graphExecution-receipt.json>"
+  },
+  "actualArtifacts": [
+    {
+      "name": "core47",
+      "artifactPath": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+      "basis": {
+        "artifactDigest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+        "productContentDigest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535",
+        "manifestDigest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b",
+        "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+        "packageName": "@abiogenesis/typescript-tenant",
+        "packageVersion": "5.0.0-rc.1"
+      }
+    },
+    {
+      "name": "construction",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+      "bytes": 53737,
+      "basis": {
+        "artifactDigest": "sha256:67108b29a1db154f19e6ac7d377b6b0d1be839be022ca300a558ae40cb4806a7",
+        "productContentDigest": "sha256:c2f2866c3b585e54ed6fb3616e0ad5a8d4800b1188d46b31f5fc66820681add7",
+        "manifestDigest": "sha256:a573c2a679d298748de86f62e250a4123831fcfcde9c2eaf3318348dd0097c02",
+        "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+        "packageName": "@odd-glc/route-one-typescript",
+        "packageVersion": "0.3.0-dev.2"
+      }
+    },
+    {
+      "name": "evaluator",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+      "bytes": 9328,
+      "basis": {
+        "artifactDigest": "sha256:3d122f553ea34dfb342488903c08130018e46bd424eb8467d92db85340c4924d",
+        "productContentDigest": "sha256:9c4315084c3e280f275763c2461bd3a4db57018807e80d51db89a635fda5e584",
+        "manifestDigest": "sha256:574384df4489d6f91eb743ae1eebcf64cfcb6e9a4b911d3dbcd0e6ade589a47b",
+        "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+        "packageName": "@odd-glc/program-construction-fixture",
+        "packageVersion": "0.1.0-dev.2"
+      }
+    }
+  ],
+  "programRef": "program://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5",
+  "validation": {
+    "kind": "program_validation",
+    "calls": 1,
+    "verifiedArchives": 3,
+    "evidence": "Initial package.mjs completed all verification/conformance assertions and entered fresh descriptor subprocess. Diagnostic flag assertion matched its own source; next check used CommonJS resolution against an import-only export. Both diagnostic checks were corrected; no repeated packaging, verification or conformance."
+  },
+  "packageDescriptors": {
+    "scope": "fresh generated-package descriptor check; no admitted installation",
+    "results": [
+      {
+        "root": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/packages/construction",
+        "productResolution": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+        "descriptors": 11
+      },
+      {
+        "root": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/packages/evaluator",
+        "productResolution": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-01/bootstrap/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+        "descriptors": 1
+      }
+    ],
+    "elapsedMs": 256.559042
+  },
+  "transport": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+    "expectedVersion": "2.1.278 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "actorRoles": [
+    {
+      "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work/assessment@5",
+      "programLocusRef": "node://abiogenesis/worksite/native-work/assessment@5",
+      "role": "assessor",
+      "frameRefs": [
+        "stdo://releases/v2.5.0-rc.4/standards/STDO_REFERENCE_FRAME_BASELINE.md#derived-reviewer-frame"
+      ],
+      "policy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/assessor@5",
+        "text": "Independently assess the admitted current candidate against the complete source, exact stage rubric and observed evidence. Remain read-only; report rejection and gaps honestly.",
+        "digest": "sha256:2264575e6428e31527b1dc01f03a5cdbafb17da4c2e2a833baa860af2cae16b2"
+      },
+      "accessRefs": [
+        "access://odd-glc/application/rc4-validate@5"
+      ],
+      "contextPolicy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/assessor/selection@5",
+        "selectors": [
+          "current_worksite"
+        ]
+      },
+      "sourceBindingsDigest": "sha256:64d3d53b2f476f39660dd149b0c252ce036cf14b3a2c7b3c7aa2505641539798"
+    },
+    {
+      "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work@5",
+      "programLocusRef": "node://abiogenesis/worksite/native-work@5",
+      "role": "constructor",
+      "frameRefs": [
+        "stdo://releases/v2.5.0-rc.4/standards/STDO_REFERENCE_FRAME_BASELINE.md#derived-worker-frame"
+      ],
+      "policy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/constructor@5",
+        "text": "Carry out the admitted stage task in the native workspace. Write only its declared asset or construction paths, preserving higher source and every unaffected obligation. Return only the native report, never accumulated semantic envelopes.",
+        "digest": "sha256:97856c61a077151c38d7fd4b8476fcde40881e28ce4fd771cd4b3b451e729d83"
+      },
+      "accessRefs": [
+        "access://odd-glc/application/rc4-validate@5"
+      ],
+      "contextPolicy": {
+        "policyRef": "policy://odd-glc/fresh-native-lifecycle/constructor/selection@5",
+        "selectors": [
+          "current_worksite"
+        ]
+      },
+      "sourceBindingsDigest": "sha256:6130eaef1a49dc96750db196b98296fdd6838234dc41951ccb87ebef6d35e4cf"
+    }
+  ],
+  "expectedRootCalls": [
+    "graph-function://odd-glc/program-construction/authenticate-construction@5",
+    "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+    "graph-function://odd-glc/program-construction/prepare-construction@5",
+    "graph-function://odd-glc/program-construction/construction-child@5",
+    "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+    "graph-function://odd-glc/program-construction/evaluation-child@5",
+    "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+    "graph-function://odd-glc/program-construction/assessment-child@5"
+  ],
+  "selectedWriteRoots": [
+    "design/implementation-design.md",
+    "package.json",
+    "src/hello.mjs",
+    "design/test-design.md",
+    "test/component/hello.test.mjs",
+    "test/uat/hello.uat.test.mjs",
+    "test-execution-plan.json"
+  ],
+  "bindings": 15,
+  "duties": 38,
+  "constructionEdges": 14,
+  "assessmentRecords": 15,
+  "pending": [
+    "Executive review disposition",
+    "Public verify/resolve/install/bind/catalog/view/conformance and exact native-child binding-cover witness",
+    "actual products/node_modules dependency link and fresh no-loader admitted descriptor check",
+    "complete worksite reobservation and authority rebound",
+    "Root-owned native Run/readback"
+  ],
+  "timingLimitation": "Initial wrapper failed before timing persistence; those durations are unavailable. Final fresh descriptor check is separately measured. Do not report its duration as total packaging.",
+  "claims": {
+    "installed": false,
+    "run": false,
+    "semanticSuccess": false,
+    "originalTaskCompletion": false
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "scope": "Additional closed caller/native evidence through PC05-04; complements checkpoint-01. Runtime journal and expanded installations remain local dependencies, not a claim of standalone remote replay.",
+  "archive": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-02-large-evidence.tgz",
+  "archiveBytes": 27005718,
+  "archiveSha256": "ae7141f8953df7763511f729b14271d010c3d4ffb204ea09431cf47850102db2",
+  "members": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-08e209781c147e26-stdout.log",
+      "bytes": 526291,
+      "sha256": "e6df6cb747252ab26017fc223de42e8a6ea4632ccd232d52fd76f7f10234f9b9"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-02/invocation/archives/fp-08e209781c147e26-transport.json",
+      "bytes": 578715,
+      "sha256": "e113a9a79d7ce9deb2ca1464eaa12371aee50725628ba6817e98463bd083899a"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-03/activation-pending-review.json",
+      "bytes": 15933458,
+      "sha256": "1f28f348a2780f94154371d1b2578bc86ae522289968b1ea99eede9647ef40df"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-03/activation.json",
+      "bytes": 15937109,
+      "sha256": "2cb0d994bd3c3f3571e33bf087c0db479267d75791fc0a14962a13f921c9f2b3"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-03/start.jsonl",
+      "bytes": 63410081,
+      "sha256": "760079ecc8ed9f60ef783563fbcfecfeacdc79223c2b4fa0d6aa4285184f7d83"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-04/activation-pending-review.json",
+      "bytes": 15933487,
+      "sha256": "48ffe88d7d0ae045a6b8487dea8fadb4962da10c83168ef233ae3ebc8132360c"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-04/activation.json",
+      "bytes": 15937657,
+      "sha256": "78ad164a11355029d4d07c4d38f2827eeeecda18271610a6bd16d52db2e85322"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-04/execution/graphExecution.json",
+      "bytes": 317842,
+      "sha256": "7c2dac74cc3ff35737d32a04dedd095e42ac08c1cb51f28d907ad5ca6bf1a136"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-04/start.jsonl",
+      "bytes": 63410081,
+      "sha256": "c1de1cb480bf42c255d4affe02396412b6679c3ea3221077533e31dba66c6fac"
+    }
+  ],
+  "rawBytes": 191984721,
+  "verifiedEveryMember": true,
+  "elapsedSeconds": 2.462037959136069
+}

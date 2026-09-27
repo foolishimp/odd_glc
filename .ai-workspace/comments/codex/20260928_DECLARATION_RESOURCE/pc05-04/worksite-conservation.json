@@ -1,0 +1,110 @@
+{
+  "priorRun": {
+    "digest": "sha256:0c7829971a2e7afad9639ba9aa6816d2c2f82b1cdcd329930642d78e4d7b3a11",
+    "ref": "run://abiogenesis/b10959beaa664d282d0a5bed8df25f4db1ae6b7b4db5eae8803439835a38ebe2"
+  },
+  "contextDigest": "sha256:41d090e8690174e84ef2defc033d0ddcee2e9c8981740ef49d8c423e9323be66",
+  "files": [
+    {
+      "path": ".abiogenesis/workspace-manifest.json",
+      "digest": "sha256:832b9441f86c142f989c6a04fa50b58c73a2437508056eb392fd56aecb2ad52d",
+      "bytes": 1494
+    },
+    {
+      "path": "design/implementation-design.md",
+      "digest": "sha256:2a5acf0f055983bf757cf1324669be609ddedddb753db03e4e2897e6fc370ee3",
+      "bytes": 946
+    },
+    {
+      "path": "design/test-design.md",
+      "digest": "sha256:17fcb06fcf2253a475b296772b8a15569522be2632b9c398c63181d56bef90df",
+      "bytes": 1104
+    },
+    {
+      "path": "original-js-sdlc-bootstrap-declaration.txt",
+      "digest": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4",
+      "bytes": 6120
+    },
+    {
+      "path": "package.json",
+      "digest": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8",
+      "bytes": 42
+    },
+    {
+      "path": "semantic-assets/lifecycle-rubric.json",
+      "digest": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+      "bytes": 16810
+    },
+    {
+      "path": "semantic-assets/stage-0.json",
+      "digest": "sha256:9f9003ed19bdeb7a43616baa2c5c28daaeabc2b932947db52a302e6773a82ffa",
+      "bytes": 32404
+    },
+    {
+      "path": "semantic-assets/stage-1.json",
+      "digest": "sha256:37cd402698f52fd722a6f00b20566e03c8037daeef7ce10fb5f53744c26fec9a",
+      "bytes": 47430
+    },
+    {
+      "path": "semantic-assets/stage-2.json",
+      "digest": "sha256:bb93b54aed07ea9c68a91d1aa152b80f972d08ee4523ffc0421cc68b0d7d5fc1",
+      "bytes": 106895
+    },
+    {
+      "path": "specification/project-conformance.md",
+      "digest": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a",
+      "bytes": 1182
+    },
+    {
+      "path": "src/hello.mjs",
+      "digest": "sha256:e62ab9f36107d91297bcb4433418a4a1911d2081724ea141bc848d1d8acde924",
+      "bytes": 108
+    },
+    {
+      "path": "test-execution-plan.json",
+      "digest": "sha256:c69ed6ca8f50ba55e59ff4a841856cb977a63ebdf6d2c98b81e35ba62af4ed7d",
+      "bytes": 300
+    },
+    {
+      "path": "test/component/hello.test.mjs",
+      "digest": "sha256:4eefc99756ee34640b1e2c8baecb9ff4fa199d8d014d6ed935fe5bec7a9f031b",
+      "bytes": 312
+    },
+    {
+      "path": "test/uat/hello.uat.test.mjs",
+      "digest": "sha256:42bf7e724edf073aeb23f0e9b1d5dabf66a63ce444c51c3502303fd9d3332e82",
+      "bytes": 354
+    },
+    {
+      "path": "verification/check-derivation.mjs",
+      "digest": "sha256:491e7edbefd97b322fe6bd514c147d7448b6c2ef0e7fee94c5b2c1d260059668",
+      "bytes": 4654
+    },
+    {
+      "path": "verification/check-documents.mjs",
+      "digest": "sha256:21537559351303205f7264f78b6c400059057cc85a1d323c99c18029356218dd",
+      "bytes": 3770
+    },
+    {
+      "path": "verification/check-inventory.mjs",
+      "digest": "sha256:327d0fdbc5a67ddf7e3a4b6eee6d770a7f4f57402423abebb5ce75df18c2a517",
+      "bytes": 5704
+    },
+    {
+      "path": "verification/check-package.mjs",
+      "digest": "sha256:ef9d65362094704dd1a8927e2abf4ac99e8660ffb650793b7b7843b4dba1552a",
+      "bytes": 1908
+    },
+    {
+      "path": "verification/check-plan.mjs",
+      "digest": "sha256:dadf87cd9c1b7e410451c74ece70574a31966098a3954b53949da9b3e5bbd746",
+      "bytes": 4384
+    },
+    {
+      "path": "verification/check-verifier-structure.mjs",
+      "digest": "sha256:59296f62425a051fab2ed5e6e9de942921da5165faab9c5fc68d1f54c090fbc7",
+      "bytes": 4853
+    }
+  ],
+  "relation": "Exact owning observation equality; no candidate edits or new evidence of task success."
+}

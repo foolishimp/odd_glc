@@ -1,0 +1,8 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: Run not admitted: {"outcomeKind":"refusal","value":{"code":"invalid_capability","evidenceRefs":[],"issuePaths":["/invocationAuthority"]}}
+    at file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-03/execute.mjs:66:45
+
+Node.js v24.7.0

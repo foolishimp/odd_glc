@@ -1,0 +1,47 @@
+{
+  "status": "Public_refusal_before_Run",
+  "ownerOutput": {
+    "outcomeKind": "refusal",
+    "value": {
+      "code": "invalid_capability",
+      "evidenceRefs": [],
+      "issuePaths": [
+        "/invocationAuthority"
+      ]
+    }
+  },
+  "actualRun": null,
+  "actorInvocations": 0,
+  "beforeBytes": 1077614490,
+  "afterBytes": 1077614490,
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:371292c16af7fdc6dba81f18533bba8bfe7247b03579f70b3896fde0fcd94366",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:c1a74067d540b917c48e5bc96b3e796d49aeb09d1435a6c6a4c8549a9f12e900",
+      "prefixLength": 1077614490,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:991d63c112c84d7bbf396e2abcb6e46bc0b856e209a5e0672c61f8cd4838ed08",
+      "device": 16777230,
+      "durableByteLength": 1077614490,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:c1a74067d540b917c48e5bc96b3e796d49aeb09d1435a6c6a4c8549a9f12e900",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "timings": {
+    "graphExecutionMs": 70069.671917
+  },
+  "scope": "Caller capability refusal; no current-attempt runtime or task success. No unnecessary fresh semantic read for a Run that was not admitted."
+}

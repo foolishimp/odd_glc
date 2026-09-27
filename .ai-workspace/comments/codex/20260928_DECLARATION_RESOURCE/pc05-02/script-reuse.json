@@ -1,0 +1,24 @@
+{
+  "copiedOnlyScripts": [
+    {
+      "name": "candidate.mjs",
+      "source": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/candidate.mjs",
+      "sha256": "34ea9e3b170d7e750d05778723b92e71bab641d86ad4aed7e7acf1b67ca9e707",
+      "bytes": 13501
+    },
+    {
+      "name": "package.mjs",
+      "source": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/package.mjs",
+      "sha256": "870fe6f9432ced845c82bfe2278a082b3ab1c5fdf9fa4995d3218ef7e7415be1",
+      "bytes": 10673
+    },
+    {
+      "name": "prepare.mjs",
+      "source": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-01/prepare.mjs",
+      "sha256": "9d44e078f09d9097dc9055894a796f5a66c950627896049bbca5bcd6ac31a9e1",
+      "bytes": 26058
+    }
+  ],
+  "elapsedMs": 0.38187531754374504,
+  "priorFrozenInputs": "All 50 prior freeze rows checked against retained bytes. Only canonical program-construction.mjs changed, matching accepted three-declaration repair; no history or source tree copied."
+}

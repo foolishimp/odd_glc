@@ -1,0 +1,88 @@
+{
+  "status": "accepted_bounded_installed_predecessor_refusal",
+  "core": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+  "run": {
+    "digest": "sha256:5e01b0327758b47f009960d4c07624094df14303591af34a8fa945274277b89d",
+    "ref": "run://abiogenesis/171fc2a31eaa4dfbb6a8fc69e88f5b237b5174bbf524539fb7e92f6864c7331b"
+  },
+  "prefix": {
+    "coordinateDigest": "sha256:b22151a30a2de0b4b25b64b6a1fb7487384b9c93c1c4a68c0b0695366b10bd20",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:f839456ad479ee299a002e2c3cadc9bfed4bc4b881a85f2901f66ceab9e90e6a",
+    "prefixLength": 1018398367,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/f35ae745e77cec4b9f3e0f3b8509b45301f2b2b8e74f9cfa272af2c3fea3fbf2",
+    "projectionDigest": "sha256:f35ae745e77cec4b9f3e0f3b8509b45301f2b2b8e74f9cfa272af2c3fea3fbf2",
+    "graphCallCount": 4,
+    "cCallCount": 6,
+    "actorEventCount": 0,
+    "actorOccurrenceCount": 0,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/2bce52bfb744987eadc4d633f0f7d97638ade0ae336baf8899a8af90c8bc068f@5",
+      "graph-function://odd-glc/program-construction/authenticate-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-construction@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:cafe7bd3187846b939a56c6107a93f1232501d7736ea94bf1ce355518da3d06b",
+      "c-call:sha256:200ae583ab69709b2a3d60c6fec66dc9353cf66c5f95a76bf69c25a3013970dd",
+      "c-call:sha256:592e3b8a24b430d76671e0fe6464efc65ab7ede01103003eee10fd2f2c2f8c0a",
+      "c-call:sha256:acb7a3df170bb914e899fcb811fea49e82c670a13102205a9dab0dda779c51b9",
+      "c-call:sha256:bb49cfbd8b41a998ef45760ec9cb17e66bebbd45b7ae647462e2cca7a8e1cdb2",
+      "c-call:sha256:667a404f63ba5dc4ad753f3a0531a7dc028c1c34216865ef4af925eea7fa633c"
+    ],
+    "failures": []
+  },
+  "timings": {
+    "packageMs": 789.8689999999999,
+    "installMs": 43483.907458999995,
+    "setupMs": 50902.916832,
+    "graphExecutionMs": 103915.31225,
+    "run_replayMs": 70355.475083,
+    "ownerCountReadMs": 306.9473339999968,
+    "pureRefusalMs": 748.1891250000044,
+    "oneDigestInterventionMs": 907.8721250000017,
+    "causalOwnerReadMs": 35199.754916000005
+  },
+  "log": {
+    "beforeBytes": 993436246,
+    "afterBytes": 1018398367,
+    "appendedBytes": 24962121,
+    "eventCount": 138
+  },
+  "evidence": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/graphExecution.json",
+      "sha256": "1acb3f8f141c78f4cf31a5c4e5dbd5f52d90bb0d0da170aa402680785a90e9a0"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/readback-02/fresh-run_result.json",
+      "sha256": "67a4cee7b445e1c9d0f6b097b5bf398a84dd157f22c4b4b7b9b23059c538da61"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/readback-03/fresh-run_replay.json",
+      "sha256": "7d7115f9128fac73a514e0689fab9dabeaba3be144acaea9057d34eda731fa38"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/readback-03.stdout",
+      "sha256": "76f03862e5e88a0478425b9d7ad0ccf91adb56b791f793415d0b0565b72346d0"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-02/causal-01/result.json",
+      "sha256": "1979c29f0b232b7fcac65b52c597f596fb1c1aebc64c413e8a77fb924b59a3c5"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/readback-recovery-result.json",
+      "sha256": "f9a60c76f9351ef15f880d71b5f5065cc3e363d9ac04beff13f9ef841592936c"
+    }
+  ],
+  "scope": "Installed actual no-actor failed path plus exact owner-retained input causal reproduction. One unadmitted digest-only intervention; no second Run. Original exception is not runtime-retained. Native/C2/live qualification and overall latency closure are not claimed."
+}

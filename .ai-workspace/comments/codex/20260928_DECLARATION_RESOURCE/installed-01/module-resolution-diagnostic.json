@@ -1,0 +1,105 @@
+[
+  {
+    "moduleRef": "module://abiogenesis/semantic-revision@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 449.68216599999994,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 12
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/worksite/command-execution@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 435.0190420000001,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 9
+    }
+  },
+  {
+    "moduleRef": "module://abg/consensus@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 429.70120900000006,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 17
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/semantic-stage@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 427.40204100000005,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 17
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/conformance/hello-world@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 430.6472080000003,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 13
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/worksite/native-work@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 425.64187500000025,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 1
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/qualification/self-conformance@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 426.31574999999975,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 6
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/worksite/command-forward@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 423.1940840000002,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 2
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/requirement-handoff@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 417.84724999999935,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 2
+    }
+  },
+  {
+    "moduleRef": "module://abiogenesis/worksite/construction@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant",
+    "elapsedMs": 426.38629200000014,
+    "result": {
+      "kind": "loaded",
+      "descriptors": 9
+    }
+  },
+  {
+    "moduleRef": "module://odd-glc/program-construction/library@5",
+    "installRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/construction/node_modules/@odd-glc/route-one-typescript",
+    "elapsedMs": 170.10520799999995,
+    "result": {
+      "kind": "implementation_resolution_set_refusal",
+      "schemaVersion": "5.0.0",
+      "disposition": "refused",
+      "code": "implementation_absent",
+      "requirementKey": null,
+      "message": "published implementation module cannot be loaded from the admitted Product install"
+    }
+  }
+]

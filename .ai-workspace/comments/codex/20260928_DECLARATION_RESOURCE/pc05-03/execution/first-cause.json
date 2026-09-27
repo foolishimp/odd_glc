@@ -1,0 +1,9 @@
+{
+  "message": "Run not admitted: {\"outcomeKind\":\"refusal\",\"value\":{\"code\":\"invalid_capability\",\"evidenceRefs\":[],\"issuePaths\":[\"/invocationAuthority\"]}}",
+  "stack": "Error: Run not admitted: {\"outcomeKind\":\"refusal\",\"value\":{\"code\":\"invalid_capability\",\"evidenceRefs\":[],\"issuePaths\":[\"/invocationAuthority\"]}}\n    at file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-03/execute.mjs:66:45",
+  "timings": {
+    "graphExecutionMs": 70069.671917
+  },
+  "disposition": null,
+  "run": null
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "executive_readback_interruption_observation",
+  "observedAt": "2026-09-27T18:38:25.273Z",
+  "ownerPid": 46062,
+  "pidProbe": "ESRCH",
+  "lockPath": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abiogenesis-event-store-locks-v5/16777230-459405010.lock",
+  "lockDigest": "sha256:474dc360916d3acbf56b8c53b93fbba9911e4d4d602d6748b6fab83d91b67b10",
+  "logSize": 1018398367,
+  "logDevice": 16777230,
+  "logInode": 459405010,
+  "diagnostic": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/readback-02.stderr",
+    "digest": "sha256:cda9bfd64eb643eb62559ba0cad8847c4fe67c70e25c141592ed80ece25fb58a"
+  },
+  "scope": "Read-only replay process exhausted heap; original Run and the successful first Public read are closed. No writer or live actor is active.",
+  "authorization": "Executive continuation under user instruction do it; recover this exact abandoned read-only lock without changing event content."
+}

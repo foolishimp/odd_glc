@@ -65,11 +65,23 @@ Each selected dependent/predecessor pair produces an edge record containing its
 obligation/binding, actual producer and observation, dependent after-digest,
 predecessor before/current digests and declared read path. Future predecessors
 resolve through the earlier actual child. Every condition is `true`, `false`
-or `unknown`; conjunction cannot turn false/unknown into true. The fixture's
-content consistency rule is deliberately limited: JSON `derivedFrom` includes
-the predecessor path, or the text contains that path. This checks a declared
-reference, not faithful semantic derivation. Independent assessment remains
-required even for a true edge record.
+or `unknown`; conjunction cannot turn false/unknown into true. The edge verdict
+conjoins structural producer, predecessor binding/currentness, dependent
+currentness, declared-read and complete-report conditions. It does not establish
+cross-surface content consistency or faithful semantic derivation.
+
+`contentObservations.declaresPredecessor` retains whether JSON `derivedFrom`
+includes the predecessor path or text contains that literal path, with explicit
+`non_closing_content_observation` evidence role. Its true/false/unknown value is
+outside the edge acceptance conjunction: binding12 requires the actual admitted
+predecessor read and digest relation, not universal decorative source spelling.
+A missing marker cannot reject otherwise matching structure; a present marker
+cannot rescue a missing/stale/mismatched structural join. No artifact edit is
+required solely to satisfy this observation. The full observation remains in
+the exact record delivered to independent assessment. Cross-surface consistency,
+faithful derivation and any citations actually required by the original source
+remain judgment duties under the unchanged original rubric/oracle, including
+when the structural edge verdict is true.
 
 An explicit comparison selector chooses binding14's obligation/binding and the
 `hello-world-return-exact` / `module_export_return_exact` / ordinal 6 predicate.

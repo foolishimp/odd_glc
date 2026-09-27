@@ -1,0 +1,314 @@
+{
+  "status": "pure_declaration_validated_once_no_run",
+  "core": {
+    "artifactDigest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+    "productContentDigest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535",
+    "manifestDigest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b",
+    "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "5.0.0-rc.1"
+  },
+  "program": {
+    "programRef": "program://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5",
+    "startRef": "start://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5",
+    "graphFunctionRef": "graph-function://odd-glc/construction/fa084e0e0a6cb57791a64add3165a3f98988844b233367dc6bedfbcccd5a41dc@5"
+  },
+  "validationKind": "program_validation",
+  "timingsMs": {
+    "basisMs": 90.81162500000002,
+    "constructionMs": 798.9037920000001,
+    "declarationValidationMs": 7.230749999999944
+  },
+  "totalMs": 907.657709,
+  "sizes": {
+    "input": 2580858,
+    "sourceSelection": 1133,
+    "constructorProofResource": 20283938,
+    "native44ProofResource": 20277686,
+    "origin": 2124461,
+    "context": 328015,
+    "contextFileBytes": 240774,
+    "constructorTaskCandidateAtRetainedContext": 336716,
+    "constructionInstructions": 2218,
+    "originalOracle": 1656,
+    "model": 100685,
+    "assessmentSelection": 12552,
+    "publication": 116945
+  },
+  "duties": {
+    "population": 38,
+    "bindings": 15,
+    "selected": 12,
+    "roles": [
+      "provenance",
+      "provenance",
+      "provenance",
+      "provenance",
+      "provenance",
+      "provenance",
+      "evaluate",
+      "assess",
+      "assess",
+      "assess",
+      "assess",
+      "assess"
+    ],
+    "carried": 24,
+    "carriedBindings": 14,
+    "support": 2
+  },
+  "construction": {
+    "groups": 1,
+    "files": [
+      "design/implementation-design.md",
+      "package.json",
+      "src/hello.mjs",
+      "design/test-design.md",
+      "test/component/hello.test.mjs",
+      "test/uat/hello.uat.test.mjs",
+      "test-execution-plan.json"
+    ],
+    "edgeCount": 14,
+    "edges": [
+      {
+        "recordPath": "/records/constructionEdges/0",
+        "dutyRef": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/provenance/implementation-design",
+        "dependentPath": "design/implementation-design.md",
+        "predecessor": {
+          "path": "specification/project-conformance.md",
+          "digest": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/1",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+        "dependentPath": "package.json",
+        "predecessor": {
+          "path": "design/implementation-design.md",
+          "digest": "sha256:2a5acf0f055983bf757cf1324669be609ddedddb753db03e4e2897e6fc370ee3"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/2",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+        "dependentPath": "src/hello.mjs",
+        "predecessor": {
+          "path": "design/implementation-design.md",
+          "digest": "sha256:2a5acf0f055983bf757cf1324669be609ddedddb753db03e4e2897e6fc370ee3"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/3",
+        "dutyRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+        "dependentPath": "design/test-design.md",
+        "predecessor": {
+          "path": "package.json",
+          "digest": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/4",
+        "dutyRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+        "dependentPath": "design/test-design.md",
+        "predecessor": {
+          "path": "src/hello.mjs",
+          "digest": "sha256:e62ab9f36107d91297bcb4433418a4a1911d2081724ea141bc848d1d8acde924"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/5",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+        "dependentPath": "test/component/hello.test.mjs",
+        "predecessor": {
+          "path": "design/test-design.md",
+          "digest": "sha256:17fcb06fcf2253a475b296772b8a15569522be2632b9c398c63181d56bef90df"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/6",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+        "dependentPath": "test/component/hello.test.mjs",
+        "predecessor": {
+          "path": "package.json",
+          "digest": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/7",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+        "dependentPath": "test/component/hello.test.mjs",
+        "predecessor": {
+          "path": "src/hello.mjs",
+          "digest": "sha256:e62ab9f36107d91297bcb4433418a4a1911d2081724ea141bc848d1d8acde924"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/8",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "dependentPath": "test/uat/hello.uat.test.mjs",
+        "predecessor": {
+          "path": "test/component/hello.test.mjs",
+          "digest": "sha256:4eefc99756ee34640b1e2c8baecb9ff4fa199d8d014d6ed935fe5bec7a9f031b"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/9",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "dependentPath": "test/uat/hello.uat.test.mjs",
+        "predecessor": {
+          "path": "design/test-design.md",
+          "digest": "sha256:17fcb06fcf2253a475b296772b8a15569522be2632b9c398c63181d56bef90df"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/10",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "dependentPath": "test/uat/hello.uat.test.mjs",
+        "predecessor": {
+          "path": "package.json",
+          "digest": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/11",
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "dependentPath": "test/uat/hello.uat.test.mjs",
+        "predecessor": {
+          "path": "src/hello.mjs",
+          "digest": "sha256:e62ab9f36107d91297bcb4433418a4a1911d2081724ea141bc848d1d8acde924"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/12",
+        "dutyRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+        "dependentPath": "test-execution-plan.json",
+        "predecessor": {
+          "path": "test/component/hello.test.mjs",
+          "digest": "sha256:4eefc99756ee34640b1e2c8baecb9ff4fa199d8d014d6ed935fe5bec7a9f031b"
+        }
+      },
+      {
+        "recordPath": "/records/constructionEdges/13",
+        "dutyRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+        "dependentPath": "test-execution-plan.json",
+        "predecessor": {
+          "path": "test/uat/hello.uat.test.mjs",
+          "digest": "sha256:42bf7e724edf073aeb23f0e9b1d5dabf66a63ce444c51c3502303fd9d3332e82"
+        }
+      }
+    ],
+    "checks": []
+  },
+  "assessment": {
+    "criteria": [
+      "criterion://odd-glc/generic-lifecycle/evidence/source-faithfulness@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/modality-and-conflicts@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/obligation-conservation@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/bounded-claim@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/independent-oracle@5"
+    ],
+    "sourcePaths": [
+      ".abiogenesis/workspace-manifest.json",
+      "original-js-sdlc-bootstrap-declaration.txt",
+      "semantic-assets/stage-0.json",
+      "semantic-assets/stage-1.json",
+      "semantic-assets/stage-2.json",
+      "specification/project-conformance.md",
+      "verification/check-derivation.mjs",
+      "verification/check-documents.mjs",
+      "verification/check-inventory.mjs",
+      "verification/check-package.mjs",
+      "verification/check-plan.mjs",
+      "verification/check-verifier-structure.mjs"
+    ],
+    "rubric": {
+      "path": "semantic-assets/lifecycle-rubric.json",
+      "digest": "sha256:c77a38d684dde09c38197415796c9594c900278dcc047abf8744c07f382a0edf",
+      "stageRef": "stage://odd-glc/generic-lifecycle/evidence@5"
+    },
+    "recordSelections": 15,
+    "selectedOrdinals": [
+      5,
+      6,
+      9,
+      12,
+      14
+    ],
+    "oracleDigest": "sha256:091ca27cb92d7e80422272f1b0d71d5ae7fd7dfc299d037dfef1c71b1b924e99",
+    "futureTask": "requires actual admitted author and evaluator outputs; not synthesized"
+  },
+  "bounds": {
+    "transport": {
+      "command": "/Users/jim/.local/share/claude/versions/2.1.278",
+      "expectedVersion": "2.1.278 (Claude Code)",
+      "model": "claude-opus-5-5",
+      "effort": "xhigh",
+      "extraArgs": [
+        "--max-budget-usd",
+        "5"
+      ],
+      "inactivityMs": 300000,
+      "absoluteMs": 900000,
+      "terminationGraceMs": 1000,
+      "wholeRunMs": 3600000
+    },
+    "context": {
+      "maxBytes": 4194304,
+      "maxFiles": 1024,
+      "readRoots": [
+        "."
+      ]
+    },
+    "roles": [
+      {
+        "role": "assessor",
+        "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work/assessment@5",
+        "programLocusRef": "node://abiogenesis/worksite/native-work/assessment@5",
+        "policy": {
+          "policyRef": "policy://odd-glc/fresh-native-lifecycle/assessor@5",
+          "text": "Independently assess the admitted current candidate against the complete source, exact stage rubric and observed evidence. Remain read-only; report rejection and gaps honestly.",
+          "digest": "sha256:2264575e6428e31527b1dc01f03a5cdbafb17da4c2e2a833baa860af2cae16b2"
+        },
+        "contextPolicy": {
+          "policyRef": "policy://odd-glc/fresh-native-lifecycle/assessor/selection@5",
+          "selectors": [
+            "current_worksite"
+          ]
+        }
+      },
+      {
+        "role": "constructor",
+        "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work@5",
+        "programLocusRef": "node://abiogenesis/worksite/native-work@5",
+        "policy": {
+          "policyRef": "policy://odd-glc/fresh-native-lifecycle/constructor@5",
+          "text": "Carry out the admitted stage task in the native workspace. Write only its declared asset or construction paths, preserving higher source and every unaffected obligation. Return only the native report, never accumulated semantic envelopes.",
+          "digest": "sha256:97856c61a077151c38d7fd4b8476fcde40881e28ce4fd771cd4b3b451e729d83"
+        },
+        "contextPolicy": {
+          "policyRef": "policy://odd-glc/fresh-native-lifecycle/constructor/selection@5",
+          "selectors": [
+            "current_worksite"
+          ]
+        }
+      }
+    ]
+  },
+  "preserved": {
+    "originalDuties": true,
+    "allBindings": true,
+    "fixtureEvaluator": true,
+    "originalOracle": true,
+    "rawArgumentTypeResidual": true,
+    "bindings10and11SeparateConjunction": true,
+    "commandDependenciesRemainCurrentPrerequisite": true,
+    "noC2Callable": true
+  },
+  "sourceHashes": {
+    "candidate.mjs": "sha256:34ea9e3b170d7e750d05778723b92e71bab641d86ad4aed7e7acf1b67ca9e707",
+    "../../../../../build_tenants/odd_glc/typescript/src/program-construction.mjs": "sha256:788576f3f87f253e676501d21cad1558628c68df63c70ba0f70a8d622f8806d8",
+    "../../../../../build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs": "sha256:3a6386752c139df6c1742475af07503dc523a9a3624e80e2bb7e66b3327edeaa",
+    "../../../../../build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs": "sha256:a1ecc4fc8db8b34f249839a3015857432487a7338267514ba24ee7bc05f05c73",
+    "../../../../../build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs": "sha256:98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886"
+  }
+}

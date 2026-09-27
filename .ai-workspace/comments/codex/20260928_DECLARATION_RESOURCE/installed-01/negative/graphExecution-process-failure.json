@@ -1,0 +1,4 @@
+{
+  "message": "Command failed: /opt/homebrew/Cellar/node/24.7.0/bin/node /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/products/core47/node_modules/@abiogenesis/typescript-tenant/build/code/src/public/cli.js --jsonl /Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/installed-01/negative-start.jsonl\n",
+  "code": 1
+}

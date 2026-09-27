@@ -1,0 +1,94 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "reopen",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.project.read",
+      "memberKey": "run_replay"
+    },
+    "invocationRef": "invocation://abiogenesis/0315ec524087fe054f96f2795cb2b90c130d581de6445b5fcc71db104876de95",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "caseKey": "run_replay",
+        "source": {
+          "ref": "run://abiogenesis/56c91358a5afca7b1a186cba9c4cca316441a42f192b4967ec218224dcee93d0",
+          "digest": "sha256:a558ffa398dfbe9874d420af5dde00afa7e9541cfd9b712bac51a81e4061e2d8"
+        },
+        "projectionBasis": {
+          "ref": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "digest": "sha256:56772758a92c292bc043c5cff724f03d1d9c349cf03a029444fe0e6f6be4fecc"
+        },
+        "projection": {
+          "kind": "run_replay_projection",
+          "subject": {
+            "ref": "run://abiogenesis/56c91358a5afca7b1a186cba9c4cca316441a42f192b4967ec218224dcee93d0",
+            "digest": "sha256:a558ffa398dfbe9874d420af5dde00afa7e9541cfd9b712bac51a81e4061e2d8"
+          },
+          "replay": {
+            "ref": "replay://abiogenesis/78672fd24cd703149a6357de2de024a3f4850891fb967ecdf4828d887377d2f2",
+            "digest": "sha256:78672fd24cd703149a6357de2de024a3f4850891fb967ecdf4828d887377d2f2"
+          },
+          "fromOrdinal": 0,
+          "limit": 100000,
+          "status": "failed",
+          "terminalResult": null
+        }
+      }
+    },
+    "resources": {
+      "kind": "abg_project_read_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_receipt",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 1046610874,
+          "prefixDigest": "sha256:002b59f751186bee135018088f71bf1f7db972164e30d1706d57155011bb26d4",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:56772758a92c292bc043c5cff724f03d1d9c349cf03a029444fe0e6f6be4fecc"
+        },
+        "closeHandoff": {
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 1046610874,
+            "prefixDigest": "sha256:002b59f751186bee135018088f71bf1f7db972164e30d1706d57155011bb26d4",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:56772758a92c292bc043c5cff724f03d1d9c349cf03a029444fe0e6f6be4fecc"
+          },
+          "reopenAuthority": {
+            "kind": "event_store_reopen_authority",
+            "schemaVersion": "5.0.0",
+            "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "device": 16777230,
+            "inode": 459405010,
+            "eventLogDigest": "sha256:002b59f751186bee135018088f71bf1f7db972164e30d1706d57155011bb26d4",
+            "durableByteLength": 1046610874,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "authorityDigest": "sha256:ea5f870e82fd8cb5ee2bf5e99af7999e33ccf03e428601a39c43a7ae638365e5"
+          }
+        },
+        "receiptDigest": "sha256:e3be721aaac802a3dbc5352f853bc0e94788f3cc849da61696f1a582db5538ae"
+      }
+    },
+    "failure": null
+  }
+}
