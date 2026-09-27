@@ -5,7 +5,7 @@ import * as product from '@abiogenesis/typescript-tenant/product';
 import * as gtl from '@abiogenesis/typescript-tenant/gtl';
 import * as validator from '@abiogenesis/typescript-tenant/validator';
 import {constructLifecycleProgram,constructProgramConstructionLibrary,selectLifecycleWork,projectNativeSource} from '../src/program-construction.mjs';
-import {ids,stages} from '../src/program-construction-contracts.mjs';
+import {ids,stages,dependencyKind} from '../src/program-construction-contracts.mjs';
 import {isConstructionInput,authenticSource,reacquisitionRequest,evaluationInput,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
 import {loadNative44Fixture,constructNative44Candidate} from './fixtures/program-construction/native44-input.mjs';
 import {evaluatorPublication,deriveNativeRecords,evaluateNativeRecords,EVALUATOR_SEMANTICS,fixtureIds} from './fixtures/program-construction/native-records-evaluator.mjs';
@@ -100,6 +100,119 @@ test('missing historical construction input remains a prospective obligation',()
   input.model.duties.push(d);input.selectedDutyRefs=[d.ref];
   assert.equal(select(input).work[0].reason,'historical_input_relation_absent');
   assert.equal(construct(input).kind,'gap');
+});
+function prospectiveInput() {
+  const input=structuredClone(f.input),template=input.model.duties[0],retained=input.origin.observation.task.sourceNativeWork;
+  const predecessor=retained.before.entries.find(e=>e.state==='file'&&retained.task.readFirst.includes(e.relativePath)&&
+    input.currentContext.entries.some(c=>c.relativePath===e.relativePath&&c.state==='file'&&c.digest===e.digest));
+  assert(predecessor,'the representative retained basis has an unchanged historical input');
+  const producer={...template,ref:'duty://component/prospective-producer',role:'provenance',requires:[],
+    dependencies:[{path:predecessor.relativePath,digest:predecessor.digest}],dependentPaths:['prospective-design.md']};
+  const consumer={...template,ref:'duty://component/prospective-consumer',role:'provenance',requires:[producer.ref],
+    dependencies:[{producerDutyRef:producer.ref,path:producer.dependentPaths[0]}],dependentPaths:['prospective-source.mjs']};
+  const evaluation={...input.model.duties.at(-1),ref:'duty://component/prospective-evaluation',requires:[consumer.ref],
+    dependencies:[{producerDutyRef:consumer.ref,path:consumer.dependentPaths[0]}]};
+  const assessment={...evaluation,ref:'duty://component/prospective-assessment',role:'assess',requires:[evaluation.ref,consumer.ref]};
+  input.model.duties.push(producer,consumer,evaluation,assessment);input.selectedDutyRefs=[assessment.ref];
+  return {input,producer,consumer,evaluation,assessment};
+}
+test('future outputs bind prerequisite duties and paths without borrowing retained digests or provenance',()=>{
+  const {input,producer,consumer,evaluation,assessment}=prospectiveInput(),before=structuredClone(input);
+  const result=select(input);
+  assert.equal(result.disposition,'candidate');
+  assert.deepEqual(result.interpretation,input.model.interpretation);assert.deepEqual(result.sourceRefs,input.model.sourceRefs);
+  assert.deepEqual(result.work.map(w=>w.dutyRef),[producer.ref,consumer.ref,evaluation.ref,assessment.ref]);
+  assert.equal(result.work[0].reason,'prospective_input_relation_not_established');
+  assert.deepEqual(result.work[0].dependentPaths,producer.dependentPaths);
+  for(const row of result.work.slice(1)) {
+    assert.deepEqual(row.dependencies,input.model.duties.find(d=>d.ref===row.dutyRef).dependencies);
+    assert(row.dependencies.every(d=>dependencyKind(d)==='producer_output'&&!Object.hasOwn(d,'digest')));
+    assert(!Object.hasOwn(row,'refs'),'no historical support coordinate belongs to future work');
+    assert.equal(row.bindingRef,input.model.duties.find(d=>d.ref===row.dutyRef).bindingRef);
+  }
+  assert.deepEqual(input,before);assert.equal(Object.isFrozen(input.model.duties[0]),false);
+  assert.equal(result.originalTaskCompletion,'not_claimed');
+  assert.equal(isConstructionInput(input),false);
+  const allRoles={...route,roles:['provenance','evaluate','assess'],obligationRefs:[...new Set(result.work.map(w=>w.obligationRef))]};
+  assert.equal(construct(input,[allRoles]).gaps[0].cause,'executable_evidence_regime_not_supported');
+  // Removing the prospective output declaration exposes only the original
+  // historical input relation, never credit for the newly declared work.
+  const historical=structuredClone(input);historical.model.duties=historical.model.duties.filter(d=>d.ref!==consumer.ref&&d.ref!==evaluation.ref&&d.ref!==assessment.ref);
+  delete historical.model.duties.find(d=>d.ref===producer.ref).dependentPaths;historical.selectedDutyRefs=[producer.ref];
+  assert.equal(select(historical).disposition,'report_refs');
+});
+test('missing, ambiguous, undeclared and cyclic producer bindings refuse before candidate construction',()=>{
+  const cases=[
+    [({consumer})=>{consumer.dependencies[0].producerDutyRef='duty://absent';},/exact producer duty/],
+    [({input,producer})=>{input.model.duties.push(structuredClone(producer));},/unique duty/],
+    [({consumer})=>{consumer.requires=[];},/declared prerequisite/],
+    [({consumer})=>{consumer.dependencies[0].path='undeclared.md';},/declared producer output/],
+    [({consumer})=>{consumer.dependencies[0].digest=hash('invented future');},/invalid duty/],
+    [({consumer})=>{consumer.dependencies.push({...consumer.dependencies[0]});},/ambiguous dependency path/],
+    [({producer})=>{producer.dependentPaths.push(producer.dependentPaths[0]);},/invalid duty/],
+    [({producer,consumer})=>{producer.requires=[consumer.ref];producer.dependencies=[{producerDutyRef:consumer.ref,path:consumer.dependentPaths[0]}];},/cyclic/],
+  ];
+  for(const [change,expected] of cases){const fixture=prospectiveInput();change(fixture);assert.throws(()=>select(fixture.input),expected);}
+});
+test('present, absent, changed and unavailable observed inputs retain affected dependency states',()=>{
+  const {input,producer,consumer,assessment}=prospectiveInput(),path=producer.dependencies[0].path;
+  assert.equal(select(input).disposition,'candidate');
+  const cases=[
+    [entry=>{entry.digest=hash('changed predecessor');},'stale','current_dependency_changed'],
+    [entry=>{entry.state='absent';delete entry.digest;},'stale','current_dependency_absent'],
+    [entry=>{entry.state='unavailable';delete entry.digest;},'unknown','current_dependency_unavailable'],
+  ];
+  for(const [change,state,reason] of cases) {
+    const changed=structuredClone(input);change(changed.currentContext.entries.find(e=>e.relativePath===path));
+    const selection=select(changed);assert.equal(selection.disposition,'gap');assert.equal(selection.work.length,0);
+    assert.equal(selection.gaps.find(g=>g.dutyRef===producer.ref).dependencyStates[0].reason,reason);
+    for(const ref of [producer.ref,consumer.ref,assessment.ref])assert.equal(selection.gaps.find(g=>g.dutyRef===ref).state,state);
+  }
+  for(const modify of [ctx=>{ctx.entries=ctx.entries.filter(e=>e.relativePath!==path);},
+    ctx=>{ctx.entries.push({...ctx.entries.find(e=>e.relativePath===path)});}]) {
+    const changed=structuredClone(input);modify(changed.currentContext);
+    assert.equal(select(changed).gaps.find(g=>g.dutyRef===producer.ref).state,'unknown');
+  }
+  const mixed=structuredClone(input);mixed.model.duties.find(d=>d.ref===consumer.ref).dependencies.push({path:'not-observed.md',digest:hash('not-observed')});
+  assert.equal(select(mixed).gaps.find(g=>g.dutyRef===consumer.ref).state,'unknown','a selected producer does not invent an unrelated observed input');
+});
+test('missing prerequisite work withdraws old assessments and preserves exact unsatisfactory relations',()=>{
+  const {input,assessment}=prospectiveInput(),b=basis(input);
+  const previous={dutyRef:assessment.ref,result:{ref:'result://component/prior-assessment',digest:hash('prior')},
+    sourceRefs:b.sourceRefs,execution:b.execution,scopeRefs:assessment.scopeRefs,verdict:'satisfied',
+    producer:{actorInvocationRef:'actor://component/independent',cCallRef:'c-call://component/independent'}};
+  for(const verdict of ['satisfied','negative','indeterminate']) {
+    const relation={...previous,verdict},result=select(input,{basis:{...b,evaluations:[relation]}});
+    const row=result.work.find(w=>w.dutyRef===assessment.ref);
+    assert.equal(row.state,'missing');assert.deepEqual(row.evaluations,[relation]);
+    assert(!result.support.some(s=>s.dutyRef===assessment.ref));assert(!Object.hasOwn(row,'refs'));
+  }
+  // Even an assessment without a direct future-output reference cannot reuse
+  // its old result when a required prospective predecessor is unresolved.
+  assessment.dependencies=[];
+  const missing=select(input,{basis:{...b,evaluations:[previous]}});
+  assert(!missing.support.some(s=>s.dutyRef===assessment.ref));
+  input.model.duties.find(d=>d.ref===assessment.requires[0]).applicability={value:'unknown',basisRefs:['ruling://pending']};
+  const unknown=select(input,{basis:{...b,evaluations:[previous]}}).gaps.find(g=>g.dutyRef===assessment.ref);
+  assert.equal(unknown.state,'unknown');assert(!Object.hasOwn(unknown,'refs'));assert.deepEqual(unknown.evaluations,[previous]);
+});
+test('partial binding selection carries other duties and mandatory assessment with their uncertainty',()=>{
+  const {input,producer,consumer,assessment}=prospectiveInput();input.selectedDutyRefs=[producer.ref];
+  const result=select(input);
+  assert(result.carriedDutyRefs.includes(consumer.ref));assert(result.carriedDutyRefs.includes(assessment.ref));
+  assert(result.carriedBindingRefs.includes(producer.bindingRef));
+  assert.equal(result.carriedDuties.find(d=>d.dutyRef===assessment.ref).role,'assess');
+  const originalUnknown=structuredClone(input);originalUnknown.model.duties.find(d=>d.ref===assessment.ref).applicability.value='unknown';
+  assert.equal(select(originalUnknown).carriedDuties.find(d=>d.dutyRef===assessment.ref).state,'unknown');
+});
+test('excluded producer cannot supply a future output; excluded consumer selects no prerequisite work',()=>{
+  const {input,producer,consumer}=prospectiveInput();producer.applicability={value:'false',basisRefs:['ruling://producer/inapplicable']};
+  const result=select(input);assert.equal(result.gaps.find(g=>g.dutyRef===consumer.ref).reason,'producer_excluded');
+  assert.deepEqual(result.excluded.find(e=>e.dutyRef===producer.ref).basisRefs,producer.applicability.basisRefs);
+  const excluded=prospectiveInput();excluded.input.selectedDutyRefs=[excluded.consumer.ref];
+  excluded.consumer.applicability={value:'false',basisRefs:['ruling://consumer/inapplicable']};
+  const skipped=select(excluded.input);assert.equal(skipped.disposition,'report_refs');assert.equal(skipped.work.length,0);
+  assert(skipped.carriedDutyRefs.includes(excluded.producer.ref));
 });
 test('applicability unknown stays residual, false records basis, cycles refuse',()=>{
   for(const [value,expected] of [['unknown','gap'],['false','report_refs']]) {

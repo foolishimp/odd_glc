@@ -25,9 +25,9 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PROGRAM_CONSTRUCTION_COMPLETION_PLAN_01
+- current_activation: GLC_PROGRAM_CONSTRUCTION_PC02_01
 - current_re_entry: realization_refactor
-- current_activation_status: modular_plan_selected_PC01_ready_implementation_pending
+- current_activation_status: PC01_source_complete_PC02_active_native_construction_handoff
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
 - current_activation_record: '#modular-completion-plan'
@@ -39,8 +39,8 @@ under the owner's 2026-09-27 implementation instruction. Its first evaluate-only
 increment is [accepted](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/return.md)
 on core46 after installed positive/refusal proof and independent review. The
 [modular completion plan](#modular-completion-plan) sequences implementation
-and tests of the [accepted completion HOW](#completion-design-re-entry), starting
-with PC01. It closes the original construction-input relation and comparison
+and tests of the [accepted completion HOW](#completion-design-re-entry). PC01
+source is complete; PC02 is active. The sequence closes the original construction-input relation and comparison
 without repeating valid work. Native44 retains its accepted scope; S06 and ABG5
 qualification/RC1 remain open. The prior
 native39 selection and execution records below are historical, not new launch
@@ -53,12 +53,13 @@ tested as they land. Re-entry is `realization_refactor` under the accepted
 [Program-construction HOW](../../../build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md)
 at SHA-256 `9dd3233fb54402c73970bbefcce44f3e31618d158bad393f4a47104c9ed1f83f`.
 The completed design and evaluate-only installed proof are the reusable baseline.
-PC01–PC06 are pending implementation or proof; this plan records no new execution.
+PC01's source increment is complete; PC02 is active; PC03–PC06 await their dependencies. The
+accepted baseline remains closed; no new installed or live result is claimed.
 
 | Task | Status / dependency | Module and outcome | Exit test |
 | --- | --- | --- | --- |
-| PC01 — Select work and bind dependencies | Ready | Extend the existing pure constructor/contracts. Preserve duties, independent assessment and carried residuals. Distinguish observed `{path,digest}` inputs from future `{producerDutyRef,path}` outputs. | Present, missing, stale and unknown evidence select the warranted work or explicit gap. Missing/ambiguous producers and cycles refuse. Future digests are never invented. Accepted evaluate-only behavior still passes. |
-| PC02 — Construct through the native handoff | Pending PC01 | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
+| PC01 — Select work and bind dependencies | Source complete; [20/20 focused checks](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc01/return.md) | Extend the existing pure constructor/contracts. Preserve duties, independent assessment and carried residuals. Distinguish observed `{path,digest}` inputs from future `{producerDutyRef,path}` outputs. | Present, missing, stale and unknown evidence select the warranted work or explicit gap. Missing/ambiguous producers and cycles refuse. Future digests are never invented. Accepted evaluate-only behavior still passes. |
+| PC02 — Construct through the native handoff | Active | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Pending PC02 | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
 | PC04 — Connect independent assessment | Pending PC03 | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
 | PC05 — Prove the installed complete path | Pending PC01–PC04 | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
@@ -98,6 +99,51 @@ route, check those diffs/links, and commit/push those files to existing remotes.
 Then return to Executive. No code, accepted HOW/Product, runtime, worksite,
 provider or release-tag effects belong to this activation. Bounded implementation
 activations consume this sequence and bind their exact write/effect territory.
+
+Closed module activation, PC01: owner's "log these tasks and begin" selects
+implementation. Root enters Writer for this activation record and paired T-287
+status only, then returns to Executive. Worker `/root/glc_pc01`, Astra/xhigh,
+uses Product/Design/Owner/Proof routes in
+`repo://odd_glc/specification/REFERENCE_FRAME_BASIS.md`, accepted HOW above and
+GLC source `de0f289f15ad488172e88e8b4277590ea1be2d9b`; core46 remains unchanged.
+Write grant: `build_tenants/odd_glc/typescript/src/program-construction.mjs`,
+`src/program-construction-contracts.mjs`, `test/program-construction.test.mjs`
+(the last two relative to that tenant), and
+`.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc01/return.md`.
+Implement the pure selector/dependency contract and focused mechanical tests;
+preserve the currently supported evaluate-only route and explicit gaps for
+unimplemented runtime regimes. Run that focused test file and syntax checks;
+return exact changed paths, tests and residuals, then stop editing. No Product,
+HOW, other code, package/install, native/provider, worksite or Git effects. A
+missing governing relation returns to Executive before expansion. Independent
+whole-path source review remains at the PC04/PC05 checkpoint.
+
+PC01 disposition: Executive accepts the bounded source/checkpoint return at
+SHA-256 `81d19b0de96005dbd1df1c95a9b446841205147e8d28137d5edaba939c13355d`;
+all three source/test hashes match. The exact core46 component command in that
+return passes 20/20 in 35.655 s, with no skips. Default dependency resolution's
+initial import failure was a test-basis error, not a runtime regression; reuse
+the existing `ABI5_COMPONENT_ROOT` / `core-loader.mjs` selection for component
+checks. This closes PC01 source work, not installed qualification or the later
+independent whole-path review. Root enters Writer for this disposition, paired
+T-287 routing and scoped commit/push of those two tickets plus the four PC01
+Worker paths, then returns to Executive.
+
+Current module activation, PC02: `/root/glc_pc01` continues as Astra/xhigh Worker
+under the same verified basis, frames and accepted HOW. Extend actual native
+task/output joins and ordinary GTL construction wrappers; bind each future
+producer to one child occurrence. Grant `src/program-construction{,-contracts,-runtime}.mjs`,
+`test/program-construction.test.mjs`,
+`test/abi5-installed-program-construction.test.mjs`, and the existing
+`scripts/build-native-continuation-product.mjs` under the TypeScript tenant,
+plus `.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02/return.md`.
+Focused component/syntax checks and installed GTL validation are permitted.
+Return the frozen source and the exact existing-driver route for the early
+wrong-predecessor installed check. Package/setup/Run effects receive their exact
+activation after that return; no actor/provider, original-worksite, ABG-source,
+Product/HOW, ticket or Git mutation is granted to this Worker. PC03 computation
+and PC04 semantic assessment remain separately tracked; do not claim their
+completion from a construction-only result.
 
 ### Completion design re-entry
 

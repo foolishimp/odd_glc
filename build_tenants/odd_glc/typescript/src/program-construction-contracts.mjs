@@ -35,3 +35,14 @@ export const bindingFor = s => ({kind:'implementation_binding', bindingRef:s.bin
   inputContractRef:s.input, outputContractRef:s.output,
   failureContractRef:ids.failureContractRef, refusalContractRef:ids.refusalContractRef});
 export const roles = Object.freeze(['construct','execute','evaluate','assess','provenance']);
+
+// These are author-time dependency references, never native observations.
+// A future output obtains its digest only from the admitted producer child.
+const text = x => typeof x === 'string' && x.trim().length > 0;
+const keysAre = (x, keys) => x && typeof x === 'object' && !Array.isArray(x) &&
+  Object.keys(x).length === keys.length && keys.every(k => Object.hasOwn(x, k));
+export const dependencyKind = x => {
+  if(keysAre(x,['path','digest']) && text(x.path) && /^sha256:[a-f0-9]{64}$/.test(x.digest))return 'observed';
+  if(keysAre(x,['producerDutyRef','path']) && text(x.producerDutyRef) && text(x.path))return 'producer_output';
+  return null;
+};

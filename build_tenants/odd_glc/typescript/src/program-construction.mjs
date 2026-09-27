@@ -1,5 +1,5 @@
 import {isDeepStrictEqual as same} from 'node:util';
-import {ids, stages, bindingFor, contract, inputContract, evaluatorInputContract, VERSION, PACKAGE_NAME, PACKAGE_VERSION, roles} from './program-construction-contracts.mjs';
+import {ids, stages, bindingFor, contract, inputContract, evaluatorInputContract, VERSION, PACKAGE_NAME, PACKAGE_VERSION, roles, dependencyKind} from './program-construction-contracts.mjs';
 export const need = (condition, message) => { if (!condition) throw new TypeError(message); };
 const text = x => typeof x === 'string' && x.trim().length > 0;
 const unique = xs => Array.isArray(xs) && xs.every(text) && new Set(xs).size === xs.length;
@@ -18,7 +18,17 @@ export function checkModel(model) {
       unique(d.requires) && d.requires.every(r=>refs.includes(r)) && unique(d.scopeRefs) && d.scopeRefs.length>0 &&
       ['true','false','unknown'].includes(d.applicability?.value) && unique(d.applicability.basisRefs) &&
       d.applicability.basisRefs.length>0 && Array.isArray(d.dependencies) &&
-      d.dependencies.every(r=>text(r.path)&&/^sha256:[a-f0-9]{64}$/.test(r.digest)), 'invalid duty relation: '+d.ref);
+      d.dependencies.every(r=>dependencyKind(r)) &&
+      (d.dependentPaths===undefined || (d.role==='provenance' && unique(d.dependentPaths) && d.dependentPaths.length>0)),
+      'invalid duty relation: '+d.ref);
+    need(unique(d.dependencies.map(r=>r.path)), 'ambiguous dependency path: '+d.ref);
+    for(const dependency of d.dependencies.filter(r=>dependencyKind(r)==='producer_output')) {
+      const producers=model.duties.filter(p=>p.ref===dependency.producerDutyRef);
+      need(producers.length===1,'exact producer duty required: '+dependency.producerDutyRef);
+      need(d.requires.includes(dependency.producerDutyRef),'producer must be a declared prerequisite: '+d.ref);
+      need(producers[0].dependentPaths?.filter(path=>path===dependency.path).length===1,
+        'exact declared producer output path required: '+dependency.path);
+    }
   }
   const active=new Set(),done=new Set();
   const visit=ref=>{need(!active.has(ref),'cyclic prerequisites');if(done.has(ref))return;active.add(ref);
@@ -43,30 +53,53 @@ export function projectNativeSource(product, terminalValue) {
     observation:evidence.executionObservation};
 }
 
+function currentDependencies(dependencies, context) {
+  const rows=dependencies.filter(d=>dependencyKind(d)==='observed').map(d=>{
+    const entries=context?.entries?.filter(e=>e.relativePath===d.path);
+    if(entries?.length!==1)return {...d,state:'unknown',reason:entries?.length?'ambiguous_current_dependency':'current_dependency_unavailable'};
+    const entry=entries[0];
+    if(entry.state==='absent')return {...d,state:'stale',reason:'current_dependency_absent'};
+    if(entry.state!=='file'||!/^sha256:[a-f0-9]{64}$/.test(entry.digest))
+      return {...d,state:'unknown',reason:'current_dependency_unavailable'};
+    return {...d,state:entry.digest===d.digest?'present':'stale',reason:entry.digest===d.digest?'observed_dependency_current':'current_dependency_changed'};
+  });
+  return {rows,state:rows.some(r=>r.state==='stale')?'stale':rows.some(r=>r.state==='unknown')?'unknown':'present'};
+}
+
 function supportFor(product, duty, basis) {
   const observation=basis.executionObservation;
   const work=observation?.task?.sourceNativeWork ?? basis.nativeWork;
   if(duty.role==='construct'&&!product.isNativeWorkspaceWorkObservation(work))return {state:'missing',reason:'artifact_support_absent'};
   if(duty.role==='execute'&&!product.isNativeWorksiteCommandExecutionObservation(observation))return {state:'missing',reason:'execution_support_absent'};
-  const files=basis.currentContext?.entries;
-  if(!files || duty.dependencies.some(d=>!files.some(e=>e.relativePath===d.path&&e.state==='file'&&e.digest===d.digest)))
-    return {state:'unknown',reason:'current_dependency_unavailable_or_changed'};
+  if(['evaluate','assess'].includes(duty.role)&&!product.isNativeWorksiteCommandExecutionObservation(observation))
+    return {state:'missing',reason:'execution_support_absent'};
+  const current=currentDependencies(duty.dependencies,basis.currentContext);
+  if(current.state!=='present')return {state:current.state,reason:'current_dependency_'+current.state,dependencyStates:current.rows};
+  if(duty.dependencies.some(d=>dependencyKind(d)==='producer_output'))
+    return {state:'missing',reason:'requires_producer_output'};
+  // dependentPaths declares prospective derivation. The old native turn cannot
+  // establish a newly declared input/output edge, even when its bytes match.
+  if(duty.dependentPaths)return {state:'missing',reason:'prospective_input_relation_not_established'};
   if(duty.role==='construct') return product.isNativeWorkspaceWorkObservation(work) && duty.dependencies.every(d=>
     work.after.entries.some(e=>e.relativePath===d.path&&e.state==='file'&&e.digest===d.digest))
-    ? {state:'supported',refs:[basis.construction]} : {state:'missing',reason:'artifact_support_absent'};
+    ? coordinate(basis.construction)?{state:'supported',refs:[basis.construction]}:{state:'unknown',reason:'construction_coordinate_unavailable'}
+    : {state:'missing',reason:'artifact_support_absent'};
   if(duty.role==='execute') return product.isNativeWorksiteCommandExecutionObservation(observation) &&
     duty.dependencies.every(d=>observation.snapshotMembers.some(m=>m.relativePath===d.path&&m.digest===d.digest))
-    ? {state:'supported',refs:[basis.execution]} : {state:'missing',reason:'execution_support_absent'};
+    ? coordinate(basis.execution)?{state:'supported',refs:[basis.execution]}:{state:'unknown',reason:'execution_coordinate_unavailable'}
+    : {state:'missing',reason:'execution_support_absent'};
   if(duty.role==='provenance') return product.isNativeWorkspaceWorkObservation(work) && duty.dependencies.every(d=>
     work.task.readFirst.includes(d.path)&&work.before.entries.some(e=>e.relativePath===d.path&&e.state==='file'&&e.digest===d.digest))
-    ? {state:'supported',refs:[basis.construction]} : {state:'missing',reason:'historical_input_relation_absent'};
+    ? coordinate(basis.construction)?{state:'supported',refs:[basis.construction]}:{state:'unknown',reason:'construction_coordinate_unavailable'}
+    : {state:'missing',reason:'historical_input_relation_absent'};
   // Supplied evaluation/assessment relations are cold projections. They cannot
   // authorize a retained-source entry unless that source's owner authenticates them.
   const candidates=(basis.evaluations??[]).filter(e=>e.dutyRef===duty.ref&&coordinate(e.result)&&
     same(e.sourceRefs,basis.sourceRefs)&&same(e.execution,basis.execution)&&
     duty.scopeRefs.every(ref=>e.scopeRefs?.includes(ref))&&e.verdict==='satisfied'&&
-    (duty.role!=='assess'||(text(e.producer?.actorInvocationRef)&&text(e.producer?.cCallRef)&&
-      e.producer.actorInvocationRef!==work?.provenance.actorInvocationRef&&e.producer.cCallRef!==work?.provenance.cCallRef)));
+    (duty.role!=='assess'||(text(work?.provenance?.actorInvocationRef)&&text(work?.provenance?.cCallRef)&&
+      text(e.producer?.actorInvocationRef)&&text(e.producer?.cCallRef)&&
+      e.producer.actorInvocationRef!==work.provenance.actorInvocationRef&&e.producer.cCallRef!==work.provenance.cCallRef)));
   return candidates.length===1 ? {state:'supported',refs:[candidates[0].result]} : {state:'missing',reason:'required_evaluation_not_established'};
 }
 
@@ -77,19 +110,32 @@ export function selectLifecycleWork({product,model,basis,selectedDutyRefs}) {
   const visit=ref=>{if(rows.has(ref))return;const d=model.duties.find(d=>d.ref===ref);d.requires.forEach(visit);
     let state=d.applicability.value==='false'?{state:'excluded',reason:'declared_inapplicability',basisRefs:d.applicability.basisRefs}:
       d.applicability.value==='unknown'?{state:'unknown',reason:'applicability_unknown'}:supportFor(product,d,basis);
-    if(state.reason==='current_dependency_unavailable_or_changed'&&d.requires.some(r=>rows.get(r).state==='missing'))
-      state={state:'missing',reason:'requires_selected_predecessor_work'};
-    if(d.requires.some(r=>rows.get(r).state==='unknown'))state={state:'unknown',reason:'prerequisite_unknown'};
-    rows.set(ref,{dutyRef:ref,role:d.role,...state});ordered.push(ref);};
+    if(d.applicability.value==='true') {
+      const prerequisites=d.requires.map(r=>rows.get(r));
+      if(prerequisites.some(r=>r.state==='stale'))state={...state,state:'stale',reason:'prerequisite_stale'};
+      else if(prerequisites.some(r=>r.state==='unknown') && state.state!=='stale')state={...state,state:'unknown',reason:'prerequisite_unknown'};
+      else if(d.dependencies.some(dep=>dependencyKind(dep)==='producer_output'&&rows.get(dep.producerDutyRef).state==='excluded'))
+        state={...state,state:'unknown',reason:'producer_excluded'};
+      else if(prerequisites.some(r=>r.state==='missing')&&['supported','missing'].includes(state.state))
+        state={state:'missing',reason:'requires_selected_predecessor_work'};
+    }
+    if(state.state!=='supported')delete state.refs;
+    const evaluations=['evaluate','assess'].includes(d.role)?{evaluations:(basis.evaluations??[]).filter(e=>e.dutyRef===ref)}:{};
+    rows.set(ref,structuredClone({dutyRef:ref,role:d.role,obligationRef:d.obligationRef,bindingRef:d.bindingRef,
+      scopeRefs:d.scopeRefs,requires:d.requires,dependencies:d.dependencies,applicability:d.applicability,
+      ...(d.dependentPaths?{dependentPaths:d.dependentPaths}:{}),...evaluations,...state}));ordered.push(ref);};
   // Inspect governing predicates for the complete population, not only selected work.
   model.duties.forEach(d=>visit(d.ref));
-  const selected=new Set();const include=ref=>{selected.add(ref);model.duties.find(d=>d.ref===ref).requires.forEach(include);};selectedDutyRefs.forEach(include);
+  const selected=new Set();const include=ref=>{if(selected.has(ref))return;selected.add(ref);
+    if(rows.get(ref).state!=='excluded')model.duties.find(d=>d.ref===ref).requires.forEach(include);};selectedDutyRefs.forEach(include);
   const work=ordered.filter(ref=>selected.has(ref)&&rows.get(ref).state==='missing').map(ref=>rows.get(ref));
-  const gaps=ordered.filter(ref=>selected.has(ref)&&rows.get(ref).state==='unknown').map(ref=>rows.get(ref));
+  const gaps=ordered.filter(ref=>selected.has(ref)&&['unknown','stale'].includes(rows.get(ref).state)).map(ref=>rows.get(ref));
   const carried=model.duties.filter(d=>!selected.has(d.ref)&&!['supported','excluded'].includes(rows.get(d.ref).state)).map(d=>d.ref);
   return freeze({kind:'lifecycle_construction_selection',basisDisposition:'proposal_requires_owner_authentication',
-    selectedDutyRefs:[...selected],work,gaps,carriedDutyRefs:carried,
-    carriedBindingRefs:model.bindingRefs.filter(ref=>!model.duties.some(d=>selected.has(d.ref)&&d.bindingRef===ref)),
+    taskRef:model.taskRef,sourceRefs:structuredClone(model.sourceRefs),interpretation:structuredClone(model.interpretation),
+    selectedDutyRefs:[...selected],work,gaps,carriedDutyRefs:carried,carriedDuties:carried.map(ref=>rows.get(ref)),
+    carriedBindingRefs:model.bindingRefs.filter(ref=>!model.duties.some(d=>selected.has(d.ref)&&d.bindingRef===ref)||
+      model.duties.some(d=>carried.includes(d.ref)&&d.bindingRef===ref)),
     support:[...rows.values()].filter(r=>r.state==='supported'),excluded:[...rows.values()].filter(r=>r.state==='excluded'),
     disposition:gaps.length?'gap':work.length?'candidate':'report_refs',originalTaskCompletion:'not_claimed'});
 }
