@@ -2,6 +2,9 @@
 
 Status: accepted design for bounded implementation. [T-043](../../../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#problem-fitted-program-construction)
 owns current activation grants, exact candidate selection and delivery evidence.
+The prospective construction/comparison extension below is a `design_reframe`
+candidate for Executive disposition; the accepted evaluate-only increment keeps
+its existing scope.
 
 ## Authority And Bounded Outcome
 
@@ -222,6 +225,297 @@ installed deterministic thread makes no live-LLM or S06-closure claim. A fresh
 native actor is justified only by a distinct missing judgment or a separately
 selected constructor/context-usability discriminator, never to redo these
 computed facts.
+
+## Prospective Construction And Comparison
+
+This `design_reframe` extends the existing constructor on GLC `42915ede` / ABI
+`ae57b16b`, selected private core46. It consumes the closed
+[application review](../../../../abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md)
+and finite `bound-material.json`, plus the
+[continuation intake](../../../.ai-workspace/comments/codex/20260926_SCENARIO_CLOSURE/consumer-continuation-01/return.md)
+and its `continuation-selection.json`/`retained-coordinates.json`. The intake's
+input/evidence relations remain valid; its separate opt-in completion
+continuation is superseded by this Program-construction composition. Existing
+failure-driven selectors remain ineligible without their actual declared cause.
+
+[Installed04](../../../.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/return.md)
+and its [closed review](../../../.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-review-01/review.md)
+retain accepted bindings10/11 credit. Native44's fourteen artifacts, execution
+and five assessments retain their original identities/scopes. New work selects
+prospective input duties for bindings5/6/9/12, their evaluation, binding14's
+comparison and applicable independent assessment. A dependency-ready subset is
+permitted; no original-task/S06 completion follows.
+
+### Whole-Path Correspondence
+
+These states are views of evidence, not a new stored lifecycle.
+
+| Current basis | Next declared relation | Owner and stop |
+|---|---|---|
+| Completed retained source; selected input-provenance duty missing | Authenticate original job/source/bindings; reacquire current native context. | Existing historical-source/native-reacquisition owners; no invented failure. |
+| Current predecessors and authorized dependent work | Prepare native task -> native construction -> join actual output. | GLC selects meaning; native owner checks context, effects and provenance; ABG admits. Missing predecessor/grant/fit stops before effect. |
+| New output, unchanged consumed predecessors/execution dependencies | Evaluate prospective edges and selected comparison over retained execution. | Supplied published `F_D` evaluator; ordinary admission. Old construction gains no new inputs. |
+| Consumed predecessor or execution snapshot member changed | Preserve work/history, withdraw affected reuse and retain dependent duties. | Existing dependency correspondence; stop this retained-execution route. No automatic C2/retry. |
+| Observation unavailable, authority stale or applicability unknown | Preserve uncertainty; refuse dependent satisfaction. | Existing refusal/failure; later authorized discovery only. |
+| Actual construction/evaluation available; semantic duty missing | Read-only independent native assessment of exact source/candidate/evidence. | Assessor judges meaning; GLC checks coverage/conservation. Negative/partial/indeterminate remains open. |
+| Selected duties supported | Public result/readback returns evidence and residuals to Executive. | ABG owns Run closure; owner retains original-task acceptance. Reuse established support without repeating work. |
+
+Construction, input evidence, comparison, semantic assessment and acceptance
+are separate duties. Dependency-ready artifacts may share a native turn or
+computation. Required author/assessor independence does not mandate an actor or
+event per file.
+
+### Native Input And Output Join
+
+Extend the existing model/input view with `dependentPaths` on each selected
+provenance duty. Each `dependencies` entry is either an observed predecessor
+`{path, digest}` or a producer-output reference `{producerDutyRef, path}` with
+no prospective digest. The latter names an existing prerequisite duty and its
+declared output path; the correspondence must select exactly one GTL producer
+child occurrence for that duty. Missing/ambiguous producers, undeclared output
+paths and prerequisite cycles are refused during construction. Binding/obligation,
+scope, prerequisite and interpretation refs remain attached. Native-work
+parameters are the existing `outcome`,
+`instructions`, `readFirst`, `writeRoots`, `checks`; selected duty refs and the
+fit judgment bind their dependency-ready group. Preserve every unresolved duty,
+including other duties on a partially addressed binding. This is not another
+requirements model or a new permission source.
+
+After authentication, require the actual acquired command-task's
+`sourceReacquisition.request` to equal the prepared request, including the
+original native-child selector, current authority and actual child binding
+cover. Reacquisition requires complete context entries/read roots/limits equal
+to the retained native after-context and physically reobserves it; it cannot
+accept changed context by trimming the selection. This acquired context is the
+first `currentContext`; later tasks use the actual preceding child's joined
+`after`. Preparation checks each resolved predecessor's path/digest against
+that current context and its duty, requires its path in `readFirst`, and confines
+every dependent to the selected
+write grant. Then call the existing factory:
+
+```js
+product.constructNativeWorkspaceWorkTask({
+  workspaceAuthorityBasis, workspaceBinding, capabilityGrant,
+  context: currentContext,
+  outcome, instructions, readFirst, writeRoots, checks: []
+});
+```
+
+`graph-function://abiogenesis/worksite/native-work@5` consumes
+`contract://abiogenesis/worksite/native-work/task@5` and returns
+`contract://abiogenesis/worksite/native-work/observation@5`. Its actual
+`native_workspace_work_observation` retains `task`, `before`, `after`,
+`changedPaths`, `{summary, gaps}`, `provenance` and observation ref/digest. The
+existing native implementation reobserves the complete context before dispatch,
+uses native instruction assembly, observes effects afterward and submits the
+candidate for ABG admission. The retained-execution task has no command checks;
+its instructions forbid application execution and evaluator-oracle access.
+
+Require the admitted child observation's `task` to equal that prepared task.
+For each claimed edge, join predecessor presence/digest in `before`, declared
+`readFirst`, selected dependent/write scope and actual dependent in `after`,
+then compare the consumed predecessor digest with the result's current context.
+Native law owns `before === task.context`, provenance and scope conformance.
+An author report, matching digest or file presence alone cannot establish
+faithful derivation; reported gaps remain visible to the later judgment.
+
+A group may consume several retained predecessors, including a path also
+selected as a dependent when its consumed bytes remain unchanged. A producer-output
+reference resolves only after its declared GTL child returns an admitted native
+observation matching that producer's prepared task. Resolve the declared path
+to exactly one file in that actual `after`, obtaining its digest and the actual
+observation ref/digest; retain those coordinates with the authored producer-duty
+reference through the existing child-input/output join. Before dependent task
+preparation, require that resolved path/digest to match `currentContext` at the
+same worksite/authority and include it in `readFirst`. Missing output, ambiguous
+occurrence, absent file or stale/mismatched context refuses dependent preparation;
+the native owner's pre-dispatch reobservation still applies. No future digest,
+Run identity or caller-supplied output substitutes for this join. A future-output
+dependency crosses a GTL child boundary, never one unresolved construction group.
+Implementation claims only bindings it implements and proves; unsupported ones
+remain executable gaps. Changed predecessor bytes invalidate the affected edge.
+Retained predecessors need no reauthoring.
+Actual authorized dependent derivation may warrant retaining existing content:
+the report describes that work/decision and assessment judges it. A reread,
+touch or byte-identical rewrite solely to manufacture provenance earns no
+construction credit. Without real dependent work, G3 remains open.
+
+### Composition And Evaluation Join
+
+Extend the existing exact-contract route selection beyond its current
+`['evaluate']` executable guard for the selected roles. The ordinary GTL path is:
+
+```text
+entry -> authenticate -> native reacquisition -> prepare current work
+  -> construction child (prepare task -> native work -> join actual output)
+  -> evaluation child (supplied evaluator -> retain actual input/output)
+  -> assessment child (prepare task -> native assessor -> conserve result)
+```
+
+The evaluate-only route remains available; established work is reused and other
+unsupported role combinations remain gaps. No C2 node is added here. Use
+`product.graphInputRetentionBinding(entryContractRef, sourceContractRef)` to
+produce `{kind:'retained_graph_input', schemaVersion:'5.0.0', entry, source}`.
+Here `entry` is the enclosing GraphFunction's actual input and `source` its
+admitted child output. Each wrapper has an ordinary consumer input contract;
+ABI rejects the retained-pair contract as either retention operand. The
+construction wrapper returns evaluation input from its retained work input and
+actual native output. The evaluation wrapper returns assessment input from
+its retained evaluation input and actual computed output. Root-entry copies
+cannot substitute for these producer joins.
+
+Extend `evaluationInput` with selected edge rows, the actual new native
+observation, and the authenticated execution's `task.outcomePredicates`,
+`predicateObservations`, `task.protectedObservations` and `provenance`. Retain
+existing task/source/interpretation/binding selections, source Result, original
+construction/execution coordinates, command results, snapshot members, current
+context and exact evaluator declaration/parameters. New construction stays
+separate from `origin.construction`; use its actual observation coordinate and
+Public Result coordinates when available, never a fabricated Result URI.
+
+Before current reuse, compare **every** retained `snapshotMembers` path, byte
+length and digest with the new native `after`, plus the current governing
+source/plan and selected predecessor bases. A mismatch stops affected current
+evaluation while preserving historical evidence. Bindings10/11 need no new
+computation on unchanged support. Their accepted result can be conjoined by
+Executive; an unverified caller copy does not become authenticated by
+native44's source selection. No arbitrary multi-source join is introduced.
+
+The supplied evaluator emits new `lifecycle_computed_records` under its exact
+published contract. Prospective rows bind obligation, dependent path/after-digest,
+predecessor path/before-digest/current-digest, declared read path and actual new
+native observation/producer, with per-condition verdicts and false/unknown
+reasons. Its declared rules own consistency checks; independent judgment owns
+faithful derivation. These records never become old C2 or construction facts.
+
+For binding14, join exactly one selected predicate declaration/observation by
+`predicateId`, kind and ordinal within the authenticated execution. Resolve
+its evidence coordinate to the protected module observation and snapshot member;
+compare current module digest, observed value/type, declared expected value and
+the actual observed plan's asserted value. Retain execution/provenance,
+predicate/evidence coordinates, plan/module digests, cardinality and explicit
+condition/composite verdicts. Domain paths, export names, values and parsing
+remain in the supplied evaluator, not generic GLC.
+
+Type is a labeled derivation from actual `observedValue`. The no-argument fact
+requires source-backed callable-export meaning and the owning predicate's
+`exported()` rule (`implementation/worksite_command_helper.ts`); that predicate
+also permits a non-callable export value. Never insert derived fields into the
+old raw observation. A strict requirement for absent raw argument/type fields
+remains an explicit residual for owner disposition; comparison success cannot
+silently satisfy that clause.
+
+### Assessment, Admission And Failure
+
+The assessment input joins the actual computed result to its evaluation input,
+including new construction, preserved execution, exact obligations and residuals.
+Check their conservation before preparing the native task. Supply complete
+source/candidates through exact observed paths, and compact admitted edge,
+comparison and command facts plus the unchanged evaluator-only oracle through
+instructions. Reuse existing native-continuation criterion/evidence-role and
+stream interpretation, without its new-C2 or failed-assessment predicates.
+
+Factor that existing evidence-row checker to accept an invocation-local
+`criterionRef -> required role -> allowed labels` mapping alongside its existing
+label-to-text map. Derive both maps from the exact rubric/duty correspondence,
+actual joined evaluator output and conserved evaluation input, not actor claims.
+Existing callers retain source/candidate path, command-stream and oracle labels.
+For each selected computed record, use
+`computed:<sha256Canonical(actualOutput)>:<recordPath>` as its distinct label;
+`recordPath` is an exact JSON Pointer into that actual output. Its text is the
+UTF-8 encoding of `canonicalJson({evaluator: actualOutput.evaluator, outputDigest,
+recordPath, record})`, where `record` is the value at that pointer and
+`outputDigest` is the same output digest. Render those exact bytes without
+pretty-printing or rewriting. Supply that identical text, label and
+criterion/role mapping in assessment instructions and use it unchanged for quote
+checking. The actual admitted child join authenticates the record; its digest
+and rendered label alone do not.
+
+The source-linked criteria requiring new edge evidence use the separate
+`construction_record` role, and those requiring the new comparison use
+`comparison_record`; their allowed labels select only the corresponding actual
+computed records for that obligation. Preserve any additionally required
+source/candidate/execution/oracle roles. Original command/observation labels
+cannot satisfy either new record role, even when quoted bytes agree. Refuse
+missing records, unresolved criterion/role mappings and colliding labels before
+dispatch. The same checker rejects unknown labels, nonmatching quote substrings
+and citations outside a criterion's allowed role labels; none can contribute to
+a satisfied verdict. Computed records remain labeled derived evidence, distinct
+from original observations. These disposable maps add no evidence file,
+registry or second assessment mechanism.
+
+`graph-function://abiogenesis/worksite/native-work/assessment@5` uses the same
+native task/observation contracts. Prepare `context: newWork.after`,
+`writeRoots: []`, `checks: []` and the existing assessment selection:
+
+```text
+resultContract: {contractRef, contractVersion:'5.0.0', contractKind:'output', valueKind}
+schemaAsset: {productId, contractId, bytesBase64}
+sources: [{path, digest}], candidate: {path, digest}, rubric: {path, digest}
+producer: {resultRef, resultDigest, cCallRef, actorInvocationRef}
+```
+
+One actual candidate file anchors the selection; instructions name the complete
+assessed candidate set and other candidates appear in `sources`. Candidate,
+rubric and sources obey native disjointness rules and match context/`readFirst`.
+The rubric must be accessible, exact and sufficient for the applicable duties;
+missing rubric/schema/source access is a gap. Installed schema admission stays
+with its owner. `producer` binds the actual new native observation coordinate
+and actor/C-call provenance, as the existing assessment contract permits.
+Require assessor independence from that author and any other producer named by
+the selected duty. No new assessment file is needed.
+
+Native admission establishes schema/response/provenance. GLC additionally
+checks the exact prepared task, unchanged read-only subject, complete required
+criterion/evidence-role coverage and satisfactory verdict. Assessment considers
+the full original source/oracle, new derivations/comparison, absent historical
+relations and carried duties; previous assessments retain only prior scope.
+Package and admit the ordinary successor through the existing emitter/catalog,
+implementation/schema and workspace owners. Bind constructor/assessor loci
+through the existing native environment-role mechanism; use installed Public
+`run.invoke` and fresh Result/replay. No helper may bypass an unsupported owner.
+
+A native failure retains partial work and the first diagnostic. A known
+after-context invalidates affected support; absent after-observation leaves
+affected currentness unknown. A failed join emits no satisfied derived record;
+unsatisfactory assessment cannot close its duty. Subsequent work returns to
+Executive from the last lawful cut; this composition has no retry/controller.
+
+### Implementation Boundary And Discriminator
+
+The generic delta is confined to the existing `program-construction` constructor,
+contracts and runtime: extend the duty/input views, exact-role selector, pure
+native task/output joins, evaluator projection/conservation and ordinary child
+wrappers. Reuse/factor the existing GLC assessment helpers; reuse ABI native
+work/assessment, historical source, reacquisition and retained-input owners
+unchanged. The current emitter packages declarations/implementations/schema;
+the supplied evaluator owns application edge/comparison rules. There is no
+second completion profile in `native-continuation-*` or new runtime primitive.
+
+One installed positive performs actual authorized dependent work, computes the
+new records and obtains the required independent assessment. Qualification of
+this retained-execution path requires unchanged execution-consumed bytes; a
+changed result is a truthful stop, never grounds to force equality or rerun.
+Verify actual task/before/read paths, native output, evaluator and assessor
+inputs/returns, preserved old execution, no C2 and fresh Public result/replay.
+Reuse the closed evaluate-only evidence without rerunning its campaign.
+
+Its targeted refusal substitutes one declared prospective predecessor digest
+while leaving its actual observation/source intact. The same installed entry
+must refuse that relation before constructor dispatch, with no constructor or
+assessor call and no satisfied edge record. This targets the new input join;
+post-work drift and partial/unknown output receive bounded mechanical cases,
+not a separate live run per case.
+
+Still to bind at activation: actual dependent work/write grant, exact evaluator
+publication/fit, assessment rubric/schema, installed successor/native environment
+and any strict absent-raw-field disposition. These are not present execution
+facts or permission to reprice Product. No missing ABI capability is established
+for this path. The prior positive's 218.542 seconds/120,715,880 appended bytes
+and roughly 74-second fresh reads remain debt. Carry needed material once per
+consumer view, use actual retained outputs and avoid copied historical envelopes
+or repeated owner reconstruction in adapters; no performance improvement is
+claimed.
 
 ## Implementation Cone And Checks
 

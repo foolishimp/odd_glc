@@ -25,12 +25,12 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PROGRAM_CONSTRUCTION_01
-- current_re_entry: intent_reprice_product_reprice_requirement_reprice_then_bounded_design_and_realization
-- current_activation_status: bounded_evaluate_only_increment_accepted_G3_comparison_S06_open
+- current_activation: GLC_PROGRAM_CONSTRUCTION_COMPLETION_DESIGN_01
+- current_re_entry: design_reframe
+- current_activation_status: evaluator_increment_and_completion_HOW_accepted_realization_pending
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
-- current_activation_record: '#problem-fitted-program-construction'
+- current_activation_record: '#completion-design-re-entry'
 
 ## Current bounded selection
 
@@ -38,11 +38,51 @@ Current selection is [problem-fitted Program construction](#problem-fitted-progr
 under the owner's 2026-09-27 implementation instruction. Its first evaluate-only
 increment is [accepted](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/return.md)
 on core46 after installed positive/refusal proof and independent review. Next
-resolve the original construction-input relation and comparison without
+implement the [accepted completion HOW](#completion-design-re-entry) for the
+original construction-input relation and comparison without
 repeating valid work. Native44 retains its accepted scope; S06 and ABG5
 qualification/RC1 remain open. The prior
 native39 selection and execution records below are historical, not new launch
 authority. The existing worksite, original task/oracle and valid work remain.
+
+### Completion design re-entry
+
+- Trigger: owner's 2026-09-27 direction to treat recurring blockers as possible
+  incomplete design and review the full relation before accumulating local fixes.
+- Independent review: `/root/program_construction_source_review`, exact GLC
+  `42915ede0d3024dcaf780db0cc9afbadc33f04c3` and ABI
+  `ae57b16bd57e9b71d493f37eb56d26e55387c39a`, Design/Owner/Reuse and the paired
+  end-to-end interface frame. Result: partial HOW completeness; construction is
+  an explicitly unimplemented regime, not a newly failed ABI primitive.
+- Decision: `design_reframe` in the existing Program-construction HOW. Specify
+  legitimate prospective dependent work, current predecessor inputs, grouping,
+  construction/evaluator/independent-assessment joins and affected invalidation.
+  Bindings5/6/9/12 and comparison14 remain; accepted evaluator10/11 stays closed.
+- Reuse: ABI native-work `context`/`readFirst`/before/after/provenance, existing
+  authentication/reacquisition, GTL composition and native assessment. Supersede
+  the extra completion-entry proposal in `20260926_SCENARIO_CLOSURE/consumer-continuation-01`;
+  consume its required relations through Program construction. Failure-driven
+  continuation retains its existing domain. No second selector or provenance owner.
+- Worker grant: `/root/construction_completion_design`, Astra/xhigh, may edit
+  only `build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md`. Return the
+  exact HOW delta, reused owners, implementation territory and unresolved decisions.
+  No code, tests, packages, runtime/provider calls, worksite, Git or ticket effects.
+  A touch or rewrite solely to manufacture provenance cannot close G3; missing
+  governing meaning returns to Executive. One focused design review follows the
+  changed relation; no repeated review of accepted installed evidence.
+- Writer grant: Root enters Writer only for this ticket and paired T-287
+  disposition, then returns to Executive. Goals and accepted Product/calculus
+  remain unchanged. No new ticket, closure condition or release claim is selected.
+- Design checkpoint CLOSED: independent delta review is `satisfied` for HOW
+  SHA-256 `9dd3233fb54402c73970bbefcce44f3e31618d158bad393f4a47104c9ed1f83f`.
+  Computed-record citation/criterion-role mapping and future producer-output
+  digest binding are explicit; both review findings are closed. Executive
+  accepts this bounded HOW. Implementation and installed proof remain pending;
+  actual work/grant, evaluator, rubric/schema and native environment must bind
+  before effects. No remaining structural decision is deferred to the coder.
+- Checkpoint grant: Root enters Writer to commit/push this ticket, the accepted
+  HOW and paired T-287 tracking to existing remotes, then returns to Executive.
+  Preserve unrelated bytes; no source/runtime effect or release tag.
 
 ### Problem-fitted Program construction
 
