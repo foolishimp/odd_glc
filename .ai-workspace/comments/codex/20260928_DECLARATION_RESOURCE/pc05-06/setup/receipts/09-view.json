@@ -1,0 +1,50 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.catalog.view",
+      "memberKey": "allowlist"
+    },
+    "invocationRef": "invocation://abiogenesis/b43258d788eec9afba3092189a08bd48f9686247eb37169fe743a68170779247",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "view": {
+          "ref": "graph-function-catalog-view://abiogenesis/c548fab1e24880f10e88e8b92a892953cb274aba2278e82a262cbc624d81f3c9",
+          "digest": "sha256:c548fab1e24880f10e88e8b92a892953cb274aba2278e82a262cbc624d81f3c9"
+        },
+        "effectiveHandles": [
+          "graph-function://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+          "graph-function://odd-glc/program-construction/assessment-child@5",
+          "graph-function://odd-glc/program-construction/authenticate-preserved-construction@5",
+          "graph-function://odd-glc/program-construction/evaluation-child@5",
+          "graph-function://odd-glc/program-construction/join-assessment@5",
+          "graph-function://odd-glc/program-construction/join-evaluation@5",
+          "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+          "graph-function://odd-glc/program-construction/prepare-assessment-task@5",
+          "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5"
+        ],
+        "residuals": []
+      }
+    },
+    "resources": {
+      "kind": "catalog_view_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "disposition": "read_only_unchanged",
+      "catalog": {
+        "ref": "graph-function-catalog://abiogenesis/6198f18dd2a019e783f52f99b8d39b9b246180bd58af8b53e02d818c0fd11907",
+        "digest": "sha256:6198f18dd2a019e783f52f99b8d39b9b246180bd58af8b53e02d818c0fd11907"
+      },
+      "view": {
+        "ref": "graph-function-catalog-view://abiogenesis/c548fab1e24880f10e88e8b92a892953cb274aba2278e82a262cbc624d81f3c9",
+        "digest": "sha256:c548fab1e24880f10e88e8b92a892953cb274aba2278e82a262cbc624d81f3c9"
+      }
+    },
+    "failure": null
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "fresh_installed_descriptor_check",
+  "actualProductResolution": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/products/core47/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+  "rows": [
+    {
+      "installId": "product-install://@odd-glc/route-one-typescript/0.3.0-dev.2/8109899b2289e2a0b6fc3316c8cb33d7c33548b0d4c1e3e2b5186d26932810c9/900d1ab274ef100b581879310d455c31382cc8ed8465f8946059821b073b1dee",
+      "installedRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/products/construction/node_modules/@odd-glc/route-one-typescript",
+      "moduleRef": "module://odd-glc/program-construction/library@5",
+      "descriptors": 12
+    },
+    {
+      "installId": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/b89b3c5c3dd97deb8799d036da101d1fd6817a2c7699fa07d03a86914365bdaf/900d1ab274ef100b581879310d455c31382cc8ed8465f8946059821b073b1dee",
+      "installedRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/products/evaluator/node_modules/@odd-glc/program-construction-fixture",
+      "moduleRef": "module://odd-glc/qualification/native-records@5",
+      "descriptors": 1
+    }
+  ],
+  "dependencyLink": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/products/node_modules/@abiogenesis/typescript-tenant",
+  "target": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/products/core47/node_modules/@abiogenesis/typescript-tenant",
+  "elapsedMs": 266.62566700000025
+}

@@ -1,6 +1,6 @@
 import * as product from '@abiogenesis/typescript-tenant/product';
 import {isDeepStrictEqual as same} from 'node:util';
-import {ids,stages,constructionStages,evaluationStages,assessmentStages,bindingFor,inputContract,evaluatorInputContract,nativeConstructionInputContract,constructionStateContract,evaluationStateContract,assessmentInputContract,assessmentStateContract,dependencyKind,VERSION,PACKAGE_NAME,PACKAGE_VERSION} from './program-construction-contracts.mjs';
+import {ids,stages,constructionStages,evaluationStages,assessmentStages,preservedConstructionStages,bindingFor,inputContract,evaluatorInputContract,nativeConstructionInputContract,constructionStateContract,evaluationStateContract,assessmentInputContract,assessmentStateContract,preservedConstructionInputContract,dependencyKind,VERSION,PACKAGE_NAME,PACKAGE_VERSION} from './program-construction-contracts.mjs';
 import {rawContract as assessmentResultContract,ASSESSMENT_SCHEMA_TEXT} from './native-continuation-contracts.mjs';
 import {checkCriterionEvidence,interpretJobEvidenceRows} from './native-continuation-runtime.mjs';
 import {checkModel,checkConstructionGroups,coordinate,need,freeze,projectNativeSource,selectLifecycleWork} from './program-construction.mjs';
@@ -8,6 +8,10 @@ const record=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
 const only=(x,keys)=>record(x)&&same(Object.keys(x).sort(),[...keys].sort());
 const selectedDuties=input=>input.model.duties.filter(d=>input.selectedDutyRefs.includes(d.ref));
 const sourceFields=['kind','schemaVersion','model','origin','historicalSelection','sourceSelection','authority','currentContext','selectedDutyRefs'];
+// Binding identity is checked by the native reacquisition owner. Content is
+// conserved independently so the historical author envelope remains unchanged.
+const sameContextContent=(a,b)=>['entries','readRoots','maxFiles','maxBytes'].every(k=>same(a[k],b[k]));
+const mechanicallyCurrent=state=>state.gaps.every(g=>g.cause==='author_reported_gap');
 function sourceInput(input) {
   checkModel(input.model);const o=input.origin;
   return input.schemaVersion===VERSION&&record(o)&&coordinate(o.construction)&&coordinate(o.execution)&&
@@ -53,6 +57,20 @@ export function constructNativeConstructionInput(value) {
   const input={kind:nativeConstructionInputContract.valueKind,schemaVersion:VERSION,...value};
   need(isNativeConstructionInput(input),'exact source and dependency-ready native construction groups required');return freeze(input);
 }
+export function isPreservedConstructionInput(input) {try {
+  return only(input,['kind','schemaVersion','originalInput','constructionState','historicalSelection','sourceSelection','authority','currentContext','evaluator'])&&
+    input.kind===preservedConstructionInputContract.valueKind&&input.schemaVersion===VERSION&&
+    !!input.originalInput.assessment&&constructionCompleted(input.originalInput,input.constructionState)&&
+    coordinate(input.historicalSelection?.result)&&typeof input.historicalSelection.valueDigest==='string'&&
+    record(input.authority)&&product.isWorksiteContextObservation(input.currentContext)&&
+    coordinate(input.evaluator?.graphFunction)&&coordinate(input.evaluator.fitJudgment)&&
+    input.evaluator.resultContractRef===input.originalInput.evaluator.resultContractRef&&
+    same(input.evaluator.parameters,input.originalInput.evaluator.parameters);
+}catch{return false;}}
+export function constructPreservedConstructionInput(value) {
+  const input={kind:preservedConstructionInputContract.valueKind,schemaVersion:VERSION,...value};
+  need(isPreservedConstructionInput(input),'completed original construction and explicit current evaluation basis required');return freeze(input);
+}
 const isConstructionEntry=input=>isConstructionInput(input)||isNativeConstructionInput(input);
 export function selectionFor(input) {
   return selectLifecycleWork({product,model:input.model,selectedDutyRefs:input.selectedDutyRefs,basis:{
@@ -64,6 +82,15 @@ export function constructConstructionInput(value) {
   need(isConstructionInput(input),'exact retained native source and selected computation duties required');return freeze(input);
 }
 export function reacquisitionRequest(input) {
+  if(input?.kind===preservedConstructionInputContract.valueKind) {
+    need(isPreservedConstructionInput(input),'exact preserved construction input required');
+    const old=input.originalInput.origin.observation.task;
+    return product.constructNativeWorksiteCommandReacquisitionRequest({...input.authority,
+      sourceNativeWork:input.constructionState.constructionObservations.at(-1).observation,
+      source:input.sourceSelection,currentContext:input.currentContext,
+      selectedSources:old.protectedObservations.map(r=>({subjectUri:r.subject.subjectUri,relativePath:r.subject.relativePath})),
+      commands:old.commands,outcomePredicates:old.outcomePredicates,allowedWriteTerritories:old.allowedWriteTerritories});
+  }
   need(isConstructionEntry(input),'supported construction input required');
   const old=input.origin.observation.task;
   return product.constructNativeWorksiteCommandReacquisitionRequest({...input.authority,
@@ -78,6 +105,16 @@ export function authenticSource(input,currentOwnerPrefix,nativeProof) {try {
   const {value,projectionBasis,...selection}=owner.terminalResult;
   if(!same(selection,input.historicalSelection))return false;
   return same(projectNativeSource(product,value,{includeAssessment:!!input.assessment}),input.origin);
+}catch{return false;}}
+export function authenticPreservedConstruction(input,currentOwnerPrefix,nativeProof) {try {
+  if(!isPreservedConstructionInput(input)||!currentOwnerPrefix)return false;
+  const owner=nativeProof?.historicalGraphCallSource?.();if(!owner)return false;
+  const {value,projectionBasis,...selection}=owner.terminalResult;
+  return same(selection,input.historicalSelection)&&same(value,input.constructionState)&&
+    owner.terminalResult.producer.graphFunction.ref===ids.constructionChildGraphFunctionRef&&
+    owner.terminalResult.contract.ref===ids.constructionStateContractRef&&
+    owner.input.contractRef===ids.nativeInputContractRef&&same(owner.input.value,input.originalInput)&&
+    owner.publication.owningProductId===ids.productId&&owner.publication.moduleRef===ids.moduleRef;
 }catch{return false;}}
 export function evaluationInput(bound) {
   if(bound?.entry?.kind===nativeConstructionInputContract.valueKind&&bound.entry.evaluator)return constructedEvaluationInput(bound);
@@ -194,7 +231,7 @@ export function constructionState(bound) {
   const entry=bound.entry,request=reacquisitionRequest(entry),acquired=bound.source.sourceReacquisition;
   need(acquired&&same(acquired.request,request),'acquisition must bind the exact original construction entry');
   const context=acquired.request.currentContext,retained=entry.origin.observation.task.sourceNativeWork.after;
-  need(['entries','readRoots','maxFiles','maxBytes'].every(k=>same(context[k],retained[k])),'complete retained native context must be reacquired');
+  need(sameContextContent(context,retained),'complete retained native context must be reacquired');
   need(selectionFor(entry).gaps.length===0,'declared predecessor basis is stale or unavailable');
   const basis=constructionBasis(entry),state=stateValue(basis,{requestRef:request.requestRef,requestDigest:request.requestDigest,nativeBasis:acquired.nativeBasis},[],context);
   need(state.gaps.length===0,'retained execution has stale or unavailable consumed bytes');
@@ -244,11 +281,33 @@ function constructionCompleted(input,output) {
 }
 /** The retained root authenticates old records; actual child state supplies new observations. */
 export function constructedEvaluationInput(bound) {
+  if(bound?.entry?.kind===preservedConstructionInputContract.valueKind) {
+    need(product.isRetainedGraphInput(bound)&&isPreservedConstructionInput(bound.entry)&&product.isNativeWorksiteCommandExecutionTask(bound.source),
+      'actual preserved construction entry and acquired native task required');
+    const input=bound.entry,request=reacquisitionRequest(input),proof=bound.source.sourceReacquisition;
+    need(proof&&same(proof.request,request),'acquisition must bind the exact preserved construction entry');
+    return preservedEvaluationView(input,{requestRef:request.requestRef,requestDigest:request.requestDigest,
+      nativeBasis:proof.nativeBasis,bindingCoverEventRefs:proof.bindingCoverEventRefs});
+  }
   need(product.isRetainedGraphInput(bound)&&bound.entry?.evaluator&&
     constructionCompleted(bound.entry,bound.source),'actual original entry and completed construction output required');
-  const entry=bound.entry,state=bound.source,execution=entry.origin.observation,selection=selectionFor(entry);
-  need(state.disposition==='observed'&&state.gaps.length===0,'partial or stale construction cannot authorize current evaluation');
-  const context=state.currentContext;
+  return constructedEvaluationView(bound.entry,bound.source,bound.source.currentContext,bound.source.acquisition,bound.entry.evaluator);
+}
+function preservedEvaluationView(input,acquisition) {
+  const request=reacquisitionRequest(input);
+  need(only(acquisition,['requestRef','requestDigest','nativeBasis','bindingCoverEventRefs'])&&
+    acquisition.requestRef===request.requestRef&&acquisition.requestDigest===request.requestDigest,
+    'exact preserved construction acquisition required');
+  // Reconstruct the admitted value for conservation only. The earlier core J,
+  // not this pure constructor, establishes current binding cover and observation.
+  product.constructNativeWorksiteCommandExecutionTask({...request,sourceReacquisition:{request,
+    nativeBasis:acquisition.nativeBasis,bindingCoverEventRefs:acquisition.bindingCoverEventRefs}});
+  need(sameContextContent(input.currentContext,input.constructionState.currentContext),'complete preserved construction content must remain current');
+  return constructedEvaluationView(input.originalInput,input.constructionState,input.currentContext,acquisition,input.evaluator);
+}
+function constructedEvaluationView(entry,state,context,acquisition,evaluator) {
+  const execution=entry.origin.observation,selection=selectionFor(entry);
+  need(mechanicallyCurrent(state),'partial or stale construction cannot authorize current evaluation');
   need(execution.snapshotMembers.every(m=>context.entries.some(e=>e.state==='file'&&e.relativePath===m.relativePath&&e.digest===m.digest&&e.byteLength===m.byteLength)),
     'every retained execution snapshot member must remain current');
   // Source/plan bytes are among protected execution sources. Check all of them,
@@ -263,8 +322,8 @@ export function constructedEvaluationInput(bound) {
     }
     need(currentFile(context,dep.path).digest===digest,'selected evaluation dependency is stale');
   }
-  const view=evaluationView(entry,context,state.acquisition);
-  return freeze({...view,executionRecord:{...view.executionRecord,outcomePredicates:execution.task.outcomePredicates,
+  const view=evaluationView(entry,context,acquisition);
+  return freeze({...view,evaluator,executionRecord:{...view.executionRecord,outcomePredicates:execution.task.outcomePredicates,
     predicateObservations:execution.predicateObservations,protectedObservations:execution.task.protectedObservations,provenance:execution.provenance},
     constructionObservations:state.constructionObservations,
     constructionEdges:selection.work.filter(d=>d.role==='provenance').map(d=>({dutyRef:d.dutyRef,obligationRef:d.obligationRef,
@@ -283,6 +342,8 @@ export function isEvaluationState(value) {try {
     same(value,evaluationOutput(product.constructRetainedGraphInput(value.evaluationInput,value.computedRecords)));
 }catch{return false;}}
 function evaluatedConstructionConserves(input,output) {
+  if(input?.kind===preservedConstructionInputContract.valueKind)return isPreservedConstructionInput(input)&&isEvaluationState(output)&&
+    same(output.evaluationInput,preservedEvaluationView(input,output.evaluationInput.acquisition));
   if(!input.evaluator||!isEvaluationState(output))return false;
   const view=output.evaluationInput;
   const state=stateValue(constructionBasis(input),view.acquisition,view.constructionObservations,view.currentContext);
@@ -320,10 +381,11 @@ function independentProducers(entry,view) {
 }
 /** The oracle crosses only this post-evaluator join from authenticated root input. */
 export function constructionAssessmentInput(bound) {
-  need(product.isRetainedGraphInput(bound)&&bound.entry?.assessment&&evaluatedConstructionConserves(bound.entry,bound.source),
+  need(product.isRetainedGraphInput(bound)&&(bound.entry?.assessment||bound.entry?.kind===preservedConstructionInputContract.valueKind)&&evaluatedConstructionConserves(bound.entry,bound.source),
     'actual original entry and conserved evaluator child required for assessment');
-  const entry=bound.entry,view=bound.source.evaluationInput,text=product.canonicalJson(entry.origin.assessmentBasis.evaluationData),digest=product.sha256Bytes(Buffer.from(text));
-  const result={kind:assessmentInputContract.valueKind,schemaVersion:VERSION,evaluationState:bound.source,selection:entry.assessment,authority:entry.authority,
+  const entry=bound.entry.kind===preservedConstructionInputContract.valueKind?bound.entry.originalInput:bound.entry,
+    view=bound.source.evaluationInput,text=product.canonicalJson(entry.origin.assessmentBasis.evaluationData),digest=product.sha256Bytes(Buffer.from(text));
+  const result={kind:assessmentInputContract.valueKind,schemaVersion:VERSION,evaluationState:bound.source,selection:entry.assessment,authority:bound.entry.authority,
     oracle:{ref:'oracle://odd-glc/program-construction/'+digest.slice(7),digest,text},
     independentProducers:independentProducers(entry,view),originalTaskCompletion:'not_claimed'};
   assessmentEvidence(result);return freeze(result);
@@ -341,7 +403,8 @@ export function assessmentEvidence(input) {
   need(isAssessmentInput(input),'exact retained assessment input required');
   const {evaluationInput:view,computedRecords:computed}=input.evaluationState,s=input.selection,context=view.currentContext;
   const author=view.constructionObservations.at(-1)?.observation;
-  need(author&&same(context,author.after),'assessment must use the actual latest author after-context');
+  need(author&&(same(context,author.after)||Array.isArray(view.acquisition.bindingCoverEventRefs)&&sameContextContent(context,author.after)),
+    'assessment must use the actual latest author after-context');
   const rubricFile=currentFile(context,s.rubric.path);
   need(rubricFile.digest===s.rubric.digest,'exact current rubric required');
   const body=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(Buffer.from(rubricFile.bytes,'base64')));
@@ -410,6 +473,9 @@ function buildConstructionAssessmentTask(input,evidence) {
       `Exact original rubric stage: ${s.rubric.stageRef}. All declared criteria are required: ${product.canonicalJson(evidence.criteria)}.`,
       `Exact criterion/role/allowed-label mapping: ${product.canonicalJson(evidence.roleLabels)}. Quote actual substrings from these labels; old command evidence cannot stand for a computed record.`,
       `Original duty population and carried scope: ${product.canonicalJson({duties:view.dutyPopulation,carriedDuties:view.carriedDuties,carriedBindingRefs:view.carriedBindingRefs,pendingDutyRefs:view.pendingDutyRefs})}`,
+      `Actual author reports, verbatim and non-closing; assess every reported residual against its selected or outside scope: ${product.canonicalJson(view.constructionObservations.map(row=>({
+        groupRef:row.groupRef,dutyRefs:row.dutyRefs,observation:{ref:row.observation.observationRef,digest:row.observation.observationDigest},
+        provenance:row.observation.provenance,report:row.observation.report})))}`,
       `Unchanged evaluator-only oracle (${input.oracle.ref}):\n${input.oracle.text}`,
       ...evidence.records.map(r=>`Exact derived evidence (${r.label}):\n${r.text}`),
       ...evidence.streams.map(r=>`Exact retained execution evidence (${r.label}):\n${r.text}`),
@@ -481,6 +547,10 @@ const realizeEvaluation=(index,input)=>{const resultCandidate=evaluationTransfor
   disposition:'success',resultCandidate,evidenceCandidates:[{kind:'deterministic_evidence_candidate',schemaVersion:VERSION,
     implementationRef:evaluationStages[index].implementationRef,inputDigest:product.sha256Canonical(input),outputDigest:product.sha256Canonical(resultCandidate)}]});};
 export const prepareConstructedEvaluation=input=>realizeEvaluation(0,input),joinEvaluation=input=>realizeEvaluation(1,input);
+export const preparePreservedReacquisition=input=>{const resultCandidate=reacquisitionRequest(input);return freeze({kind:'leaf_realization_candidate',schemaVersion:VERSION,
+  disposition:'success',resultCandidate,evidenceCandidates:[{kind:'deterministic_evidence_candidate',schemaVersion:VERSION,
+    implementationRef:preservedConstructionStages[0].implementationRef,inputDigest:product.sha256Canonical(input),outputDigest:product.sha256Canonical(resultCandidate)}]});};
+export const PRESERVED_AUTHENTICATE_DESCRIPTOR=descriptor(preservedConstructionStages[0]);
 export const PREPARE_CONSTRUCTED_EVALUATION_DESCRIPTOR=descriptor(evaluationStages[0]),JOIN_EVALUATION_DESCRIPTOR=descriptor(evaluationStages[1]);
 const assessmentTransforms=[constructionAssessmentInput,constructionAssessmentTask,constructionAssessmentOutput];
 const realizeAssessment=(index,input)=>{const resultCandidate=assessmentTransforms[index](input);return freeze({kind:'leaf_realization_candidate',schemaVersion:VERSION,
@@ -492,10 +562,11 @@ const relation=(predicateRef,evaluate)=>({predicateRef,advanceReasonRef:predicat
   evaluate(...args){try{return evaluate(...args);}catch{return false;}}});
 export const PROGRAM_CONSTRUCTION_SEMANTICS=Object.freeze({kind:'product_semantics_provider',schemaVersion:VERSION,bindingRef:ids.semanticsBindingRef,
   packageName:PACKAGE_NAME,packageVersion:PACKAGE_VERSION,
-  admitInput(ref,value){return (ref===ids.inputContractRef&&isConstructionInput(value)||ref===ids.nativeInputContractRef&&isNativeConstructionInput(value))?freeze(value):null;},
+  admitInput(ref,value){return (ref===ids.inputContractRef&&isConstructionInput(value)||ref===ids.nativeInputContractRef&&isNativeConstructionInput(value)||
+    ref===ids.preservedInputContractRef&&isPreservedConstructionInput(value))?freeze(value):null;},
   evaluateInteractionResponse(){return null;},
   validateContractValue(kind,value){return ({lifecycle_construction_input:isConstructionInput,lifecycle_evaluation_input:isEvaluationInput,
-    lifecycle_native_construction_input:isNativeConstructionInput,lifecycle_construction_state:isConstructionState,lifecycle_evaluation_state:isEvaluationState,
+    lifecycle_native_construction_input:isNativeConstructionInput,lifecycle_preserved_construction_input:isPreservedConstructionInput,lifecycle_construction_state:isConstructionState,lifecycle_evaluation_state:isEvaluationState,
     lifecycle_assessment_input:isAssessmentInput,lifecycle_assessment_state:isAssessmentState,
     native_workspace_work_task:product.isNativeWorkspaceWorkTask,native_workspace_work_observation:product.isNativeWorkspaceWorkObservation,
     lifecycle_computed_records:v=>v?.kind==='lifecycle_computed_records'&&v.schemaVersion===VERSION&&coordinate(v.evaluator)&&
@@ -503,6 +574,8 @@ export const PROGRAM_CONSTRUCTION_SEMANTICS=Object.freeze({kind:'product_semanti
     retained_graph_input:product.isRetainedGraphInput,native_worksite_command_reacquisition_request:product.isNativeWorksiteCommandReacquisitionRequest,
     worksite_command_execution_task:product.isNativeWorksiteCommandExecutionTask})[kind]?.(value)??false;},
   resolveJudgmentRelation(ref){
+    if(ref===preservedConstructionStages[0].predicateRef)return relation(ref,(input,output,prefix,proof)=>
+      same(output,reacquisitionRequest(input))&&authenticPreservedConstruction(input,prefix,proof));
     const assessmentStage=assessmentStages.findIndex(s=>s.predicateRef===ref);
     if(assessmentStage>=0)return relation(ref,(input,output)=>same(output,assessmentTransforms[assessmentStage](input)));
     if(ref===ids.assessmentChildPredicateRef)return relation(ref,(input,output)=>isAssessmentState(output)&&same(input,output.assessmentInput));
@@ -517,9 +590,11 @@ export const PROGRAM_CONSTRUCTION_SEMANTICS=Object.freeze({kind:'product_semanti
     if(ref===ids.constructionChildPredicateRef)return relation(ref,constructionChildConserves);
     if(ref===ids.nativeCompletionPredicateRef)return relation(ref,(input,output)=>!input.evaluator&&constructionCompleted(input,output));
     if(ref===ids.nativeStepPredicateRef)return relation(ref,(input,output)=>{
-      if(isNativeConstructionInput(input))return same(output,reacquisitionRequest(input));
+      if(isNativeConstructionInput(input)||isPreservedConstructionInput(input))return same(output,reacquisitionRequest(input));
       if(product.isNativeWorksiteCommandReacquisitionRequest(input))return product.isNativeWorksiteCommandExecutionTask(output)&&same(output.sourceReacquisition?.request,input);
-      if(product.isRetainedGraphInput(input))return same(output,isNativeConstructionInput(input.entry)?
+      if(product.isRetainedGraphInput(input))return same(output,isPreservedConstructionInput(input.entry)?
+        (input.source?.kind===evaluationStateContract.valueKind?constructionAssessmentInput(input):constructedEvaluationInput(input)):
+        isNativeConstructionInput(input.entry)?
         (input.source?.kind===constructionStateContract.valueKind?constructedEvaluationInput(input):input.source?.kind===evaluationStateContract.valueKind?constructionAssessmentInput(input):constructionState(input)):
         isEvaluationInput(input.entry)?evaluationOutput(input):input.entry?.kind===assessmentInputContract.valueKind?constructionAssessmentOutput(input):constructionOutput(input));
       if(isEvaluationInput(input))return isEvaluationState(output)?same(input,output.evaluationInput):computedResultConserves(input,output);

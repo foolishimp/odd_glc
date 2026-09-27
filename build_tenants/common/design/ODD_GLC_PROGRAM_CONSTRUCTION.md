@@ -328,6 +328,57 @@ Native law owns `before === task.context`, provenance and scope conformance.
 An author report, matching digest or file presence alone cannot establish
 faithful derivation; reported gaps remain visible to the later judgment.
 
+Evaluation readiness distinguishes typed mechanical gaps from free-text author
+reports. Completed construction with only `author_reported_gap` entries may
+proceed to computation and independent assessment while retaining its partial
+disposition and every report verbatim. Absent dependent output, changed consumed
+predecessor, changed execution snapshot or protected source still refuses reuse.
+Neither a nonempty report nor an empty report proves an edge false or true.
+The assessment task includes each actual observation coordinate, provenance and
+complete `{summary, gaps}` alongside the full records, original source/oracle
+and carried duties. C establishes structural/currentness facts; J evaluates
+reported uncertainty and faithful derivation; the owner retains acceptance.
+
+### Preserved Construction Evaluation And Assessment
+
+An explicitly selected suffix may reuse an admitted completed construction
+child when its surrounding Run failed later. It is an ordinary declared Program,
+not a retry controller or caller-authorized observation. The existing
+`constructLifecycleProgram` option `preservedConstruction: true` requires the
+evaluation and assessment selection and the exact six-call route:
+authenticate-preserved-construction → native-command-reacquisition →
+prepare-constructed-evaluation → evaluation-child → prepare-assessment-input →
+assessment-child. Retain the root entry after calls 1 and 3 (zero-based).
+Its callable membership excludes the native constructor and command execution;
+only the existing independent native assessment can dispatch an actor.
+
+`constructPreservedConstructionInput` accepts the unchanged `originalInput`,
+unchanged completed `constructionState`, exact closed-child `historicalSelection`,
+latest author native-child `sourceSelection`, current `authority` and complete
+`currentContext`, plus the current reviewed `evaluator` declaration/fit. Original
+evaluator parameters and result contract are conserved; the historical evaluator
+and original interpreted model remain unmodified in `originalInput`.
+
+The first GLC judgment borrows R10 `historicalGraphCallSource`: the selected
+terminal must be the construction-child result and its selected ancestral native
+root input must equal `originalInput`. ABG authenticates declaration, ancestry,
+Result and J; a shaped retained pair alone grants nothing. The existing native
+reacquisition then authenticates the actual latest author child, current same
+authority/binding cover and complete current worksite observation. Original
+command configuration is inert preparation data; this suffix contains no C2
+execution. Both selectors use exact declaration proofs/references supplied
+through the existing historical-source resource, with distinct bases retained.
+
+The same evaluation owner consumes the original state with that acquired current
+context, conserving every original author task, before/after envelope, report
+and provenance. Current content must equal the latest author after-context;
+binding identity comes from the existing core reacquisition owner, not envelope
+rewriting. Pure downstream conservation reconstructs the admitted preparation
+value and checks its request/cover coordinates without claiming fresh authority.
+The assessment task uses current authority/context and names all original
+producers for independence. Historical work and remaining scope stay explicit;
+the suffix neither reruns authorship nor infers original-task completion.
+
 A group may consume several retained predecessors, including a path also
 selected as a dependent when its consumed bytes remain unchanged. A producer-output
 reference resolves only after its declared GTL child returns an admitted native

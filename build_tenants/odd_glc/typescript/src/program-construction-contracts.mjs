@@ -44,6 +44,8 @@ export const ids = Object.freeze({
   assessmentChildClosureRef: ref('contract','assessment-child/closure'),
   assessmentChildPredicateRef: ref('predicate','assessment-child'),
   assessedConstructionPredicateRef: ref('predicate','construction-assessed'),
+  preservedInputContractRef: ref('contract','preserved-construction-input'),
+  preservedAuthenticateGraphFunctionRef: ref('graph-function','authenticate-preserved-construction'),
 });
 export const contract = (contractRef, contractKind, valueKind) => Object.freeze({contractRef, contractVersion: VERSION, contractKind, valueKind});
 export const inputContract = contract(ids.inputContractRef, 'input', 'lifecycle_construction_input');
@@ -53,6 +55,12 @@ export const constructionStateContract = contract(ids.constructionStateContractR
 export const evaluationStateContract = contract(ids.evaluationStateContractRef,'output','lifecycle_evaluation_state');
 export const assessmentInputContract = contract(ids.assessmentInputContractRef,'input','lifecycle_assessment_input');
 export const assessmentStateContract = contract(ids.assessmentStateContractRef,'output','lifecycle_assessment_state');
+export const preservedConstructionInputContract = contract(ids.preservedInputContractRef,'input','lifecycle_preserved_construction_input');
+export const preservedConstructionStages = Object.freeze([
+  {name:'authenticate-preserved-construction',symbol:'preparePreservedReacquisition',input:ids.preservedInputContractRef,
+    output:'contract://abiogenesis/worksite/native-command-reacquisition-request@5',graphFunctionRef:ids.preservedAuthenticateGraphFunctionRef},
+].map(s=>Object.freeze({...s,nodeRef:ref('node',s.name),bindingRef:ref('implementation-binding',s.name),
+  implementationRef:ref('implementation',s.name),predicateRef:ref('predicate',s.name),closureRef:ref('contract',s.name+'/closure')})));
 export const stages = Object.freeze([
   {name:'authenticate', symbol:'prepareReacquisition', input:ids.inputContractRef,
     output:'contract://abiogenesis/worksite/native-command-reacquisition-request@5', graphFunctionRef:ids.authenticateGraphFunctionRef},

@@ -67,8 +67,20 @@ predecessor before/current digests and declared read path. Future predecessors
 resolve through the earlier actual child. Every condition is `true`, `false`
 or `unknown`; conjunction cannot turn false/unknown into true. The edge verdict
 conjoins structural producer, predecessor binding/currentness, dependent
-currentness, declared-read and complete-report conditions. It does not establish
+currentness and declared-read conditions. It does not establish
 cross-surface content consistency or faithful semantic derivation.
+
+`contentObservations.completeReport` truthfully records whether the actual
+author reported no remaining gaps, together with the full verbatim report. Its
+true/false/unknown value is non-closing and outside the structural conjunction.
+Original binding12 policy `3198825de81c7c681c610b45645b97c0c1700528b208b2b377d466c8aba8f37e`
+requires admitted predecessor read/before/current relations, cross-surface
+consistency and independent faithful derivation; it does not require every
+free-text residual across all scopes to be absent. A report cannot mechanically
+make every edge false or rescue a missing/stale structural fact. All reported
+uncertainty remains evidence for the independent assessor under the unchanged
+source/oracle; no report is assumed harmless and no structural true verdict
+establishes semantic satisfaction.
 
 `contentObservations.declaresPredecessor` retains whether JSON `derivedFrom`
 includes the predecessor path or text contains that literal path, with explicit

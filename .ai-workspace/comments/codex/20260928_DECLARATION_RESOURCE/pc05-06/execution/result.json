@@ -1,0 +1,137 @@
+{
+  "status": "installed_PC05_outcome_observed",
+  "disposition": "completed",
+  "run": {
+    "digest": "sha256:a0a59757b5413e82d91bec4b0f6f097668d4396aeb3d6dba75e9bf9a037f937f",
+    "ref": "run://abiogenesis/5fc4c16fc23c27635c98ed296ce1fce9445b0a155e0f60b60e1f579205903037"
+  },
+  "terminalResult": {
+    "digest": "sha256:3062c0cfc31d993ee5955e730d0ac80336b42c4f25e8268e4197f2b0418290f4",
+    "ref": "result://abiogenesis/3062c0cfc31d993ee5955e730d0ac80336b42c4f25e8268e4197f2b0418290f4"
+  },
+  "assessmentDisposition": "unsatisfied",
+  "computedEvidenceDisposition": "true",
+  "interpretation": {
+    "claim": "Independently judge the selected actual construction relations and retained comparison under the complete original rubric and oracle. Preserve every false/unknown record and residual; the original task remains open.",
+    "diagnostics": [
+      "missing_declared_evidence_role:criterion://odd-glc/generic-lifecycle/evidence/source-faithfulness@5",
+      "evidence_quote_mismatch:criterion://odd-glc/generic-lifecycle/evidence/modality-and-conflicts@5",
+      "missing_declared_evidence_role:criterion://odd-glc/generic-lifecycle/evidence/obligation-conservation@5",
+      "missing_declared_evidence_role:criterion://odd-glc/generic-lifecycle/evidence/bounded-claim@5",
+      "missing_declared_evidence_role:criterion://odd-glc/generic-lifecycle/evidence/independent-oracle@5",
+      "computed_record_coverage_missing:/records/constructionEdges/2",
+      "computed_record_coverage_missing:/records/constructionEdges/3",
+      "computed_record_coverage_missing:/records/constructionEdges/4",
+      "computed_record_coverage_missing:/records/constructionEdges/5",
+      "computed_record_coverage_missing:/records/constructionEdges/6",
+      "computed_record_coverage_missing:/records/constructionEdges/7",
+      "computed_record_coverage_missing:/records/constructionEdges/8",
+      "computed_record_coverage_missing:/records/constructionEdges/9",
+      "computed_record_coverage_missing:/records/constructionEdges/10",
+      "computed_record_coverage_missing:/records/constructionEdges/11",
+      "computed_record_coverage_missing:/records/constructionEdges/12",
+      "computed_record_coverage_missing:/records/constructionEdges/13"
+    ],
+    "disposition": "unsatisfied",
+    "requiredCriteria": [
+      "criterion://odd-glc/generic-lifecycle/evidence/source-faithfulness@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/modality-and-conflicts@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/obligation-conservation@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/bounded-claim@5",
+      "criterion://odd-glc/generic-lifecycle/evidence/independent-oracle@5"
+    ]
+  },
+  "timings": {
+    "graphExecutionMs": 442532.282041,
+    "freshReadbackMs": 180836.14554199995,
+    "run_resultMs": 89648.504667,
+    "run_resultProcessMs": 90031.994375,
+    "run_replayMs": 89865.7595,
+    "ownerCountReadMs": 504.5214580000029,
+    "run_replayProcessMs": 90754.96775000001
+  },
+  "setup": {
+    "packageMs": 13923.064749999998,
+    "installMs": 53696.268833999995,
+    "setupMs": 56660.64658200001
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/8d2f5b429b7421548d550df8aaa364ec5f8ce49824a3aa4c86fc0ddc1947f743",
+    "projectionDigest": "sha256:8d2f5b429b7421548d550df8aaa364ec5f8ce49824a3aa4c86fc0ddc1947f743",
+    "graphCallCount": 12,
+    "cCallCount": 20,
+    "actorEventCount": 1658,
+    "actorOccurrenceCount": 1,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+      "graph-function://odd-glc/program-construction/authenticate-preserved-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+      "graph-function://odd-glc/program-construction/evaluation-child@5",
+      "graph-function://odd-glc/qualification/native-records@5",
+      "graph-function://odd-glc/program-construction/join-evaluation@5",
+      "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+      "graph-function://odd-glc/program-construction/assessment-child@5",
+      "graph-function://odd-glc/program-construction/prepare-assessment-task@5",
+      "graph-function://abiogenesis/worksite/native-work/assessment@5",
+      "graph-function://odd-glc/program-construction/join-assessment@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:5a432bc0b92f4fdedf2fa74fcbf25e1beb29829d8f269087d10898553bc1936a",
+      "c-call:sha256:5fb7375672faaf75cfe9d0c954563a2f314f96ff7a2c7f03e06d83291a711923",
+      "c-call:sha256:b7fc8bcc03b4a27c14c009632f3c6fd6e1c1f999068ffc326f0a9ccc6ef68580",
+      "c-call:sha256:871be0c34c87d7ad3df921b0a19de475c0c8e3780117487efd4560a2d2d77bb6",
+      "c-call:sha256:e0d73cc164227f415a503d6641a427de729dc1e469e4192fb5ab09b41d129920",
+      "c-call:sha256:f777c9bd6c0b19077ca22127abc59948890ff53d172efb36badb83c1324ff2a6",
+      "c-call:sha256:803e594c98f1a2f9586af8431e3e580e6bf601e3e5c763db294912e71826a49b",
+      "c-call:sha256:e2d8621ca298917c3d6b227f3f6ba607da7017a927d0c688f87337547181d00e",
+      "c-call:sha256:4cfd2cd17e7cb823400c17a893fdf3f4a69e4d21f542188933e4ce63fdc9c686",
+      "c-call:sha256:94b909387228b8abe6e97c04ce88950d8599758f502b07ee438dc8f10dc06e0e",
+      "c-call:sha256:8865e3859b252c5b09a7c9062d77c564e51937ecbc31ca7ff3d374e1148a42af",
+      "c-call:sha256:9cc493562476b8671f32c94511ec38ea75dc3698b9cc1f9d8e05fe51a82878c5",
+      "c-call:sha256:3418ec99d34b28a564a8c2b1b31e5bf2e18e0426bfa4888bd92c226f6936563d",
+      "c-call:sha256:514be11dbe6e4cc51c4e9a9f1586d6b1253fb8924309e1f3838d8d01495b383e",
+      "c-call:sha256:58657f8c06001b3ff15397498561aa4f80341f2551dac6fa395ac164d2297c04",
+      "c-call:sha256:d7dba2ed967d3a40b13ebea11bfacc581cc599c225529d7667f16ce78ddfc0cf",
+      "c-call:sha256:418ff39f20dfb23e883530b6171a6e0821089757823defb626503c2355e57afe",
+      "c-call:sha256:d80ead97d691320bb2fabd867f8a4fcff0d2028892fd86a92c8f68fcc20292cb",
+      "c-call:sha256:84aaaa1a715f8cd67a621ea33d140248037043c4b184337969cd4c146f791dc6",
+      "c-call:sha256:c9fd48dcf1d46d35168ac0e154a696dec94662c3de24ccea48ff36890a1e63e4"
+    ],
+    "failures": []
+  },
+  "log": {
+    "beforeBytes": 1172255556,
+    "afterBytes": 1243581299,
+    "appendedBytes": 71325743
+  },
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:f7b127ecb1eae82e991d5567e4816105a10fce0fb2616f2a50e8552a1a5c2157",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:33db7ad81a060e0b0f47247babda840bc8117b1a61ab700a14cc5559c9e4a8ca",
+      "prefixLength": 1243581299,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:66922a3d76fcc806dc502b3eaa161837fe3a6f579c1a79bf4ff4af6ede6dd8ef",
+      "device": 16777230,
+      "durableByteLength": 1243581299,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:33db7ad81a060e0b0f47247babda840bc8117b1a61ab700a14cc5559c9e4a8ca",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed",
+  "releaseReadiness": "not_claimed"
+}

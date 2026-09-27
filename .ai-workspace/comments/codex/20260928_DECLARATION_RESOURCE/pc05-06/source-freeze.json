@@ -1,0 +1,117 @@
+{
+  "subject": "PC05-06: corrected consumer raw-result declaration, preserved author/evaluation/assessment, exact historical-selection reuse",
+  "core": {
+    "artifactDigest": "sha256:a0e7f50fd7a95d65480635fbb649575d3d94722338bc002c1038b8058a5b8dc9",
+    "productContentDigest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535",
+    "manifestDigest": "sha256:4ebbd7f283e0edc9c8cbfa83d84735071b650ac44b82ac169283fcfa4cd66c4b",
+    "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+    "packageName": "@abiogenesis/typescript-tenant",
+    "packageVersion": "5.0.0-rc.1"
+  },
+  "files": [
+    {
+      "path": "build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md",
+      "bytes": 41378,
+      "sha256": "sha256:e670ffec4eaded11e81f40c45222a2430610b789911dd74c2628ceca6eaf6456"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "bytes": 10271,
+      "sha256": "sha256:c6bbc7fcd04e27ff1b8750e2695b1bbb0cd7f5002f285066565729995c0f695a"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "bytes": 36193,
+      "sha256": "sha256:bb7cf8696e6a1f6358966a5cbfc7da27510e33aeaf948d06701ad287c70dedba"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "bytes": 59541,
+      "sha256": "sha256:5740590b66c7d3a7d6cd90dd4feb77dda5c622dce55ac1794868686e23bcb220"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "bytes": 95837,
+      "sha256": "sha256:3637b58a16af7723c29c8361099aa470a5b9a53a30a6d8c2e6f4c1d464532390"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "bytes": 24922,
+      "sha256": "sha256:fa0e43dfba318aca0e57519d3c9f49250c08ea899ff09a7b27d09ef4fc611e82"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md",
+      "bytes": 9098,
+      "sha256": "sha256:0b8586f0ef7fd07140ca0b8b47284f4a9485b95ab5a1187f92e7605c7188a924"
+    }
+  ],
+  "reusedUnchanged": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs",
+      "bytes": 70707,
+      "sha256": "sha256:83deaeaa8317bbf69898b2749e7a72893705ddac7caffd95773fd96bc9efecb4"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/native-continuation-contracts.mjs",
+      "bytes": 13664,
+      "sha256": "sha256:98b26c5f39806e3673ebc99b1fe4b110ced7370c3f59e4384ca83e4cea37f886"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/product-package.mjs",
+      "bytes": 4619,
+      "sha256": "sha256:c3662c18a7d4d2965225aeb683907d9a733b4d7488bfd28c73cdd1e6492b4041"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "bytes": 7643,
+      "sha256": "sha256:84f8f351a8f8253783b9928800ecbfc570edea06718ff2b293782232e0687a92"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "bytes": 2281,
+      "sha256": "sha256:a4e5a3d4e96081b0e5ee6d82e62beeffbd6d2062f2b1cc681ff888dc36b5f272"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/d1-lifecycle-declarations.mjs",
+      "bytes": 30749,
+      "sha256": "sha256:b71f3550a9a8c0f15533b59adc568d6cb07b290db85b6e19053572efd9c0411b"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-declarations.mjs",
+      "bytes": 15968,
+      "sha256": "sha256:3a5152f4ac99ca8ae27c1e6417e32c483f6addd0eeb2f4392e5dda38c5336e6a"
+    }
+  ],
+  "transport": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+    "expectedVersion": "2.1.280 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "selectedWriteRoots": [],
+  "expectedRootCalls": [
+    "graph-function://odd-glc/program-construction/authenticate-preserved-construction@5",
+    "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+    "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+    "graph-function://odd-glc/program-construction/evaluation-child@5",
+    "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+    "graph-function://odd-glc/program-construction/assessment-child@5"
+  ],
+  "expectedNewActorInvocations": 1,
+  "preservedActorInvocations": 1,
+  "newConstructorInvocations": 0,
+  "newCommandExecutions": 0,
+  "originalTaskCompletion": "not_claimed",
+  "selectedDelta": {
+    "return": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-assessor-repair-01/return.md",
+    "sha256": "sha256:035c77382ea921ff24bff1211eb90e6826f1c4e6b51219736c2694d727be8f19"
+  }
+}

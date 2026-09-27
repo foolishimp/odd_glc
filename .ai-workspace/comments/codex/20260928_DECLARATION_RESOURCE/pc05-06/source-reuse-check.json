@@ -1,0 +1,36 @@
+{
+  "scope": "Exact retained historical selection reuse; no journal acquisition or installed proof. R10 and native currentness remain in the suffix.",
+  "sourceBytes": 4560290,
+  "elapsedMs": 105.91958400000004,
+  "historicalResult": {
+    "ref": "result://abiogenesis/11d5e3480282181b184a80bb024c0419f4984a183282eb9302952d7e0f82f499",
+    "digest": "sha256:11d5e3480282181b184a80bb024c0419f4984a183282eb9302952d7e0f82f499"
+  },
+  "sourceSelection": {
+    "prefix": {
+      "kind": "durable_prefix_coordinate",
+      "schemaVersion": "5.0.0",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "prefixLength": 1119877539,
+      "prefixDigest": "sha256:232497022b030864becaa6e296ee010455fac88b9e75ac56ecf97191653c52f5",
+      "storeIdentity": {
+        "device": 16777230,
+        "inode": 459405010,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+      },
+      "coordinateDigest": "sha256:4ba835723e96b002a4738fda578d2ce60f6820e4bccdd394b42a9060101dc73d"
+    },
+    "graphCallRef": "graph-call://abiogenesis/053031469c08785a5a5021400ce40ab480f8ceb2298eda9ee17614a043d93ec6",
+    "declarationReference": {
+      "kind": "abg_historical_declaration_reference",
+      "schemaVersion": "5.0.0",
+      "catalogBasisDigest": "sha256:3128502055f8d747fac2a5471202ce8d36cdb8acc5a6cf570d24f0fb77868e19",
+      "readinessBasisDigest": "sha256:3128502055f8d747fac2a5471202ce8d36cdb8acc5a6cf570d24f0fb77868e19",
+      "viewDigest": "sha256:4583ed7e273a205b2ae2a7c3546d11c7997914a3c7e8fd03619d50aac984d19d"
+    }
+  },
+  "constructionStateDigest": "sha256:aa118535202b68d5f59433a3acfcf2811aaea44790a13855e2689ee6b9cee25a",
+  "originalInputDigest": "sha256:d0afed8ae4307cd695aecb0424739134de4970fa08f740dd5255a0fd0323de0b",
+  "declarationProofDigest": "sha256:f66d996934b25af3fb4d0825db50a1c253c6438c8fe8b947431d6ebbd4a0e044",
+  "equal": true
+}

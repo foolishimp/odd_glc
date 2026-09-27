@@ -1,0 +1,103 @@
+{
+  "scope": "PC05-05 large retained caller/setup evidence. Expanded installs/packages/cache excluded; installed core47 archive already preserved. Original journal remains a local dependency, not included.",
+  "archive": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-03-large-evidence.tgz",
+  "archiveBytes": 51547172,
+  "archiveSha256": "771ba25b6f580477f0e3cc709d1f2e1bc701691b6dbe58a90d9d08e1a8fdc4a8",
+  "members": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/activation-pending-review.json",
+      "bytes": 15927605,
+      "sha256": "f5b28e5854cb31ba9a4ed8dfadcd4f153e6eb6bbfda62fb452505db5e3dd99d4"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/activation.json",
+      "bytes": 15931497,
+      "sha256": "b7185b2c721c426d744ad7529ce4d1b46403dfc6f7b2ece2f5d0afdc4166dfe3"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/preserved-source.json",
+      "bytes": 4560290,
+      "sha256": "4594903d072f3961cfa81f176c5c9b0b4562f08727878e601913c72a99f0d6a2"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/00-verify-0.json",
+      "bytes": 25804428,
+      "sha256": "52e693d44a65926c333d77a3d6c3d05c727ef3641536e47418ba7e99e15c0b13"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/01-verify-1.json",
+      "bytes": 13181354,
+      "sha256": "b778a74260b6ba6ed06b19d98d6ee0e672d2201009dd44a4585997e22c4088c1"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/02-verify-2.json",
+      "bytes": 13171697,
+      "sha256": "efe24cf65798a1eaf8ab01514111361449b27d1e3918b50e63d72618a314fcdd"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/03-resolve.json",
+      "bytes": 26448297,
+      "sha256": "8bcec657a8c5296523fcba099fb9c49adac7339aacced2f29cad99a546250f6b"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/04-install-0.json",
+      "bytes": 29379897,
+      "sha256": "bf65c6cd86d57172da28db2543219eb0210c888d19724f2c54bc42cb12d87914"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/05-install-1.json",
+      "bytes": 16754991,
+      "sha256": "8dcdcb434366b7d59103077252c4c02b723afb8e0299fde5566bcf12879bf0a5"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/06-install-2.json",
+      "bytes": 16745994,
+      "sha256": "39dba57bae936343691defc78b6fb07237aafbbf1ba9875058cf9d8287a2de6f"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/07-bind.json",
+      "bytes": 20197603,
+      "sha256": "64ef32d754a9aed8a75be977632c4a55cb36a067d2d2d013710f91762d3ff4c8"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/08-catalog.json",
+      "bytes": 33752404,
+      "sha256": "497dc7a68bc56039b0a590a789c3e01eaf54760b569fc36de30f0c0bf6601a65"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/09-view.json",
+      "bytes": 36231291,
+      "sha256": "89441920efed507d9b0f5a9cfa506e0e98c72e8e45dc4f39e663108d49ab32d2"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/10-conformance.json",
+      "bytes": 37699748,
+      "sha256": "1414eded735fb75a0e2d366d663eb00bb1607df1cc1a379fb3d6deb5b470ccc2"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/setup/calls/11-native-child-binding-cover.json",
+      "bytes": 13171235,
+      "sha256": "9ba00f6eb4142979c204611f2b4bbdae6214d0c2a9338e21bfa5594f359a56c9"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/start.jsonl",
+      "bytes": 44649988,
+      "sha256": "69a2e5682f068369bedfcc2eeeed00b02fa8d545f34ea04030ca36c8ab70ffa4"
+    }
+  ],
+  "elapsedSeconds": 1.6556927496567369,
+  "verification": "all member bytes/hashes reproduced after compression",
+  "parts": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-03-large-evidence.tgz.part00",
+      "bytes": 48000000,
+      "sha256": "53a51bd6303f835d362171b660b5c15e89c5f41429955405f870f33d6b399ebe"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-03-large-evidence.tgz.part01",
+      "bytes": 3547172,
+      "sha256": "13861accaea36c38b58b27e504d3b22715cd2b68f4477ff93538ae671767c275"
+    }
+  ],
+  "archiveTracked": false
+}

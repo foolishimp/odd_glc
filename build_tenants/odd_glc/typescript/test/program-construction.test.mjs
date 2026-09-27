@@ -6,10 +6,11 @@ import * as gtl from '@abiogenesis/typescript-tenant/gtl';
 import * as validator from '@abiogenesis/typescript-tenant/validator';
 import {constructAbgHistoricalDeclarationReference} from '@abiogenesis/typescript-tenant/abg';
 import {constructLifecycleProgram,constructProgramConstructionLibrary,selectLifecycleWork,projectNativeSource} from '../src/program-construction.mjs';
-import {ids,stages,constructionStages,dependencyKind} from '../src/program-construction-contracts.mjs';
+import {ids,stages,constructionStages,preservedConstructionStages,dependencyKind} from '../src/program-construction-contracts.mjs';
 import {isConstructionInput,isNativeConstructionInput,constructNativeConstructionInput,constructionState,isConstructionState,nativeConstructionTask,constructionOutput,
   authenticSource,reacquisitionRequest,evaluationInput,constructedEvaluationInput,evaluationOutput,isEvaluationState,
-  constructionAssessmentInput,constructionAssessmentTask,constructionAssessmentOutput,assessmentEvidence,isAssessmentInput,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
+  constructionAssessmentInput,constructionAssessmentTask,constructionAssessmentOutput,assessmentEvidence,isAssessmentInput,
+  constructPreservedConstructionInput,isPreservedConstructionInput,authenticPreservedConstruction,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
 import {rawContract as assessmentResultContract,ASSESSMENT_SCHEMA_TEXT} from '../src/native-continuation-contracts.mjs';
 import {programConstructionPackageInputs} from '../scripts/build-native-continuation-product.mjs';
 import {constructOddGlcProductPackage} from '../src/product-package.mjs';
@@ -396,15 +397,16 @@ function combinedFixture() {
     retainEntryAfter:[1,2+input.constructionGroups.length]};
   return {...fixture,duty};
 }
-function completedConstruction(input,lastFiles={}) {
+function completedConstruction(input,lastFiles={},lastGaps=[],omittedLastPaths=[]) {
   let state=constructionState(product.constructRetainedGraphInput(input,acquiredFor(input)));
   for(const [index,group] of input.constructionGroups.entries()) {
     const files=Object.fromEntries(group.dutyRefs.flatMap(ref=>{
       const duty=input.model.duties.find(d=>d.ref===ref);
-      return duty.dependentPaths.map(path=>[path,'Derived from '+duty.dependencies.map(d=>d.path).join(', ')+'.\n']);
+      return duty.dependentPaths.filter(path=>index!==input.constructionGroups.length-1||!omittedLastPaths.includes(path))
+        .map(path=>[path,'Derived from '+duty.dependencies.map(d=>d.path).join(', ')+'.\n']);
     }));
     state=constructionOutput(product.constructRetainedGraphInput(state,componentObservation(nativeConstructionTask(state),
-      {...files,...(index===input.constructionGroups.length-1?lastFiles:{})},[],'combined-'+index)));
+      {...files,...(index===input.constructionGroups.length-1?lastFiles:{})},index===input.constructionGroups.length-1?lastGaps:[],'combined-'+index)));
   }
   return state;
 }
@@ -464,13 +466,27 @@ test('PC03 construction edge records derive from actual before/after and cannot 
   assert.equal(records.constructionEdges.length,3);assert(records.constructionEdges.every(r=>r.verdict==='true'));
   const future=records.constructionEdges.find(r=>r.predecessor.producerDutyRef);assert(future.predecessor.producerObservation);
   for(const mutate of [v=>{v.constructionObservations[0].observation.task.readFirst=[];},
-    v=>{v.constructionObservations[0].resolvedDependencies[0].digest=hash('wrong');},
-    v=>{v.constructionObservations[0].observation.report.gaps=['partial'];}]) {
+    v=>{v.constructionObservations[0].resolvedDependencies[0].digest=hash('wrong');}]) {
     const altered=structuredClone(view);mutate(altered);assert.equal(deriveNativeRecords(altered).records.verdict,'false');
   }
   const unknown=structuredClone(view);unknown.constructionObservations[0].observation.before.entries=[];
   assert.equal(deriveNativeRecords(unknown).records.conditions.constructionEdges.value,'unknown');
   const absent=structuredClone(view);absent.constructionObservations=[];assert.notEqual(deriveNativeRecords(absent).records.verdict,'true');
+  assert.equal(deriveNativeRecords(absent).records.constructionEdges[0].contentObservations.completeReport.value,'unknown');
+});
+test('PC05 author residuals remain verbatim judgment evidence without deciding every structural edge',()=>{
+  const {input}=combinedFixture(),reports=['Independent assessment has not run.','Argument behavior remains unproved.'],state=completedConstruction(input,{},reports);
+  assert.equal(state.disposition,'partial');assert(state.gaps.every(g=>g.cause==='author_reported_gap'));
+  const view=constructedEvaluationInput(product.constructRetainedGraphInput(input,state)),records=deriveNativeRecords(view).records;
+  assert(records.constructionEdges.every(row=>row.verdict==='true'));
+  const last=records.constructionEdges.find(row=>row.observation.ref===state.constructionObservations.at(-1).observation.observationRef);
+  assert.equal(last.contentObservations.completeReport.value,'false');assert.deepEqual(last.contentObservations.completeReport.report.gaps,reports);
+  assert.deepEqual(view.constructionObservations,state.constructionObservations);
+  const stale=structuredClone(view);stale.constructionObservations.at(-1).resolvedDependencies[0].digest=hash('stale');
+  assert.equal(deriveNativeRecords(stale).records.verdict,'false');
+  const missing=completedConstruction(input,{},reports,input.constructionGroups.at(-1).writeRoots);
+  assert(missing.gaps.some(g=>g.cause==='dependent_output_absent'));
+  assert.throws(()=>constructedEvaluationInput(product.constructRetainedGraphInput(input,missing)),/partial or stale/);
 });
 test('PC05 predecessor text is non-closing: absent marker permits structure and present marker cannot rescue a bad join',()=>{
   const {input,consumer}=combinedFixture(),path='prospective-package.json';
@@ -667,7 +683,7 @@ test('WP-01 every required dependent/predecessor pair reaches assessment includi
     }
   }
 });
-test('PC04 actual PC03 state joins complete original rubric/oracle and ordinary native assessment with no C2',async()=>{
+function assessedFixture() {
   const fixture=combinedFixture(),{input,producer,consumer,sibling,native}=fixture;
   input.origin=projectNativeSource(product,f.terminalValue,{includeAssessment:true});
   const assessor=input.model.duties.find(d=>d.role==='assess');assessor.independentOf=[producer.ref,consumer.ref,f.input.model.duties.find(d=>d.role==='execute').ref];
@@ -679,6 +695,10 @@ test('PC04 actual PC03 state joins complete original rubric/oracle and ordinary 
   const candidatePaths=input.constructionGroups.flatMap(g=>g.writeRoots),sourcePaths=input.currentContext.entries.filter(e=>e.state==='file'&&e.relativePath!==rubricFile.relativePath).map(e=>e.relativePath);
   input.assessment=assessmentSelection({...input,selectedDutyRefs:select(input).selectedDutyRefs},stage.rubric,records,candidatePaths,sourcePaths,
     {path:rubricFile.relativePath,digest:rubricFile.digest,stageRef:stage.declarationRef});
+  return {...fixture,stage,work};
+}
+test('PC04 actual PC03 state joins complete original rubric/oracle and ordinary native assessment with no C2',async()=>{
+  const fixture=assessedFixture(),{input,native,stage,work}=fixture;
   assert(isNativeConstructionInput(input));
   const proof={historicalGraphCallSource:()=>({terminalResult:f.terminal})};assert.equal(authenticSource(input,{},proof),true);
   const forged=structuredClone(input);forged.origin.assessmentBasis.evaluationData.purpose='forged oracle';assert.equal(authenticSource(forged,{},proof),false);
@@ -714,6 +734,109 @@ test('PC04 actual PC03 state joins complete original rubric/oracle and ordinary 
   assert.deepEqual(task.context,state.currentContext);assert.deepEqual(task.assessment.producer,{resultRef:state.constructionObservations.at(-1).observation.observationRef,
     resultDigest:state.constructionObservations.at(-1).observation.observationDigest,cCallRef:state.constructionObservations.at(-1).observation.provenance.cCallRef,
     actorInvocationRef:state.constructionObservations.at(-1).observation.provenance.actorInvocationRef});
+});
+// These are explicit unadmitted owner premises. No workspace or grant is written.
+function reboundComponentAuthority(original,context) {
+  const authority=structuredClone(original),w=authority.workspaceBinding;
+  w.roots.productRoot+='/component-successor';
+  const {kind,schemaVersion,bindingId,bindingDigest,admissionEventRef,...bindingBody}=w;
+  w.bindingDigest=hash(bindingBody);w.bindingId='workspace-binding://abiogenesis/'+w.bindingDigest.slice(7);
+  w.admissionEventRef='event://component/unadmitted-binding';
+  const grant=authority.capabilityGrant;grant.scopeRef=w.bindingId;grant.scopeDigest=w.bindingDigest;
+  const {kind:gk,schemaVersion:gv,grantRef,grantDigest,...grantBody}=grant;
+  grant.grantDigest=hash(grantBody);grant.grantRef='capability-grant://abiogenesis/'+grant.grantDigest.slice(7);
+  assert(product.isCapabilityGrantValue(grant));
+  const currentContext=structuredClone(context);currentContext.workspaceBindingIdentity=w.bindingId;currentContext.workspaceBindingDigest=w.bindingDigest;
+  const {kind:ck,schemaVersion:cv,observationRef,observationDigest,...body}=currentContext;
+  currentContext.observationDigest=hash(body);currentContext.observationRef='worksite-context-observation://abiogenesis/'+currentContext.observationDigest.slice(7);
+  assert(product.isWorksiteContextObservation(currentContext));return {authority,currentContext};
+}
+function preservedFixture() {
+  const fixture=assessedFixture(),originalInput=fixture.input,reports=['The original task remains open.','Independent assessment must judge this remaining uncertainty.'];
+  const constructionState=completedConstruction(originalInput,{},reports),current=reboundComponentAuthority(originalInput.authority,constructionState.currentContext);
+  const historicalSelection={...structuredClone(f.input.historicalSelection),contract:{ref:ids.constructionStateContractRef,digest:hash('component construction state contract')},
+    valueKind:'lifecycle_construction_state',valueDigest:hash(constructionState),result:{ref:'result://component/preserved-construction',digest:hash('component preserved result')}};
+  historicalSelection.producer.graphFunction={ref:ids.constructionChildGraphFunctionRef,digest:hash('component construction child')};
+  const input=constructPreservedConstructionInput({originalInput,constructionState,historicalSelection,sourceSelection:originalInput.sourceSelection,...current,
+    evaluator:{...originalInput.evaluator,fitJudgment:{ref:'judgment://component/repaired-evaluator',digest:hash('repaired evaluator')}}});
+  const owner={terminalResult:{...historicalSelection,value:constructionState,projectionBasis:{}},
+    input:{graphFunctionRef:'graph-function://component/original-root',contractRef:ids.nativeInputContractRef,value:originalInput},
+    publication:{moduleRef:ids.moduleRef,owningProductId:ids.productId}};
+  return {...fixture,input,reports,owner};
+}
+test('PC05 preserved construction suffix authenticates both historical values and declares no author or C2',()=>{
+  const {input,native,owner,route:oldRoute}=preservedFixture(),original=input.originalInput;
+  assert(isPreservedConstructionInput(input));
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.admitInput(ids.preservedInputContractRef,input),input);
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.admitInput(ids.nativeInputContractRef,input),null);
+  const request=reacquisitionRequest(input),predicate=PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(preservedConstructionStages[0].predicateRef);
+  assert.equal(predicate.evaluate(input,request,{}, {historicalGraphCallSource:()=>owner}),true);
+  assert.equal(predicate.evaluate(input,request,{},{}),false);
+  for(const mutate of [o=>{o.input.value.currentContext=structuredClone(input.currentContext);},
+    o=>{o.terminalResult.value.gaps=[];},o=>{o.input.contractRef=ids.inputContractRef;},
+    o=>{o.terminalResult.producer.graphFunction.ref=ids.assessmentChildGraphFunctionRef;}]) {
+    const crossed=structuredClone(owner);mutate(crossed);assert.equal(authenticPreservedConstruction(input,{}, {historicalGraphCallSource:()=>crossed}),false);
+  }
+  assert.deepEqual(request.sourceNativeWork,input.constructionState.constructionObservations.at(-1).observation);
+  assert.notEqual(request.currentContext.workspaceBindingIdentity,request.sourceNativeWork.after.workspaceBindingIdentity);
+  const library=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:true,evaluationGraph:evaluator.graphFunctions[0],includeAssessment:true,includePreservedConstruction:true});
+  const route={...oldRoute,roles:[...new Set(select(original).work.map(d=>d.role))],obligationRefs:[...new Set(select(original).work.map(d=>d.obligationRef))],
+    publications:[library,core,native,evaluator],graphFunctionRefs:[ids.preservedAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
+      ids.prepareConstructedEvaluationGraphFunctionRef,ids.evaluationChildGraphFunctionRef,ids.prepareAssessmentInputGraphFunctionRef,ids.assessmentChildGraphFunctionRef],retainEntryAfter:[1,3]};
+  const candidate=constructLifecycleProgram({gtl,product,artifact,model:original.model,basis:basis(original),selectedDutyRefs:original.selectedDutyRefs,
+    constructionGroups:original.constructionGroups,preservedConstruction:true,routes:[route]});
+  assert.equal(candidate.kind,'candidate');const checked=validation(candidate,[native]);assert.equal(checked.kind,'program_validation',JSON.stringify(checked));
+  const raw=(x,k)=>validator.rawAdmitValue(x,k,'contract://abiogenesis/gtl/'+k.replaceAll('_','-')+'@5');
+  const published=validator.validatePublication(raw(candidate.publication,'module_publication'),candidate.publication.contributions.map(c=>raw(c,'catalog_contribution')));
+  assert.equal(published.kind,'publication_validation',JSON.stringify(published));
+  const membership=candidate.publication.programs[0].callableMembership;
+  assert(!membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef));assert(!membership.includes(product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef));
+  assert(!membership.includes(ids.constructionChildGraphFunctionRef));assert(membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
+  const root=candidate.publication.graphFunctions.find(g=>g.name===candidate.start.graphFunctionRef);
+  assert.equal(root.declarations['abg.failure_contract'],ids.failureContractRef);assert.deepEqual(root.template.nodes.map(n=>n.term.graphFunctionRef),route.graphFunctionRefs);
+});
+test('PC05 preserved reports reach current independent assessment while historical author bytes remain unchanged',()=>{
+  const {input,reports}=preservedFixture(),before=product.canonicalJson(input),acquired=acquiredFor(input);
+  const view=constructedEvaluationInput(product.constructRetainedGraphInput(input,acquired)),computed=deriveNativeRecords(view),
+    evaluated=evaluationOutput(product.constructRetainedGraphInput(view,computed));
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.constructedEvaluationPredicateRef).evaluate(input,evaluated),true);
+  assert.deepEqual(view.constructionObservations,input.constructionState.constructionObservations);assert.deepEqual(view.currentContext,input.currentContext);
+  const assessed=constructionAssessmentInput(product.constructRetainedGraphInput(input,evaluated)),evidence=assessmentEvidence(assessed),task=constructionAssessmentTask(assessed);
+  for(const row of view.constructionObservations) {
+    assert(task.instructions.some(s=>s.includes(product.canonicalJson(row.observation.report))&&s.includes(row.observation.observationRef)&&s.includes(row.observation.provenance.actorInvocationRef)));
+  }
+  assert(reports.every(report=>task.instructions.some(s=>s.includes(report))));assert.deepEqual(task.context,input.currentContext);assert.deepEqual(task.workspaceBinding,input.authority.workspaceBinding);
+  assert.deepEqual(JSON.parse(assessed.oracle.text),input.originalInput.origin.assessmentBasis.evaluationData);
+  const observed=componentAssessment(task,satisfiedAssessment(evidence)),result=constructionAssessmentOutput(product.constructRetainedGraphInput(assessed,observed));
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.assessedConstructionPredicateRef).evaluate(input,result),true);
+  assert.equal(product.canonicalJson(input),before);assert.equal(input.constructionState.disposition,'partial');
+  const author=view.constructionObservations[0].observation;
+  assert.throws(()=>constructionAssessmentOutput(product.constructRetainedGraphInput(assessed,componentAssessment(task,satisfiedAssessment(evidence),author.provenance))),/independent assessor/);
+  const wrong=structuredClone(evaluated);wrong.evaluationInput.constructionObservations.at(-1).observation.report.gaps=[];
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.constructedEvaluationPredicateRef).evaluate(input,wrong),false);
+  const crossed=structuredClone(acquired);crossed.sourceReacquisition.request.source.graphCallRef='graph-call://crossed';
+  assert.throws(()=>constructedEvaluationInput(product.constructRetainedGraphInput(input,crossed)),/acquired native task|exact preserved/);
+});
+test('PC05 preserved currentness refuses changed or absent content and a matching wrong terminal role',()=>{
+  const {input,owner}=preservedFixture(),path=input.originalInput.constructionGroups.at(-1).writeRoots[0];
+  for(const absent of [false,true]) {
+    const changed=structuredClone(input),context=changed.currentContext,file=context.entries.find(e=>e.relativePath===path);
+    if(absent) {
+      context.entries=context.entries.filter(e=>e.relativePath!==path);
+      const parent=path.includes('/')?path.slice(0,path.lastIndexOf('/')):'.',name=path.slice(path.lastIndexOf('/')+1);
+      context.entries.find(e=>e.relativePath===parent).members=context.entries.find(e=>e.relativePath===parent).members.filter(n=>n!==name);
+    } else {
+      const bytes=Buffer.from('changed after the preserved author');Object.assign(file,{bytes:bytes.toString('base64'),byteLength:bytes.length,digest:product.sha256Bytes(bytes)});
+    }
+    const {kind,schemaVersion,observationRef,observationDigest,...body}=context;
+    context.observationDigest=hash(body);context.observationRef='worksite-context-observation://abiogenesis/'+context.observationDigest.slice(7);
+    assert(product.isWorksiteContextObservation(context));assert(isPreservedConstructionInput(changed),'shape cannot establish currentness');
+    assert.throws(()=>reacquisitionRequest(changed),/exact retained context/);
+  }
+  const wrong=structuredClone(input),matching=structuredClone(owner);
+  wrong.historicalSelection.producer.graphFunction.ref=ids.assessmentChildGraphFunctionRef;
+  matching.terminalResult.producer.graphFunction.ref=ids.assessmentChildGraphFunctionRef;
+  assert.equal(authenticPreservedConstruction(wrong,{}, {historicalGraphCallSource:()=>matching}),false);
 });
 test('applicability unknown stays residual, false records basis, cycles refuse',()=>{
   for(const [value,expected] of [['unknown','gap'],['false','report_refs']]) {
@@ -779,5 +902,32 @@ test('TAP headings are not results; role attribution still rejects absent, dupli
     const refused=records([`# Subtest: ${titles[0]}`,...first,...lines.slice(2)]);
     assert.equal(refused.conditions.componentPassed,false);
     assert.equal(refused.conditions.uatPassed,true);
+  }
+});
+
+
+test('assessment result contract remains declared in the reachable original and preserved Program closure',()=>{
+  const fixture=assessedFixture(),{input,native,work}=fixture;
+  for(const preservedConstruction of [false,true]) {
+    const library=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:true,
+      evaluationGraph:evaluator.graphFunctions[0],includeAssessment:true,includePreservedConstruction:preservedConstruction});
+    const route={...fixture.route,roles:[...new Set(work.map(d=>d.role))],obligationRefs:[...new Set(work.map(d=>d.obligationRef))],
+      publications:[library,core,native,evaluator],
+      graphFunctionRefs:preservedConstruction?[ids.preservedAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
+        ids.prepareConstructedEvaluationGraphFunctionRef,ids.evaluationChildGraphFunctionRef,ids.prepareAssessmentInputGraphFunctionRef,ids.assessmentChildGraphFunctionRef]
+        :[...fixture.route.graphFunctionRefs,ids.prepareAssessmentInputGraphFunctionRef,ids.assessmentChildGraphFunctionRef],
+      retainEntryAfter:preservedConstruction?[1,3]:[1,2+input.constructionGroups.length,4+input.constructionGroups.length]};
+    const candidate=constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,
+      constructionGroups:input.constructionGroups,preservedConstruction,routes:[route]});
+    assert.equal(candidate.kind,'candidate');
+    const membership=candidate.publication.programs[0].callableMembership;
+    const declarations=candidate.publication.graphFunctions.filter(g=>membership.includes(g.name)&&
+      g.declarations['abg.raw_result_contract']===assessmentResultContract.contractRef);
+    assert.deepEqual(declarations.map(g=>g.name),[ids.assessmentChildGraphFunctionRef],
+      'the reachable consumer child authorizes the selected native response');
+    assert.deepEqual(candidate.publication.contracts.find(c=>c.contractRef===assessmentResultContract.contractRef),assessmentResultContract);
+    assert(membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
+    assert.equal(native.graphFunctions.find(g=>g.name===product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef)
+      .declarations['abg.raw_result_contract'],undefined,'native core leaves response selection with the consumer');
   }
 });

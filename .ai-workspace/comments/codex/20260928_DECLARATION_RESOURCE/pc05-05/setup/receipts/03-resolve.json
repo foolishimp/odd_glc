@@ -1,0 +1,179 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "eventless",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.product.resolve",
+      "memberKey": "resolve"
+    },
+    "invocationRef": "invocation://abiogenesis/cbff043c8cbdb06aa1d3d9d68e90d169ff368fd80e832ea26de359fd0de8e750",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "resolvedLock": {
+          "ref": "product-lock://abiogenesis/900d1ab274ef100b581879310d455c31382cc8ed8465f8946059821b073b1dee",
+          "digest": "sha256:900d1ab274ef100b581879310d455c31382cc8ed8465f8946059821b073b1dee"
+        },
+        "selections": [
+          {
+            "requirement": {
+              "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+              "packageVersion": "5.0.0-rc.1",
+              "requiredContractRefs": [],
+              "requiredCapabilityRefs": []
+            },
+            "product": {
+              "ref": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+              "digest": "sha256:3b7df9ad54fe73ccb2d05c81c0cb5a3216a1c2b83a0c57a4b70a684aa0620535"
+            },
+            "verification": {
+              "invocation": {
+                "ref": "invocation://abiogenesis/1326ca794f1e971b88aa2d0d8f5975f7b8b600c7add54e4d42e73fddaede2f6c",
+                "digest": "sha256:1326ca794f1e971b88aa2d0d8f5975f7b8b600c7add54e4d42e73fddaede2f6c"
+              },
+              "outcome": {
+                "ref": "product-verification://abiogenesis/a51f33a38451c81ca7e47cbfeab266686b98c73fb4d82b7d1a18c61459559a15",
+                "digest": "sha256:a51f33a38451c81ca7e47cbfeab266686b98c73fb4d82b7d1a18c61459559a15"
+              }
+            }
+          },
+          {
+            "requirement": {
+              "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+              "packageVersion": "0.3.0-dev.2",
+              "requiredContractRefs": [],
+              "requiredCapabilityRefs": []
+            },
+            "product": {
+              "ref": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+              "digest": "sha256:8109899b2289e2a0b6fc3316c8cb33d7c33548b0d4c1e3e2b5186d26932810c9"
+            },
+            "verification": {
+              "invocation": {
+                "ref": "invocation://abiogenesis/2407c2c3eaba43f1605d0e4adf76f795a364a4f0c3dc07969409f40b2b3fa4b5",
+                "digest": "sha256:2407c2c3eaba43f1605d0e4adf76f795a364a4f0c3dc07969409f40b2b3fa4b5"
+              },
+              "outcome": {
+                "ref": "product-verification://abiogenesis/28479f2504944ed94e1c5172bde14e7a6ed593f673f76bec4a86298236375dd3",
+                "digest": "sha256:28479f2504944ed94e1c5172bde14e7a6ed593f673f76bec4a86298236375dd3"
+              }
+            }
+          },
+          {
+            "requirement": {
+              "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+              "packageVersion": "0.1.0-dev.2",
+              "requiredContractRefs": [],
+              "requiredCapabilityRefs": []
+            },
+            "product": {
+              "ref": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+              "digest": "sha256:b89b3c5c3dd97deb8799d036da101d1fd6817a2c7699fa07d03a86914365bdaf"
+            },
+            "verification": {
+              "invocation": {
+                "ref": "invocation://abiogenesis/ccd71e0dd4597ac9af1ba82ea127a8dd9c34c4fce15bef3d711b26e9d7347e8e",
+                "digest": "sha256:ccd71e0dd4597ac9af1ba82ea127a8dd9c34c4fce15bef3d711b26e9d7347e8e"
+              },
+              "outcome": {
+                "ref": "product-verification://abiogenesis/632976a6a3efeb2106736c3bf552ea09f3433145a162f95ad4d6792a532c45b7",
+                "digest": "sha256:632976a6a3efeb2106736c3bf552ea09f3433145a162f95ad4d6792a532c45b7"
+              }
+            }
+          }
+        ],
+        "dependencyEdges": [
+          {
+            "kind": "requires",
+            "fromProductId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+            "toProductId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+            "packageVersion": "5.0.0-rc.1",
+            "compatibilityRef": "compatibility://abiogenesis/major/5",
+            "compatibilityDisposition": "compatible",
+            "requiredContractRefs": [
+              "abg.contract.gtl.root-declaration",
+              "abg.schema.public-operation-invocation"
+            ],
+            "requiredCapabilityRefs": [
+              "abg.capability.catalog.invoke-graph-function@5",
+              "abg.capability.gtl.declare@5"
+            ]
+          },
+          {
+            "kind": "requires",
+            "fromProductId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+            "toProductId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+            "packageVersion": "5.0.0-rc.1",
+            "compatibilityRef": "compatibility://abiogenesis/major/5",
+            "compatibilityDisposition": "compatible",
+            "requiredContractRefs": [
+              "abg.contract.gtl.root-declaration",
+              "abg.schema.public-operation-invocation"
+            ],
+            "requiredCapabilityRefs": [
+              "abg.capability.catalog.invoke-graph-function@5",
+              "abg.capability.gtl.declare@5"
+            ]
+          },
+          {
+            "kind": "requires",
+            "fromProductId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+            "toProductId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+            "packageVersion": "0.1.0-dev.2",
+            "compatibilityRef": "compatibility://abiogenesis/major/5",
+            "compatibilityDisposition": "compatible",
+            "requiredContractRefs": [],
+            "requiredCapabilityRefs": []
+          }
+        ],
+        "selectorDispositions": [],
+        "occurrences": [],
+        "nativeBindings": [],
+        "residuals": [],
+        "provenance": [
+          {
+            "ref": "provenance://abiogenesis/product-verification/0f5617e03d42f8a01da57a18414376faf0863ed42061f243b11ffe32813ec495",
+            "digest": "sha256:0f5617e03d42f8a01da57a18414376faf0863ed42061f243b11ffe32813ec495"
+          },
+          {
+            "ref": "provenance://abiogenesis/product-verification/b9ab81bf8cc3c9a6362cc62d59b1fabdbf387c89aba09b40bdfa18ca9aa6a563",
+            "digest": "sha256:b9ab81bf8cc3c9a6362cc62d59b1fabdbf387c89aba09b40bdfa18ca9aa6a563"
+          },
+          {
+            "ref": "provenance://abiogenesis/product-verification/e0aaf3e8a6cec2489fe6e1bda4ec9c61a85b8273959d69bab15f1caf9572ced8",
+            "digest": "sha256:e0aaf3e8a6cec2489fe6e1bda4ec9c61a85b8273959d69bab15f1caf9572ced8"
+          }
+        ]
+      }
+    },
+    "resources": {
+      "kind": "product_resolution_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "disposition": "read_only_unchanged",
+      "verifiedArtifacts": [
+        {
+          "ref": "product-verification://abiogenesis/a51f33a38451c81ca7e47cbfeab266686b98c73fb4d82b7d1a18c61459559a15",
+          "digest": "sha256:a51f33a38451c81ca7e47cbfeab266686b98c73fb4d82b7d1a18c61459559a15"
+        },
+        {
+          "ref": "product-verification://abiogenesis/28479f2504944ed94e1c5172bde14e7a6ed593f673f76bec4a86298236375dd3",
+          "digest": "sha256:28479f2504944ed94e1c5172bde14e7a6ed593f673f76bec4a86298236375dd3"
+        },
+        {
+          "ref": "product-verification://abiogenesis/632976a6a3efeb2106736c3bf552ea09f3433145a162f95ad4d6792a532c45b7",
+          "digest": "sha256:632976a6a3efeb2106736c3bf552ea09f3433145a162f95ad4d6792a532c45b7"
+        }
+      ],
+      "resolvedLock": {
+        "ref": "product-lock://abiogenesis/900d1ab274ef100b581879310d455c31382cc8ed8465f8946059821b073b1dee",
+        "digest": "sha256:900d1ab274ef100b581879310d455c31382cc8ed8465f8946059821b073b1dee"
+      },
+      "nativeContractClosureDigest": "sha256:f8e81a74de4f41f7d9eb86e60386b0f466f48fc570f1172c604e1ae643be6d3c"
+    },
+    "failure": null
+  }
+}

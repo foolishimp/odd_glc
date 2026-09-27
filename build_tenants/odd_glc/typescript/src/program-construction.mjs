@@ -1,5 +1,5 @@
 import {isDeepStrictEqual as same} from 'node:util';
-import {ids, stages, constructionStages, evaluationStages, assessmentStages, bindingFor, contract, inputContract, evaluatorInputContract, nativeConstructionInputContract, constructionStateContract, evaluationStateContract, assessmentInputContract, assessmentStateContract, VERSION, PACKAGE_NAME, PACKAGE_VERSION, roles, dependencyKind} from './program-construction-contracts.mjs';
+import {ids, stages, constructionStages, evaluationStages, assessmentStages, preservedConstructionStages, bindingFor, contract, inputContract, evaluatorInputContract, nativeConstructionInputContract, constructionStateContract, evaluationStateContract, assessmentInputContract, assessmentStateContract, preservedConstructionInputContract, VERSION, PACKAGE_NAME, PACKAGE_VERSION, roles, dependencyKind} from './program-construction-contracts.mjs';
 import {rawContract as assessmentResultContract} from './native-continuation-contracts.mjs';
 export const need = (condition, message) => { if (!condition) throw new TypeError(message); };
 const text = x => typeof x === 'string' && x.trim().length > 0;
@@ -173,7 +173,7 @@ export function checkConstructionGroups(model,selection,groups) {
 }
 
 /** Exact published routes are source construction material, never a runtime plan. */
-export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyRefs,routes,artifact,runEnvironment,constructionGroups}) {
+export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyRefs,routes,artifact,runEnvironment,constructionGroups,preservedConstruction=false}) {
   const selection=selectLifecycleWork({product,model,basis,selectedDutyRefs});
   if(selection.gaps.length)return {kind:'gap',selection,gaps:selection.gaps};
   if(selection.disposition==='report_refs')return {kind:'report_refs',selection,support:selection.support};
@@ -184,10 +184,14 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
   const assessed=needed.length===3&&['provenance','evaluate','assess'].every(role=>needed.includes(role))&&constructionGroups!==undefined;
   const combined=(needed.length===2&&needed.includes('provenance')&&needed.includes('evaluate')||assessed)&&constructionGroups!==undefined;
   const native=(same(needed,['provenance'])||combined)&&constructionGroups!==undefined;
+  need(!preservedConstruction||assessed,'preserved construction requires an explicit evaluation and assessment suffix');
   if(!same(needed,['evaluate'])&&!native)return {kind:'gap',selection,gaps:[{cause:'executable_evidence_regime_not_supported',requiredRoles:needed}]};
   if(native)checkConstructionGroups(model,{work:selection.work.filter(w=>w.role==='provenance')},constructionGroups);
   const route=eligible[0];
-  if(native)need(same(route.graphFunctionRefs,[ids.nativeAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
+  if(preservedConstruction)need(same(route.graphFunctionRefs,[ids.preservedAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
+    ids.prepareConstructedEvaluationGraphFunctionRef,ids.evaluationChildGraphFunctionRef,ids.prepareAssessmentInputGraphFunctionRef,ids.assessmentChildGraphFunctionRef])&&
+    same(route.retainEntryAfter,[1,3]),'exact preserved construction authentication, acquisition, evaluation and assessment route required');
+  else if(native)need(same(route.graphFunctionRefs,[ids.nativeAuthenticateGraphFunctionRef,product.NATIVE_WORK_REACQUISITION_IDS.graphFunctionRef,
     ids.prepareConstructionGraphFunctionRef,...constructionGroups.map(()=>ids.constructionChildGraphFunctionRef),
     ...(combined?[ids.prepareConstructedEvaluationGraphFunctionRef,ids.evaluationChildGraphFunctionRef]:[]),
     ...(assessed?[ids.prepareAssessmentInputGraphFunctionRef,ids.assessmentChildGraphFunctionRef]:[])])&&
@@ -215,6 +219,7 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
   const nodes=graphs.map((g,i)=>({nodeRef:`node://odd-glc/construction/${suffix}/${i}@5`,nodeKind:'c_locus',
     term:gtl.workflow.C(gtl.cGraphFunctionRef({graphFunctionRef:g.name,input:gtl.cCarrier(g.inputs[0]),output:gtl.cCarrier(g.outputs[0])}))}));
   const declarations={'abg.compute_regime':'mixed','abg.closure_contract':ids.closureContractRef,
+    ...(preservedConstruction?{'abg.failure_contract':ids.failureContractRef}:{}),
     'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,
     'abg.judgment_predicate':native?ids.nativeStepPredicateRef:ids.stepPredicateRef,'abg.transition_contract':ids.transitionContractRef};
   const root={kind:'graph_function',name:rootRef,version:VERSION,inputs:[input],outputs:[output],
@@ -224,7 +229,7 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
         ...(retentions.includes(i)?{inputBinding:product.graphInputRetentionBinding(input,graphs[i].outputs[0])}:{})})),applications:[]}};
   const evaluationChild=combined?graphs.find(g=>g.name===ids.evaluationChildGraphFunctionRef):null;
   const evaluationGraph=combined?publications.flatMap(p=>p.graphFunctions).find(g=>g.name===evaluationChild.template.nodes[0].term.graphFunctionRef):undefined;
-  const own=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:native,evaluationGraph,includeAssessment:assessed});
+  const own=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:native,evaluationGraph,includeAssessment:assessed,includePreservedConstruction:preservedConstruction});
   need(!combined||same(own.graphFunctions.find(g=>g.name===ids.evaluationChildGraphFunctionRef),evaluationChild),'exact supplied evaluator child required');
   const closure={kind:'closure_contract',closureContractRef:ids.closureContractRef,predicateRef:assessed?ids.assessedConstructionPredicateRef:combined?ids.constructedEvaluationPredicateRef:native?ids.nativeCompletionPredicateRef:ids.completionPredicateRef,
     evidenceContractRef:ids.evidenceContractRef,resultContractRef:output,refusalContractRef:ids.refusalContractRef,
@@ -233,7 +238,7 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
     eventKindRefs:['terminal_reached','frame_closed','graph_call_closed','run_closed']};
   const startRef=`start://odd-glc/construction/${suffix}@5`;
   const publication=gtl.modulePublication({...own,programs:[{kind:'gtl_program',programRef,version:VERSION,moduleRef:ids.moduleRef,
-    starts:[{startRef,graphFunctionRef:rootRef}],callableMembership:[...new Set([rootRef,...graphs.map(g=>g.name),...(native?
+    starts:[{startRef,graphFunctionRef:rootRef}],callableMembership:[...new Set([rootRef,...graphs.map(g=>g.name),...(native&&!preservedConstruction?
       [ids.prepareNativeTaskGraphFunctionRef,product.NATIVE_WORKSPACE_WORK_IDS.graphFunctionRef,ids.joinNativeOutputGraphFunctionRef]:[]),
       ...(combined?[evaluationGraph.name,ids.joinEvaluationGraphFunctionRef]:[]),
       ...(assessed?[ids.prepareAssessmentTaskGraphFunctionRef,product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef,ids.joinAssessmentGraphFunctionRef]:[])])],closureContractRef:ids.closureContractRef,
@@ -245,21 +250,25 @@ export function constructLifecycleProgram({gtl,product,model,basis,selectedDutyR
   return freeze({kind:'candidate',publication,selection,start:{programRef,startRef,graphFunctionRef:rootRef},
     correspondence:selection.work.map(w=>({dutyRef:w.dutyRef,producerRefs:route.graphFunctionRefs,fitJudgment:route.fitJudgment,
       ...(native&&w.role==='provenance'?{groupRef:constructionGroups.find(g=>g.dutyRefs.includes(w.dutyRef)).ref,
-        producerNodeRef:nodes[3+constructionGroups.findIndex(g=>g.dutyRefs.includes(w.dutyRef))].nodeRef}:
-        combined?{producerNodeRef:nodes[w.role==='assess'?nodes.length-1:4+constructionGroups.length].nodeRef,
+        ...(preservedConstruction?{evidenceSource:'authenticated_preserved_construction'}:
+          {producerNodeRef:nodes[3+constructionGroups.findIndex(g=>g.dutyRefs.includes(w.dutyRef))].nodeRef})}:
+        combined?{producerNodeRef:nodes[w.role==='assess'?nodes.length-1:preservedConstruction?3:4+constructionGroups.length].nodeRef,
           ...(w.role==='evaluate'?{evaluator:{ref:evaluationGraph.name,digest:product.sha256Canonical(evaluationGraph)}}:{})}: {})}))});
 }
 
-export function constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction=false,evaluationGraph,includeAssessment=false}) {
+export function constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction=false,evaluationGraph,includeAssessment=false,includePreservedConstruction=false}) {
   need(!evaluationGraph||includeNativeConstruction&&same(evaluationGraph.inputs,[ids.evaluatorInputContractRef])&&evaluationGraph.outputs.length===1&&
     evaluationGraph.outputs[0]!==product.RETAINED_GRAPH_INPUT_CONTRACT.contractRef,'one ordinary supplied evaluator interface required');
   need(!includeAssessment||evaluationGraph,'assessment requires the actual evaluator child');
-  const libraryStages=includeNativeConstruction?[...constructionStages,...(evaluationGraph?evaluationStages:[]),...(includeAssessment?assessmentStages:[])]:stages;
+  need(!includePreservedConstruction||includeAssessment,'preserved construction requires evaluation and assessment');
+  const libraryStages=includeNativeConstruction?[...(includePreservedConstruction?[]:constructionStages),...(evaluationGraph?evaluationStages:[]),...(includeAssessment?assessmentStages:[]),
+    ...(includePreservedConstruction?preservedConstructionStages:[])]:stages;
   const base=[inputContract,evaluatorInputContract,...(includeNativeConstruction?[nativeConstructionInputContract,constructionStateContract,
     contract(ids.constructionChildClosureRef,'closure','lifecycle_construction_child_closure')]:[]),
     ...(evaluationGraph?[evaluationStateContract,contract(ids.evaluationChildClosureRef,'closure','lifecycle_evaluation_child_closure')]:[]),
     ...(includeAssessment?[assessmentInputContract,assessmentStateContract,assessmentResultContract,
       contract(ids.assessmentChildClosureRef,'closure','lifecycle_assessment_child_closure')]:[]),
+    ...(includePreservedConstruction?[preservedConstructionInputContract]:[]),
     contract(ids.evidenceContractRef,'evidence','deterministic_evidence_candidate'),contract(ids.failureContractRef,'failure','lifecycle_construction_failure'),
     contract(ids.refusalContractRef,'refusal','lifecycle_construction_refusal'),contract(ids.judgmentContractRef,'judgment','lifecycle_construction_judgment'),
     contract(ids.transitionContractRef,'transition','lifecycle_construction_transition'),contract(ids.closureContractRef,'closure','lifecycle_construction_closure')];
@@ -276,7 +285,7 @@ export function constructProgramConstructionLibrary({gtl,product,artifact,includ
         judgmentPredicateRef:s.predicateRef,resultBearing:true,requirement:{kind:'executable_leaf_requirement',implementationBindingRef:s.bindingRef,
           inputContractRef:s.input,outputContractRef:s.output,evidenceContractRef:ids.evidenceContractRef,failureContractRef:ids.failureContractRef,
           refusalContractRef:ids.refusalContractRef,judgmentContractRef:ids.judgmentContractRef}})}]}}));
-  if(includeNativeConstruction) {
+  if(includeNativeConstruction&&!includePreservedConstruction) {
     const n=product.NATIVE_WORKSPACE_WORK_IDS,state=ids.constructionStateContractRef;
     const calls=[[ids.prepareNativeTaskGraphFunctionRef,state,n.taskContractRef],[n.graphFunctionRef,n.taskContractRef,n.observationContractRef],
       [ids.joinNativeOutputGraphFunctionRef,product.RETAINED_GRAPH_INPUT_CONTRACT.contractRef,state]];
@@ -316,7 +325,7 @@ export function constructProgramConstructionLibrary({gtl,product,artifact,includ
     graphFunctions.push({kind:'graph_function',name:ids.assessmentChildGraphFunctionRef,version:VERSION,inputs:[input],outputs:[output],
       environment:{requires:[input],provides:[n.taskContractRef,n.observationContractRef,output],carries:[input]},effects:[n.effectUri],tags:['lifecycle-construction','independent-assessment'],
       declarations:{'abg.compute_regime':'mixed','abg.closure_contract':ids.assessmentChildClosureRef,'abg.child_closure_contract':ids.assessmentChildClosureRef,
-        'abg.failure_contract':ids.failureContractRef,
+        'abg.failure_contract':ids.failureContractRef,'abg.raw_result_contract':assessmentResultContract.contractRef,
         'abg.evidence_contract':ids.evidenceContractRef,'abg.judgment_contract':ids.judgmentContractRef,'abg.judgment_predicate':ids.nativeStepPredicateRef,'abg.transition_contract':ids.transitionContractRef},
       template:{kind:'inline_graph',graphRef:ids.assessmentChildGraphFunctionRef.replace('graph-function:','graph:'),startNodeRef:nodes[0].nodeRef,
         terminalNodeRefs:[nodes[2].nodeRef],nodes,applications:[],edges:[gtl.graphEdge({fromNodeRef:nodes[0].nodeRef,toNodeRef:nodes[1].nodeRef}),

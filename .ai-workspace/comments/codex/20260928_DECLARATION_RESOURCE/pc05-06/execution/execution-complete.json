@@ -1,0 +1,37 @@
+{
+  "timings": {
+    "graphExecutionMs": 442532.282041
+  },
+  "disposition": "completed",
+  "run": {
+    "digest": "sha256:a0a59757b5413e82d91bec4b0f6f097668d4396aeb3d6dba75e9bf9a037f937f",
+    "ref": "run://abiogenesis/5fc4c16fc23c27635c98ed296ce1fce9445b0a155e0f60b60e1f579205903037"
+  },
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:f7b127ecb1eae82e991d5567e4816105a10fce0fb2616f2a50e8552a1a5c2157",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:33db7ad81a060e0b0f47247babda840bc8117b1a61ab700a14cc5559c9e4a8ca",
+      "prefixLength": 1243581299,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:66922a3d76fcc806dc502b3eaa161837fe3a6f579c1a79bf4ff4af6ede6dd8ef",
+      "device": 16777230,
+      "durableByteLength": 1243581299,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:33db7ad81a060e0b0f47247babda840bc8117b1a61ab700a14cc5559c9e4a8ca",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "completedAt": "2026-09-27T21:11:37.728Z"
+}

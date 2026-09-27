@@ -1,0 +1,59 @@
+{
+  "subject": "PC05-06: same declared suffix; corrected GLC result declaration and exact historical-selection reuse; unchanged core and full R10/currentness owners",
+  "files": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/candidate.mjs",
+      "sha256": "sha256:6bc71427a74e5ab62b2e2ce4e1041fe1e8e30c5670195fe8fd37873540134334",
+      "bytes": 4957
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/execute.mjs",
+      "sha256": "sha256:9469d4163510e473783c7029c8a3d5fa63c140b711900599f5b657b24c8754d5",
+      "bytes": 9346
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/package.mjs",
+      "sha256": "sha256:b4e6e14f58a57be2cd3de09268b5e4a4e4d38bab036dcb17ec1d271b950a12e5",
+      "bytes": 11166
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/prepare.mjs",
+      "sha256": "sha256:eda8f424a4db1335c0f04d22b7e99507f0b197e2361ef28266351805ff6563e6",
+      "bytes": 27900
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/source-reuse.mjs",
+      "sha256": "sha256:73dd0b51825d5b394dc524635006f6f1340da67542c6c7d897bea750df1d01a6",
+      "bytes": 1826
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": "sha256:014c70ffe9b7cdbd7346f21e99e61f0695a48229219a36c7d72a6185c33697da",
+      "bytes": 17485
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "sha256": "sha256:8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "bytes": 87990
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+      "sha256": "sha256:63a10082c83899da949384d0c0ee796218d11093cd5cd26832e862ae84d112b8",
+      "bytes": 82912
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/preserved-source.json",
+      "sha256": "sha256:4594903d072f3961cfa81f176c5c9b0b4562f08727878e601913c72a99f0d6a2",
+      "bytes": 4560290
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/source-projection-record.json",
+      "sha256": "sha256:f3b50672718567c664f62bb73d39ff272e71b4e79cbab676170fad3fa97d522d",
+      "bytes": 4820
+    }
+  ],
+  "predecessorCallerFreeze": {
+    "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/caller-freeze.json",
+    "sha256": "sha256:6237f271a81aee5ea4f30f1e25b9b59dc97a91144c18a667031054f42cda00dc"
+  }
+}

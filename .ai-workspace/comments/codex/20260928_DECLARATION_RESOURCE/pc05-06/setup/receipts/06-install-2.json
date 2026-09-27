@@ -1,0 +1,109 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.product.install",
+      "memberKey": "install"
+    },
+    "invocationRef": "invocation://abiogenesis/a493202a5c6d388fd485188365e59e831b66019795d6ca1f948cdf4899563856",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "disposition": "materialized",
+        "installedProduct": {
+          "ref": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/b89b3c5c3dd97deb8799d036da101d1fd6817a2c7699fa07d03a86914365bdaf/1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71",
+          "digest": "sha256:51ab1711d15c740ab5fc6607a67edbc222ba4a0ede4ebb583bc2d4e935a59d24"
+        },
+        "installManifest": {
+          "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/products/evaluator/node_modules/@odd-glc/program-construction-fixture/product-toolchain-manifest.json",
+          "digest": "sha256:334d1501cb88df19a0a5b310613f0e30389d1f8c8c4918fe4666b51df8b62e60"
+        },
+        "installerManifest": {
+          "ref": "artifact-truth-projection://abiogenesis/0acdf88289a472c1ae2f494e83105a4d85a649c7bbc807c13842de7da66c3c01",
+          "digest": "sha256:0acdf88289a472c1ae2f494e83105a4d85a649c7bbc807c13842de7da66c3c01"
+        },
+        "resolvedLock": {
+          "ref": "product-lock://abiogenesis/1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71",
+          "digest": "sha256:1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71"
+        },
+        "provenance": [
+          {
+            "ref": "artifact-truth-projection://abiogenesis/0acdf88289a472c1ae2f494e83105a4d85a649c7bbc807c13842de7da66c3c01",
+            "digest": "sha256:0acdf88289a472c1ae2f494e83105a4d85a649c7bbc807c13842de7da66c3c01"
+          }
+        ]
+      }
+    },
+    "resources": {
+      "kind": "product_install_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_completion",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 1172239856,
+          "prefixDigest": "sha256:3e89fbf7267ffcfd54bddee804189ba88d87801c8115278e089c18bfb33e3400",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:a623b3aa4782a568f1ba3786adf7533a443836de82d0151b49600fc7fc9b9f1b"
+        },
+        "successor": {
+          "kind": "acquired_abg_event_resource_selection",
+          "schemaVersion": "5.0.0",
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 1172243285,
+            "prefixDigest": "sha256:5f727e670191b1d084f44bf56c12e45e37ec0bdab366f888172c88526d295aac",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:7f0f6fd50853447a113b7c358981d615fff56f24bbb9f0f4b7603d9d912f920b"
+          }
+        },
+        "receiptDigest": "sha256:41965b5994cd915e2190919c8a7fb5aae37d9312df9db898822ed4fac0091c65"
+      },
+      "packedArtifact": {
+        "ref": "odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+        "digest": "sha256:4ef85ffc801a6ed26e030c7e8f0615ccf49e90d2c824f08e368e9cfe5d435384"
+      },
+      "resolvedLock": {
+        "ref": "product-lock://abiogenesis/1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71",
+        "digest": "sha256:1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71"
+      },
+      "targetRoot": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/products/evaluator",
+      "installCandidate": {
+        "ref": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/b89b3c5c3dd97deb8799d036da101d1fd6817a2c7699fa07d03a86914365bdaf/1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71",
+        "digest": "sha256:51ab1711d15c740ab5fc6607a67edbc222ba4a0ede4ebb583bc2d4e935a59d24"
+      },
+      "installedProduct": {
+        "ref": "product-install://@odd-glc/program-construction-fixture/0.1.0-dev.2/b89b3c5c3dd97deb8799d036da101d1fd6817a2c7699fa07d03a86914365bdaf/1743c0688db50a6a8794b65d165a6e09e8928038ec1503fe0ccf5d3e1c8c8a71",
+        "digest": "sha256:51ab1711d15c740ab5fc6607a67edbc222ba4a0ede4ebb583bc2d4e935a59d24"
+      },
+      "installManifest": {
+        "ref": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/products/evaluator/node_modules/@odd-glc/program-construction-fixture/product-toolchain-manifest.json",
+        "digest": "sha256:334d1501cb88df19a0a5b310613f0e30389d1f8c8c4918fe4666b51df8b62e60"
+      },
+      "installerManifest": {
+        "ref": "artifact-truth-projection://abiogenesis/0acdf88289a472c1ae2f494e83105a4d85a649c7bbc807c13842de7da66c3c01",
+        "digest": "sha256:0acdf88289a472c1ae2f494e83105a4d85a649c7bbc807c13842de7da66c3c01"
+      }
+    },
+    "failure": null
+  }
+}

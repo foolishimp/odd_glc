@@ -1,0 +1,26 @@
+{
+  "activationPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/activation.json",
+  "activationDigest": "sha256:b7185b2c721c426d744ad7529ce4d1b46403dfc6f7b2ece2f5d0afdc4166dfe3",
+  "sourceFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/source-freeze.json",
+    "digest": "sha256:ee60a3988b6f7c57e13d8c311db62112ef7a50830d6a75694071c86b632a3b57"
+  },
+  "constructionReview": {
+    "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-evaluation-repair-review.md",
+    "digest": "sha256:28684f1584f334a43bdf783e6193faee685207e6a45d69391bdea0565c60bec1"
+  },
+  "callerFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/caller-freeze.json",
+    "digest": "sha256:6237f271a81aee5ea4f30f1e25b9b59dc97a91144c18a667031054f42cda00dc"
+  },
+  "launchDigest": "sha256:69a2e5682f068369bedfcc2eeeed00b02fa8d545f34ea04030ca36c8ab70ffa4",
+  "beforeBytes": 1122208468,
+  "startedAt": "2026-09-27T20:29:38.608Z",
+  "transportDigest": "sha256:f3d3ca4d35a0b3e34becef62c3587acb3e490a4d2e279ab5223cbcf9c5d41a91",
+  "setup": {
+    "packageMs": 14341.929499999998,
+    "installMs": 8441.032084000006,
+    "setupMs": 107443.10320799999,
+    "timingLimitation": null
+  }
+}

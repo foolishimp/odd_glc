@@ -1,0 +1,45 @@
+{
+  "subject": "Unexecuted PC05 preserved-construction successor: one setup owner, existing Public operations, one read-only assessor, fresh Result and replay",
+  "files": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/candidate.mjs",
+      "sha256": "sha256:6bc71427a74e5ab62b2e2ce4e1041fe1e8e30c5670195fe8fd37873540134334",
+      "bytes": 4957
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/execute.mjs",
+      "sha256": "sha256:9469d4163510e473783c7029c8a3d5fa63c140b711900599f5b657b24c8754d5",
+      "bytes": 9346
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/package.mjs",
+      "sha256": "sha256:b4e6e14f58a57be2cd3de09268b5e4a4e4d38bab036dcb17ec1d271b950a12e5",
+      "bytes": 11166
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/prepare.mjs",
+      "sha256": "sha256:58d138c514ff81b59ef345ec1feb86fa27b8d9caf61c0528d562b161e63e52a6",
+      "bytes": 27775
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/source-projection.mjs",
+      "sha256": "sha256:9d9971de710724af804f5a8c8db9229975740393ab6b338aa36548cac6822a7e",
+      "bytes": 2773
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": "sha256:014c70ffe9b7cdbd7346f21e99e61f0695a48229219a36c7d72a6185c33697da",
+      "bytes": 17485
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "sha256": "sha256:8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "bytes": 87990
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+      "sha256": "sha256:63a10082c83899da949384d0c0ee796218d11093cd5cd26832e862ae84d112b8",
+      "bytes": 82912
+    }
+  ]
+}

@@ -1,0 +1,1272 @@
+{
+  "status": "conditional_evidence_selection_only_PC05_06_runtime_outcome_pending",
+  "source": {
+    "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/suffix-01/suffix-terminal-value.json",
+    "sha256": "sha256:c60f7662f4ed6371e55289dbbb4efd951afe722d15e80f9280741e710e7cf348",
+    "sourceBytes": 6120,
+    "sourceDigest": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4",
+    "sourcePointer": "/current/job/members/0",
+    "oraclePointer": "/current/job/evaluationData",
+    "oracleDigest": "sha256:091ca27cb92d7e80422272f1b0d71d5ae7fd7dfc299d037dfef1c71b1b924e99"
+  },
+  "preserved": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/preserved-source.json",
+    "sha256": "sha256:4594903d072f3961cfa81f176c5c9b0b4562f08727878e601913c72a99f0d6a2",
+    "constructionObservationPointer": "/constructionState/constructionObservations/0/observation",
+    "observationRef": "native-work-observation://abiogenesis/6a2328cda2dda9425f0eec89f51df39084321b0fe98aa5cd33b1408ba7b3c445",
+    "observationDigest": "sha256:6a2328cda2dda9425f0eec89f51df39084321b0fe98aa5cd33b1408ba7b3c445",
+    "provenance": {
+      "actorInvocationRef": "actor-invocation://abiogenesis/ebcba57b1fd20fef3b59840621f470abb93f0e5d054f08590a95765d428d5ec4",
+      "cCallRef": "c-call:sha256:9b215b260d5181dc5d93ddedb02fa3689791141d7dc8ad59e08cfdf7f1635705",
+      "executionAuthorityDigest": "sha256:c7d24e399668c97edc8d370733032dd46d36d8cfc50f4696ccdd1deabe7e8231",
+      "executionAuthorityRef": "leaf-execution-authority://abiogenesis/c7d24e399668c97edc8d370733032dd46d36d8cfc50f4696ccdd1deabe7e8231",
+      "promptDigest": "sha256:67d80614d30e492ca1f5ebf81956ee01bc561345e8cacf251f2e832ec7927055",
+      "transportBindingDigest": "sha256:d6d22ac129ca29053933c67f78af4d416e2ad987adb73b08240363b5cbf1820f",
+      "transportBindingRef": "transport-binding://abiogenesis/d6d22ac129ca29053933c67f78af4d416e2ad987adb73b08240363b5cbf1820f",
+      "transportDigest": "sha256:e113a9a79d7ce9deb2ca1464eaa12371aee50725628ba6817e98463bd083899a"
+    },
+    "changedPaths": [],
+    "originalInputDigest": "sha256:d0afed8ae4307cd695aecb0424739134de4970fa08f740dd5255a0fd0323de0b"
+  },
+  "retainedEvidence": {
+    "constructionResult": {
+      "ref": "result://abiogenesis/e14ee1f3df7ac6292eba353ccf7b9cb000c5c25d4f49e0d997577b22ea61bb36",
+      "digest": "sha256:e14ee1f3df7ac6292eba353ccf7b9cb000c5c25d4f49e0d997577b22ea61bb36"
+    },
+    "executionResult": {
+      "ref": "result://abiogenesis/5f743236d9c21a82eb4da9d1fff8590403ae087db386f1a32d7d6c39b46ac8f5",
+      "digest": "sha256:5f743236d9c21a82eb4da9d1fff8590403ae087db386f1a32d7d6c39b46ac8f5"
+    },
+    "executionObservationRef": "worksite-command-execution-observation://abiogenesis/f3f8fc59b60766b8deea3c9c0e119bceb2f11ab5ac09b8a699dfc6d500c1cb85",
+    "executionObservationDigest": "sha256:f3f8fc59b60766b8deea3c9c0e119bceb2f11ab5ac09b8a699dfc6d500c1cb85",
+    "snapshotMatchesRetainedConstructionContext": true,
+    "snapshotMembers": [
+      {
+        "path": "specification/project-conformance.md",
+        "digest": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a",
+        "current": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a"
+      },
+      {
+        "path": "design/implementation-design.md",
+        "digest": "sha256:2a5acf0f055983bf757cf1324669be609ddedddb753db03e4e2897e6fc370ee3",
+        "current": "sha256:2a5acf0f055983bf757cf1324669be609ddedddb753db03e4e2897e6fc370ee3"
+      },
+      {
+        "path": "package.json",
+        "digest": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8",
+        "current": "sha256:609158e6c5fbc237939fa3ddf7faab80ab690bdc0c8d584414a885130103c4e8"
+      },
+      {
+        "path": "src/hello.mjs",
+        "digest": "sha256:e62ab9f36107d91297bcb4433418a4a1911d2081724ea141bc848d1d8acde924",
+        "current": "sha256:e62ab9f36107d91297bcb4433418a4a1911d2081724ea141bc848d1d8acde924"
+      },
+      {
+        "path": "design/test-design.md",
+        "digest": "sha256:17fcb06fcf2253a475b296772b8a15569522be2632b9c398c63181d56bef90df",
+        "current": "sha256:17fcb06fcf2253a475b296772b8a15569522be2632b9c398c63181d56bef90df"
+      },
+      {
+        "path": "test/component/hello.test.mjs",
+        "digest": "sha256:4eefc99756ee34640b1e2c8baecb9ff4fa199d8d014d6ed935fe5bec7a9f031b",
+        "current": "sha256:4eefc99756ee34640b1e2c8baecb9ff4fa199d8d014d6ed935fe5bec7a9f031b"
+      },
+      {
+        "path": "test/uat/hello.uat.test.mjs",
+        "digest": "sha256:42bf7e724edf073aeb23f0e9b1d5dabf66a63ce444c51c3502303fd9d3332e82",
+        "current": "sha256:42bf7e724edf073aeb23f0e9b1d5dabf66a63ce444c51c3502303fd9d3332e82"
+      },
+      {
+        "path": "test-execution-plan.json",
+        "digest": "sha256:c69ed6ca8f50ba55e59ff4a841856cb977a63ebdf6d2c98b81e35ba62af4ed7d",
+        "current": "sha256:c69ed6ca8f50ba55e59ff4a841856cb977a63ebdf6d2c98b81e35ba62af4ed7d"
+      },
+      {
+        "path": "verification/check-inventory.mjs",
+        "digest": "sha256:327d0fdbc5a67ddf7e3a4b6eee6d770a7f4f57402423abebb5ce75df18c2a517",
+        "current": "sha256:327d0fdbc5a67ddf7e3a4b6eee6d770a7f4f57402423abebb5ce75df18c2a517"
+      },
+      {
+        "path": "verification/check-package.mjs",
+        "digest": "sha256:ef9d65362094704dd1a8927e2abf4ac99e8660ffb650793b7b7843b4dba1552a",
+        "current": "sha256:ef9d65362094704dd1a8927e2abf4ac99e8660ffb650793b7b7843b4dba1552a"
+      },
+      {
+        "path": "verification/check-documents.mjs",
+        "digest": "sha256:21537559351303205f7264f78b6c400059057cc85a1d323c99c18029356218dd",
+        "current": "sha256:21537559351303205f7264f78b6c400059057cc85a1d323c99c18029356218dd"
+      },
+      {
+        "path": "verification/check-verifier-structure.mjs",
+        "digest": "sha256:59296f62425a051fab2ed5e6e9de942921da5165faab9c5fc68d1f54c090fbc7",
+        "current": "sha256:59296f62425a051fab2ed5e6e9de942921da5165faab9c5fc68d1f54c090fbc7"
+      },
+      {
+        "path": "verification/check-plan.mjs",
+        "digest": "sha256:dadf87cd9c1b7e410451c74ece70574a31966098a3954b53949da9b3e5bbd746",
+        "current": "sha256:dadf87cd9c1b7e410451c74ece70574a31966098a3954b53949da9b3e5bbd746"
+      },
+      {
+        "path": "verification/check-derivation.mjs",
+        "digest": "sha256:491e7edbefd97b322fe6bd514c147d7448b6c2ef0e7fee94c5b2c1d260059668",
+        "current": "sha256:491e7edbefd97b322fe6bd514c147d7448b6c2ef0e7fee94c5b2c1d260059668"
+      },
+      {
+        "path": "original-js-sdlc-bootstrap-declaration.txt",
+        "digest": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4",
+        "current": "sha256:c799b9e43d660f3abc3adf0da32baab17a771f1efe20843c4688162b9e62ced4"
+      }
+    ],
+    "native44Review": {
+      "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md",
+      "sha256": "sha256:6a501458e9af5b84eb9af0f4309ce3455fb6514efd8499525b26133ddc73440b"
+    },
+    "bindings10_11Acceptance": {
+      "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/return.md",
+      "sha256": "sha256:83dfa6c5a7cb4af36cae53e601ea074b44c337bfa0b929e0765dd3ee29c3731b",
+      "reviewPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-review-01/review.md",
+      "reviewSha256": "sha256:14cd66e814872e05902a3b1e3f004b28430707bdad60dd532fca0346f4991a45",
+      "runRef": "run://abiogenesis/4eeb3e367d9453dce6e242cd057980271219dd3fa84125819f28d469c2681088",
+      "resultRef": "result://abiogenesis/45dcbe00e7c047eaa4dff244890fc012490862f33d524fc1124971be4f00eb32"
+    }
+  },
+  "reports": {
+    "classification": "verbatim_author_reports_not_mechanical_failure_or_closure",
+    "pointer": "/constructionState/constructionObservations/0/observation/report",
+    "reportDigest": "sha256:716d5ee25e4da483f859fb838a1d28120d7066f54a5b8e8538c816c66408ec86",
+    "gaps": [
+      "The original task is not closed. The independent assessment has not run yet, and acceptance belongs to an owner ruling.",
+      "Bindings 10 and 11 (observed execution result and the acceptance rule) remain a separate Executive conjunction. This construction does not claim them.",
+      "This group introduced no basis change. It did not check or rerun C2, so whether the retained execution evidence is current is left to the later owner decision.",
+      "Unchanged gap on arguments: nothing specifies or proves what helloWorld() does when called with arguments (req-pressure:07). Other exports and side effects are likewise not proved. I added no contract or test for them.",
+      "Unchanged gap on the package.json type field: the planned node --test command does not exercise private or type, since .mjs files load as ES modules regardless of type (req-pressure:19). These fields need their own observation of the actual package.json.",
+      "The planned command does not exercise the three documents, the surface set, cross-surface consistency or the ban on copied machinery (req-pressure:18). Those need separate observation or assessment.",
+      "Nothing yet shows that the component and UAT tests each passed separately (req-pressure:05). Whether 'fail 0' matches the output of the node reporter actually used, and whether that Node version is compatible, has not been observed (req-pressure:09, req-pressure:17).",
+      "Neither test includes a negative check showing it fails on a wrong greeting, so the strength of the assertions rests on semantic assessment (bindings 7 and 8).",
+      "It is still undecided whether 'artifact summaries' or the full file contents are the evidence source (req-pressure:03). I derived from the full contents at the declared digests.",
+      "The comment at the top of each test names its predecessors but leaves out package.json. The link to package.json is only a consistency check (ES modules, built-ins only), and changing the comment alone would just manufacture provenance and change the component-test predecessor digest, so I left it.",
+      "Minor: the conformance document counts package.json and src/hello.mjs as one 'source' surface, while the design lists them separately. It is a difference in granularity, not a conflict, and the design does not state the mapping outright.",
+      "Two points remain unassessed: whether the ABG ownership sentence in the conformance document uses current terms (req-pressure:12), and what executeFromPlan: false means (req-pressure:15). The mapping of observed results to executionStatus, planSatisfied, pass count and the stdout digest is still undecided (req-pressure:04)."
+    ],
+    "summaryPointer": "/constructionState/constructionObservations/0/observation/report/summary"
+  },
+  "pendingResult": {
+    "file": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/execution/terminal-value.json",
+    "status": "not_read_not_claimed",
+    "computedRecordsPointer": "/assessmentInput/evaluationState/computedRecords",
+    "assessmentPointer": "/assessmentObservation",
+    "interpretationPointer": "/interpretation",
+    "preservedResidualsPointer": "/preservedResiduals",
+    "recordSelections": [
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/provenance/implementation-design",
+        "recordPath": "/records/constructionEdges/0",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+        "recordPath": "/records/constructionEdges/1",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+        "recordPath": "/records/constructionEdges/2",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+        "recordPath": "/records/constructionEdges/3",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+        "recordPath": "/records/constructionEdges/4",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+        "recordPath": "/records/constructionEdges/5",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+        "recordPath": "/records/constructionEdges/6",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+        "recordPath": "/records/constructionEdges/7",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "recordPath": "/records/constructionEdges/8",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "recordPath": "/records/constructionEdges/9",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "recordPath": "/records/constructionEdges/10",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+        "recordPath": "/records/constructionEdges/11",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+        "recordPath": "/records/constructionEdges/12",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+        "recordPath": "/records/constructionEdges/13",
+        "role": "construction_record"
+      },
+      {
+        "dutyRef": "obligation://abiogenesis/semantic-job/3455007307fe03dfedde9e233996cf076f3fe5da4d0640e62329e00a658bf670/evaluate",
+        "recordPath": "/records/comparison",
+        "role": "comparison_record"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "position": 0,
+      "originalBindingPointer": "/current/bindingVersions/0",
+      "versionRef": "semantic-job-binding://abiogenesis/d82e0bfb10d69ab468faedfbe4cb95bf5d44c4f7aa0cb740e0cf417667246f78",
+      "versionDigest": "sha256:d82e0bfb10d69ab468faedfbe4cb95bf5d44c4f7aa0cb740e0cf417667246f78",
+      "obligationRef": "obligation://abiogenesis/semantic-job/b0d4821ca26232eeb993447f56e6af622e2b392cd82a274e9005ad742d88ac1a",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/673f00918b4078258e91d529093b022e035f6dee5559269e5ba315e870979c3d",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/673f00918b4078258e91d529093b022e035f6dee5559269e5ba315e870979c3d",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/6cec93b453f2df9b331e5908febb36e581998805218c49fab406ce4e9370a287",
+      "condition": "Exact named no-argument greeting return",
+      "originalScope": "Subject behavior: the named export helloWorld of src/hello.mjs and the direct return value of helloWorld() called with no arguments.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/1",
+          "commandId": "component-suite-run",
+          "observationRef": "worksite-command-observation://abiogenesis/f1e7c2a36d7f9177b7db4b6fe9f1fbe22388835e06b29dd55305d24244ad6642",
+          "observationDigest": "sha256:f1e7c2a36d7f9177b7db4b6fe9f1fbe22388835e06b29dd55305d24244ad6642"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/2",
+          "commandId": "uat-suite-run",
+          "observationRef": "worksite-command-observation://abiogenesis/ffc9477fdc764606f37e25d0896949a2ca9dd074f33ef696fe901c15475aa9b1",
+          "observationDigest": "sha256:ffc9477fdc764606f37e25d0896949a2ca9dd074f33ef696fe901c15475aa9b1"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/6",
+          "predicateId": "hello-world-return-exact"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 0)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/4",
+          "ref": "obligation://abiogenesis/semantic-job/b0d4821ca26232eeb993447f56e6af622e2b392cd82a274e9005ad742d88ac1a/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/5",
+          "ref": "obligation://abiogenesis/semantic-job/b0d4821ca26232eeb993447f56e6af622e2b392cd82a274e9005ad742d88ac1a/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C0/P6; N independent coverage row 0. PC05 source edge is part of B12; compare B14, then preserve bounded prior semantic evidence.",
+      "residualOrPending": "R4, R8: extra argument/export/side-effect behavior and negative probe remain outside demonstrated scope; neither report alone negates the exact observed greeting.",
+      "reportedGapNumbers": [
+        4,
+        8
+      ]
+    },
+    {
+      "position": 1,
+      "originalBindingPointer": "/current/bindingVersions/1",
+      "versionRef": "semantic-job-binding://abiogenesis/24ff487b4b7543f26fbc520e784abc3e884a466abd98675257d4774e271118ab",
+      "versionDigest": "sha256:24ff487b4b7543f26fbc520e784abc3e884a466abd98675257d4774e271118ab",
+      "obligationRef": "obligation://abiogenesis/semantic-job/8db452e0e1bbc88e188c860d05a9a00b190c4c8efaac86d1867545807141dd0f",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/cd30ed3f6977bdae21b319bed93c615be73ee96a2d0ae5d7510221abb1d6b7da",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/cd30ed3f6977bdae21b319bed93c615be73ee96a2d0ae5d7510221abb1d6b7da",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/4b0d0a5472f2dbc0912370d9aa5ecc33c0ebc755c95186c390e96f73c97b077d",
+      "condition": "Private ES-module package",
+      "originalScope": "Subject package manifest: the private and type fields of package.json.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/4",
+          "commandId": "check-package",
+          "observationRef": "worksite-command-observation://abiogenesis/d278437d134b53c630d5c433c9f70b0a03f3099987e3780a8b8f0dd0d30c490b",
+          "observationDigest": "sha256:d278437d134b53c630d5c433c9f70b0a03f3099987e3780a8b8f0dd0d30c490b"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/8",
+          "predicateId": "check-package-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 1)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/6",
+          "ref": "obligation://abiogenesis/semantic-job/8db452e0e1bbc88e188c860d05a9a00b190c4c8efaac86d1867545807141dd0f/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/7",
+          "ref": "obligation://abiogenesis/semantic-job/8db452e0e1bbc88e188c860d05a9a00b190c4c8efaac86d1867545807141dd0f/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C4/P8; N independent coverage row 1. B12 source edge carries new derivation; retained package observation remains separate from node:test.",
+      "residualOrPending": "R5 explicitly needs the separate package observation already retained; do not substitute the planned run for it.",
+      "reportedGapNumbers": [
+        5
+      ]
+    },
+    {
+      "position": 2,
+      "originalBindingPointer": "/current/bindingVersions/2",
+      "versionRef": "semantic-job-binding://abiogenesis/9d69b4483ad853ec585e7692ecb70a66e10c6bb12460b19f71b928475fcdcb21",
+      "versionDigest": "sha256:9d69b4483ad853ec585e7692ecb70a66e10c6bb12460b19f71b928475fcdcb21",
+      "obligationRef": "obligation://abiogenesis/semantic-job/7a8b5b917def2cca68739c356b11768944ef192b5c4466b73b395e574e4d2c32",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/c24442cae214a56cb46248ea0b6c0c834cc2fbc10445105a29dfa79a59b2f79e",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/c24442cae214a56cb46248ea0b6c0c834cc2fbc10445105a29dfa79a59b2f79e",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/627fab4b7eeee0bed12887d25fca8034acfec37855c7dd4091af9adbe4c3b80b",
+      "condition": "Return-value surface; no invented CLI/HTTP/UI/deployment",
+      "originalScope": "Subject surface constraint: the greeting is carried only as helloWorld()'s return value, and no output surface is invented.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/3",
+          "commandId": "check-inventory",
+          "observationRef": "worksite-command-observation://abiogenesis/095ac79b7807f91012ea0719f31e6a0abafb09eb39830812c575c0708a80c7d9",
+          "observationDigest": "sha256:095ac79b7807f91012ea0719f31e6a0abafb09eb39830812c575c0708a80c7d9"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/4",
+          "commandId": "check-package",
+          "observationRef": "worksite-command-observation://abiogenesis/d278437d134b53c630d5c433c9f70b0a03f3099987e3780a8b8f0dd0d30c490b",
+          "observationDigest": "sha256:d278437d134b53c630d5c433c9f70b0a03f3099987e3780a8b8f0dd0d30c490b"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/7",
+          "predicateId": "check-inventory-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/8",
+          "predicateId": "check-package-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 2)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/8",
+          "ref": "obligation://abiogenesis/semantic-job/7a8b5b917def2cca68739c356b11768944ef192b5c4466b73b395e574e4d2c32/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/9",
+          "ref": "obligation://abiogenesis/semantic-job/7a8b5b917def2cca68739c356b11768944ef192b5c4466b73b395e574e4d2c32/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C3/C4; N independent coverage row 2. Carry exact-body evidence subject to successor currentness.",
+      "residualOrPending": "R4/R6; do not infer general import silence or absence outside observed inventory.",
+      "reportedGapNumbers": [
+        4,
+        6
+      ]
+    },
+    {
+      "position": 3,
+      "originalBindingPointer": "/current/bindingVersions/3",
+      "versionRef": "semantic-job-binding://abiogenesis/8f5d75ccac44ef15f7567f13d5f4601759f3ba3e13abafd3da113f8d70610a0e",
+      "versionDigest": "sha256:8f5d75ccac44ef15f7567f13d5f4601759f3ba3e13abafd3da113f8d70610a0e",
+      "obligationRef": "obligation://abiogenesis/semantic-job/5424a144e7721982c9b4dd6c6a7511e0707e85f2fb11fa5f192774000623378f",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/391f910032605eb45311726dc9a9833bb489bbff24b71b3cd3f4832938fc0574",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/391f910032605eb45311726dc9a9833bb489bbff24b71b3cd3f4832938fc0574",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/206f06fea56b5a9a64d066ed597f7f3f57940ee9838caf0f2a41c2375cc8fa70",
+      "condition": "Eight distinct governed files and file-less execution result",
+      "originalScope": "Subject surface set: presence and separation of the eight governed surfaces at source-given paths, plus the file-less execution result.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/3",
+          "commandId": "check-inventory",
+          "observationRef": "worksite-command-observation://abiogenesis/095ac79b7807f91012ea0719f31e6a0abafb09eb39830812c575c0708a80c7d9",
+          "observationDigest": "sha256:095ac79b7807f91012ea0719f31e6a0abafb09eb39830812c575c0708a80c7d9"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/7",
+          "predicateId": "check-inventory-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 3)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/10",
+          "ref": "obligation://abiogenesis/semantic-job/5424a144e7721982c9b4dd6c6a7511e0707e85f2fb11fa5f192774000623378f/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/11",
+          "ref": "obligation://abiogenesis/semantic-job/5424a144e7721982c9b4dd6c6a7511e0707e85f2fb11fa5f192774000623378f/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C3; N independent coverage row 3. PC05 seven dependent paths exclude protected conformance; execution stays retained.",
+      "residualOrPending": "R6/R11: granularity wording remains for independent judgment; file count is not content proof.",
+      "reportedGapNumbers": [
+        6,
+        11
+      ]
+    },
+    {
+      "position": 4,
+      "originalBindingPointer": "/current/bindingVersions/4",
+      "versionRef": "semantic-job-binding://abiogenesis/f89449665a6f6e7c0c93f0f55ee2eaa28ab0cee4a9ffba34e2750f9a7e27314e",
+      "versionDigest": "sha256:f89449665a6f6e7c0c93f0f55ee2eaa28ab0cee4a9ffba34e2750f9a7e27314e",
+      "obligationRef": "obligation://abiogenesis/semantic-job/8192562fedfdf16555663296ac3d61c1d3361b2dd9e50bb50d98ffd26f4cd843",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/411245242b06315576a5a32808e2b7de7db4626502799a50f5b55fc16e46a420",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/411245242b06315576a5a32808e2b7de7db4626502799a50f5b55fc16e46a420",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/088b36dcb16f9fc6fb6bc9b1bb35f156d0c18d2f29833287e2d9302196d903ea",
+      "condition": "Conformance pressure, seven downstream surfaces, ABG-ownership statement",
+      "originalScope": "Subject governing document: content of specification/project-conformance.md.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/5",
+          "commandId": "check-documents",
+          "observationRef": "worksite-command-observation://abiogenesis/462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9",
+          "observationDigest": "sha256:462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/9",
+          "predicateId": "check-documents-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 4)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/12",
+          "ref": "obligation://abiogenesis/semantic-job/8192562fedfdf16555663296ac3d61c1d3361b2dd9e50bb50d98ffd26f4cd843/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/13",
+          "ref": "obligation://abiogenesis/semantic-job/8192562fedfdf16555663296ac3d61c1d3361b2dd9e50bb50d98ffd26f4cd843/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C5; N independent coverage row 4. Protected conformance is the input to construction edge 0.",
+      "residualOrPending": "R6/R12: current terminology is reported uncertainty; retained independent reading exists and must be considered explicitly.",
+      "reportedGapNumbers": [
+        6,
+        12
+      ]
+    },
+    {
+      "position": 5,
+      "originalBindingPointer": "/current/bindingVersions/5",
+      "versionRef": "semantic-job-binding://abiogenesis/cb7429bf44731786a71f9940e54cfe88464f9e9388f4f0f60fd3180c74429336",
+      "versionDigest": "sha256:cb7429bf44731786a71f9940e54cfe88464f9e9388f4f0f60fd3180c74429336",
+      "obligationRef": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/c81808c3c99bc8f9e7196d13c8a31ef5b800190b19bfc8f701f6328242656074",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/c81808c3c99bc8f9e7196d13c8a31ef5b800190b19bfc8f701f6328242656074",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/3e9025692e1fd4b454ea40c9695fa2b37c662812a79169a50099d8fd1ab54210",
+      "condition": "Implementation design content and conformance-to-design derivation",
+      "originalScope": "Subject design document: content of design/implementation-design.md and its derivation from the conformance specification.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/5",
+          "commandId": "check-documents",
+          "observationRef": "worksite-command-observation://abiogenesis/462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9",
+          "observationDigest": "sha256:462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/9",
+          "predicateId": "check-documents-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 5)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/14",
+          "ref": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/15",
+          "ref": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/assess",
+          "role": "assess",
+          "selected": true
+        },
+        {
+          "pointer": "/originalInput/model/duties/32",
+          "ref": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/provenance/implementation-design",
+          "role": "provenance",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/7010ec2a96c88bd2d24ad996e6886455f71045c20bfdec4344e35e3867f4b681/provenance/implementation-design",
+          "recordPath": "/records/constructionEdges/0",
+          "role": "construction_record"
+        }
+      ],
+      "evidenceJoin": "C5 content + N row 5; P actual construction; pending E constructionEdges[0] and A exact record citation.",
+      "residualOrPending": "Prior G3 lacked declared predecessor-before-construction relation. New relation requires admitted E and independent faithful-derivation judgment; R9/R11 remain verbatim.",
+      "reportedGapNumbers": [
+        9,
+        11
+      ]
+    },
+    {
+      "position": 6,
+      "originalBindingPointer": "/current/bindingVersions/6",
+      "versionRef": "semantic-job-binding://abiogenesis/288e86f275ccd03f10777e0bbacf34b39c7edc37c418f65bf35ed3aed2c79706",
+      "versionDigest": "sha256:288e86f275ccd03f10777e0bbacf34b39c7edc37c418f65bf35ed3aed2c79706",
+      "obligationRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/79889fe5c9351a7140446ed7899aa1d2d7455fa9dc5fd2a0c67d718b7dc42e61",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/79889fe5c9351a7140446ed7899aa1d2d7455fa9dc5fd2a0c67d718b7dc42e61",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/d3d8ed21b5d15af3a3a3bf1ccd3ff5adf06b9e202ca112bfbbc7195c5d0d54ba",
+      "condition": "Test design and source-to-test-design derivation",
+      "originalScope": "Subject test design document: content of design/test-design.md and its derivation from the source surface.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/5",
+          "commandId": "check-documents",
+          "observationRef": "worksite-command-observation://abiogenesis/462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9",
+          "observationDigest": "sha256:462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/9",
+          "predicateId": "check-documents-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 6)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/16",
+          "ref": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/17",
+          "ref": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/assess",
+          "role": "assess",
+          "selected": true
+        },
+        {
+          "pointer": "/originalInput/model/duties/34",
+          "ref": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+          "role": "provenance",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+          "recordPath": "/records/constructionEdges/3",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/6c446dc68415a8717adac85c42a0f98efb3bbcc66e8011538333346f232334df/provenance/test-design",
+          "recordPath": "/records/constructionEdges/4",
+          "role": "construction_record"
+        }
+      ],
+      "evidenceJoin": "C5 content + N row 6; P construction; pending E constructionEdges[3,4] and A both citations.",
+      "residualOrPending": "G3 pending new evidence; R9 summary/body interpretation and R6 document scope remain visible.",
+      "reportedGapNumbers": [
+        6,
+        9
+      ]
+    },
+    {
+      "position": 7,
+      "originalBindingPointer": "/current/bindingVersions/7",
+      "versionRef": "semantic-job-binding://abiogenesis/e37487c41a209f8b4eaec4ad67926f3f992a5c0a461bc09689cf08c751071253",
+      "versionDigest": "sha256:e37487c41a209f8b4eaec4ad67926f3f992a5c0a461bc09689cf08c751071253",
+      "obligationRef": "obligation://abiogenesis/semantic-job/4aa9ffafc520b40c7d18e7b1d37d231d8a7c806bb60cd7dfd18678193503506d",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/22c7165ffbe31ebe8ff19fa954ec8bb4cf0b8c55f26a53cf914bdcb741b395e4",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/22c7165ffbe31ebe8ff19fa954ec8bb4cf0b8c55f26a53cf914bdcb741b395e4",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/2ac1b260a4c172edf2c948ed18390b42302657bec15407901409728e5e2e5ad3",
+      "condition": "Component verifier uses real exact import and strict return assertion",
+      "originalScope": "Subject component verifier: test/component/hello.test.mjs as a verifier of requirement-candidate:01.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/1",
+          "commandId": "component-suite-run",
+          "observationRef": "worksite-command-observation://abiogenesis/f1e7c2a36d7f9177b7db4b6fe9f1fbe22388835e06b29dd55305d24244ad6642",
+          "observationDigest": "sha256:f1e7c2a36d7f9177b7db4b6fe9f1fbe22388835e06b29dd55305d24244ad6642"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/6",
+          "commandId": "check-verifier-structure",
+          "observationRef": "worksite-command-observation://abiogenesis/809b0ea238de96179809e85d6cb9581503cfbe55ad7ff7857c170e85528eeec3",
+          "observationDigest": "sha256:809b0ea238de96179809e85d6cb9581503cfbe55ad7ff7857c170e85528eeec3"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/2",
+          "predicateId": "component-suite-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/3",
+          "predicateId": "component-suite-pass"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/10",
+          "predicateId": "check-verifier-structure-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 7)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/18",
+          "ref": "obligation://abiogenesis/semantic-job/4aa9ffafc520b40c7d18e7b1d37d231d8a7c806bb60cd7dfd18678193503506d/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/19",
+          "ref": "obligation://abiogenesis/semantic-job/4aa9ffafc520b40c7d18e7b1d37d231d8a7c806bb60cd7dfd18678193503506d/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C0/C1/C6, P2/P3; N row 7. Its three predecessor edges are E[5,6,7] under B12.",
+      "residualOrPending": "R7 is an author report, not absence proof: same planned run and separate component observation are retained. R8/R10 remain for bounded judgment; no automatic extra mutation-test requirement.",
+      "reportedGapNumbers": [
+        7,
+        8,
+        10
+      ]
+    },
+    {
+      "position": 8,
+      "originalBindingPointer": "/current/bindingVersions/8",
+      "versionRef": "semantic-job-binding://abiogenesis/a085bba64589108a9ccfb610f81837eb22c8edbc9d1f9a5e185b0e0c049dfde6",
+      "versionDigest": "sha256:a085bba64589108a9ccfb610f81837eb22c8edbc9d1f9a5e185b0e0c049dfde6",
+      "obligationRef": "obligation://abiogenesis/semantic-job/0b94d7680d5b9fe54ac5f469ca8a369ed85751db38a4561f5a088d7500443d78",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/ca962fb27b82c2db51d1e9f34c9124f733ac65ff8fd44ba9340b8fa4cce95b07",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/ca962fb27b82c2db51d1e9f34c9124f733ac65ff8fd44ba9340b8fa4cce95b07",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/221df643ebe7e2b283bc56db2ae7e674def6ca0cdc88ba89c7b0e645ea40dd71",
+      "condition": "UAT verifier uses same exported function and exact greeting contract",
+      "originalScope": "Subject UAT verifier: test/uat/hello.uat.test.mjs as a verifier of the user-visible greeting contract.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/2",
+          "commandId": "uat-suite-run",
+          "observationRef": "worksite-command-observation://abiogenesis/ffc9477fdc764606f37e25d0896949a2ca9dd074f33ef696fe901c15475aa9b1",
+          "observationDigest": "sha256:ffc9477fdc764606f37e25d0896949a2ca9dd074f33ef696fe901c15475aa9b1"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/6",
+          "commandId": "check-verifier-structure",
+          "observationRef": "worksite-command-observation://abiogenesis/809b0ea238de96179809e85d6cb9581503cfbe55ad7ff7857c170e85528eeec3",
+          "observationDigest": "sha256:809b0ea238de96179809e85d6cb9581503cfbe55ad7ff7857c170e85528eeec3"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/4",
+          "predicateId": "uat-suite-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/5",
+          "predicateId": "uat-suite-pass"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/10",
+          "predicateId": "check-verifier-structure-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 8)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/20",
+          "ref": "obligation://abiogenesis/semantic-job/0b94d7680d5b9fe54ac5f469ca8a369ed85751db38a4561f5a088d7500443d78/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/21",
+          "ref": "obligation://abiogenesis/semantic-job/0b94d7680d5b9fe54ac5f469ca8a369ed85751db38a4561f5a088d7500443d78/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C0/C2/C6, P4/P5; N row 8. Its four predecessor edges are E[8,9,10,11] under B12.",
+      "residualOrPending": "R7/R8/R10; preserve separate role attribution without claiming an extra behavioral dimension from matching assertions.",
+      "reportedGapNumbers": [
+        7,
+        8,
+        10
+      ]
+    },
+    {
+      "position": 9,
+      "originalBindingPointer": "/current/bindingVersions/9",
+      "versionRef": "semantic-job-binding://abiogenesis/df89f4cd1f1b265a2aa970f29f070d988d68c8fafa07bae8a5633d49910345c2",
+      "versionDigest": "sha256:df89f4cd1f1b265a2aa970f29f070d988d68c8fafa07bae8a5633d49910345c2",
+      "obligationRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/91cf73e49a6f00d7c4146434bafbf8f38f2ee3229c810a240dac3341c2ce0207",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/91cf73e49a6f00d7c4146434bafbf8f38f2ee3229c810a240dac3341c2ce0207",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/88958828d9af4ca553462c38b29d8514f35242708d8a0492cca59db11f457ed0",
+      "condition": "Plan command/args, pass floor, zero-failure fragment and asserted return",
+      "originalScope": "Subject execution plan: content of test-execution-plan.json and its agreement with observed runner output.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/7",
+          "commandId": "check-plan",
+          "observationRef": "worksite-command-observation://abiogenesis/6e50483ff7d581cdde55119679b88c21ff68ab6de634898339fe15b687edfa21",
+          "observationDigest": "sha256:6e50483ff7d581cdde55119679b88c21ff68ab6de634898339fe15b687edfa21"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/0",
+          "predicateId": "planned-run-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/1",
+          "predicateId": "planned-run-pass-floor"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/11",
+          "predicateId": "check-plan-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 9)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/22",
+          "ref": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/23",
+          "ref": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/assess",
+          "role": "assess",
+          "selected": true
+        },
+        {
+          "pointer": "/originalInput/model/duties/37",
+          "ref": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+          "role": "provenance",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+          "recordPath": "/records/constructionEdges/12",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/41e61751720255f4a6b9c890ac9b248dbd8841700d0b0b7c22b99fb04e41fba0/provenance/plan",
+          "recordPath": "/records/constructionEdges/13",
+          "role": "construction_record"
+        }
+      ],
+      "evidenceJoin": "C0/C7; N row 9; accepted 10/11 computation; pending E[12,13] + A, with B14 comparison.",
+      "residualOrPending": "R7/R12 refer to reporter/derived fields; retained records qualify these reports. G3 plan derivation still awaits new evidence.",
+      "reportedGapNumbers": [
+        7,
+        12
+      ]
+    },
+    {
+      "position": 10,
+      "originalBindingPointer": "/current/bindingVersions/10",
+      "versionRef": "semantic-job-binding://abiogenesis/32722ad5573498f0f4549e63a77fec06a71f32fbe9e385344bd33fc17a9e901b",
+      "versionDigest": "sha256:32722ad5573498f0f4549e63a77fec06a71f32fbe9e385344bd33fc17a9e901b",
+      "obligationRef": "obligation://abiogenesis/semantic-job/87511aff478a1e4700ba794c4bd0449e66ba1c22bf8a6aa69d736ae0eb862d69",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/8c65262ef19db5b3b721ada7a0726228c456423906d5911857fdba89d1c279b3",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/8c65262ef19db5b3b721ada7a0726228c456423906d5911857fdba89d1c279b3",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/31fcd6813562347ff58ee3be2eed9320788c8a8ea87ec9d16a71e1fb994dae55",
+      "condition": "Genuine one-run execution result and separately derived fields",
+      "originalScope": "Subject execution-result surface: one admitted native execution of the planned command over the current constructed surfaces, and the observed values derived from it.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/0",
+          "predicateId": "planned-run-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/1",
+          "predicateId": "planned-run-pass-floor"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 10)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/0",
+          "ref": "obligation://abiogenesis/semantic-job/87511aff478a1e4700ba794c4bd0449e66ba1c22bf8a6aa69d736ae0eb862d69/retained-artifact",
+          "role": "construct",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/1",
+          "ref": "obligation://abiogenesis/semantic-job/87511aff478a1e4700ba794c4bd0449e66ba1c22bf8a6aa69d736ae0eb862d69/retained-execution",
+          "role": "execute",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/2",
+          "ref": "obligation://abiogenesis/semantic-job/87511aff478a1e4700ba794c4bd0449e66ba1c22bf8a6aa69d736ae0eb862d69/computed-records",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/24",
+          "ref": "obligation://abiogenesis/semantic-job/87511aff478a1e4700ba794c4bd0449e66ba1c22bf8a6aa69d736ae0eb862d69/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C0 and exact snapshot; Executive accepted installed-04 / fresh equal Result-replay (Result 45dcbe00…). PC05 carries this evidence; no C2 rerun.",
+      "residualOrPending": "Separate Executive conjunction remains. R2/R3/R7/R12 do not annul earlier accepted records; successor currentness must preserve consumed bytes.",
+      "reportedGapNumbers": [
+        2,
+        3,
+        7,
+        12
+      ]
+    },
+    {
+      "position": 11,
+      "originalBindingPointer": "/current/bindingVersions/11",
+      "versionRef": "semantic-job-binding://abiogenesis/0556dad6c32a1f157cf95bff50acf21390de293e0377e7c50477e2cdc00d4864",
+      "versionDigest": "sha256:0556dad6c32a1f157cf95bff50acf21390de293e0377e7c50477e2cdc00d4864",
+      "obligationRef": "obligation://abiogenesis/semantic-job/ef532097a24726244bf79cc637e15990ea8dcdd8740453dea9d74b89645d5fe3",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/71c7a09c5fe423d435cab4a438bd51afff31508e08f057b30759200c036482cb",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/71c7a09c5fe423d435cab4a438bd51afff31508e08f057b30759200c036482cb",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/d8d166906884606b13f9a636db2c1efd2c9718e4c7984b671b0c92df67d5ebe9",
+      "condition": "Same-run component/UAT, planSatisfied and pass-floor acceptance conditions",
+      "originalScope": "Subject acceptance predicate over the observed execution result.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/1",
+          "commandId": "component-suite-run",
+          "observationRef": "worksite-command-observation://abiogenesis/f1e7c2a36d7f9177b7db4b6fe9f1fbe22388835e06b29dd55305d24244ad6642",
+          "observationDigest": "sha256:f1e7c2a36d7f9177b7db4b6fe9f1fbe22388835e06b29dd55305d24244ad6642"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/2",
+          "commandId": "uat-suite-run",
+          "observationRef": "worksite-command-observation://abiogenesis/ffc9477fdc764606f37e25d0896949a2ca9dd074f33ef696fe901c15475aa9b1",
+          "observationDigest": "sha256:ffc9477fdc764606f37e25d0896949a2ca9dd074f33ef696fe901c15475aa9b1"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/0",
+          "predicateId": "planned-run-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/1",
+          "predicateId": "planned-run-pass-floor"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/2",
+          "predicateId": "component-suite-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/3",
+          "predicateId": "component-suite-pass"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/4",
+          "predicateId": "uat-suite-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/5",
+          "predicateId": "uat-suite-pass"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 11)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/3",
+          "ref": "obligation://abiogenesis/semantic-job/ef532097a24726244bf79cc637e15990ea8dcdd8740453dea9d74b89645d5fe3/computed-records",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/25",
+          "ref": "obligation://abiogenesis/semantic-job/ef532097a24726244bf79cc637e15990ea8dcdd8740453dea9d74b89645d5fe3/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "Executive accepted installed-04 and review; source Run/output identities unchanged. Conjoin with PC05 rather than manufacture a new historical condition record.",
+      "residualOrPending": "R1/R2/R7/R12 retained. Accepted finite evaluator evidence does not itself become whole-task acceptance.",
+      "reportedGapNumbers": [
+        1,
+        2,
+        7,
+        12
+      ]
+    },
+    {
+      "position": 12,
+      "originalBindingPointer": "/current/bindingVersions/12",
+      "versionRef": "semantic-job-binding://abiogenesis/4e1383c9ecd20fbff872ecce5f57cd916a600780e9be4be98a2985f718483b30",
+      "versionDigest": "sha256:4e1383c9ecd20fbff872ecce5f57cd916a600780e9be4be98a2985f718483b30",
+      "obligationRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/3198825de81c7c681c610b45645b97c0c1700528b208b2b377d466c8aba8f37e",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/3198825de81c7c681c610b45645b97c0c1700528b208b2b377d466c8aba8f37e",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/9a46a12976a1020d5ab1e12524f47719058ff6b9e5bb78fff621d8f120938321",
+      "condition": "Every directed predecessor-to-dependent construction relation",
+      "originalScope": "Subject derivation relations: each surface derived, in the source's direction, from its named authority or evidence surfaces at their current digests.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/8",
+          "commandId": "check-derivation",
+          "observationRef": "worksite-command-observation://abiogenesis/7ce5daf2c74a9cb3f8971e252abd8d12fadb508e06fc7503d83d0a57acb37ea5",
+          "observationDigest": "sha256:7ce5daf2c74a9cb3f8971e252abd8d12fadb508e06fc7503d83d0a57acb37ea5"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/12",
+          "predicateId": "check-derivation-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 12)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/26",
+          "ref": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/27",
+          "ref": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/assess",
+          "role": "assess",
+          "selected": true
+        },
+        {
+          "pointer": "/originalInput/model/duties/33",
+          "ref": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+          "role": "provenance",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/35",
+          "ref": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+          "role": "provenance",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/36",
+          "ref": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+          "role": "provenance",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+          "recordPath": "/records/constructionEdges/1",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/source",
+          "recordPath": "/records/constructionEdges/2",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+          "recordPath": "/records/constructionEdges/5",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+          "recordPath": "/records/constructionEdges/6",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/component",
+          "recordPath": "/records/constructionEdges/7",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+          "recordPath": "/records/constructionEdges/8",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+          "recordPath": "/records/constructionEdges/9",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+          "recordPath": "/records/constructionEdges/10",
+          "role": "construction_record"
+        },
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/b9db7693ff6fc70946aedf347e7b347347e79100ea077c6d87c0f9bf7a7aca09/provenance/uat",
+          "recordPath": "/records/constructionEdges/11",
+          "role": "construction_record"
+        }
+      ],
+      "evidenceJoin": "N row 12/check-derivation identified original causal gap. P supplies actual declared inputs; pending all E constructionEdges[0..13], seven dependents, and complete A citations.",
+      "residualOrPending": "All 14 edges matter (not one representative per duty). Declared-path/current-digest structure is distinct from faithful derivation; R3/R9/R10/R11 must reach judgment.",
+      "reportedGapNumbers": [
+        3,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "position": 13,
+      "originalBindingPointer": "/current/bindingVersions/13",
+      "versionRef": "semantic-job-binding://abiogenesis/f46947438c5dc2933ef08d4d64ecd3713fbac110c23449d21f3c8da0763ed66c",
+      "versionDigest": "sha256:f46947438c5dc2933ef08d4d64ecd3713fbac110c23449d21f3c8da0763ed66c",
+      "obligationRef": "obligation://abiogenesis/semantic-job/999a34a746108698bce32c4926643d0d2cb6bb18aed1e6337025d7ad03d346c3",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/49f01da72dbdace197e6d0bb520e38fa9ab5e3cf348279e5140d46dc32e897a0",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/49f01da72dbdace197e6d0bb520e38fa9ab5e3cf348279e5140d46dc32e897a0",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/bc22ead80214da5fb40b552a5a4045a6b8554f1130fa14c0034f01b8a12c6b47",
+      "condition": "No copied predecessor/runtime/controller/ledger machinery in subject",
+      "originalScope": "Subject boundary constraint: no copied predecessor or runtime machinery in the subject.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/3",
+          "commandId": "check-inventory",
+          "observationRef": "worksite-command-observation://abiogenesis/095ac79b7807f91012ea0719f31e6a0abafb09eb39830812c575c0708a80c7d9",
+          "observationDigest": "sha256:095ac79b7807f91012ea0719f31e6a0abafb09eb39830812c575c0708a80c7d9"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/4",
+          "commandId": "check-package",
+          "observationRef": "worksite-command-observation://abiogenesis/d278437d134b53c630d5c433c9f70b0a03f3099987e3780a8b8f0dd0d30c490b",
+          "observationDigest": "sha256:d278437d134b53c630d5c433c9f70b0a03f3099987e3780a8b8f0dd0d30c490b"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/5",
+          "commandId": "check-documents",
+          "observationRef": "worksite-command-observation://abiogenesis/462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9",
+          "observationDigest": "sha256:462e629bd590e7ad0a9327c29b7fa6e00d7392ae423db7bdf7c774f8fda809f9"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/6",
+          "commandId": "check-verifier-structure",
+          "observationRef": "worksite-command-observation://abiogenesis/809b0ea238de96179809e85d6cb9581503cfbe55ad7ff7857c170e85528eeec3",
+          "observationDigest": "sha256:809b0ea238de96179809e85d6cb9581503cfbe55ad7ff7857c170e85528eeec3"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/7",
+          "predicateId": "check-inventory-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/8",
+          "predicateId": "check-package-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/9",
+          "predicateId": "check-documents-exit-zero"
+        },
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/10",
+          "predicateId": "check-verifier-structure-exit-zero"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 13)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/28",
+          "ref": "obligation://abiogenesis/semantic-job/999a34a746108698bce32c4926643d0d2cb6bb18aed1e6337025d7ad03d346c3/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/29",
+          "ref": "obligation://abiogenesis/semantic-job/999a34a746108698bce32c4926643d0d2cb6bb18aed1e6337025d7ad03d346c3/assess",
+          "role": "assess",
+          "selected": false
+        }
+      ],
+      "selectedRecords": [],
+      "evidenceJoin": "C3/C4/C5/C6; N independent coverage row 13. Carry exact-body reading, conditional on currentness.",
+      "residualOrPending": "R6: absence/content cannot be established by planned node:test or an aggregate count. Scope remains observed subject inventory.",
+      "reportedGapNumbers": [
+        6
+      ]
+    },
+    {
+      "position": 14,
+      "originalBindingPointer": "/current/bindingVersions/14",
+      "versionRef": "semantic-job-binding://abiogenesis/8e6fb3ad275530ba014e74102e4a46fc5cb31ca4c363e52a609cfa3e38d215e4",
+      "versionDigest": "sha256:8e6fb3ad275530ba014e74102e4a46fc5cb31ca4c363e52a609cfa3e38d215e4",
+      "obligationRef": "obligation://abiogenesis/semantic-job/3455007307fe03dfedde9e233996cf076f3fe5da4d0640e62329e00a658bf670",
+      "proofContractRef": "contract://abiogenesis/worksite/command-execution-observation@5",
+      "proofPolicyRef": "policy://abiogenesis/semantic-job/d066211b7c950450479f8bfb940f54610e1a3272b394a599f16ee99fa39cc956",
+      "proofShapeRef": "proof-shape://abiogenesis/semantic-job/d066211b7c950450479f8bfb940f54610e1a3272b394a599f16ee99fa39cc956",
+      "realizationContractRef": "contract://abiogenesis/worksite/native-work/observation@5",
+      "requirementRef": "requirement://abiogenesis/semantic-job/db07c18d91f1dcee127290132e58619874224e0edc21af9af0b29245818242ff",
+      "condition": "One actual typed module return plus separate exact comparison",
+      "originalScope": "Declared return-value outcome: exactly one typed observation of helloWorld() from src/hello.mjs, made inside an admitted ABI-owned F_P Worker turn.",
+      "priorCommands": [
+        {
+          "pointer": "/current/evidence/executionObservation/commandResults/0",
+          "commandId": "planned-verifier-run",
+          "observationRef": "worksite-command-observation://abiogenesis/16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160",
+          "observationDigest": "sha256:16ae72256f5551f7cfd2fc80f7822c98b3cec23541f13ceb0bca82d4d32c4160"
+        }
+      ],
+      "priorPredicates": [
+        {
+          "pointer": "/current/evidence/executionObservation/predicateObservations/6",
+          "predicateId": "hello-world-return-exact"
+        }
+      ],
+      "priorSemanticReviewLocator": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260926_CALCULUS_CROSSCUT/native44/application-review-01/review.md (Independent semantic coverage judgment, row 14)",
+      "existingDutyPointers": [
+        {
+          "pointer": "/originalInput/model/duties/30",
+          "ref": "obligation://abiogenesis/semantic-job/3455007307fe03dfedde9e233996cf076f3fe5da4d0640e62329e00a658bf670/evaluate",
+          "role": "evaluate",
+          "selected": false
+        },
+        {
+          "pointer": "/originalInput/model/duties/31",
+          "ref": "obligation://abiogenesis/semantic-job/3455007307fe03dfedde9e233996cf076f3fe5da4d0640e62329e00a658bf670/assess",
+          "role": "assess",
+          "selected": true
+        }
+      ],
+      "selectedRecords": [
+        {
+          "dutyRef": "obligation://abiogenesis/semantic-job/3455007307fe03dfedde9e233996cf076f3fe5da4d0640e62329e00a658bf670/evaluate",
+          "recordPath": "/records/comparison",
+          "role": "comparison_record"
+        }
+      ],
+      "evidenceJoin": "N row 14; pending E comparison and A comparison citation. Preserve actual observed value/producer; derived type and no-argument interpretation are labeled derivations.",
+      "residualOrPending": "Raw historical predicate has no explicit argument-list/type fields. Fixture contract keeps this strict-recording residual for owner disposition; no new comparison may backfill old raw evidence. R4/R12 persist.",
+      "reportedGapNumbers": [
+        4,
+        12
+      ]
+    }
+  ],
+  "limitations": [
+    "No journal, live result, worksite, test or provider read/action; retained JSON and closed source/review records only.",
+    "Snapshot currentness here is equality to retained construction context, not a fresh physical observation. Root successor owns currentness.",
+    "Historical binding policy.unprovedScope is immutable original uncertainty, not a freshly observed defect.",
+    "No semantic verdict, original-task acceptance, S06 or release claim."
+  ]
+}
