@@ -1,0 +1,124 @@
+{
+  "basisCommit": "66304a6",
+  "inputPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/valid-rebound-input.json",
+  "inputBytes": 30737143,
+  "inputSha256": "32fa42999d5a5ef4893d806cba61a25af51065c90b98651866b66b4ef05c7457",
+  "readParseMs": 60.644375000000025,
+  "duties": 33,
+  "beforeSourceSha256": "99561370ec02053a78bb601e2cab76c78b8bc1b3a5c0846ad937274c62dc14d6",
+  "afterSourceSha256": "788576f3f87f253e676501d21cad1558628c68df63c70ba0f70a8d622f8806d8",
+  "rows": [
+    {
+      "name": "retained-valid",
+      "before": {
+        "elapsedMs": 3646.422708,
+        "calls": {
+          "isNativeWorkspaceWorkObservation": 2,
+          "isNativeWorksiteCommandExecutionObservation": 32
+        },
+        "predicateMs": {
+          "isNativeWorkspaceWorkObservation": 35.538374999999974,
+          "isNativeWorksiteCommandExecutionObservation": 3606.831955
+        }
+      },
+      "after": {
+        "elapsedMs": 130.2508330000005,
+        "calls": {
+          "isNativeWorkspaceWorkObservation": 1,
+          "isNativeWorksiteCommandExecutionObservation": 1
+        },
+        "predicateMs": {
+          "isNativeWorkspaceWorkObservation": 16.54925000000003,
+          "isNativeWorksiteCommandExecutionObservation": 111.57404200000019
+        }
+      },
+      "sameResult": true,
+      "resultDigest": "sha256:35c383532c28c896561bfe3f86910cf0d8721b552020201c6e9eae8a08523802"
+    },
+    {
+      "name": "invalid-execution-identity",
+      "before": {
+        "elapsedMs": 3513.466416,
+        "calls": {
+          "isNativeWorkspaceWorkObservation": 2,
+          "isNativeWorksiteCommandExecutionObservation": 31
+        },
+        "predicateMs": {
+          "isNativeWorkspaceWorkObservation": 31.585791999999856,
+          "isNativeWorksiteCommandExecutionObservation": 3479.7099160000016
+        }
+      },
+      "after": {
+        "elapsedMs": 129.4539589999995,
+        "calls": {
+          "isNativeWorkspaceWorkObservation": 1,
+          "isNativeWorksiteCommandExecutionObservation": 1
+        },
+        "predicateMs": {
+          "isNativeWorkspaceWorkObservation": 16.02929099999983,
+          "isNativeWorksiteCommandExecutionObservation": 112.52337499999976
+        }
+      },
+      "sameResult": true,
+      "resultDigest": "sha256:c0e9c443a306b7191f26936671da718867854d7220dabf376f07234099e72cc9"
+    },
+    {
+      "name": "missing-basis",
+      "before": {
+        "elapsedMs": 0.6798750000007203,
+        "calls": {
+          "isNativeWorkspaceWorkObservation": 1,
+          "isNativeWorksiteCommandExecutionObservation": 31
+        },
+        "predicateMs": {
+          "isNativeWorkspaceWorkObservation": 0.0017499999994470272,
+          "isNativeWorksiteCommandExecutionObservation": 0.00395599999865226
+        }
+      },
+      "after": {
+        "elapsedMs": 0.675916999999572,
+        "calls": {
+          "isNativeWorkspaceWorkObservation": 1,
+          "isNativeWorksiteCommandExecutionObservation": 1
+        },
+        "predicateMs": {
+          "isNativeWorkspaceWorkObservation": 0.0004579999995257822,
+          "isNativeWorksiteCommandExecutionObservation": 0.00020899999981338624
+        }
+      },
+      "sameResult": true,
+      "resultDigest": "sha256:b5de6166eb2067b74cdfe5f59e9adf444048d3f7a45ca1947d625c7b231978e5"
+    },
+    {
+      "name": "all-inapplicable",
+      "before": {
+        "elapsedMs": 0.5302499999997963,
+        "calls": {},
+        "predicateMs": {}
+      },
+      "after": {
+        "elapsedMs": 0.5197920000000522,
+        "calls": {},
+        "predicateMs": {}
+      },
+      "sameResult": true,
+      "resultDigest": "sha256:b2fa01f6b681ba6952d56117b13fc230c6a12e2744185842ca453f80bb2703ef"
+    },
+    {
+      "name": "all-unknown",
+      "before": {
+        "elapsedMs": 0.5409580000005008,
+        "calls": {},
+        "predicateMs": {}
+      },
+      "after": {
+        "elapsedMs": 0.5002080000003843,
+        "calls": {},
+        "predicateMs": {}
+      },
+      "sameResult": true,
+      "resultDigest": "sha256:a355fbc23737bbfa90ad3f26be366872a74fce5f07e09ff86fb1a46035e61b48"
+    }
+  ],
+  "scope": "pure consumer selection only; no installed invocation, actor, history acquisition or worksite effect"
+}

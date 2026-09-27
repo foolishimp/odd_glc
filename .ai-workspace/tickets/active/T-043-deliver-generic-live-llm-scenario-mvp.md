@@ -25,9 +25,9 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PROGRAM_CONSTRUCTION_PC05_PREPARATION_01
+- current_activation: GLC_PROGRAM_CONSTRUCTION_FRAMEWORK_COST_01
 - current_re_entry: realization_refactor
-- current_activation_status: PC01_PC04_source_review_accepted_WP01_closed_PC05_preparation
+- current_activation_status: shared_basis_correction_source_accepted_ABG_R10_C2_HOW_correction_next_PC05_held
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
 - current_activation_record: '#modular-completion-plan'
@@ -43,7 +43,13 @@ and tests of the [accepted completion HOW](#completion-design-re-entry). PC01
 source is complete; PC02 source and its installed no-actor refusal are established,
 with exact guard causally reproduced. PC03/PC04 source is complete; the one
 whole-path review and its bounded WP-01 coverage correction are independently
-closed. PC05 preparation is selected; installed/live proof remains pending.
+closed. The owner-selected [whole-path framework-cost correction](../../../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#current-framework-cost-correction)
+now precedes PC05. Installed/live proof remains pending.
+The [shared-basis correction](../../comments/codex/20260927_FRAMEWORK_COST/consumer-analysis-01/return.md)
+is accepted after the [conjoined independent review](../../../../abiogenesis/.ai-workspace/comments/codex/20260927_FRAMEWORK_COST/repair-review.md): complete selection results agree,
+with retained-case selection 3.646 s → 0.130 s. The ABG ticket owns the remaining
+declaration-resource/preparation-consumption design correction; GLC does not
+acquire another historical proof owner. No native attempt is selected here.
 Unaffected source/component evidence remains reusable.
 The sequence closes the original construction-input relation and comparison
 without repeating valid work. Native44 retains its accepted scope; S06 and ABG5
@@ -71,7 +77,7 @@ baseline remains closed; no new live result is claimed.
 | PC02 — Construct through the native handoff | Source complete; installed no-actor refusal [causally reproduced](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/return.md) | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md) | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
 | PC04 — Connect independent assessment | Source/review accepted; [WP-01 corrected and independently verified](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md); prior [8 affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
-| PC05 — Prove the installed complete path | Source review accepted; preparation selected; installed proof pending | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC05 — Prove the installed complete path | Source review accepted; held for selected whole-path framework-cost correction | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Pending PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
 Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,

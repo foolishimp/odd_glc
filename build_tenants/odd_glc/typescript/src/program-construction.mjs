@@ -70,12 +70,12 @@ function currentDependencies(dependencies, context) {
   return {rows,state:rows.some(r=>r.state==='stale')?'stale':rows.some(r=>r.state==='unknown')?'unknown':'present'};
 }
 
-function supportFor(product, duty, basis) {
+function supportFor(duty, basis, facts) {
   const observation=basis.executionObservation;
   const work=observation?.task?.sourceNativeWork ?? basis.nativeWork;
-  if(duty.role==='construct'&&!product.isNativeWorkspaceWorkObservation(work))return {state:'missing',reason:'artifact_support_absent'};
-  if(duty.role==='execute'&&!product.isNativeWorksiteCommandExecutionObservation(observation))return {state:'missing',reason:'execution_support_absent'};
-  if(['evaluate','assess'].includes(duty.role)&&!product.isNativeWorksiteCommandExecutionObservation(observation))
+  if(duty.role==='construct'&&!facts.work)return {state:'missing',reason:'artifact_support_absent'};
+  if(duty.role==='execute'&&!facts.execution)return {state:'missing',reason:'execution_support_absent'};
+  if(['evaluate','assess'].includes(duty.role)&&!facts.execution)
     return {state:'missing',reason:'execution_support_absent'};
   const current=currentDependencies(duty.dependencies,basis.currentContext);
   if(current.state!=='present')return {state:current.state,reason:'current_dependency_'+current.state,dependencyStates:current.rows};
@@ -84,15 +84,15 @@ function supportFor(product, duty, basis) {
   // dependentPaths declares prospective derivation. The old native turn cannot
   // establish a newly declared input/output edge, even when its bytes match.
   if(duty.dependentPaths)return {state:'missing',reason:'prospective_input_relation_not_established'};
-  if(duty.role==='construct') return product.isNativeWorkspaceWorkObservation(work) && duty.dependencies.every(d=>
+  if(duty.role==='construct') return facts.work && duty.dependencies.every(d=>
     work.after.entries.some(e=>e.relativePath===d.path&&e.state==='file'&&e.digest===d.digest))
     ? coordinate(basis.construction)?{state:'supported',refs:[basis.construction]}:{state:'unknown',reason:'construction_coordinate_unavailable'}
     : {state:'missing',reason:'artifact_support_absent'};
-  if(duty.role==='execute') return product.isNativeWorksiteCommandExecutionObservation(observation) &&
+  if(duty.role==='execute') return facts.execution &&
     duty.dependencies.every(d=>observation.snapshotMembers.some(m=>m.relativePath===d.path&&m.digest===d.digest))
     ? coordinate(basis.execution)?{state:'supported',refs:[basis.execution]}:{state:'unknown',reason:'execution_coordinate_unavailable'}
     : {state:'missing',reason:'execution_support_absent'};
-  if(duty.role==='provenance') return product.isNativeWorkspaceWorkObservation(work) && duty.dependencies.every(d=>
+  if(duty.role==='provenance') return facts.work && duty.dependencies.every(d=>
     work.task.readFirst.includes(d.path)&&work.before.entries.some(e=>e.relativePath===d.path&&e.state==='file'&&e.digest===d.digest))
     ? coordinate(basis.construction)?{state:'supported',refs:[basis.construction]}:{state:'unknown',reason:'construction_coordinate_unavailable'}
     : {state:'missing',reason:'historical_input_relation_absent'};
@@ -110,10 +110,15 @@ function supportFor(product, duty, basis) {
 /** A finite, non-authoritative reduction. Never returns admitted completion. */
 export function selectLifecycleWork({product,model,basis,selectedDutyRefs}) {
   checkModel(model);need(unique(selectedDutyRefs)&&selectedDutyRefs.length>0&&selectedDutyRefs.every(r=>model.duties.some(d=>d.ref===r)), 'explicit bounded duty selection required');
+  const activeRoles=new Set(model.duties.filter(d=>d.applicability.value==='true').map(d=>d.role));
+  // These two structural facts share one immutable basis across the duty population.
+  const facts={work:['construct','provenance'].some(role=>activeRoles.has(role))&&
+    product.isNativeWorkspaceWorkObservation(basis.executionObservation?.task?.sourceNativeWork??basis.nativeWork),
+    execution:['execute','evaluate','assess'].some(role=>activeRoles.has(role))&&product.isNativeWorksiteCommandExecutionObservation(basis.executionObservation)};
   const rows=new Map(), ordered=[];
   const visit=ref=>{if(rows.has(ref))return;const d=model.duties.find(d=>d.ref===ref);d.requires.forEach(visit);
     let state=d.applicability.value==='false'?{state:'excluded',reason:'declared_inapplicability',basisRefs:d.applicability.basisRefs}:
-      d.applicability.value==='unknown'?{state:'unknown',reason:'applicability_unknown'}:supportFor(product,d,basis);
+      d.applicability.value==='unknown'?{state:'unknown',reason:'applicability_unknown'}:supportFor(d,basis,facts);
     if(d.applicability.value==='true') {
       const prerequisites=d.requires.map(r=>rows.get(r));
       if(prerequisites.some(r=>r.state==='stale'))state={...state,state:'stale',reason:'prerequisite_stale'};
