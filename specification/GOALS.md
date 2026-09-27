@@ -9,7 +9,7 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043 Program construction](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#problem-fitted-program-construction) owns implementation of the reviewed construction calculus. Its first evaluate-only installed increment is accepted; complete the remaining original construction-input and comparison relations while retaining valid work and unresolved obligations. Deliver reusable evidence-sensitive GTL composition through ordinary installed ABG. GLC RC4 remains selected; ABI T-287 owns ABG5 qualification and the RC1 sequence. Core46 and native44 retain their bounded accepted scopes; S06 and Data Mapper remain open.
+Current delivery tracking: [T-043 modular completion plan](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#modular-completion-plan) owns implementation of the reviewed construction calculus and its incremental tests. Its first evaluate-only installed increment is accepted; complete the remaining original construction-input and comparison relations while retaining valid work and unresolved obligations. Deliver reusable evidence-sensitive GTL composition through ordinary installed ABG. GLC RC4 remains selected; ABI T-287 owns ABG5 qualification and the RC1 sequence. Core46 and native44 retain their bounded accepted scopes; S06 and Data Mapper remain open.
 
 Deliver one generic odd_glc lifecycle construction mechanism using real LLM Workers. It
 takes the full incoming specification through Intent/Product, Requirements,

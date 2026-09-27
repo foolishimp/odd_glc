@@ -25,25 +25,79 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PROGRAM_CONSTRUCTION_COMPLETION_DESIGN_01
-- current_re_entry: design_reframe
-- current_activation_status: evaluator_increment_and_completion_HOW_accepted_realization_pending
+- current_activation: GLC_PROGRAM_CONSTRUCTION_COMPLETION_PLAN_01
+- current_re_entry: realization_refactor
+- current_activation_status: modular_plan_selected_PC01_ready_implementation_pending
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
-- current_activation_record: '#completion-design-re-entry'
+- current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection
 
 Current selection is [problem-fitted Program construction](#problem-fitted-program-construction),
 under the owner's 2026-09-27 implementation instruction. Its first evaluate-only
 increment is [accepted](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/installed-04/return.md)
-on core46 after installed positive/refusal proof and independent review. Next
-implement the [accepted completion HOW](#completion-design-re-entry) for the
-original construction-input relation and comparison without
-repeating valid work. Native44 retains its accepted scope; S06 and ABG5
+on core46 after installed positive/refusal proof and independent review. The
+[modular completion plan](#modular-completion-plan) sequences implementation
+and tests of the [accepted completion HOW](#completion-design-re-entry), starting
+with PC01. It closes the original construction-input relation and comparison
+without repeating valid work. Native44 retains its accepted scope; S06 and ABG5
 qualification/RC1 remain open. The prior
 native39 selection and execution records below are historical, not new launch
 authority. The existing worksite, original task/oracle and valid work remain.
+
+### Modular completion plan
+
+Owner direction, 2026-09-27: break the accepted design into modules that can be
+tested as they land. Re-entry is `realization_refactor` under the accepted
+[Program-construction HOW](../../../build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md)
+at SHA-256 `9dd3233fb54402c73970bbefcce44f3e31618d158bad393f4a47104c9ed1f83f`.
+The completed design and evaluate-only installed proof are the reusable baseline.
+PC01–PC06 are pending implementation or proof; this plan records no new execution.
+
+| Task | Status / dependency | Module and outcome | Exit test |
+| --- | --- | --- | --- |
+| PC01 — Select work and bind dependencies | Ready | Extend the existing pure constructor/contracts. Preserve duties, independent assessment and carried residuals. Distinguish observed `{path,digest}` inputs from future `{producerDutyRef,path}` outputs. | Present, missing, stale and unknown evidence select the warranted work or explicit gap. Missing/ambiguous producers and cycles refuse. Future digests are never invented. Accepted evaluate-only behavior still passes. |
+| PC02 — Construct through the native handoff | Pending PC01 | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
+| PC03 — Compute evidence and comparison | Pending PC02 | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
+| PC04 — Connect independent assessment | Pending PC03 | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
+| PC05 — Prove the installed complete path | Pending PC01–PC04 | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC06 — Reconcile original-task completion | Pending PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
+
+Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,
+shared assessment helpers in `src/native-continuation-runtime.mjs`, existing
+package emission, and focused Program-construction tests/fixtures. These are
+module increments within the current implementation, not new runtimes or ticket
+families. ABG retains traversal, effects and admission; GLC retains lifecycle
+composition. No new ABG primitive is identified by the accepted HOW.
+
+Execution discipline:
+
+- Run focused mechanical checks for each changed module, then advance. PC02
+  supplies the early installed discriminator; PC05 supplies the first complete
+  live construction/assessment proof. UAT is not repeated after each helper edit.
+- Before the first effectful activation, bind legitimate dependent work and its
+  write grant, the supplied evaluator, rubric/schema, exact installed composition
+  and native environment. Work that merely manufactures missing provenance is
+  inadmissible. An absent historical raw-field requirement remains explicit until
+  its governing interpretation is disposed; a derived value does not rewrite it.
+- One changed-source whole-path review precedes the live proof. Required
+  independent outcome assessment remains distinct. Reuse closed evidence while
+  its dependencies hold; rerun only checks affected by changed bytes or failures.
+- Record existing phase timings, context size and journal volume at installed
+  checks, separating setup from execution and actor time. Route material excess
+  through existing `CALLER-DURABLE-CONTEXT-01` / `LIFE-01`; a functional pass alone
+  does not settle those cost findings. Add no monitoring subsystem.
+- A failed integration returns to the governing calculus and existing owner for
+  triage before another repair. Preserve residuals and old run identities; do not
+  start another broad qualification campaign from a local failure.
+
+Planning Writer grant: `/root` enters Writer only to edit this ticket and its
+`specification/GOALS.md` route, paired ABI T-287 and its `specification/GOALS.md`
+route, check those diffs/links, and commit/push those files to existing remotes.
+Then return to Executive. No code, accepted HOW/Product, runtime, worksite,
+provider or release-tag effects belong to this activation. Bounded implementation
+activations consume this sequence and bind their exact write/effect territory.
 
 ### Completion design re-entry
 
