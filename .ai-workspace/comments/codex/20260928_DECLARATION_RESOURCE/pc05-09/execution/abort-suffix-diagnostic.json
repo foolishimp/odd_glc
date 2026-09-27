@@ -1,0 +1,30 @@
+{
+  "scope": "diagnostic suffix only, not admitted replay or a replacement close handoff",
+  "beforeBytes": 1356604109,
+  "afterBytes": 1388245432,
+  "suffixBytes": 31641323,
+  "suffixSha256": "01df16703272453fb69cc55bed211f07e5f59b5a9fc83fdeafa818eb8069d0a6",
+  "rows": 254,
+  "elapsedSeconds": 0.05826912494376302,
+  "recordKeys": [
+    "admissionOrdinal",
+    "aggregateId",
+    "aggregateType",
+    "basisId",
+    "causationEventRefs",
+    "correlationId",
+    "eventContractDigest",
+    "eventId",
+    "eventTime",
+    "frameId",
+    "graphCallId",
+    "graphFunctionRef",
+    "kind",
+    "parentAggregateId",
+    "payload",
+    "payloadDigest",
+    "runId",
+    "scopeClass",
+    "workflowVersion"
+  ]
+}

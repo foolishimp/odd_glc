@@ -1,0 +1,39 @@
+{
+  "scope": "physical suffix diagnosis, not fresh Public truth or a close handoff",
+  "runRef": "run://abiogenesis/d639248f45a84713e047ddfca321da8e44c05197e6abe2a6f0549eceda6fae5e",
+  "processOutcome": "SIGABRT_heap_exhaustion",
+  "processElapsedSeconds": 157.408344834,
+  "phases": {
+    "firstAdmissionSeconds": 92.998,
+    "runOpenedSeconds": 106.175,
+    "lastAdmittedDiagnosticSeconds": 154.47
+  },
+  "observedCounts": {
+    "public_operation_admitted": 1,
+    "invocation_admitted": 1,
+    "implementation_admitted": 1,
+    "basis_admitted": 3,
+    "run_segment_opened": 1,
+    "graph_call_opened": 7,
+    "frame_opened": 7,
+    "runtime_activity_probe_observed": 133,
+    "traversal_cursor_entered": 7,
+    "c_call_opened": 11,
+    "c_call_fibre_selected": 11,
+    "abg_admitted_body_reference_record": 11,
+    "c_call_evidenced": 11,
+    "c_call_result_admitted": 4,
+    "c_call_judged": 11,
+    "traversal_route_admitted": 10,
+    "terminal_reached": 6,
+    "frame_closed": 6,
+    "graph_call_closed": 6,
+    "child_foldback_admitted": 6
+  },
+  "actorInvocationEvents": 0,
+  "returnedReceipt": false,
+  "freshPublicReadback": "not_attempted_without_a_genuine_close",
+  "lastDiagnosticKind": "runtime_activity_probe_observed",
+  "lastDiagnosticTime": "2026-09-27T23:16:52.478Z",
+  "lastGraphFunction": "graph-function://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5"
+}

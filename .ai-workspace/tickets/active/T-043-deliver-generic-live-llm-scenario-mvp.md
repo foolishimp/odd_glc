@@ -27,9 +27,9 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: paired_schema_default_and_portable_authoring_accepted_PC05_09_selected
+- current_activation_status: LIFE01_heap_triage_preserve_current_Run_and_worksite
 - last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/activation.json
-- last_execution_result: PC05_09_setup_selected_no_Run_yet
+- last_execution_result: PC05_09_process_aborted_heap_exhaustion_no_terminal_receipt
 - current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection

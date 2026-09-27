@@ -1,0 +1,63 @@
+{
+  "candidateArtifacts": [
+    {
+      "name": "construction",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:cf727bd384554e0e7b0b945450c0aa2e79eacc7e6621138ef88e9a4d3e8b1255",
+        "productContentDigest": "sha256:103fc4399afe5a7c46b5a9b639375d4992e7d9b0347bed54d30c4cd66e31cea1",
+        "manifestDigest": "sha256:83a94fc05a5b03b9fee50faf03051dd5891d9433e8c1d1461cce3bc093e1aa40",
+        "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+        "packageName": "@odd-glc/route-one-typescript",
+        "packageVersion": "0.3.0-dev.2"
+      },
+      "bytes": 54730,
+      "payloadBytes": 290114
+    },
+    {
+      "name": "evaluator",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:973fd2185714782aa9bbeb0e65b3ca3fb1475f362852ae9768fac14db95216c5",
+        "productContentDigest": "sha256:3063ca3d7186622cc980317fa6564189c3e5493fc84743e892fa4bd45c5220dc",
+        "manifestDigest": "sha256:94f6bd5604cd88cf06337fee9d51d53cdd38b8554c9608328e6472749ba9758c",
+        "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+        "packageName": "@odd-glc/program-construction-fixture",
+        "packageVersion": "0.1.0-dev.2"
+      },
+      "bytes": 9378,
+      "payloadBytes": 37619
+    }
+  ],
+  "timings": {
+    "caseBasisMs": 299.228708,
+    "caseConstructionMs": 944.709333,
+    "payloadGenerationMs": 14.530500000000075,
+    "archivePackMs": {
+      "construction": 292.361625,
+      "evaluator": 130.25183400000014
+    },
+    "packageMs": 1681.09725,
+    "archiveVerificationMs": [
+      {
+        "artifactPath": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-04/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+        "elapsedMs": 9010.369834
+      },
+      {
+        "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+        "elapsedMs": 11.193999999999505
+      },
+      {
+        "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+        "elapsedMs": 8.566041000000041
+      }
+    ],
+    "verificationMs": 9030.144541,
+    "pureConformanceMs": 3107.9971669999995
+  },
+  "programRef": "program://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+  "declarationClosure": "sha256:370972d682ae2f6147d519ae27ef1304db354a5fec5870f73eec0dcc8dd0fb5e",
+  "catalogRows": 63,
+  "verification": "three actual archives verified",
+  "validation": "program_validation"
+}

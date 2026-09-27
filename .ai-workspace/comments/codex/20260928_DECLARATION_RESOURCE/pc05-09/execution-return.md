@@ -1,0 +1,7 @@
+PC05-09: installed process aborted; no terminal runtime disposition or fresh readback.
+
+Core50/source readiness remains accepted. Ordinary setup passed (package 14.414 s; install 64.953 s; other setup 64.683 s). Native CLI exhausted the default Node heap after 157.408 s and received SIGABRT; retained stderr shows approximately 3.9 GB before final GC. The empty stdout caused a later caller JSON parse error. That secondary error does not replace the retained original process diagnostic.
+
+The bounded physical suffix diagnosis covers only 31,641,323 newly appended bytes, from setup close 1,356,604,109 to 1,388,245,432 bytes. It contains 254 rows including 11 body-reference records. No actor invocation is recorded. The observed Run is run://abiogenesis/d639248f45a84713e047ddfca321da8e44c05197e6abe2a6f0549eceda6fae5e; six children closed, with the last observed judgment/foldback after evaluation-child and before assessment input. It has no recorded terminal or returned close handoff. This diagnostic is not ABG recovery or authoritative replay. PID 25062 is absent.
+
+Source/oracle, prior paid author and completed C2 remain preserved. No heap increase, model retry, fake close, copied events or new acceptance is selected. LIFE-01 becomes a blocker on the current sunny-day path. Root selects a finite source triage of the post-evaluation allocation path using this retained suffix, not another full-history campaign. The next lawful recovery and installed continuation depend on that closed diagnosis/repair. PC06, semantic completion and release remain open.
