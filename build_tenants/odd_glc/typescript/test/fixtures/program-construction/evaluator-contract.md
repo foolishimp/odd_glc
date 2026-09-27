@@ -96,3 +96,19 @@ All construction/comparison records remain `computed_derivation`, with semantic
 closure and original-task completion `not_claimed`. The complete duty population,
 carried duties and bindings stay on the retained evaluation input; PC04 owns the
 independent assessment join and interpretation of these records.
+
+Each edge and comparison row now also carries `recordKind` as
+`construction_record` or `comparison_record`. The consumer binds the exact
+JSON Pointer, obligation/binding and selected duty to that role before native
+assessment. It computes the label from the actual complete output digest and
+renders the exact canonical record text; command labels cannot substitute for
+either role. This discriminator is a field of the new derived record only.
+
+PC04 uses the original observed `semantic_job_lifecycle_declaration` rubric,
+selecting its exact evidence-stage declaration reference. Under Executive's
+conservation disposition, every original criterion remains required, in its
+original order and with unchanged instruction text. No rubric file is rewritten.
+The unchanged original `job.evaluationData` crosses from the authenticated root
+only after the evaluator join, into the read-only assessment task; it is absent
+from construction tasks and supplied evaluator input. Component observations
+and criterion judgments remain explicitly unadmitted test premises.

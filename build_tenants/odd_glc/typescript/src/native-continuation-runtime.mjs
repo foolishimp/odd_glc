@@ -105,24 +105,42 @@ function buildAssessmentTask(job,request,context,source,execution,schemaOwner=id
 /** Finite arithmetic over F_P judgments. Never a domain oracle or admission. */
 export function interpretEvidenceRows(entry,assessment,bytes,streamLabels) {
  need(isNativeContinuationInput(entry)||isNativeCorrectionInput(entry),'exact selected job required');
- return interpretJobEvidenceRows(entry,assessment,bytes,streamLabels);
+ return interpretContinuationEvidenceRows(entry,assessment,bytes,streamLabels);
 }
-function interpretJobEvidenceRows(entry,assessment,bytes,streamLabels) {
- const {job}=entry, criteria=rubric(entry).criteria, required=criteria.map(c=>c.criterionRef), rows=assessment?.criteria, diagnostics=[];
+function interpretContinuationEvidenceRows(entry,assessment,bytes,streamLabels) {
+ const {job}=entry,criteria=rubric(entry).criteria;
+ const rolePaths={source:job.sourcePaths,candidate:job.candidatePaths,execution:streamLabels,oracle:job.oracle===null?[]:[oracleLabel(job.oracle)]};
+ const roleLabels=Object.fromEntries(job.criterionEvidence.map(row=>[row.criterionRef,Object.fromEntries(row.roles.map(role=>[role,rolePaths[role]]))]));
+ return interpretJobEvidenceRows({criteria,claim:job.claim,roleLabels,restrictCitations:false},assessment,bytes);
+}
+/** Invocation-local evidence meaning; no registry, file, admission or domain oracle. */
+export function checkCriterionEvidence({criteria,roleLabels},bytes) {
+ need(Array.isArray(criteria)&&criteria.length>0&&criteria.every(c=>text(c.criterionRef)&&typeof c.mandatory==='boolean')&&
+   new Set(criteria.map(c=>c.criterionRef)).size===criteria.length&&record(roleLabels)&&
+   same(Object.keys(roleLabels).sort(),criteria.map(c=>c.criterionRef).sort())&&bytes instanceof Map,
+   'exact criterion evidence mapping required');
+ for(const [criterion,roles] of Object.entries(roleLabels))need(record(roles)&&Object.keys(roles).length>0&&
+   Object.entries(roles).every(([role,labels])=>text(role)&&unique(labels)&&labels.every(label=>typeof bytes.get(label)==='string')),
+   'resolved unique evidence labels required: '+criterion);
+ return roleLabels;
+}
+export function interpretJobEvidenceRows({criteria,claim,roleLabels,restrictCitations=true},assessment,bytes) {
+ checkCriterionEvidence({criteria,roleLabels},bytes);
+ const required=criteria.map(c=>c.criterionRef),rows=assessment?.criteria,diagnostics=[];
  if (!Array.isArray(rows)||rows.length!==required.length||new Set(rows.map(r=>r.criterionRef)).size!==required.length||!required.every(ref=>rows.some(r=>r.criterionRef===ref)))
   diagnostics.push('criterion_coverage_mismatch');
- const rolePaths={source:job.sourcePaths,candidate:job.candidatePaths,execution:streamLabels,oracle:job.oracle===null?[]:[oracleLabel(job.oracle)]};
- for (const row of rows??[]) {
+ for (const row of Array.isArray(rows)?rows:[]) {
   const refs=row.evidence??[];
   if (!Array.isArray(refs)||!refs.every(e=>text(e.quote)&&bytes.get(e.path)?.includes(e.quote))) { diagnostics.push('evidence_quote_mismatch:'+row.criterionRef); continue; }
-  const roles=job.criterionEvidence.find(r=>r.criterionRef===row.criterionRef)?.roles??[];
-  if (row.disposition==='satisfied'&&roles.some(role=>!refs.some(e=>rolePaths[role].includes(e.path)))) diagnostics.push('missing_declared_evidence_role:'+row.criterionRef);
+  const roles=roleLabels[row.criterionRef]??{},allowed=Object.values(roles).flat();
+  if(restrictCitations&&refs.some(e=>!allowed.includes(e.path)))diagnostics.push('evidence_role_label_mismatch:'+row.criterionRef);
+  if (row.disposition==='satisfied'&&Object.values(roles).some(labels=>!refs.some(e=>labels.includes(e.path)))) diagnostics.push('missing_declared_evidence_role:'+row.criterionRef);
  }
  const residuals=assessment?.residuals;
  if (!Array.isArray(residuals)) diagnostics.push('residuals_absent');
  const satisfied=diagnostics.length===0&&criteria.filter(c=>c.mandatory).every(c=>rows.some(r=>r.criterionRef===c.criterionRef&&r.disposition==='satisfied'))&&
    !residuals.some(r=>r.scope==='selected-assessment');
- return Object.freeze({disposition:satisfied?'satisfied':'unsatisfied',diagnostics:Object.freeze(diagnostics),requiredCriteria:Object.freeze(required),claim:job.claim});
+ return Object.freeze({disposition:satisfied?'satisfied':'unsatisfied',diagnostics:Object.freeze(diagnostics),requiredCriteria:Object.freeze(required),claim});
 }
 export function interpretExecutionAssessment(bound,observation) {
  need(isNativeContinuationBoundInput(bound)&&product.isNativeWorkspaceWorkObservation(observation)&&same(observation.task,assessmentTask(bound)),
@@ -156,7 +174,7 @@ function interpretAssessmentFacts(entry,execution,observation,streams) {
  const bytes=new Map(streams.map(e=>[e.label,e.text]));
  for(const e of observation.after.entries)if(e.state==='file')bytes.set(e.relativePath,decode(e));
  if(entry.job.oracle!==null)bytes.set(oracleLabel(entry.job.oracle),oracleText(observation.after,entry.job.oracle));
- return interpretJobEvidenceRows(entry,observation.assessment,bytes,streams.map(s=>s.label));
+ return interpretContinuationEvidenceRows(entry,observation.assessment,bytes,streams.map(s=>s.label));
 }
 const priorFields=['job','priorSource','priorAssessment','priorExecution','priorAuthor','executionPlan'];
 const stableTerminal=({value,projectionBasis,...selection})=>selection;

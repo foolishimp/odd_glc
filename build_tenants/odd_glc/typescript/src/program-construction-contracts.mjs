@@ -35,6 +35,15 @@ export const ids = Object.freeze({
   evaluationChildClosureRef: ref('contract','evaluation-child/closure'),
   evaluationChildPredicateRef: ref('predicate','evaluation-child'),
   constructedEvaluationPredicateRef: ref('predicate','construction-evaluated'),
+  prepareAssessmentInputGraphFunctionRef: ref('graph-function','prepare-assessment-input'),
+  prepareAssessmentTaskGraphFunctionRef: ref('graph-function','prepare-assessment-task'),
+  joinAssessmentGraphFunctionRef: ref('graph-function','join-assessment'),
+  assessmentChildGraphFunctionRef: ref('graph-function','assessment-child'),
+  assessmentInputContractRef: ref('contract','assessment-input'),
+  assessmentStateContractRef: ref('contract','assessment-state'),
+  assessmentChildClosureRef: ref('contract','assessment-child/closure'),
+  assessmentChildPredicateRef: ref('predicate','assessment-child'),
+  assessedConstructionPredicateRef: ref('predicate','construction-assessed'),
 });
 export const contract = (contractRef, contractKind, valueKind) => Object.freeze({contractRef, contractVersion: VERSION, contractKind, valueKind});
 export const inputContract = contract(ids.inputContractRef, 'input', 'lifecycle_construction_input');
@@ -42,6 +51,8 @@ export const evaluatorInputContract = contract(ids.evaluatorInputContractRef, 'i
 export const nativeConstructionInputContract = contract(ids.nativeInputContractRef,'input','lifecycle_native_construction_input');
 export const constructionStateContract = contract(ids.constructionStateContractRef,'input','lifecycle_construction_state');
 export const evaluationStateContract = contract(ids.evaluationStateContractRef,'output','lifecycle_evaluation_state');
+export const assessmentInputContract = contract(ids.assessmentInputContractRef,'input','lifecycle_assessment_input');
+export const assessmentStateContract = contract(ids.assessmentStateContractRef,'output','lifecycle_assessment_state');
 export const stages = Object.freeze([
   {name:'authenticate', symbol:'prepareReacquisition', input:ids.inputContractRef,
     output:'contract://abiogenesis/worksite/native-command-reacquisition-request@5', graphFunctionRef:ids.authenticateGraphFunctionRef},
@@ -66,6 +77,15 @@ export const evaluationStages=Object.freeze([
     output:ids.evaluatorInputContractRef,graphFunctionRef:ids.prepareConstructedEvaluationGraphFunctionRef},
   {name:'join-evaluation',symbol:'joinEvaluation',input:'contract://abiogenesis/worksite/retained-graph-input@5',
     output:ids.evaluationStateContractRef,graphFunctionRef:ids.joinEvaluationGraphFunctionRef},
+].map(s=>Object.freeze({...s,nodeRef:ref('node',s.name),bindingRef:ref('implementation-binding',s.name),
+  implementationRef:ref('implementation',s.name),predicateRef:ref('predicate',s.name),closureRef:ref('contract',s.name+'/closure')})));
+export const assessmentStages=Object.freeze([
+  {name:'prepare-assessment-input',symbol:'prepareAssessmentInput',input:'contract://abiogenesis/worksite/retained-graph-input@5',
+    output:ids.assessmentInputContractRef,graphFunctionRef:ids.prepareAssessmentInputGraphFunctionRef},
+  {name:'prepare-assessment-task',symbol:'prepareAssessmentTask',input:ids.assessmentInputContractRef,
+    output:'contract://abiogenesis/worksite/native-work/task@5',graphFunctionRef:ids.prepareAssessmentTaskGraphFunctionRef},
+  {name:'join-assessment',symbol:'joinAssessment',input:'contract://abiogenesis/worksite/retained-graph-input@5',
+    output:ids.assessmentStateContractRef,graphFunctionRef:ids.joinAssessmentGraphFunctionRef},
 ].map(s=>Object.freeze({...s,nodeRef:ref('node',s.name),bindingRef:ref('implementation-binding',s.name),
   implementationRef:ref('implementation',s.name),predicateRef:ref('predicate',s.name),closureRef:ref('contract',s.name+'/closure')})));
 export const bindingFor = s => ({kind:'implementation_binding', bindingRef:s.bindingRef,

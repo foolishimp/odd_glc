@@ -7,7 +7,11 @@ import * as validator from '@abiogenesis/typescript-tenant/validator';
 import {constructLifecycleProgram,constructProgramConstructionLibrary,selectLifecycleWork,projectNativeSource} from '../src/program-construction.mjs';
 import {ids,stages,constructionStages,dependencyKind} from '../src/program-construction-contracts.mjs';
 import {isConstructionInput,isNativeConstructionInput,constructNativeConstructionInput,constructionState,isConstructionState,nativeConstructionTask,constructionOutput,
-  authenticSource,reacquisitionRequest,evaluationInput,constructedEvaluationInput,evaluationOutput,isEvaluationState,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
+  authenticSource,reacquisitionRequest,evaluationInput,constructedEvaluationInput,evaluationOutput,isEvaluationState,
+  constructionAssessmentInput,constructionAssessmentTask,constructionAssessmentOutput,assessmentEvidence,isAssessmentInput,PROGRAM_CONSTRUCTION_SEMANTICS} from '../src/program-construction-runtime.mjs';
+import {rawContract as assessmentResultContract,ASSESSMENT_SCHEMA_TEXT} from '../src/native-continuation-contracts.mjs';
+import {programConstructionPackageInputs} from '../scripts/build-native-continuation-product.mjs';
+import {constructOddGlcProductPackage} from '../src/product-package.mjs';
 import {loadNative44Fixture,constructNative44Candidate} from './fixtures/program-construction/native44-input.mjs';
 import {evaluatorPublication,deriveNativeRecords,evaluateNativeRecords,EVALUATOR_SEMANTICS,fixtureIds} from './fixtures/program-construction/native-records-evaluator.mjs';
 import {checkInstalledConstructionTopology} from './abi5-installed-program-construction.test.mjs';
@@ -476,6 +480,150 @@ test('PC03 binding14 joins exact predicate, protected module and observed plan w
   assert.equal(noCall.conditions.noArguments.value,'unknown');assert.notEqual(noCall.verdict,'true');
   const altered=structuredClone(output);altered.records.comparison.conditions.observedEqualsDeclared.value='false';
   assert.equal(EVALUATOR_SEMANTICS.resolveJudgmentRelation(fixtureIds.predicateRef).evaluate(view,altered),false);
+});
+function assessmentSelection(input,criteria,recordSelections,candidatePaths,sourcePaths,rubric) {
+  return {claim:'Independently judge selected construction and comparison; original task remains open.',fitJudgment:input.model.interpretation,
+    rubric,candidatePaths,sourcePaths,recordSelections,criterionEvidence:criteria.map(c=>({criterionRef:c.criterionRef,
+      dutyRefs:input.selectedDutyRefs,roles:['source','candidate','execution','oracle','construction_record','comparison_record']}))};
+}
+function componentAssessment(task,assessment,provenance,after=task.context) {
+  const body={kind:'native_workspace_work_observation',schemaVersion:version,task,before:task.context,after,changedPaths:[],report:null,assessment,
+    provenance:provenance??{...f.input.origin.observation.task.sourceNativeWork.provenance,actorInvocationRef:'actor://component/independent-assessor',cCallRef:'c-call://component/independent-assessor'}};
+  const digest=hash(body),result={...body,observationRef:'native-work-observation://abiogenesis/'+digest.slice(7),observationDigest:digest};
+  assert(product.isNativeWorkspaceWorkObservation(result));return result;
+}
+function satisfiedAssessment(evidence) {
+  return {kind:assessmentResultContract.valueKind,criteria:evidence.criteria.map(c=>({criterionRef:c.criterionRef,disposition:'satisfied',rationale:'Unadmitted finite component premise.',
+    evidence:[...new Set(Object.values(evidence.roleLabels[c.criterionRef]).flat())].filter(label=>evidence.bytes.get(label).length)
+      .map(path=>({path,quote:evidence.bytes.get(path).slice(0,32)}))})),residuals:[]};
+}
+function smallAssessmentInput(extraFiles={}) {
+  const stageRef='stage://component/assessment',criteria=[{criterionRef:'criterion://component/assessment',instruction:'Judge these bounded fixture records.'}];
+  const files={'source.txt':'complete synthetic source','candidate.txt':'candidate from source.txt','rubric.json':JSON.stringify({kind:'semantic_job_lifecycle_declaration',stages:[{declarationRef:stageRef,rubric:criteria}]}),...extraFiles};
+  const context=structuredClone(f.input.currentContext);context.entries=Object.entries(files).map(([relativePath,text])=>({relativePath,state:'file',fileIdentity:'component://'+relativePath,
+    byteLength:Buffer.byteLength(text),digest:product.sha256Bytes(Buffer.from(text)),encoding:'base64',bytes:Buffer.from(text).toString('base64')})).sort((a,b)=>a.relativePath.localeCompare(b.relativePath));
+  context.entries.unshift({relativePath:'.',state:'directory',fileIdentity:'component://directory',members:Object.keys(files).sort()});
+  context.readRoots=['.'];context.maxFiles=50;context.maxBytes=100000;
+  const {kind,schemaVersion,observationRef,observationDigest,...body}=context;context.observationDigest=hash(body);context.observationRef='worksite-context-observation://abiogenesis/'+context.observationDigest.slice(7);
+  assert(product.isWorksiteContextObservation(context));
+  const coord=path=>({path,digest:context.entries.find(e=>e.relativePath===path).digest}),coordinate=ref=>({ref,digest:z});
+  const authorTask=product.constructNativeWorkspaceWorkTask({...f.input.authority,context,outcome:'Synthetic finite author premise',instructions:['No actor runs in this component fixture.'],readFirst:['source.txt'],writeRoots:['candidate.txt'],checks:[]});
+  const author=componentObservation(authorTask),duties=['provenance','evaluate','assess'].map((role,index)=>({ref:'duty://component/'+role,role,bindingRef:'binding://component/'+index,obligationRef:'obligation://component/'+index}));
+  const stream=text=>({payload:Buffer.from(text).toString('base64'),byteLength:Buffer.byteLength(text),digest:product.sha256Bytes(Buffer.from(text))});
+  const view={kind:'lifecycle_evaluation_input',schemaVersion:version,taskRef:'task://component/finite',sourceResult:coordinate('result://component/original'),
+    construction:coordinate('result://component/original-construction'),execution:coordinate('result://component/original-execution'),sourceRefs:[{ref:'source://component',digest:coord('source.txt').digest}],interpretation:coordinate('interpretation://component'),
+    selectedDutyRefs:duties.map(d=>d.ref),selectedObligationRefs:duties.map(d=>d.obligationRef),carriedDutyRefs:['duty://component/carried'],carriedBindingRefs:['binding://component/carried'],
+    executionRecord:{observation:coordinate('observation://component/execution'),commandResults:[{stdout:stream('actual component execution'),stderr:stream('')}],snapshotMembers:[],predicateObservations:[],provenance:{}},
+    currentContext:context,evaluator:{graphFunction:coordinate('graph-function://component/evaluator')},acquisition:{},originalTaskCompletion:'not_claimed',
+    constructionObservations:[{groupRef:'group://component',dutyRefs:[duties[0].ref],observation:author}],
+    constructionEdges:[{dutyRef:duties[0].ref,dependentPaths:['candidate.txt'],dependencies:[coord('source.txt')]}],dutyPopulation:duties,carriedDuties:[{dutyRef:'duty://component/carried'}],pendingDutyRefs:duties.map(d=>d.ref),acceptedResultsDisposition:'requires_separate_owner_conjunction'};
+  const computed={kind:'lifecycle_computed_records',schemaVersion:version,...Object.fromEntries(['taskRef','sourceResult','construction','execution','sourceRefs','interpretation','selectedDutyRefs','selectedObligationRefs','carriedDutyRefs','carriedBindingRefs'].map(k=>[k,view[k]])),
+    evaluator:view.evaluator.graphFunction,evidenceRole:'computed_derivation',originalTaskCompletion:'not_claimed',records:{
+      edge:{recordKind:'construction_record',dutyRef:duties[0].ref,obligationRef:duties[0].obligationRef,bindingRef:duties[0].bindingRef,verdict:'true'},
+      comparison:{recordKind:'comparison_record',obligationRef:duties[1].obligationRef,bindingRef:duties[1].bindingRef,verdict:'true'},residuals:['absent raw type/argument fields; owner disposition remains open']}};
+  const text='unchanged synthetic evaluator-only oracle',oracle={ref:'oracle://component/finite',digest:product.sha256Bytes(Buffer.from(text)),text};
+  return {kind:'lifecycle_assessment_input',schemaVersion:version,evaluationState:evaluationOutput(product.constructRetainedGraphInput(view,computed)),
+    selection:assessmentSelection({model:{interpretation:view.interpretation},selectedDutyRefs:view.selectedDutyRefs},criteria,
+      [{recordPath:'/records/edge',role:'construction_record',dutyRef:duties[0].ref},{recordPath:'/records/comparison',role:'comparison_record',dutyRef:duties[1].ref}],
+      ['candidate.txt'],['source.txt'],{...coord('rubric.json'),stageRef}),authority:f.input.authority,oracle,
+    independentProducers:[{ref:author.observationRef,digest:author.observationDigest,actorInvocationRef:author.provenance.actorInvocationRef,cCallRef:author.provenance.cCallRef}],originalTaskCompletion:'not_claimed'};
+}
+test('PC04 finite assessment mapping conserves canonical records and refuses unresolved or colliding labels before dispatch',()=>{
+  const input=smallAssessmentInput(),evidence=assessmentEvidence(input),task=constructionAssessmentTask(input);assert(isAssessmentInput(input));
+  for(const row of evidence.records) {
+    assert.equal(row.label,`computed:${hash(input.evaluationState.computedRecords)}:${row.recordPath}`);
+    const record=row.recordPath.endsWith('/edge')?input.evaluationState.computedRecords.records.edge:input.evaluationState.computedRecords.records.comparison;
+    assert.equal(row.text,product.canonicalJson({evaluator:input.evaluationState.computedRecords.evaluator,outputDigest:hash(input.evaluationState.computedRecords),recordPath:row.recordPath,record}));
+    assert(task.instructions.some(text=>text.endsWith('\n'+row.text)));
+  }
+  assert.deepEqual(task.writeRoots,[]);assert.deepEqual(task.checks,[]);assert.deepEqual(task.context,input.evaluationState.evaluationInput.currentContext);
+  assert.deepEqual(task.assessment.resultContract,assessmentResultContract);assert.equal(task.assessment.schemaAsset.bytesBase64,Buffer.from(ASSESSMENT_SCHEMA_TEXT).toString('base64'));
+  assert(task.assessment.sources.every(s=>s.path!==task.assessment.candidate.path&&s.path!==task.assessment.rubric.path));
+  for(const change of [x=>{x.selection.recordSelections[0].recordPath='/records/absent';},x=>{x.selection.recordSelections[0].role='comparison_record';},
+    x=>{x.selection.recordSelections[0].dutyRef='duty://unselected';},x=>{x.selection.criterionEvidence[0].criterionRef='criterion://unknown';},
+    x=>{x.selection.rubric.stageRef='stage://absent';},x=>{x.selection.rubric.digest=hash('wrong');},
+    x=>{x.selection.sourcePaths=['candidate.txt'];},x=>{x.selection.recordSelections.push(structuredClone(x.selection.recordSelections[0]));}]) {
+    const bad=structuredClone(input);change(bad);assert.throws(()=>constructionAssessmentTask(bad));
+  }
+  assert.throws(()=>constructionAssessmentTask(smallAssessmentInput({'command-1.stdout':'collision'})),/colliding/);
+});
+test('PC04 finite native assessment preserves negative, unknown and partial results and rejects wrong producer/task/context',()=>{
+  const input=smallAssessmentInput(),evidence=assessmentEvidence(input),task=constructionAssessmentTask(input),raw=satisfiedAssessment(evidence);
+  const observed=componentAssessment(task,raw),result=constructionAssessmentOutput(product.constructRetainedGraphInput(input,observed));
+  assert.equal(result.assessmentDisposition,'satisfied');assert.equal(result.originalTaskCompletion,'not_claimed');assert.equal(result.semanticClosure,'not_claimed');
+  assert.deepEqual(result.preservedResiduals,input.evaluationState.computedRecords.records.residuals);
+  for(const disposition of ['falsified','indeterminate']) {
+    const negative=structuredClone(raw);negative.criteria[0].disposition=disposition;
+    const output=constructionAssessmentOutput(product.constructRetainedGraphInput(input,componentAssessment(task,negative)));
+    assert.equal(output.assessmentDisposition,'unsatisfied');assert.equal(output.assessmentObservation.assessment.criteria[0].disposition,disposition);
+  }
+  for(const change of [x=>{x.criteria[0].evidence[0].quote='invented quote';},x=>{x.criteria[0].evidence[0].path='unknown';},
+    x=>{x.criteria[0].evidence=x.criteria[0].evidence.filter(e=>!e.path.startsWith('computed:'));},
+    x=>{x.residuals=[{scope:'selected-assessment',criterionRef:x.criteria[0].criterionRef,description:'partial'}];}]) {
+    const bad=structuredClone(raw);change(bad);assert.equal(constructionAssessmentOutput(product.constructRetainedGraphInput(input,componentAssessment(task,bad))).assessmentDisposition,'unsatisfied');
+  }
+  for(const verdict of ['false','unknown']) {
+    const negative=structuredClone(input);negative.evaluationState.computedRecords.records.edge.verdict=verdict;
+    const negativeEvidence=assessmentEvidence(negative),negativeTask=constructionAssessmentTask(negative);
+    const output=constructionAssessmentOutput(product.constructRetainedGraphInput(negative,componentAssessment(negativeTask,satisfiedAssessment(negativeEvidence))));
+    assert.equal(output.assessmentDisposition,'unsatisfied');assert.equal(output.computedEvidenceDisposition,verdict);
+  }
+  for(const overlap of [{actorInvocationRef:observed.provenance.actorInvocationRef},{cCallRef:observed.provenance.cCallRef}]) {
+    const other=structuredClone(input);other.independentProducers.push({ref:'observation://component/other',digest:z,actorInvocationRef:'actor://component/other',cCallRef:'c-call://component/other',...overlap});
+    assert.throws(()=>constructionAssessmentOutput(product.constructRetainedGraphInput(other,componentAssessment(constructionAssessmentTask(other),raw))),/independent/);
+  }
+  const wrong=structuredClone(input);wrong.selection.claim+=' wrong task';
+  assert.throws(()=>constructionAssessmentOutput(product.constructRetainedGraphInput(wrong,observed)),/exact task/);
+  const changed=structuredClone(input);changed.evaluationState.evaluationInput.currentContext=smallAssessmentInput({'another.txt':'changed subject'}).evaluationState.evaluationInput.currentContext;
+  assert.throws(()=>constructionAssessmentOutput(product.constructRetainedGraphInput(changed,observed)),/after-context/);
+});
+test('PC04 actual PC03 state joins complete original rubric/oracle and ordinary native assessment with no C2',async()=>{
+  const fixture=combinedFixture(),{input,producer,consumer,sibling,native}=fixture;
+  input.origin=projectNativeSource(product,f.terminalValue,{includeAssessment:true});
+  const assessor=input.model.duties.find(d=>d.role==='assess');assessor.independentOf=[producer.ref,consumer.ref,f.input.model.duties.find(d=>d.role==='execute').ref];
+  input.selectedDutyRefs=[assessor.ref,sibling.ref];
+  const rubricFile=input.currentContext.entries.find(e=>e.relativePath==='semantic-assets/lifecycle-rubric.json'),rubric=JSON.parse(Buffer.from(rubricFile.bytes,'base64').toString());
+  const stage=rubric.stages.find(s=>s.declarationRef==='stage://odd-glc/generic-lifecycle/evidence@5'),work=select(input).work;
+  const records=work.filter(d=>d.role==='provenance').map((d,index)=>({recordPath:'/records/constructionEdges/'+index,role:'construction_record',dutyRef:d.dutyRef}));
+  records.push({recordPath:'/records/comparison',role:'comparison_record',dutyRef:fixture.duty.ref});
+  const candidatePaths=input.constructionGroups.flatMap(g=>g.writeRoots),sourcePaths=input.currentContext.entries.filter(e=>e.state==='file'&&e.relativePath!==rubricFile.relativePath).map(e=>e.relativePath);
+  input.assessment=assessmentSelection({...input,selectedDutyRefs:select(input).selectedDutyRefs},stage.rubric,records,candidatePaths,sourcePaths,
+    {path:rubricFile.relativePath,digest:rubricFile.digest,stageRef:stage.declarationRef});
+  assert(isNativeConstructionInput(input));
+  const proof={historicalGraphCallSource:()=>({terminalResult:f.terminal})};assert.equal(authenticSource(input,{},proof),true);
+  const forged=structuredClone(input);forged.origin.assessmentBasis.evaluationData.purpose='forged oracle';assert.equal(authenticSource(forged,{},proof),false);
+  const library=constructProgramConstructionLibrary({gtl,product,artifact,includeNativeConstruction:true,evaluationGraph:evaluator.graphFunctions[0],includeAssessment:true});
+  const route={...fixture.route,roles:[...new Set(work.map(d=>d.role))],obligationRefs:[...new Set(work.map(d=>d.obligationRef))],publications:[library,core,native,evaluator],
+    graphFunctionRefs:[...fixture.route.graphFunctionRefs,ids.prepareAssessmentInputGraphFunctionRef,ids.assessmentChildGraphFunctionRef],retainEntryAfter:[1,2+input.constructionGroups.length,4+input.constructionGroups.length]};
+  const candidate=constructLifecycleProgram({gtl,product,artifact,model:input.model,basis:basis(input),selectedDutyRefs:input.selectedDutyRefs,constructionGroups:input.constructionGroups,routes:[route]});
+  assert.equal(candidate.kind,'candidate');const checked=validation(candidate,[native]);assert.equal(checked.kind,'program_validation',JSON.stringify(checked));
+  const raw=(x,k)=>validator.rawAdmitValue(x,k,'contract://abiogenesis/gtl/'+k.replaceAll('_','-')+'@5');
+  assert.equal(validator.validatePublication(raw(candidate.publication,'module_publication'),candidate.publication.contributions.map(c=>raw(c,'catalog_contribution'))).kind,'publication_validation');
+  const packageInputs=await programConstructionPackageInputs({product,publication:candidate.publication});
+  assert.equal(packageInputs.sourceFiles['contracts/native-continuation-assessment.schema.json'],ASSESSMENT_SCHEMA_TEXT);
+  assert(packageInputs.sourceFiles['build/native-continuation-runtime.mjs'].includes('export function interpretJobEvidenceRows'));
+  assert(packageInputs.sourceFiles['build/native-continuation-contracts.mjs']);
+  const built=constructOddGlcProductPackage({product,gtl,ids:{...ids,packageName:'@odd-glc/route-one-typescript',packageVersion:'0.3.0-dev.2'},
+    abiArtifact:JSON.parse(await fs.readFile(process.env.ABI5_COMPONENT_ROOT+'/product-toolchain-manifest.json','utf8')),
+    consumerPublication:candidate.publication,...packageInputs,additionalDependencies:[],packageExports:{'./construction-runtime':'./build/program-construction-runtime.mjs'}});
+  assert.equal(built.files['contracts/native-continuation-assessment.schema.json'],ASSESSMENT_SCHEMA_TEXT);
+  assert.equal(packageInputs.contractRows[0].owningProduct,ids.productId);assert.equal(packageInputs.contractRows[0].contractId,assessmentResultContract.contractRef);
+  const membership=candidate.publication.programs[0].callableMembership;assert(membership.includes(product.NATIVE_WORKSPACE_WORK_IDS.assessmentGraphFunctionRef));
+  assert(!membership.includes(product.WORKSITE_COMMAND_EXECUTION_IDS.graphFunctionRef));
+  const child=candidate.publication.graphFunctions.find(g=>g.name===ids.assessmentChildGraphFunctionRef);
+  assert.deepEqual(child.template.edges[1].inputBinding,product.graphInputRetentionBinding(ids.assessmentInputContractRef,product.NATIVE_WORKSPACE_WORK_IDS.observationContractRef));
+  const state=completedConstruction(input),view=constructedEvaluationInput(product.constructRetainedGraphInput(input,state));
+  assert.equal(Object.hasOwn(state.entry,'assessmentBasis'),false);assert.equal(Object.hasOwn(view,'assessmentBasis'),false);assert.equal(Object.hasOwn(view,'oracle'),false);
+  const evaluated=evaluationOutput(product.constructRetainedGraphInput(view,deriveNativeRecords(view))),assessedInput=constructionAssessmentInput(product.constructRetainedGraphInput(input,evaluated));
+  assert.deepEqual(JSON.parse(assessedInput.oracle.text),f.terminalValue.current.job.evaluationData);
+  const evidence=assessmentEvidence(assessedInput);assert.deepEqual(evidence.criteria.map(({mandatory,...c})=>c),stage.rubric);assert(evidence.criteria.every(c=>c.mandatory));
+  const task=constructionAssessmentTask(assessedInput),observation=componentAssessment(task,satisfiedAssessment(evidence));
+  const result=constructionAssessmentOutput(product.constructRetainedGraphInput(assessedInput,observation));assert.equal(result.assessmentDisposition,'satisfied');
+  assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.assessedConstructionPredicateRef).evaluate(input,result),true);
+  assert.equal(result.acceptedResultsDisposition,'requires_separate_owner_conjunction');assert.deepEqual(result.preservedResiduals,evaluated.computedRecords.records.residuals);
+  assert.deepEqual(task.context,state.currentContext);assert.deepEqual(task.assessment.producer,{resultRef:state.constructionObservations.at(-1).observation.observationRef,
+    resultDigest:state.constructionObservations.at(-1).observation.observationDigest,cCallRef:state.constructionObservations.at(-1).observation.provenance.cCallRef,
+    actorInvocationRef:state.constructionObservations.at(-1).observation.provenance.actorInvocationRef});
 });
 test('applicability unknown stays residual, false records basis, cycles refuse',()=>{
   for(const [value,expected] of [['unknown','gap'],['false','report_refs']]) {

@@ -20,6 +20,30 @@ const pub=constructNativeContinuationPublication({artifact,product:p,gtl});
 const nativePubs=[gtl.constructWorksiteCommandExecutionModulePublication(artifact),gtl.constructNativeWorkspaceWorkModulePublication(artifact)];
 const pubs=[pub,...nativePubs],raw=(x,k)=>v.rawAdmitValue(x,k,'contract://component/'+k);
 const validation=()=>v.validateProgram({declarationBasisDigest:hash(pubs),programPublication:raw(pub,'module_publication'),program:raw(pub.programs[0],'gtl_program'),graphFunctions:pubs.flatMap(p=>p.graphFunctions).map(x=>raw(x,'graph_function')),contracts:pubs.flatMap(p=>p.contracts).map(x=>raw(x,'contract_declaration')),implementationBindings:pubs.flatMap(p=>p.implementationBindings).map(x=>raw(x,'implementation_binding')),closureContracts:pubs.flatMap(p=>p.closureContracts).map(x=>raw(x,'closure_contract')),rules:[],evaluators:[]});
+test('PC04 shared evidence checker binds each criterion to its exact role labels',()=>{
+ const bytes=new Map([['source','governing source'],['computed:edge','actual edge'],['computed:comparison','actual comparison'],['command-1.stdout','actual edge']]);
+ const selection={criteria:[{criterionRef:'edge',mandatory:true},{criterionRef:'comparison',mandatory:true}],claim:'bounded component premise',
+  roleLabels:{edge:{source:['source'],construction_record:['computed:edge']},comparison:{comparison_record:['computed:comparison']}}};
+ const assessment={criteria:[{criterionRef:'edge',disposition:'satisfied',evidence:[{path:'source',quote:'governing'},{path:'computed:edge',quote:'actual edge'}]},
+  {criterionRef:'comparison',disposition:'satisfied',evidence:[{path:'computed:comparison',quote:'actual comparison'}]}],residuals:[]};
+ assert.equal(r.interpretJobEvidenceRows(selection,assessment,bytes).disposition,'satisfied');
+ for(const path of ['unknown','command-1.stdout','computed:comparison']) {
+  const bad=structuredClone(assessment);bad.criteria[0].evidence[1].path=path;
+  if(path==='computed:comparison')bad.criteria[0].evidence[1].quote='actual comparison';
+  assert.equal(r.interpretJobEvidenceRows(selection,bad,bytes).disposition,'unsatisfied');
+ }
+ const wrong=structuredClone(assessment);wrong.criteria[0].evidence[1].quote='invented';
+ assert(r.interpretJobEvidenceRows(selection,wrong,bytes).diagnostics.some(d=>d.startsWith('evidence_quote_mismatch')));
+ for(const disposition of ['falsified','indeterminate']) {
+  const negative=structuredClone(assessment);negative.criteria[1].disposition=disposition;
+  assert.equal(r.interpretJobEvidenceRows(selection,negative,bytes).disposition,'unsatisfied');
+ }
+ const partial=structuredClone(assessment);partial.residuals=[{scope:'selected-assessment',criterionRef:'edge',description:'still open'}];
+ assert.equal(r.interpretJobEvidenceRows(selection,partial,bytes).disposition,'unsatisfied');
+ for(const mutate of [s=>{delete s.roleLabels.edge;},s=>{s.roleLabels.edge.construction_record=['unknown'];},s=>{s.roleLabels.edge.construction_record=['computed:edge','computed:edge'];}]) {
+  const bad=structuredClone(selection);mutate(bad);assert.throws(()=>r.checkCriterionEvidence(bad,bytes),/mapping|labels/);
+ }
+});
 test('consumer command role produces a real native C2 instruction assembly',async t=>{
  const f=await fixture(t,'calendar'),task=f.execution.task;
  const roles=constructNativeContinuationEnvironmentRoles({gtl,product:p,publication:pub,nativePublications:nativePubs,

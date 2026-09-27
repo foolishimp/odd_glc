@@ -16,15 +16,29 @@ export async function buildProgramConstructionProduct({coreRoot,publication,depe
  if(publication.moduleRef!==constructionIds.moduleRef||publication.programs.length!==1)
   throw new TypeError('one concrete construction publication required');
  if(!Array.isArray(dependencies))throw new TypeError('explicit supplied Product dependencies required');
- const sourceRoot=resolve(dirname(fileURLToPath(import.meta.url)),'../src'),sourceFiles={};
- for(const name of ['program-construction.mjs','program-construction-contracts.mjs','program-construction-runtime.mjs'])
-  sourceFiles['build/'+name]=await readFile(join(sourceRoot,name),'utf8');
+ const {sourceFiles,contractRows}=await programConstructionPackageInputs({product,publication});
  const built=constructOddGlcProductPackage({product,gtl,ids:{...constructionIds,packageName:CONSTRUCTION_PACKAGE,packageVersion:CONSTRUCTION_VERSION},
-  abiArtifact:JSON.parse(await readFile(join(coreRoot,'product-toolchain-manifest.json'),'utf8')),consumerPublication:publication,sourceFiles,additionalDependencies:dependencies,
+  abiArtifact:JSON.parse(await readFile(join(coreRoot,'product-toolchain-manifest.json'),'utf8')),consumerPublication:publication,sourceFiles,contractRows,additionalDependencies:dependencies,
   packageExports:{'./publication':'./build/publication.json','./program-construction':'./build/program-construction.mjs','./construction-runtime':'./build/program-construction-runtime.mjs'}});
  await writePackage(outputRoot,built.files);
  return {packageRoot:outputRoot,productId:constructionIds.productId,packageName:CONSTRUCTION_PACKAGE,packageVersion:CONSTRUCTION_VERSION,
   productContentDigest:built.productContentDigest,manifestDigest:product.sha256Canonical(built.manifest),payloadInventory:built.payloadInventory};
+}
+// Shared with component checks: exact emitter inputs, with no package writes.
+export async function programConstructionPackageInputs({product,publication}) {
+ const sourceRoot=resolve(dirname(fileURLToPath(import.meta.url)),'../src'),sourceFiles={};
+ for(const name of ['program-construction.mjs','program-construction-contracts.mjs','program-construction-runtime.mjs',
+   'native-continuation-contracts.mjs','native-continuation-runtime.mjs'])
+  sourceFiles['build/'+name]=await readFile(join(sourceRoot,name),'utf8');
+ const contractRows=[];
+ if(publication.contracts.some(c=>c.contractRef===ids.rawContractRef)) {
+  const path='contracts/native-continuation-assessment.schema.json',digest=product.sha256Bytes(Buffer.from(ASSESSMENT_SCHEMA_TEXT));
+  sourceFiles[path]=ASSESSMENT_SCHEMA_TEXT;
+  contractRows.push({contractId:ids.rawContractRef,contractVersion:'5.0.0',contractDigest:digest,contractKind:'schema_asset',owningProduct:constructionIds.productId,
+   requirementAuthorityRefs:['requirement://odd-glc/REQ-GLC-WORKSITE-LIFECYCLE-005'],capabilityIdentities:[],
+   assetLocator:{path,mediaType:'application/schema+json',schemaVersion:'5.0.0',contentDigest:digest}});
+ }
+ return {sourceFiles,contractRows};
 }
 async function writePackage(outputRoot,files) {
  await mkdir(outputRoot,{recursive:false});

@@ -1,0 +1,59 @@
+{
+  "kind": "pc02_exact_input_deterministic_reproduction",
+  "runtimePath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs",
+  "runtimeSha256": "879f0978a64e74cdb9350fb523c0d69a1346c3e1b7d340b02eadd8c6e2e721f2",
+  "run": {
+    "digest": "sha256:1f118153d0cae390da2d74b4a51e5cdd2b7039a91b9b8287b3b4cb903853ca19",
+    "ref": "run://abiogenesis/39ca8cc226494392680b3d716e849ccc5f62c04b9c23ed2a4936f54ed4a3ea6e"
+  },
+  "prefix": {
+    "coordinateDigest": "sha256:89c2f4a21b18733de0da12a2485d0a9def2f01d0d5c4942c56a53b42bbc415a2",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "kind": "durable_prefix_coordinate",
+    "prefixDigest": "sha256:23b26b3d1f55891f736d553c2357104a320d58271cf28dcc2c53187d64c128dc",
+    "prefixLength": 991116806,
+    "schemaVersion": "5.0.0",
+    "storeIdentity": {
+      "device": 16777230,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "inode": 459405010
+    }
+  },
+  "projectionDigest": "sha256:dc7123652132ba8002776ef46f9ea438f2fa2f2f40a0ca21077fd7c6bf759be0",
+  "ownerAtom": "r96",
+  "referenceBinding": {
+    "ref": "raw-admission://abiogenesis/a22f97c6c16c7638cfffd98f07b3e730f92089e6253139c40da38f0116be38a4",
+    "atom": "r96/raw_input"
+  },
+  "inputDigest": "sha256:2c002d0719cc577ef3ffb3aee2dc78a62d49d52bfeedcf6415da09d6c9ae92e1",
+  "reproduced": {
+    "threw": true,
+    "name": "TypeError",
+    "message": "declared predecessor basis is stale or unavailable",
+    "stack": "TypeError: declared predecessor basis is stale or unavailable\n    at need (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction.mjs:3:69)\n    at Array.constructionState (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs:185:3)\n    at realizeConstruction (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs:254:94)\n    at Module.prepareConstruction (file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-installed-02/products/construction/node_modules/@odd-glc/route-one-typescript/build/program-construction-runtime.mjs:257:104)\n    at file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/reproduce.mjs:31:15"
+  },
+  "intervention": {
+    "path": "specification/project-conformance.md",
+    "from": "sha256:b331df7341f0c907c9fb50d67e03ad31350c4a58c5cd9efda1764ca373dad558",
+    "to": "sha256:148e9bb1fd6dd2c39121e3e141e8a46b22cae5912e670cc04f3a2b0ec7799a3a"
+  },
+  "repairedVariant": {
+    "threw": false,
+    "kind": "leaf_realization_candidate",
+    "disposition": "success",
+    "resultKind": "lifecycle_construction_state"
+  },
+  "timings": {
+    "ownerReadMs": 56985.983042,
+    "failureMs": 12083.787042000004,
+    "positiveMs": 15710.963875000001
+  },
+  "claims": {
+    "originalExceptionRetained": false,
+    "originalAdmittedInputReproduced": true,
+    "positiveVariantAdmitted": false,
+    "newRun": false,
+    "nativeCalls": 0,
+    "journalWrites": 0
+  }
+}

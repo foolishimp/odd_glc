@@ -101,7 +101,7 @@ function constructionEdges(input) {
       declaredRead:verdict(observation?observation.task.readFirst.includes(dependency.path):null,'actual native task declares predecessor readFirst'),
       declaresPredecessor:verdict(declares,'fixture derivedFrom or textual predecessor reference; faithful derivation requires assessment'),
       completeReport:verdict(observation?observation.report.gaps.length===0:null,'native author reports no remaining gaps')};
-    return {dutyRef:edge.dutyRef,obligationRef:edge.obligationRef,bindingRef:edge.bindingRef,dependent:{path,afterDigest:after?.digest??null},
+    return {recordKind:'construction_record',dutyRef:edge.dutyRef,obligationRef:edge.obligationRef,bindingRef:edge.bindingRef,dependent:{path,afterDigest:after?.digest??null},
       predecessor:{path:dependency.path,declaredDigest:dependency.digest??null,producerDutyRef:dependency.producerDutyRef??null,
         beforeDigest:before?.digest??null,currentDigest:current?.digest??null,producerObservation:predecessor?coordinate(predecessor.observation):null},
       declaredReadPath:dependency.path,observation:observation?coordinate(observation):null,producer:observation?.provenance??null,
@@ -141,7 +141,7 @@ function comparison(input) {
     observedEqualsPlan:verdict(!hasValue||!plan||!Object.hasOwn(plan,'assertedReturnValue')?null:same(observation.observedValue,plan.assertedReturnValue),'actual observedValue equals observed plan assertedReturnValue'),
     observedType:verdict(derivedType===null?null:derivedType==='string','type derived from actual observedValue'),
     noArguments:verdict(callable,'source-backed callable export plus owning module_export_return_exact exported() rule')};
-  return {obligationRef:selected.obligationRef,bindingRef:selected.bindingRef,selection:{predicateId:selected.predicateId,predicateKind:selected.predicateKind,ordinal:selected.ordinal},
+  return {recordKind:'comparison_record',obligationRef:selected.obligationRef,bindingRef:selected.bindingRef,selection:{predicateId:selected.predicateId,predicateKind:selected.predicateKind,ordinal:selected.ordinal},
     execution:input.execution,executionObservation:e.observation,provenance:e.provenance,
     predicateDeclaration:declaration??null,predicateObservation:observation??null,evidence,protectedObservation:protectedRow??null,
     cardinality:{declarations:declarations.length,observations:observations.length,protectedObservations:protectedRows.length},

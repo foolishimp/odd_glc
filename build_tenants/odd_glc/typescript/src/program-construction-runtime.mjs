@@ -1,6 +1,8 @@
 import * as product from '@abiogenesis/typescript-tenant/product';
 import {isDeepStrictEqual as same} from 'node:util';
-import {ids,stages,constructionStages,evaluationStages,bindingFor,inputContract,evaluatorInputContract,nativeConstructionInputContract,constructionStateContract,evaluationStateContract,dependencyKind,VERSION,PACKAGE_NAME,PACKAGE_VERSION} from './program-construction-contracts.mjs';
+import {ids,stages,constructionStages,evaluationStages,assessmentStages,bindingFor,inputContract,evaluatorInputContract,nativeConstructionInputContract,constructionStateContract,evaluationStateContract,assessmentInputContract,assessmentStateContract,dependencyKind,VERSION,PACKAGE_NAME,PACKAGE_VERSION} from './program-construction-contracts.mjs';
+import {rawContract as assessmentResultContract,ASSESSMENT_SCHEMA_TEXT} from './native-continuation-contracts.mjs';
+import {checkCriterionEvidence,interpretJobEvidenceRows} from './native-continuation-runtime.mjs';
 import {checkModel,checkConstructionGroups,coordinate,need,freeze,projectNativeSource,selectLifecycleWork} from './program-construction.mjs';
 const record=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
 const only=(x,keys)=>record(x)&&same(Object.keys(x).sort(),[...keys].sort());
@@ -34,16 +36,17 @@ export function isConstructionInput(input) {try {
     selection.work.every(w=>w.role==='evaluate')&&selectedDuties(input).every(d=>d.role==='evaluate');
 }catch{return false;}}
 export function isNativeConstructionInput(input) {try {
-  const combined=Object.hasOwn(input,'evaluator');
-  if(!only(input,[...sourceFields,'constructionGroups',...(combined?['evaluator']:[])])||input.kind!==nativeConstructionInputContract.valueKind||!sourceInput(input))return false;
+  const combined=Object.hasOwn(input,'evaluator'),assessed=Object.hasOwn(input,'assessment');
+  if(!only(input,[...sourceFields,'constructionGroups',...(combined?['evaluator']:[]),...(assessed?['assessment']:[])])||input.kind!==nativeConstructionInputContract.valueKind||!sourceInput(input))return false;
   const selection=selectionFor(input),prospective=[...selection.work,...selection.gaps];
   // Shape admission does not claim predecessor currentness. The acquired-context
   // preparation checks it before the first native constructor can be called.
   const construction=prospective.filter(d=>d.role==='provenance');
-  return construction.length>0&&prospective.every(d=>d.applicability.value==='true'&&(d.role==='provenance'&&d.dependentPaths?.length>0||combined&&d.role==='evaluate'))&&
-    selectedDuties(input).every(d=>d.role==='provenance'||combined&&d.role==='evaluate')&&
+  return construction.length>0&&prospective.every(d=>d.applicability.value==='true'&&(d.role==='provenance'&&d.dependentPaths?.length>0||combined&&d.role==='evaluate'||assessed&&d.role==='assess'))&&
+    selectedDuties(input).every(d=>d.role==='provenance'||combined&&d.role==='evaluate'||assessed&&d.role==='assess')&&
     (!combined||prospective.some(d=>d.role==='evaluate')&&coordinate(input.evaluator?.graphFunction)&&coordinate(input.evaluator?.fitJudgment)&&
       typeof input.evaluator.resultContractRef==='string'&&record(input.evaluator.parameters))&&
+    (!assessed||combined&&prospective.some(d=>d.role==='assess')&&record(input.origin.assessmentBasis?.evaluationData)&&assessmentSelectionShape(input.assessment))&&
     !!checkConstructionGroups(input.model,{work:construction},input.constructionGroups);
 }catch{return false;}}
 export function constructNativeConstructionInput(value) {
@@ -74,7 +77,7 @@ export function authenticSource(input,currentOwnerPrefix,nativeProof) {try {
   const owner=nativeProof?.historicalGraphCallSource?.();if(!owner)return false;
   const {value,projectionBasis,...selection}=owner.terminalResult;
   if(!same(selection,input.historicalSelection))return false;
-  return same(projectNativeSource(product,value),input.origin);
+  return same(projectNativeSource(product,value,{includeAssessment:!!input.assessment}),input.origin);
 }catch{return false;}}
 export function evaluationInput(bound) {
   if(bound?.entry?.kind===nativeConstructionInputContract.valueKind&&bound.entry.evaluator)return constructedEvaluationInput(bound);
@@ -89,9 +92,10 @@ export function evaluationInput(bound) {
 }
 function evaluationView(entry,context,acquisition) {
   const selection=selectionFor(entry),execution=entry.origin.observation;
+  const selected=entry.assessment?selection.selectedDutyRefs:entry.selectedDutyRefs;
   return freeze({kind:evaluatorInputContract.valueKind,schemaVersion:VERSION,taskRef:entry.model.taskRef,
     sourceRefs:entry.model.sourceRefs,interpretation:entry.model.interpretation,
-    selectedDutyRefs:entry.selectedDutyRefs,selectedObligationRefs:selectedDuties(entry).map(d=>d.obligationRef),
+    selectedDutyRefs:selected,selectedObligationRefs:entry.model.duties.filter(d=>selected.includes(d.ref)).map(d=>d.obligationRef),
     carriedDutyRefs:selection.carriedDutyRefs,carriedBindingRefs:selection.carriedBindingRefs,
     sourceResult:entry.historicalSelection.result,construction:entry.origin.construction,execution:entry.origin.execution,
     executionRecord:{observation:{ref:execution.observationRef,digest:execution.observationDigest},
@@ -173,7 +177,7 @@ function isConstructionBasis(entry) {try {
     !Array.isArray(entry.selectedDutyRefs)||entry.selectedDutyRefs.length===0||!Array.isArray(entry.pendingDutyRefs)||!Array.isArray(entry.carriedBindingRefs))return false;
   checkModel(entry.model);
   const grouped=entry.constructionGroups.flatMap(g=>g.dutyRefs);
-  return entry.selectedDutyRefs.every(ref=>entry.model.duties.some(d=>d.ref===ref&&(d.role==='evaluate'||grouped.includes(ref))))&&
+  return entry.selectedDutyRefs.every(ref=>entry.model.duties.some(d=>d.ref===ref&&(['evaluate','assess'].includes(d.role)||grouped.includes(ref))))&&
     entry.pendingDutyRefs.every(ref=>entry.model.duties.some(d=>d.ref===ref))&&entry.carriedBindingRefs.every(ref=>entry.model.bindingRefs.includes(ref))&&
     !!checkConstructionGroups(entry.model,{work:grouped.map(dutyRef=>({dutyRef}))},entry.constructionGroups);
 }catch{return false;}}
@@ -284,6 +288,158 @@ function evaluatedConstructionConserves(input,output) {
   const state=stateValue(constructionBasis(input),view.acquisition,view.constructionObservations,view.currentContext);
   return same(view,constructedEvaluationInput(product.constructRetainedGraphInput(input,state)));
 }
+const texts=xs=>Array.isArray(xs)&&xs.length>0&&xs.every(x=>typeof x==='string'&&x.length>0)&&new Set(xs).size===xs.length;
+const assessmentRoles=['source','candidate','execution','oracle','construction_record','comparison_record'];
+function assessmentSelectionShape(s) {
+  return only(s,['claim','fitJudgment','rubric','sourcePaths','candidatePaths','criterionEvidence','recordSelections'])&&typeof s.claim==='string'&&s.claim.length>0&&
+    coordinate(s.fitJudgment)&&only(s.rubric,['path','digest','stageRef'])&&typeof s.rubric.path==='string'&&coordinate({ref:s.rubric.stageRef,digest:s.rubric.digest})&&
+    texts(s.sourcePaths)&&texts(s.candidatePaths)&&Array.isArray(s.criterionEvidence)&&s.criterionEvidence.length>0&&
+    s.criterionEvidence.every(r=>only(r,['criterionRef','dutyRefs','roles'])&&typeof r.criterionRef==='string'&&texts(r.dutyRefs)&&texts(r.roles)&&r.roles.every(role=>assessmentRoles.includes(role)))&&
+    Array.isArray(s.recordSelections)&&s.recordSelections.length>0&&s.recordSelections.every(r=>only(r,['recordPath','role','dutyRef'])&&
+      typeof r.recordPath==='string'&&r.recordPath.startsWith('/')&&['construction_record','comparison_record'].includes(r.role)&&typeof r.dutyRef==='string');
+}
+function pointer(value,path) {
+  need(typeof path==='string'&&path.startsWith('/')&&!/~(?:[^01]|$)/u.test(path),'exact computed record JSON Pointer required');
+  for(const part of path.slice(1).split('/').map(p=>p.replaceAll('~1','/').replaceAll('~0','~'))) {
+    need(value!==null&&typeof value==='object'&&Object.hasOwn(value,part),'computed record JSON Pointer is unavailable: '+path);value=value[part];
+  }
+  return value;
+}
+function independentProducers(entry,view) {
+  const native=view.constructionObservations.map(r=>({observation:r.observation,dutyRefs:r.dutyRefs}));
+  const selected=entry.model.duties.filter(d=>view.selectedDutyRefs.includes(d.ref)&&d.role==='assess');
+  const observations=native.map(r=>r.observation);
+  for(const ref of selected.flatMap(d=>d.independentOf??[])) {
+    const duty=entry.model.duties.find(d=>d.ref===ref),rows=native.filter(r=>r.dutyRefs.includes(ref));
+    const observation=rows.length===1?rows[0].observation:duty?.role==='construct'?entry.origin.observation.task.sourceNativeWork:
+      duty?.role==='execute'?entry.origin.observation:null;
+    need(observation,'requested independent producer unavailable: '+ref);observations.push(observation);
+  }
+  const rows=observations.map(o=>({ref:o.observationRef,digest:o.observationDigest,actorInvocationRef:o.provenance.actorInvocationRef,cCallRef:o.provenance.cCallRef??null}));
+  return rows.filter((r,index)=>rows.findIndex(x=>same(x,r))===index);
+}
+/** The oracle crosses only this post-evaluator join from authenticated root input. */
+export function constructionAssessmentInput(bound) {
+  need(product.isRetainedGraphInput(bound)&&bound.entry?.assessment&&evaluatedConstructionConserves(bound.entry,bound.source),
+    'actual original entry and conserved evaluator child required for assessment');
+  const entry=bound.entry,view=bound.source.evaluationInput,text=product.canonicalJson(entry.origin.assessmentBasis.evaluationData),digest=product.sha256Bytes(Buffer.from(text));
+  const result={kind:assessmentInputContract.valueKind,schemaVersion:VERSION,evaluationState:bound.source,selection:entry.assessment,authority:entry.authority,
+    oracle:{ref:'oracle://odd-glc/program-construction/'+digest.slice(7),digest,text},
+    independentProducers:independentProducers(entry,view),originalTaskCompletion:'not_claimed'};
+  assessmentEvidence(result);return freeze(result);
+}
+export function isAssessmentInput(input) {try {
+  return only(input,['kind','schemaVersion','evaluationState','selection','authority','oracle','independentProducers','originalTaskCompletion'])&&
+    input.kind===assessmentInputContract.valueKind&&input.schemaVersion===VERSION&&isEvaluationState(input.evaluationState)&&assessmentSelectionShape(input.selection)&&
+    record(input.authority)&&only(input.oracle,['ref','digest','text'])&&coordinate(input.oracle)&&input.oracle.ref.startsWith('oracle://')&&typeof input.oracle.text==='string'&&
+    product.sha256Bytes(Buffer.from(input.oracle.text))===input.oracle.digest&&Array.isArray(input.independentProducers)&&input.independentProducers.length>0&&
+    input.independentProducers.every(p=>only(p,['ref','digest','actorInvocationRef','cCallRef'])&&coordinate(p)&&typeof p.actorInvocationRef==='string'&&
+      (p.cCallRef===null||typeof p.cCallRef==='string'))&&input.originalTaskCompletion==='not_claimed';
+}catch{return false;}}
+/** Disposable invocation maps; computed labels/text are never another authority. */
+export function assessmentEvidence(input) {
+  need(isAssessmentInput(input),'exact retained assessment input required');
+  const {evaluationInput:view,computedRecords:computed}=input.evaluationState,s=input.selection,context=view.currentContext;
+  const author=view.constructionObservations.at(-1)?.observation;
+  need(author&&same(context,author.after),'assessment must use the actual latest author after-context');
+  const rubricFile=currentFile(context,s.rubric.path);
+  need(rubricFile.digest===s.rubric.digest,'exact current rubric required');
+  const body=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(Buffer.from(rubricFile.bytes,'base64')));
+  const stages=body.kind==='semantic_job_lifecycle_declaration'?body.stages?.filter(stage=>stage.declarationRef===s.rubric.stageRef):[];
+  need(stages?.length===1&&Array.isArray(stages[0].rubric)&&stages[0].rubric.length>0,'one explicitly selected lifecycle stage rubric required');
+  const criteria=stages[0].rubric.map(c=>{need(only(c,['criterionRef','instruction'])&&typeof c.criterionRef==='string'&&typeof c.instruction==='string','exact original stage criterion required');return {...c,mandatory:true};});
+  need(same(criteria.map(c=>c.criterionRef),s.criterionEvidence.map(r=>r.criterionRef)),'complete ordered original stage criterion coverage required');
+  need(s.sourcePaths.every(path=>!s.candidatePaths.includes(path)&&path!==s.rubric.path)&&!s.candidatePaths.includes(s.rubric.path),
+    'candidate, source and rubric paths must be disjoint');
+  [...s.sourcePaths,...s.candidatePaths].forEach(path=>currentFile(context,path));
+  need(view.constructionEdges.every(edge=>edge.dependentPaths.every(path=>s.candidatePaths.includes(path))&&
+    edge.dependencies.every(dep=>s.sourcePaths.includes(dep.path)||s.candidatePaths.includes(dep.path))),
+    'complete constructed candidates and their source paths required');
+  // Every complete source member must be available, not just a named excerpt.
+  need(view.sourceRefs.every(source=>s.sourcePaths.some(path=>currentFile(context,path).digest===source.digest)),'complete original source access required');
+  const bytes=new Map(),add=(label,text)=>{need(!bytes.has(label),'colliding assessment evidence label: '+label);bytes.set(label,text);};
+  for(const file of context.entries.filter(e=>e.state==='file'))add(file.relativePath,new TextDecoder('utf-8',{fatal:true}).decode(Buffer.from(file.bytes,'base64')));
+  const streams=view.executionRecord.commandResults.flatMap((command,index)=>['stdout','stderr'].map(name=>{
+    const stream=command[name],raw=Buffer.from(stream.payload,'base64');need(raw.length===stream.byteLength&&product.sha256Bytes(raw)===stream.digest,'exact retained execution stream required');
+    const label=`command-${index+1}.${name}`,text=new TextDecoder('utf-8',{fatal:true}).decode(raw);add(label,text);return {label,text};
+  }));
+  add(input.oracle.ref,input.oracle.text);
+  const outputDigest=product.sha256Canonical(computed),paths=s.recordSelections.map(r=>r.recordPath);
+  need(new Set(paths).size===paths.length,'distinct computed record selections required');
+  const records=s.recordSelections.map(selection=>{
+    const duty=view.dutyPopulation.find(d=>d.ref===selection.dutyRef),record=pointer(computed,selection.recordPath);
+    need(duty&&view.selectedDutyRefs.includes(duty.ref)&&record&&record.recordKind===selection.role&&
+      duty.obligationRef===record.obligationRef&&duty.bindingRef===record.bindingRef&&
+      (selection.role==='construction_record'?duty.role==='provenance'&&record.dutyRef===duty.ref:duty.role==='evaluate')&&
+      ['true','false','unknown'].includes(record.verdict),'computed record role and selected obligation must agree');
+    const label=`computed:${outputDigest}:${selection.recordPath}`,text=product.canonicalJson({evaluator:computed.evaluator,outputDigest,recordPath:selection.recordPath,record});
+    add(label,text);return {...selection,label,text,verdict:record.verdict};
+  });
+  const duties=view.dutyPopulation.filter(d=>view.selectedDutyRefs.includes(d.ref)),assessmentDuties=duties.filter(d=>d.role==='assess');
+  need(assessmentDuties.length>0&&duties.filter(d=>['provenance','evaluate'].includes(d.role)).every(d=>records.some(r=>r.dutyRef===d.ref)),
+    'every selected construction/evaluation duty requires actual computed evidence');
+  need(s.criterionEvidence.every(row=>row.dutyRefs.every(ref=>duties.some(d=>d.ref===ref)))&&
+    assessmentDuties.every(d=>s.criterionEvidence.some(row=>row.dutyRefs.includes(d.ref)))&&
+    records.every(r=>s.criterionEvidence.some(row=>row.dutyRefs.includes(r.dutyRef)&&row.roles.includes(r.role))), 'source-linked criterion/duty coverage required');
+  const rolePaths={source:s.sourcePaths,candidate:s.candidatePaths,execution:streams.map(e=>e.label),oracle:[input.oracle.ref]};
+  const roleLabels=Object.fromEntries(s.criterionEvidence.map(row=>[row.criterionRef,Object.fromEntries(row.roles.map(role=>[role,
+    rolePaths[role]??records.filter(r=>r.role===role&&row.dutyRefs.includes(r.dutyRef)).map(r=>r.label)]))]));
+  checkCriterionEvidence({criteria,roleLabels},bytes);
+  need(input.independentProducers.some(p=>p.ref===author.observationRef&&p.digest===author.observationDigest&&
+    p.actorInvocationRef===author.provenance.actorInvocationRef&&p.cCallRef===author.provenance.cCallRef),'actual latest author independence required');
+  return {criteria,roleLabels,bytes,records,streams,author,claim:s.claim};
+}
+export function constructionAssessmentTask(input) {
+  return buildConstructionAssessmentTask(input,assessmentEvidence(input));
+}
+function buildConstructionAssessmentTask(input,evidence) {
+  const view=input.evaluationState.evaluationInput,context=view.currentContext,s=input.selection,author=evidence.author;
+  const candidate=currentFile(context,s.candidatePaths[0]),sources=context.entries.filter(e=>e.state==='file'&&e.relativePath!==candidate.relativePath&&e.relativePath!==s.rubric.path)
+    .map(e=>({path:e.relativePath,digest:e.digest}));
+  return product.constructNativeWorkspaceWorkTask({...input.authority,context,outcome:s.claim,readFirst:context.entries.filter(e=>e.state==='file').map(e=>e.relativePath),writeRoots:[],checks:[],
+    instructions:['Independently assess the selected original obligations against the complete original source, actual new construction and exact derived records. The selected rubric stage is an exact projection, not a rewritten rubric. No new execution or artifact mutation is authorized.',
+      'A true computed condition is evidence to judge, not proof of faithful derivation. Preserve negative/unknown records, missing raw argument/type fields, carried duties and separate owner conjunction of accepted scopes. Do not infer original-task or full semantic closure.',
+      `Complete candidate paths: ${product.canonicalJson(s.candidatePaths)}. Complete source paths: ${product.canonicalJson(s.sourcePaths)}.`,
+      `Exact original rubric stage: ${s.rubric.stageRef}. All declared criteria are required: ${product.canonicalJson(evidence.criteria)}.`,
+      `Exact criterion/role/allowed-label mapping: ${product.canonicalJson(evidence.roleLabels)}. Quote actual substrings from these labels; old command evidence cannot stand for a computed record.`,
+      `Original duty population and carried scope: ${product.canonicalJson({duties:view.dutyPopulation,carriedDuties:view.carriedDuties,carriedBindingRefs:view.carriedBindingRefs,pendingDutyRefs:view.pendingDutyRefs})}`,
+      `Unchanged evaluator-only oracle (${input.oracle.ref}):\n${input.oracle.text}`,
+      ...evidence.records.map(r=>`Exact derived evidence (${r.label}):\n${r.text}`),
+      ...evidence.streams.map(r=>`Exact retained execution evidence (${r.label}):\n${r.text}`),
+      `Original execution/predicate facts and preserved computed residuals: ${product.canonicalJson({execution:view.execution,construction:view.construction,
+        observation:view.executionRecord.observation,predicates:view.executionRecord.predicateObservations,provenance:view.executionRecord.provenance,
+        residuals:input.evaluationState.computedRecords.records.residuals,acceptedResultsDisposition:view.acceptedResultsDisposition})}`,
+      `Independence is required from every producer: ${product.canonicalJson(input.independentProducers)}. Return the declared criterion assessment; preserve selected and outside residuals.`],
+    assessment:{resultContract:assessmentResultContract,schemaAsset:{productId:ids.productId,contractId:assessmentResultContract.contractRef,bytesBase64:Buffer.from(ASSESSMENT_SCHEMA_TEXT).toString('base64')},sources,
+      candidate:{path:candidate.relativePath,digest:candidate.digest},rubric:{path:s.rubric.path,digest:s.rubric.digest},
+      producer:{resultRef:author.observationRef,resultDigest:author.observationDigest,cCallRef:author.provenance.cCallRef,actorInvocationRef:author.provenance.actorInvocationRef}}});
+}
+export function constructionAssessmentOutput(bound) {
+  need(product.isRetainedGraphInput(bound)&&product.isNativeWorkspaceWorkObservation(bound.source),
+    'actual retained assessment input and native observation required');
+  const input=bound.entry,evidence=assessmentEvidence(input),observation=bound.source,context=input.evaluationState.evaluationInput.currentContext;
+  need(same(observation.task,buildConstructionAssessmentTask(input,evidence))&&same(observation.before,context)&&same(observation.after,context)&&
+    product.nativeWorkspaceAssessmentMatchesContext(observation,context),'exact task and unchanged read-only assessment context required');
+  need(input.independentProducers.every(p=>p.actorInvocationRef!==observation.provenance.actorInvocationRef&&
+    (p.cCallRef===null||p.cCallRef!==observation.provenance.cCallRef)),'independent assessor actor and C-call required');
+  const interpreted=interpretJobEvidenceRows(evidence,observation.assessment,evidence.bytes);
+  const cited=new Set(observation.assessment.criteria.flatMap(row=>row.evidence.map(e=>e.path)));
+  const missing=evidence.records.filter(r=>!cited.has(r.label));
+  const judgment=missing.length?{...interpreted,disposition:'unsatisfied',diagnostics:[...interpreted.diagnostics,
+    ...missing.map(r=>'computed_record_coverage_missing:'+r.recordPath)]}:interpreted;
+  const recordsCurrent=evidence.records.every(r=>r.verdict==='true');
+  return freeze({kind:assessmentStateContract.valueKind,schemaVersion:VERSION,assessmentInput:input,assessmentObservation:observation,
+    interpretation:judgment,assessmentDisposition:judgment.disposition==='satisfied'&&recordsCurrent?'satisfied':'unsatisfied',
+    computedEvidenceDisposition:recordsCurrent?'true':evidence.records.some(r=>r.verdict==='false')?'false':'unknown',
+    preservedResiduals:input.evaluationState.computedRecords.records.residuals,carriedDutyRefs:input.evaluationState.evaluationInput.carriedDutyRefs,
+    acceptedResultsDisposition:'requires_separate_owner_conjunction',semanticClosure:'not_claimed',originalTaskCompletion:'not_claimed'});
+}
+export function isAssessmentState(value) {try {
+  return value?.kind===assessmentStateContract.valueKind&&same(value,constructionAssessmentOutput(product.constructRetainedGraphInput(value.assessmentInput,value.assessmentObservation)));
+}catch{return false;}}
+function assessedConstructionConserves(input,output) {
+  return isAssessmentState(output)&&same(output.assessmentInput,constructionAssessmentInput(product.constructRetainedGraphInput(input,output.assessmentInput.evaluationState)));
+}
 // The evaluator owns record meaning. This checks conservation only, never truth of its records.
 export function computedResultConserves(input,output) {
   const entry=isConstructionInput(input)?{taskRef:input.model.taskRef,sourceResult:input.historicalSelection.result,
@@ -319,6 +475,12 @@ const realizeEvaluation=(index,input)=>{const resultCandidate=evaluationTransfor
     implementationRef:evaluationStages[index].implementationRef,inputDigest:product.sha256Canonical(input),outputDigest:product.sha256Canonical(resultCandidate)}]});};
 export const prepareConstructedEvaluation=input=>realizeEvaluation(0,input),joinEvaluation=input=>realizeEvaluation(1,input);
 export const PREPARE_CONSTRUCTED_EVALUATION_DESCRIPTOR=descriptor(evaluationStages[0]),JOIN_EVALUATION_DESCRIPTOR=descriptor(evaluationStages[1]);
+const assessmentTransforms=[constructionAssessmentInput,constructionAssessmentTask,constructionAssessmentOutput];
+const realizeAssessment=(index,input)=>{const resultCandidate=assessmentTransforms[index](input);return freeze({kind:'leaf_realization_candidate',schemaVersion:VERSION,
+  disposition:'success',resultCandidate,evidenceCandidates:[{kind:'deterministic_evidence_candidate',schemaVersion:VERSION,
+    implementationRef:assessmentStages[index].implementationRef,inputDigest:product.sha256Canonical(input),outputDigest:product.sha256Canonical(resultCandidate)}]});};
+export const prepareAssessmentInput=input=>realizeAssessment(0,input),prepareAssessmentTask=input=>realizeAssessment(1,input),joinAssessment=input=>realizeAssessment(2,input);
+export const PREPARE_ASSESSMENT_INPUT_DESCRIPTOR=descriptor(assessmentStages[0]),PREPARE_ASSESSMENT_TASK_DESCRIPTOR=descriptor(assessmentStages[1]),JOIN_ASSESSMENT_DESCRIPTOR=descriptor(assessmentStages[2]);
 const relation=(predicateRef,evaluate)=>({predicateRef,advanceReasonRef:predicateRef+'/satisfied',rejectionReasonRef:predicateRef+'/refused',
   evaluate(...args){try{return evaluate(...args);}catch{return false;}}});
 export const PROGRAM_CONSTRUCTION_SEMANTICS=Object.freeze({kind:'product_semantics_provider',schemaVersion:VERSION,bindingRef:ids.semanticsBindingRef,
@@ -327,12 +489,17 @@ export const PROGRAM_CONSTRUCTION_SEMANTICS=Object.freeze({kind:'product_semanti
   evaluateInteractionResponse(){return null;},
   validateContractValue(kind,value){return ({lifecycle_construction_input:isConstructionInput,lifecycle_evaluation_input:isEvaluationInput,
     lifecycle_native_construction_input:isNativeConstructionInput,lifecycle_construction_state:isConstructionState,lifecycle_evaluation_state:isEvaluationState,
+    lifecycle_assessment_input:isAssessmentInput,lifecycle_assessment_state:isAssessmentState,
     native_workspace_work_task:product.isNativeWorkspaceWorkTask,native_workspace_work_observation:product.isNativeWorkspaceWorkObservation,
     lifecycle_computed_records:v=>v?.kind==='lifecycle_computed_records'&&v.schemaVersion===VERSION&&coordinate(v.evaluator)&&
       coordinate(v.sourceResult)&&coordinate(v.execution)&&record(v.records)&&v.evidenceRole==='computed_derivation'&&v.originalTaskCompletion==='not_claimed',
     retained_graph_input:product.isRetainedGraphInput,native_worksite_command_reacquisition_request:product.isNativeWorksiteCommandReacquisitionRequest,
     worksite_command_execution_task:product.isNativeWorksiteCommandExecutionTask})[kind]?.(value)??false;},
   resolveJudgmentRelation(ref){
+    const assessmentStage=assessmentStages.findIndex(s=>s.predicateRef===ref);
+    if(assessmentStage>=0)return relation(ref,(input,output)=>same(output,assessmentTransforms[assessmentStage](input)));
+    if(ref===ids.assessmentChildPredicateRef)return relation(ref,(input,output)=>isAssessmentState(output)&&same(input,output.assessmentInput));
+    if(ref===ids.assessedConstructionPredicateRef)return relation(ref,assessedConstructionConserves);
     const evaluationStage=evaluationStages.findIndex(s=>s.predicateRef===ref);
     if(evaluationStage>=0)return relation(ref,(input,output)=>same(output,evaluationTransforms[evaluationStage](input)));
     if(ref===ids.evaluationChildPredicateRef)return relation(ref,(input,output)=>isEvaluationState(output)&&same(input,output.evaluationInput));
@@ -346,9 +513,11 @@ export const PROGRAM_CONSTRUCTION_SEMANTICS=Object.freeze({kind:'product_semanti
       if(isNativeConstructionInput(input))return same(output,reacquisitionRequest(input));
       if(product.isNativeWorksiteCommandReacquisitionRequest(input))return product.isNativeWorksiteCommandExecutionTask(output)&&same(output.sourceReacquisition?.request,input);
       if(product.isRetainedGraphInput(input))return same(output,isNativeConstructionInput(input.entry)?
-        (input.source?.kind===constructionStateContract.valueKind?constructedEvaluationInput(input):constructionState(input)):
-        isEvaluationInput(input.entry)?evaluationOutput(input):constructionOutput(input));
+        (input.source?.kind===constructionStateContract.valueKind?constructedEvaluationInput(input):input.source?.kind===evaluationStateContract.valueKind?constructionAssessmentInput(input):constructionState(input)):
+        isEvaluationInput(input.entry)?evaluationOutput(input):input.entry?.kind===assessmentInputContract.valueKind?constructionAssessmentOutput(input):constructionOutput(input));
       if(isEvaluationInput(input))return isEvaluationState(output)?same(input,output.evaluationInput):computedResultConserves(input,output);
+      if(input?.kind===assessmentInputContract.valueKind)return output?.kind===assessmentStateContract.valueKind?
+        isAssessmentState(output)&&same(input,output.assessmentInput):same(output,constructionAssessmentTask(input));
       if(isConstructionState(input))return product.isNativeWorkspaceWorkTask(output)?same(output,nativeConstructionTask(input)):constructionChildConserves(input,output);
       return product.isNativeWorkspaceWorkTask(input)&&product.isNativeWorkspaceWorkObservation(output)&&same(input,output.task);
     });
