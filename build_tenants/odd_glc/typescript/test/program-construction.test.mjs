@@ -481,6 +481,8 @@ test('PC05 author residuals remain verbatim judgment evidence without deciding e
   assert(records.constructionEdges.every(row=>row.verdict==='true'));
   const last=records.constructionEdges.find(row=>row.observation.ref===state.constructionObservations.at(-1).observation.observationRef);
   assert.equal(last.contentObservations.completeReport.value,'false');assert.deepEqual(last.contentObservations.completeReport.report.gaps,reports);
+  assert.match(last.contentObservations.completeReport.reason,/^whether the native author reports no remaining gaps;/);
+  assert.equal(last.contentObservations.completeReport.evidenceRole,'non_closing_content_observation');
   assert.deepEqual(view.constructionObservations,state.constructionObservations);
   const stale=structuredClone(view);stale.constructionObservations.at(-1).resolvedDependencies[0].digest=hash('stale');
   assert.equal(deriveNativeRecords(stale).records.verdict,'false');
@@ -596,6 +598,12 @@ function smallAssessmentInput(extraFiles={}) {
 }
 test('PC04 finite assessment mapping conserves canonical records and refuses unresolved or colliding labels before dispatch',()=>{
   const input=smallAssessmentInput(),evidence=assessmentEvidence(input),task=constructionAssessmentTask(input);assert(isAssessmentInput(input));
+  const citationSet=task.instructions.find(s=>s.startsWith('Complete required computed-record citation set: '));
+  assert.deepEqual(JSON.parse(citationSet.slice(citationSet.indexOf(': ')+2)),evidence.records.map(r=>r.label));
+  assert(task.instructions.some(s=>s.includes('EACH required role')&&s.includes('citations in another criterion do not discharge')));
+  assert(task.instructions.some(s=>s.includes('cite EVERY selected computed record')&&s.includes('including false and unknown')));
+  assert(task.instructions.some(s=>s.includes('preserving whitespace and newlines')&&s.includes('do not paraphrase or normalize')));
+  assert(task.instructions.some(s=>s.includes('selected-assessment residual prevents overall satisfaction')&&s.includes('without moving a selected issue outside')));
   for(const row of evidence.records) {
     assert.equal(row.label,`computed:${hash(input.evaluationState.computedRecords)}:${row.recordPath}`);
     const record=row.recordPath.endsWith('/edge')?input.evaluationState.computedRecords.records.edge:input.evaluationState.computedRecords.records.comparison;
@@ -614,7 +622,7 @@ test('PC04 finite assessment mapping conserves canonical records and refuses unr
   assert.throws(()=>constructionAssessmentTask(smallAssessmentInput({'command-1.stdout':'collision'})),/colliding/);
 });
 test('PC04 finite native assessment preserves negative, unknown and partial results and rejects wrong producer/task/context',()=>{
-  const input=smallAssessmentInput(),evidence=assessmentEvidence(input),task=constructionAssessmentTask(input),raw=satisfiedAssessment(evidence);
+  const input=smallAssessmentInput({'source.txt':'complete\nsynthetic source'}),evidence=assessmentEvidence(input),task=constructionAssessmentTask(input),raw=satisfiedAssessment(evidence);
   const observed=componentAssessment(task,raw),result=constructionAssessmentOutput(product.constructRetainedGraphInput(input,observed));
   assert.equal(result.assessmentDisposition,'satisfied');assert.equal(result.originalTaskCompletion,'not_claimed');assert.equal(result.semanticClosure,'not_claimed');
   assert.deepEqual(result.preservedResiduals,input.evaluationState.computedRecords.records.residuals);
@@ -624,6 +632,9 @@ test('PC04 finite native assessment preserves negative, unknown and partial resu
     assert.equal(output.assessmentDisposition,'unsatisfied');assert.equal(output.assessmentObservation.assessment.criteria[0].disposition,disposition);
   }
   for(const change of [x=>{x.criteria[0].evidence[0].quote='invented quote';},x=>{x.criteria[0].evidence[0].path='unknown';},
+    x=>{x.criteria[0].evidence=x.criteria[0].evidence.filter(e=>e.path!=='source.txt');},
+    x=>{x.criteria[0].evidence.find(e=>e.path==='source.txt').quote='complete synthetic source';},
+    x=>{x.criteria[0].evidence=x.criteria[0].evidence.filter(e=>e.path!==evidence.records[0].label);},
     x=>{x.criteria[0].evidence=x.criteria[0].evidence.filter(e=>!e.path.startsWith('computed:'));},
     x=>{x.residuals=[{scope:'selected-assessment',criterionRef:x.criteria[0].criterionRef,description:'partial'}];}]) {
     const bad=structuredClone(raw);change(bad);assert.equal(constructionAssessmentOutput(product.constructRetainedGraphInput(input,componentAssessment(task,bad))).assessmentDisposition,'unsatisfied');
@@ -802,9 +813,18 @@ test('PC05 preserved reports reach current independent assessment while historic
   assert.equal(PROGRAM_CONSTRUCTION_SEMANTICS.resolveJudgmentRelation(ids.constructedEvaluationPredicateRef).evaluate(input,evaluated),true);
   assert.deepEqual(view.constructionObservations,input.constructionState.constructionObservations);assert.deepEqual(view.currentContext,input.currentContext);
   const assessed=constructionAssessmentInput(product.constructRetainedGraphInput(input,evaluated)),evidence=assessmentEvidence(assessed),task=constructionAssessmentTask(assessed);
+  const authorInstruction=task.instructions.find(s=>s.startsWith('Actual author reports, verbatim'));
+  const authors=JSON.parse(authorInstruction.slice(authorInstruction.indexOf(': ')+2));
+  assert.equal(authors.length,view.constructionObservations.length);
   for(const row of view.constructionObservations) {
     assert(task.instructions.some(s=>s.includes(product.canonicalJson(row.observation.report))&&s.includes(row.observation.observationRef)&&s.includes(row.observation.provenance.actorInvocationRef)));
+    const projected=authors.find(a=>a.observation.ref===row.observation.observationRef),source=row.observation;
+    assert.deepEqual(projected.task,Object.fromEntries(['outcome','instructions','readFirst','writeRoots','checks'].map(k=>[k,source.task[k]])));
+    assert.deepEqual(projected.changedPaths,source.changedPaths);assert.deepEqual(projected.report,source.report);
+    assert.deepEqual(Object.keys(projected).sort(),['changedPaths','dutyRefs','groupRef','observation','provenance','report','task']);
   }
+  assert(task.instructions.some(s=>s.includes('producerDutyRef is null')&&s.includes('A future-produced predecessor')&&s.includes('earlier evidence at its own scope')));
+  assert(task.instructions.some(s=>s.includes('Unchanged bytes or currentness alone prove neither faithful derivation nor its absence')));
   assert(reports.every(report=>task.instructions.some(s=>s.includes(report))));assert.deepEqual(task.context,input.currentContext);assert.deepEqual(task.workspaceBinding,input.authority.workspaceBinding);
   assert.deepEqual(JSON.parse(assessed.oracle.text),input.originalInput.origin.assessmentBasis.evaluationData);
   const observed=componentAssessment(task,satisfiedAssessment(evidence)),result=constructionAssessmentOutput(product.constructRetainedGraphInput(assessed,observed));

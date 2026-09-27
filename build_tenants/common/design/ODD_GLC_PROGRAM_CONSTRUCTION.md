@@ -336,7 +336,16 @@ predecessor, changed execution snapshot or protected source still refuses reuse.
 Neither a nonempty report nor an empty report proves an edge false or true.
 The assessment task includes each actual observation coordinate, provenance and
 complete `{summary, gaps}` alongside the full records, original source/oracle
-and carried duties. C establishes structural/currentness facts; J evaluates
+and carried duties. Include that author's exact task outcome, instructions,
+read/write paths, checks and changed paths, without duplicating context
+snapshots or file bodies. Distinguish the joined dependent work from the earlier
+execution's evidence and scope. An observed predecessor has no future-producer
+duty; its null producer-duty field does not erase the dependent-work observation.
+A future-produced predecessor names its actual earlier child and resolved output.
+Historical missing-construction or ordering statements do not decide a later
+joined relation. Assess the declared work and justification for retained content
+under the derivation rule below; unchanged bytes alone prove neither faithful
+derivation nor its absence. C establishes structural/currentness facts; J evaluates
 reported uncertainty and faithful derivation; the owner retains acceptance.
 
 ### Preserved Construction Evaluation And Assessment
@@ -498,6 +507,19 @@ pretty-printing or rewriting. Supply that identical text, label and
 criterion/role mapping in assessment instructions and use it unchanged for quote
 checking. The actual admitted child join authenticates the record; its digest
 and rendered label alone do not.
+
+State the existing response conditions explicitly in that task: exactly one
+row per declared criterion; each satisfied row cites at least one allowed label
+for every required role in that criterion's mapping. Citations in another row
+do not discharge the requirement. Across the response, cite every selected
+computed record, including false/unknown records, using the complete required
+label set supplied with the task. Quotes preserve literal whitespace/newlines;
+normalization or paraphrase cannot satisfy substring checking. A selected-scope
+residual prevents overall satisfaction even when each row says satisfied.
+Preserve outside-scope residuals without moving selected issues outside to
+obtain satisfaction; missing evidence remains grounds for unsatisfactory
+judgment. These are response/evidence conditions, not an expected semantic
+answer or additional original-source obligations.
 
 The source-linked criteria requiring new edge evidence use the separate
 `construction_record` role, and those requiring the new comparison use

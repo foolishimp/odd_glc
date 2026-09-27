@@ -1,0 +1,115 @@
+{
+  "scope": "Event wall-clock intervals from closed suffix diagnostics, not CPU or exclusive function attribution. Child durations overlap and must not be summed. No second journal read or recovery.",
+  "sourceSha256": "c91866a2c9c046560b83a09d2dea27461b64cbeffd0249ddf9e97495c05ea104",
+  "run": {
+    "digest": "sha256:59d6b57bb27e3e54cfa76945ed1c9f6b7935f737e89ae815bc722945581fab3b",
+    "ref": "run://abiogenesis/5489260a43960ca595034fb3f8422c05ac1a60004f8721dcaf02221717c3fbf2"
+  },
+  "phaseIntervals": [
+    {
+      "label": "invocation start to first admission",
+      "start": "2026-09-27T21:48:30.242Z",
+      "end": "2026-09-27T21:49:53.653Z",
+      "elapsedSeconds": 83.411
+    },
+    {
+      "label": "first admission to Run open",
+      "start": "2026-09-27T21:49:53.653Z",
+      "end": "2026-09-27T21:50:02.979Z",
+      "elapsedSeconds": 9.326
+    },
+    {
+      "label": "Run open to actor invocation",
+      "start": "2026-09-27T21:50:02.979Z",
+      "end": "2026-09-27T21:51:12.599Z",
+      "elapsedSeconds": 69.62
+    }
+  ],
+  "graphIntervals": [
+    {
+      "graphCallRef": "graph-call://abiogenesis/6cf739473886ae8aa6f22347db6fc31a00137542ec4ec106fd76e91e27c7fc94",
+      "graphFunctionRef": "graph-function://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+      "openedAt": "2026-09-27T21:50:02.980Z",
+      "closedAt": null,
+      "elapsedSeconds": null
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/e7ecd4bda58b9cd4ee301a6936ee3a817f7e30f36dcc665f79a7a1d1d9cf6eb1",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/authenticate-preserved-construction@5",
+      "openedAt": "2026-09-27T21:50:03.894Z",
+      "closedAt": "2026-09-27T21:50:11.650Z",
+      "elapsedSeconds": 7.756
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/55fbd2544cad1426e1e60a3e854eccc20bd1247b8b8176fa744601545e2d35d7",
+      "graphFunctionRef": "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "openedAt": "2026-09-27T21:50:14.168Z",
+      "closedAt": "2026-09-27T21:50:22.360Z",
+      "elapsedSeconds": 8.192
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/6eabebe41f24d0a24a0b52a48f86032747d37bf19bb525b15b7ff9551d2a3418",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+      "openedAt": "2026-09-27T21:50:25.894Z",
+      "closedAt": "2026-09-27T21:50:32.860Z",
+      "elapsedSeconds": 6.966
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/e8c4ef9743d00e48ed739f11d58bf58bc4566dbe8fbaf8e2968aac96f07b57ca",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/evaluation-child@5",
+      "openedAt": "2026-09-27T21:50:37.579Z",
+      "closedAt": "2026-09-27T21:50:43.798Z",
+      "elapsedSeconds": 6.219
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/5d5d70508aa632d2bd4d8ab57f5d27421dac64c5a51376d4dcec020178f713c5",
+      "graphFunctionRef": "graph-function://odd-glc/qualification/native-records@5",
+      "openedAt": "2026-09-27T21:50:38.092Z",
+      "closedAt": "2026-09-27T21:50:39.120Z",
+      "elapsedSeconds": 1.028
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/9bdb883dc40407427a06a5a096910a70fe1a753316f46dac0f2ae35135b2bff3",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/join-evaluation@5",
+      "openedAt": "2026-09-27T21:50:40.958Z",
+      "closedAt": "2026-09-27T21:50:42.483Z",
+      "elapsedSeconds": 1.525
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/715e52e92937d99c0bed1d75faa15ded47cc68fafc95d9764375b1bbe7431067",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+      "openedAt": "2026-09-27T21:50:48.600Z",
+      "closedAt": "2026-09-27T21:50:55.645Z",
+      "elapsedSeconds": 7.045
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/b18f575cef8e1e80e20024940c980d725bbf6d02bbc1707de65e9b06617cd5b8",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/assessment-child@5",
+      "openedAt": "2026-09-27T21:51:01.669Z",
+      "closedAt": null,
+      "elapsedSeconds": null
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/3637c7f346f28acbdec565ea0dc5b074417f9236a03d6af680c8a71aa8aa3f1d",
+      "graphFunctionRef": "graph-function://odd-glc/program-construction/prepare-assessment-task@5",
+      "openedAt": "2026-09-27T21:51:02.267Z",
+      "closedAt": "2026-09-27T21:51:04.580Z",
+      "elapsedSeconds": 2.313
+    },
+    {
+      "graphCallRef": "graph-call://abiogenesis/46de79bc9f3c71d5f71cd695bf35ceda5e79daca1e21016c87ee47045ff54061",
+      "graphFunctionRef": "graph-function://abiogenesis/worksite/native-work/assessment@5",
+      "openedAt": "2026-09-27T21:51:09.015Z",
+      "closedAt": null,
+      "elapsedSeconds": null
+    }
+  ],
+  "actorFailure": {
+    "time": "2026-09-27T21:55:50.366Z",
+    "eventId": "event://abiogenesis/4f117c9476779565457f9563ede82d5f32b661a7418da7443350258c34c6feef",
+    "failureClass": "contract_failure"
+  },
+  "firstAdmissionEventId": "event://abiogenesis/6514933cbbc9b3e8aa78c804a24d88b5744a4be5a9d9f0609457a22fded9b882",
+  "runOpenEventId": "event://abiogenesis/c60092232151a229adf90bb3e34bbf2489a59e23528bea6802eb0580a6178802",
+  "actorInvocationEventId": "event://abiogenesis/d605fad8eebbe666f7f8b3f36b33a4b0270f8862d69ca059b9b405193acb8e0e"
+}

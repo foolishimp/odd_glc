@@ -105,7 +105,7 @@ function constructionEdges(input) {
       declaredReadPath:dependency.path,observation:observation?coordinate(observation):null,producer:observation?.provenance??null,
       contentObservations:{declaresPredecessor:{...verdict(declares,'JSON derivedFrom or literal predecessor path; neither proves nor is required for faithful derivation'),
         evidenceRole:'non_closing_content_observation'},completeReport:{...verdict(observation?observation.report.gaps.length===0:null,
-        'native author reports no remaining gaps; free-text residuals require scoped judgment'),evidenceRole:'non_closing_content_observation',
+        'whether the native author reports no remaining gaps; free-text residuals require scoped judgment'),evidenceRole:'non_closing_content_observation',
         report:observation?.report??null}},
       cardinality:{producers:producers.length,predecessorProducers:predecessorRows.length},conditions,verdict:conjunction(conditions)};
   })));

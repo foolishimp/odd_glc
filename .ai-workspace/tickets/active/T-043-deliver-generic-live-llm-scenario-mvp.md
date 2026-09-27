@@ -27,9 +27,9 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: PC05_06_installed_setup_accepted_suffix_invoked
-- last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
-- last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
+- current_activation_status: PC05_07_closed_failed_ABG_structured_response_repair_selected
+- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-07/activation.json
+- last_execution_result: CLOSED_PC05_07_runtime_failed_malformed_assessment_no_terminal_Result
 - current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection
@@ -49,10 +49,15 @@ installed declaration/continuation proof only. Root accepts the [closed triage](
 and selects one `realization_refactor`: project existing citation/residual rules,
 the actual admitted author task and current/historical basis meanings; correct
 the fixture's report explanation. Keep every role/record check, report and the
-actual output's refusal. Retained-input pure proof and one independent delta
-review precede a native successor. No author/C2 repeat, source/oracle weakening,
-core redesign or budget increase. PC06's fifteen-binding evidence join is
-prepared; original-task disposition remains open.
+actual output's refusal. The [closed repair and independent delta review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-assessment-contract-repair-review.md)
+are accepted. [PC05-07](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-07/execution-return.md)
+closed failed on malformed model JSON, correctly refused. Fresh Public Result
+is absent and replay is failed. The prior PC05-06 runtime proof remains valid
+in its scope. Executive selects the bounded ABG native-assessment HOW/transport
+repair recorded by T-287; GLC's exact consumer schema and interpretation remain.
+No author/C2 repeat, source/oracle weakening, budget increase or blind retry.
+PC06's fifteen-binding evidence join remains prepared; original-task disposition
+is open. No live actor remains.
 
 Core47's [installed no-actor discriminator](../../comments/codex/20260928_DECLARATION_RESOURCE/installed-01/return.md)
 is accepted: wrong predecessor refuses at actual preparation; fresh result/replay
@@ -128,9 +133,9 @@ The completed design and evaluate-only installed proof are the reusable baseline
 PC01/PC02 source increments are complete; PC02's installed check reached the
 selected mismatch and failed before actors; its exact guard is now causally
 reproduced. PC01–PC04 source and its whole-path review/correction are closed;
-PC05 installed proof is next;
-PC06 awaits the installed result. The accepted
-baseline remains closed; no new live result is claimed.
+the current selection and table below own the installed PC05 result, selected
+correction and PC06 disposition. The earlier accepted baseline retains its
+exact scope.
 
 | Task | Status / dependency | Module and outcome | Exit test |
 | --- | --- | --- | --- |
@@ -138,7 +143,7 @@ baseline remains closed; no new live result is claimed.
 | PC02 — Construct through the native handoff | Source complete; installed no-actor refusal [causally reproduced](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/return.md) | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md) | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
 | PC04 — Connect independent assessment | Source/review accepted; [WP-01 corrected and independently verified](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md); prior [8 affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
-| PC05 — Prove the installed complete path | Runtime complete; independent assessment unsatisfied; bounded task projection correction selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC05 — Prove the installed complete path | Prior runtime proof accepted; latest native assessment failed JSON; bounded response-route repair selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Fifteen-binding join prepared; final disposition pending corrected PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
 Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,

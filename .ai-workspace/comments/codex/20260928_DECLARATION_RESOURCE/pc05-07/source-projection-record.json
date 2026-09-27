@@ -1,0 +1,78 @@
+{
+  "historicalSelection": {
+    "kind": "abg_typed_terminal_result",
+    "schemaVersion": "5.0.0",
+    "result": {
+      "ref": "result://abiogenesis/11d5e3480282181b184a80bb024c0419f4984a183282eb9302952d7e0f82f499",
+      "digest": "sha256:11d5e3480282181b184a80bb024c0419f4984a183282eb9302952d7e0f82f499"
+    },
+    "contract": {
+      "ref": "contract://odd-glc/program-construction/construction-state@5",
+      "digest": "sha256:b94dbcc6f78e0b1a02dff848d803e73798db80b5cfe03c4c10bf09dce275e7d3"
+    },
+    "valueKind": "lifecycle_construction_state",
+    "valueDigest": "sha256:aa118535202b68d5f59433a3acfcf2811aaea44790a13855e2689ee6b9cee25a",
+    "producer": {
+      "runRef": "run://abiogenesis/6247493fe890fba9740779197ab0ee9f23ec4e97e11417189cb492340ba2ee4f",
+      "graphCallRef": "graph-call://abiogenesis/b41ba7d7ef59dcb0ae38dcf310428f0d50eebf24ba57da23652103b78b7bd555",
+      "invocationAdmissionRef": "invocation-admission://abiogenesis/a91b665a1aec9987984ea84d05d745b7e21e2c71f5d75fc74d22baf3747b6715",
+      "program": {
+        "ref": "program://odd-glc/construction/4b729c4f946b4b53d2a6011055b27ea23e5c7aba57d4f54ff231503208f3cba8@5",
+        "digest": "sha256:89bda03d69cdb5744da83d283d10be03fdb01cc9d917a8e9f3c47762c2fa7cdf"
+      },
+      "graphFunction": {
+        "ref": "graph-function://odd-glc/program-construction/construction-child@5",
+        "digest": "sha256:0bc50ab4dae2c53f0293ef4681c200409046de33d6620ed291ff90dfb8da0bf1"
+      },
+      "executionBasis": {
+        "ref": "execution-basis://abiogenesis/6fe874d1d6471889f2bfec3ab959613ca7608a4a4e4434b8121297243a8263dd",
+        "digest": "sha256:6fe874d1d6471889f2bfec3ab959613ca7608a4a4e4434b8121297243a8263dd"
+      },
+      "cCallRef": "c-call:sha256:f2e1fe78dc8cfbd7cfbe4b545e6d8da2371a52db1d606323f5f1ca6608024f18",
+      "resultAdmissionEventRef": "event://abiogenesis/1532e424e00e3a0bd27f7b161bfc1a7d53585776366c65fc9e7d0133b7b157b3",
+      "judgmentRef": "judgment://abiogenesis/953c586d9500593af4a06c409c67c7008304df6f88fdf1c7a0a6813a2c62bce6",
+      "judgmentAdmissionEventRef": "event://abiogenesis/c5a521319c1c5907ac3b122e8715e9204f72ef13f4701e87bc42ed0e7e23ae8e",
+      "terminalRoute": {
+        "ref": "traversal-route://abiogenesis/6284bdf7f7b218b2b26c0cf710fdd1f08203a6768887d57f8e58fb6bad4d0aef",
+        "digest": "sha256:6284bdf7f7b218b2b26c0cf710fdd1f08203a6768887d57f8e58fb6bad4d0aef"
+      }
+    }
+  },
+  "sourceSelection": {
+    "prefix": {
+      "kind": "durable_prefix_coordinate",
+      "schemaVersion": "5.0.0",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "prefixLength": 1119877539,
+      "prefixDigest": "sha256:232497022b030864becaa6e296ee010455fac88b9e75ac56ecf97191653c52f5",
+      "storeIdentity": {
+        "device": 16777230,
+        "inode": 459405010,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+      },
+      "coordinateDigest": "sha256:4ba835723e96b002a4738fda578d2ce60f6820e4bccdd394b42a9060101dc73d"
+    },
+    "graphCallRef": "graph-call://abiogenesis/053031469c08785a5a5021400ce40ab480f8ceb2298eda9ee17614a043d93ec6",
+    "declarationReference": {
+      "kind": "abg_historical_declaration_reference",
+      "schemaVersion": "5.0.0",
+      "catalogBasisDigest": "sha256:3128502055f8d747fac2a5471202ce8d36cdb8acc5a6cf570d24f0fb77868e19",
+      "readinessBasisDigest": "sha256:3128502055f8d747fac2a5471202ce8d36cdb8acc5a6cf570d24f0fb77868e19",
+      "viewDigest": "sha256:4583ed7e273a205b2ae2a7c3546d11c7997914a3c7e8fd03619d50aac984d19d"
+    }
+  },
+  "nativeBasis": {
+    "ref": "execution-basis://abiogenesis/284d2dc7b55afb83f5a0bb984b8a405b3eae441d47e952da2b1f3aad86c79ed1",
+    "digest": "sha256:284d2dc7b55afb83f5a0bb984b8a405b3eae441d47e952da2b1f3aad86c79ed1"
+  },
+  "sourceInput": {
+    "graphFunctionRef": "graph-function://odd-glc/construction/4b729c4f946b4b53d2a6011055b27ea23e5c7aba57d4f54ff231503208f3cba8@5",
+    "contractRef": "contract://odd-glc/program-construction/native-construction-input@5"
+  },
+  "elapsedMs": 149.18074999999953,
+  "unchangedStateDigest": "sha256:aa118535202b68d5f59433a3acfcf2811aaea44790a13855e2689ee6b9cee25a",
+  "unchangedOriginalInputDigest": "sha256:d0afed8ae4307cd695aecb0424739134de4970fa08f740dd5255a0fd0323de0b",
+  "declarationProofDigest": "sha256:f66d996934b25af3fb4d0825db50a1c253c6438c8fe8b947431d6ebbd4a0e044",
+  "priorLaunchPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-04/start.jsonl",
+  "limit": "Byte-bound reuse of the accepted PC05-05 historical selection; no repeated terminal projection. Existing suffix R10 authenticates history and native reacquisition checks currentness."
+}

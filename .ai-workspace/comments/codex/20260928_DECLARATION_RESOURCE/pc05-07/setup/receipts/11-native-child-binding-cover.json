@@ -1,0 +1,80 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "acquired",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.witness.admit",
+      "memberKey": "reprice"
+    },
+    "invocationRef": "invocation://abiogenesis/876751ef3828dfc121c7eb151198322310c758ab4ded87ab6f94df52e2d84499",
+    "exitCode": 0,
+    "ownerOutput": {
+      "outcomeKind": "result",
+      "value": {
+        "act": "reprice",
+        "witnessedAct": {
+          "ref": "witnessed-act://abiogenesis/331e8ac224d1d41f38540e372dea73bd882cfec4f009c0561128f1e19a22d3c0",
+          "digest": "sha256:331e8ac224d1d41f38540e372dea73bd882cfec4f009c0561128f1e19a22d3c0"
+        },
+        "admittedEvent": {
+          "ref": "event://abiogenesis/66016767c057fd5d259d88b10912ae6ae008f3f66ec7ddc57663b15d0bf1e659",
+          "digest": "sha256:66016767c057fd5d259d88b10912ae6ae008f3f66ec7ddc57663b15d0bf1e659"
+        },
+        "evidence": [
+          {
+            "ref": "workspace-binding://abiogenesis/9ec7ab5ffe79bbcf994b6e55285e4b823825cf59dff65ce54c47d7b44690a459",
+            "digest": "sha256:9ec7ab5ffe79bbcf994b6e55285e4b823825cf59dff65ce54c47d7b44690a459"
+          },
+          {
+            "ref": "workspace-binding://abiogenesis/254648f29c4a7f1131668c141cf52bef962c45995a7cfd6dcb06d2c1438a8d1c",
+            "digest": "sha256:254648f29c4a7f1131668c141cf52bef962c45995a7cfd6dcb06d2c1438a8d1c"
+          }
+        ]
+      }
+    },
+    "resources": {
+      "kind": "witness_reprice_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_completion",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 1245905140,
+          "prefixDigest": "sha256:bba3f6d910045ef9923b888a86ee509fecda11da58fee870a0947877beb4b682",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:8e789e0113c7c44a598d93f327de9b6b9b46158a90730720c2416e31fe12df4e"
+        },
+        "successor": {
+          "kind": "acquired_abg_event_resource_selection",
+          "schemaVersion": "5.0.0",
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 1245912228,
+            "prefixDigest": "sha256:bb2cb619952bc17df90e355c9a9b88f8f7543faecf6e3a7cd1e0ac586766d742",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:63b526f487c932d58023085b6c8733dba2045c2f58c77cfbbb8207beb3c3dfe8"
+          }
+        },
+        "receiptDigest": "sha256:a63a843300c37ded8980a204cf274c985f7e837466ec8b46955fb1100919be12"
+      }
+    },
+    "failure": null
+  }
+}

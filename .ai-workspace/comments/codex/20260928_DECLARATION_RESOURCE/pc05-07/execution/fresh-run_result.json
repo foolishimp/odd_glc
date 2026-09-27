@@ -1,0 +1,73 @@
+{
+  "kind": "installed_definition_call_transport_result",
+  "schemaVersion": "5.0.0",
+  "acquisitionKind": "reopen",
+  "receipt": {
+    "kind": "definition_host_receipt",
+    "schemaVersion": "5.0.0",
+    "definitionKey": {
+      "operationId": "abg.operation.project.read",
+      "memberKey": "run_result"
+    },
+    "invocationRef": "invocation://abiogenesis/3a6cdcb43013312f229032f002d8d6b61cfaaac0f5e20679dd9803cf73fd8881",
+    "exitCode": 1,
+    "ownerOutput": {
+      "outcomeKind": "refusal",
+      "value": {
+        "code": "not_found",
+        "issuePaths": [],
+        "evidenceRefs": []
+      }
+    },
+    "resources": {
+      "kind": "abg_project_read_resource_receipt",
+      "schemaVersion": "5.0.0",
+      "eventResource": {
+        "kind": "abg_event_resource_receipt",
+        "schemaVersion": "5.0.0",
+        "acquisitionKind": "reopen",
+        "entryPrefix": {
+          "kind": "durable_prefix_coordinate",
+          "schemaVersion": "5.0.0",
+          "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+          "prefixLength": 1300706344,
+          "prefixDigest": "sha256:61c1313e144eae00eced6be520cbf03b4c8dbd9c551889b3c5fc39731f67e5a4",
+          "storeIdentity": {
+            "device": 16777230,
+            "inode": 459405010,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+          },
+          "coordinateDigest": "sha256:bf814513652de6f9ea9cb9c078496bc636d60b9a0deba0f704e7da587df4d370"
+        },
+        "closeHandoff": {
+          "prefix": {
+            "kind": "durable_prefix_coordinate",
+            "schemaVersion": "5.0.0",
+            "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "prefixLength": 1300706344,
+            "prefixDigest": "sha256:61c1313e144eae00eced6be520cbf03b4c8dbd9c551889b3c5fc39731f67e5a4",
+            "storeIdentity": {
+              "device": 16777230,
+              "inode": 459405010,
+              "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+            },
+            "coordinateDigest": "sha256:bf814513652de6f9ea9cb9c078496bc636d60b9a0deba0f704e7da587df4d370"
+          },
+          "reopenAuthority": {
+            "kind": "event_store_reopen_authority",
+            "schemaVersion": "5.0.0",
+            "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+            "device": 16777230,
+            "inode": 459405010,
+            "eventLogDigest": "sha256:61c1313e144eae00eced6be520cbf03b4c8dbd9c551889b3c5fc39731f67e5a4",
+            "durableByteLength": 1300706344,
+            "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+            "authorityDigest": "sha256:63a2a6aeaad45d070a42db1bf9cee0ae5cfddca7663d46d45609a76ab88e22dd"
+          }
+        },
+        "receiptDigest": "sha256:d54ea4888087818b09e12b0062fd055ce67380e8615fe188be6557237b5c0a3e"
+      }
+    },
+    "failure": null
+  }
+}

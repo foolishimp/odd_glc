@@ -1,0 +1,102 @@
+{
+  "status": "installed_PC05_outcome_observed",
+  "disposition": "runtime_failed",
+  "run": {
+    "digest": "sha256:59d6b57bb27e3e54cfa76945ed1c9f6b7935f737e89ae815bc722945581fab3b",
+    "ref": "run://abiogenesis/5489260a43960ca595034fb3f8422c05ac1a60004f8721dcaf02221717c3fbf2"
+  },
+  "terminalResult": null,
+  "assessmentDisposition": null,
+  "computedEvidenceDisposition": null,
+  "interpretation": null,
+  "timings": {
+    "graphExecutionMs": 446680.64300000004,
+    "freshReadbackMs": 186964.58512500004,
+    "run_resultMs": 92710.54337500001,
+    "run_resultProcessMs": 93087.923625,
+    "run_replayMs": 92947.468958,
+    "ownerCountReadMs": 511.7664999999979,
+    "run_replayProcessMs": 93828.01604200002
+  },
+  "setup": {
+    "packageMs": 14138.949625000001,
+    "installMs": 57599.43079200001,
+    "setupMs": 59174.16774999997
+  },
+  "counts": {
+    "projectionRef": "run-semantic-relation://abiogenesis/fb3c45964bb214b06984fde1f6b3987ab6ec387590c8bd7073e08adcebd3215c",
+    "projectionDigest": "sha256:fb3c45964bb214b06984fde1f6b3987ab6ec387590c8bd7073e08adcebd3215c",
+    "graphCallCount": 11,
+    "cCallCount": 18,
+    "actorEventCount": 543,
+    "actorOccurrenceCount": 1,
+    "graphFunctions": [
+      "graph-function://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+      "graph-function://odd-glc/program-construction/authenticate-preserved-construction@5",
+      "graph-function://abiogenesis/worksite/native-command-reacquisition@5",
+      "graph-function://odd-glc/program-construction/prepare-constructed-evaluation@5",
+      "graph-function://odd-glc/program-construction/evaluation-child@5",
+      "graph-function://odd-glc/qualification/native-records@5",
+      "graph-function://odd-glc/program-construction/join-evaluation@5",
+      "graph-function://odd-glc/program-construction/prepare-assessment-input@5",
+      "graph-function://odd-glc/program-construction/assessment-child@5",
+      "graph-function://odd-glc/program-construction/prepare-assessment-task@5",
+      "graph-function://abiogenesis/worksite/native-work/assessment@5"
+    ],
+    "cCallRefs": [
+      "c-call:sha256:1303a51c5bac33958fd1d4c52d558d928de9d90ee8aa6e48c5a9f2edc740b064",
+      "c-call:sha256:e2e4de1a01ba4fba997aeb41c19c9e1908cd16b38ffb49ad26168a234f0434aa",
+      "c-call:sha256:aeea07f303333fed5d21da9457e438dba94df3c5976e69e897b2b289ad4a08fa",
+      "c-call:sha256:19d11a1edc0edfda3d3bda81e61d6b3d6bb456e4bf145ed3f380cfe0fdad927c",
+      "c-call:sha256:fa306667b94343abca1e5e105a1c08c210e2124fde4e7e0bec42f306e6e4da65",
+      "c-call:sha256:9c9484970b2575df8bf5dc57b173a68d57c43800510b4803bc17436ea1ed49b8",
+      "c-call:sha256:07ea583547d7aedccda9e13f58de7880a1f2d94e06d6c3fd21d700a0564630d0",
+      "c-call:sha256:9caea5de1cbedb54af72f74bbb1a656b8323af66f373d8e20b219e14573cd071",
+      "c-call:sha256:8a364a029ba618f9b284fb353362f4af1dc26a6665dd072658ecffc9d2964970",
+      "c-call:sha256:3504c4c967797299097239e806bcffaa6f65b23915025aa21f1c12473a80dde8",
+      "c-call:sha256:d4f4602dac4a777189f435d5e36d6a78eb213d5ae9bd15180c4ee193d023e14e",
+      "c-call:sha256:f674dd51dfa2d403e9ec7498df75c9cb5245d618610ffff6c641de013d5311f8",
+      "c-call:sha256:4a699d78fc14f456615cd74aaf9c7ed9285883a07ac35f005a3289a3413c8ab7",
+      "c-call:sha256:fb26383bc90702456f1819a9c7b44c53556c78b530ac95bead2060a0d4054092",
+      "c-call:sha256:9460d02e8578c904155ae9857e85a0d78034dfe5a89a7204f235431b876b14cf",
+      "c-call:sha256:aa08b86f70628d528ee2a5f5d61c2d139495a2f3701a698a0c12bea77c34f7dd",
+      "c-call:sha256:77e3006ce8abcba062958c11a38621b3155e41eb6851d4cc04191255ca85ad83",
+      "c-call:sha256:aac8c7aad50d1fc2b5b856ea503981874792034d33e7602cda2997ff3d90704a"
+    ],
+    "failures": []
+  },
+  "log": {
+    "beforeBytes": 1245912228,
+    "afterBytes": 1300706344,
+    "appendedBytes": 54794116
+  },
+  "closeHandoff": {
+    "prefix": {
+      "coordinateDigest": "sha256:bf814513652de6f9ea9cb9c078496bc636d60b9a0deba0f704e7da587df4d370",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "kind": "durable_prefix_coordinate",
+      "prefixDigest": "sha256:61c1313e144eae00eced6be520cbf03b4c8dbd9c551889b3c5fc39731f67e5a4",
+      "prefixLength": 1300706344,
+      "schemaVersion": "5.0.0",
+      "storeIdentity": {
+        "device": 16777230,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+        "inode": 459405010
+      }
+    },
+    "reopenAuthority": {
+      "authorityDigest": "sha256:63a2a6aeaad45d070a42db1bf9cee0ae5cfddca7663d46d45609a76ab88e22dd",
+      "device": 16777230,
+      "durableByteLength": 1300706344,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0",
+      "eventLogDigest": "sha256:61c1313e144eae00eced6be520cbf03b4c8dbd9c551889b3c5fc39731f67e5a4",
+      "eventLogPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "inode": 459405010,
+      "kind": "event_store_reopen_authority",
+      "schemaVersion": "5.0.0"
+    }
+  },
+  "originalTaskCompletion": "not_claimed",
+  "s06Closure": "not_claimed",
+  "releaseReadiness": "not_claimed"
+}

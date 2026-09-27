@@ -1,0 +1,20 @@
+{
+  "elapsedMs": 28484.805834,
+  "outcome": {
+    "kind": "acquired_abg_event_resource",
+    "acquisitionKind": "reopen",
+    "entryPrefix": {
+      "kind": "durable_prefix_coordinate",
+      "schemaVersion": "5.0.0",
+      "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+      "prefixLength": 1243581299,
+      "prefixDigest": "sha256:33db7ad81a060e0b0f47247babda840bc8117b1a61ab700a14cc5559c9e4a8ca",
+      "storeIdentity": {
+        "device": 16777230,
+        "inode": 459405010,
+        "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+      },
+      "coordinateDigest": "sha256:f7b127ecb1eae82e991d5567e4816105a10fce0fb2616f2a50e8552a1a5c2157"
+    }
+  }
+}
