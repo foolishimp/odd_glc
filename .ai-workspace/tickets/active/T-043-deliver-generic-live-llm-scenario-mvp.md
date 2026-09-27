@@ -25,9 +25,9 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PROGRAM_CONSTRUCTION_PC05_REVIEW_01
+- current_activation: GLC_PROGRAM_CONSTRUCTION_PC05_PREPARATION_01
 - current_re_entry: realization_refactor
-- current_activation_status: PC01_PC04_source_complete_whole_path_review_selected
+- current_activation_status: PC01_PC04_source_review_accepted_WP01_closed_PC05_preparation
 - last_execution_selection: ../abiogenesis/.ai-workspace/comments/codex/20260924_WORKSPACE_RESOURCE_LIFETIME/native-d2-01/admission-boundary-refactor-01/selector-presentation-01/root-disposition.md#core39-acceptance-and-assessor-first-native-execution
 - last_execution_result: CLOSED_native38_runtime_failed_assessor_prompt_bound_after_admitted_Design_author
 - current_activation_record: '#modular-completion-plan'
@@ -42,7 +42,9 @@ on core46 after installed positive/refusal proof and independent review. The
 and tests of the [accepted completion HOW](#completion-design-re-entry). PC01
 source is complete; PC02 source and its installed no-actor refusal are established,
 with exact guard causally reproduced. PC03/PC04 source is complete; the one
-whole-path review is selected before PC05 installed proof.
+whole-path review and its bounded WP-01 coverage correction are independently
+closed. PC05 preparation is selected; installed/live proof remains pending.
+Unaffected source/component evidence remains reusable.
 The sequence closes the original construction-input relation and comparison
 without repeating valid work. Native44 retains its accepted scope; S06 and ABG5
 qualification/RC1 remain open. The prior
@@ -58,7 +60,8 @@ at SHA-256 `9dd3233fb54402c73970bbefcce44f3e31618d158bad393f4a47104c9ed1f83f`.
 The completed design and evaluate-only installed proof are the reusable baseline.
 PC01/PC02 source increments are complete; PC02's installed check reached the
 selected mismatch and failed before actors; its exact guard is now causally
-reproduced. PC01–PC04 source is complete; whole-path review precedes PC05;
+reproduced. PC01–PC04 source and its whole-path review/correction are closed;
+PC05 installed proof is next;
 PC06 awaits the installed result. The accepted
 baseline remains closed; no new live result is claimed.
 
@@ -67,8 +70,8 @@ baseline remains closed; no new live result is claimed.
 | PC01 — Select work and bind dependencies | Source complete; [20/20 focused checks](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc01/return.md) | Extend the existing pure constructor/contracts. Preserve duties, independent assessment and carried residuals. Distinguish observed `{path,digest}` inputs from future `{producerDutyRef,path}` outputs. | Present, missing, stale and unknown evidence select the warranted work or explicit gap. Missing/ambiguous producers and cycles refuse. Future digests are never invented. Accepted evaluate-only behavior still passes. |
 | PC02 — Construct through the native handoff | Source complete; installed no-actor refusal [causally reproduced](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/return.md) | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md) | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
-| PC04 — Connect independent assessment | Source complete; [8 final affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
-| PC05 — Prove the installed complete path | Whole-path source review selected; installed proof pending | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC04 — Connect independent assessment | Source/review accepted; [WP-01 corrected and independently verified](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md); prior [8 affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
+| PC05 — Prove the installed complete path | Source review accepted; preparation selected; installed proof pending | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Pending PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
 Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,
@@ -293,6 +296,46 @@ suite, runtime/journal/worksite/provider effect or repair is granted. Report
 counterexamples and sunny-day impact with exact source routes, separate new
 defects from existing cost/diagnostic debt, and return to Executive. The only
 report-writing territory is `whole-path-review-01/` under this evidence directory.
+
+Review activation: `/root/glc_pc04_whole_path_review`, Astra/max, receives frozen
+checkpoint `cb24fd9`. The completed PC04 Worker cannot be reactivated because
+the agent thread limit was reached; no preparation Worker started. Root instead
+enters a separate bounded Writer activation in parallel with the review and
+may create only `pc05-preparation-01/` under this evidence directory: ordinary
+case data/caller and a compact readiness record for original-source construction,
+comparison and assessment. In-memory Program/publication checks are permitted;
+no source repair, package/install, Run, native/provider, journal/worksite, ticket
+or Git effects. Preserve original bindings/oracle and execution dependencies;
+declare real dependent work, exact role coverage and proportional actor controls.
+Reuse retained inputs; do not copy entire histories or compound projections.
+Missing authority returns to Executive. Root records the activation and prepares
+only the granted case, then returns to Executive to consume the closed review;
+installed effects await its disposition.
+
+WP-01 disposition and Writer grant: Executive accepts the closed
+[whole-path review](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/whole-path-review-01/review.md)
+at SHA-256 `269adfa34bfb84ad366f3cbdda8160832ef12fffac2e80ee5360564291d3572c`.
+Root now enters Writer for `realization_refactor`: enforce exact complete
+dependent/predecessor record coverage in the existing assessment correspondence,
+preserving the supplied evaluator's domain meaning and required coordinates.
+Write territory is `src/program-construction-runtime.mjs`, its existing
+`test/program-construction.test.mjs`, `wp01-repair-01/` under this evidence
+directory, and the paired T-043/T-287 status projections. Grant focused affected
+checks, a compact frozen return, and scoped checkpoint commit/push after the
+same Reviewer verifies WP-01 only. No Product/HOW/ABI source change, installed
+Run/provider effect or broad qualification campaign. PC05 remains held until
+that closed review is disposed; Root then resumes Executive control.
+
+WP-01 closure: Executive accepts the [delta review](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md)
+at SHA-256 `014150731846bd2ec7f766dcc06befc2cfc135dbcc971b2b745759f07c51c0b4`;
+both frozen source/test hashes match. Four affected checks passed in 22.617 s;
+the independent original-counterexample discriminator passed in 0.150 s. The
+seven-line correction enforces complete edge coverage, with no ABI/HOW change.
+PC05's WP-01 hold is lifted; installed effects still require its concrete
+prepared composition and launch selection. Root enters Writer for this paired
+status projection, preliminary preparation-record correction and scoped
+commit/push of the two-file repair and review/return records, then returns to
+Executive. No new installed/live or performance result is claimed.
 
 ### Completion design re-entry
 

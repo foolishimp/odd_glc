@@ -516,10 +516,11 @@ function smallAssessmentInput(extraFiles={}) {
     executionRecord:{observation:coordinate('observation://component/execution'),commandResults:[{stdout:stream('actual component execution'),stderr:stream('')}],snapshotMembers:[],predicateObservations:[],provenance:{}},
     currentContext:context,evaluator:{graphFunction:coordinate('graph-function://component/evaluator')},acquisition:{},originalTaskCompletion:'not_claimed',
     constructionObservations:[{groupRef:'group://component',dutyRefs:[duties[0].ref],observation:author}],
-    constructionEdges:[{dutyRef:duties[0].ref,dependentPaths:['candidate.txt'],dependencies:[coord('source.txt')]}],dutyPopulation:duties,carriedDuties:[{dutyRef:'duty://component/carried'}],pendingDutyRefs:duties.map(d=>d.ref),acceptedResultsDisposition:'requires_separate_owner_conjunction'};
+    constructionEdges:[{dutyRef:duties[0].ref,obligationRef:duties[0].obligationRef,bindingRef:duties[0].bindingRef,dependentPaths:['candidate.txt'],dependencies:[coord('source.txt')]}],dutyPopulation:duties,carriedDuties:[{dutyRef:'duty://component/carried'}],pendingDutyRefs:duties.map(d=>d.ref),acceptedResultsDisposition:'requires_separate_owner_conjunction'};
   const computed={kind:'lifecycle_computed_records',schemaVersion:version,...Object.fromEntries(['taskRef','sourceResult','construction','execution','sourceRefs','interpretation','selectedDutyRefs','selectedObligationRefs','carriedDutyRefs','carriedBindingRefs'].map(k=>[k,view[k]])),
     evaluator:view.evaluator.graphFunction,evidenceRole:'computed_derivation',originalTaskCompletion:'not_claimed',records:{
-      edge:{recordKind:'construction_record',dutyRef:duties[0].ref,obligationRef:duties[0].obligationRef,bindingRef:duties[0].bindingRef,verdict:'true'},
+      edge:{recordKind:'construction_record',dutyRef:duties[0].ref,obligationRef:duties[0].obligationRef,bindingRef:duties[0].bindingRef,
+        dependent:{path:'candidate.txt',afterDigest:coord('candidate.txt').digest},predecessor:{path:'source.txt',declaredDigest:coord('source.txt').digest,producerDutyRef:null},verdict:'true'},
       comparison:{recordKind:'comparison_record',obligationRef:duties[1].obligationRef,bindingRef:duties[1].bindingRef,verdict:'true'},residuals:['absent raw type/argument fields; owner disposition remains open']}};
   const text='unchanged synthetic evaluator-only oracle',oracle={ref:'oracle://component/finite',digest:product.sha256Bytes(Buffer.from(text)),text};
   return {kind:'lifecycle_assessment_input',schemaVersion:version,evaluationState:evaluationOutput(product.constructRetainedGraphInput(view,computed)),
@@ -576,6 +577,46 @@ test('PC04 finite native assessment preserves negative, unknown and partial resu
   assert.throws(()=>constructionAssessmentOutput(product.constructRetainedGraphInput(wrong,observed)),/exact task/);
   const changed=structuredClone(input);changed.evaluationState.evaluationInput.currentContext=smallAssessmentInput({'another.txt':'changed subject'}).evaluationState.evaluationInput.currentContext;
   assert.throws(()=>constructionAssessmentOutput(product.constructRetainedGraphInput(changed,observed)),/after-context/);
+});
+test('WP-01 every required dependent/predecessor pair reaches assessment including false and unknown siblings',()=>{
+  for(const verdict of ['true','false','unknown']) {
+    // Unadmitted finite native premises; the supplied evaluator computes all four edge verdicts.
+    const input=structuredClone(smallAssessmentInput({'second.txt':'second independent source',
+      'candidate.txt':verdict==='false'?'candidate from source.txt':'candidate from source.txt and second.txt',
+      'other-candidate.txt':'other candidate from source.txt and second.txt'}));
+    const view=input.evaluationState.evaluationInput,edge=view.constructionEdges[0],context=view.currentContext;
+    const coord=path=>({path,digest:context.entries.find(e=>e.relativePath===path).digest});
+    edge.dependentPaths.push('other-candidate.txt');edge.dependencies.push(coord('second.txt'));
+    const task=product.constructNativeWorkspaceWorkTask({...input.authority,context,outcome:'Synthetic two-output, two-predecessor premise',
+      instructions:['No actor runs in this component fixture.'],readFirst:['source.txt','second.txt'],writeRoots:edge.dependentPaths,checks:[]});
+    const author=componentObservation(task);
+    view.constructionObservations=[{groupRef:'group://component',dutyRefs:[edge.dutyRef],observation:author,
+      resolvedDependencies:edge.dependencies.filter(dep=>verdict!=='unknown'||dep.path!=='second.txt').map(dep=>({...dep,dutyRef:edge.dutyRef}))}];
+    view.selectedDutyRefs=view.dutyPopulation.filter(d=>d.role!=='evaluate').map(d=>d.ref);
+    view.selectedObligationRefs=view.dutyPopulation.filter(d=>d.role!=='evaluate').map(d=>d.obligationRef);
+    view.evaluator={graphFunction:f.input.evaluator.graphFunction,parameters:{}};
+    const computed=deriveNativeRecords(view);assert.equal(computed.records.verdict,verdict);assert.equal(computed.records.constructionEdges.length,4);
+    input.evaluationState=evaluationOutput(product.constructRetainedGraphInput(view,computed));
+    input.selection.candidatePaths=edge.dependentPaths;input.selection.sourcePaths=['source.txt','second.txt'];
+    input.selection.criterionEvidence.forEach(row=>{row.dutyRefs=view.selectedDutyRefs;row.roles=row.roles.filter(role=>role!=='comparison_record');});
+    input.selection.recordSelections=computed.records.constructionEdges.map((record,index)=>({recordPath:'/records/constructionEdges/'+index,role:'construction_record',dutyRef:record.dutyRef}));
+    input.independentProducers=[{ref:author.observationRef,digest:author.observationDigest,actorInvocationRef:author.provenance.actorInvocationRef,cCallRef:author.provenance.cCallRef}];
+    const evidence=assessmentEvidence(input),assessmentTask=constructionAssessmentTask(input);
+    const result=constructionAssessmentOutput(product.constructRetainedGraphInput(input,componentAssessment(assessmentTask,satisfiedAssessment(evidence))));
+    assert.equal(result.computedEvidenceDisposition,verdict);assert.equal(result.assessmentDisposition,verdict==='true'?'satisfied':'unsatisfied');
+    assert.equal(result.originalTaskCompletion,'not_claimed');
+    const omitted=structuredClone(input);
+    omitted.selection.recordSelections=omitted.selection.recordSelections.filter((_,index)=>verdict==='true'?index!==1:computed.records.constructionEdges[index].verdict==='true');
+    assert.throws(()=>constructionAssessmentTask(omitted),/every required dependent\/predecessor edge/);
+    if(verdict==='true') {
+      const absent=structuredClone(input);absent.evaluationState.computedRecords.records.constructionEdges.pop();absent.selection.recordSelections.pop();
+      assert.throws(()=>constructionAssessmentTask(absent),/every required dependent\/predecessor edge/);
+      for(const modify of [row=>{row.dependent.path='other-candidate.txt';},row=>{row.predecessor.declaredDigest=z;},row=>{row.predecessor.producerDutyRef='duty://unrelated';}]) {
+        const mismatched=structuredClone(input);modify(mismatched.evaluationState.computedRecords.records.constructionEdges[0]);
+        assert.throws(()=>constructionAssessmentTask(mismatched),/must match one required dependent\/predecessor edge/);
+      }
+    }
+  }
 });
 test('PC04 actual PC03 state joins complete original rubric/oracle and ordinary native assessment with no C2',async()=>{
   const fixture=combinedFixture(),{input,producer,consumer,sibling,native}=fixture;

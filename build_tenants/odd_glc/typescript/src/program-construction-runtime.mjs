@@ -366,15 +366,22 @@ export function assessmentEvidence(input) {
   add(input.oracle.ref,input.oracle.text);
   const outputDigest=product.sha256Canonical(computed),paths=s.recordSelections.map(r=>r.recordPath);
   need(new Set(paths).size===paths.length,'distinct computed record selections required');
+  const edgeKey=(dutyRef,path,predecessor,digest,producerDutyRef)=>product.canonicalJson([dutyRef,path,predecessor,digest??null,producerDutyRef??null]);
+  const requiredEdges=new Set(view.constructionEdges.flatMap(edge=>edge.dependentPaths.flatMap(path=>edge.dependencies.map(dep=>
+    edgeKey(edge.dutyRef,path,dep.path,dep.digest,dep.producerDutyRef)))));
   const records=s.recordSelections.map(selection=>{
     const duty=view.dutyPopulation.find(d=>d.ref===selection.dutyRef),record=pointer(computed,selection.recordPath);
     need(duty&&view.selectedDutyRefs.includes(duty.ref)&&record&&record.recordKind===selection.role&&
       duty.obligationRef===record.obligationRef&&duty.bindingRef===record.bindingRef&&
       (selection.role==='construction_record'?duty.role==='provenance'&&record.dutyRef===duty.ref:duty.role==='evaluate')&&
       ['true','false','unknown'].includes(record.verdict),'computed record role and selected obligation must agree');
+    if(selection.role==='construction_record')need(requiredEdges.delete(edgeKey(record.dutyRef,record.dependent?.path,
+      record.predecessor?.path,record.predecessor?.declaredDigest,record.predecessor?.producerDutyRef)),
+      'computed construction record must match one required dependent/predecessor edge');
     const label=`computed:${outputDigest}:${selection.recordPath}`,text=product.canonicalJson({evaluator:computed.evaluator,outputDigest,recordPath:selection.recordPath,record});
     add(label,text);return {...selection,label,text,verdict:record.verdict};
   });
+  need(requiredEdges.size===0,'every required dependent/predecessor edge requires actual computed evidence');
   const duties=view.dutyPopulation.filter(d=>view.selectedDutyRefs.includes(d.ref)),assessmentDuties=duties.filter(d=>d.role==='assess');
   need(assessmentDuties.length>0&&duties.filter(d=>['provenance','evaluate'].includes(d.role)).every(d=>records.some(r=>r.dutyRef===d.ref)),
     'every selected construction/evaluation duty requires actual computed evidence');
