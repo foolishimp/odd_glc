@@ -1,0 +1,13 @@
+{
+  "scope": "physical selection only, no resource recovery or Run disposition",
+  "observedAt": "2026-09-27T23:30:59.464762+00:00",
+  "ownerPid": 25062,
+  "byteLength": 1388245432,
+  "digest": "sha256:409a23dfafc94be6889516cf694a2b20d9463dbfa4ba6f7bb8dd1a7800dccb3c",
+  "device": 16777230,
+  "inode": 459405010,
+  "lockPath": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abiogenesis-event-store-locks-v5/16777230-459405010.lock",
+  "lockDigest": "sha256:6a5c544957015b4074416016abaa6f63d0e9a64a558020c17d6266e6ab684106",
+  "pidProbe": "ESRCH",
+  "streamHashSeconds": 0.5579517092555761
+}

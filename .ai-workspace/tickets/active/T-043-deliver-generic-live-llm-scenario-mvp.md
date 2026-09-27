@@ -27,7 +27,7 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: LIFE01_heap_triage_preserve_current_Run_and_worksite
+- current_activation_status: core51_source_accepted_one_physical_recovery_profile_selected_no_Run
 - last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/activation.json
 - last_execution_result: PC05_09_process_aborted_heap_exhaustion_no_terminal_receipt
 - current_activation_record: '#modular-completion-plan'
