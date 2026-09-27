@@ -1,0 +1,64 @@
+{
+  "subject": "PC05-08 caller: new structured-response core49, latest genuine PC05-07 entry close, unchanged PC05-04 author and PC05-05 source selection; no constructor or C2 repeat",
+  "files": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/candidate.mjs",
+      "sha256": "sha256:a6e70325d7e76c3002d5f8f009650089f2234ac72a36f39a067b074adb77effe",
+      "bytes": 5125
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/execute.mjs",
+      "sha256": "sha256:9469d4163510e473783c7029c8a3d5fa63c140b711900599f5b657b24c8754d5",
+      "bytes": 9346
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/package.mjs",
+      "sha256": "sha256:b4e6e14f58a57be2cd3de09268b5e4a4e4d38bab036dcb17ec1d271b950a12e5",
+      "bytes": 11166
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/prepare.mjs",
+      "sha256": "sha256:4f6bec57904e41df276b4a08524e55ddcbcf4615880a13a4a8060eb553167f1b",
+      "bytes": 27902
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/source-reuse.mjs",
+      "sha256": "sha256:73dd0b51825d5b394dc524635006f6f1340da67542c6c7d897bea750df1d01a6",
+      "bytes": 1826
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": "sha256:014c70ffe9b7cdbd7346f21e99e61f0695a48229219a36c7d72a6185c33697da",
+      "bytes": 17485
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/generic-live-workflow-support.mjs",
+      "sha256": "sha256:8216dd9411235657d98206449611f38673e51323ef1ee2b692afc450e30281d7",
+      "bytes": 87990
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/full-sandbox-support.mjs",
+      "sha256": "sha256:63a10082c83899da949384d0c0ee796218d11093cd5cd26832e862ae84d112b8",
+      "bytes": 82912
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/preserved-source.json",
+      "sha256": "sha256:4594903d072f3961cfa81f176c5c9b0b4562f08727878e601913c72a99f0d6a2",
+      "bytes": 4560290
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/source-projection-record.json",
+      "sha256": "sha256:f3b50672718567c664f62bb73d39ff272e71b4e79cbab676170fad3fa97d522d",
+      "bytes": 4820
+    }
+  ],
+  "predecessorCallerFreeze": {
+    "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-07/caller-freeze.json",
+    "sha256": "sha256:a683db3e7c487f22294ba6ae909747b7a29f05589ba2aebbed6e807c7653999b"
+  },
+  "previousFrozenDraft": {
+    "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/caller-freeze-core48.json",
+    "sha256": "sha256:a186e8e79824c2511bbff27790ca61d88e09607cb92d3b589062a112d60d4182",
+    "reconstruction": "Apply caller-delta-core48.patch to tracked pc05-07 caller; no native Run used this draft."
+  }
+}

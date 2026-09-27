@@ -1,0 +1,35 @@
+--- pc05-07/candidate.mjs
++++ pc05-08/candidate.mjs
+@@ -12,7 +12,8 @@
+ export async function caseBasis() {
+   const base=await predecessorBasis(),prior=await read(join(D,'../pc05-04/source-freeze.json'));
+   const roles=base.configuration.runEnvironment.roles.filter(r=>r.role==='assessor');assert.equal(roles.length,1);
+-  return {...base,configuration:{...base.configuration,transport:prior.transport,
++  const core=await read(join(resolve(D,'../../../../../..'),'abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-03/selected-core.json'));
++  return {...base,core,configuration:{...base.configuration,transport:prior.transport,
+     runEnvironment:{...base.configuration.runEnvironment,declarationRef:'environment://odd-glc/T-043/pc05-preserved-construction@5',roles}}};
+ }
+ export async function constructCase({product,gtl,artifact,runEnvironment,authority,currentContext}) {
+--- pc05-07/prepare.mjs
++++ pc05-08/prepare.mjs
+@@ -31,9 +31,9 @@
+ assert(entryClose,'genuine completed CLI receipt with owner close handoff required');
+ assert.equal(entryClose.prefix.eventLogRef,coordinates.native44.prefix.eventLogRef);
+ assert.equal((await stat(new URL(entryClose.prefix.eventLogRef))).size,entryClose.prefix.prefixLength);
+-const prior=await read(join(D,'../pc05-06/execution/result.json'));
++const prior=await read(join(D,'../pc05-07/execution/result.json'));
+ const priorAuthor=await read(join(D,'../pc05-04/execution/result.json'));
+-assert.deepEqual(entryClose,prior.closeHandoff,'continue the exact closed PC05-06 handoff');
++assert.deepEqual(entryClose,prior.closeHandoff,'continue the exact closed PC05-07 handoff');
+ const priorLaunch=await read(join(D,'../pc05-04/start.jsonl'));
+ const retainedPath=join(abi,'.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-evaluation-triage-01/retained-input.json');
+ const retainedInput=await read(retainedPath);
+@@ -98,7 +98,7 @@
+     {verification_references:products.map(p=>p.reference)}),'resolve');
+   assert.deepEqual(resolved.ownerOutput.value.resolvedLock,lock);
+   const installed=[],actor={actor:coord(actorRef),attribution:coord('attribution://odd-glc/program-construction-qualification')};
+-  const targets=['core47','construction','evaluator'].map(n=>join(D,'products',n));
++  const targets=['core49','construction','evaluator'].map(n=>join(D,'products',n));
+   const installStart=performance.now();
+   for(const [i,item]of products.entries()){
+     const call=await setup.authorized(product.PRODUCT_INSTALL_SOURCE_DECLARATIONS.install,
