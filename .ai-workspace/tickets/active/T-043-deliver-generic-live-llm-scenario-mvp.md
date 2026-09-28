@@ -27,12 +27,19 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: PC05_11_pre_admission_heap_abort_memory_triage_selected
+- current_activation_status: extension_held_for_owner_requested_F_P_F_D_boundary_reframe
 - last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json
 - last_execution_result: PC05_11_heap_aborted_before_admission_zero_appended_events
 - current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection
+
+**Execution held.** Owner challenges the new deterministic planner/state pipeline
+and selects review of the F_P/F_D ownership boundary. [Current Executive disposition](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/executive-disposition.md#owner-correction-f_p-decision-boundary-extension-held)
+owns that frontier. The proposed exact prepare-only diagnostic has no supported
+exported seam and was not run; prepared recovery11 is also unexecuted. Preserve
+all core repairs, original work and failed attempts. No further native or
+implementation grant is active for this extension.
 
 Core52 source/package is accepted after the [shared-encoder review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-construction-repair-review.md).
 The [installed owner check](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-installed-01/result.json)
@@ -49,8 +56,9 @@ and the new owner check both close at genuine coordinate67a75b13… with all
 C2, source/oracle, twelve reports and all checks remain. [PC05-11](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution-return.md)
 setup passed but the native CLI heap-aborted after81.318 s before admission:
 zero appended bytes/events, no new Run or model result. Exact dead-owner residue
-remains at setup extent1,390,576,361 bytes. Pre-admission lifetime triage and
-existing-owner reconciliation precede any new attempt. PC06 and release remain open.
+remains at setup extent1,390,576,361 bytes. Closed triage identifies the omitted whole-path preparation phases; one actual-input
+no-model diagnostic and existing-owner reconciliation are selected for preparation
+in ABI’s Executive disposition. No new Run is selected. PC06 and release remain open.
 
 ### Historical dispositions — prior selections, not current launch grants
 
@@ -138,7 +146,7 @@ exact scope.
 | PC02 — Construct through the native handoff | Source complete; installed no-actor refusal [causally reproduced](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/return.md) | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md) | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
 | PC04 — Connect independent assessment | Source/review accepted; [WP-01 corrected and independently verified](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md); prior [8 affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
-| PC05 — Prove the installed complete path | Prior bounded runtime proof accepted; latest attempt11 heap-aborted before admission; core52 owner proof accepted; memory triage selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC05 — Prove the installed complete path | Prior bounded runtime proof accepted; latest attempt11 heap-aborted before admission; core52 owner proof accepted; extension held for F_P/F_D boundary reframe | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Fifteen-binding join prepared; final disposition pending corrected PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
 Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,
