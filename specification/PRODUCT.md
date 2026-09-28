@@ -8,13 +8,13 @@
 ## Product Identity
 
 `odd_glc` is the generic ODD General Life Cycle Product. It gives generic
-lifecycle vocabulary, policy, Program construction and read-only interpretation
-to GTL declarations and admitted ABG truth. It is domain-agnostic: the same Product applies to a task,
+lifecycle vocabulary, policy, and read-only interpretation to admitted
+GTL/ABG truth. It is domain-agnostic: the same Product applies to a task,
 project, program, portfolio, or operating domain without acquiring their
 execution mechanism.
 
 `odd_glc` is not ABIogenesis core, GTL, ABG, `odd_sdlc`, a runtime, a
-requirements-algebra authority, a release cut, or an install.
+requirement compiler, a release cut, or an install.
 
 Current source-project work uses exact STDO `v2.5.0-rc.4` and the
 Product-owned project reference-frame basis. That method selection governs how
@@ -22,11 +22,10 @@ the Product is built and evaluated; it is not an odd_glc runtime dependency.
 
 ## Ownership
 
-GTL owns graph declaration law. ABG owns runtime selection, traversal, effects, admission,
+GTL owns graph declaration. ABG owns selection, traversal, effects, admission,
 Event Calculus, replay, folds, residuals, continuation, and re-entry.
-`odd_glc` owns generic lifecycle vocabulary, labels, policies, construction of
-candidate GTL compositions, query/read interpretation, proof interpretation
-and downstream specialization contracts.
+`odd_glc` owns generic lifecycle vocabulary, labels, policies, query/read
+interpretation, proof interpretation, and downstream specialization contracts.
 
 `odd_glc` may publish declaration data and policy data over GTL/ABG carriers.
 It owns no worker invocation, filesystem effect, event writer, evidence
@@ -34,13 +33,11 @@ admission, scheduler, fan-in runtime, retry controller, or replay engine.
 
 ## Full-Input Lifecycle Meaning
 
-The generic lifecycle preserves the complete selected input through Intent,
+The generic lifecycle takes the complete selected input through Intent,
 Product definition, Requirements, Design, construction, evidence and targeted
-revision. A selected composition performs the work needed for its remaining
-obligations and reuses applicable admitted results. Each traversal preserves
-preceding meaning, constraints, source provenance and unresolved obligations.
-A bounded construction choice orders delivery; it does not reduce the
-governing application specification or require repeating established work.
+revision. Each traversal unpacks and preserves preceding meaning, constraints,
+source provenance and unresolved obligations. A bounded construction choice
+orders delivery; it does not reduce the governing application specification.
 
 The input is a governed subject distinct from the odd_glc builder Product and
 its ABG runtime substrate. An application `ProductDefinitionAsset` describes
@@ -58,45 +55,6 @@ ABG truth, preserving valid unaffected work and outstanding obligations through
 persisted-state resume. A summary, fixture contract, count or bounded success
 cannot establish full application completion.
 
-## Problem-Fitted Program Construction
-
-`odd_glc` realizes the [GTL construction calculus](../../abiogenesis/specification/requirements/gtl/REQ-L-GTL3-SELECTION-BOUNDARY.md#program-construction-calculus)
-as lifecycle policy and ordinary GTL source construction above the interpreter.
-Its input binds the original task/constraints, source-linked obligation and
-dependency relations, applicable observations and admitted evidence, recorded
-judgments/rulings and available function contracts. Semantic interpretation
-retains its declared evaluator; structural checks cannot manufacture it.
-
-Construction returns a candidate Program, its correspondence to selected work
-and explicit remaining obligations or gaps. It may select an existing
-composition, recompose compatible published functions or specialize declared
-parameters. It preserves required evidence and independence, follows exact
-input/output/effect contracts and leaves publication, validation and runtime
-admission with their existing owners. The result is a proposal, never a second
-executable plan, closure ledger or instruction engine.
-
-The same construction contract serves different tasks and different valid
-states of one task. An artifact missing execution evidence selects execution
-and the required evaluation; valid execution missing assessment selects that
-assessment. Required context binds at the actual invocation. Unknown or stale
-support retains its dependent obligation, while unaffected work remains
-available. An already established outcome reports its existing admitted
-completion evidence; local flags, file existence and assessment occurrence
-cannot establish that result.
-
-The builder Product and function library retain their identities. A different
-composition has the ordinary GTL identity required by its changed declarations;
-a task or scenario name alone never creates a Program variant. A running bound
-Program is immutable. Subsequent composition uses the existing admission and
-entry/re-entry boundary and conserves prior evidence identities. Construction
-does not own runtime dispatch, automatic cross-Run control or evidence admission.
-
-The detailed local decomposition is
-[Lifecycle Authority Boundary](requirements/REQ-GLC-BOUNDARY-AUTHORITY.md#program-construction).
-This capability replaces the former blanket exclusion of a requirement
-compiler specifically for authoring ordinary GTL. The exclusions on lowering,
-shadow requirements algebra and runtime authority continue to apply.
-
 ## Generic Acceptance Scenarios
 
 Hello World and Data Mapper are existing reusable acceptance scenarios and
@@ -104,9 +62,8 @@ fixture subjects. They exercise generic odd_glc declarations in different
 subject workspaces. They are not odd_glc Products, Product members, Programs,
 lifecycle specializations, or identity variants.
 
-One generic construction contract selects lifecycle roles, dependencies,
-readiness and expected evidence for every scenario. Its reusable full-lifecycle
-declaration is one available composition. Scenario data supplies
+One generic workflow declaration selects lifecycle roles, dependencies,
+readiness, and expected evidence for every scenario. Scenario data supplies
 the full input, subject and existing worksite; admitted requirement and design
 results determine the bounded targets and proof obligations. The workflow remains
 declarative: ABIogenesis owns live LLM invocation, owner effects, admission,

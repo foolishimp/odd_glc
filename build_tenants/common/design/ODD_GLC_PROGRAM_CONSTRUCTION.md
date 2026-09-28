@@ -1,15 +1,16 @@
 # Problem-Fitted Program Construction
 
-Status: accepted design for bounded implementation. [T-043](../../../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#problem-fitted-program-construction)
-owns current activation grants, exact candidate selection and delivery evidence.
-The prospective construction/comparison extension below is a `design_reframe`
-candidate for Executive disposition; the accepted evaluate-only increment keeps
-its existing scope.
+Status: rejected implementation selection, retained for owner review. On
+2026-09-28 the owner rejected the Product revisions and clarified that HoG is
+the unit of computation. [T-043](../../../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#owner-rejection-of-program-construction-revisions)
+owns that disposition. This document supplies no design or implementation grant.
+The design below records the rejected model; Git preserves its exact preimage
+at `a189c370b9af674413941fd7e5a110777585b23e`.
 
-## Authority And Bounded Outcome
+## Historical Authority And Bounded Outcome
 
-Owners are [Product](../../../specification/PRODUCT.md#problem-fitted-program-construction)
-and [Boundary Authority -016 through -020](../../../specification/requirements/REQ-GLC-BOUNDARY-AUTHORITY.md#program-construction),
+The then-selected owners were the Product construction amendment and Boundary
+Authority -016 through -020, preserved at that preimage and now withdrawn,
 under GLC STDO `v2.5.0-rc.4` and
 [the project frame](../../../specification/REFERENCE_FRAME_BASIS.md).
 The selected evaluation is GLC Design/Owner/Proof composed with ABI end-to-end
@@ -20,7 +21,7 @@ current installed candidate and any local substrate correction are selected by
 and paired ABI T-287. This design selects no methodology migration or change to
 ABG execution meaning.
 
-The owning [GTL construction calculus](../../../../abiogenesis/specification/requirements/gtl/REQ-L-GTL3-SELECTION-BOUNDARY.md#program-construction-calculus)
+The withdrawn [GTL construction calculus](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/program-construction-calculus-review.md#program-construction-calculus)
 has reviewed SHA-256
 `1024e59448cd0f01b3a7b8e4423c77961f3ba07b0394f701967a9c8e8cb2fdf8`.
 This design realizes its finite selection, evidence conservation and ordinary

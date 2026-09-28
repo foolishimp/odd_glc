@@ -9,14 +9,18 @@ accepted design owns HOW. STDO `v2.5.0-rc.4` and
 
 ## Current Goal
 
-Current delivery tracking: [T-043 modular completion plan](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#modular-completion-plan) owns implementation of the reviewed construction calculus and its incremental tests. Its first evaluate-only installed increment is accepted; complete the remaining original construction-input and comparison relations while retaining valid work and unresolved obligations. Deliver reusable evidence-sensitive GTL composition through ordinary installed ABG. GLC RC4 remains selected; ABI T-287 owns ABG5 qualification and the RC1 sequence. Accepted core46/native44 evidence remains reusable; T-043 owns the reviewed successor and current PC05 execution. S06 and Data Mapper remain open.
+Deliver one generic odd_glc lifecycle declared in GTL and executed by HoG/ABG,
+using real LLM Workers. It preserves the full incoming specification through
+Intent/Product, Requirements, Design, working application evidence and targeted
+revision. Each traversal preserves preceding meaning, complexity and unresolved
+obligations; a steel thread orders delivery while keeping pending requirements.
 
-Deliver one generic odd_glc lifecycle construction mechanism using real LLM Workers. It
-takes the full incoming specification through Intent/Product, Requirements,
-Design, a working application and admitted evidence, then uses failures or changed requirements
-or outstanding obligations to select necessary work from persisted state. Each traversal unpacks and
-preserves preceding meaning and complexity, exposing new and residual
-obligations. A steel thread orders work while keeping pending requirements.
+[T-043's current disposition](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#owner-rejection-of-program-construction-revisions)
+owns the next work: restore the boundaries rejected by the owner and review the
+calculus/design with HoG as the unit of computation. The local construction and
+selection extension has no implementation grant. Its retained results do not
+establish full lifecycle completion. GLC RC4 remains selected; ABI T-287 owns
+ABG5 qualification and release. S06 and Data Mapper remain open.
 
 The owner's 2026-09-13 instruction, "ok update the tickets and prepare the
 plan", selects documentation/planning alignment with the
@@ -28,7 +32,11 @@ owns the canonical sequence under GOAL-035/M5-M7; its
 [Product release boundaries](../../abiogenesis/specification/PRODUCT.md#50-and-51-release-boundaries)
 own ABG release applicability.
 
-## Selected Work
+## Retained Delivery Record
+
+The entries below preserve prior selections and evidence. T-043's current
+owner-rejection disposition controls all further work; these records supply no
+implementation, recovery or native-execution grant.
 
 GOAL-035/T-287 and T-043 retain the fixed fifteen-family ABG5 outcome, original
 job/S1–S5/oracle, five selected/four outside residuals and protected worksite.

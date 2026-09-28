@@ -13,9 +13,6 @@ GTL/ABG truth.
 It gives general lifecycle meaning to requirements, spans, projections,
 evidence, folds, residuals, replay, re-entry, release pressure, and
 operational feedback without moving that runtime truth out of ABG.
-It constructs problem-fitted ordinary GTL compositions from those meanings,
-the selected task and applicable evidence, preserving the task's complete
-source contract and unresolved obligations through bounded increments.
 When a required GTL/ABG capability is missing, placeholder, test-only, unwired,
 or unpinned, the affected lifecycle function is deferred or blocked rather than
 locally reconstructed.
@@ -25,8 +22,6 @@ locally reconstructed.
 The project must deliver:
 
 - lifecycle vocabulary for general ODD work;
-- reusable construction of ordinary GTL Programs from source-linked
-  obligations, available function contracts and applicable admitted evidence;
 - typed lifecycle assets and lifecycle bindings over GTL/ABG system-function
   carriers;
 - lifecycle read models over admitted ABG/GTL requirements-algebra truth;
@@ -49,10 +44,8 @@ The project must deliver:
 - GTL owns the graph-native declaration and wrapper language.
 - `odd_glc` owns lifecycle meaning over GTL/ABG system-function carriers,
   policy overlays, query projections, and domain proof interpretation.
-- Program construction is source authorship above the GTL interpreter.
-  `odd_glc` must not implement a rival requirements algebra, lower admitted
-  GTL into another executable representation, or implement a writable closure
-  ledger, runtime loop, retry controller or replay authority.
+- `odd_glc` must not implement a product-local requirement compiler, writable
+  closure ledger, runtime loop, retry controller, or replay authority.
 - `odd_glc` lifecycle bindings that consume GTL/ABG requirements algebra,
   evidence admission, assurance fold, residual, continuation, or re-entry truth
   must gate on upstream readiness before ratification.

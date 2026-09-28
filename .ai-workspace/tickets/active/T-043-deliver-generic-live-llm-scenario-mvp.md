@@ -25,21 +25,33 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_DECLARATION_RESOURCE_01
-- current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: extension_held_for_owner_requested_F_P_F_D_boundary_reframe
+- current_activation: GLC_PRODUCT_AUTHORITY_RESTORE_01
+- current_re_entry: owner_rejection_at_Intent_Product_and_requirement_boundary
+- current_activation_status: construction_Product_revisions_rejected_implementation_grant_withdrawn
 - last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json
 - last_execution_result: PC05_11_heap_aborted_before_admission_zero_appended_events
-- current_activation_record: '#modular-completion-plan'
+- current_activation_record: '#owner-rejection-of-program-construction-revisions'
 
-## Current bounded selection
+## Owner rejection of Program-construction revisions
 
-**Execution held.** Owner challenges the new deterministic planner/state pipeline
-and selects review of the F_P/F_D ownership boundary. [Current Executive disposition](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/executive-disposition.md#owner-correction-f_p-decision-boundary-extension-held)
-owns that frontier. The proposed exact prepare-only diagnostic has no supported
-exported seam and was not run; prepared recovery11 is also unexecuted. Preserve
-all core repairs, original work and failed attempts. No further native or
-implementation grant is active for this extension.
+Owner ruling, 2026-09-28: "the product revisions are wrong"; HoG is the unit of
+computation. Restore the pre-extension Intent/Product/requirements and bootstrap
+boundaries from `eb65daa3`. The local Program-construction selection is withdrawn;
+its HOW is retained for review and grants no further implementation.
+
+The [Executive disposition](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/executive-disposition.md#owner-rejection-product-revisions-withdrawn)
+owns the bounded restoration and paired T-287 routing. Review the original
+strategy, [withdrawn calculus](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/program-construction-calculus-review.md)
+and [rejected HOW](../../../build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md)
+under the existing GTL/HoG/ABG owners before selecting a replacement. Current code
+is preserved pending the requested removal/design review; no new code, package,
+recovery or native-execution grant is active. Core repairs and paid work remain.
+
+## Retained execution checkpoint
+
+The following records preserve prior evidence and decisions. All earlier
+Program-construction design, implementation and execution selections below are
+superseded by the owner rejection; their bounded observations remain historical.
 
 Core52 source/package is accepted after the [shared-encoder review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-construction-repair-review.md).
 The [installed owner check](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-installed-01/result.json)
@@ -127,6 +139,9 @@ native39 selection and execution records below are historical, not new launch
 authority. The existing worksite, original task/oracle and valid work remain.
 
 ### Modular completion plan
+
+**Withdrawn implementation selection.** PC01–PC06 below are the historical
+plan and evidence record. They are not the current delivery path or work grant.
 
 Owner direction, 2026-09-27: break the accepted design into modules that can be
 tested as they land. Re-entry is `realization_refactor` under the accepted
@@ -453,6 +468,9 @@ Executive. No new installed/live or performance result is claimed.
 
 ### Problem-fitted Program construction
 
+**Withdrawn scope selection.** The 2026-09-28 owner rejection supersedes the
+Intent/Product expansion and dependent design/code grants recorded below.
+
 - Outcome: one reusable odd_glc construction relation selects a bounded GTL
   composition from the task, applicable obligations and actual evidence;
   ordinary installed ABG executes it and exposes its admitted outcome.
@@ -464,7 +482,7 @@ Executive. No new installed/live or performance result is claimed.
 - Basis: GLC HEAD `eb65daa3ca38dfd6f5e5eeb614a3c700a4648d17`, verified STDO
   `v2.5.0-rc.4`, Product/Owner/Design/Proof frames in
   `specification/REFERENCE_FRAME_BASIS.md`; paired ABI T-287 uses verified
-  `v2.5.1-rc.1`. The [formal calculus](../../../../abiogenesis/specification/requirements/gtl/REQ-L-GTL3-SELECTION-BOUNDARY.md#program-construction-calculus)
+  `v2.5.1-rc.1`. The [formal calculus](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/program-construction-calculus-review.md#program-construction-calculus)
   is the semantic contract; the current installed activation below selects
   exact core46, preserving the earlier core45 evidence.
 - Writer grant: `/root` explicitly enters Writer for this ticket, README,

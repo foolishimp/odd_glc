@@ -48,14 +48,11 @@ edge and record an ABI gap. `odd_glc` shall not implement a stage runner,
 worker loop, filesystem owner, event writer, scheduler, retry controller, or
 replay engine.
 
-**REQ-GLC-WORKSITE-LIFECYCLE-009**: One reusable construction contract shall
-carry lifecycle roles, dependencies, readiness, expected evidence and return
-relations for every selected scenario. Its ordinary GTL compositions may vary
-with the required work and applicable evidence. Scenario data may vary
-subjects, territories, inputs and outcome predicates; it shall not vary the
-execution mechanism or introduce a scenario-specific controller. The same
-composition with different ordinary inputs retains its declaration identity;
-an actual topology change follows ordinary GTL identity and admission law.
+**REQ-GLC-WORKSITE-LIFECYCLE-009**: One reusable workflow declaration shall
+carry lifecycle roles, dependencies, readiness, expected evidence, and return
+relations for every selected scenario. Scenario data may vary subjects,
+territories, inputs, and outcome predicates; it shall not vary the execution
+mechanism or introduce a scenario-specific controller.
 
 **REQ-GLC-WORKSITE-LIFECYCLE-010**: Live LLM execution shall use ABI-owned
 Worker transport and traversal. Every invocation shall bind an exact actor,
