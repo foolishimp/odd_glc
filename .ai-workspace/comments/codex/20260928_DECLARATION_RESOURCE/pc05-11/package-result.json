@@ -1,0 +1,119 @@
+{
+  "status": "three_products_verified_pure_conformance_passed_no_install",
+  "mode": "preserved_construction_evaluation_assessment",
+  "core": {
+    "packageRoot": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/bootstrap/node_modules/@abiogenesis/typescript-tenant",
+    "artifactPath": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+    "artifactRef": "file:///Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+    "basis": {
+      "artifactDigest": "sha256:df47a7a2c9d7f25cb2b1c22e7097e027c68ec25d05179b5c6d8f15dbe0319944",
+      "productContentDigest": "sha256:577ccafcaa9c7113a223a4d1af95378503c932fa2f34dd06ae3c8a421a7272f3",
+      "manifestDigest": "sha256:abb8700e9e609ffa4fc0d8c48fddd1f436b7138e53468f43421147eb71fa502a",
+      "productId": "product://abiogenesis/typescript-tenant@5.0.0-rc.1",
+      "packageName": "@abiogenesis/typescript-tenant",
+      "packageVersion": "5.0.0-rc.1"
+    }
+  },
+  "candidateArtifacts": [
+    {
+      "name": "construction",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:07d4575ae87782e4ec65c50a86db65847dce046907eb63bf1704dff731757734",
+        "productContentDigest": "sha256:eb65888403a2f065e80192342d5fe6463637c49871c67507790bb118b598f350",
+        "manifestDigest": "sha256:d7dd8c2ffcc41931b95744122db35eca34d152e214ff0e6fed270f0ebfb5a358",
+        "productId": "product://odd_glc/route-one-typescript@0.3.0-dev.2",
+        "packageName": "@odd-glc/route-one-typescript",
+        "packageVersion": "0.3.0-dev.2"
+      },
+      "bytes": 54726,
+      "payloadBytes": 290114
+    },
+    {
+      "name": "evaluator",
+      "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+      "basis": {
+        "artifactDigest": "sha256:973fd2185714782aa9bbeb0e65b3ca3fb1475f362852ae9768fac14db95216c5",
+        "productContentDigest": "sha256:3063ca3d7186622cc980317fa6564189c3e5493fc84743e892fa4bd45c5220dc",
+        "manifestDigest": "sha256:94f6bd5604cd88cf06337fee9d51d53cdd38b8554c9608328e6472749ba9758c",
+        "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+        "packageName": "@odd-glc/program-construction-fixture",
+        "packageVersion": "0.1.0-dev.2"
+      },
+      "bytes": 9378,
+      "payloadBytes": 37619
+    }
+  ],
+  "evaluatorDependency": {
+    "kind": "requires",
+    "productId": "product://odd-glc/program-construction-fixture@0.1.0-dev.2",
+    "packageVersion": "0.1.0-dev.2",
+    "compatibilityRef": "compatibility://abiogenesis/major/5",
+    "requiredContractRefs": [],
+    "requiredCapabilityRefs": []
+  },
+  "timings": {
+    "caseBasisMs": 287.577666,
+    "caseConstructionMs": 798.7858329999999,
+    "payloadGenerationMs": 11.986207999999806,
+    "archivePackMs": {
+      "construction": 150.83920899999998,
+      "evaluator": 128.84275000000002
+    },
+    "packageMs": 1378.046166,
+    "archiveVerificationMs": [
+      {
+        "artifactPath": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/artifacts/abiogenesis-typescript-tenant-5.0.0-rc.1.tgz",
+        "elapsedMs": 8959.216291
+      },
+      {
+        "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+        "elapsedMs": 11.35924999999952
+      },
+      {
+        "artifactPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+        "elapsedMs": 8.183458000001337
+      }
+    ],
+    "verificationMs": 8978.776417000001,
+    "pureConformanceMs": 3056.941084,
+    "freshPackageDescriptorMs": 274.4287499999991
+  },
+  "packageMs": 1378.046166,
+  "preflightMs": 12310.146251,
+  "programRef": "program://odd-glc/construction/9f3bd532f2e9e908661c870da6d499ff39554581cf74f9721578fd03bdf11a9c@5",
+  "declarationClosure": "sha256:40ee79bd7cdcaee516df8176d09c2f33bd99d663d5a59094018920e04c04ba66",
+  "catalogRows": 63,
+  "inputDigest": "sha256:b122c492a767a21d89f5c8750f09db24d5d3aec0bcb42e4703f7c194faf66f60",
+  "interpretation": {
+    "ref": "interpretation://odd-glc/T-043/pc05-preserved-construction/residual-aware-evaluation",
+    "digest": "sha256:6abfc56cee9ee8b7398fc269e77fbc1dae953c524ee5368f9f9b76d75d00dbfc"
+  },
+  "contextDigest": "sha256:41d090e8690174e84ef2defc033d0ddcee2e9c8981740ef49d8c423e9323be66",
+  "runEnvironmentDigest": "sha256:0b735b14ed851a257773a290a67b46371b132852a99870bb693c8d3728c9e70a",
+  "transport": {
+    "command": "/Users/jim/.local/share/claude/versions/2.1.280",
+    "expectedVersion": "2.1.280 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "xhigh",
+    "extraArgs": [
+      "--max-budget-usd",
+      "5"
+    ],
+    "inactivityMs": 300000,
+    "absoluteMs": 900000,
+    "terminationGraceMs": 1000,
+    "wholeRunMs": 3600000
+  },
+  "originalGrant": [
+    "design/implementation-design.md",
+    "package.json",
+    "src/hello.mjs",
+    "design/test-design.md",
+    "test/component/hello.test.mjs",
+    "test/uat/hello.uat.test.mjs",
+    "test-execution-plan.json"
+  ],
+  "selectedWriteRoots": [],
+  "scope": "Actual archives verified; hypothetical candidate set used once for pure declaration conformance. Public setup, actual installs, admitted descriptor checks and Run are pending."
+}

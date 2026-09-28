@@ -1,0 +1,15 @@
+{
+  "scope": "fresh generated-package descriptor check; no admitted installation",
+  "results": [
+    {
+      "root": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/packages/construction",
+      "productResolution": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/bootstrap/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+      "descriptors": 12
+    },
+    {
+      "root": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/packages/evaluator",
+      "productResolution": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/bootstrap/node_modules/@abiogenesis/typescript-tenant/build/code/src/product/index.js",
+      "descriptors": 1
+    }
+  ]
+}

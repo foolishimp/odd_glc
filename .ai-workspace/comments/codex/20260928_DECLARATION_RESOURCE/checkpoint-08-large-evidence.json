@@ -1,0 +1,180 @@
+{
+  "scope": "PC05-11 exact setup and pre-admission SIGABRT; prior genuine PC05-09 recovery; no new Run or model result",
+  "format": "Concatenate parts in order to obtain gzip tar",
+  "archiveBytes": 57030775,
+  "archiveSha256": "900d24d66bd2b555f23130c0f9c973c6b4f4a67256663ecff748487d8af9fac6",
+  "parts": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-08-large-evidence.tgz.part00",
+      "bytes": 48000000,
+      "sha256": "4ec289802dda26af7400796e225e215768736ad4a4225b1f7628cdec56a503ff"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/checkpoint-08-large-evidence.tgz.part01",
+      "bytes": 9030775,
+      "sha256": "78b961faf54db861489be441cdb95f346708b23a22321d93cfcc4200800ceb10"
+    }
+  ],
+  "members": [
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/recovery-selection.json",
+      "bytes": 12813891,
+      "sha256": "fa7531936051a2b6c17c583741f201a43b422078bcbd30639a7a03fda07da9e1"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation-pending-review.json",
+      "bytes": 15927605,
+      "sha256": "4159223d044b5a026f1b394f75874e05043dd9d7d12c741e9d9e901892c227d4"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json",
+      "bytes": 15931281,
+      "sha256": "c7ce8d84355656d7fb7f4fd4963febadc816bcdc81442fcdc3dc6333f88d48f0"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/preserved-source.json",
+      "bytes": 4560290,
+      "sha256": "4594903d072f3961cfa81f176c5c9b0b4562f08727878e601913c72a99f0d6a2"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/00-verify-0.json",
+      "bytes": 25804428,
+      "sha256": "7ef130d8c69b2c5005a896aa758d6f843ae20b24786da0c4045b70ed6ec6d7cd"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/01-verify-1.json",
+      "bytes": 13181354,
+      "sha256": "e5ebe8960ea00e95fd9e46b2a88fa4acf4148821cbce953ab6cb976467f18d14"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/02-verify-2.json",
+      "bytes": 13171697,
+      "sha256": "175b42607187aca6080c71bfe358da9fb90b1f1857cc269d236aa0b166d91fd4"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/03-resolve.json",
+      "bytes": 26448297,
+      "sha256": "ae988fb8f9eea2a32c7e97800c1516e5db0c28d30ff65959b0d716cb71ef9196"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/04-install-0.json",
+      "bytes": 29379897,
+      "sha256": "26456b8ffb1fb233966026048eec771057b1af939eca4c7cb6ad65e1c3c2780a"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/05-install-1.json",
+      "bytes": 16754991,
+      "sha256": "12b04cf932f4fbbc54131039161cec75ec19c1518c9879da627c62d5bf75eb46"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/06-install-2.json",
+      "bytes": 16745994,
+      "sha256": "2e9e7c6abe4c30c674ce1b29a82310bc64757168c9592ae1938624048da60c1b"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/07-bind.json",
+      "bytes": 20197603,
+      "sha256": "4f5e011e68824f283cf56dcc06596796754714f88004c557401bc1baa111c925"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/08-catalog.json",
+      "bytes": 33752508,
+      "sha256": "b9314050096245e57c25fd26706800f5eca2fd281333e2a71b89646e383cace6"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/09-view.json",
+      "bytes": 36231713,
+      "sha256": "68e8cf90540284089ef167c7307964c657f3a502ff2ade221d061642e4fdf3ce"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/10-conformance.json",
+      "bytes": 37700598,
+      "sha256": "727e77e01d97c51e17f4b1b309e7820f7d655158793e5d4e47c08a51f9bf9150"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/calls/11-native-child-binding-cover.json",
+      "bytes": 13171235,
+      "sha256": "4049568fc64aaf23025496c3f28b8a155dfa3807bd5cd4045d71467e50e52171"
+    },
+    {
+      "path": ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/start.jsonl",
+      "bytes": 44650516,
+      "sha256": "d3fe41dc4e258bc45ac6bab338f0c4dd2572919b587dfaf39450b36654a7d363"
+    }
+  ],
+  "directSmallFiles": [
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/recovery-observation.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/recovery-result.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/artifacts/odd-glc-program-construction-fixture-0.1.0-dev.2.tgz",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/artifacts/odd-glc-route-one-typescript-0.3.0-dev.2.tgz",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/caller-delta.patch",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/caller-freeze.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/candidate.mjs",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/conservation.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execute.mjs",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execute.stderr",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execute.stdout",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/abort-suffix-diagnostic.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/abort-suffix.jsonl",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/execution-basis.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/first-cause.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/graphExecution.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/graphExecution.stderr",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/ownership-observation.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/process-failure.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution/transport.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution-resolution.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution-return.md",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/installed-descriptor-check.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/package-descriptors.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/package-preflight.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/package-result.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/package.mjs",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/package.stderr",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/package.stdout",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/preparation-import-refusal.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/prepare-selected-core.stderr",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/prepare-selected-core.stdout",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/prepare.mjs",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/prepare.stderr",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/prepare.stdout",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/prepared.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/run-environment.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/00-verify-0.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/01-verify-1.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/02-verify-2.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/03-resolve.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/04-install-0.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/05-install-1.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/06-install-2.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/07-bind.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/08-catalog.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/09-view.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/10-conformance.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/receipts/11-native-child-binding-cover.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/setup-resource-close.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup/setup-resource-entry.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/setup-receipt.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/source-freeze.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/source-projection-record.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/source-reuse.mjs",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/bind.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/catalog.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/conformance.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/install-0.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/install-1.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/install-2.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/native-child-binding-cover.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/resolve.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/verify-0.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/verify-1.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/verify-2.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/timings/view.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/verification-0.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/verification-1.json",
+    ".ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/verification-2.json"
+  ],
+  "localDependency": "Shared mutable event journal is not archived. PC05-11 appended zero bytes; dead-owner residue is retained for existing recovery. This archive is not standalone whole-history replay.",
+  "verified": "Every decompressed member matches its source hash",
+  "elapsedSeconds": 1.649245375301689
+}

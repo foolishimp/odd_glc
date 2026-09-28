@@ -1,0 +1,30 @@
+{
+  "scope": "closed process/physical lock observation; no Run outcome",
+  "ownerPid": 65622,
+  "eventPrefix": {
+    "kind": "durable_prefix_coordinate",
+    "schemaVersion": "5.0.0",
+    "eventLogRef": "file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260924_HELLO_PROJECT_BASELINE/full-native-remaining-01/parallel-core18-preparation-01/resources/js-sdlc-bootstrap/events/runtime.events.jsonl",
+    "prefixLength": 1390576361,
+    "prefixDigest": "sha256:4241544aea4aad32e2bad75229320663572cf79dce0d22f49eaff83f89d080c5",
+    "storeIdentity": {
+      "device": 16777230,
+      "inode": 459405010,
+      "eventContractDigest": "sha256:4196aaeb231aaf98b5d3da74c9d7eddaff17140cab0e6af5cfd94e3bd17590f0"
+    },
+    "coordinateDigest": "sha256:35509741600a6496a96b1ca4983389b2f20057c3510a50d041f3a8fc5bb415c5"
+  },
+  "lockPath": "/var/folders/rz/r6wxvr0n15d906k2s0jw8j2h0000gn/T/abiogenesis-event-store-locks-v5/16777230-459405010.lock",
+  "lockPresent": true,
+  "pidProbe": "ESRCH",
+  "lockValue": {
+    "device": 16777230,
+    "inode": 459405010,
+    "kind": "abiogenesis_event_store_append_lock",
+    "ownerPid": 65622,
+    "schemaVersion": "5.0.0"
+  },
+  "lockDevice": 16777230,
+  "lockInode": 462067128,
+  "lockDigest": "sha256:edc3f60362a6403d3925fa24f067ec81470d612260e5f6d8aac2be1a741dbf88"
+}

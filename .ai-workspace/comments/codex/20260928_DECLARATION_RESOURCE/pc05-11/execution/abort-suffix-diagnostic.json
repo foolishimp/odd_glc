@@ -1,0 +1,12 @@
+{
+  "scope": "physical suffix diagnosis only; not admitted replay or recovery",
+  "beforeBytes": 1390576361,
+  "afterBytes": 1390576361,
+  "suffixBytes": 0,
+  "suffixSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "rows": 0,
+  "counts": {},
+  "first": [],
+  "last": [],
+  "elapsedSeconds": 9.362539276480675e-05
+}

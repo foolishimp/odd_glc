@@ -1,0 +1,11 @@
+file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs:26
+export const retentionBinding = product.graphInputRetentionBinding(inputContract.contractRef,executionContract.contractRef);
+                                        ^
+
+TypeError: product.graphInputRetentionBinding is not a function
+    at file:///Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/src/native-continuation-runtime.mjs:26:41
+    at ModuleJob.run (node:internal/modules/esm/module_job:371:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:683:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.7.0

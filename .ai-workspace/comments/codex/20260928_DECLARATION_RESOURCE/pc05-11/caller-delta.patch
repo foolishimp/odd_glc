@@ -1,0 +1,22 @@
+--- pc05-10/candidate.mjs
++++ pc05-11/candidate.mjs
+@@ -12,7 +12,7 @@
+ export async function caseBasis() {
+   const base=await predecessorBasis(),prior=await read(join(D,'../pc05-04/source-freeze.json'));
+   const roles=base.configuration.runEnvironment.roles.filter(r=>r.role==='assessor');assert.equal(roles.length,1);
+-  const core=await read(join(resolve(D,'../../../../../..'),'abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-05/selected-core.json'));
++  const core=await read(join(resolve(D,'../../../../../..'),'abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/selected-core.json'));
+   return {...base,core,configuration:{...base.configuration,transport:prior.transport,
+     runEnvironment:{...base.configuration.runEnvironment,declarationRef:'environment://odd-glc/T-043/pc05-preserved-construction@5',roles}}};
+ }
+--- pc05-10/prepare.mjs
++++ pc05-11/prepare.mjs
+@@ -100,7 +100,7 @@
+     {verification_references:products.map(p=>p.reference)}),'resolve');
+   assert.deepEqual(resolved.ownerOutput.value.resolvedLock,lock);
+   const installed=[],actor={actor:coord(actorRef),attribution:coord('attribution://odd-glc/program-construction-qualification')};
+-  const targets=['core51','construction','evaluator'].map(n=>join(D,'products',n));
++  const targets=['core52','construction','evaluator'].map(n=>join(D,'products',n));
+   const installStart=performance.now();
+   for(const [i,item]of products.entries()){
+     const call=await setup.authorized(product.PRODUCT_INSTALL_SOURCE_DECLARATIONS.install,

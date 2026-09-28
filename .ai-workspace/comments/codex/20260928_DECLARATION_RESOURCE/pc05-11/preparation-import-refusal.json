@@ -1,0 +1,16 @@
+{
+  "scope": "Caller import refusal before setup/acquisition; not a runtime defect",
+  "failure": "product.graphInputRetentionBinding is not a function",
+  "cause": "Root omitted the existing explicit installed-core resolver when invoking source-level GLC preparation; ambient September18 dependency was selected",
+  "eventResourceAcquired": false,
+  "runStarted": false,
+  "modelCalled": false,
+  "sourceChanges": false,
+  "correction": "Use the existing core-loader for source-level declaration preparation with ABI5_COMPONENT_ROOT selecting the actual core52 install. Native descriptor and CLI processes continue with ordinary installed linkage and no loader.",
+  "loader": {
+    "path": "/Users/jim/src/apps/odd_glc/build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+    "sha256": "a21f9368e487a5c84080f1b9a9980397fb5fd51fe504311ba2590a94a373eda7"
+  },
+  "failedStderrSha256": "97d5225a15b79a37c9a2cbe7ee8505cc478b45ce42d7f12ada6eb0174c12cb98",
+  "selectedCoreRecord": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/core-06/selected-core.json"
+}

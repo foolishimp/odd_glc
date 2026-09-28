@@ -1,0 +1,9 @@
+{
+  "message": "Unexpected end of JSON input",
+  "stack": "SyntaxError: Unexpected end of JSON input\n    at JSON.parse (<anonymous>)\n    at file:///Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execute.mjs:68:15",
+  "timings": {
+    "graphExecutionMs": 81317.754792
+  },
+  "disposition": null,
+  "run": null
+}

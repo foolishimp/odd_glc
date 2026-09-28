@@ -1,0 +1,26 @@
+{
+  "activationPath": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json",
+  "activationDigest": "sha256:c7ce8d84355656d7fb7f4fd4963febadc816bcdc81442fcdc3dc6333f88d48f0",
+  "sourceFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/source-freeze.json",
+    "digest": "sha256:9b215bca465280711b595bbc29434c3aeaf035d948d85cec44085b1d25daf14a"
+  },
+  "constructionReview": {
+    "path": "/Users/jim/src/apps/abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-construction-repair-review.md",
+    "digest": "sha256:64667f0b4c0974fa6d70ccc264e20e57e9d431ec54e762ee6f1b0808c4490d6f"
+  },
+  "callerFreeze": {
+    "path": "/Users/jim/src/apps/odd_glc/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/caller-freeze.json",
+    "digest": "sha256:cfee51af34f54655d3cbb54dee59c635b4ead8caa45b834b8b2433ff5a884f65"
+  },
+  "launchDigest": "sha256:d3fe41dc4e258bc45ac6bab338f0c4dd2572919b587dfaf39450b36654a7d363",
+  "beforeBytes": 1390576361,
+  "startedAt": "2026-09-28T00:19:01.904Z",
+  "transportDigest": "sha256:f3d3ca4d35a0b3e34becef62c3587acb3e490a4d2e279ab5223cbcf9c5d41a91",
+  "setup": {
+    "packageMs": 14026.941541,
+    "installMs": 67431.235333,
+    "setupMs": 59671.42116799999,
+    "timingLimitation": null
+  }
+}

@@ -27,47 +27,32 @@
 - release_status: unselected
 - current_activation: GLC_DECLARATION_RESOURCE_01
 - current_re_entry: design_reframe_then_realization_refactor
-- current_activation_status: core51_source_accepted_one_physical_recovery_profile_selected_no_Run
-- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/activation.json
-- last_execution_result: PC05_09_process_aborted_heap_exhaustion_no_terminal_receipt
+- current_activation_status: PC05_11_pre_admission_heap_abort_memory_triage_selected
+- last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json
+- last_execution_result: PC05_11_heap_aborted_before_admission_zero_appended_events
 - current_activation_record: '#modular-completion-plan'
 
 ## Current bounded selection
 
-The residual-aware repair and [source/caller review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-evaluation-repair-review.md)
-are accepted. [PC05-05](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-05/execution-return.md)
-passed historical authentication, current-worksite reacquisition and computed
-evaluation, then failed at native assessor instruction preparation. Fresh Public
-reads agree; zero actors. Preserve the paid constructor and all twelve reports.
-The [declaration repair and independent delta review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-assessor-repair-review.md)
-are accepted, including focused closure and actual-task preflight checks.
-[PC05-06](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-06/execution-return.md)
-completed with one assessor and agreeing fresh Public Result/replay. Computed
-evidence is true; checked assessment is unsatisfied: missing required citation
-roles/coverage, one quote mismatch and selected residuals. Root accepts the
-installed declaration/continuation proof only. Root accepts the [closed triage](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-assessment-contract-triage-01/return.md)
-and selects one `realization_refactor`: project existing citation/residual rules,
-the actual admitted author task and current/historical basis meanings; correct
-the fixture's report explanation. Keep every role/record check, report and the
-actual output's refusal. The [closed repair and independent delta review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-assessment-contract-repair-review.md)
-are accepted. [PC05-07](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-07/execution-return.md)
-closed failed on malformed model JSON, correctly refused. Fresh Public Result
-is absent and replay is failed. The prior PC05-06 runtime proof remains valid
-in its scope. Executive selects the bounded ABG native-assessment HOW/transport
-repair recorded by T-287; GLC's exact consumer schema and interpretation remain.
-No author/C2 repeat, source/oracle weakening, budget increase or blind retry.
-PC06's fifteen-binding evidence join remains prepared; original-task disposition
-is open. The [corrected core49 response route](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-structured-response-repair-02-review.md)
-is source/package accepted; its selected installed PC05-08 assessment is closed.
-Its [installed invocation](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-08/execution-return.md)
-closed failed on host refusal of the draft-2020-12 schema declaration. Fresh
-Result/replay agree. Closed portability triage selects paired fixed-default ABI
-admission and GLC schema authoring without the optional dialect marker. All
-instance constraints remain. The [closed paired review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-schema-compatibility-repair-review.md)
-and exact core50 package are accepted. One installed PC05-09 setup/assessment is
-selected with source freeze aa2dedac… and caller freeze 283dc064…; original04 author,
-05 selection, completed C2, twelve reports and all checks remain. No transport
-stripping, blind retry or release claim. PC06 original-condition conjunction follows.
+Core52 source/package is accepted after the [shared-encoder review](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-construction-repair-review.md).
+The [installed owner check](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-canonical-installed-01/result.json)
+passes over 137,417 events with every journal byte unchanged: acquisition28.439 s,
+Run projection9.790 s, process40.24 s / peak RSS5.193 GB. It preserves the Run's
+active, incomplete status; no warm OOM cure or complete native proof is claimed.
+ABI T287/LIFE-01 owns the closed-profile comparison and current memory triage.
+
+[PC05-09](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/execution-return.md)
+remains a historical heap abort before any recorded actor invocation. Existing
+[maintenance](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-09/recovery-result.json)
+and the new owner check both close at genuine coordinate67a75b13… with all
+1,388,245,432 bytes conserved. Original04 paid author, exact05 selection, completed
+C2, source/oracle, twelve reports and all checks remain. [PC05-11](../../comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/execution-return.md)
+setup passed but the native CLI heap-aborted after81.318 s before admission:
+zero appended bytes/events, no new Run or model result. Exact dead-owner residue
+remains at setup extent1,390,576,361 bytes. Pre-admission lifetime triage and
+existing-owner reconciliation precede any new attempt. PC06 and release remain open.
+
+### Historical dispositions — prior selections, not current launch grants
 
 Core47's [installed no-actor discriminator](../../comments/codex/20260928_DECLARATION_RESOURCE/installed-01/return.md)
 is accepted: wrong predecessor refuses at actual preparation; fresh result/replay
@@ -153,7 +138,7 @@ exact scope.
 | PC02 — Construct through the native handoff | Source complete; installed no-actor refusal [causally reproduced](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc02-causal-reproduction-01/return.md) | Extend existing runtime wrappers and ordinary GTL joins: actual predecessor/current context → scoped native work → admitted output consumed by the dependent child. | Focused checks reject wrong predecessor, task or context; root entry cannot substitute for child output. Partial/unknown work stays explicit. Then use the installed composition for a pre-dispatch wrong-predecessor refusal with zero actors: the first installed boundary check. |
 | PC03 — Compute evidence and comparison | Source complete; [10 distinct affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc03/return.md) | Join supplied evaluator output to actual construction observations; produce the construction-edge records and binding14 comparison while retaining original execution/provenance and accepted bindings10/11. Domain predicates stay in the supplied evaluator. | A changed input digest, predicate or expected value changes the warranted disposition. False/unknown records cannot pass. Computed facts trace to actual admitted observations; old raw observations remain unchanged. No command rerun is needed for this retained-execution path. |
 | PC04 — Connect independent assessment | Source/review accepted; [WP-01 corrected and independently verified](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/wp01-repair-01/review.md); prior [8 affected cases passed](../../comments/codex/20260927_PROGRAM_CONSTRUCTION/pc04/return.md) | Reuse/factor the existing assessment checker. Bind exact computed-record labels/bytes to criterion and evidence role, then prepare read-only native assessment with actual author provenance and required independence. | Unknown, colliding or mismatched citations, wrong roles/producers and old command evidence substituted for construction records refuse. Partial/negative judgment remains partial/negative. The assessor consumes the actual new output through the same GTL composition. |
-| PC05 — Prove the installed complete path | Prior runtime proof accepted; response repair accepted; latest installed attempt refused host schema dialect; portability triage selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
+| PC05 — Prove the installed complete path | Prior bounded runtime proof accepted; latest attempt11 heap-aborted before admission; core52 owner proof accepted; memory triage selected | Exercise legitimate prospective work → admitted construction → computed evaluation → independent native assessment through one installed composition over the preserved source, oracle and worksite. | Fresh Public result and replay agree with actual effects and assessment. Retain the exact-candidate predecessor refusal. Changed execution dependencies stop evidence reuse; unavailable after-state remains unknown. Reuse valid prior execution; do not invoke C2 merely to refresh proof. |
 | PC06 — Reconcile original-task completion | Fifteen-binding join prepared; final disposition pending corrected PC05 | Conjoin construction relations G3/bindings5/6/9/12, comparison14, independent judgment, the original obligation population and still-valid accepted evidence. Return the disposition to T-287. | Each original selected condition is established or explicitly residual. No scope weakening, pass by count or retroactive provenance. A satisfied result feeds S06 and the existing exact qualification/RC1 sequence; those later release obligations remain separately open. |
 
 Implementation territory: existing `build_tenants/odd_glc/typescript/src/program-construction{,-contracts,-runtime}.mjs`,

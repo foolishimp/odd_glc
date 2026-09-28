@@ -1,0 +1,12 @@
+{
+  "sourceMembersUnchanged": 14,
+  "executableDelta": "candidate core-05\u2192core-06; installed core51 label\u2192core52 only",
+  "unchangedCallers": [
+    "execute.mjs",
+    "package.mjs",
+    "source-reuse.mjs"
+  ],
+  "sourceFreezeSha256": "sha256:9b215bca465280711b595bbc29434c3aeaf035d948d85cec44085b1d25daf14a",
+  "callerFreezeSha256": "sha256:cfee51af34f54655d3cbb54dee59c635b4ead8caa45b834b8b2433ff5a884f65",
+  "scope": "prepared only; source/core52 review reused for exact unchanged domains; execution unselected"
+}
