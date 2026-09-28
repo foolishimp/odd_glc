@@ -1,0 +1,106 @@
+{
+  "head": "c439674ba856e43ade9113c853143b4734fe1f47",
+  "paths": [
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "sha256": "bb7cf8696e6a1f6358966a5cbfc7da27510e33aeaf948d06701ad287c70dedba",
+      "bytes": 36193,
+      "lines": 344,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "sha256": "c6bbc7fcd04e27ff1b8750e2695b1bbb0cd7f5002f285066565729995c0f695a",
+      "bytes": 10271,
+      "lines": 115,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "sha256": "10b2883d503ff0d68ccccedbdf83a4b76856aad6cc8202bce4a6ef67ec6d6fb0",
+      "bytes": 62029,
+      "lines": 622,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "sha256": "2c3d787986502c99ef746398862741f83de5c00b5de64a3a512773fdfec35188",
+      "bytes": 98262,
+      "lines": 953,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": "014c70ffe9b7cdbd7346f21e99e61f0695a48229219a36c7d72a6185c33697da",
+      "bytes": 17485,
+      "lines": 211,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/activation.md",
+      "sha256": "fd60ff223b006feca1e07ec7460bd76f84a5e42668abc1a55029abb25e4a530f",
+      "bytes": 5777,
+      "lines": 88,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "sha256": "a21f9368e487a5c84080f1b9a9980397fb5fd51fe504311ba2590a94a373eda7",
+      "bytes": 863,
+      "lines": 15,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md",
+      "sha256": "0b8586f0ef7fd07140ca0b8b47284f4a9485b95ab5a1187f92e7605c7188a924",
+      "bytes": 9098,
+      "lines": 138,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/expected-native44.json",
+      "sha256": "cadf27a132038b249a7aee7fd47063a3f860b9322ea4f54651f7e4d511aa8ba5",
+      "bytes": 1727,
+      "lines": 27,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "sha256": "f5993a471aaa891fb679e04da96949c0f8c1378127b0b88f66d1b555749da20b",
+      "bytes": 24934,
+      "lines": 220,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs",
+      "sha256": "89f8f59e713223fec11a0fbb588de0ade1dc357108df78f9557a0345e7d112f2",
+      "bytes": 6373,
+      "lines": 64,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "sha256": "a4e5a3d4e96081b0e5ee6d82e62beeffbd6d2062f2b1cc681ff888dc36b5f272",
+      "bytes": 2281,
+      "lines": 26,
+      "operation": "delete"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "sha256": "84f8f351a8f8253783b9928800ecbfc570edea06718ff2b293782232e0687a92",
+      "bytes": 7643,
+      "lines": 82,
+      "operation": "edit"
+    }
+  ],
+  "preserved_functions": {
+    "native_continuation": {
+      "sha256": "9532b0dcdb2acb7ded8ca9728118db66a8a60a3d3d804ecc821161562ce3efa5",
+      "bytes": 2538
+    },
+    "file_writer": {
+      "sha256": "ba33c9da3b68bc8d2305446d5cd4a59a05923eaf96595dd787679bb5aae807ca",
+      "bytes": 270
+    }
+  }
+}

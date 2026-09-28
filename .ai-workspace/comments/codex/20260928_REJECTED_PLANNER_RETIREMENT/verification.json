@@ -1,0 +1,125 @@
+{
+  "basis_commit": "c439674ba856e43ade9113c853143b4734fe1f47",
+  "checks": [
+    "native_continuation_byte_exact",
+    "file_writer_byte_exact",
+    "rejected_source_test_fixture_absent"
+  ],
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--check",
+        "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "import assert from 'node:assert/strict'; const m = await import('./build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs'); assert.deepEqual(Object.keys(m), ['buildNativeContinuationProduct']);"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "rg",
+        "-l",
+        "program-construction|PROGRAM_CONSTRUCTION|selectLifecycleWork|buildProgramConstructionProduct|programConstructionPackageInputs",
+        "build_tenants/odd_glc/typescript/src",
+        "build_tenants/odd_glc/typescript/scripts",
+        "build_tenants/odd_glc/typescript/test",
+        "--glob",
+        "*.mjs",
+        "--glob",
+        "*.json",
+        "--glob",
+        "*.ts"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "seconds": 0.099,
+  "tracked_diff_numstat": "7\t4\t.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md\n0\t42\tbuild_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs\n0\t115\tbuild_tenants/odd_glc/typescript/src/program-construction-contracts.mjs\n0\t622\tbuild_tenants/odd_glc/typescript/src/program-construction-runtime.mjs\n0\t344\tbuild_tenants/odd_glc/typescript/src/program-construction.mjs\n0\t211\tbuild_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs\n0\t88\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/activation.md\n0\t15\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs\n0\t138\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md\n0\t27\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/expected-native44.json\n0\t220\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs\n0\t64\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs\n0\t26\tbuild_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs\n0\t953\tbuild_tenants/odd_glc/typescript/test/program-construction.test.mjs\n4\t3\tspecification/GOALS.md\n",
+  "postimages": [
+    {
+      "path": ".ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md",
+      "sha256": "97b0f733cebec2140de1c792a9dd36a3cacb14e26fff17ac5c815f6e5c489a9a"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/scripts/build-native-continuation-product.mjs",
+      "sha256": "572648574f81f612813792f6b102e3715145daa37ae64268b6f9bf5cf523808d"
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-contracts.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction-runtime.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/src/program-construction.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/abi5-installed-program-construction.test.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/activation.md",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/core-loader.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/evaluator-contract.md",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/expected-native44.json",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native-records-evaluator.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/native44-input.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/fixtures/program-construction/package-evaluator.mjs",
+      "sha256": null
+    },
+    {
+      "path": "build_tenants/odd_glc/typescript/test/program-construction.test.mjs",
+      "sha256": null
+    },
+    {
+      "path": "specification/GOALS.md",
+      "sha256": "159a66777cda5b573e142116ea5563a6f2c1afb6383dee90e0d8bdea9d20e145"
+    }
+  ],
+  "limits": "No build, package, provider or installed run; retained native continuation function and writer byte-identical."
+}

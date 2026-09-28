@@ -20,9 +20,10 @@ owns the newly selected recursive Executive and default registered graph library
 with installed sandbox scenarios as the framework discriminator.
 [T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#default-library-asset-handoff)
 owns reusable GLC assets and retirement tracking. The rejected local planner
-remains withdrawn; no new odd_glc implementation or separate release is selected.
-Existing evidence retains its bounded scope. Product playback and bounded
-scope reconciliation precede implementation; GLC RC4 remains selected.
+has been removed through T-043's independently reviewed and accepted bounded
+source/test/packaging retirement. Reusable graph assets and evidence retain their scope;
+the replacement implementation belongs to ABI T-287. No separate odd_glc
+release or method migration is selected; GLC RC4 remains selected.
 
 The owner's 2026-09-13 instruction, "ok update the tickets and prepare the
 plan", selects documentation/planning alignment with the

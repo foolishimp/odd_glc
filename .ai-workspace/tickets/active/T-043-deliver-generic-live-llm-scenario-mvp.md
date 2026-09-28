@@ -25,9 +25,9 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_DEFAULT_LIBRARY_ASSET_SCOPE_01
-- current_re_entry: owner_rejection_at_Intent_Product_and_requirement_boundary
-- current_activation_status: construction_Product_revisions_rejected_implementation_grant_withdrawn
+- current_activation: GLC_REJECTED_PLANNER_RETIRE_01
+- current_re_entry: realization_refactor_retirement_of_withdrawn_implementation
+- current_activation_status: rejected_planner_removal_accepted_replacement_owned_by_ABI_T287
 - last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json
 - last_execution_result: PC05_11_heap_aborted_before_admission_zero_appended_events
 - current_activation_record: '#default-library-asset-handoff'
@@ -44,8 +44,12 @@ T-043's role is reusable declaration, prompt, frame-policy and scenario assets,
 plus retirement of the rejected consumer machinery. Existing construction and
 proof assets remain available at their original scope. The local planner,
 independent lifecycle runtime and renewed odd_glc implementation are unselected.
-Asset moves, deletions and code require the subsequent bounded implementation
-selection; this update records scope only. The owner rejection below remains.
+The owner's course-correction instruction now selects the
+[bounded planner retirement](../../comments/codex/20260928_REJECTED_PLANNER_RETIREMENT/retirement.md).
+The rejected planner, dedicated tests/fixtures and packaging branch are removed;
+[independent review and Executive acceptance](../../comments/codex/20260928_REJECTED_PLANNER_RETIREMENT/disposition.md)
+close that bounded retirement. Reusable graph assets stay in place until their
+separate library handoff. The owner rejection below remains.
 
 ## Owner rejection of Program-construction revisions
 
@@ -58,9 +62,10 @@ The [Executive disposition](../../../../abiogenesis/.ai-workspace/comments/codex
 owns the bounded restoration and paired T-287 routing. Review the original
 strategy, [withdrawn calculus](../../../../abiogenesis/.ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/program-construction-calculus-review.md)
 and [rejected HOW](../../../build_tenants/common/design/ODD_GLC_PROGRAM_CONSTRUCTION.md)
-under the existing GTL/HoG/ABG owners before selecting a replacement. Current code
-is preserved pending the requested removal/design review; no new code, package,
-recovery or native-execution grant is active. Core repairs and paid work remain.
+under the existing GTL/HoG/ABG owners before selecting a replacement. Source was
+initially preserved for removal review; the current retirement above now removes
+the rejected modules. Core repairs, reusable graph assets and paid work remain.
+No replacement odd_glc runtime, recovery or native execution is selected.
 
 ## Retained execution checkpoint
 
