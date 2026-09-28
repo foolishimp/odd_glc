@@ -25,12 +25,27 @@
 - project_reference_frame_basis: specification/REFERENCE_FRAME_BASIS.md
 - runtime_substrate: exact ABIogenesis T-287 candidate selected for each activation
 - release_status: unselected
-- current_activation: GLC_PRODUCT_AUTHORITY_RESTORE_01
+- current_activation: GLC_DEFAULT_LIBRARY_ASSET_SCOPE_01
 - current_re_entry: owner_rejection_at_Intent_Product_and_requirement_boundary
 - current_activation_status: construction_Product_revisions_rejected_implementation_grant_withdrawn
 - last_execution_selection: .ai-workspace/comments/codex/20260928_DECLARATION_RESOURCE/pc05-11/activation.json
 - last_execution_result: PC05_11_heap_aborted_before_admission_zero_appended_events
-- current_activation_record: '#owner-rejection-of-program-construction-revisions'
+- current_activation_record: '#default-library-asset-handoff'
+
+## Default-library asset handoff
+
+The owner selects a recursive Executive overlay on existing HoG and default
+registry GraphFunctions for induction, specification, design, testing and UAT,
+proved through a fresh installed ABG sandbox running a minimal Hello World
+scenario. [ABI T-287](../../../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#recursive-executive-and-default-graph-library)
+owns the complete target and Product-definition playback.
+
+T-043's role is reusable declaration, prompt, frame-policy and scenario assets,
+plus retirement of the rejected consumer machinery. Existing construction and
+proof assets remain available at their original scope. The local planner,
+independent lifecycle runtime and renewed odd_glc implementation are unselected.
+Asset moves, deletions and code require the subsequent bounded implementation
+selection; this update records scope only. The owner rejection below remains.
 
 ## Owner rejection of Program-construction revisions
 

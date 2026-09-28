@@ -15,12 +15,14 @@ Intent/Product, Requirements, Design, working application evidence and targeted
 revision. Each traversal preserves preceding meaning, complexity and unresolved
 obligations; a steel thread orders delivery while keeping pending requirements.
 
-[T-043's current disposition](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#owner-rejection-of-program-construction-revisions)
-owns the next work: restore the boundaries rejected by the owner and review the
-calculus/design with HoG as the unit of computation. The local construction and
-selection extension has no implementation grant. Its retained results do not
-establish full lifecycle completion. GLC RC4 remains selected; ABI T-287 owns
-ABG5 qualification and release. S06 and Data Mapper remain open.
+[ABI T-287](../../abiogenesis/.ai-workspace/tickets/active/T-287-deliver-abiogenesis-5-feature-waves.md#recursive-executive-and-default-graph-library)
+owns the newly selected recursive Executive and default registered graph library,
+with installed sandbox scenarios as the framework discriminator.
+[T-043](../.ai-workspace/tickets/active/T-043-deliver-generic-live-llm-scenario-mvp.md#default-library-asset-handoff)
+owns reusable GLC assets and retirement tracking. The rejected local planner
+remains withdrawn; no new odd_glc implementation or separate release is selected.
+Existing evidence retains its bounded scope. Product playback and bounded
+scope reconciliation precede implementation; GLC RC4 remains selected.
 
 The owner's 2026-09-13 instruction, "ok update the tickets and prepare the
 plan", selects documentation/planning alignment with the
